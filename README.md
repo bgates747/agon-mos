@@ -1,5 +1,7 @@
 # agon-mos
 
+Repository scope and cross-project ownership are defined in `OWNERSHIP.md`.
+
 Part of the official Agon Platform organisation firmware for all Agon computers.
 
 This firmware is intended for use on any Agon Light compatible computer.  As well as the Agon Console8, it has been tested on the Olimex Agon Light 2.
