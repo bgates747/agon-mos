@@ -24,6 +24,7 @@
 <file filter-key="">.\\src\\uart.c</file>
 <file filter-key="">.\\src\\tests.c</file>
 <file filter-key="">.\\src\\serial.asm</file>
+<file filter-key="">.\\src\\uart0_async.asm</file>
 <file filter-key="">.\\src\\gpio.asm</file>
 <file filter-key="">.\\src_startup\\cstartup.asm</file>
 <file filter-key="">.\\src_startup\\init_params_f92.asm</file>

@@ -107,9 +107,9 @@ struct Rig {cpu:Cpu,u:Uart,s:BTreeMap<String,usize>,isr_count:usize,isr_cycles:i
     max_isr_steps:usize,max_isr_writes:usize,max_isr_rx:usize, guard:bool, inject_api:bool, ei_delay:u8}
 impl Rig {
     fn new(image:&[u8],s:&BTreeMap<String,usize>)->Self{
-        let mut cpu=Cpu::new_ez80();cpu.set_adl(true);cpu.registers().set24(Reg16::SP,STACK);cpu.registers().set16(Reg16::SP,0x8765);
-        cpu.registers().madl=true;cpu.registers().mbase=0x53;cpu.registers().iff1=true;cpu.registers().iff2=true;
-        Self{cpu,u:Uart::new(image),s:s.clone(),isr_count:0,isr_cycles:0,max_isr_steps:0,
+        let production=s.contains_key("uart0_sync_depth"); let mut cpu=Cpu::new_ez80();cpu.set_adl(true);cpu.registers().set24(Reg16::SP,STACK);cpu.registers().set16(Reg16::SP,0x8765);
+        cpu.registers().madl=true;cpu.registers().mbase=if production{0}else{0x53};cpu.registers().iff1=true;cpu.registers().iff2=true;
+        let mut u=Uart::new(image); if production { u.mem.fill(0);u.mem[..image.len()].copy_from_slice(image);let data=u.mem[s["__low_romdata"]..s["__low_romdata"]+s["__len_data"]].to_vec();u.mem[s["__low_data"]..s["__low_data"]+data.len()].copy_from_slice(&data);u.mem[s["_serialFlags"]]=3;u.set24(s["tx_next_ticket"],1); } Self{cpu,u,s:s.clone(),isr_count:0,isr_cycles:0,max_isr_steps:0,
             max_isr_writes:0,max_isr_rx:0,guard:true,inject_api:false,ei_delay:0}
     }
     fn at(&self,n:&str)->usize{self.s[n]}
@@ -162,7 +162,7 @@ impl Rig {
         let addr=self.at(name)as u32;
         self.u.mem[STUB..STUB+5].copy_from_slice(&[0xcd,addr as u8,(addr>>8)as u8,(addr>>16)as u8,0]);
         self.cpu.state.set_pc(STUB as u32);
-        let iff=self.cpu.registers().iff1;assert_eq!(iff,self.cpu.registers().iff2);
+        let mb=self.cpu.registers().mbase;let iff=self.cpu.registers().iff1;assert_eq!(iff,self.cpu.registers().iff2);
         let sp=self.cpu.registers().get24(Reg16::SP);let short_sp=self.cpu.registers().get16(Reg16::SP);
         let ix=self.cpu.registers().get24(Reg16::IX);let iy=self.cpu.registers().get24(Reg16::IY);
         let mut steps=0;
@@ -186,7 +186,7 @@ impl Rig {
         assert_eq!(self.cpu.registers().get16(Reg16::SP),short_sp);
         assert_eq!(self.cpu.registers().get24(Reg16::IX),ix);
         assert_eq!(self.cpu.registers().get24(Reg16::IY),iy);
-        assert_eq!(self.cpu.registers().mbase,0x53);assert!(self.cpu.registers().adl);
+        assert_eq!(self.cpu.registers().mbase,mb);assert!(self.cpu.registers().adl);
         (self.cpu.registers().a(),self.cpu.registers().get24(Reg16::HL),
             (self.cpu.registers().get16(Reg16::BC)>>8)as u8)
     }
@@ -514,10 +514,124 @@ fn negative_controls(image:&[u8],s:&BTreeMap<String,usize>){
         panic!("negative control survived");
     }
 }
+// Execute production ROM instructions and real MOS receive parser. This does
+// not boot MOS: initialized C data and peripheral startup are Flexe's job.
+fn production(image:&[u8],s:&BTreeMap<String,usize>) {
+    let mut cases=0;
+    for iff in [false,true] {
+        let mut r=Rig::new(image,s);r.cpu.registers().iff1=iff;r.cpu.registers().iff2=iff;
+        r.cpu.registers().set_a(0x50);
+        let (status,discover,_) = r.call("mos_api",0,0,0x1300);
+        assert_eq!(status,0);assert_eq!(discover,s["uart0_async_getapi"]as u32);
+        let (_,table,_) = r.call("uart0_async_getapi",0,0,0);
+        assert_eq!(&r.u.mem[table as usize..table as usize+4],b"UTX1");
+        assert_eq!(r.u.mem[table as usize+4],1);
+        let ops=["tx_open","tx_reserve","tx_publish","tx_status","tx_cancel","tx_reap","tx_poll_drain","tx_close","tx_kick"];
+        for (i,name) in ops.iter().enumerate(){assert_eq!(r.u.u24(table as usize+13+3*i),s[*name]as u32);}
+        r.open();let t=r.reserve();
+        for (p,n) in [(0,1),(0x4000,1),(0xbc000,1),(0xbbfff,2),(SOURCE as u32,0),(SOURCE as u32,65536)] {
+            assert_eq!(r.call("tx_publish",t,p,n).0,2);assert_eq!(r.state(t),(1,0));
+        }
+        let bytes=payload(180,7);r.publish(t,SOURCE,&bytes);
+        // Legacy byte with pending async work must preserve primary registers,
+        // flags except documented carry, MBASE and IFF and appear at the end.
+        r.cpu.registers().set_a(b'!');
+        assert_eq!(r.call("UART0_serial_PUTCH",0x123456,0x654321,0x1234).0,b'!');
+        assert_eq!(r.u.writes,[bytes.clone(),vec![b'!']].concat());
+        assert_eq!(r.state(t),(4,180));assert_eq!(r.byte("tx_barrier"),0);
+        assert_eq!(r.byte("uart0_sync_depth"),0);
+// Exercise the actual ZDS C stdout wrapper and formatted MOS errors
+// with pending async commands, using the native three-byte stack ABI.
+for (function,arg,expected) in [("_putch",b'C' as u32,vec![b'C']), ("_mos_error",20,b"\n\rInvalid command\n\r".to_vec())] {
+    let prior=payload(65,42);let ticket=r.reserve();r.publish(ticket,SOURCE+0x4000,&prior);
+    let addr=SOURCE+0x5000;let target=s[function];
+    let code=[0xfd,0xe5,0xdd,0xe5,0x21,arg as u8,(arg>>8)as u8,(arg>>16)as u8,0xe5,
+        0xcd,target as u8,(target>>8)as u8,(target>>16)as u8,0xc1,0xdd,0xe1,0xfd,0xe1,0xc9];
+    r.u.mem[addr..addr+code.len()].copy_from_slice(&code);r.s.insert("c_output".into(),addr);
+    r.call("c_output",0,0,0);assert!(r.u.writes.ends_with(&[prior,expected].concat()));
+    assert_eq!(r.state(ticket),(4,65));r.call("tx_reap",ticket,0,0);
+}
+        // Foreground polling must deliver a real GP reply even with DI.
+        r.u.rx.extend([0x80,1,0x3c]);r.call("uart0_sync_begin",0,0,0);r.call("uart0_sync_end",0,0,0);
+        assert_eq!(r.byte("_gp"),0x3c);
+        // Callback installation fences pending bytes and closes the session.
+        let pending=payload(117,9);let t2=r.reserve();r.publish(t2,SOURCE+0x1000,&pending);
+        let cb=SOURCE+0x2000;let output=s["UART0_serial_PUTCH"];let open=s["tx_open"];
+        let record=cb+40;
+        let code=[0xcd,open as u8,(open>>8)as u8,(open>>16)as u8,
+            0x32,record as u8,(record>>8)as u8,(record>>16)as u8,
+            0x3e,b'K',0xcd,output as u8,(output>>8)as u8,(output>>16)as u8,0xc9];
+        r.u.mem[cb..cb+code.len()].copy_from_slice(&code);
+        r.cpu.registers().set_a(0x1d);r.call("mos_api",0,cb as u32,0);
+        assert_eq!(r.byte("tx_opened"),0);assert_eq!(r.word("_user_kbvector"),cb as u32);
+        assert_eq!(r.call("tx_open",0,0,0).0,1);
+        assert!(r.u.writes.ends_with(&pending));
+        // Real keyboard packet invokes a synchronous-printing callback only
+        // with async closed; new API returns CONTEXT inside the ISR.
+        r.u.rx.extend([0x81,4,b'x',0,65,1]);
+        r.cpu.registers().iff1=true;r.cpu.registers().iff2=true;r.irq();
+        assert_eq!(r.u.mem[record],4);assert_eq!(r.u.writes.last(),Some(&b'K'));
+        assert_eq!(r.byte("_keyascii"),b'x');assert_eq!(r.byte("_keycount"),1);
+        r.cpu.registers().set_a(0x1d);r.call("mos_api",0,0,0);
+        r.open();let next=r.reserve();assert!(next>t2);
+        r.call("tx_cancel",next,0,0);r.call("tx_reap",next,0,0);
+        r.u.advance(10000);assert_eq!(r.call("tx_close",0,0,0).0,0);
+        cases+=1;
+    }
+for mb in [1,4,7,0x53] {
+    let mut r=Rig::new(image,s);r.open();let t=r.reserve();let bytes=payload(100,3);r.publish(t,SOURCE,&bytes);
+    r.cpu.registers().mbase=mb;
+    assert_eq!(r.call("tx_reserve",0,0,0).0,4); // Public API rejects MBASE != 0.
+    r.cpu.registers().set_a(b'M');r.call("UART0_serial_PUTCH",0,0,0);
+    assert_eq!(r.u.writes,[bytes,vec![b'M']].concat());
+    r.call("uart0_return_fence",0,0,0);assert_eq!(r.byte("tx_opened"),0);
+    cases+=1;
+}
+    // A return fence cannot close, discard the queue or relinquish RAM while
+    // CTS is blocked; it can finish once CTS resumes even with IFF disabled.
+    for accepted in [0,1,7,16,33] {
+        let mut r=Rig::new(image,s);r.open();r.u.cut=Some(accepted);
+        let t=r.reserve();let bytes=payload(129,19);r.publish(t,SOURCE,&bytes);
+        if accepted>16 { for _ in 0..10{r.u.advance(3000);if r.u.pending(){r.irq()}} }
+        r.u.edge(false);r.u.cut=None;
+        r.cpu.registers().iff1=false;r.cpu.registers().iff2=false;
+        let addr=r.at("uart0_return_fence");
+        r.u.mem[STUB..STUB+5].copy_from_slice(&[0xcd,addr as u8,(addr>>8)as u8,(addr>>16)as u8,0]);
+        r.cpu.state.set_pc(STUB as u32);
+        for _ in 0..3000 {r.step();assert_ne!(r.cpu.state.pc(),STUB as u32+4);}
+        assert_eq!(r.byte("tx_opened"),1);assert_ne!(r.word("tx_head"),0);
+        assert_eq!(&r.u.mem[SOURCE..SOURCE+bytes.len()],&bytes);
+        r.u.edge(true);let mut steps=0;
+        while r.cpu.state.pc()!=STUB as u32+4 {r.step();steps+=1;assert!(steps<100000);}
+        assert_eq!(r.byte("tx_opened"),0);assert_eq!(r.byte("uart0_sync_depth"),0);
+        assert_eq!(r.u.wire,bytes);assert!(r.u.shift.is_none());assert_eq!(r.word("tx_head"),0);
+        assert!(!r.cpu.registers().iff1);assert!(!r.cpu.registers().iff2);
+        cases+=1;
+    }
+for opened in [false,true] {
+    let mut r=Rig::new(image,s);
+    if opened{r.open();r.u.edge(false);let t=r.reserve();r.publish(t,SOURCE,&payload(70,6));}
+    let at=r.at("tx_in_isr");r.u.mem[at]=1;
+    r.cpu.registers().iff1=false;r.cpu.registers().iff2=false;
+    let addr=r.at("_on_crash");
+    r.u.mem[STUB..STUB+5].copy_from_slice(&[0xcd,addr as u8,(addr>>8)as u8,(addr>>16)as u8,0]);
+    r.cpu.state.set_pc(STUB as u32);
+    for _ in 0..6000{r.step();}
+    if opened {
+        assert!(r.cpu.state.halted);assert!(r.u.writes.is_empty());assert_eq!(r.byte("tx_opened"),1);assert_ne!(r.word("tx_head"),0);
+    } else {
+        assert!(r.u.writes.windows(15).any(|w|w==b"Guru meditation"));
+    }
+    cases+=1;
+}
+    println!("PASS {cases} production-ROM integration scenarios: discovery, RAM validation, ordinary output ordering, real GP/keyboard parser, callback exclusion and CTS-stalled return retention/recovery");
+}
+
 fn main(){
     let args:Vec<_>=env::args().collect();let image=fs::read(&args[1]).unwrap();
     let text=fs::read_to_string(&args[2]).unwrap();let mut symbols=BTreeMap::new();
     for l in text.lines(){let p:Vec<_>=l.split_whitespace().collect();if p.len()==3{symbols.insert(p[2].to_string(),usize::from_str_radix(p[0],16).unwrap());}}
+    if symbols.contains_key("uart0_sync_depth") { production(&image,&symbols); return; }
     negative_controls(&image,&symbols);
     let mut n=0;
     for (name,test) in [("basic",basic as fn(&[u8],&BTreeMap<String,usize>)->usize),("ownership",ownership),("address-width",address_width),("stalls",stalls),("reception",reception),("barrier",barrier),("duplex",duplex),("registers",registers),("random",random_queue)]{eprintln!("Running {name}");n+=test(&image,&symbols);}

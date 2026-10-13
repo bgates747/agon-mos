@@ -35,6 +35,7 @@
 			XDEF	putch 		
 			XDEF	getch 
 
+			XREF	tx_opened,uart0_sync_put,uart0_read_lsr,uart0_read_msr
 			XREF	_serialFlags	; In globals.asm
 				
 UART0_PORT		EQU	%C0		; UART0
@@ -75,7 +76,7 @@ UART_LSR_RDY		EQU	%01		; Data ready
 
 ; Check whether we're clear to send (UART0 only)
 ;
-UART0_wait_CTS:		IN0		A, (UART0_REG_MSR)
+UART0_wait_CTS:		CALL		uart0_read_msr
 			BIT		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
 			JR		Z, UART0_wait_CTS
 			RET
@@ -91,10 +92,19 @@ UART1_wait_CTS:		GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
 ; - F: C if written
 ; - F: NC if timed out
 ;
-UART0_serial_TX:	PUSH		BC			; Stack BC
+UART0_serial_TX:	PUSH		AF
+			LD		A,(tx_opened)
+			OR		A,A
+			JR		Z,UART0_tx_legacy
+			POP		AF
+			CALL		uart0_sync_put
+			SCF
+			RET
+UART0_tx_legacy:	POP		AF
+			PUSH		BC			; Stack BC
 			PUSH		AF 			; Stack AF
 			LD		BC,TX_WAIT		; Set CB to the transmit timeout
-UART0_serial_TX1:	IN0		A,(UART0_REG_LSR)	; Get the line status register
+UART0_serial_TX1:	CALL		uart0_read_lsr	; Get the line status register
 			AND 		UART_LSR_ETH		; Check for TX hold register empty
 			JR		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
 			DEC		BC
@@ -144,7 +154,7 @@ UART1_serial_TX2:	POP		AF			; Good to send at this point, so
 ; - F: C if character read
 ; - F: NC if no character read
 ;
-UART0_serial_RX:	IN0		A,(UART0_REG_LSR)	; Get the line status register
+UART0_serial_RX:	CALL		uart0_read_lsr	; Get the line status register
 			AND 		UART_LSR_RDY		; Check for characters in buffer
 			RET		Z			; Just ret (with carry clear) if no characters
 			IN0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
@@ -202,6 +212,14 @@ $$:			CALL 		UART1_serial_RX
 ; - F: NC if UART not enabled
 ;
 UART0_serial_PUTCH:	PUSH	AF
+			LD	A,(tx_opened)
+			OR	A,A
+			JR	Z,UART0_putch_legacy
+			POP	AF
+			CALL	uart0_sync_put
+			SCF
+			RET
+UART0_putch_legacy:
 			LD	A, (_serialFlags)		; Get the serial flags
 			TST	01h				; Check UART is enabled
 			JR	Z, UART_serial_NE		; If not, then skip

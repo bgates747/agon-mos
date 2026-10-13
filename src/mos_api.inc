@@ -120,6 +120,7 @@ mos_getfunction:	EQU	50h
 ; C function numbers returned by mos_getfunction
 ;
 mos_function_qsort:	EQU	12h
+mos_function_uart0_async: EQU 13h	; ADL register ABI discovery; UTX1 table
 
 ; Low-level SD card functions
 ;

@@ -1,23 +1,27 @@
 # DRAFT — MOS asynchronous UART0 API and implementation plan
 
-Executive summary: use three borrowed-buffer descriptors, one ordered MOS
-consumer, interrupt-driven FIFO service and modem-status CTS wakeups. Keep
-per-byte CTS checks initially. Ordinary foreground output drains earlier
-transactions and excludes new publication while it sends. No VDP change is
-needed for transport. Interrupt-context output and abnormal exits remain
-integration decisions; this draft is not a supported firmware API.
+Executive summary: the candidate MOS image now contains the shared UART0
+transmitter, versioned ADL discovery, ordered synchronous output and an
+application-return fence. The Author resolved C-001/C-002 on 2026-10-13:
+async sessions exclude user keyboard callbacks, and a stalled return retains
+RAM until drain. Native ZDS II linking and automated production-ROM/Flexe
+qualification pass, and the Author passed human review on 2026-10-13.
+Physical qualification remains pending;
+this is a development ABI in this fork, not an upstream MOS allocation.
 
-## Isolated implementation status
+## Production integration status
 
-The Author authorized the isolated tranche on 2026-10-12. The driver and
-benchmark now exist under `experiments/uart0-async`; its README defines the
-actual experimental ADL ABI and RESULTS.md records the evidence. That ABI
-uses a singleton session and exported sticky diagnostics rather than final MOS
-call numbers/session handles. Live MOS is unchanged. C-001/C-002 remain open
-before integration. No Python or venv was needed: the harness uses Rust,
-Bash and Ruby. Native ZDS II under Wine on Oryx Linux Lite assembles and links
-the isolated sources through the canonical environment launcher. The resulting
-image passes the documented tests; the integrated MOS image is still pending.
+`src/uart0_tx.inc` is the single core used by production MOS and the isolated
+wrapper. `src/uart0_async.asm` supplies MOS state, receive-parser routing,
+legacy synchronization, polling and discovery. Startup clears BSS and seeds
+the ticket counter before enabling interrupts. `_uart0_handler` dispatches
+real UART causes through that core without a private receive owner.
+
+Build the complete image with `tools/zds/build.sh`. Reproduce all automated
+qualification with `experiments/uart0-mos/build.sh`. Both use native ZDS II
+under Wine on Oryx; no assembly translation or AgonDev build is used.
+Legacy applications retain blocking output. CPU/work overlap requires explicit
+use of the discovered async operations.
 
 TX-007 also executes that driver as a stock-MOS-loaded test application against
 real ESP32 firmware through Fab/Flexe on Oryx. The audit and results are in
@@ -34,9 +38,8 @@ temporarily uses a capture sink, not the production MOS receive parser.
 
 The selected MOS source revision is recorded in [ASY-001](tasks/ASY-001.md).
 `src/uart.c` enables/clears UART0 FIFOs with FCTL=07h and takes the IER mask
-from its configuration. `src/interrupts.asm::_uart0_handler` unconditionally
-calls RX and then the VDP parser. `src/serial.asm` waits for CTS and THRE for
-each ordinary output byte. `src_startup/vectors16.asm` routes RST10 and each
+from its configuration. `src/interrupts.asm::_uart0_handler` now routes to the bounded UART cause dispatcher. `src/serial.asm` retains CTS/THRE polling when closed and routes output
+through the ordered compatibility path when an async session is open. `src_startup/vectors16.asm` routes RST10 and each
 RST18 byte through PUTCH. Simply enabling TIE is unsafe.
 
 Local Zilog PS015317-0120, `/Agon/docs/PS0153-eZ80F92-eZ80F93-Product-Specification.pdf`,
@@ -56,29 +59,54 @@ headroom contract.
 
 ## Candidate API
 
-Initially expose ADL assembly entry points in the isolated driver. Assign MOS
-call numbers only during integration after auditing the current dispatch table.
+Discover the candidate API through existing `mos_getfunction` (50h), with
+B=13h and C=0. A=0 and HL!=0 identify the discovery entry; call it in ADL
+with MBASE=0 to obtain HL pointing at the ROM table below. Older MOS can
+reject the function number, so callers must check the result and retain their
+synchronous fallback. No existing function index or RST call changed.
+
+| Table offset | Size | Meaning |
+|---|---|---|
+| 0 | 4 | ASCII `UTX1` |
+| 4, 5 | 1 each | ABI major 1, minor 0 |
+| 6 | 1 | Table length 43 bytes |
+| 7 | 1 | Flags: bit 0 callback exclusion, bit 1 drain-before-return |
+| 8, 9 | 1 each | 3 descriptors, 16-byte burst cap |
+| 10 | 3 | Maximum transaction length 00FFFFh |
+| 13..39 | 9 × 3 | Operation pointers in the order listed below |
+| 40 | 3 | Pointer to sticky RX error byte, followed by modem-delta byte |
+
+Operations use the ADL **register ABI**, rather than the C stack ABI.
+A returns OK=0, BUSY=1, INVALID=2, CLOSED=3 or CONTEXT=4. Reserve returns
+HL=ticket; publish consumes DE=ticket, HL=source and BC=length. Status consumes
+DE=ticket and returns B=state and HL=accepted count. Cancel and reap consume
+DE=ticket. Other operations take no arguments. AF/BC/DE/HL are scratch;
+IX/IY, shadow banks, MBASE, ADL and incoming foreground IFF are preserved.
+The session is singleton; no session-handle parameter is passed. Descriptor
+states are RESERVED=1, QUEUED=2, ACTIVE=3, RELEASED=4 and CANCELLED=5.
+
 All pointers and counters below are unsigned 24-bit values stored in three
 bytes. Do not store them in `dw` fields. Maximum transaction length is 65,535;
 reject zero lengths and address wrap. Borrowed data must be stable readable
-RAM until release. The foreground producer is single-owner; calls from NMI,
-ISR or keyboard callbacks are rejected for the new API.
+application RAM in [040000h, 0BC000h) until release. MOS RAM is excluded.
+The foreground producer is single-owner. UART receive callbacks return CONTEXT;
+NMI and other application-owned ISR calls are unsupported.
 
 | Operation | Inputs | Result and behavior |
 |---|---|---|
-| `tx_open` | none | Exclusive session handle; BUSY if already open. Preserve baud, FIFO configuration and RX. |
-| `tx_reserve` | session | Nonblocking descriptor reservation or BUSY; reserves one of three slots before rendering. |
-| `tx_publish` | reservation, source, length | Atomic publication and ticket; no payload copy. Failure leaves reservation/source caller-owned. |
-| `tx_status` | ticket | RESERVED, QUEUED, ACTIVE, RELEASED or CANCELLED, with accepted-byte count and sticky error snapshot. |
-| `tx_reap` | released/cancelled ticket | Free descriptor; stale tickets rejected. |
+| `tx_open` | none | Exclusive singleton session; BUSY if already open. Preserve baud, FIFO configuration and RX. |
+| `tx_reserve` | none | Nonblocking descriptor reservation or BUSY; reserves one of three slots before rendering. |
+| `tx_publish` | DE=ticket, HL=source, BC=length | Atomic publication of the reserved ticket; no payload copy. Failure leaves reservation/source caller-owned. |
+| `tx_status` | ticket | RESERVED, QUEUED, ACTIVE, RELEASED or CANCELLED, with accepted-byte count and diagnostics available through the table pointer. |
 | `tx_cancel` | ticket | Cancel reserved or wholly unstarted transaction only; ACTIVE returns BUSY without changing progress. |
-| `tx_poll_drain` | session | Nonblocking DONE only when no published work remains and TEMT=1; otherwise PENDING. |
-| `tx_close` | session | Nonblocking close only after drain and all reservations/tickets resolved; otherwise BUSY. |
-| `tx_kick` | session | Bounded service opportunity for masked-interrupt callers; preserves their IFF state. |
+| `tx_reap` | released/cancelled ticket | Free descriptor; stale tickets rejected. |
+| `tx_poll_drain` | none | Nonblocking DONE only when no published work remains and TEMT=1; otherwise PENDING. |
+| `tx_close` | none | Nonblocking close only after drain and all reservations/tickets resolved; otherwise BUSY. |
+| `tx_kick` | none | Bounded service opportunity for masked-interrupt callers; preserves their IFF state. |
 
 Each operation returns an explicit status: OK, BUSY, INVALID, CLOSED or
 CONTEXT. No failure silently drops a command. Tickets must never alias a live
-or accepted stale handle; the isolated implementation uses monotonic u24 IDs
+or accepted stale handle; the shared implementation uses monotonic u24 IDs
 (refuse further allocations at exhaustion until full driver reinitialization). Status and
 descriptor mutation use short interrupt-masked critical sections that restore
 the incoming interrupt state. Long waits and payload encoding occur outside.
@@ -105,9 +133,11 @@ status must not falsely report successful receiver execution.
 
 ## Interrupt and wakeup design
 
-Replace the receive-only handler with explicit IIR dispatch for line status,
+The installed handler uses explicit IIR dispatch for line status,
 RX data/timeout, TX holding-empty and modem status; no-pending returns without
 reading a fictitious byte. Preserve parser and keyboard/reply processing.
+The budgets bound driver work; arbitrary legacy callback runtime remains
+application-owned, with async closed.
 Bound each entry's RX work, cause dispatch count and total TX writes; pending
 RX must preempt lower-priority refill work. Verify the retrigger behavior when
 the budget is exhausted rather than assuming it.
@@ -128,12 +158,12 @@ At idle disable both TIE and session modem interrupts, retaining the normal
 RX/line-status policy. Do not enable transmission-complete interrupts for
 the initial API; drain samples TEMT and latches LSR errors.
 
-The isolated tests must explore CTS changes at every read/mask boundary,
+The isolated tests explore CTS changes at every read/mask boundary,
 including ready-to-blocked-to-ready transitions, initial empty FIFO and
 publication racing the last-byte transition. An idle or blocked FIFO must
 not cause a TX interrupt storm.
 
-## Compatibility and decisions for review
+## Compatibility policies accepted on 2026-10-13
 
 Foreground RST10, whole RST18, stdout and errors acquire a synchronous-output
 barrier, finish earlier published transactions, then send through the same
@@ -144,20 +174,42 @@ contracts. Legacy return currently means accepted into UART, not necessarily
 TEMT; do not advertise wire completion for that API. Masked foreground output
 must pump rather than wait for an interrupt that cannot run.
 
-Two unresolved integration decisions require review:
+**C-001 — callback/session exclusion.** Async open returns BUSY while a user
+keyboard callback is installed or a synchronous-output scope is active.
+`mos_setkbvector` first drains and closes any async session, then installs or
+clears the callback. Existing callbacks retain their ISR timing and synchronous
+output behavior. Async applications must use MOS keyboard state/map or polling;
+installing a callback invalidates their session and tickets after drain.
+The new API returns CONTEXT from the UART ISR/receive callback, or with nonzero
+MBASE. NMI and other application-owned ISR entry remain outside its contract.
+Applications that replace UART vectors, modify UART registers or write private
+MOS state directly do not satisfy this ownership contract.
 
-**Compatibility decision C-001** — `vdp_protocol_KEY` invokes the user keyboard callback inside the UART ISR.
-   A callback that performs synchronous output cannot wait for this ISR to
-   refill, and draining a long packet there can overflow RX. Rejecting or
-   dropping legacy callback output changes compatibility; bounded deferred
-   storage cannot accept arbitrary unlimited callback output. Audit the
-   documented callback contract and select an explicit policy before claiming
-   full ordinary-output compatibility. Do not silently allow interleaving.
-**Compatibility decision C-002** — Normal application return must close/drain before reclaiming source RAM.
-   An indefinite CTS stall makes safe return potentially indefinite. Add a
-   MOS return fence and retain memory on a timeout; crashes/reset require a
-   separately defined recovery policy because a half-sent VDP command cannot
-   be safely discarded. No implicit FIFO/parser reset is authorized here.
+**C-002 — retain and wait.** Both execution wrappers fence normal return before
+MOS may reuse application RAM or report a result. OSCLI fences before a nested
+command can load a child into that RAM; execution entry fences too. The fence
+excludes publication, pumps TX and RX, waits for queue empty and TEMT, then
+clears unused reservations/completions and closes. Tickets remain monotonic.
+There is no timeout that frees a borrowed buffer: permanent CTS blockage waits
+indefinitely, as the Author explicitly selected. Recovery then requires an
+explicit system reset; this API does not silently flush the FIFO or reset the
+VDP parser. A reset during a partial VDP command may also require explicit VDP
+recovery; eZ80-only reset is not a promised protocol resynchronization.
+
+RST38 panic output first drains/closes an intact foreground consumer. If panic
+entry interrupts UART service itself, MOS retains RAM in a stopped loop rather
+than recursively servicing half-updated state; recovery requires reset. The
+panic path cannot promise progress during a permanent CTS stall. General
+memory corruption and applications bypassing the execution wrappers remain
+outside normal-return guarantees.
+
+Whole RST18 calls hold a nested synchronous scope. Individual PUTCH/stdout/error
+bytes use that scope and preserve their legacy register contract. Foreground
+DI output pumps bounded RX/TX service rather than waiting for its own ISR;
+internal compatibility operations also work with a short caller's nonzero
+MBASE. The public async API remains ADL/MBASE-zero only. Ordinary output may
+wait longer to maintain ordering, and still returns on UART acceptance rather
+than advertising VDP execution completion.
 
 The driver preserves both register banks, index registers, ADL, MBASE and
 stack contracts as applicable to its entry points. Existing agon-6502 DI

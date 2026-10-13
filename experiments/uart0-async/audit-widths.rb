@@ -2,12 +2,12 @@
 # Narrow fail-closed ADL audit for this experiment's explicit structure layout.
 # This inventories every wide memory LD; it does not infer arbitrary assembly.
 root = File.expand_path('../..', __dir__)
-files = %w[driver.asm fixture.asm].map { |name| File.join(__dir__, name) }
+files = %w[../../src/uart0_tx.inc fixture.asm].map { |name| File.join(__dir__, name) }
 files.concat(ARGV.map { |path| File.expand_path(path) })
 fields = {}
-files.each do |path|
+(files + [File.join(root, 'src_startup/globals.asm')]).each do |path|
   File.readlines(path).each do |line|
-    if (match = line.match(/^\s*(\w+):\s*DB\s+\d+,\d+,\d+\s*$/))
+    if (match = line.match(/^\s*(\w+):\s*(?:DB\s+\d+,\d+,\d+|DS\s+3)(?:\s*;.*)?\s*$/))
       fields[match[1]] = 3
     end
   end

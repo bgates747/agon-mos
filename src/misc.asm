@@ -38,6 +38,7 @@
 			XDEF	_wait_timer0
 			XDEF	_timer0_delay
 
+			XREF	uart0_return_fence
 			XREF	_callSM
 			
 ; Switch on A - lookup table immediately after call
@@ -182,8 +183,10 @@ _exec16:		PUSH 	IY
 			LD	(IX + 3), D
 			LD	(IX + 4), C9h	; RET		
 ;
-_execSM:		CALL	_callSM		; Call the subroutine
+_execSM:		CALL	uart0_return_fence
+			CALL	_callSM		; Call the subroutine
 ;
+			CALL	uart0_return_fence
 			POP	AF		; Restore the MBASE register
 			LD	MB, A
 			POP	IX

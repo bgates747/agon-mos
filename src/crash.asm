@@ -1,4 +1,5 @@
 	XDEF		_on_crash
+	XREF		uart0_return_fence,tx_in_isr,tx_opened
 
 	.ASSUME ADL = 1
 
@@ -22,6 +23,20 @@ _on_crash:
 	push de
 	push bc
 	push af
+
+	; Preserve legacy panic behavior when async is closed. Never recurse
+	; into an interrupted open consumer: retain its borrowed RAM for reset.
+	ld a,(tx_opened)
+	or a,a
+	jr z,crash_fence
+	ld a,(tx_in_isr)
+	or a,a
+	jr z,crash_fence
+crash_uart_hold:
+	halt
+	jr crash_uart_hold
+crash_fence:
+	call uart0_return_fence
 
 	PUTC 17
 	PUTC 129

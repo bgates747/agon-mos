@@ -11,6 +11,7 @@ scp -q -o BatchMode=yes experiments/uart0-flexe/{app.asm,app.linkcmd,reference.s
     oryx-linuxlite:Agon/mystuff/agon-mos/experiments/uart0-flexe/
 scp -q -o BatchMode=yes experiments/uart0-async/{driver.asm,fixture.asm} \
     oryx-linuxlite:Agon/mystuff/agon-mos/experiments/uart0-async/
+scp -q -o BatchMode=yes src/uart0_tx.inc oryx-linuxlite:Agon/mystuff/agon-mos/build/uart0-flexe/
 # Canonical profile generator snapshot; no project copy is maintained in source.
 scp -q -o BatchMode=yes ../agon-dev-env/scripts/setup_emulator.py \
     "$build/packets.inc" "$build/expected-tx.bin" "$build/expected-rx.bin" "$build/expected.json" \

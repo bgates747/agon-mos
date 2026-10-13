@@ -1,0 +1,6 @@
+-FORMAT=OMF695,INTEL32
+-map -maxhexlen=64 -quiet -warnoverlap -xref -warn=fatal
+-sort NAME=ascending -debug -NOigcase
+RANGE ROM $000000 : $00FFFF
+ORDER SHORT_APP
+"short" = "short.obj"

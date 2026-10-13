@@ -1,54 +1,85 @@
-# MOS UART0 project handoff
+# Interrupt-based UART0 transmission project — handoff
 
-Executive summary: the isolated UART0 driver passes the scripted suite and
-actual-firmware headless Flexe Agon Emulator testing on Oryx. Flexe exposed a second lost
-wakeup, now reproduced and corrected. The Author passed human review and selected a separate
-`flexe-agon-emulator` owner; production integration still needs the two
-compatibility decisions.
+Executive summary: the UART0 candidate is integrated into MOS and passes native
+ZDS II, scripted, production-ROM and both headless Flexe engine tests on Oryx.
+The Author selected callback/session exclusion and retain-and-wait exit handling.
+The Author passed Oryx human review on 2026-10-13 and authorized committing
+and pushing this tranche. Physical qualification remains pending.
 
-Read `/Agon/mystuff/agon-dev-env/codex/AGENTS.md` first, then `OWNERSHIP.md`,
-`TODO.md`, `docs/tasks/ASY-001.md` and `docs/uart0-async.md`. The latest dated
-log is `docs/devlog-2026-10-13.md`. The experiment README defines the actual
-experimental ABI; its RESULTS.md records qualification and benchmark limits.
+Read `/Agon/mystuff/agon-dev-env/codex/AGENTS.md`, then `OWNERSHIP.md`, `TODO.md`,
+`docs/uart0-async.md`, `docs/tasks/ASY-001.md` and the latest dated development log.
+The sole unfinished-work checklist is TODO.md. Immutable IDs use the form
+`TX-006 [ ]`; never renumber or reuse one. Current pending work is fresh-lease
+physical qualification TX-006; human acceptance TX-010 is complete.
 
-The working branch is `codex/uart0-async`, based on qsort revision
-`6de0eafcb2cd328a8e33c160f7a364bd04592558`. Pre-existing qsort modifications in
-`src/mos_api.asm` and `src/mos_api.inc` were preserved, then included in a
-separate checkpoint at the Author's request to commit and push all dirt.
-The Author approved committing the isolated tranche on 2026-10-12. New
-emulator work still requires its own review before committing. No physical
-bench was changed.
+## Source and contract
 
-Build and test with `experiments/uart0-async/build.sh` from this checkout.
-Outputs are under ignored `build/uart0-async`. Rust/Bash/Ruby are used; no Python
-or new venv is required. Dependency identity is verified against the pinned
-model manifest. Native ZDS II under Wine on Oryx Linux Lite is the build route. The isolated
-sources assemble/link there through the canonical launcher and pass all
-qualification using that image. No mos-agondev translation path is maintained.
-Production MOS linking and live integration remain unqualified.
+Branch: `codex/uart0-async`; remote: `bgates747/agon-mos`. The clean starting
+checkpoint `b20af31` was already pushed when the Author said to commit/push dirt
+and proceed. The Author subsequently accepted production-tranche human
+validation and authorized its commit/push. Existing qsort edits were previously preserved and committed
+separately as `564de93`; this tranche does not change them.
 
-The initial checkpoint was pushed as `564de93` (preserved qsort exposure) and
-`7182bc7` (isolated UART qualification) on `codex/uart0-async`. The subsequent corrected driver and human-reviewed fixture are recorded in
-the current development log. Read `docs/uart0-flexe-audit.md` and
-`experiments/uart0-flexe/README.md` for the corrected project-local UART model,
-real ESP32 firmware fixture, receipts and stopped Oryx human-review command.
-TX-007/TX-008/TX-009 are complete. Reusable runtime source is now owned by
-`../flexe-agon-emulator`; MOS consumes its pinned Oryx build. The primary
-profile entry is `./flexe-agon-emulator`; the old Fab entry is a shim.
+`src/uart0_tx.inc` is the common tested core; the isolated wrapper includes it.
+`src/uart0_async.asm` supplies BSS/startup, parser routing, synchronous scopes,
+polling, return fences and UTX1 discovery via existing getfunction index 13h.
+No new high-level MOS call number is allocated. The register ABI and limits
+are documented in `docs/uart0-async.md` and remain a development API in this fork.
 
-The Author selected Fab/Flexe for initial emulator testing and authorized
-headless runs on Oryx Linux Lite. Use Oryx for compilation and emulator workloads
-to avoid contention on the Pi 5. Both Pi ARM64 and Oryx x86_64 Fab/Flexe build
-artifacts were inspected on 2026-10-12; their existence does not qualify this
-driver. Before UART testing, audit the Fab eZ80-side interrupt/FIFO/CTS model
-as well as Flexe's ESP32 side. Keep this project's fixtures isolated from the
-Golem and agon-6502 owners' sources, builds and profiles. ZDS II under Wine
-remains the MOS assembly/link route.
+C-001: async open refuses an installed user keyboard callback; installing or
+clearing one first drains/closes an open session. Existing callbacks retain
+ISR timing and synchronous output. Async apps use MOS keyboard state/map/polling.
+C-002: return fences retain borrowed sources until queue empty and TEMT. A
+permanent CTS stall waits indefinitely until explicit reset. OSCLI fences before
+child loading. No automatic FIFO/parser flush or unsafe timeout is used.
 
-Both qualification scripts now compile and execute their Rust/native code on
-Oryx. The Flexe tooling uses a project-local Oryx `.venv` for standard-library
-profile generation and verification; local Bash/Ruby only stage and audit.
+RST38 drains/closes an intact foreground consumer. Panic during an open UART
+consumer retains RAM in a stopped loop for reset. Closed-session legacy panic
+behavior is retained. Corruption and direct private UART/state manipulation are
+outside the normal-return guarantee.
 
-The authoritative unfinished-work list is TODO.md. Subtask IDs are immutable
-short namespaces followed by three zero-padded digits and a checkbox, e.g.
-`TX-005 [ ]`. Never renumber on reorder or reuse a disposed identifier.
+## Build and evidence
+
+`bash tools/zds/build.sh` builds the complete native MOS image on Oryx under Wine.
+`bash experiments/uart0-mos/build.sh` reproduces native building, the 1,411-case
+scripted suite and seven negative controls, 13 production-ROM scenarios, and
+both full-image headless engines. All C/Rust/assembly compilation and emulation
+run on Oryx; local Ruby/Bash only stage, inventory and check results.
+No mos-agondev/AgonDev translation route is maintained. No C source workaround
+was needed: do not reintroduce the incorrect compiler `-model:L` option.
+
+Build artifacts are ignored under `build/uart0-mos`; durable summary and
+commands live in `experiments/uart0-mos/README.md` and `results.json`. The final
+full reproduction took 48.455 seconds, excluding initial runtime/tool setup.
+Emulator wall times are scheduling measurements, not hardware performance.
+
+The emulator has its own owner/agent in `../flexe-agon-emulator`; do not modify
+its ongoing work. MOS uses cached copies of the previously qualified binaries
+pinned by `experiments/uart0-mos/runtime.sha256`. Initial cache seeding can use
+the earlier qualified MOS profile, and fails if its hashes differ. The original
+emulator/source provenance is retained in the earlier Flexe manifest and logs.
+The generated profile explicitly identifies and hashes this candidate MOS ROM;
+it must not claim to contain stock v3.0.2. The old isolated fixture's profile
+scripts can replace it, so rerunning them replaces the reviewed production fixture.
+
+## Accepted Oryx human review
+
+Run locally on Oryx:
+
+```bash
+cd ~/Agon/mystuff/agon-mos/.emulator
+./flexe-agon-emulator --precise-interrupts
+```
+
+Expect legacy, ordered, masked, exit/return, short-mode and integration PASS
+markers. The final invalid-command error is deliberate. At `/uart *`, type
+`ECHO UART0 KEYBOARD PASS` and confirm the response and normal prompt.
+The Author supplied the expected screen and a successful typed `dir` command,
+then explicitly reported "passed". The agent ran only headless tests; human
+review was performed by the Author. The Fab launcher is a compatibility
+shim to the primary Flexe entry point.
+
+No physical bench or firmware was touched. Obtain a fresh explicit bench lease
+before physical qualification or firmware writes. Receiver headroom, physical
+full-duplex timing, recovered CPU work and game integration remain unqualified.
+Do not remove game DI blocks or modify another owner's profiles/sources.

@@ -37,6 +37,7 @@
 			XREF	_on_crash
 			XREF	mos_api
 			XREF	UART0_serial_PUTCH 
+			XREF	uart0_sync_begin,uart0_sync_end
 			XREF	SET_AHL24
 
 NVECTORS 		EQU 48			; Number of interrupt vectors
@@ -126,7 +127,8 @@ _rst_10_handler:	CALL	UART0_serial_PUTCH
 ; -  BC: Size of buffer
 ; -   A: Delimiter (only if BCU = 0)
 ;
-_rst_18_handler:	LD	E, A 			; Preserve the delimiter
+_rst_18_handler:	CALL	uart0_sync_begin
+			LD	E, A 			; Preserve the delimiter
 			LD	A, MB			; Check if MBASE is 0
 			OR	A, A 
 			CALL	NZ, SET_AHL24		; No, so create a 24-bit pointer
@@ -143,16 +145,20 @@ _rst_18_handler_0:	LD 	A, (HL)			; Fetch the character
 			LD	A, B 			; Is it 0?
 			OR 	C 
 			JR	NZ, _rst_18_handler_0	; No, so loop
+			CALL	uart0_sync_end
 			RET.L
 ;
 ; Delimited mode
 ;
 _rst_18_handler_1:	LD 	A, (HL)			; Fetch the character
 			CP 	E 			; Is it the delimiter?
-			RET.L	Z 			; Yes, so return
+			JR	Z, _rst_18_done		; Yes, so release scope
 			CALL	UART0_serial_PUTCH	; Output
 			INC 	HL 			; Increment the buffer pointer
 			JR 	_rst_18_handler_1	; Loop
+
+_rst_18_done:		CALL	uart0_sync_end
+			RET.L
 
 ; Crash handler
 __rst_38_handler:	JP	_on_crash

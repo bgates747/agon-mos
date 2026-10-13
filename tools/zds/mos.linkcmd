@@ -1,0 +1,52 @@
+-FORMAT=OMF695,INTEL32
+-map -maxhexlen=64 -quiet -warnoverlap -xref -unresolved=fatal
+-sort NAME=ascending -warn=fatal -NOdebug -NOigcase
+
+RANGE ROM $000000 : $01FFFF
+RANGE RAM $0BC000 : $0BFFFF
+RANGE EXTIO $000000 : $00FFFF
+RANGE INTIO $000000 : $0000FF
+
+CHANGE STRSECT is ROM
+
+ORDER .RESET,.IVECTS,.STARTUP,CODE,DATA
+COPY DATA ROM
+
+DEFINE __low_romdata = copy base of DATA
+DEFINE __low_data = base of DATA
+DEFINE __len_data = length of DATA
+DEFINE __low_bss = base of BSS
+DEFINE __len_bss = length of BSS
+DEFINE __stack = highaddr of RAM + 1
+DEFINE __heaptop = highaddr of RAM
+DEFINE __heapbot = top of RAM + 1
+DEFINE __low_romcode = copy base of CODE
+DEFINE __low_code = base of CODE
+DEFINE __len_code = length of CODE
+DEFINE __copy_code_to_ram = 0
+DEFINE __crtl = 1
+DEFINE __CS0_LBR_INIT_PARAM = $04
+DEFINE __CS0_UBR_INIT_PARAM = $0b
+DEFINE __CS0_CTL_INIT_PARAM = $08
+DEFINE __CS0_BMC_INIT_PARAM = $01
+DEFINE __CS1_LBR_INIT_PARAM = $c0
+DEFINE __CS1_UBR_INIT_PARAM = $c7
+DEFINE __CS1_CTL_INIT_PARAM = $08
+DEFINE __CS1_BMC_INIT_PARAM = $00
+DEFINE __CS2_LBR_INIT_PARAM = $80
+DEFINE __CS2_UBR_INIT_PARAM = $bf
+DEFINE __CS2_CTL_INIT_PARAM = $08
+DEFINE __CS2_BMC_INIT_PARAM = $00
+DEFINE __CS3_LBR_INIT_PARAM = $03
+DEFINE __CS3_UBR_INIT_PARAM = $03
+DEFINE __CS3_CTL_INIT_PARAM = $18
+DEFINE __CS3_BMC_INIT_PARAM = $82
+DEFINE __RAM_CTL_INIT_PARAM = $80
+DEFINE __RAM_ADDR_U_INIT_PARAM = $B7
+DEFINE __FLASH_CTL_INIT_PARAM = $28
+DEFINE __FLASH_ADDR_U_INIT_PARAM = $00
+
+define _SYS_CLK_FREQ = 18432000
+
+
+"MOS"=  ".\main.obj",  ".\globals.obj",  ".\mos.obj",  ".\mos_editor.obj",  ".\mos_api.obj",  ".\misc.obj",  ".\keyboard.obj",  ".\vdp_protocol.obj",  ".\interrupts.obj",  ".\clock.obj",  ".\rtc.obj",  ".\timer.obj",  ".\sd.obj",  ".\spi.obj",  ".\diskio.obj",  ".\ff.obj",  ".\ffsystem.obj",  ".\ffunicode.obj",  ".\uart.obj",  ".\tests.obj",  ".\serial.obj", ".\uart0_async.obj",  ".\gpio.obj",  ".\cstartup.obj",  ".\init_params_f92.obj",  ".\vectors16.obj",  ".\i2c.obj",  ".\strings.obj",  ".\crash.obj",  ".\umm_malloc.obj",  ".\mos_sysvars.obj",  ".\mos_file.obj",  "C:\Zilog\ZDSII_eZ80Acclaim!_5.3.5\lib\std\chelp.lib",  "C:\Zilog\ZDSII_eZ80Acclaim!_5.3.5\lib\std\crt.lib",  "C:\Zilog\ZDSII_eZ80Acclaim!_5.3.5\lib\std\crtS.lib",  "C:\Zilog\ZDSII_eZ80Acclaim!_5.3.5\lib\std\nokernel.lib",  "C:\Zilog\ZDSII_eZ80Acclaim!_5.3.5\lib\zilog\zsldevinitdummy.obj"

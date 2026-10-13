@@ -14,18 +14,21 @@ model_manifest="$PWD/experiments/uart0-async/model.sha256"
 stage=$(ssh -o BatchMode=yes oryx-linuxlite \
     'mkdir -p ~/.cache/agon-mos-uart0-async && mktemp -d ~/.cache/agon-mos-uart0-async/build.XXXXXX')
 [[ "$stage" =~ ^/[-a-zA-Z0-9_/.]+/build\.[a-zA-Z0-9]+$ ]] || { echo 'Invalid staging path' >&2; exit 1; }
+cp src/uart0_tx.inc "$out_dir/uart0_tx.inc"
 inputs=(driver.asm fixture.asm uart.linkcmd remote-build.sh)
 (cd experiments/uart0-async && sha256sum "${inputs[@]}") > "$out_dir/source.sha256"
+(cd "$out_dir" && sha256sum uart0_tx.inc) >> "$out_dir/source.sha256"
 scp -q -o BatchMode=yes "${inputs[@]/#/experiments/uart0-async/}" \
     "$out_dir/source.sha256" "oryx-linuxlite:$stage/"
+scp -q -o BatchMode=yes "$out_dir/uart0_tx.inc" "oryx-linuxlite:$stage/"
 ssh -o BatchMode=yes oryx-linuxlite "cd '$stage' && bash remote-build.sh" \
     > "$out_dir/zds-build.log" 2>&1 || { cat "$out_dir/zds-build.log" >&2; exit 1; }
 scp -q -o BatchMode=yes "oryx-linuxlite:$stage/artifacts.tar" "$out_dir/artifacts.tar"
 tar -xf "$out_dir/artifacts.tar" -C "$out_dir"
-(cd experiments/uart0-async && sha256sum --check --quiet "../../$out_dir/source.sha256")
+(cd experiments/uart0-async && sha256sum --check --quiet --ignore-missing "../../$out_dir/source.sha256")
 ruby experiments/uart0-async/read-map.rb "$out_dir" | tee "$out_dir/map-audit.txt"
 {
-    sha256sum experiments/uart0-async/{driver,fixture}.asm \
+    sha256sum src/uart0_tx.inc experiments/uart0-async/{driver,fixture}.asm \
         experiments/uart0-async/runner/src/main.rs experiments/uart0-async/{build,remote-build,check-negatives}.sh \
         experiments/uart0-async/{audit-widths,read-map}.rb experiments/uart0-async/uart.linkcmd \
         experiments/uart0-async/model.sha256 experiments/uart0-async/runner/{Cargo.toml,Cargo.lock} \

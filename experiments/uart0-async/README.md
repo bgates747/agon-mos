@@ -137,3 +137,8 @@ to qualify an eZ80 interrupt implementation without checking the frontend UART.
 The two compatibility decisions, production return fence, MOS API allocation,
 production ZDS link and real keyboard/parser regression remain in the project's
 [TODO](../../TODO.md). No hardware lease was requested or consumed.
+
+The native isolated wrapper now includes the production-owned common core
+`src/uart0_tx.inc`. Build staging copies that core alongside the wrapper; no
+duplicate driver implementation is maintained. Installed-MOS qualification
+and its human-review fixture are documented in `../uart0-mos/README.md`.

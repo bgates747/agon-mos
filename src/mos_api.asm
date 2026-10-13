@@ -93,6 +93,7 @@
 			XREF	_sysvars
 			XREF	_scratchpad
 			XREF	_vpd_protocol_flags
+			XREF	uart0_return_fence,uart0_async_getapi
 			XREF	_user_kbvector
 			XREF	_keymap
 
@@ -757,7 +758,8 @@ mos_api_getError:	LD	A, MB		; Check if MBASE is 0
 ; Returns:
 ;   A: MOS error code
 ;
-mos_api_oscli:		LD	A, MB		; Check if MBASE is 0
+mos_api_oscli:		CALL	uart0_return_fence
+			LD	A, MB		; Check if MBASE is 0
 			OR	A, A
 			CALL	NZ, SET_AHL24	; If it is running in classic Z80 mode, set U to MB
 ;
@@ -833,7 +835,8 @@ mos_api_setintvector:	LD	A, E
 ;   C: If non-zero then set the top byte of HLU(callback address)  to MB (for ADL=0 callers)
 ; HLU: Pointer to callback
 ;
-mos_api_setkbvector:	PUSH	DE
+mos_api_setkbvector:	CALL	uart0_return_fence
+			PUSH	DE
 			XOR	A
 			OR	C		; If C!=0 set top byte (bits 16:23) to MB
 			JR	Z, $F
@@ -2359,5 +2362,6 @@ mos_function_block_start:
 			DW24	func_getsysvars	; 0x10
 			DW24	func_getkbmap	; 0x11
 			DW24	_qsort		; 0x12, standard C qsort
+			DW24	uart0_async_getapi	; 0x13, ADL UART0 API discovery
 
 mos_function_block_size:	EQU 	($ - mos_function_block_start) / 3

@@ -26,6 +26,7 @@
 			XREF	_clock
 			XREF	_vdp_protocol_data
 			
+			XREF	tx_isr
 			XREF	UART0_serial_RX
 			XREF	UART0_serial_TX
 			XREF	mos_api
@@ -61,21 +62,7 @@ _vblank_handler:	DI
 			
 ; AGON UART0 Interrupt Handler
 ;
-_uart0_handler:		DI
-			PUSH		AF
-			PUSH		BC
-			PUSH		DE
-			PUSH		HL
-			CALL		UART0_serial_RX
-			LD		C, A		
-			LD		HL, _vdp_protocol_data
-			CALL		vdp_protocol
-			POP		HL
-			POP		DE
-			POP		BC
-			POP		AF
-			EI
-			RETI.L	
+_uart0_handler:		JP		tx_isr
 
 ; AGON I2C Interrupt handler
 ;
