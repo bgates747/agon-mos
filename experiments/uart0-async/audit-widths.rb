@@ -3,6 +3,7 @@
 # This inventories every wide memory LD; it does not infer arbitrary assembly.
 root = File.expand_path('../..', __dir__)
 files = %w[driver.asm fixture.asm].map { |name| File.join(__dir__, name) }
+files.concat(ARGV.map { |path| File.expand_path(path) })
 fields = {}
 files.each do |path|
   File.readlines(path).each do |line|

@@ -1,0 +1,13 @@
+acabd803e9833cb9fa5bf2bde77cf1cdd7a5b47f1d16d974aa32c2eca89b30af  ../flexe-agon-emulator/Cargo.toml
+b80ae5fa9f046c15e8222570fe0749ed907ff0664beafd6cf657555d1eff5405  ../flexe-agon-emulator/Cargo.lock
+e76bf763d0d79b26761c4572e5140519c57abb20ea7cdfa6d711daa31d928673  ../flexe-agon-emulator/src/main.rs
+c6ea8aeade3d7644866987475b9adee83ff8e7c2f64aab332c0604329e49f558  ../flexe-agon-emulator/src/vdp_interface.rs
+5ebea9ab53bfb28bb02c3c7e7bfebd196411ecfea85e9180246efc27cbd47d7c  ../flexe-agon-emulator/agon-ez80-emulator/src/uart.rs
+63d97564b5bc116bf41143777577192eb13957f4fff5da9f95c038fea7114399  ../flexe-agon-emulator/agon-ez80-emulator/src/agon_machine.rs
+dd923109d044038cf7a4bc297ea00af5b043fa5a6dcfd6af51596e7d06a36de1  ../flexe-agon-emulator/adapter/flexe_vdp.c
+a68388109218491239d36805e85f1f97d52bb66ab17b3532afcbedfca1bbe776  ../flexe-agon-emulator/patches/flexe-integration.patch
+412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  ../flexe-agon-emulator/build/flexe-agon-emulator
+77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  ../flexe-agon-emulator/build/flexe-vdp.so
+bbbd2ac243df9a18f88e64d338bd1479879678bfd501b49b8280234cc8d59e1e  ../flexe-agon-emulator/build/uart-tests
+31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  ../golem/docs/tasks/GOLEM-021/consumer/build/staged-firmware.bin
+51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  ../golem/docs/tasks/GOLEM-021/consumer/build/staged-firmware.elf

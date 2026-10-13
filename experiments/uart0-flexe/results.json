@@ -1,0 +1,154 @@
+{
+  "task": "ASY-001",
+  "subtask": "TX-007",
+  "date": "2026-10-12",
+  "status": "TX-007 headless qualification and TX-008 human review complete; TX-009 consumer migration requalified against the separate Flexe Agon Emulator owner.",
+  "scope": "Stock MOS-loaded isolated ADL app against actual ESP32 firmware via Flexe Agon Emulator on Oryx. No new ROM or hardware change.",
+  "uart_model_tests": 7,
+  "wide_memory_instructions_audited": 71,
+  "scripted_scenarios": 1411,
+  "scripted_negative_controls": 7,
+  "missing_backend_gate": "Passed: canonical launcher rejected missing adapter before boot and the pinned profile was restored.",
+  "reproduction_wall_seconds": 22.378,
+  "duration_scope": "Local monotonic duration includes SSH staging, native ZDS build, runtime-owner UART tests, profile setup, both headless engines, evidence retrieval and local width audit. Runtime compilation and initial venv setup excluded.",
+  "source_sha256": {
+    "app.asm": "9e76a7d15f0512efe81ac1b5ab0b21d7c5c93400ac8e5e0025a246d03f51268e",
+    "app.linkcmd": "4be912a2beba897a579e8eae8859664258f51e06b378adb3208ab19c47ae84fa",
+    "build.sh": "6893aeb33807a958b60bd144972294496f546e551c5762ac9de332836b20adfe",
+    "check-profile.py": "8e5d1024ce48f544c4ffd16989a182eedfdbcae9215e00749b357f0b046f0b45",
+    "packets.rb": "d1b16ee3aab172017e4b02c80384da4140ce62172ae91be54457479f4f439eed",
+    "profile.py": "0f949686e7a054c2741aa633ce408803bceb1b09051573cd1313c6b06baf75ef",
+    "qualify.py": "05694715faaedb2beb1781eb75babedbbe6f6a31d916c26adbbaae43f03ecb59",
+    "reference.sha256": "8d3b75766940bf202cc619627c5314ec43f3736462a9e7885b8bd972f685282a",
+    "remote-build.sh": "535faac45bcd7ae51dd807c28d6a928784e8396e8b61f5ec8d9fc03c073534c8"
+  },
+  "runs": [
+    {
+      "engine": "jit",
+      "elapsed_seconds": 8.284,
+      "tx_bytes": 4366,
+      "rx_bytes": 192,
+      "isr_entries": 293,
+      "sticky_modem_deltas": 1,
+      "accepted_lengths": [
+        128,
+        4110,
+        128
+      ],
+      "returned_to_mos": true,
+      "graphical_instance_launched": false,
+      "mapped_requested_backend": true,
+      "backend": {
+        "engine": "jit",
+        "frames": 455,
+        "cycles": 1940480000,
+        "retired": 570718810,
+        "uart_rx": 4848,
+        "uart_tx": 525,
+        "uart_delivered": 525,
+        "isync": 11,
+        "code_invalidations": 1,
+        "keys": 0,
+        "failed": false,
+        "unhandled": 0,
+        "unregistered": 0,
+        "unmapped": 0
+      },
+      "uart": {
+        "tx_irqs": 269,
+        "modem_irqs": 4,
+        "rx_irqs": 37,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 13
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae  mos_platform.bin",
+        "d69e60bbce61a7b4b3eef318ba395f11c4e1a5b585755755113992dc94edcb86  mos_platform.map",
+        "b19c0c5f6b087c83e19a12ef8d549db870df68646482a166fef7ee8d795ca2af  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "8cfc079a4a3401862803fd0c552fcb5c70d7bc96aa8d94c6912118b970cde871  sdcard/uart/app.bin",
+        "1fb554c02ffba5314a10486aa00a279f1639519370897401ad357a72eec63ced  sdcard/autoexec.txt"
+      ],
+      "transcript_sha256": "e84ecabd9b436587dc611b602814e76748fc71d5a880d3c62e269be5c95ecc2b"
+    },
+    {
+      "engine": "interp",
+      "elapsed_seconds": 8.516,
+      "tx_bytes": 4366,
+      "rx_bytes": 192,
+      "isr_entries": 331,
+      "sticky_modem_deltas": 1,
+      "accepted_lengths": [
+        128,
+        4110,
+        128
+      ],
+      "returned_to_mos": true,
+      "graphical_instance_launched": false,
+      "mapped_requested_backend": true,
+      "backend": {
+        "engine": "interp",
+        "frames": 451,
+        "cycles": 1923060000,
+        "retired": 550347032,
+        "uart_rx": 4848,
+        "uart_tx": 525,
+        "uart_delivered": 525,
+        "isync": 11,
+        "code_invalidations": 1,
+        "keys": 0,
+        "failed": false,
+        "unhandled": 0,
+        "unregistered": 0,
+        "unmapped": 0
+      },
+      "uart": {
+        "tx_irqs": 270,
+        "modem_irqs": 2,
+        "rx_irqs": 79,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 7
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae  mos_platform.bin",
+        "d69e60bbce61a7b4b3eef318ba395f11c4e1a5b585755755113992dc94edcb86  mos_platform.map",
+        "b19c0c5f6b087c83e19a12ef8d549db870df68646482a166fef7ee8d795ca2af  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "8cfc079a4a3401862803fd0c552fcb5c70d7bc96aa8d94c6912118b970cde871  sdcard/uart/app.bin",
+        "1fb554c02ffba5314a10486aa00a279f1639519370897401ad357a72eec63ced  sdcard/autoexec.txt"
+      ],
+      "transcript_sha256": "e84ecabd9b436587dc611b602814e76748fc71d5a880d3c62e269be5c95ecc2b"
+    }
+  ],
+  "shared_driver_sha256": "c2c2a74defd476dc70a2dc32daadd4fd0be567281100ce107666c5b6f1af8e7b",
+  "native_app_image_sha256": "8cfc079a4a3401862803fd0c552fcb5c70d7bc96aa8d94c6912118b970cde871",
+  "native_app_image_bytes": 6714,
+  "native_app_allocated_bytes": 6970,
+  "native_app_uninitialized_tail": "Intel HEX omits 256 trailing RX capture bytes. They are written before read; no zero initialization is required for that capture storage.",
+  "full_input_manifest_sha256": "37ea36cd56bf65c44c3abd9053c56c7be68d077d21ae8d06cfdb3a67a30da971",
+  "tools": [
+    "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo 1.97.1 (c980f4866 2026-06-30)",
+    "Python 3.14.4",
+    "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)"
+  ],
+  "limits": [
+    "Functional host model only; no physical timing or receiver headroom claim.",
+    "Existing eZ80 core applies EI immediately; no silicon interrupt-entry qualification.",
+    "8N1 UART subset; sampled CTS, host adapter queues and modeled ESP32 FIFO backpressure.",
+    "RX capture sink temporarily replaces MOS parser; legacy callback and application exit policies remain unresolved.",
+    "Host thread scheduling changes interrupt/CTS counts; these are not performance measurements."
+  ],
+  "runtime_owner": "https://github.com/bgates747/flexe-agon-emulator",
+  "runtime_implementation_commit": "e5c0539"
+}

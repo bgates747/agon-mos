@@ -33,10 +33,28 @@ ruby experiments/uart0-async/read-map.rb "$out_dir" | tee "$out_dir/map-audit.tx
         "$out_dir/tools.sha256" "$out_dir/tools.txt"
     rg --files -0 "$out_dir/ez80-model/src" -g '*.rs' | sort -z | xargs -0 sha256sum
 } > "$out_dir/inputs.sha256"
-cargo build --locked --offline --release --manifest-path experiments/uart0-async/runner/Cargo.toml \
-    --target-dir "$out_dir/target"
-"$out_dir/target/release/mos-uart0-async-qualification" \
-    "$out_dir/driver.bin" "$out_dir/symbols.txt" "$@" | tee "$out_dir/qualification.txt"
+# Keep Rust compilation and test execution on Oryx too. Local Ruby only reads
+# maps and inventories storage; no local compiler or emulator is invoked.
+tar -cf "$out_dir/model.tar" -C "$out_dir/ez80-model" Cargo.toml LICENSE src
+ssh -o BatchMode=yes oryx-linuxlite \
+    'mkdir -p ~/Agon/mystuff/agon-mos/experiments/uart0-async/runner/src ~/Agon/mystuff/agon-mos/build/uart0-async/ez80-model'
+scp -q -o BatchMode=yes experiments/uart0-async/runner/{Cargo.toml,Cargo.lock} \
+    oryx-linuxlite:Agon/mystuff/agon-mos/experiments/uart0-async/runner/
+scp -q -o BatchMode=yes experiments/uart0-async/runner/src/main.rs \
+    oryx-linuxlite:Agon/mystuff/agon-mos/experiments/uart0-async/runner/src/
+scp -q -o BatchMode=yes experiments/uart0-async/{check-negatives.sh,model.sha256} \
+    oryx-linuxlite:Agon/mystuff/agon-mos/experiments/uart0-async/
+scp -q -o BatchMode=yes "$out_dir/driver.bin" "$out_dir/symbols.txt" "$out_dir/model.tar" \
+    oryx-linuxlite:Agon/mystuff/agon-mos/build/uart0-async/
+ssh -o BatchMode=yes oryx-linuxlite 'cd ~/Agon/mystuff/agon-mos &&
+    tar -xf build/uart0-async/model.tar -C build/uart0-async/ez80-model &&
+    (cd build/uart0-async/ez80-model && sha256sum --check --quiet ../../../experiments/uart0-async/model.sha256) &&
+    ~/.cargo/bin/cargo build --locked --offline --release --manifest-path experiments/uart0-async/runner/Cargo.toml --target-dir build/uart0-async/target &&
+    build/uart0-async/target/release/mos-uart0-async-qualification build/uart0-async/driver.bin build/uart0-async/symbols.txt > build/uart0-async/qualification.txt &&
+    bash experiments/uart0-async/check-negatives.sh > build/uart0-async/negatives.txt &&
+    cat build/uart0-async/qualification.txt build/uart0-async/negatives.txt &&
+    tar -cf build/uart0-async/test-results.tar -C build/uart0-async qualification.txt negatives.txt negative-cts.log negative-burst.log negative-rx.log negative-release.log negative-interleave.log negative-wakeup.log negative-txack.log'
+scp -q -o BatchMode=yes oryx-linuxlite:Agon/mystuff/agon-mos/build/uart0-async/test-results.tar "$out_dir/"
+tar -xf "$out_dir/test-results.tar" -C "$out_dir"
 sha256sum --check --quiet "$out_dir/inputs.sha256"
 ruby experiments/uart0-async/audit-widths.rb > "$out_dir/width-audit.txt"
-experiments/uart0-async/check-negatives.sh | tee "$out_dir/negatives.txt"

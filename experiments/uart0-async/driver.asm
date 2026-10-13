@@ -555,10 +555,17 @@ isr_modem:
     ld (tx_tx_serviced),a
     call tx_service
 isr_next:
+    ; IIR acknowledges a TX-empty request when read. After spending the TX
+    ; budget, return before another IIR read can consume a newly pending TX
+    ; cause that this entry cannot service. RX keeps its higher priority on
+    ; the next interrupt entry. This also leaves late modem edges pending.
+    ld a,(tx_tx_serviced)
+    or a,a
+    jr nz,isr_done
     ld a,(tx_cause_budget)
     dec a
     ld (tx_cause_budget),a
-    jr nz,isr_dispatch
+    jp nz,isr_dispatch
 isr_done:
     xor a,a
     ld (tx_in_isr),a

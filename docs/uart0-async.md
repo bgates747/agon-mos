@@ -19,6 +19,16 @@ Bash and Ruby. Native ZDS II under Wine on Oryx Linux Lite assembles and links
 the isolated sources through the canonical environment launcher. The resulting
 image passes the documented tests; the integrated MOS image is still pending.
 
+TX-007 also executes that driver as a stock-MOS-loaded test application against
+real ESP32 firmware through Fab/Flexe on Oryx. The audit and results are in
+`docs/uart0-flexe-audit.md` and `experiments/uart0-flexe`. IIR acknowledgement
+exposed a second lost wakeup: after spending its TX budget, the ISR now returns
+before another IIR read could consume an unserviceable TX-empty request.
+The independent UART model acknowledges that request too. Both engines and
+the revised scripted suite pass; TX-008 human review passed. TX-009 moved the
+reusable runtime to `../flexe-agon-emulator`. The application
+temporarily uses a capture sink, not the production MOS receive parser.
+
 ## Verified source facts
 
 

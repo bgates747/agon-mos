@@ -12,7 +12,7 @@ const RAM: usize = 0x1000000;
 struct Uart {
     mem: Vec<u8>, time: Cell<i64>, last: i64, char_cycles: i64,
     fifo: VecDeque<u8>, shift: Option<(u8,i64)>, wire: Vec<u8>, writes: Vec<u8>,
-    ier: u8, cts: bool, delta: u8, errors: u8, rx: VecDeque<u8>, rx_read: Vec<u8>,
+    ier: u8, tx_pending: bool, cts: bool, delta: u8, errors: u8, rx: VecDeque<u8>, rx_read: Vec<u8>,
     last_sample: bool, cut: Option<usize>, events: BTreeMap<usize,bool>, io: usize,
     admission: usize, admitted: bool, max_fifo: usize, iirs: Vec<u8>,
     rx_timeout: bool, inject_unknown: bool, trace: Vec<String>,
@@ -21,7 +21,7 @@ struct Uart {
 impl Uart {
     fn new(image: &[u8]) -> Self {
         let mut s=Self { mem: vec![0;RAM],time:Cell::new(0),last:0,char_cycles:160,
-            fifo:VecDeque::new(),shift:None,wire:vec![],writes:vec![],ier:1,cts:true,
+            fifo:VecDeque::new(),shift:None,wire:vec![],writes:vec![],ier:1,tx_pending:false,cts:true,
             delta:0,errors:0,rx:VecDeque::new(),rx_read:vec![],last_sample:false,cut:None,
             events:BTreeMap::new(),io:0,admission:0,admitted:false,max_fifo:0,iirs:vec![],
             rx_timeout:false,inject_unknown:false,trace:vec![],arrivals:VecDeque::new(),rx_lost:0,max_rx_fifo:0,wire_done:0 };
@@ -32,7 +32,9 @@ impl Uart {
         while let Some((byte,done))=self.shift {
             if done>now {break}
             self.wire.push(byte);self.wire_done=done;
-            self.shift=self.fifo.pop_front().map(|v|(v,done+self.char_cycles));
+            let next=self.fifo.pop_front();
+            if next.is_some()&&self.fifo.is_empty(){self.tx_pending=true;}
+            self.shift=next.map(|v|(v,done+self.char_cycles));
         }
         while let Some(&(at,byte))=self.arrivals.front(){
             if at>now{break}
@@ -49,7 +51,7 @@ impl Uart {
         if self.inject_unknown {return 0xca}
         if self.ier&4!=0 && self.errors!=0 {0xc6}
         else if self.ier&1!=0 && !self.rx.is_empty(){if self.rx_timeout{0xcc}else{0xc4}}
-        else if self.ier&2!=0 && self.fifo.is_empty(){0xc2}
+        else if self.ier&2!=0 && self.tx_pending {0xc2}
         else if self.ier&8!=0 && self.delta!=0 {0xc0}
         else{0xc1}
     }
@@ -72,7 +74,7 @@ impl Machine for Uart {
         match p {
             0xc0=>{let v=self.rx.pop_front().expect("RX read without data");self.rx_read.push(v);v}
             0xc1=>self.ier,
-            0xc2=>{let v=self.cause();self.iirs.push(v);v}
+            0xc2=>{let v=self.cause();self.iirs.push(v);if v&0xf==2{self.tx_pending=false;}v}
             0xc5=>{let empty=self.fifo.is_empty();if empty{self.admitted=true;self.admission=0}
                 let v=self.errors|u8::from(!self.rx.is_empty())|if empty{32}else{0}|
                     if empty&&self.shift.is_none(){64}else{0};self.errors=0;v}
@@ -89,11 +91,14 @@ impl Machine for Uart {
                 self.admission+=1; assert!(self.admission<=16,"burst exceeds 16");
                 assert!(self.fifo.len()<16,"FIFO overflow");
                 self.writes.push(v);
-                if self.shift.is_none(){self.shift=Some((v,self.time.get()+self.char_cycles))}
+                self.tx_pending=false;
+                if self.shift.is_none(){self.shift=Some((v,self.time.get()+self.char_cycles));self.tx_pending=true;}
                 else{self.fifo.push_back(v)}
                 self.max_fifo=self.max_fifo.max(self.fifo.len());
             },
-            0xc1=>{assert_eq!(v&0xf0,0,"unsupported IER bits");self.ier=v},
+            0xc1=>{assert_eq!(v&0xf0,0,"unsupported IER bits");
+                if v&2!=0&&self.ier&2==0&&self.fifo.is_empty(){self.tx_pending=true;}
+                self.ier=v},
             _=>panic!("unexpected port write {p:x}"),
         }
     }
@@ -480,7 +485,15 @@ fn negative_controls(image:&[u8],s:&BTreeMap<String,usize>){
             let pos=(s["tx_write"]-CODE..start).find(|&p|changed[p..p+2]==[0x3e,3]).unwrap();changed[pos+1]=4;
             let mut r=Rig::new(&changed,s);r.open();r.u.cut=Some(1);let t=r.reserve();r.publish(t,SOURCE,&payload(64,1));
             let(state,n)=r.state(t);assert!(state!=4||n==64,"early source release");
+        }else if mode=="txack"{
+            // Remove the exit before another acknowledged IIR TX cause.
+            let pos=s["isr_next"]-CODE;
+            assert_eq!(changed[pos],0x3a);assert_eq!(changed[pos+5],0x20);
+            changed[pos..pos+7].fill(0);
+            stalls(&changed,s);
         }else if mode=="wakeup"{
+            let exit=s["isr_next"]-CODE;
+            changed[exit..exit+7].fill(0);
             let pos=s["isr_modem"]-CODE;
             let original=changed[pos..pos+11].to_vec();
             assert_eq!(original[0],0x3a);assert_eq!(original[5],0x20);assert_eq!(original[7],0xcd);

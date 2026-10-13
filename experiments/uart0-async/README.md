@@ -15,9 +15,9 @@ experiments/uart0-async/build.sh
 ```
 
 The script stages native ZDS II sources on Oryx Linux Lite and assembles/links
-the ADL code at 040000h using the canonical Wine launcher, builds the offline Rust
-runner, runs all scenarios and benchmark variants, audits every wide memory
-load/store, and verifies six deliberately faulty variants fail for the intended
+the ADL code at 040000h using the canonical Wine launcher, builds and runs the offline Rust
+runner on Oryx, runs all scenarios and benchmark variants, audits every wide memory
+load/store, and verifies seven deliberately faulty variants fail for the intended
 reason. Native Intel HEX, binary, map, listings, symbols, hashes and negative-control logs
 live in ignored `build/uart0-async`. No Python interpreter is needed.
 
@@ -106,7 +106,10 @@ Blocked empty FIFO disables TIE and keeps modem wakeups. Idle disables both
 TIE and the session's modem source. CTS is reconciled after mask changes.
 After this entry has spent its TX budget, a new modem cause is left pending
 rather than acknowledged and forgotten. This prevents the lost-wakeup race
-found by the boundary sweep. There is no OTIRX burst or DMA claim.
+found by the boundary sweep. It also exits before another IIR read once its
+TX budget is spent, preserving newly pending TX requests. Flexe exposed this
+second lost wakeup; see `../uart0-flexe/README.md`. There is no OTIRX burst or
+DMA claim.
 
 ## Test backend limits
 
@@ -117,7 +120,8 @@ at foreground injection boundaries. Actual ISR saves, dispatch and RETI.L
 execute on the model. This tests those instructions and injected frames; it
 is not independent qualification of silicon interrupt entry.
 
-The UART model independently owns a 16-byte holding FIFO, a separate shift
+The UART model acknowledges TX-empty on IIR reads while preserving IER. It
+independently owns a 16-byte holding FIFO, a separate shift
 register, IIR priority, IER masks, CTS level/delta, RX FIFO and acknowledged
 status bits. Timing is idealized at 160 model cycles per 8N1 byte, with an
 explicitly assumed eight-cycle interrupt acknowledge tax. Source reads and
