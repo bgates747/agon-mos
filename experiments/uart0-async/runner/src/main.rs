@@ -518,6 +518,44 @@ fn negative_controls(image:&[u8],s:&BTreeMap<String,usize>){
 // not boot MOS: initialized C data and peripheral startup are Flexe's job.
 fn production(image:&[u8],s:&BTreeMap<String,usize>) {
     let mut cases=0;
+    // Reproduce the physical fixture's attribution defect on the accepted ROM:
+    // a historical latch survives entirely clean transmit/drain/close traffic.
+    {
+        let mut r=Rig::new(image,s);
+        let latch=r.at("tx_rx_errors");r.u.mem[latch]=0x98;
+        r.open();let t=r.reserve();r.publish(t,SOURCE,&payload(128,17));r.settle();
+        r.call("tx_reap",t,0,0);assert_eq!(r.call("tx_close",0,0,0).0,0);
+        assert_eq!(r.u.errors,0);assert_eq!(r.byte("tx_rx_errors"),0x98);
+        println!("CONFIRMED stale RX 0x98 survives error-free transmission; old fixture would fail its lifetime-latch check");
+        cases+=1;
+    }
+    if s.contains_key("tx_diag_take") {
+        for iff in [false,true] { for errors in [2,4,8,16,128,0x98] {
+            let mut r=Rig::new(image,s);r.cpu.registers().iff1=iff;r.cpu.registers().iff2=iff;
+            let latch=r.at("tx_rx_errors");r.u.mem[latch]=0x98;
+            let modem=r.at("tx_modem_deltas");r.u.mem[modem]=3;
+            let (status,prior,_)=r.call("tx_diag_take",0,0,0);
+            assert_eq!((status,prior),(0,0x398));
+            assert_eq!(r.byte("tx_rx_errors"),0);assert_eq!(r.byte("tx_modem_deltas"),0);
+            assert_eq!(r.call("tx_diag_take",0,0,0).1,0,"stale errors contaminated a clean epoch");
+            // The same bits occurring again must still be detected; simply
+            // subtracting an old bit mask would incorrectly hide these.
+            r.u.errors=errors;r.u.rx.push_back(0x42);r.u.ier=0;
+            assert_eq!(r.call("tx_diag_take",0,0,0).1,errors as u32);
+            assert_eq!(r.u.rx.front(),Some(&0x42),"diagnostic snapshot discarded RX data");
+            assert_eq!(r.byte("tx_rx_errors"),0);
+            cases+=1;
+        }}
+        println!("PASS diagnostic epochs: stale flags separated, repeated fresh bits detected, unread RX retained, both IFF states preserved");
+        let mut r=Rig::new(image,s);r.open();r.u.edge(false);let t=r.reserve();
+        r.publish(t,SOURCE,&payload(64,5));
+        r.cpu.registers().iff1=false;r.cpu.registers().iff2=false;
+        r.u.edge(true);let delta=r.u.delta;
+        assert_eq!(r.call("tx_diag_take",0,0,0).0,1);
+        assert_eq!(r.u.delta,delta,"BUSY diagnostic read acknowledged a CTS wakeup");
+        r.cpu.registers().iff1=true;r.cpu.registers().iff2=true;
+        r.settle();assert_eq!(r.u.wire,payload(64,5));cases+=1;
+    }
     for iff in [false,true] {
         let mut r=Rig::new(image,s);r.cpu.registers().iff1=iff;r.cpu.registers().iff2=iff;
         r.cpu.registers().set_a(0x50);
@@ -526,6 +564,11 @@ fn production(image:&[u8],s:&BTreeMap<String,usize>) {
         let (_,table,_) = r.call("uart0_async_getapi",0,0,0);
         assert_eq!(&r.u.mem[table as usize..table as usize+4],b"UTX1");
         assert_eq!(r.u.mem[table as usize+4],1);
+        if s.contains_key("tx_diag_take") {
+            assert_eq!(r.u.mem[table as usize+5],1);
+            assert_eq!(r.u.mem[table as usize+6],46);
+            assert_eq!(r.u.u24(table as usize+43),s["tx_diag_take"] as u32);
+        }
         let ops=["tx_open","tx_reserve","tx_publish","tx_status","tx_cancel","tx_reap","tx_poll_drain","tx_close","tx_kick"];
         for (i,name) in ops.iter().enumerate(){assert_eq!(r.u.u24(table as usize+13+3*i),s[*name]as u32);}
         r.open();let t=r.reserve();

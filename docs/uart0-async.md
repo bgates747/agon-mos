@@ -68,13 +68,14 @@ synchronous fallback. No existing function index or RST call changed.
 | Table offset | Size | Meaning |
 |---|---|---|
 | 0 | 4 | ASCII `UTX1` |
-| 4, 5 | 1 each | ABI major 1, minor 0 |
-| 6 | 1 | Table length 43 bytes |
-| 7 | 1 | Flags: bit 0 callback exclusion, bit 1 drain-before-return |
+| 4, 5 | 1 each | ABI major 1, minor 1 |
+| 6 | 1 | Table length 46 bytes |
+| 7 | 1 | Flags: bit 0 callback exclusion, bit 1 drain-before-return, bit 2 diagnostic epochs |
 | 8, 9 | 1 each | 3 descriptors, 16-byte burst cap |
 | 10 | 3 | Maximum transaction length 00FFFFh |
 | 13..39 | 9 × 3 | Operation pointers in the order listed below |
 | 40 | 3 | Pointer to sticky RX error byte, followed by modem-delta byte |
+| 43 | 3 | `tx_diag_take` pointer (minor 1 extension) |
 
 Operations use the ADL **register ABI**, rather than the C stack ABI.
 A returns OK=0, BUSY=1, INVALID=2, CLOSED=3 or CONTEXT=4. Reserve returns
@@ -102,6 +103,7 @@ NMI and other application-owned ISR calls are unsupported.
 | `tx_reap` | released/cancelled ticket | Free descriptor; stale tickets rejected. |
 | `tx_poll_drain` | none | Nonblocking DONE only when no published work remains and TEMT=1; otherwise PENDING. |
 | `tx_close` | none | Nonblocking close only after drain and all reservations/tickets resolved; otherwise BUSY. |
+| `tx_diag_take` | none; session must be closed | Atomically sample pending LSR/MSR, return HL=00:modem-deltas:RX-errors, then clear those software latches. BUSY while a session is open; no FIFO/parser reset, byte read or transmit wakeup acknowledgement on rejection. |
 | `tx_kick` | none | Bounded service opportunity for masked-interrupt callers; preserves their IFF state. |
 
 Each operation returns an explicit status: OK, BUSY, INVALID, CLOSED or
@@ -233,3 +235,13 @@ This sequence describes the experiments; actionable status lives only in
 Pending implementation steps remain in [TODO.md](../TODO.md). Completed
 TX-002/TX-003/TX-004 and their evidence are recorded in the dated development
 log. Identifiers remain fixed and are never reused.
+
+Minor 1 diagnostic epochs preserve the offsets and behavior of the original
+nine operations and diagnostic pointer. Error latches normally accumulate since
+boot (or the preceding explicit snapshot); opening/closing a session does not
+reset them. A benchmark must separate setup/history from the interval it
+claims to measure. `tx_diag_take` establishes that boundary under DI, captures
+pending status and clears only captured software flags. It requires a closed
+session to avoid consuming a modem wakeup from queued transmission. It never
+flushes RX/TX or resets VDP parsing. Repeated occurrences of the same error bits
+are detectable in successive epochs; subtracting a baseline bitmask is invalid.

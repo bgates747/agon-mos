@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-13",
+  "target": "Heber Agon Console8",
+  "status": "All eight diagnostic benchmark cases passed on physical hardware",
+  "sd_uuid": "8658-1C23",
+  "sd_modified_during_inspection": false,
+  "baseline_diagnostics": [
+    0,
+    1,
+    0
+  ],
+  "records": [
+    {
+      "mode": 0,
+      "pair": 0,
+      "raw_ticks": 24,
+      "checksum": 1202774,
+      "overlap_iterations": 0,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 1,
+      "pair": 0,
+      "raw_ticks": 16,
+      "checksum": 1202774,
+      "overlap_iterations": 38144,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 1,
+      "pair": 1,
+      "raw_ticks": 16,
+      "checksum": 1202774,
+      "overlap_iterations": 37632,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 0,
+      "pair": 1,
+      "raw_ticks": 24,
+      "checksum": 1202774,
+      "overlap_iterations": 0,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 0,
+      "pair": 2,
+      "raw_ticks": 24,
+      "checksum": 1202774,
+      "overlap_iterations": 0,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 1,
+      "pair": 2,
+      "raw_ticks": 16,
+      "checksum": 1202774,
+      "overlap_iterations": 38656,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 1,
+      "pair": 3,
+      "raw_ticks": 16,
+      "checksum": 1202774,
+      "overlap_iterations": 40448,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    },
+    {
+      "mode": 0,
+      "pair": 3,
+      "raw_ticks": 24,
+      "checksum": 1202774,
+      "overlap_iterations": 0,
+      "accepted": 8210,
+      "rx_errors": 0,
+      "modem_deltas": 1,
+      "receiver_result": 0
+    }
+  ],
+  "pairs": [
+    {
+      "pair": 0,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 38144
+    },
+    {
+      "pair": 1,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 37632
+    },
+    {
+      "pair": 2,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 38656
+    },
+    {
+      "pair": 3,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 40448
+    }
+  ],
+  "receiver_bytes_verified": 65536,
+  "elapsed_ticks_reduction_fraction": 0.3333333333333333,
+  "raw_ticks_are_uncalibrated": true,
+  "installed_rom_readback_available": false,
+  "cts_headroom_qualified": false,
+  "physical_framing_break_origin_resolved": false,
+  "human_emulator_gate_still_pending": true,
+  "report_sha256": "1fb3c5883119ac81275b52934b4af116452b18f30b6af66939657ba22ca90443",
+  "baseline_sha256": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+  "staged_rom_sha256": "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a",
+  "staged_test_sha256": "653ef779aaea62f8e70670bdfd508b672bd705f8244c4a45040a13c705f756f7",
+  "stale_failure_report_sha256": "ee06f8376088f36af3a81fb850f21bbdde7adddcb60cc8a1d1f61f82ccf0a5af",
+  "stale_failure_matches_previous_API_discovery_failure": true,
+  "operator_confirmation": "card attached after a completed run"
+}

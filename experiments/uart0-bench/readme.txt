@@ -6,11 +6,13 @@ On the Console8:
   CD /test/mos-uart0
   TYPE readme.txt
 
-MOS image: mos-candidate.bin (110611 bytes), CRC32 F7A575E8.
+MOS image: mos-candidate.bin (110695 bytes), CRC32 7E66FD09.
 VDP image: vdp-2.16.0.bin (1077840 bytes), CRC32 FFFBFADE.
 The VDP image is the official stock 2.16.0 Bistromathics release.
 flash.bin is the official AgonPlatform flash utility v1.9.
-All these files and bench.bin/checks.bin are in this directory.
+All these files and test.bin/checks.bin are in this directory.
+This fixture requires the new MOS UART0 API 1.1 diagnostic snapshots.
+Install this bundled MOS before running it; the older candidate is API 1.0.
 
 BEFORE FLASHING
 Record the installed MOS and VDP versions (a boot photo is useful).
@@ -44,7 +46,7 @@ After the installed-MOS backup has been checked on Oryx:
   CD /test/mos-uart0
   LOAD flash.bin &B0000
   RUN &B0000 MOS /test/mos-uart0/mos-candidate.bin
-Confirm the MOS target, filename and CRC32 F7A575E8 before answering Y.
+Confirm the MOS target, filename and CRC32 7E66FD09 before answering Y.
 Do not use ALL, BATCH or -f. Allow update/reboot to complete.
 This development MOS still prints version 3.0.2; that alone does not
 identify it. Save an independent flash readback for the host to check:
@@ -53,10 +55,17 @@ identify it. Save an independent flash readback for the host to check:
 
 RUN THE TEST
 Remain in /test/mos-uart0; checks.bin must be in the current directory.
-  LOAD bench.bin
+  LOAD test.bin
   RUN
 The test performs four blocking/async pairs and verifies every payload
-byte in the VDP. Give it about a minute; hardware duration is unmeasured.
+byte in the VDP. It clears the screen and prints its two-minute expectation.
+Pair/mode, drained transmission, verification quarters and Case PASS
+messages show progress. Give it about a minute; hardware timing is unmeasured.
+It also prints prior RX flags and saves them in baseline.dat (3 bytes).
+Each case checks errors observed in its own diagnostic interval. Old flags
+are recorded separately; a fresh recurrence of the same bits still fails.
+If this takes longer than 2 minutes, something is wrong. Report the last
+progress line. This is an operator expectation, not an automatic timeout.
 Expect:
   UART0 BENCH FIXTURE PASS
 and the normal MOS prompt. Then type:
@@ -67,11 +76,14 @@ expected from this manual RUN.
 
 bench.dat is the 148-byte measurement report. Preserve it unchanged.
 If failure.dat appears, the machine hangs, or PASS is absent, report
-failure. Do not interpret the raw MOS clock ticks as calibrated seconds.
+failure. A detected failure prints UART0 TEST FAIL and holds for reset.
+Do not interpret the raw MOS clock ticks as calibrated seconds.
 A permanent CTS stall can require an explicit reset.
 For repeat runs, preserve old reports first, for example:
   RENAME bench.dat bench-01.dat
 Rename failure.dat too, if present. Never overwrite incoming-mos.bin.
+Preserve baseline.dat before repeating, for example:
+  RENAME baseline.dat baseline-01.dat
 
 RESTORE THE ORIGINAL MOS WHEN FINISHED
 Use only the installed-MOS backup validated on Oryx:
@@ -88,6 +100,7 @@ This restores MOS only. VDP restoration requires your previous VDP image.
 RETURN RESULTS TO ORYX
 Power down and put the SD card back on Oryx. Keep incoming-mos.bin,
 candidate-readback.bin, bench.dat, any failure.dat and restored-mos.bin.
+Also keep baseline.dat so the host can inspect pre-test RX diagnostics.
 The host verifies the candidate prefix and exact full MOS restoration,
 and decodes bench.dat. Please supply boot/result photos as well.
 The passive CTS/headroom tests are a separate qualification step.

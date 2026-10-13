@@ -1,0 +1,37 @@
+{
+  "deployed_at": "2026-10-13T08:45:10.073181+00:00",
+  "mount": {
+    "target": "/run/media/smith/AGON",
+    "source": "/dev/sda1",
+    "fstype": "vfat",
+    "uuid": "8658-1C23",
+    "options": "rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,showexec,utf8,flush,errors=remount-ro"
+  },
+  "destination": "/run/media/smith/AGON/test/mos-uart0",
+  "package": "/home/smith/Agon/mystuff/agon-mos/build/uart0-bench/console8-progress-20261013",
+  "files": 19,
+  "package_manifest_sha256": "44fa10e157634c290589e5c2a2d29352b46d362c5242a086796f3e531ec37d64",
+  "verified": true,
+  "firmware_flashing_performed": false,
+  "operator": "Author performs manual flashing/testing",
+  "previous_directory_archived": "/run/media/smith/AGON/test/mos-uart0-before-progress",
+  "operator_files_preserved": [
+
+  ],
+  "old_reports_preserved_in_archive": true,
+  "filename_collision": false,
+  "task": "TX-014",
+  "test_sha256": "7549dfcc35ecd0976fe5b1cb141ec6463a6dd32ef055dfde21b612babfebe55d",
+  "headless_engines_passed": [
+    "jit",
+    "interp"
+  ],
+  "human_review_passed": false,
+  "previous_failure": {
+    "stage": 2,
+    "rx_error_bits": "0x98",
+    "report_sha256": "8e4491b9fd9e588cf8d279f623c5f3125e48f418dbac728d4ff7fb9d0c274853",
+    "reported_duration": "At least five minutes",
+    "root_cause_established": false
+  }
+}

@@ -1,9 +1,15 @@
 # Installed MOS UART0 qualification
 
-Executive summary: the integrated candidate builds with native ZDS II under Wine
-on Oryx and passes 1,411 shared-core scenarios, seven negative controls, 13
-production-ROM scenarios and full-image headless Flexe JIT/interpreter testing.
-The Author passed human acceptance on 2026-10-13. Physical qualification remains\nin the sole project TODO.
+Executive summary: TX-015 adds API 1.1 diagnostic epochs after the first physical fixture exposed
+an attribution defect. Current automated evidence includes 27 production-ROM
+cases plus the unchanged 1,411-case core suite and seven negative controls.
+The prior human acceptance applies to API 1.0; the diagnostic extension awaits
+new human review. Physical framing/BREAK timing remains undetermined. No SD or
+board access is performed for this revision while the Author uses another project.
+
+The integrated candidate builds with native ZDS II under Wine on Oryx and
+passes full-image headless Flexe JIT/interpreter testing. Physical qualification
+remains in the sole project TODO.
 
 Run from the MOS checkout:
 

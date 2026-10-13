@@ -74,6 +74,7 @@ ENDMACRO
     API tx_poll_drain,drain_core
     API tx_close,close_core
     API tx_kick,kick_core
+    API tx_diag_take,diag_take_core
     API tx_barrier_enter,barrier_core
     API tx_barrier_leave,unbarrier_core
     API tx_sync_byte,sync_core
@@ -441,6 +442,26 @@ sync_core:
     ld a,e
     out0 (THR),a
     jp ok
+
+; Foreground diagnostic epoch boundary. Sample pending status, return the
+; previous RX/modem latches packed as 00:modem:RX in HL, then clear ONLY those
+; software latches. The API wrapper holds DI; no FIFO or parser is flushed.
+diag_take_core:
+    ; A status read can acknowledge a CTS edge. Restrict epoch changes to a
+    ; closed session so they cannot steal an outstanding transmitter wakeup.
+    call check_open
+    jp nz,busy
+    call read_lsr
+    call read_msr
+    ld hl,0
+    ld a,(tx_rx_errors)
+    ld l,a
+    ld a,(tx_modem_deltas)
+    ld h,a
+    xor a,a
+    ld (tx_rx_errors),a
+    ld (tx_modem_deltas),a
+    ret
 
 ; Every LSR/MSR read acknowledges through a shared sticky latch.
 read_lsr:

@@ -1,0 +1,26 @@
+{
+  "task": "TX-015",
+  "confirmed_defect": "The fixture treated RX diagnostic bits accumulated since MOS boot as errors from its first case",
+  "old_rom_sha256": "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df",
+  "observed_failure_report_sha256": "8e4491b9fd9e588cf8d279f623c5f3125e48f418dbac728d4ff7fb9d0c274853",
+  "original_rx_bits": "0x98",
+  "bit_meaning": "FIFO receive-error summary, BREAK indication and framing error; overrun bit is not set",
+  "primary_reference": "/home/smith/Agon/docs/PS0153-eZ80F92-eZ80F93-Product-Specification.pdf, printed pages 120-121",
+  "reproduction": "Seed sticky latch 0x98, perform clean native-ROM transmit/drain/close; hardware error model remains zero while latch retains 0x98",
+  "old_rom_cases_passed": 14,
+  "new_rom_cases_passed": 27,
+  "regression_controls": [
+    "Prior flags returned and separated from clean interval",
+    "Identical error bits recurring later still detected",
+    "Unread RX byte retained",
+    "Foreground IFF disabled/enabled preserved",
+    "Open-session snapshot refused without consuming CTS wakeup"
+  ],
+  "fix": "Append tx_diag_take to API 1.1; closed-session atomic LSR/MSR snapshot and software-latch clearing; fixture saves baseline.dat then establishes per-case intervals",
+  "new_rom_sha256": "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a",
+  "new_test_sha256": "653ef779aaea62f8e70670bdfd508b672bd705f8244c4a45040a13c705f756f7",
+  "sd_accessed_this_investigation": false,
+  "firmware_flashing_performed": false,
+  "human_review_passed": false,
+  "unresolved": "Old report has no pre-test snapshot, so preexisting flags versus fresh test-time framing/break cannot be determined. Startup/reset origin is plausible but not proven."
+}

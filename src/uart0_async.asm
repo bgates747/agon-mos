@@ -222,12 +222,13 @@ uart0_async_getapi:
     xor a,a
     ret
 uart0_async_api:
-    DB "UTX1",1,0,uart0_async_api_end-uart0_async_api,3
+    DB "UTX1",1,1,uart0_async_api_end-uart0_async_api,7
     DB 3,16
     DB 255,255,0
     DW24 tx_open,tx_reserve,tx_publish,tx_status,tx_cancel,tx_reap
     DW24 tx_poll_drain,tx_close,tx_kick
     DW24 tx_rx_errors
+    DW24 tx_diag_take
 uart0_async_api_end:
     SECTION BSS
     XDEF uart0_sync_depth

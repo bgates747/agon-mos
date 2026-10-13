@@ -16,8 +16,18 @@ CPU work physically. Coordinate game integration separately; do not remove DI
 here. Emulator results do not establish physical headroom or game performance.
 The Author performs manual Console8 flashing/testing from the staged SD bundle;
 agent-operated board/USB/firmware access still needs a fresh explicit bench grant.
+The first physical run saved RX error bits 0x98 after its first blocking-case
+verification; investigate this failure using the new progress fixture.
+The corrected diagnostic benchmark now passes all eight cases physically,
+with zero baseline/case RX errors and 24 blocking / 16 async raw ticks per pair.
+Controlled CTS reserve, wider full-duplex and calibrated timing remain pending.
 
 ## Provenance
+
+TX-014/TX-015 were accepted for commit on 2026-10-13 after the passing physical
+benchmark and explicit commit/push instruction; emulator-review history remains
+recorded accurately in the development log.
+
 
 C-001/C-002, TX-001 and TX-005 were resolved/delivered on 2026-10-13; see
 [the development log](docs/devlog-2026-10-13.md). Human acceptance TX-010 passed on 2026-10-13.

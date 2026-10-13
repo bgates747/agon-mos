@@ -17,7 +17,7 @@ assert engine in ("jit", "interp")
 app = profile / "sdcard/uart0"
 artifacts = profile / "last-run"
 artifacts.mkdir(exist_ok=True)
-for name in ("bench.dat", "failure.dat"):
+for name in ("bench.dat", "failure.dat", "baseline.dat"):
     (app / name).unlink(missing_ok=True)
 for path in artifacts.iterdir():
     if path.is_file():
@@ -94,6 +94,23 @@ checks = (build / "checks.bin").read_bytes()
 for offset in range(0, len(checks), 60):
     assert wire.count(checks[offset:offset+60]) == 8, "Untimed byte-check wire mismatch"
 assert b"UART0 BENCH FIXTURE PASS" in wire
+assert b"\x0cUART0 TRANSMISSION TEST" in wire, "Missing initial screen clear/title"
+assert b"If this takes longer than 2 minutes, something is wrong." in wire
+cursor = wire.index(b"Setup PASS: bad-byte detection and good-byte check.")
+for pair in range(4):
+    for trial in range(2):
+        mode = b"ASYNC" if (pair ^ trial) & 1 else b"BLOCKING"
+        markers = [f"Pair {pair+1}/4: ".encode()+mode,
+                   b"Transmission drained; verifying 8192 receiver bytes..."]
+        markers += [f"Receiver verification {n}/4 complete".encode() for n in range(1,5)]
+        markers += [b"Case PASS"]
+        for marker in markers:
+            cursor = wire.index(marker, cursor)+len(marker)
+assert wire.count(b"Case PASS") == 8
+assert b"RX flags before trials (saved in baseline.dat): 0x00" in wire
+baseline = (app / "baseline.dat").read_bytes()
+assert len(baseline) == 3 and baseline[0] == baseline[2] == 0
+assert b"UART0 TEST FAIL" not in wire
 stats = json.loads((artifacts / "stats.json").read_text())
 assert not any(stats[k] for k in ("failed", "unhandled", "unregistered", "unmapped")), stats
 assert stats["engine"] == engine, stats
@@ -105,6 +122,8 @@ assert uart["tx_drops"] == uart["rx_overruns"] == 0, uart
 subprocess.run(["sha256sum", "--check", "--status", ".runtime.sha256"], cwd=profile, check=True)
 receipt = dict(engine=engine, elapsed_seconds=round(time.monotonic()-started,3),
     records=records, receiver_bytes_compared=8*expected_info["payload_bytes"],
+    startup_clear_and_expectation_verified=True, ordered_progress_breadcrumbs_verified=True,
+    diagnostic_epoch_snapshot_verified=True, baseline_diagnostics=list(baseline),
     corruption_negative_control_passed=True, raw_ticks_are_uncalibrated=True,
     physical_measurement=False, returned_to_mos=True, graphical_instance_launched=False,
     mapped_requested_backend=mapped, backend=stats, uart=uart,
@@ -114,7 +133,7 @@ result.mkdir(exist_ok=True)
 for path in artifacts.iterdir():
     if path.is_file():
         shutil.copyfile(path,result/path.name)
-for name in ("bench.dat",):
+for name in ("bench.dat", "baseline.dat"):
     shutil.copyfile(app/name,result/name)
 (result / "receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
 print(json.dumps(receipt,indent=2))

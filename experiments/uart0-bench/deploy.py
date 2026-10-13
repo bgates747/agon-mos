@@ -55,7 +55,7 @@ def package_files(package):
     manifest = json.loads((package / "manifest.json").read_text())
     require(manifest["deployment_path"] == "/test/mos-uart0", "Unexpected destination")
     require(manifest["vdp"]["stock_release"] and manifest["vdp"]["version"] == "2.16.0", "Need stock VDP 2.16.0")
-    require({"readme.txt", "vdp-2.16.0.bin", "mos-candidate.bin", "bench.bin", "checks.bin", "flash.bin"} <= set(expected), "Incomplete manual test package")
+    require({"readme.txt", "vdp-2.16.0.bin", "mos-candidate.bin", "test.bin", "checks.bin", "flash.bin"} <= set(expected), "Incomplete manual test package")
     return expected
 
 
@@ -66,6 +66,8 @@ def main():
     parser.add_argument("--uuid", required=True)
     parser.add_argument("--receipt", required=True, type=Path)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--archive-existing", type=Path)
+    parser.add_argument("--previous-manifest-sha256")
     args = parser.parse_args()
     package = args.package.resolve(strict=True)
     mount = args.mount.resolve(strict=True)
@@ -77,7 +79,27 @@ def main():
     parent = mount / "test"
     require(not parent.is_symlink(), "Refusing linked test directory")
     target = parent / "mos-uart0"
-    require(not target.exists() and not target.is_symlink(), "Test directory already exists; preserve it")
+    require(not target.is_symlink(), "Refusing linked test directory")
+    preserve = []
+    archive = None
+    if target.exists():
+        require(args.archive_existing and args.previous_manifest_sha256, "Test directory already exists; preserve it")
+        archive = args.archive_existing.resolve()
+        require(archive.parent == parent and archive.name.startswith("mos-uart0-before-"), "Archive must be a sibling named mos-uart0-before-...")
+        require(not archive.exists(), "Archive already exists")
+        require(hashlib.sha256((target / "manifest.json").read_bytes()).hexdigest() == args.previous_manifest_sha256, "Previous deployment manifest mismatch")
+        old = json.loads((target / "manifest.json").read_text())
+        if (target / "test.bin").exists():
+            prior_test = old["files"].get("test.bin")
+            require(prior_test and hashlib.sha256((target / "test.bin").read_bytes()).hexdigest() == prior_test["sha256"],
+                    "Filename collision: test.bin is not the recognized prior fixture; refusing to replace it")
+        old_files = set(old["files"]) | {"manifest.json", "SHA256SUMS"}
+        for path in target.iterdir():
+            if path.name not in old_files:
+                require(path.is_file() and not path.is_symlink(), "Unexpected directory/link in existing fixture")
+                if path.name not in ("bench.dat", "failure.dat", "baseline.dat"):
+                    require(path.name not in expected, "Operator-file collision: " + path.name)
+                    preserve.append(path.name)
     if args.dry_run:
         print(json.dumps(dict(dry_run=True, target=str(target), files=len(expected)+1, mount=identity), indent=2))
         return
@@ -85,9 +107,13 @@ def main():
     # directory and refuses any competing deployment instead of replacing it.
     mount_identity(mount, args.uuid)
     parent.mkdir(exist_ok=True)
+    if archive:
+        target.rename(archive)
     target.mkdir(exist_ok=False)
     for name in [*expected, "SHA256SUMS"]:
         shutil.copyfile(package / name, target / name)
+    for name in preserve:
+        shutil.copyfile(archive / name, target / name)
     os.sync()
     mount_identity(mount, args.uuid)
     subprocess.run(["sha256sum", "--check", "--status", "SHA256SUMS"], cwd=target, check=True)
@@ -95,6 +121,9 @@ def main():
                    destination=str(target), package=str(package), files=len(expected)+1,
                    package_manifest_sha256=expected["manifest.json"], verified=True,
                    firmware_flashing_performed=False, operator="Author performs manual flashing/testing")
+    if archive:
+        receipt.update(previous_directory_archived=str(archive), operator_files_preserved=preserve,
+                       old_reports_preserved_in_archive=True, filename_collision=False)
     with args.receipt.open("x", encoding="utf-8") as stream:
         json.dump(receipt, stream, indent=2)
         stream.write("\n")

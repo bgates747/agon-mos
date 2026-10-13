@@ -14,7 +14,7 @@ scp -q -o BatchMode=yes experiments/uart0-bench/{bench.asm,bench.linkcmd,profile
 scp -q -o BatchMode=yes ../agon-dev-env/scripts/setup_emulator.py \
     "$build"/{MOS.bin,MOS.map,packets.inc,checks.bin,expected-packet.bin,expected.json} \
     oryx-linuxlite:Agon/mystuff/agon-mos/build/uart0-bench/
-ssh -o BatchMode=yes oryx-linuxlite 'cd ~/Agon/mystuff/agon-mos && bash experiments/uart0-bench/remote-build.sh && tar -cf build/uart0-bench/qualification.tar -C build/uart0-bench bench.bin bench.hex bench.map bench.lst evidence-jit evidence-interp' \
+ssh -o BatchMode=yes oryx-linuxlite 'cd ~/Agon/mystuff/agon-mos && bash experiments/uart0-bench/remote-build.sh && tar -cf build/uart0-bench/qualification.tar -C build/uart0-bench test.bin bench.hex bench.map bench.lst evidence-jit evidence-interp' \
     > "$build/build.log" 2>&1 || { tail -35 "$build/build.log" >&2; exit 1; }
 scp -q -o BatchMode=yes oryx-linuxlite:Agon/mystuff/agon-mos/build/uart0-bench/qualification.tar "$build/"
 tar -xf "$build/qualification.tar" -C "$build"

@@ -1,25 +1,25 @@
 {
   "task": "ASY-001",
   "date": "2026-10-13",
-  "status": "automated qualification and TX-010 human review passed; physical qualification pending",
+  "status": "Diagnostic epoch/progress tranche accepted for commit after passing physical benchmark; broader qualification pending",
   "build_host": "oryx-linuxlite",
   "toolchain": "native ZDS II eZ80Acclaim! 5.3.5 under Wine; no AgonDev translation",
   "core_scenarios": 1411,
   "negative_controls": 7,
-  "production_rom_scenarios": 13,
-  "production_result": "PASS 13 production-ROM integration scenarios: discovery, RAM validation, ordinary output ordering, real GP/keyboard parser, callback exclusion and CTS-stalled return retention/recovery",
+  "production_rom_scenarios": 27,
+  "production_result": "PASS 27 production-ROM integration scenarios: discovery, RAM validation, ordinary output ordering, real GP/keyboard parser, callback exclusion and CTS-stalled return retention/recovery",
   "wide_instruction_audit": "PASS 52 wide memory instructions resolved; descriptor stride=19, last field=16..18",
-  "rom_image_bytes": 110611,
-  "rom_sha256": "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df",
+  "rom_image_bytes": 110695,
+  "rom_sha256": "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a",
   "native_linker_warnings": 0,
   "reproduction": {
-    "elapsed_seconds": 48.45482817804441,
+    "elapsed_seconds": 48.48952428204939,
     "scope": "native MOS build, scripted qualification, production-ROM scenarios and both headless engines; setup excluded"
   },
   "engines": [
     {
       "engine": "jit",
-      "elapsed_seconds": 8.556,
+      "elapsed_seconds": 8.543,
       "tx_bytes": 8732,
       "rx_bytes": 384,
       "accepted_lengths": [
@@ -38,9 +38,9 @@
       "short_mode_legacy_and_discovery": true,
       "backend": {
         "engine": "jit",
-        "frames": 465,
-        "cycles": 1982420000,
-        "retired": 614663664,
+        "frames": 467,
+        "cycles": 1988760000,
+        "retired": 622465241,
         "uart_rx": 10599,
         "uart_tx": 717,
         "uart_delivered": 717,
@@ -53,20 +53,20 @@
         "unmapped": 0
       },
       "uart": {
-        "tx_irqs": 304,
-        "modem_irqs": 16,
-        "rx_irqs": 212,
+        "tx_irqs": 303,
+        "modem_irqs": 18,
+        "rx_irqs": 193,
         "tx_drops": 0,
         "rx_overruns": 0,
-        "cts_edges": 55
+        "cts_edges": 49
       },
       "runtime_identities": [
         "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
         "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
         "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
         "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
-        "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df  mos_platform.bin",
-        "5cd30b8c27753c6b7bd6e042a2ae423d3dea9615f7b119a4b7c4c40e3a306236  mos_platform.map",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
         "7679b16d5b4a7351002a6fc3815fe703ecf46877674c314421a82a92aea08a1c  flexe-agon-emulator",
         "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
         "04bee2d048d9c017f738119fc064317e032709591e67b9ec152b6275f7aa29bb  sdcard/uart/app.bin",
@@ -77,7 +77,7 @@
     },
     {
       "engine": "interp",
-      "elapsed_seconds": 8.854,
+      "elapsed_seconds": 8.775,
       "tx_bytes": 8732,
       "rx_bytes": 384,
       "accepted_lengths": [
@@ -96,12 +96,12 @@
       "short_mode_legacy_and_discovery": true,
       "backend": {
         "engine": "interp",
-        "frames": 457,
-        "cycles": 1950550000,
-        "retired": 578839736,
-        "uart_rx": 10599,
-        "uart_tx": 717,
-        "uart_delivered": 717,
+        "frames": 458,
+        "cycles": 1954790000,
+        "retired": 581454068,
+        "uart_rx": 10595,
+        "uart_tx": 714,
+        "uart_delivered": 714,
         "isync": 11,
         "code_invalidations": 1,
         "keys": 0,
@@ -112,8 +112,8 @@
       },
       "uart": {
         "tx_irqs": 303,
-        "modem_irqs": 4,
-        "rx_irqs": 286,
+        "modem_irqs": 8,
+        "rx_irqs": 280,
         "tx_drops": 0,
         "rx_overruns": 0,
         "cts_edges": 29
@@ -123,8 +123,8 @@
         "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
         "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
         "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
-        "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df  mos_platform.bin",
-        "5cd30b8c27753c6b7bd6e042a2ae423d3dea9615f7b119a4b7c4c40e3a306236  mos_platform.map",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
         "7679b16d5b4a7351002a6fc3815fe703ecf46877674c314421a82a92aea08a1c  flexe-agon-emulator",
         "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
         "04bee2d048d9c017f738119fc064317e032709591e67b9ec152b6275f7aa29bb  sdcard/uart/app.bin",
@@ -135,14 +135,14 @@
     }
   ],
   "physical_bench_used": false,
-  "human_review_passed": true,
+  "human_review_passed": false,
   "limitations": [
     "Injected IRQ entry in the independent instruction runner; full boot tested separately in Flexe.",
     "Physical CTS headroom and timing/performance remain unqualified.",
     "Keyboard packet/callback parser scenarios do not qualify the physical PS/2 path.",
     "Singleton development ABI in this fork; no upstream allocation is claimed."
   ],
-  "human_review": {
+  "previous_human_review": {
     "date": "2026-10-13",
     "host": "oryx-linuxlite",
     "author_reply": "passed. what next?",
@@ -154,5 +154,14 @@
       "A typed dir command completed and returned to /uart *, confirming keyboard input and responsive MOS."
     ],
     "commit_and_push_authorized": true
-  }
+  },
+  "previous_rom_sha256": "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df",
+  "abi": {
+    "major": 1,
+    "minor": 1,
+    "table_bytes": 46,
+    "diagnostic_operation": "tx_diag_take"
+  },
+  "commit_authorized_by_user": true,
+  "commit_authorization": "2026-10-13: commit and push any dirt, then proceed to the next tranche"
 }

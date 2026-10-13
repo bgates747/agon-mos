@@ -80,8 +80,8 @@ ruby experiments/uart0-bench/check-tools.rb
 
 ## Frozen package and preparation boundary
 
-The off-device package contains the accepted candidate (110,611 bytes, SHA-256
-`29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df`),
+The off-device package contains the diagnostic-epoch candidate (110,695 bytes, SHA-256
+`e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a`),
 its map, bench/check files, hardware-readable `readme.txt`, evidence readers,
 headless receipts, original MIT notices, stock VDP 2.16.0, a manifest with
 CRC32/hashes, and the pinned official
@@ -178,7 +178,7 @@ manifest. Do not use `all`, `vdp`, `batch` or `-f`. After reboot, record boot
 versions and save `candidate-readback.bin` with the same 128 KiB SAVE command.
 On the host, `ruby analyze.rb candidate candidate-readback.bin mos-candidate.bin`
 requires an exact candidate prefix; unused flash tail is not asserted.
-Then run the fixture manually with `CD /test/mos-uart0`, `LOAD bench.bin`, `RUN`.
+Then run the fixture manually with `CD /test/mos-uart0`, `LOAD test.bin`, `RUN`.
 Collect `bench.dat`, screen/keyboard evidence and any passive capture. Stop on a
 failure; a retained-memory CTS stall requires an explicit reset under the lease.
 
@@ -228,3 +228,31 @@ proof of receiver reserve. TX-006 still needs independent receive-headroom
 bounds, controlled stop/restart and full-duplex tests. Do not force or short
 CTS electrically as part of this passive procedure. A buffer size in source or
 a successful run alone does not establish the required physical margin.
+
+## Progress fixture revision (TX-014)
+
+The loadable fixture is now `test.bin`. Startup clears the screen and states
+that more than two minutes indicates a problem. Untimed breadcrumbs show setup,
+each pair/mode, transmission drain, four receiver-verification quarters per
+case, case completion and report saving. A detected failure prints FAIL before
+holding for reset. These changes do not implement an unsafe drain timeout.
+The revised fixture requires a new human emulator review before commit.
+
+TX-015 corrects diagnostic attribution. The original fixture checked flags
+accumulated since MOS boot, so prior 0x98 alone could reject a clean first case.
+That defect is reproduced against the originally accepted ROM. The new MOS
+API 1.1 operation atomically returns/clears diagnostic latches while the async
+session is closed. No hardware FIFO/parser is flushed. The app saves setup
+flags in three-byte `baseline.dat`, prints them, and establishes independent
+case intervals. Repeated fresh occurrences of the same bits still fail.
+This fixture requires the new MOS image (CRC32 7E66FD09); the API 1.0 image is
+rejected with an explicit installation message. The electrical origin/timing
+of the original break/framing flags cannot be recovered from that old report.
+The SD belongs to the Author's other test and is not accessed for this revision.
+
+Physical SD refresh archives the entire previous owned directory before staging
+the new package. `deploy.py --archive-existing <sibling-directory>
+--previous-manifest-sha256 <old-manifest-hash>` permits only a recognized prior
+deployment; a pre-existing `test.bin` is reported as a collision and never
+replaced. Old measurement/failure reports stay in the archive, while other
+operator files (such as the installed-MOS backup) are copied forward.

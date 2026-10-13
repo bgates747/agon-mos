@@ -16,6 +16,9 @@ start:
     push ix
     push iy
     ld (saved_sp),sp
+    ld hl,intro
+    ld bc,intro_end-intro
+    rst.lil 18h
     ld a,8
     rst.lil 08h
     ld (sysvars),ix
@@ -38,7 +41,15 @@ magic_loop:
     ld a,(hl)
     cp a,1
     jp nz,failed
-    ld de,9
+    inc hl
+    ld a,(hl)
+    cp a,1
+    jp c,api_missing        ; Diagnostic epochs require ABI minor >=1.
+    inc hl
+    ld a,(hl)
+    cp a,46
+    jp c,api_missing
+    ld de,7
     add hl,de
     ld de,tx_open+1
     ld b,9
@@ -49,8 +60,18 @@ install:
     inc de
     pop bc
     djnz install
+    push hl
     ld hl,(hl)
     ld (diagnostics),hl
+    pop hl
+    inc hl
+    inc hl
+    inc hl
+    ld hl,(hl)
+    ld (tx_diag_take+1),hl
+    ld hl,preflight
+    ld bc,preflight_end-preflight
+    rst.lil 18h
     ld hl,setup
     ld bc,setup_end-setup
     rst.lil 18h
@@ -69,6 +90,30 @@ install:
     call wait_gp
     or a,a
     jp nz,failed
+    ; Setup and historical boot diagnostics must not be blamed on a trial.
+    call tx_diag_take
+    or a,a
+    jp nz,failed
+    ld (baseline_diagnostics),hl
+    ld hl,baseline_label
+    ld bc,baseline_label_end-baseline_label
+    rst.lil 18h
+    ld a,(baseline_diagnostics)
+    call print_hex_byte
+    ld a,13
+    rst.lil 10h
+    ld a,10
+    rst.lil 10h
+    ld hl,baseline_name
+    ld de,baseline_diagnostics
+    ld bc,3
+    ld a,2
+    rst.lil 08h
+    or a,a
+    jp nz,failed
+    ld hl,preflight_pass
+    ld bc,preflight_pass_end-preflight_pass
+    rst.lil 18h
     ld hl,records
     ld (record_ptr),hl
     xor a,a
@@ -85,6 +130,11 @@ trial_loop:
     xor a,b
     and a,1
     ld (mode),a             ; Alternate AB/BA across pairs.
+    call progress_case
+    ; Start a fresh observation epoch after untimed progress/setup output.
+    call tx_diag_take
+    or a,a
+    jp nz,failed
     ld hl,0123456h
     ld (work_value),hl
     ld hl,010203h
@@ -186,9 +236,16 @@ close_session:
     or a,a
     jp nz,failed
     ; Every payload byte is compared in the VDP, outside the timing.
+    ld hl,verifying
+    ld bc,verifying_end-verifying
+    rst.lil 18h
     call verify_payload
     or a,a
     jp nz,failed
+    call tx_diag_take
+    or a,a
+    jp nz,failed
+    ld (case_diagnostics),hl
     ld iy,(record_ptr)
     ld a,(mode)
     ld (iy+0),a
@@ -202,19 +259,20 @@ close_session:
     ld (iy+8),hl
     ld hl,(accepted)
     ld (iy+11),hl
-    ld hl,(diagnostics)
-    ld a,(hl)
+    ld a,(case_diagnostics)
     ld (iy+14),a
     ld (report_errors),a
     or a,a
     jp nz,failed
-    inc hl
-    ld a,(hl)
+    ld a,(case_diagnostics+1)
     ld (iy+15),a
     ld (iy+16),0
     ld de,17
     add iy,de
     ld (record_ptr),iy
+    ld hl,case_pass
+    ld bc,case_pass_end-case_pass
+    rst.lil 18h
     ld a,(trial)
     inc a
     ld (trial),a
@@ -230,6 +288,9 @@ close_session:
     rst.lil 18h
     xor a,a
     ld (stage),a
+    ld hl,saving
+    ld bc,saving_end-saving
+    rst.lil 18h
     ld hl,result_name
     ld de,report
     ld bc,report_end-report
@@ -260,6 +321,41 @@ clock_read:
     jp po,clock_masked
     ei
 clock_masked:
+    ret
+progress_case:
+    ld a,(pair)
+    add a,'1'
+    ld (case_number),a
+    ld hl,case_label
+    ld bc,case_label_end-case_label
+    rst.lil 18h
+    ld a,(mode)
+    or a,a
+    ld hl,blocking_label
+    ld bc,blocking_label_end-blocking_label
+    jr z,progress_send
+    ld hl,async_label
+    ld bc,async_label_end-async_label
+progress_send:
+    rst.lil 18h
+    ret
+print_hex_byte:
+    push af
+    rrca
+    rrca
+    rrca
+    rrca
+    and a,15
+    call print_hex_digit
+    pop af
+    and a,15
+print_hex_digit:
+    add a,'0'
+    cp a,':'
+    jr c,print_hex_emit
+    add a,7
+print_hex_emit:
+    rst.lil 10h
     ret
 reset_gp:
     ld ix,(sysvars)
@@ -333,13 +429,35 @@ verify_group:
     ld a,(blocks)
     dec a
     ld (blocks),a
-    jr nz,verify_block
+    ; Every eight blocks = 2,048 compared bytes, outside timed work.
+    and a,7
+    jr nz,verify_more
+    ld a,(blocks)
+    srl a
+    srl a
+    srl a
+    ld b,a
+    ld a,'4'
+    sub a,b
+    ld (verify_number),a
+    ld hl,verify_label
+    ld bc,verify_label_end-verify_label
+    rst.lil 18h
+verify_more:
+    ld a,(blocks)
+    or a,a
+    jp nz,verify_block
     ld a,(file_handle)
     ld c,a
     ld a,00bh
     rst.lil 08h
     xor a,a
     ret
+api_missing:
+    ld hl,api_required
+    ld bc,api_required_end-api_required
+    rst.lil 18h
+    jp failed
 failed:
     ei
     ld hl,failure_name
@@ -347,6 +465,18 @@ failed:
     ld bc,report_end-report
     ld a,2
     rst.lil 08h
+    ld hl,failure_message
+    ld bc,failure_message_end-failure_message
+    rst.lil 18h
+    ld hl,error_label
+    ld bc,error_label_end-error_label
+    rst.lil 18h
+    ld a,(report_errors)
+    call print_hex_byte
+    ld a,13
+    rst.lil 10h
+    ld a,10
+    rst.lil 10h
 failed_hold:
     halt
     jr failed_hold
@@ -361,9 +491,12 @@ tx_reap: jp 0
 tx_poll_drain: jp 0
 tx_close: jp 0
 tx_kick: jp 0
+tx_diag_take: jp 0
 saved_sp: DB 0,0,0
 sysvars: DB 0,0,0
 diagnostics: DB 0,0,0
+baseline_diagnostics: DB 0,0,0
+case_diagnostics: DB 0,0,0
 ticket: DB 0,0,0
 work_value: DB 0,0,0
 work_seed: DB 0,0,0
@@ -390,8 +523,44 @@ magic: DB "UTX1"
 checks_name: DB "checks.bin",0
 result_name: DB "bench.dat",0
 failure_name: DB "failure.dat",0
+baseline_name: DB "baseline.dat",0
 success: DB "UART0 BENCH FIXTURE PASS",13,10
 success_end:
+intro: DB 12,"UART0 TRANSMISSION TEST",13,10
+    DB "Allow about one minute; hardware timing is unmeasured.",13,10
+    DB "If this takes longer than 2 minutes, something is wrong.",13,10
+    DB "Report the last progress line; do not count a stall as PASS.",13,10
+intro_end:
+preflight: DB "Setup: discover MOS API and check receiver verification...",13,10
+preflight_end:
+preflight_pass: DB "Setup PASS: bad-byte detection and good-byte check.",13,10
+preflight_pass_end:
+case_label: DB "Pair "
+case_number: DB '1'
+    DB "/4: "
+case_label_end:
+blocking_label: DB "BLOCKING - transmit, compute, drain...",13,10
+blocking_label_end:
+async_label: DB "ASYNC - transmit, compute, drain...",13,10
+async_label_end:
+verifying: DB "  Transmission drained; verifying 8192 receiver bytes...",13,10
+verifying_end:
+verify_label: DB "  Receiver verification "
+verify_number: DB '1'
+    DB "/4 complete",13,10
+verify_label_end:
+case_pass: DB "  Case PASS",13,10
+case_pass_end:
+saving: DB "All 8 cases PASS; saving bench.dat...",13,10
+saving_end:
+failure_message: DB "UART0 TEST FAIL - report last progress line; reset required.",13,10
+failure_message_end:
+baseline_label: DB "RX flags before trials (saved in baseline.dat): 0x"
+baseline_label_end:
+error_label: DB "RX flags observed in failed case: 0x"
+error_label_end:
+api_required: DB "This test requires UART0 MOS API 1.1: install the new MOS image.",13,10
+api_required_end:
     INCLUDE "packets.inc"
 check_buffer: DS 3840
     END

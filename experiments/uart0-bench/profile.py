@@ -33,9 +33,9 @@ assert firmware.is_symlink()
 firmware.unlink()
 app = profile / "sdcard/uart0"
 app.mkdir(exist_ok=True)
-shutil.copyfile(build / "bench.bin", app / "bench.bin")
+shutil.copyfile(build / "test.bin", app / "test.bin")
 shutil.copyfile(build / "checks.bin", app / "checks.bin")
-(profile / "sdcard/autoexec.txt").write_bytes(b"cd /uart0\r\nload bench.bin\r\nrun\r\nECHO UART0 BENCH RETURN PASS\r\n")
+(profile / "sdcard/autoexec.txt").write_bytes(b"cd /uart0\r\nload test.bin\r\nrun\r\nECHO UART0 BENCH RETURN PASS\r\n")
 (profile / ".bespoke-vdp-profile").write_text("flexe-vdp.so\n")
 canonical.write_profile_launcher(profile, strict_bespoke=True)
 launcher = profile / "fab-agon-emulator"
@@ -48,7 +48,7 @@ export AGON_FLEXE_ENGINE="${AGON_FLEXE_ENGINE:-jit}"
 export AGON_FLEXE_ARTIFACTS="$profile_dir/last-run"
 export MOS_UART_STATS="$profile_dir/last-run/uart.json"
 mkdir -p "$AGON_FLEXE_ARTIFACTS"
-rm -f -- "$profile_dir/sdcard/uart0/bench.dat" "$profile_dir/sdcard/uart0/failure.dat"
+rm -f -- "$profile_dir/sdcard/uart0/bench.dat" "$profile_dir/sdcard/uart0/failure.dat" "$profile_dir/sdcard/uart0/baseline.dat"
 
 vdp_name=''', 1)
 primary = profile / "flexe-agon-emulator"
@@ -66,7 +66,7 @@ exec ./flexe-agon-emulator "$@"
 (profile / ".mos-release.sha256").write_text("".join(
     f"{hashlib.sha256((profile/name).read_bytes()).hexdigest()}  {name}\n"
     for name in ("mos_platform.bin", "mos_platform.map")))
-identity = [*files, "flexe-agon-emulator", "fab-agon-emulator", "sdcard/uart0/bench.bin", "sdcard/uart0/checks.bin", "sdcard/autoexec.txt"]
+identity = [*files, "flexe-agon-emulator", "fab-agon-emulator", "sdcard/uart0/test.bin", "sdcard/uart0/checks.bin", "sdcard/autoexec.txt"]
 (profile / ".runtime.sha256").write_text("".join(
     f"{hashlib.sha256((profile/name).read_bytes()).hexdigest()}  {name}\n" for name in identity))
 print(f"Prepared stopped profile: {profile}")
