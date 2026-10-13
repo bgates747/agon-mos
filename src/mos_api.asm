@@ -24,6 +24,7 @@
 ; 03/08/2023:	Added mos_api_setkbvector
 ; 10/08/2023:	Added mos_api_getkbmap
 ; 10/11/2023:	Added mos_api_i2c_close, mos_api_i2c_open, mos_api_i2c_read, mos_api_i2c_write
+; 12/08/2026:	Exposed qsort as C function 0x12
 
 
 			.ASSUME	ADL = 1
@@ -139,6 +140,7 @@
 			XREF	_getFilepathLeafname
 			XREF	_isDirectory
 			XREF	_resolveRelativePath
+			XREF	_qsort			; In the C runtime
 
 			XREF	_SD_getUnlockCode	; In sd.h
 			XREF	_SD_init_API
@@ -2356,5 +2358,6 @@ mos_function_block_start:
 			DW24	_resolveRelativePath	; 0x0F
 			DW24	func_getsysvars	; 0x10
 			DW24	func_getkbmap	; 0x11
+			DW24	_qsort		; 0x12, standard C qsort
 
 mos_function_block_size:	EQU 	($ - mos_function_block_start) / 3

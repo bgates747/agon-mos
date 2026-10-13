@@ -25,6 +25,7 @@
 ; 03/08/2023:	Added mos_setkbvector
 ; 10/08/2023:	Added mos_getkbmap
 ; 11/11/2023:	Added mos_i2c_open, mos_i2c_close, mos_i2c_write and mos_i2c_read
+; 12/08/2026:	Added mos_function_qsort
 
 ; VDP control (VDU 23, 0, n)
 ;
@@ -115,6 +116,10 @@ mos_waitforvdpflags:	EQU	41h
 ; Function and module APIs
 ;
 mos_getfunction:	EQU	50h
+
+; C function numbers returned by mos_getfunction
+;
+mos_function_qsort:	EQU	12h
 
 ; Low-level SD card functions
 ;
