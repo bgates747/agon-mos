@@ -80,8 +80,8 @@ then explicitly reported "passed". The agent ran only headless tests; human
 review was performed by the Author. The Fab launcher is a compatibility
 shim to the primary Flexe entry point.
 
-No physical bench or firmware was touched. Obtain a fresh explicit bench lease
-before physical qualification or firmware writes. Receiver headroom, physical
+No physical board or firmware was touched. Obtain a fresh explicit bench lease
+before agent-operated physical qualification or firmware writes. Receiver headroom, physical
 full-duplex timing, recovered CPU work and game integration remain unqualified.
 Do not remove game DI blocks or modify another owner's profiles/sources.
 
@@ -104,10 +104,17 @@ This satisfies the canonical human gate; TX-011/TX-012 are complete.
 
 The accepted off-device package is `build/uart0-bench/console8-package-20261013-accepted`
 on Pi and Oryx; candidate CRC32 F7A575E8 and SHA-256 remain the accepted ROM's.
-It includes pinned official flash v1.9 and original notices, but has not been
-copied to a physical card or invoked. Obtain a fresh lease, installed versions,
-specific SD identity and external Console8 ZDI recovery readiness before any
-physical access or flash. No other bench owner's historical grant applies.
+It includes pinned official flash v1.9 and original notices. The Author then
+specified manual Console8 flashing without Extender and authorized staging on
+the SD card mounted on Oryx. The new manual bundle adds official stock VDP
+2.16.0 and `readme.txt` beside the firmware/fixture files; see the dated log for
+deployment evidence. TX-013 deployed and verified 19 files under
+`/test/mos-uart0` on the Oryx card (UUID 8658-1C23); the host mount is
+`/run/media/smith/AGON`. Read `readme.txt` on hardware with MOS TYPE.
+`experiments/uart0-bench/manual-deployment.json` records hashes and receipt.
+The official VDP binary differs from the Golem-built emulator snapshot;
+exact-stock-image physical testing is pending. Agent-operated board/USB/firmware work still requires a
+fresh bench grant. No other bench owner's historical grant applies.
 
 Untimed verification now fences every four comparisons at VDP execution.
 Unpaced / 256-command groups stalled the pinned interpreter during legacy

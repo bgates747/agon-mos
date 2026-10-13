@@ -11,10 +11,11 @@ here, and never reuse an identifier.
 
 ## Acceptance and qualification
 
-TX-006 [ ] Obtain a fresh explicit bench ownership/lease before hardware access
-or firmware writes. Qualify CTS headroom, full-duplex traffic, timing and recovered
+TX-006 [ ] Qualify CTS headroom, full-duplex traffic, timing and recovered
 CPU work physically. Coordinate game integration separately; do not remove DI
 here. Emulator results do not establish physical headroom or game performance.
+The Author performs manual Console8 flashing/testing from the staged SD bundle;
+agent-operated board/USB/firmware access still needs a fresh explicit bench grant.
 
 ## Provenance
 
@@ -22,5 +23,6 @@ C-001/C-002, TX-001 and TX-005 were resolved/delivered on 2026-10-13; see
 [the development log](docs/devlog-2026-10-13.md). Human acceptance TX-010 passed on 2026-10-13.
 Earlier TX-002/TX-003/TX-004 and TX-007/TX-008/TX-009 remain completed evidence.
 Console8 preparation TX-011 and human fixture acceptance TX-012 passed on 2026-10-13.
+Manual Console8 SD deployment TX-013 completed on 2026-10-13.
 Original ASY-001 identifiers remain valid provenance references in
 [the MOS-owned task](docs/tasks/ASY-001.md).

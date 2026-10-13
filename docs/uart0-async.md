@@ -219,6 +219,14 @@ prove safe preemption; this project does not remove DI or modify games.
 
 ## Implementation and validation sequence
 
+Physical qualification targets Heber Agon Console8 without Extender hardware.
+The Author manually installs firmware and runs fixtures. The SD bundle keeps
+the candidate MOS, official stock VDP 2.16.0, flash utility and fixture files
+together with a plain `readme.txt` in `/test/mos-uart0`. Automated emulator
+evidence used a Golem-built snapshot reporting VDP 2.16.0; it does not establish
+qualification of the byte-distinct official stock image. No custom VDP command
+or module-loader extension is required by this UART0 fixture.
+
 This sequence describes the experiments; actionable status lives only in
 [TODO.md](../TODO.md).
 

@@ -2,8 +2,9 @@
 
 Executive summary: this off-device tranche prepares the accepted MOS candidate,
 paired blocking/async work and a Console8 rollback procedure. Physical
-qualification remains TX-006; a fresh explicit bench lease is required before
-accessing the board, its USB ports or SD card. The fixture uses public MOS calls
+qualification remains TX-006. The Author performs manual flashing/testing and
+authorized staging on the Oryx SD card; agent access to the board or its USB
+ports still needs a fresh explicit bench grant. The fixture uses public MOS calls
 and the existing VDP protocol. Its results do not establish receiver headroom.
 
 ## Reproduce and review
@@ -81,30 +82,57 @@ ruby experiments/uart0-bench/check-tools.rb
 
 The off-device package contains the accepted candidate (110,611 bytes, SHA-256
 `29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df`),
-its map, bench/check files, evidence readers, headless receipts, original MIT
-notices, a manifest with CRC32/hashes, and the pinned official
+its map, bench/check files, hardware-readable `readme.txt`, evidence readers,
+headless receipts, original MIT notices, stock VDP 2.16.0, a manifest with
+CRC32/hashes, and the pinned official
 [agon-flash v1.9](https://github.com/AgonPlatform/agon-flash/releases/tag/v1.9).
 Flash binary SHA-256 is
 `480b476703b798cf8d93294cac42d77cad93f7747003b061520b86685c75eb57`.
 Package creation refuses an existing output and refuses changed/unqualified
 artifacts. It does not copy to SD, rewrite autoexec or invoke flashing.
 
+`vdp-2.16.0.bin` is the official stock release image, SHA-256
+`b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f`,
+1,077,840 bytes, CRC32 FFFBFADE. No Golem module loader or Extender firmware is
+required by this fixture. The accepted emulator used a Golem-built VDP snapshot
+reporting 2.16.0, SHA-256 `31d25eec...`, rather than this release binary; the
+stock image's physical qualification remains pending. See the official
+[2.16.0 release](https://github.com/AgonPlatform/agon-vdp/releases/tag/v2.16.0).
+
 ```bash
 bash experiments/uart0-bench/fetch-flash.sh
-ruby experiments/uart0-bench/package.rb build/uart0-bench/console8-package-20261013-accepted
-cd build/uart0-bench/console8-package-20261013-accepted
+bash experiments/uart0-bench/fetch-vdp.sh
+ruby experiments/uart0-bench/package.rb build/uart0-bench/console8-manual-20261013
+cd build/uart0-bench/console8-manual-20261013
 sha256sum --check SHA256SUMS
 ```
 
+For the Author's manual workflow, stage this new package under
+`/test/mos-uart0` on the SD card. On the Console8, use
+`CD /test/mos-uart0` then `TYPE readme.txt`. The text includes separate stock-VDP
+and candidate-MOS flash commands, CRCs, backup, expected manual PASS output,
+repeat-run report preservation, restoration and result collection. The manual
+test does not print the emulator autoexec's BENCH RETURN marker.
+
+Run the physical-only deployment tool with the Oryx project `.venv`, an exact
+mounted-card path and UUID. It verifies the package, requires a removable FAT
+device with the matching UUID, refuses an existing destination, copies only
+that new directory, flushes and verifies hashes, and writes a host receipt.
+It never flashes firmware or modifies emulator profiles. A `--dry-run` mode
+performs the same preflight checks without writing. The card identity is
+recorded in the deployment receipt, not baked into a reusable script.
+
 ## Lease-dependent backup, installation and rollback
 
-The lease must identify this Console8, its SD card and exclusive bench ownership,
+For agent-operated physical work, the lease must identify this Console8, its SD card and exclusive bench ownership,
 permitted MOS writes/reset, the return condition and an agreed expiry. Record
 installed MOS/VDP versions and board identity before changing anything. Check
 firmware compatibility against the official
 [update guidance](https://agonplatform.github.io/agon-docs/Updating-Firmware/),
 including the flash-tool issues listed for VDP 2.8.0, 2.12.0 and 2.13.0.
 If versions are unknown or affected, resolve that before any flash.
+For VDP 2.15.0, the official 2.16.0 release notes require disabling its sprite
+text cursor with `VDU 23 0 &0A 15` before using the flash tool.
 
 Console8 dead-MOS recovery needs an external ESP32 with at least 4 MB of flash
 and three jumpers to ZDI, following the official
@@ -117,6 +145,8 @@ After the grant, validate the exact mounted card against the agreed identity,
 then copy the package to a **new** `/test/mos-uart0` directory. Stop if it exists;
 preserve existing `/mos/flash.bin`, root firmware, autoexec and application trees.
 Host `SHA256SUMS` validation applies to this new directory. Eject cleanly.
+The Author's 2026-10-13 manual-workflow instruction separately authorizes SD
+staging on Oryx; it does not authorize agent-operated board/firmware access.
 
 Before flashing, at the existing MOS prompt:
 

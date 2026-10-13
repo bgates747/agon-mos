@@ -1,0 +1,36 @@
+{
+  "task": "TX-013",
+  "status": "Manual Console8 bundle staged and hash-verified; physical test pending",
+  "deployed_at": "2026-10-13T08:15:02.244803+00:00",
+  "host": "oryx-linuxlite",
+  "sd_uuid": "8658-1C23",
+  "sd_mount": "/run/media/smith/AGON",
+  "sd_path": "/test/mos-uart0",
+  "file_count": 19,
+  "manifest_sha256": "df9bc8f6d0e54bbf73c05d90af506556c0ba9dabc31db87415cbd7b1bb71a2bb",
+  "candidate_sha256": "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df",
+  "bench_sha256": "8ebf251d547db1d83c61d8520c23d4db6290501cd149df796b8fa832c44539b9",
+  "vdp": {
+    "version": "2.16.0",
+    "stock_release": true,
+    "bytes": 1077840,
+    "crc32": "FFFBFADE",
+    "sha256": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f",
+    "source_commit": "c7ac293d2aa81ddfa693390549bcd909069c8fc3",
+    "url": "https://github.com/AgonPlatform/agon-vdp/releases/download/v2.16.0/firmware.bin",
+    "exact_release_binary_emulator_qualified": false
+  },
+  "hardware_readme": "readme.txt",
+  "deployment_tool_checks": [
+    "exact removable FAT mount and UUID verified",
+    "dry run passed",
+    "wrong UUID rejected",
+    "tampered package rejected",
+    "existing destination rejected",
+    "deployed hashes verified"
+  ],
+  "physical_sd_files_written": true,
+  "board_access_performed": false,
+  "firmware_flashing_performed": false,
+  "operator": "Author performs manual firmware installation/testing; no Extender hardware"
+}
