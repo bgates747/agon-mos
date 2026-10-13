@@ -1,0 +1,87 @@
+{
+  "task": "TX-011",
+  "date": "2026-10-13",
+  "target": "Heber Agon Console8",
+  "status": "TX-011 preparation and TX-012 human review accepted; physical qualification pending",
+  "build_host": "oryx-linuxlite",
+  "toolchain": "Native ZDS II eZ80Acclaim! 5.3.5 under Wine",
+  "candidate_sha256": "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df",
+  "bench_bytes": 17899,
+  "bench_sha256": "8ebf251d547db1d83c61d8520c23d4db6290501cd149df796b8fa832c44539b9",
+  "offline_negative_controls": 14,
+  "physical_device_access": false,
+  "firmware_writes": false,
+  "human_review_passed": true,
+  "clock_limit": "Raw MOS ticks; no seconds calibration or silicon performance claim",
+  "verification_group_commands": 4,
+  "verification_command_bytes": 15,
+  "known_limit": "Unpaced and 256-command verification groups stalled pinned Flexe interpreter during closed-session legacy output; four-command execution barriers pass. Root cause not established; no emulator or production MOS source changed.",
+  "engines": [
+    {
+      "engine": "jit",
+      "elapsed_seconds": 42.802,
+      "receiver_bytes_compared": 65536,
+      "corruption_negative_control_passed": true,
+      "returned_to_mos": true,
+      "mapped_requested_backend": true,
+      "graphical_instance_launched": false,
+      "uart": {
+        "tx_irqs": 2044,
+        "modem_irqs": 42,
+        "rx_irqs": 18228,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 75
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df  mos_platform.bin",
+        "5cd30b8c27753c6b7bd6e042a2ae423d3dea9615f7b119a4b7c4c40e3a306236  mos_platform.map",
+        "4548d5c8c572b20c97f953a2e74959ee06229e581957126d7abcf4f38682d015  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "8ebf251d547db1d83c61d8520c23d4db6290501cd149df796b8fa832c44539b9  sdcard/uart0/bench.bin",
+        "e1e9fccd360487bb18f6efbc66c944aaa3ba081e7b4676cbb6d95cbd7c89ad34  sdcard/uart0/checks.bin",
+        "fd700ec71e08e239d1fa1fcd8e71dc3f4477879e9a5d86bb1c984b641078a42f  sdcard/autoexec.txt"
+      ]
+    },
+    {
+      "engine": "interp",
+      "elapsed_seconds": 56.132,
+      "receiver_bytes_compared": 65536,
+      "corruption_negative_control_passed": true,
+      "returned_to_mos": true,
+      "mapped_requested_backend": true,
+      "graphical_instance_launched": false,
+      "uart": {
+        "tx_irqs": 2051,
+        "modem_irqs": 1,
+        "rx_irqs": 23553,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 9
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "29a21ca0e2780a2fda1d7a0530c31a4fcaa90f598d25c483d291ef8285ef44df  mos_platform.bin",
+        "5cd30b8c27753c6b7bd6e042a2ae423d3dea9615f7b119a4b7c4c40e3a306236  mos_platform.map",
+        "4548d5c8c572b20c97f953a2e74959ee06229e581957126d7abcf4f38682d015  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "8ebf251d547db1d83c61d8520c23d4db6290501cd149df796b8fa832c44539b9  sdcard/uart0/bench.bin",
+        "e1e9fccd360487bb18f6efbc66c944aaa3ba081e7b4676cbb6d95cbd7c89ad34  sdcard/uart0/checks.bin",
+        "fd700ec71e08e239d1fa1fcd8e71dc3f4477879e9a5d86bb1c984b641078a42f  sdcard/autoexec.txt"
+      ]
+    }
+  ],
+  "human_review": {
+    "date": "2026-10-13",
+    "author_confirmation": "looks like pass to me",
+    "evidence": "Screenshot shows BENCH FIXTURE / BENCH RETURN PASS, successful typed ECHO UART0 BENCH FIXTURE PASS and restored /uart0 prompt",
+    "screenshot_sha256": "37600c5ef80d14fc812b3e1ed4ca7e078073de30118797ad7ef4c10467c6b3f6"
+  }
+}

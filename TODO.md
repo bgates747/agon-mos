@@ -21,5 +21,6 @@ here. Emulator results do not establish physical headroom or game performance.
 C-001/C-002, TX-001 and TX-005 were resolved/delivered on 2026-10-13; see
 [the development log](docs/devlog-2026-10-13.md). Human acceptance TX-010 passed on 2026-10-13.
 Earlier TX-002/TX-003/TX-004 and TX-007/TX-008/TX-009 remain completed evidence.
+Console8 preparation TX-011 and human fixture acceptance TX-012 passed on 2026-10-13.
 Original ASY-001 identifiers remain valid provenance references in
 [the MOS-owned task](docs/tasks/ASY-001.md).
