@@ -1,0 +1,160 @@
+{
+  "task": "ASY-001",
+  "completed_subtasks": [
+    "TX-002",
+    "TX-003",
+    "TX-004"
+  ],
+  "date": "2026-10-12",
+  "scope": "Isolated native ZDS II ADL assembly built under Wine on Oryx Linux Lite, with injected interrupt frames and independent scripted UART; no live MOS, VDP, emulator profile, game or hardware change.",
+  "qualification": {
+    "scenarios": 1411,
+    "random_sequences": 100,
+    "operations_per_sequence": 300,
+    "flag_values": 256,
+    "mbase_values": [
+      0,
+      7,
+      8,
+      83
+    ],
+    "rx_arrival_cycle_spacings": [
+      160,
+      320,
+      640
+    ],
+    "negative_controls": [
+      "cts",
+      "burst",
+      "rx",
+      "release",
+      "interleave",
+      "wakeup"
+    ],
+    "wide_memory_instructions_audited": 50,
+    "wall_seconds": 9.706,
+    "duration_scope": "SSH staging, native ZDS assembly/link under Wine, artifact retrieval, cached offline Rust compilation, scenarios, benchmarks, width audit and negative controls; initial model copy excluded. Local monotonic clock."
+  },
+  "benchmark": {
+    "wire_bytes": 1578,
+    "useful_iterations": 20000,
+    "ideal_uart_cycles_per_byte": 160,
+    "assumed_ack_cycles": 8,
+    "rows": [
+      {
+        "variant": "blocking",
+        "masked_producer_instructions": 0,
+        "model_cycles": 412653,
+        "isr_cycles": 0,
+        "useful_iterations_overlapping_uart": 37,
+        "isr_entries": 0,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 0,
+        "wire_completion_model_cycles": 252506
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 0,
+        "model_cycles": 365100,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 7546,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 0,
+        "wire_completion_model_cycles": 263878
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 64,
+        "model_cycles": 365100,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 8719,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 103,
+        "wire_completion_model_cycles": 273260
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 256,
+        "model_cycles": 365100,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 9473,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 412,
+        "wire_completion_model_cycles": 283397
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 1024,
+        "model_cycles": 365100,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 9473,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 1639,
+        "wire_completion_model_cycles": 362860
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 4096,
+        "model_cycles": 411660,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 2434,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 6556,
+        "wire_completion_model_cycles": 410176
+      },
+      {
+        "variant": "async",
+        "masked_producer_instructions": 16384,
+        "model_cycles": 423180,
+        "isr_cycles": 197955,
+        "useful_iterations_overlapping_uart": 684,
+        "isr_entries": 97,
+        "wire_bytes": 1578,
+        "max_mask_model_cycles": 26215,
+        "wire_completion_model_cycles": 421696
+      }
+    ],
+    "unmasked_cycle_reduction_percent": 11.523725745359902,
+    "baseline": "Fixture blocking sender waits for THRE per byte; not the compiled production MOS binary."
+  },
+  "artifacts": {
+    "image_bytes": 1906,
+    "driver_bytes": 1554,
+    "image_sha256": "c93100473d67fbb17278f21cdfd27fd040973706c5216cddd1f48db1f67be040",
+    "source_sha256": {
+      "driver.asm": "394abf3c1548d5255cb4b3ff761e131fc963d37dec2f609a8ce587e771af1187",
+      "fixture.asm": "5ff13bb32b306e104cc0b860629466b6cd4335b1958d40052ce058e709c074bf",
+      "build.sh": "2e1a3c5b2d95919849efcb0d355cf7f0d87437f29348541ceb09094d93d957d0",
+      "check-negatives.sh": "d1c5ab5f2d42121b92318b2066e247b041de5e7674fc35b8a217d8713039b348",
+      "audit-widths.rb": "63765e0922b1b56b265a18d025e773db8764653f879957219de9dc65159056e7",
+      "model.sha256": "beba15e61a50966016a505217aefcddf0f26c91cc81bd13a27d0a7935852b1d7",
+      "runner/Cargo.toml": "0f24baa6a9defb2b1c9f1d9506964795a776e1ba7faef7453e208c4b3eb538c2",
+      "runner/Cargo.lock": "58cdfb8c79c8613c1695e826d71e950104832a6331836bc6a5f56cecf4fed39c",
+      "runner/src/main.rs": "e07c7cf237c12b034d2c7db59f81b22e06c2081639a54aa7c8b0c059fd1a1bcb",
+      "remote-build.sh": "3a9a8fc7b05c0ff280800a7cae8955caeb3ca000a06b77745e38d68dd2a6a638",
+      "read-map.rb": "66d671925eee019265d84fbfe5c87c5f8fa90843a671228364c7e2e411f685e9",
+      "uart.linkcmd": "1254d160643a6817a4b3504d4e8ebfff9888a7f09ed11afef5cf37044002993a"
+    },
+    "model_manifest_sha256": "beba15e61a50966016a505217aefcddf0f26c91cc81bd13a27d0a7935852b1d7",
+    "assembler_sha256": "1c7bc7b33dade9bd56903ecf14b28b785af76f1bfca07dbfda93a4351d977887",
+    "linker_sha256": "81840f631e8b33f366cc13a4316a9698ab56e13ffefce56f1f587ca36f866566",
+    "native_hex_sha256": "6b68d8e670894f4fa463205cdc2d0aa54a8d2d3e6a36069fd917e66da1c4cdce",
+    "native_map_sha256": "28355fc07bf67ac427a74c7ea2a6c7fe4bfb886ba446f275833549056e72ac53",
+    "launcher_sha256": "c114be069bb0645b893a03971919e1af954c33eb835cbf62975c247d414e776f",
+    "toolchain": "ZDS II eZ80Acclaim! 5.3.5; eZ80 Macro Assembler 4.3 (19073001); native eZ80link; Wine 10.0 on Oryx Linux Lite. Generic Ubuntu binutils 2.46 objcopy packages Intel HEX only.",
+    "native_layout": "UART_DRIVER 040000h..040611h, UART_FIXTURE 040612h..040771h; trailing DS RAM zero-filled to mapped extent.",
+    "one_time_preliminary_image_comparison": "Byte-identical to preliminary image; GNU assembly build was replaced and is not a supported reproduction route."
+  },
+  "limits": [
+    "Harness supplies maskable interrupt delivery and mixed ADL frames; EI delay is modeled at injection boundaries.",
+    "Idealized UART timing and test RX sink do not qualify real silicon, CTS headroom or MOS VDP parsing.",
+    "Masked intervals count producer host instructions, not 6502 guest instructions.",
+    "C-001/C-002, production ABI/MOS integration and ZDS production link and physical qualification remain open.",
+    "Masked benchmark IFF changes are injected without charging real DI/EI or bridge instructions."
+  ]
+}

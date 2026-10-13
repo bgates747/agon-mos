@@ -1,0 +1,7 @@
+/* Native ZDS II isolated RAM-loaded ADL qualification image. */
+-FORMAT=OMF695,INTEL32
+-map -maxhexlen=64 -quiet -warnoverlap -xref -warn=fatal
+-sort NAME=ascending -debug -NOigcase
+RANGE ROM $040000 : $04FFFF
+ORDER UART_DRIVER, UART_FIXTURE
+"driver" = "driver.obj", "fixture.obj"

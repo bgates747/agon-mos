@@ -1,0 +1,8 @@
+[package]
+name = "mos-uart0-async-qualification"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+ez80 = { path = "../../../build/uart0-async/ez80-model" }
