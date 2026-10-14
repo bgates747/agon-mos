@@ -11,6 +11,17 @@ reserve is 62 observed FIFO slots, while electrical/worst-case timing remains
 unmeasured;
 this is a development ABI in this fork, not an upstream MOS allocation.
 
+## Status and terminology clarification — 2026-10-14
+
+Stock MOS is the approved baseline. The per-byte async implementation in this
+fork and the grouped-scalar/chunk/OTIRX prototypes are experimental, not stock
+or approved production features. Earlier fixture acceptance and commit authority
+do not imply release approval. The [remaining roadmap](uart0-ab-tranche.md)
+and sole [task checklist](../TODO.md) distinguish physical comparison evidence,
+receiver integrity, the traced emulator receiver race, application integration
+and explicit release approval. Use these qualified names rather than calling
+an experimental transport “current.”
+
 ## Original motivation — Tom Morton
 
 Tom Morton's original proposal is the design anchor for this project, including

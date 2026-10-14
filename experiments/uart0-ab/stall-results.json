@@ -1,0 +1,998 @@
+{
+  "scope": "Observed cross-core VDP receive-buffer recovery race in frozen emulator; no production fix or physical qualification",
+  "physical_qualification": false,
+  "root_cause_write_history_established": true,
+  "hardware_ready": false,
+  "failed_attempt": "build/uart0-ab/host-stalls/attempt-017",
+  "archive": "build/uart0-ab/capture-017.tar.gz",
+  "first": {
+    "native_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+    "repeat": 3,
+    "mode": 3,
+    "phase": 0,
+    "work": 11644886,
+    "irqs": 31,
+    "mos_clock": 4236,
+    "cpu": {
+      "host_address": "0x78c036bdc388",
+      "machine_address": "0x78c036bdc590",
+      "guest_pc": "0x402fc",
+      "iff1": 1,
+      "iff2": 1,
+      "adl": 1,
+      "madl": 1,
+      "register_data": "0100000a010000c0b1afd6015b0bc3bf0bff3000000bff06"
+    },
+    "driver": {
+      "name": "chunk",
+      "head": "0x48c8d",
+      "ier": 13,
+      "descriptor": {
+        "state": 3,
+        "ticket": 127,
+        "source": "0x40c8d",
+        "remaining": 15936,
+        "accepted": 448,
+        "length": 16384
+      }
+    },
+    "ez80_uart": {
+      "ier": 13,
+      "cts": 0,
+      "delta": 0,
+      "rx_errors": 0,
+      "rx_fifo": 0,
+      "tx_fifo": 0,
+      "shift_present": 0
+    },
+    "vdp_uart2": {
+      "fifo_count": 128,
+      "int_raw": "0x4103",
+      "int_ena": "0x94"
+    },
+    "adapter": {
+      "ingress_queue": 0,
+      "uart_pending": 128
+    },
+    "vdp_driver": {
+      "object": "0x3ffb5bd8",
+      "buffered": 0,
+      "buffer_size": 0,
+      "full": 0,
+      "current_read": 0,
+      "stash": 43,
+      "requested_rx_mask": "0x101",
+      "ring": "0x3ffb5e40",
+      "ring_size": 256,
+      "ring_waiting": 0,
+      "freertos_ticks": 37459
+    },
+    "vdp_cpu_pc": [
+      "0x40093ede",
+      "0x40176776"
+    ],
+    "receive_wakeup_failure": true
+  },
+  "second": {
+    "native_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+    "repeat": 3,
+    "mode": 3,
+    "phase": 0,
+    "work": 12274624,
+    "irqs": 31,
+    "mos_clock": 4248,
+    "cpu": {
+      "host_address": "0x78c036bdc388",
+      "machine_address": "0x78c036bdc590",
+      "guest_pc": "0x402cb",
+      "iff1": 1,
+      "iff2": 1,
+      "adl": 1,
+      "madl": 1,
+      "register_data": "01000000010000c0bb4bc001660bc3bf0bff3000000bff0c"
+    },
+    "driver": {
+      "name": "chunk",
+      "head": "0x48c8d",
+      "ier": 13,
+      "descriptor": {
+        "state": 3,
+        "ticket": 127,
+        "source": "0x40c8d",
+        "remaining": 15936,
+        "accepted": 448,
+        "length": 16384
+      }
+    },
+    "ez80_uart": {
+      "ier": 13,
+      "cts": 0,
+      "delta": 0,
+      "rx_errors": 0,
+      "rx_fifo": 0,
+      "tx_fifo": 0,
+      "shift_present": 0
+    },
+    "vdp_uart2": {
+      "fifo_count": 128,
+      "int_raw": "0x4103",
+      "int_ena": "0x94"
+    },
+    "adapter": {
+      "ingress_queue": 0,
+      "uart_pending": 128
+    },
+    "vdp_driver": {
+      "object": "0x3ffb5bd8",
+      "buffered": 0,
+      "buffer_size": 0,
+      "full": 0,
+      "current_read": 0,
+      "stash": 43,
+      "requested_rx_mask": "0x101",
+      "ring": "0x3ffb5e40",
+      "ring_size": 256,
+      "ring_waiting": 0,
+      "freertos_ticks": 37560
+    },
+    "vdp_cpu_pc": [
+      "0x40093d57",
+      "0x40176776"
+    ],
+    "receive_wakeup_failure": true
+  },
+  "returned_control": {
+    "native_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+    "repeat": 4,
+    "mode": 4,
+    "phase": 0,
+    "work": 1857344,
+    "irqs": 2804,
+    "mos_clock": 4102,
+    "cpu": {
+      "host_address": "0x731c169dc388",
+      "machine_address": "0x731c169dc590",
+      "guest_pc": "0x931c",
+      "iff1": 1,
+      "iff2": 1,
+      "adl": 1,
+      "madl": 1,
+      "register_data": "01420bc4370bff7900931501d00bff7a0bcf5e00000bff79"
+    },
+    "driver": {
+      "name": "otirx",
+      "head": "0x0",
+      "ier": 5
+    },
+    "ez80_uart": {
+      "ier": 1,
+      "cts": 1,
+      "delta": 0,
+      "rx_errors": 0,
+      "rx_fifo": 0,
+      "tx_fifo": 0,
+      "shift_present": 0
+    },
+    "vdp_uart2": {
+      "fifo_count": 0,
+      "int_raw": "0x4002",
+      "int_ena": "0x195"
+    },
+    "adapter": {
+      "ingress_queue": 0,
+      "uart_pending": 0
+    },
+    "vdp_driver": {
+      "object": "0x3ffb5bd8",
+      "buffered": 0,
+      "buffer_size": 0,
+      "full": 0,
+      "current_read": 0,
+      "stash": 3,
+      "requested_rx_mask": "0x101",
+      "ring": "0x3ffb5e40",
+      "ring_size": 256,
+      "ring_waiting": 0,
+      "freertos_ticks": 36455
+    },
+    "vdp_cpu_pc": [
+      "0x40093df5",
+      "0x40082b09"
+    ],
+    "receive_wakeup_failure": false
+  },
+  "checks": {
+    "failed_snapshot_detected": true,
+    "returned_snapshot_rejected": true,
+    "unsupported_runtime_rejected": true,
+    "python_syntax_passed": true
+  },
+  "normal_write_history": {
+    "attempt": "build/uart0-ab/host-stalls/attempt-025",
+    "events": 64,
+    "anomalous_order_observed": false
+  },
+  "diagnostic_rx_enable_performed": true,
+  "traced_failure": {
+    "archive": "build/uart0-ab/capture-026.tar.gz",
+    "first": {
+      "native_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+      "repeat": 2,
+      "mode": 1,
+      "phase": 1,
+      "work": 382593,
+      "irqs": 28,
+      "mos_clock": 2590,
+      "cpu": {
+        "host_address": "0x7dac415dc388",
+        "machine_address": "0x7dac415dc590",
+        "guest_pc": "0x40301",
+        "iff1": 1,
+        "iff2": 1,
+        "adl": 1,
+        "madl": 1,
+        "register_data": "010000200100004305d68101400bc3bf0bff3000000bff06"
+      },
+      "driver": {
+        "name": "default",
+        "head": "0x47f7a",
+        "ier": 13,
+        "descriptor": {
+          "state": 3,
+          "ticket": 67,
+          "source": "0x44c7d",
+          "remaining": 317,
+          "accepted": 432,
+          "length": 749
+        }
+      },
+      "ez80_uart": {
+        "ier": 13,
+        "cts": 0,
+        "delta": 0,
+        "rx_errors": 0,
+        "rx_fifo": 0,
+        "tx_fifo": 0,
+        "shift_present": 0
+      },
+      "vdp_uart2": {
+        "fifo_count": 128,
+        "int_raw": "0x4103",
+        "int_ena": "0x94"
+      },
+      "adapter": {
+        "ingress_queue": 4,
+        "uart_pending": 128
+      },
+      "vdp_driver": {
+        "object": "0x3ffb5bd8",
+        "buffered": 0,
+        "buffer_size": 0,
+        "full": 0,
+        "current_read": 0,
+        "stash": 60,
+        "requested_rx_mask": "0x101",
+        "ring": "0x3ffb5e40",
+        "ring_size": 256,
+        "ring_waiting": 0,
+        "freertos_ticks": 23225
+      },
+      "vdp_cpu_pc": [
+        "0x40176776",
+        "0x40082ab3"
+      ],
+      "receive_wakeup_failure": true
+    },
+    "second": {
+      "native_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+      "repeat": 2,
+      "mode": 1,
+      "phase": 1,
+      "work": 983127,
+      "irqs": 28,
+      "mos_clock": 2614,
+      "cpu": {
+        "host_address": "0x7dac415dc388",
+        "machine_address": "0x7dac415dc590",
+        "guest_pc": "0x40301",
+        "iff1": 1,
+        "iff2": 1,
+        "adl": 1,
+        "madl": 1,
+        "register_data": "0100000a010000430f005701dc0bc3bf0bff3000000bff06"
+      },
+      "driver": {
+        "name": "default",
+        "head": "0x47f7a",
+        "ier": 13,
+        "descriptor": {
+          "state": 3,
+          "ticket": 67,
+          "source": "0x44c7d",
+          "remaining": 317,
+          "accepted": 432,
+          "length": 749
+        }
+      },
+      "ez80_uart": {
+        "ier": 13,
+        "cts": 0,
+        "delta": 0,
+        "rx_errors": 0,
+        "rx_fifo": 0,
+        "tx_fifo": 0,
+        "shift_present": 0
+      },
+      "vdp_uart2": {
+        "fifo_count": 128,
+        "int_raw": "0x4103",
+        "int_ena": "0x94"
+      },
+      "adapter": {
+        "ingress_queue": 4,
+        "uart_pending": 128
+      },
+      "vdp_driver": {
+        "object": "0x3ffb5bd8",
+        "buffered": 0,
+        "buffer_size": 0,
+        "full": 0,
+        "current_read": 0,
+        "stash": 60,
+        "requested_rx_mask": "0x101",
+        "ring": "0x3ffb5e40",
+        "ring_size": 256,
+        "ring_waiting": 0,
+        "freertos_ticks": 23523
+      },
+      "vdp_cpu_pc": [
+        "0x40093e80",
+        "0x40176776"
+      ],
+      "receive_wakeup_failure": true
+    },
+    "history": {
+      "anomaly": true,
+      "total_events": 39,
+      "records": [
+        {
+          "sequence": 1,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 222,
+          "ring_waiting": 131,
+          "core_pc": [
+            "0x40093ef9",
+            "0x401287e1"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.458092291
+        },
+        {
+          "sequence": 2,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 222,
+          "ring_waiting": 131,
+          "core_pc": [
+            "0x40093ef9",
+            "0x4012880c"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.45835933
+        },
+        {
+          "sequence": 3,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40082b1e"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.458677508
+        },
+        {
+          "sequence": 4,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40128d64",
+            "0x40082b1e"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.459650933
+        },
+        {
+          "sequence": 5,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40092a50",
+            "0x401287e1"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.459891492
+        },
+        {
+          "sequence": 6,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40092a50",
+            "0x4012880c"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.460040871
+        },
+        {
+          "sequence": 7,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 174,
+          "ring_waiting": 174,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.46022828
+        },
+        {
+          "sequence": 8,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 174,
+          "ring_waiting": 174,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 10043,
+          "host_monotonic": 44180.460364179
+        },
+        {
+          "sequence": 9,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 220,
+          "ring_waiting": 81,
+          "core_pc": [
+            "0x40093e20",
+            "0x401287e1"
+          ],
+          "ticks": 12109,
+          "host_monotonic": 44185.540092987
+        },
+        {
+          "sequence": 10,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 220,
+          "ring_waiting": 81,
+          "core_pc": [
+            "0x40093e20",
+            "0x4012880c"
+          ],
+          "ticks": 12109,
+          "host_monotonic": 44185.540258996
+        },
+        {
+          "sequence": 11,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40082b00"
+          ],
+          "ticks": 12110,
+          "host_monotonic": 44185.541042822
+        },
+        {
+          "sequence": 12,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 161,
+          "ring_waiting": 161,
+          "core_pc": [
+            "0x40128d64",
+            "0x40082b00"
+          ],
+          "ticks": 12110,
+          "host_monotonic": 44185.541693288
+        },
+        {
+          "sequence": 13,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 202,
+          "ring_waiting": 168,
+          "core_pc": [
+            "0x40091171",
+            "0x401287e1"
+          ],
+          "ticks": 13252,
+          "host_monotonic": 44188.869374947
+        },
+        {
+          "sequence": 14,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 202,
+          "ring_waiting": 168,
+          "core_pc": [
+            "0x40091171",
+            "0x4012880c"
+          ],
+          "ticks": 13252,
+          "host_monotonic": 44188.869527926
+        },
+        {
+          "sequence": 15,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 92,
+          "ring_waiting": 92,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40082a1b"
+          ],
+          "ticks": 13253,
+          "host_monotonic": 44188.871138597
+        },
+        {
+          "sequence": 16,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 92,
+          "ring_waiting": 92,
+          "core_pc": [
+            "0x40128d64",
+            "0x40082a1b"
+          ],
+          "ticks": 13253,
+          "host_monotonic": 44188.871256177
+        },
+        {
+          "sequence": 17,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 213,
+          "ring_waiting": 213,
+          "core_pc": [
+            "0x4008a627",
+            "0x401287e1"
+          ],
+          "ticks": 13263,
+          "host_monotonic": 44188.89621207
+        },
+        {
+          "sequence": 18,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 213,
+          "ring_waiting": 213,
+          "core_pc": [
+            "0x4008a627",
+            "0x4012880c"
+          ],
+          "ticks": 13263,
+          "host_monotonic": 44188.896346729
+        },
+        {
+          "sequence": 19,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 114,
+          "ring_waiting": 114,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 13263,
+          "host_monotonic": 44188.896535928
+        },
+        {
+          "sequence": 20,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 114,
+          "ring_waiting": 114,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 13263,
+          "host_monotonic": 44188.896715757
+        },
+        {
+          "sequence": 21,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 154,
+          "ring_waiting": 148,
+          "core_pc": [
+            "0x40126077",
+            "0x401287e1"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.549340349
+        },
+        {
+          "sequence": 22,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 154,
+          "ring_waiting": 148,
+          "core_pc": [
+            "0x40126077",
+            "0x4012880c"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.549459308
+        },
+        {
+          "sequence": 23,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 240,
+          "ring_waiting": 240,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.550175934
+        },
+        {
+          "sequence": 24,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 240,
+          "ring_waiting": 240,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.550239774
+        },
+        {
+          "sequence": 25,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 240,
+          "ring_waiting": 240,
+          "core_pc": [
+            "0x4009301a",
+            "0x401287e1"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.550400493
+        },
+        {
+          "sequence": 26,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 240,
+          "ring_waiting": 240,
+          "core_pc": [
+            "0x4009301a",
+            "0x4012880c"
+          ],
+          "ticks": 19229,
+          "host_monotonic": 44201.550459002
+        },
+        {
+          "sequence": 27,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 120,
+          "ring_waiting": 120,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 19230,
+          "host_monotonic": 44201.551312738
+        },
+        {
+          "sequence": 28,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 120,
+          "ring_waiting": 120,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 19230,
+          "host_monotonic": 44201.551372827
+        },
+        {
+          "sequence": 29,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 204,
+          "ring_waiting": 45,
+          "core_pc": [
+            "0x4010104a",
+            "0x401287e1"
+          ],
+          "ticks": 20387,
+          "host_monotonic": 44204.655274036
+        },
+        {
+          "sequence": 30,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 204,
+          "ring_waiting": 45,
+          "core_pc": [
+            "0x4010104a",
+            "0x4012880c"
+          ],
+          "ticks": 20387,
+          "host_monotonic": 44204.655407386
+        },
+        {
+          "sequence": 31,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 108,
+          "ring_waiting": 108,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 20387,
+          "host_monotonic": 44204.656978937
+        },
+        {
+          "sequence": 32,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 108,
+          "ring_waiting": 108,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 20387,
+          "host_monotonic": 44204.657036237
+        },
+        {
+          "sequence": 33,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 157,
+          "ring_waiting": 147,
+          "core_pc": [
+            "0x40093d68",
+            "0x401287e1"
+          ],
+          "ticks": 21046,
+          "host_monotonic": 44205.649794016
+        },
+        {
+          "sequence": 34,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 1,
+          "buffered": 157,
+          "ring_waiting": 147,
+          "core_pc": [
+            "0x40093d68",
+            "0x4012880c"
+          ],
+          "ticks": 21046,
+          "host_monotonic": 44205.649907366
+        },
+        {
+          "sequence": 35,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 255,
+          "ring_waiting": 255,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40176776"
+          ],
+          "ticks": 21046,
+          "host_monotonic": 44205.650143105
+        },
+        {
+          "sequence": 36,
+          "event": "int_ena",
+          "previous": 148,
+          "value": 405,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 255,
+          "ring_waiting": 255,
+          "core_pc": [
+            "0x40128d64",
+            "0x40176776"
+          ],
+          "ticks": 21046,
+          "host_monotonic": 44205.650202414
+        },
+        {
+          "sequence": 37,
+          "event": "full_flag",
+          "previous": 0,
+          "value": 1,
+          "int_ena": "0x195",
+          "full": 1,
+          "buffered": 228,
+          "ring_waiting": 174,
+          "core_pc": [
+            "0x40093e51",
+            "0x401287e1"
+          ],
+          "ticks": 22887,
+          "host_monotonic": 44209.572065703
+        },
+        {
+          "sequence": 38,
+          "event": "full_flag",
+          "previous": 1,
+          "value": 0,
+          "int_ena": "0x195",
+          "full": 0,
+          "buffered": 234,
+          "ring_waiting": 234,
+          "core_pc": [
+            "0x40128dc9",
+            "0x40093d73"
+          ],
+          "ticks": 22887,
+          "host_monotonic": 44209.572293492
+        },
+        {
+          "sequence": 39,
+          "event": "int_ena",
+          "previous": 405,
+          "value": 148,
+          "int_ena": "0x94",
+          "full": 0,
+          "buffered": 0,
+          "ring_waiting": 0,
+          "core_pc": [
+            "0x40176776",
+            "0x4012880c"
+          ],
+          "ticks": 22887,
+          "host_monotonic": 44209.572461591
+        }
+      ]
+    },
+    "intervention": {
+      "qualification": false,
+      "action": "One UART2 INT_ENA MMIO write",
+      "previous": "0x94",
+      "value": "0x195",
+      "command": "call (void)mem_write32_slow((void*)138178686087184, 0x3ff6e00c, 405)"
+    },
+    "recovery_result": {
+      "qualification": false,
+      "tx_before": 1051365,
+      "tx_after": 1098332,
+      "tx_progress": true
+    }
+  }
+}

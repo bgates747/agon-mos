@@ -1527,5 +1527,12 @@
     "backend_reported_fault": false,
     "root_cause_established": false,
     "readiness_revoked": true
+  },
+  "native_stall_investigation": {
+    "status": "Traced VDP cross-core RX recovery race; diagnostic RX re-enable resumes TX; receiver correction remains pending",
+    "details": "docs/uart0-ab-stall.md",
+    "evidence": "experiments/uart0-ab/stall-results.json",
+    "production_fix_made": false,
+    "hardware_ready": false
   }
 }

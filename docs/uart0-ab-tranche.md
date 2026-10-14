@@ -8,32 +8,54 @@ The [skins audit](uart0-jukebox-skins-audit.md) establishes 735-byte uploads at
 model a short scheduler ISR with foreground packet production instead.
 This document describes the tranche; TODO.md is the sole actionable checklist.
 
-## Current gate: intermittent native fixture stall
+## Status and qualification gate
 
-Human review failed at `A/B repeat 2 mode 1 phase 0`: the current scalar async
-kernel's bulk case. The Author confirmed the stall and closed Flexe. Four prior
-successful headless campaigns and a subsequent successful debugger run do not
-resolve this intermittent failure. Native readiness is revoked; do not stage
-the A/B fixture for a Console8 run yet. Earlier accepted Console8 results and
-the instruction-model cycle observations retain their original scope.
+Stock MOS is the approved baseline. Experimental per-byte async, grouped
+scalar, chunk-accounted scalar and OTIRX are development candidates, not
+approved production behavior. Mode 0 measures stock-style blocking output
+through the unchanged legacy path in the candidate fork; it is not a separate
+measurement of a reflashed upstream stock ROM.
 
-AB-006 owns the immediate investigation. Reproduce in a separate MOS-owned
-emulator profile and capture a stalled CPU's PC, IFF state, UART interrupt
-enable/status, queue head and descriptor progress, along with the last phase
-and TX transcript. Distinguish a fixture, driver or emulator failure using the
-captured state; do not infer a cause from another passing run. Preserve failed
-attempts and runtime/source identities. The closed human-run evidence is
-archived on Pi and Oryx at `build/uart0-ab/human-stall-001.tar.gz`; its counters
-record no TX drops, RX overruns or backend execution fault, without explaining
-the stall.
+The Author authorized an exploratory Console8 comparison on 2026-10-14 despite
+the emulator fault. Returned R0005 passes all 30 phases with no late feeds or
+case RX errors. OTIRX yields 31.3% more median paced useful work than experimental
+per-byte async, with equal bulk drain ticks. This does not verify every bulk
+byte, measure exact CPU cycles or approve a production feature.
 
-Completion requires an evidence-backed cause, a targeted correction and a
-regression check that exercises the identified failure mechanism. Then repeat
-the full native campaign in both frozen Flexe engines and obtain human review
-before hardware staging under AB-005. Keep production firmware and the SD
-unchanged during investigation. No new hardware run is currently requested.
+The human Flexe stall at `A/B repeat 2 mode 1 phase 0` led to a captured VDP
+cross-core receive-buffer recovery race: the ISR disables RX after reader
+recovery clears its full flag. See [failure evidence](uart0-ab-stall.md).
+AB-006 now owns correction/regression with the receiver owner and renewed
+both-engine/human qualification. Diagnostic RX re-enable is evidence, not a
+fix. Passing runs and the separately authorized hardware campaign do not close
+that dependency. Historical failed attempts and runtime identities remain
+archived in the workspace.
 
-The comparison includes blocking MOS output, current per-byte async output,
+## Remaining route to release
+
+First complete the supported experimental driver/session API under BT-003,
+including per-byte fallback, ownership, CTS wakeups, bounded IRQ work and safe
+exit. Pair this with AB-003 and BT-005/BT-006 receiver checks covering every
+bulk byte, sustained full duplex, queue/descriptor boundaries and repeated CTS
+stop/resume. This is the next implementation tranche before app integration.
+
+Then complete repeated stock-versus-experimental performance comparisons under
+AB-001/AB-002 and BT-004, with independent timing, useful-work measurements,
+variation and explicit baseline identities. AB-004 adds the source-derived
+paced audio fixture; AB-007 separately scopes actual skins-branch Jukebox
+integration and audio/graphics measurements with the application owner.
+
+UI-001 retains the unexplained menu keyboard delay. AB-006 retains the receiver
+race dependency before emulator passes can support release qualification.
+BT-007 assembles the repeatable tests, supported combinations, compatibility
+limits and safety rationale into a release candidate for explicit Author
+approval. Neither successful hardware tests nor permission to commit constitutes
+approval to promote or release an experimental transport. TODO.md owns all
+unfinished task checkboxes and immutable identifiers.
+
+## Controlled comparisons and application workload
+
+The comparison includes blocking MOS output, experimental per-byte async output,
 grouped scalar output and bounded OTIRX refills. Use identical valid bulk VDP
 commands, payload sizes, baud rate and receiver work. Alternate run order and
 repeat. Measure from comparable start conditions through wire drain; enqueue
@@ -56,7 +78,7 @@ SD reads as a separate jitter case. Queue bounded fixed graphics work through
 the same producer. The synthetic fixture uses a short due-work timer ISR and
 an interruptible foreground loop, not publication from the audio ISR.
 
-Compare current Jukebox-like blocking/long-ISR scheduling as a reference,
+Compare the inspected Jukebox blocking/long-ISR scheduling as a reference,
 then adapted foreground scalar and OTIRX variants with an identical scheduler
 and packet pool. This separates scheduling gains from refill gains. Record
 queue/feed backlog, lateness, completed useful work, stable-source lifetimes

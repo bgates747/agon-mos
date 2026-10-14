@@ -93,3 +93,30 @@ bash experiments/uart0-ab/native_remote.sh
 launches a graphical instance. This experiment is not yet deployed to SD or
 integrated into the existing menu; preserve sequential reporting and the stable
 hardware path when qualified packaging is added. No Jukebox changes are made.
+
+## AB-006 forensic runs
+
+Native readiness is revoked. See [the captured receiver failure](../../docs/uart0-ab-stall.md).
+The new tools use only the dedicated auto profile; the human profile and SD
+remain untouched. Run on Oryx with the project Python, after preparing --auto:
+
+```sh
+.venv/bin/python -B experiments/uart0-ab/debug_stall.py jit 4
+xvfb-run -a env UART_AB_VIDEO=x11 .venv/bin/python -B experiments/uart0-ab/supervise.py interp 4 coarse
+```
+
+The supervisor preserves attempts under build/uart0-ab/host-stalls, capturing
+through host GDB only after 15 seconds without TX progress. It checks child
+process-group/executable identity and stops only its owned emulator. sudo is
+used solely for attaching GDB to that child and stopping its own GDB watcher.
+The capture decoder pins this exact frontend/adapter and firmware ELF layout.
+A returned observational run is not a qualification receipt; shutdown status,
+packet integrity and the unresolved human failure still matter.
+
+UART_AB_CAPTURE_RETURN=1 validates the capture path on a returned control.
+UART_AB_WATCH_RX=1 adds hardware watchpoints for the VDP driver's recovery flag
+and UART2 INT_ENA, preserving a bounded write history; this changes execution
+timing. UART_AB_RECOVER_RX=1 permits one diagnostic INT_ENA MMIO write only
+after a captured receive-wakeup failure, then records whether TX resumes.
+That intervention permanently disqualifies the run as a benchmark or passing
+qualification. These options are not part of the normal fixture or launchers.

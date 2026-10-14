@@ -85,7 +85,7 @@ static unsigned last_run(void) {
 }
 static int begin_run(const char *action) {
     /* Reserve the run log first; an interrupted run's number cannot be reused. */
-    const char *prefixes="BNFSPGDIKJHLE";
+    const char *prefixes="BNFSPGDIKJHLEAX";
     for(run_id=last_run()+1;run_id<10000;run_id++) {
         filename(name,'R',"log");if(exists(name))continue;
         int used=0;
@@ -245,6 +245,31 @@ static int child_test(unsigned test) {
     else {snprintf(line,sizeof(line),"BASELINE %s RX=%02X modem=%02X\r\n",name,baseline[0],baseline[1]);journal(line);}
     return ok?PASS:FAIL;
 }
+static int ab_test(void) {
+    puts("T8: controlled UART0 A/B; 30 phases, normally under two minutes.");
+    puts("Modes 0 blocking, 1 default async, 2 grouped, 3 chunk, 4 OTIRX.");
+    puts("Phase 0 bulk; phase 1 paced. If over two minutes, reset and report the last line.");
+    if(!available()){puts("SKIP: UART0 API 1.1 is required.");return SKIP;}
+    if(mos_load("ab.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01UABF",9))return FAIL;
+    filename(CHILD+73,'A',"dat");filename(CHILD+89,'X',"dat");
+    snprintf(line,sizeof(line),"AB_START report=A%04u.dat failure=X%04u.dat phases=30\r\n",run_id,run_id);
+    journal(line);checkpoint();
+    char command[]="RUN &80000";
+    uint8_t error=mos_oscli(command,NULL,0);
+    uint8_t b[489];filename(name,'A',"dat");
+    if(error || !read_report(name,b,488) || memcmp(b,"UAB1\x01\x1e\x10\x00",8))return FAIL;
+    for(unsigned n=0;n<30;n++) {
+        const uint8_t *r=b+8+n*16;
+        unsigned repeat=n/10,mode=(n%10)/2;
+        if(repeat&1)mode=4-mode;
+        if(r[0]!=repeat || r[1]!=mode || r[2]!=n%2 || !u24(r+3) || r[13] || r[14] || r[15])return FAIL;
+        snprintf(line,sizeof(line),"AB repeat=%u mode=%u phase=%u ticks=%lu work=%lu irq=%lu late=%u rx=%02X\r\n",
+            repeat+1,mode,r[2],(unsigned long)u24(r+3),(unsigned long)u24(r+6),(unsigned long)u24(r+9),r[12],r[13]);
+        journal(line);
+    }
+    journal("AB_SCOPE raw MOS ticks; receiver735 bytes/phase; full bulk integrity and physical CPU cycles not measured\r\n");
+    return PASS;
+}
 static uint32_t parse_ms(const char *s) {
     uint32_t v=0;unsigned digits=0;int dot=0;
     if(!*s)return 0;
@@ -369,6 +394,7 @@ static void firmware_menu(void) {
     }
 }
 static int execute(unsigned test,int automated) {
+    if(test==8)return ab_test();
     if(test==7)return receiver_margin();
     if(test==6)return integration();
     if(test==1)return diagnostics();if(test==2||test==3)return child_test(test);
@@ -377,8 +403,9 @@ static int execute(unsigned test,int automated) {
 static int selection(unsigned test,int automated) {
     if(!begin_run(test?"individual":"all"))return FAIL;
     int overall=PASS;
-    const unsigned order[]={1,6,2,3,4,5};
-    for(unsigned i=0;i<(test?1:6);i++) {
+    const unsigned order[]={1,6,2,3,4,5,8};
+    unsigned count=test?1:(exists("ab.bin")?7:6);
+    for(unsigned i=0;i<count;i++) {
         unsigned n=test?test:order[i];
         int status=execute(n,automated);
         record_status(n,status);
@@ -396,17 +423,17 @@ int main(int argc,char **argv) {
     puts("Reading installed MOS fingerprint...");rom_crc=installed_crc();config();
     if(argc>1) {
         if(!strcmp(argv[1],"auto")){int r=selection(0,1);puts(r==FAIL?"UART0 SUITE AUTO FAIL":"UART0 SUITE AUTO COMPLETE; manual measurements pending");return r==FAIL;}
-        if(argv[1][0]>='1'&&argv[1][0]<='7'&&!argv[1][1])return selection(argv[1][0]-'0',0)==FAIL;
+        if(argv[1][0]>='1'&&argv[1][0]<='8'&&!argv[1][1])return selection(argv[1][0]-'0',0)==FAIL;
     }
     for(;;) {
         puts("\nUART0 QUALIFICATION SUITE v1");
         printf("Hardware label: %s; installed MOS CRC32 %08lX\n",board,(unsigned long)rom_crc);
         printf("VDP label: %s (operator supplied)\n",vdp_label);
-        puts("1 Firmware/API and phased RX diagnostics\n2 Legacy/async benchmark\n3 Pause / full-duplex stress\n4 Independent stopwatch calibration\n5 CTS capture preparation\n6 API / masked-IFF / exit / ADL=0 smoke tests\n7 Diagnostic VDP receiver-margin experiment (separate)\n0 Run all baseline tests (manual timing can be skipped)\n9 Staged firmware / MOS backup\nQ Return to MOS\nPress a choice key:");
+        puts("1 Firmware/API and phased RX diagnostics\n2 Legacy/async benchmark\n3 Pause / full-duplex stress\n4 Independent stopwatch calibration\n5 CTS capture preparation\n6 API / masked-IFF / exit / ADL=0 smoke tests\n7 Diagnostic VDP receiver-margin experiment (separate)\n8 Controlled UART0 A/B throughput / CPU headroom\n0 Run all baseline tests plus A/B (manual timing can be skipped)\n9 Staged firmware / MOS backup\nQ Return to MOS\nPress a choice key:");
         char c=getch();if(c=='q'||c=='Q')break;
         if(c=='9'){firmware_menu();continue;}
-        if(c>='0'&&c<='7'){selection(c-'0',0);puts("Press any key for menu.");getch();}
-        else puts("Choose 0-7, 9 or Q.");
+        if(c>='0'&&c<='8'){selection(c-'0',0);puts("Press any key for menu.");getch();}
+        else puts("Choose 0-9 or Q.");
     }
     puts("UART0 SUITE RETURN PASS");return 0;
 }

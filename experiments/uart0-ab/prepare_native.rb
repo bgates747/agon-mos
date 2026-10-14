@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'fileutils';require 'json'
-root=File.expand_path('../..',__dir__);Dir.chdir(root);out='build/uart0-ab/native';FileUtils.mkdir_p(out)
+root=File.expand_path('../..',__dir__);Dir.chdir(root)
+hardware=ARGV==['--hardware'];abort 'Unknown arguments' unless ARGV.empty? || hardware
+out=hardware ? 'build/uart0-ab/hardware-native' : 'build/uart0-ab/native';FileUtils.mkdir_p(out)
 modes=%w[default grouped chunk otirx]
 modes.each do |mode|
  s=File.read("build/uart0-ab/#{mode}/uart0_tx.inc")
@@ -13,6 +15,12 @@ modes.each do |mode|
  File.write("#{out}/#{mode}.asm","UART0_PRODUCTION EQU 0\n"+s+"\n    END\n")
 end
 FileUtils.cp('experiments/uart0-ab/native.asm',"#{out}/app.asm")
+if hardware
+ p="#{out}/app.asm";s=File.read(p)
+ s=s.sub('    DB "MOS",0,1',"    DB \"MOS\",0,1,\"UABF\"\nresult_name: DB \"A0000.dat\",0\n    DS 6\nfailure_name: DB \"X0000.dat\",0\n    DS 6")
+ s=s.sub("result_name: DB \"ab.dat\",0\n",'').sub("failure_name: DB \"ab-fail.dat\",0\n",'')
+ File.write(p,s)
+end
 FileUtils.cp('experiments/uart0-async/fixture.asm',"#{out}/fixture.asm")
 # Fixture only supplies RX capture; its callback-test pointer uses default core.
 p="#{out}/fixture.asm";File.write(p,File.read(p).gsub(/\btx_status\b/,'default_tx_status'))
@@ -20,7 +28,7 @@ File.write("#{out}/app.linkcmd",<<~LINK)
 -FORMAT=OMF695,INTEL32
 -map -maxhexlen=64 -quiet -warnoverlap -xref -warn=fatal
 -sort NAME=ascending -debug -NOigcase
-RANGE ROM $040000 : $04FFFF
+RANGE ROM #{hardware ? '$080000 : $08FFFF' : '$040000 : $04FFFF'}
 ORDER UART_ENTRY, #{modes.map{|m|"UART_DRIVER_#{m}"}.join(', ')}, UART_FIXTURE
 "app" = "app.obj", #{modes.map{|m|"\"#{m}.obj\""}.join(', ')}, "fixture.obj"
 LINK

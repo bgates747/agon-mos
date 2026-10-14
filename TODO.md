@@ -1,14 +1,15 @@
 # MOS TODO
 
-Executive summary: the UART0 candidate is integrated and passes native ZDS II,
-scripted and full-image headless Flexe qualification. The Author passed human
-review of the earlier fixtures on 2026-10-13. The reusable suite is qualified
-headlessly and staged; its corrected human software campaign also passes.
-The Console8 software campaign and approximate manual calibration also pass.
-Console8 receiver instrumentation also passes, with 62 observed spare FIFO
-slots at stock threshold. Prior suite/instrumentation work is committed and pushed;
-worst-case/electrical timing is unmeasured and deferred. Batching contract and
-hardware audit are delivered; isolated implementation is next.
+Executive summary: stock MOS remains the approved baseline. The experimental
+per-byte async fork and private grouped-scalar/chunk/OTIRX prototypes are not
+approved production features. Console8 R0005 passes the controlled 30-phase
+comparison: OTIRX recovers 31.3% more paced useful work than experimental
+per-byte async, without improving its bulk drain time. Full bulk receiver
+integrity, supported session API, application integration and release review
+remain open. A captured emulator stall is traced to a VDP receive-recovery race;
+receiver-owner correction and regression remain outstanding. Menu keyboard
+unresponsiveness also remains unexplained. Earlier accepted fixture results
+retain their documented scope; they do not approve these experimental modes.
 This is the sole unfinished-work checklist.
 
 Subtask IDs are immutable: a short namespace followed by a hyphen and three
@@ -42,7 +43,7 @@ Manual Console8 SD deployment TX-013 completed on 2026-10-13.
 Original ASY-001 identifiers remain valid provenance references in
 [the MOS-owned task](docs/tasks/ASY-001.md).
 
-## Opt-in CTS batching (contract and audit delivered; implementation next)
+## Opt-in CTS batching (contract, audit and initial prototypes delivered)
 
 See [the design goal and acceptance plan](docs/uart0-cts-batching.md).
 Contract: [proposed ABI](docs/uart0-cts-batching-api.md).
@@ -51,17 +52,22 @@ BT-001/BT-002 are complete. TX-006 closeout records empirical reserve and
 defers electrical/worst-case qualification; stock restoration is confirmed.
 
 BT-003 [ ] Implement isolated grouped-scalar and bounded OTIRX candidates,
-retaining the per-byte default and 16-write service cap. Verify native block-I/O
+retaining stock legacy behavior, an experimental per-byte session fallback
+and the 16-write service cap. Complete the versioned session API and supported
+settings, including ownership, CTS wakeups, IRQ interaction and exit cleanup. Verify native block-I/O
 register/count semantics, source-span bounds and per-chunk descriptor accounting;
 preserve CTS admission, wakeups and lifetime/ordering fences. Initial interval16
 compiled kernel prototypes and inherited model contracts pass in uart0-ab; the
 public API and other interval settings remain unimplemented.
 
-BT-004 [ ] Compare default, grouped-scalar and OTIRX throughput and recovered
+BT-004 [ ] Compare stock-style blocking, experimental per-byte async, grouped-scalar
+and OTIRX throughput and recovered
 CPU/useful work, including
 service cost and latency; establish whether batching offers a worthwhile gain.
 Initial paced model result:73.75% fewer UART service cycles; unpaced throughput
-does not improve. See experiments/uart0-ab/RESULTS.md.
+does not improve. Console8 R0005 shows 31.3% more paced useful work over
+experimental per-byte async; this is not an exact physical cycle count.
+See experiments/uart0-ab/RESULTS.md.
 
 BT-005 [ ] Extend menu/reporting and both-engine qualification for batching,
 receiver integrity, negative controls, default regression and session cleanup.
@@ -70,8 +76,10 @@ BT-006 [ ] Qualify manually on Console8 with stock threshold and diagnostic
 controls; repeat near any failure boundary without Olimex probing or wiring.
 
 BT-007 [ ] Select conservative supported options from evidence, document
-compatibility/limits, and complete human review; defer shipping if gains do not
-justify the tradeoff.
+compatibility/limits, and prepare a repeatable release candidate for explicit
+Author approval before promotion/release. Require supported API, full receiver
+integrity, legacy/session regressions and repeatable performance evidence;
+defer shipping if gains do not justify the tradeoff.
 
 ## Next tranche: A/B streaming and Jukebox-shaped workload
 
@@ -79,15 +87,22 @@ See [the tranche specification](docs/uart0-ab-tranche.md). These identify
 benchmark deliverables; BT-003..BT-007 retain the driver/qualification work and
 are dependencies, not a second implementation of the same tasks.
 
-AB-006 [ ] Trace the intermittent native A/B stall before hardware staging:
-capture stalled CPU/UART/queue state, establish the cause, apply a targeted
-correction and regression check, then repeat both-engine qualification and
-human review. See docs/uart0-ab-tranche.md for evidence and completion gate.
+AB-006 [ ] Close the traced intermittent native A/B stall: coordinate a targeted
+receiver-owner correction and regression exercising the recovery race, then
+repeat both-engine qualification and human review before relying on emulator
+passes for release qualification. See docs/uart0-ab-tranche.md for evidence and completion gate.
+Diagnosis is traced: VDP ISR disables RX after reader recovery clears the flag;
+diagnostic RX re-enable resumes TX. See docs/uart0-ab-stall.md. Receiver-owner
+correction/regression and renewed qualification remain. The Author separately
+authorized an exploratory Console8 comparison on2026-10-14; it does not clear
+the emulator fault or production qualification gate.
 
-AB-001 [ ] Build repeated sustained-stream comparisons: blocking, default async,
+AB-001 [ ] Build repeated sustained-stream comparisons: stock-style blocking, experimental per-byte async,
 grouped scalar and bounded OTIRX, using identical valid VDP workloads. Initial
 model and30-phase native fixtures implemented. Human review failed with a
-scalar async bulk stall; trace the cause before further qualification/deployment.
+experimental per-byte async bulk stall; its cause is now traced under AB-006.
+The exploratory hardware run is complete; supported-driver comparisons and
+release qualification remain pending.
 
 AB-002 [ ] Measure fixed-payload wire-drain time and concurrent useful CPU work,
 service cost and latency; alternate case order and report repeat variation.
@@ -96,6 +111,9 @@ calibrated hardware rates and optimized refill latency remain pending.
 
 AB-003 [ ] Verify byte integrity with diagnostic VDP, and measure performance
 separately with stock VDP using matched commands and completion semantics.
+Verify every bulk payload byte via count/CRC or equivalent receiver checks,
+not only reply samples. Include sustained full-duplex traffic, descriptor/queue
+boundaries and repeated CTS stop/resume, coordinated with BT-005/BT-006.
 
 AB-004 [ ] Build the source-derived Jukebox-shaped fixture: 735-byte PCM feeds
 at 60 Hz, two one-second VDP samples, short due-work ISR and foreground stable
@@ -105,3 +123,22 @@ Source inspection is complete; see docs/uart0-jukebox-skins-audit.md.
 
 AB-005 [ ] Package the comparisons and integrity checks into the existing menu;
 qualify headlessly before one manual Console8 hardware campaign.
+Option8 and sequential A/X reports are staged for the Author-authorized
+exploratory hardware comparison, retaining earlier tests/reports. Final menu
+integration passed60 JIT phases across repeated runs and30 interpreter phases;
+Console8 R0005 passes all30 phases; useful paced work rises31.3% with OTIRX
+versus experimental per-byte async, with equal bulk ticks. Full receiver integrity and broader
+qualification remain. See experiments/uart0-ab/physical-results.json.
+
+UI-001 [ ] Diagnose the Author-reported Console8 suite menu keyboard delay.
+getch uses normal blocking MOS getkey; no deliberate polling delay is present.
+Compare against the MOS prompt and a minimal getkey fixture before changing
+input handling. The R0005 A/B run completed; keyboard delay remains untraced.
+
+AB-007 [ ] Scope and coordinate actual AgonJukebox skins integration after the
+controlled fixtures establish benefit and integrity. Arrange explicit app-owner
+authorization before changing that project. Use a short scheduling ISR, stable
+foreground packet production and MOS as sole UART owner. Compare stock app
+behavior with adapted scalar/OTIRX variants using matched scheduling; measure
+audio continuity, feed backlog and graphics/CPU headroom. Keep scheduling gains
+separate from transport gains; synthetic AB-004 alone does not close this task.

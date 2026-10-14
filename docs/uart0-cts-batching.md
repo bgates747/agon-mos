@@ -2,9 +2,10 @@
 
 Aware applications should be able to request fewer CTS checks per transmitted
 byte, recovering eZ80 execution time while retaining reliable, ordered UART0
-output on a qualified hardware/VDP combination. The production default remains
-a CTS check before every byte. This is a proposed extension, not an implemented
-or qualified operating mode.
+output on a qualified hardware/VDP combination. Stock MOS legacy blocking
+behavior remains the approved default. Per-byte async and batching are
+experimental; private prototypes exist, but the supported batching API and
+production qualification are incomplete.
 
 ## Original design anchor
 
@@ -26,11 +27,13 @@ ISR work limits and receive servicing remain necessary. The UART line rate is
 unchanged; benefits must be demonstrated as recovered CPU time or reduced
 software-induced gaps, rather than assumed from fewer checks.
 
-Legacy calls and unmodified async applications retain per-byte checking.
+Legacy calls retain stock behavior. Applications using the experimental async
+API retain per-byte checking unless they explicitly request batching.
 Selection belongs to the active session, with a safe default on every open
 and reset on close/application exit. Unsupported requests fail explicitly;
-there is no silent escalation. The exact API is to be designed with versioned
-capability discovery and compatibility with the existing 1.1 table. Initially,
+there is no silent escalation. The [proposed ABI 1.2](uart0-cts-batching-api.md)
+defines versioned capability discovery and compatibility with the experimental
+1.1 table; its public implementation is pending. Initially,
 configuration should be permitted only when transmission is quiescent, avoiding
 an ambiguous change in the middle of a published descriptor. Exact quiescence
 and error semantics are part of the contract review.
@@ -52,7 +55,7 @@ Threshold124/126/127 cases reached128 without data loss, so no failure boundary
 was established. The analyzer's full-FIFO counts cannot reveal further tail
 occupancy. Electrical CTS timing and worst-case reserve remain unmeasured.
 
-The current implementation's UART FIFO behavior, bytes already in flight,
+The experimental implementation's UART FIFO behavior, bytes already in flight,
 CTS sampling race and VDP receive-service behavior must be included in the
 batch budget. In particular, do not equate the observed62 spare slots with
 permission to send62 unchecked bytes on every platform. Longer CPU delay is
@@ -63,7 +66,9 @@ qualification and use threshold sweeps only as additional diagnostic controls.
 ## Work sequence and acceptance
 
 The sole actionable checklist is TODO.md, using immutable BT-nnn identifiers.
-Existing qualification/release bookkeeping is closed; implementation is next.
+Earlier fixture bookkeeping is closed; private prototypes and the exploratory
+Console8 comparison exist. Supported implementation and release gates remain
+open; see [the A/B roadmap](uart0-ab-tranche.md).
 
 BT-001 defines the session API/capability contract, supported values and reset
 semantics. BT-002 audits hardware and assembly paths and establishes a
@@ -74,7 +79,8 @@ Validate block I/O register semantics and update progress per copied chunk. Incl
 interrupt service. These are experiment candidates, not promised supported
 production settings.
 
-BT-004 compares blocking, default async, grouped scalar async and OTIRX async,
+BT-004 compares stock-style blocking, experimental per-byte async, grouped
+scalar async and OTIRX async,
 using identical payloads and useful application work. Measure throughput,
 completed useful work or cycles, interrupt/service cost and latency. Keep
 calibrated coarse MOS ticks separate from precise CPU accounting. A relaxed
@@ -97,8 +103,9 @@ a tested lower bound on tolerance rather than inventing a breaking point.
 Separate the experiment range from conservative production options.
 
 BT-007 reviews benefit against receiver reserve and failure evidence, documents
-which combinations were tested, and either ships a conservative opt-in mode
-or records that the gain does not justify shipping it. Production acceptance
+which combinations were tested, and prepares a conservative opt-in release
+candidate for explicit Author approval, or records why it should be deferred.
+Production acceptance
 requires clean default/legacy regression, session cleanup, useful measured gain,
 verified receiver integrity and a documented safety rationale. A successful
 fault-injection experiment alone is insufficient. Human review precedes commit

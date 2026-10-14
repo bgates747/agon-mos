@@ -1,5 +1,14 @@
 # Initial controlled UART0 A/B results
 
+Console8 update: run0005 passed all30 phases, with zero late feeds and case RX
+errors. At identical120-tick paced windows, OTIRX completes31.3% more useful
+loop work than default async. Bulk medians: blocking96, default58, grouped56,
+chunk56, OTIRX58 raw MOS ticks. This establishes recovered useful CPU work on
+this workload, without a bulk throughput gain over default async. See
+physical-results.json. Tick frequency and exact CPU cycles were not measured;
+receiver checks cover735 bytes per phase rather than every bulk byte. The
+emulator race and reported menu keyboard delay remain separate unresolved work.
+
 Executive summary: the paced instruction-model experiment finds about 74% fewer
 UART service cycles for the OTIRX/chunk-accounting candidate versus the existing
 async kernel. Unpaced throughput does not improve: roughly 108.5k versus 110.7k

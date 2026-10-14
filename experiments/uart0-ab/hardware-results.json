@@ -1,0 +1,61 @@
+{
+  "purpose": "Author-authorized exploratory Console8 comparison despite known Flexe receiver race",
+  "production_qualification": false,
+  "known_receiver_race_cleared": false,
+  "menu_build_id": "3f6f567c1ab4482e",
+  "checks": {
+    "jit": {
+      "menu_integration_passed": true,
+      "engine": "jit",
+      "repeats": 2,
+      "phases": 60,
+      "elapsed_seconds": 88.923,
+      "native_sha256": "1aece2d13a1015ae6cbc3c2de6f142e33a5b5aa6e0555502f2cfcc3021e7d2cd",
+      "menu_sha256": "d527067162a6b1967fa7203fe8a68af5b87ce34b9038eb95804a9c2fcadc1964",
+      "physical_qualification": false,
+      "known_receiver_race_cleared": false,
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+        "d527067162a6b1967fa7203fe8a68af5b87ce34b9038eb95804a9c2fcadc1964  sdcard/uart0/test.bin",
+        "4f6cabb9e5eb6fda3f6138978f0da081694f5fca6c6af50b9d11c7f7f50e7496  sdcard/autoexec.txt",
+        "1aece2d13a1015ae6cbc3c2de6f142e33a5b5aa6e0555502f2cfcc3021e7d2cd  sdcard/uart0/ab.bin",
+        "493b00c9fa2f9c4213773aa233ddf96e95155d0713f8342fa3bc70852a4a9a16  sdcard/uart0/suite.cfg"
+      ]
+    },
+    "interp": {
+      "menu_integration_passed": true,
+      "engine": "interp",
+      "repeats": 1,
+      "phases": 30,
+      "elapsed_seconds": 67.629,
+      "native_sha256": "1aece2d13a1015ae6cbc3c2de6f142e33a5b5aa6e0555502f2cfcc3021e7d2cd",
+      "menu_sha256": "d527067162a6b1967fa7203fe8a68af5b87ce34b9038eb95804a9c2fcadc1964",
+      "physical_qualification": false,
+      "known_receiver_race_cleared": false,
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+        "d527067162a6b1967fa7203fe8a68af5b87ce34b9038eb95804a9c2fcadc1964  sdcard/uart0/test.bin",
+        "9f709661df8002921d86c998b1e2daea890fdccd6311dc73005e26f24152f14b  sdcard/autoexec.txt",
+        "1aece2d13a1015ae6cbc3c2de6f142e33a5b5aa6e0555502f2cfcc3021e7d2cd  sdcard/uart0/ab.bin",
+        "493b00c9fa2f9c4213773aa233ddf96e95155d0713f8342fa3bc70852a4a9a16  sdcard/uart0/suite.cfg"
+      ]
+    }
+  },
+  "deployment_receipt": "experiments/uart0-ab/hardware-deployment.json",
+  "physical_results_pending": false,
+  "physical_return": "experiments/uart0-ab/physical-results.json"
+}

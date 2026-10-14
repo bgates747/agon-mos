@@ -1,4 +1,8 @@
-UART0 CONTROLLED A/B EXPERIMENT - EMULATOR REVIEW CANDIDATE
+UART0 CONTROLLED A/B EXPERIMENT - UNQUALIFIED
+
+An intermittent VDP receive-wakeup stall is under investigation (AB-006).
+Do not run this as a hardware qualification fixture. Successful reruns do not
+clear the unresolved failure. See docs/uart0-ab-stall.md in the workspace.
 
 No MOS or VDP flash is required for this emulator review. Production MOS,
 AgonJukebox, and the Console8 SD have not been changed.

@@ -1,5 +1,24 @@
 # Interrupt-based UART0 transmission project — handoff
 
+Latest return: Console8 R0005 passes all30 A/B phases with zero late feeds and
+case RX errors. Paced OTIRX useful work is31.3% above experimental per-byte async; both take58
+raw ticks for bulk versus96 for blocking. No tick-rate/CPU-cycle assumption.
+Card inspection/archive was read-only. See experiments/uart0-ab/physical-results.json
+and build/uart0-ab/console8-run0005.tar.gz. UI-001 tracks the Author's separate,
+unexplained menu keyboard delay; do not attribute it to getch without evidence.
+
+Current priority (2026-10-14): complete the experimental session API and driver
+(BT-003), paired with full receiver integrity (AB-003/BT-005). Stock MOS is the
+approved baseline; neither async implementation is approved for production.
+The exploratory Console8 comparison is complete. AB-006 still requires a
+receiver-owner correction/regression for the traced VDP cross-core RX race;
+UI-001 retains the unexplained keyboard delay. See TODO.md and
+ docs/uart0-ab-tranche.md for the reconciled roadmap. The Author authorized
+committing/pushing outstanding work, then proceeding with this tranche.
+New emulator-related work still requires human review before commit unless
+explicitly overridden. Do not deploy or flash new firmware without the
+applicable manual hardware-test authorization.
+
 Executive summary: accepted UART0 suite, firmware menu, receiver diagnostics and
 batching goal were committed/pushed as a776668 after explicit authorization.
 Console8 R0003 verifies all 42 receiver trials; stock threshold 64 leaves 62

@@ -1,0 +1,433 @@
+{
+  "scope": "One exploratory Console8 run; no worst-case or electrical qualification",
+  "run": "0005",
+  "all_30_phases_passed": true,
+  "late_feeds": 0,
+  "case_rx_errors": 0,
+  "installed_mos_crc32": "239097B7",
+  "vdp_identity": "Stock 2.16.0 operator label; not independently read back in this run",
+  "paced_otirx_useful_work_gain_percent": 31.315469645234106,
+  "bulk_otirx_vs_default_same_ticks": true,
+  "summary": [
+    {
+      "mode": 0,
+      "phase": 0,
+      "median_ticks": 96,
+      "tick_range": [
+        96,
+        96
+      ],
+      "median_work_per_tick": 0.0,
+      "late_feeds": 0
+    },
+    {
+      "mode": 1,
+      "phase": 0,
+      "median_ticks": 58,
+      "tick_range": [
+        58,
+        58
+      ],
+      "median_work_per_tick": 1522.2068965517242,
+      "late_feeds": 0
+    },
+    {
+      "mode": 2,
+      "phase": 0,
+      "median_ticks": 56,
+      "tick_range": [
+        56,
+        56
+      ],
+      "median_work_per_tick": 2809.714285714286,
+      "late_feeds": 0
+    },
+    {
+      "mode": 3,
+      "phase": 0,
+      "median_ticks": 56,
+      "tick_range": [
+        56,
+        56
+      ],
+      "median_work_per_tick": 4610.857142857143,
+      "late_feeds": 0
+    },
+    {
+      "mode": 4,
+      "phase": 0,
+      "median_ticks": 58,
+      "tick_range": [
+        58,
+        58
+      ],
+      "median_work_per_tick": 4776.827586206897,
+      "late_feeds": 0
+    },
+    {
+      "mode": 0,
+      "phase": 1,
+      "median_ticks": 120,
+      "tick_range": [
+        120,
+        120
+      ],
+      "median_work_per_tick": 1857.8666666666666,
+      "late_feeds": 0
+    },
+    {
+      "mode": 1,
+      "phase": 1,
+      "median_ticks": 120,
+      "tick_range": [
+        120,
+        120
+      ],
+      "median_work_per_tick": 4607.733333333334,
+      "late_feeds": 0
+    },
+    {
+      "mode": 2,
+      "phase": 1,
+      "median_ticks": 120,
+      "tick_range": [
+        120,
+        120
+      ],
+      "median_work_per_tick": 5118.4,
+      "late_feeds": 0
+    },
+    {
+      "mode": 3,
+      "phase": 1,
+      "median_ticks": 120,
+      "tick_range": [
+        120,
+        120
+      ],
+      "median_work_per_tick": 5862.933333333333,
+      "late_feeds": 0
+    },
+    {
+      "mode": 4,
+      "phase": 1,
+      "median_ticks": 120,
+      "tick_range": [
+        120,
+        120
+      ],
+      "median_work_per_tick": 6050.666666666667,
+      "late_feeds": 0
+    }
+  ],
+  "rows": [
+    {
+      "repeat": 1,
+      "mode": 0,
+      "phase": 0,
+      "ticks": 96,
+      "work": 0,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 0,
+      "phase": 1,
+      "ticks": 120,
+      "work": 217248,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 1,
+      "phase": 0,
+      "ticks": 58,
+      "work": 88320,
+      "irqs": 3700,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 1,
+      "phase": 1,
+      "ticks": 120,
+      "work": 553056,
+      "irqs": 3319,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 2,
+      "phase": 0,
+      "ticks": 56,
+      "work": 157408,
+      "irqs": 4193,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 2,
+      "phase": 1,
+      "ticks": 120,
+      "work": 614880,
+      "irqs": 3764,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 3,
+      "phase": 0,
+      "ticks": 56,
+      "work": 258208,
+      "irqs": 3735,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 3,
+      "phase": 1,
+      "ticks": 120,
+      "work": 703712,
+      "irqs": 3359,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 4,
+      "phase": 0,
+      "ticks": 58,
+      "work": 277056,
+      "irqs": 4179,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 1,
+      "mode": 4,
+      "phase": 1,
+      "ticks": 120,
+      "work": 726720,
+      "irqs": 3754,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 4,
+      "phase": 0,
+      "ticks": 58,
+      "work": 277152,
+      "irqs": 4174,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 4,
+      "phase": 1,
+      "ticks": 120,
+      "work": 726080,
+      "irqs": 3750,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 3,
+      "phase": 0,
+      "ticks": 56,
+      "work": 258240,
+      "irqs": 3770,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 3,
+      "phase": 1,
+      "ticks": 120,
+      "work": 702368,
+      "irqs": 3392,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 2,
+      "phase": 0,
+      "ticks": 56,
+      "work": 157344,
+      "irqs": 4206,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 2,
+      "phase": 1,
+      "ticks": 120,
+      "work": 613952,
+      "irqs": 3764,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 1,
+      "phase": 0,
+      "ticks": 58,
+      "work": 88288,
+      "irqs": 3697,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 1,
+      "phase": 1,
+      "ticks": 120,
+      "work": 552864,
+      "irqs": 3328,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 0,
+      "phase": 0,
+      "ticks": 96,
+      "work": 0,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 2,
+      "mode": 0,
+      "phase": 1,
+      "ticks": 120,
+      "work": 223904,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 0,
+      "phase": 0,
+      "ticks": 96,
+      "work": 0,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 0,
+      "phase": 1,
+      "ticks": 120,
+      "work": 222944,
+      "irqs": 0,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 1,
+      "phase": 0,
+      "ticks": 58,
+      "work": 88256,
+      "irqs": 3696,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 1,
+      "phase": 1,
+      "ticks": 120,
+      "work": 552928,
+      "irqs": 3332,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 2,
+      "phase": 0,
+      "ticks": 56,
+      "work": 157344,
+      "irqs": 4214,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 2,
+      "phase": 1,
+      "ticks": 120,
+      "work": 614208,
+      "irqs": 3764,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 3,
+      "phase": 0,
+      "ticks": 56,
+      "work": 257984,
+      "irqs": 3778,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 3,
+      "phase": 1,
+      "ticks": 120,
+      "work": 703552,
+      "irqs": 3372,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 4,
+      "phase": 0,
+      "ticks": 58,
+      "work": 276896,
+      "irqs": 4190,
+      "late_feeds": 0,
+      "rx_errors": 0
+    },
+    {
+      "repeat": 3,
+      "mode": 4,
+      "phase": 1,
+      "ticks": 120,
+      "work": 725312,
+      "irqs": 3758,
+      "late_feeds": 0,
+      "rx_errors": 0
+    }
+  ],
+  "entry_rx_flags": "0x98 historical baseline; not a fresh case error",
+  "keyboard_delay_unresolved": true,
+  "exact_cpu_cycles_measured": false,
+  "physical_tick_frequency_assumed": false,
+  "full_bulk_receiver_integrity_verified": false,
+  "read_only_sd_inspection": true,
+  "evidence": "build/uart0-ab/console8-run0005.tar.gz",
+  "report_sha256": "84e7f75aa5120408839588387cee4850b828d2fa3fa456cc719f80fc9a2a88f3"
+}
