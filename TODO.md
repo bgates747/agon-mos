@@ -93,20 +93,40 @@ See [the tranche specification](docs/uart0-ab-tranche.md). These identify
 benchmark deliverables; BT-003..BT-007 retain the driver/qualification work and
 are dependencies, not a second implementation of the same tasks.
 
-AB-006 [ ] Close the traced intermittent native A/B stall: coordinate a targeted
-receiver-owner correction and regression exercising the recovery race, then
+AB-006 [ ] Close the traced intermittent native A/B stall: implement the VDP
+receiver diagnostic/correction in this project's owned copies and coordinate
+emulator regression with Flexe, then
 repeat both-engine qualification and human review before relying on emulator
 passes for release qualification. See docs/uart0-ab-tranche.md for evidence and completion gate.
-Diagnosis is traced: VDP ISR disables RX after reader recovery clears the flag;
+Diagnosis is traced in the emulator: VDP ISR disables RX after reader recovery clears the flag;
 diagnostic RX re-enable resumes TX. See docs/uart0-ab-stall.md. Receiver-owner
 correction/regression and renewed qualification remain. The Author separately
 authorized an exploratory Console8 comparison on2026-10-14; it does not clear
 the emulator fault or production qualification gate.
 The Author now requires hardware reproduction before a correction and hardware
 regression afterward; emulator-only evidence cannot establish physical failure
-or repair. Request sent through the Flexe/VDP owner's `golem` mailbox route:
+or repair. Earlier request sent through the emulator owner's `golem` mailbox route:
 `2026-10-14_03-28-03_agon-mos_uart0-recovery-hardware-one`.
-Owner acknowledgement and investigation are pending; no bench lease is implied.
+The owner's task log acknowledges the request. Unchanged-VDP Console8 short
+and extended campaigns R0006/R0007 now pass all30 cases with245760 final-buffer
+bytes checked and zero case RX errors. HW-001 preparation/return is complete;
+the emulator race remains unresolved and no physical race was reproduced.
+The Author corrected ownership: MOS owns VDP firmware work, Flexe owns the
+emulator. HW-002 now owns the controlled physical diagnostic preparation;
+do not treat these passes as proof of a repair. See
+experiments/uart0-recovery/physical-results.json. No bench lease is implied.
+
+HW-002 [ ] Build and qualify the controlled Console8 VDP receive-recovery
+diagnostic, MOS workload and numbered-suite integration. Audit/pin the actual
+ESP32 driver, observe the real ISR/reader ordering, and use bounded diagnostic
+scheduling hooks to exercise that ordering on hardware. Include a no-trigger
+control, independently checked failure-state evidence, bounded recovery with
+byte/CRC checks, versioned sequential reports, stock restoration and unchanged
+MOS. Qualify compiled images and negative controls off-device, package at the
+stable SD path, then analyze the Author's manual return. Distinguish natural
+stock failure, diagnostic-induced physical ordering and emulator-only behavior.
+See [the diagnostic plan](docs/uart0-recovery-diagnostic.md). A firmware repair
+and its matched physical regression remain AB-006 work after reproduction.
 
 AB-001 [ ] Build repeated sustained-stream comparisons: stock-style blocking, experimental per-byte async,
 grouped scalar and bounded OTIRX, using identical valid VDP workloads. Initial
@@ -156,15 +176,3 @@ foreground packet production and MOS as sole UART owner. Compare stock app
 behavior with adapted scalar/OTIRX variants using matched scheduling; measure
 audio continuity, feed backlog and graphics/CPU headroom. Keep scheduling gains
 separate from transport gains; synthetic AB-004 alone does not close this task.
-
-## Hardware-first receiver investigation
-
-HW-001 [ ] Prepare a bounded, repeatable Console8 receiver-recovery campaign
-against unchanged official stock VDP 2.16.0 and the already installed ABI1.1
-experimental MOS. Preserve the numbered suite, stable SD entry, sequential
-reports and progress checkpoints; qualify fixture/controls off-device, prepare
-firmware/readme bundle, then coordinate the Author's manual run and analyze its
-return. A pass does not rule out the rare race; a stall alone does not attribute
-it. Flexe instrumentation/repair follows only if needed. See
-[the hardware-first plan](docs/uart0-hardware-recovery.md). AB-006 retains the
-receiver correction and matched physical before/after acceptance boundary.

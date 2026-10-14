@@ -102,8 +102,10 @@ the intervened run is permanently disqualified as a benchmark/qualification.
 Evidence: `build/uart0-ab/capture-026.tar.gz` on Pi/Oryx and the traced_failure
 section of `experiments/uart0-ab/stall-results.json`.
 
-The next dependency is a receiver correction coordinated with the emulator
-owner, with a regression that exercises this ordering. The firmware remedy
+The next dependency is this agent's controlled VDP hardware diagnostic under
+HW-002, followed by a receiver correction if supported by physical evidence.
+The Author clarified VDP firmware ownership belongs here; Flexe owns emulator
+behavior and its regression. The firmware remedy
 should make publishing the full condition and disabling RX atomic with reader
 recovery under the same UART lock, then verify associated ring/ISR behavior.
 Any model/scheduling remedy must justify hardware fidelity rather than merely

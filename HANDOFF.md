@@ -7,23 +7,62 @@ app-controlled version passes software checks, but a VDP receive fault and
 unfinished qualification still prevent approval. Stock MOS remains the approved
 baseline; no new firmware was installed during the latest tranche.
 
-Latest tranche: outstanding work was committed/pushed as 5d1963d at the
-Author's request. New off-device ABI1.2 implements session batching controls and
-bounded OTIRX; see experiments/uart0-batching/README.md and results.json.
-The prior physical MOS remains ABI1.1. New work is uncommitted pending human
-review; no SD deployment or firmware flashing occurred. Both async transports
-remain experimental, not stock/production approved. A combined JIT receiver
-campaign reproduces the known recovery-deadlock state at batch8; later passes
+Latest instruction: the Author clarified that this agent owns VDP firmware
+diagnostics as well as MOS, while Flexe owns the emulator. HW-002 and
+docs/uart0-recovery-diagnostic.md define the controlled physical race test.
+The Author explicitly directs committing/pushing all outstanding work before
+implementation; this overrides the prior commit hold without implying emulator
+acceptance or release approval. New work after that checkpoint retains the
+normal human-validation boundary. No automatic physical flash/run is authorized.
+
+Latest tranche: the Author selected MOS-first preparation of a Console8 test
+with unchanged stock VDP, before controlled receiver instrumentation/repair. Outstanding work
+was committed/pushed as 0bda05b before execution; the related canonical mail and
+English-summary preference were pushed as b660a7c in agon-dev-env. The new
+receiver-recovery fixture is now prepared and staged at the SAME
+`/test/mos-uart0/test.bin` on uniquely verified SD UUID8658-1C23. Reports and
+root `/MOS.bin` are preserved; no firmware was flashed. The Author completed
+short/extended hardware runs and returned the card. R0006/R0007 are verified
+PASS: all30 cases,245760 final-buffer bytes, zero case RX errors. The traced
+emulator stall did not occur in these runs; a rare physical race remains
+unexcluded. HW-001 is complete. See experiments/uart0-recovery/physical-results.json.
+
+Menu8 then2 runs six cases;8 then3 runs24. Keep the old experimental ABI1.1 MOS
+(physical ROM CRC239097B7) and normal stock VDP2.16.0 banner without diagnostic
+suffix. JIT/interpreter short campaigns, interactive short+extended and deliberate
+corrupt/missing-reply controls pass. The frozen emulator VDP is a Golem snapshot,
+not the exact official release binary; these checks validate the fixture, not a
+receiver repair. A hardware pass cannot exclude a rare race. New fixture/profile/
+deployment changes remain uncommitted pending the standing human-validation gate.
+The stopped Oryx review profile is `.emulator/uart0-recovery`: locally cd there,
+then `./fab-agon-emulator`. No graphical instance was launched by the agent.
+
+The new off-device ABI1.2 session batching controls and bounded OTIRX remain at
+0bda05b; they are NOT used by this hardware investigation. Both async transports
+remain experimental, not stock/production approved. The earlier combined JIT
+receiver campaign reproduced the recovery-deadlock state at batch8; later passes
 do not clear AB-006. Menu integration and matched A/B full integrity remain.
 
-Latest return: Console8 R0005 passes all30 A/B phases with zero late feeds and
+Latest return: R0006 short and R0007 extended reports, final progress checkpoints
+and running journal agree. All deployed fixture hashes, earlier reports and
+root MOS match their expected identities. Read-only capture is archived on
+both hosts at build/uart0-recovery-console8-r0006-r0007.tar.gz. Raw entry RX98
+is preserved separately from zero setup baseline and zero case diagnostic
+epochs; its origin is untraced. VDP stock identity remains an operator label,
+not independent readback. No card changes or firmware actions during review.
+
+Previous performance return: Console8 R0005 passes all30 A/B phases with zero late feeds and
 case RX errors. Paced OTIRX useful work is31.3% above experimental per-byte async; both take58
 raw ticks for bulk versus96 for blocking. No tick-rate/CPU-cycle assumption.
 Card inspection/archive was read-only. See experiments/uart0-ab/physical-results.json
 and build/uart0-ab/console8-run0005.tar.gz. UI-001 tracks the Author's separate,
 unexplained menu keyboard delay; do not attribute it to getch without evidence.
 
-Remaining priority (2026-10-14): qualify the new experimental session API
+Remaining priority (2026-10-14): AB-006 receiver-owner coordination now has a
+passing unchanged-VDP hardware baseline. A controlled physical diagnostic is
+needed to distinguish the suspected cross-core ordering from an emulator-only
+failure; hardware reproduction and matched repair evidence remain outstanding.
+Qualify the new experimental session API
 (BT-003), extend matched A/B integrity and integrate numbered menu reports
 (AB-003/BT-005). AB-006 receiver-owner correction remains a qualification gate. Stock MOS is the
 approved baseline; neither async implementation is approved for production.
@@ -59,9 +98,10 @@ sufficient; future deployments should not create SD history directories or
 change the active path. Follow the standing preference in
 [`hardware-deployment.md`](../agon-dev-env/codex/hardware-deployment.md#authors-sd-deployment-preference).
 
-The Author temporarily withdrew SD availability during suite development:
-do not attempt any physical SD writes until further notice. Continue only
-off-device builds, packages and project-owned emulator testing meanwhile.
+The earlier temporary SD hold was lifted. The Author authorized MOS-first
+hardware preparation and supplied the Console8 card. HW-001 staging is complete;
+rediscover the correct unique card before any later deployment. Historical
+no-write/hold statements below refer to their earlier tranches.
 
 ## Source and contract
 

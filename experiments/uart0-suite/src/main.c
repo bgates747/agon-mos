@@ -85,7 +85,7 @@ static unsigned last_run(void) {
 }
 static int begin_run(const char *action) {
     /* Reserve the run log first; an interrupted run's number cannot be reused. */
-    const char *prefixes="BNFSPGDIKJHLEAX";
+    const char *prefixes="BNFSPGDIKJHLEAXYZC";
     for(run_id=last_run()+1;run_id<10000;run_id++) {
         filename(name,'R',"log");if(exists(name))continue;
         int used=0;
@@ -247,7 +247,7 @@ static int child_test(unsigned test) {
 }
 static int ab_test(void) {
     puts("T8: controlled UART0 A/B; 30 phases, normally under two minutes.");
-    puts("Modes 0 blocking, 1 default async, 2 grouped, 3 chunk, 4 OTIRX.");
+    puts("Mode 0 stock-style blocking; experimental modes 1 per-byte async, 2 grouped, 3 chunk, 4 OTIRX.");
     puts("Phase 0 bulk; phase 1 paced. If over two minutes, reset and report the last line.");
     if(!available()){puts("SKIP: UART0 API 1.1 is required.");return SKIP;}
     if(mos_load("ab.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01UABF",9))return FAIL;
@@ -268,6 +268,32 @@ static int ab_test(void) {
         journal(line);
     }
     journal("AB_SCOPE raw MOS ticks; receiver735 bytes/phase; full bulk integrity and physical CPU cycles not measured\r\n");
+    return PASS;
+}
+static int recovery_test(int extended) {
+    puts("Receiver recovery investigation: unchanged stock VDP 2.16.0.");
+    puts(extended?"Extended: 24 cases, allow eight minutes; no progress for two minutes means FAIL.":"Short: six cases, allow about two minutes; a stall is FAIL.");
+    puts("A pass covers this workload only; it cannot rule out a rare hardware race.");
+    if(!available()){puts("SKIP: experimental MOS UART0 API 1.1 is required.");return SKIP;}
+    /* Same 110695-byte image; physical erased tail is FF, emulator tail is 00. */
+    if(rom_crc!=0x239097B7UL && rom_crc!=0x2A87C5B5UL){puts("FAIL: this investigation requires the previously tested ABI1.1 MOS image.");return FAIL;}
+    if(mos_load("recovery.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01URH1",9))return FAIL;
+    filename(CHILD+73,'Y',"dat");filename(CHILD+89,'Z',"dat");filename(CHILD+105,'C',"dat");CHILD[121]=extended?4:1;
+    snprintf(line,sizeof(line),"RECOVERY_START report=Y%04u.dat checkpoint=Z%04u.dat failure=C%04u.dat cases=%u VDP=operator-confirmed-stock\r\n",run_id,run_id,run_id,extended?24:6);
+    journal(line);checkpoint();
+    if(!log_ok)return FAIL;
+    char command[]="RUN &80000";
+    uint8_t error=mos_oscli(command,NULL,0),b[609];filename(name,'Y',"dat");
+    unsigned cases=extended?24:6;
+    if(error || !read_report(name,b,608) || memcmp(b,"URXHOST1\x01\x00",10) || b[10]!=cases || b[11]!=cases || b[13]!=(extended?4:1) || b[14])return FAIL;
+    const uint32_t bytes[]={525184,8576,8448};
+    for(unsigned i=0;i<cases;i++) {
+        const uint8_t *r=b+32+i*24;unsigned mode=i%2,kind=(i%6)/2;
+        if(r[0]!=mode || r[1]!=kind || r[2]!=i || r[3] || r[4]!=(kind==1?32:0) || r[5]!=r[4] || r[7] || !u24(r+8) || u24(r+11)!=bytes[kind] || u24(r+14)!=bytes[kind] || u24(r+17)!=(kind?32:64) || u24(r+20)!=8192 || r[23]!=1)return FAIL;
+        if(kind==1 && mode && !r[6])return FAIL;
+        snprintf(line,sizeof(line),"RECOVERY case=%u mode=%u kind=%u ticks=%lu wire=%lu final_verified=8192 replies=%u overlap_replies=%u rx=%02X\r\n",i+1,mode,kind,(unsigned long)u24(r+8),(unsigned long)u24(r+11),r[5],r[6],r[3]);journal(line);
+    }
+    snprintf(line,sizeof(line),"RECOVERY_SCOPE stock-VDP unchanged; final buffers verified=%lu bytes; intermediate bulk overwrites not checked; rare race not ruled out; receiver state uninstrumented\r\n",(unsigned long)cases*8192);journal(line);
     return PASS;
 }
 static uint32_t parse_ms(const char *s) {
@@ -394,6 +420,7 @@ static void firmware_menu(void) {
     }
 }
 static int execute(unsigned test,int automated) {
+    if(test==10 || test==11)return recovery_test(test==11);
     if(test==8)return ab_test();
     if(test==7)return receiver_margin();
     if(test==6)return integration();
@@ -403,8 +430,8 @@ static int execute(unsigned test,int automated) {
 static int selection(unsigned test,int automated) {
     if(!begin_run(test?"individual":"all"))return FAIL;
     int overall=PASS;
-    const unsigned order[]={1,6,2,3,4,5,8};
-    unsigned count=test?1:(exists("ab.bin")?7:6);
+    const unsigned order[]={1,6,2,3,4,5,8,10};
+    unsigned count=test?1:(exists("recovery.bin")?8:exists("ab.bin")?7:6);
     for(unsigned i=0;i<count;i++) {
         unsigned n=test?test:order[i];
         int status=execute(n,automated);
@@ -422,6 +449,7 @@ int main(int argc,char **argv) {
     crc_init();putch(12);puts("UART0 QUALIFICATION SUITE v1");
     puts("Reading installed MOS fingerprint...");rom_crc=installed_crc();config();
     if(argc>1) {
+        if(!strcmp(argv[1],"rx") || !strcmp(argv[1],"rxe"))return selection(!strcmp(argv[1],"rxe")?11:10,0)==FAIL;
         if(!strcmp(argv[1],"auto")){int r=selection(0,1);puts(r==FAIL?"UART0 SUITE AUTO FAIL":"UART0 SUITE AUTO COMPLETE; manual measurements pending");return r==FAIL;}
         if(argv[1][0]>='1'&&argv[1][0]<='8'&&!argv[1][1])return selection(argv[1][0]-'0',0)==FAIL;
     }
@@ -429,9 +457,18 @@ int main(int argc,char **argv) {
         puts("\nUART0 QUALIFICATION SUITE v1");
         printf("Hardware label: %s; installed MOS CRC32 %08lX\n",board,(unsigned long)rom_crc);
         printf("VDP label: %s (operator supplied)\n",vdp_label);
-        puts("1 Firmware/API and phased RX diagnostics\n2 Legacy/async benchmark\n3 Pause / full-duplex stress\n4 Independent stopwatch calibration\n5 CTS capture preparation\n6 API / masked-IFF / exit / ADL=0 smoke tests\n7 Diagnostic VDP receiver-margin experiment (separate)\n8 Controlled UART0 A/B throughput / CPU headroom\n0 Run all baseline tests plus A/B (manual timing can be skipped)\n9 Staged firmware / MOS backup\nQ Return to MOS\nPress a choice key:");
+        puts("1 Firmware/API and phased RX diagnostics\n2 Legacy/async benchmark\n3 Pause / full-duplex stress\n4 Independent stopwatch calibration\n5 CTS capture preparation\n6 API / masked-IFF / exit / ADL=0 smoke tests\n7 Diagnostic VDP receiver-margin experiment (separate)\n8 Controlled experiments: A/B and stock-VDP receiver recovery\n0 Run all baseline tests plus A/B (manual timing can be skipped)\n9 Staged firmware / MOS backup\nQ Return to MOS\nPress a choice key:");
         char c=getch();if(c=='q'||c=='Q')break;
-        if(c=='9'){firmware_menu();continue;}
+if(c=='9'){firmware_menu();continue;}
+if(c=='8') {
+    puts("1 Previous controlled A/B comparison\n2 Receiver recovery: short, six cases\n3 Receiver recovery: extended, 24 cases\n0 Run A/B then short recovery campaign\nQ Back\nChoose:");
+    char e=getch();
+    if(e=='1')selection(8,0);
+    else if(e=='2'||e=='3')selection(e=='3'?11:10,0);
+    else if(e=='0'){if(selection(8,0)!=FAIL)selection(10,0);}
+    else continue;
+    puts("Press any key for menu.");getch();continue;
+}
         if(c>='0'&&c<='8'){selection(c-'0',0);puts("Press any key for menu.");getch();}
         else puts("Choose 0-9 or Q.");
     }

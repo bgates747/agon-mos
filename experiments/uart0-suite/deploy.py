@@ -20,7 +20,9 @@ def main():
     p.add_argument('package',type=Path);p.add_argument('--mount',required=True,type=Path)
     p.add_argument('--uuid',required=True);p.add_argument('--backup',required=True,type=Path)
     p.add_argument('--receipt',required=True,type=Path);p.add_argument('--previous-manifest-sha256')
-    p.add_argument('--exploratory-uart0-ab',action='store_true',help='Author-authorized physical A/B comparison despite known emulator receiver race')
+    scope=p.add_mutually_exclusive_group()
+    scope.add_argument('--exploratory-uart0-ab',action='store_true',help='Author-authorized physical A/B comparison despite known emulator receiver race')
+    scope.add_argument('--exploratory-receiver-recovery',action='store_true',help='Author-authorized unchanged-VDP Console8 receiver investigation')
     p.add_argument('--dry-run',action='store_true');a=p.parse_args()
     package=a.package.resolve(strict=True);mount=a.mount.resolve(strict=True)
     backup=a.backup.resolve();receipt=a.receipt.resolve()
@@ -29,10 +31,13 @@ def main():
     require(not backup.is_relative_to(mount) and not receipt.is_relative_to(mount),'Evidence must stay off-card')
     expected=shared.package_files(package)
     manifest=json.loads((package/'manifest.json').read_text())
-    exploratory=(a.exploratory_uart0_ab and manifest.get('exploratory_hardware') is True
-        and manifest.get('experiment')=='uart0-ab' and manifest.get('menu_integration_passed') is True
-        and bool(manifest.get('hardware_test_authorization')))
-    require(manifest.get('suite') is True and (manifest.get('automated_qualification_passed') is True or exploratory),'Need a qualified suite or explicitly authorized exploratory UART0 A/B comparison')
+    exploratory=(manifest.get('exploratory_hardware') is True
+        and manifest.get('menu_integration_passed') is True
+        and bool(manifest.get('hardware_test_authorization'))
+        and ((a.exploratory_uart0_ab and manifest.get('experiment')=='uart0-ab')
+            or (a.exploratory_receiver_recovery and manifest.get('experiment')=='uart0-recovery'
+                and manifest.get('fixture_checks_passed') is True)))
+    require(manifest.get('suite') is True and (manifest.get('automated_qualification_passed') is True or exploratory),'Need a qualified suite or explicitly authorized exploratory UART0 investigation')
     identity=selected_mount(mount,a.uuid)
     parent=mount/'test';target=parent/'mos-uart0'
     require(not parent.is_symlink() and not target.is_symlink(),'Linked destination refused')

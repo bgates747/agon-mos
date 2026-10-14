@@ -3,8 +3,8 @@
 Executive summary: we will test the unchanged VDP on Console8 before proposing a
 firmware repair. The emulator has shown reception stopping permanently, but we
 have not demonstrated that failure on the real board. MOS owns the initial
-repeatable stress test; the Author runs it manually. Flexe supplies receiver
-instrumentation only if we need it afterward. A passing run means that workload
+repeatable stress test and subsequent VDP instrumentation; the Author runs it
+manually. Flexe owns emulator behavior/regressions. A passing run means that workload
 completed; it cannot rule out a rare race.
 
 ## Scope and sequence
@@ -61,8 +61,8 @@ Prepare the complete bundle off-device first. Deploy only to the uniquely
 identified Console8 card (UUID 8658-1C23) when available for this task, verifying
 its prior owned manifest and preserving reports. No automatic flash, board
 reset, serial-open operation, UART probe or Olimex wiring is authorized.
-Manual run and observed stock VDP banner belong to the Author. No physical run
-has occurred under this plan yet.
+Manual run and observed stock VDP banner belong to the Author. Physical short
+and extended runs have now completed; their result is recorded below.
 
 ## Interpretation and next owner
 
@@ -72,14 +72,40 @@ bug or establish an electrical CTS margin. A stall is a failed communication
 run; preserve its last checkpoint, returned files, external elapsed time and
 operator observations without claiming its cause from the display alone.
 
-If natural failure occurs or the result remains inconclusive, MOS and Flexe
-coordinate a separate diagnostic VDP build that observes or deliberately
+If natural failure occurs or the result remains inconclusive, this MOS agent
+prepares a separate diagnostic VDP build that observes or deliberately
 exercises the suspected competing-core ordering on physical ESP32 hardware.
 Keep natural failure in unchanged firmware distinct from diagnostic-triggered
 hardware failure and emulator-only reproduction. A proposed repair requires
 matched hardware before/after evidence plus byte/error/progress checks and an
 emulator regression. Lack of reproduction remains inconclusive.
 
-HW-001 in TODO.md owns initial preparation and manual-return analysis. AB-006
+HW-001 owned initial preparation and manual-return analysis and is now complete. AB-006
 retains receiver attribution/repair and its hardware evidence gate. This plan
 adds no separate unfinished-work checklist or authority over another project.
+
+## Prepared implementation — 2026-10-14
+
+The fixture and menu are prepared and hash-verified on the Console8 card at the
+stable entry point. Menu8/2 selects six cases,8/3 selects24; previous tests and
+firmware operations remain available. The required unchanged MOS/VDP files and
+hardware-readable instructions sit beside test.bin. No flash was performed.
+JIT/interpreter short runs, interactive short+extended, and deliberate corrupt
+payload/missing-reply rejection validate the fixture off-device. Sequential
+report collision avoidance and prior SD report preservation were verified.
+See experiments/uart0-recovery/results.json for exact identities and coverage,
+and experiments/uart0-recovery/readme.txt for manual operation.
+
+The Author reported both physical campaigns passed and returned the card.
+R0006/R0007 confirm all30 cases,245760 final-buffer bytes, zero case RX errors
+and160 replies while async TX was BUSY. Binary reports, saved checkpoints and
+journals agree. All deployed files and earlier reports are preserved; review
+made no card writes. Stock VDP identity remains operator-labelled, not read
+back. The entry RX98 history is distinct from setup/case diagnostic epochs00.
+
+HW-001 is complete; see experiments/uart0-recovery/physical-results.json and
+build/uart0-recovery-console8-r0006-r0007.tar.gz. The stall was not reproduced
+on Console8 by these workloads. AB-006 remains open: controlled physical
+instrumentation/interleaving is the next useful way to test the suspected race,
+owned by this agent under HW-002 and docs/uart0-recovery-diagnostic.md.
+This implementation neither fixes nor excludes the previously traced race.
