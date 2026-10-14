@@ -6,7 +6,9 @@ application-return fence. The Author resolved C-001/C-002 on 2026-10-13:
 async sessions exclude user keyboard callbacks, and a stalled return retains
 RAM until drain. Native ZDS II linking and automated production-ROM/Flexe
 qualification pass, and the Author passed human review on 2026-10-13.
-Physical qualification remains pending;
+Console8 baseline and diagnostic receiver campaigns pass; stock-threshold
+reserve is 62 observed FIFO slots, while electrical/worst-case timing remains
+unmeasured;
 this is a development ABI in this fork, not an upstream MOS allocation.
 
 ## Production integration status
@@ -245,3 +247,11 @@ pending status and clears only captured software flags. It requires a closed
 session to avoid consuming a modem wakeup from queued transmission. It never
 flushes RX/TX or resets VDP parsing. Repeated occurrences of the same error bits
 are detectable in successive epochs; subtracting a baseline bitmask is invalid.
+
+## Proposed CTS batching extension
+
+Installed firmware remains ABI 1.1 with per-byte CTS checks. The concrete
+append-only ABI 1.2 proposal is [specified separately](uart0-cts-batching-api.md);
+its [hardware/source audit](uart0-cts-batching-audit.md) keeps the 16-write refill
+cap independent of the selected CTS interval. No batching implementation or
+production-qualified interval above 1 is claimed yet.

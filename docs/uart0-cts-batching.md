@@ -53,7 +53,7 @@ qualification and use threshold sweeps only as additional diagnostic controls.
 ## Work sequence and acceptance
 
 The sole actionable checklist is TODO.md, using immutable BT-nnn identifiers.
-Finish the existing qualification/release bookkeeping before implementation.
+Existing qualification/release bookkeeping is closed; implementation is next.
 
 BT-001 defines the session API/capability contract, supported values and reset
 semantics. BT-002 audits hardware and assembly paths and establishes a
@@ -93,18 +93,18 @@ verified receiver integrity and a documented safety rationale. A successful
 fault-injection experiment alone is insufficient. Human review precedes commit
 and physical installation remains manual.
 
-## Existing work that comes first
+## Existing work closed before implementation
 
-TX-018/TX-019 reusable suite and firmware menu already pass human and physical
-software campaigns. TX-020 receiver instrumentation also passes its human and
-physical campaign. Their pending work is evidence/documentation consistency,
-review and explicit commit/push authorization; no new baseline run is needed
-without a change or unresolved concern.
+TX-018/TX-019 reusable suite and firmware menu pass human and physical software
+campaigns. TX-020 receiver instrumentation passes human and physical review.
+The Author explicitly authorized commit/push, completed as a776668. Evidence is
+retained in the workspace and repository. No new baseline run is needed without
+a change or unresolved concern.
 
-TX-006 must distinguish the now-observed Console8 reserve from unmeasured
-worst-case/electrical timing. Confirm the installed stock VDP boot version after
-R0004's restore request: the updater's zero return is not proof of installation.
-Retain the unknown entry RX0x98 as a pre-existing observation, not a trial error
-or a silently closed investigation. Application/game integration remains a
-separate coordinated task; this plan does not authorize interrupt-policy changes
-in another project.
+TX-006 closeout distinguishes observed Console8 reserve from unmeasured
+worst-case/electrical timing; further probing/timing investigation is deferred.
+The Author confirms reboot into normal stock VDP 2.16.0 without the diagnostic
+subtitle after R0004. This is operator confirmation, not a chip readback.
+Retain unknown entry RX0x98 as a pre-existing observation, not a trial error or
+a silently closed investigation. Application/game integration remains a separate
+coordinated task; this plan does not authorize another project's IRQ changes.

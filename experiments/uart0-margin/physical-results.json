@@ -96,7 +96,8 @@
     "run": "0004",
     "crc32": "FFFBFADE",
     "return": "UNVERIFIED",
-    "installed_stock_version_confirmed": false
+    "installed_stock_version_confirmed": true,
+    "confirmation": "Author rebooted and observed normal stock VDP 2.16.0 banner without diagnostic subtitle; operator confirmation, not independent flash readback."
   },
   "report_sha256": "669b4ba5d87b481debbac0fb2563acd8c60ea1ee627dd59b899ddaa35a2f4af7",
   "archive_sha256": "6b22247f8b945c553b70088507bf0c70a6190c7490dc88206dcff946e6fce14b",

@@ -1,23 +1,20 @@
 # Interrupt-based UART0 transmission project — handoff
 
-Executive summary: the UART0 candidate is integrated into MOS and passes native
-ZDS II, scripted, production-ROM and both headless Flexe engine tests on Oryx.
-The Author selected callback/session exclusion and retain-and-wait exit handling.
-The Author passed Oryx human review on 2026-10-13 and authorized committing
-and pushing the accepted work. Console8 baseline and receiver campaigns pass;
-stock-threshold reserve is 62 observed FIFO slots, without an electrical
-timing/worst-case guarantee. Opt-in CTS batching is the next planned extension.
+Executive summary: accepted UART0 suite, firmware menu, receiver diagnostics and
+batching goal were committed/pushed as a776668 after explicit authorization.
+Console8 R0003 verifies all 42 receiver trials; stock threshold 64 leaves 62
+observed FIFO slots. The Author confirms reboot into normal stock VDP 2.16.0
+without the diagnostic subtitle after restoration. TX-018/019/020 and TX-006
+closeout are complete; electrical/worst-case timing remains explicitly deferred.
+BT-001/BT-002 deliver the concrete proposed ABI and hardware budget audit.
+BT-003 isolated batching implementation is next; installed MOS remains ABI 1.1.
 
-Read `/Agon/mystuff/agon-dev-env/codex/AGENTS.md`, then `OWNERSHIP.md`, `TODO.md`,
-`docs/uart0-async.md`, `docs/tasks/ASY-001.md` and the latest dated development log.
-The sole unfinished-work checklist is TODO.md. Immutable IDs use the form
-`TX-006 [ ]`; never renumber or reuse one. TX-011 Console8 preparation and
-TX-012 human fixture acceptance passed on 2026-10-13.
-Fresh-lease physical qualification TX-006 remains; TX-010 is complete.
-TX-014/TX-015 progress/diagnostic work is accepted for commit. The Author
-explicitly instructed commit/push after the passing eight-case physical run.
-No new human emulator review is claimed; this direct instruction authorizes
-committing the current tranche. Broader CTS/full-duplex work is next.
+Read the canonical environment instructions, OWNERSHIP.md, TODO.md,
+docs/uart0-async.md, docs/uart0-cts-batching-api.md and
+docs/uart0-cts-batching-audit.md. TODO.md is the sole unfinished-work checklist.
+Do not increase the 16-write refill cap; experiment with CTS intervals within
+that cap. Per-byte checking remains the default and compatibility behavior.
+No firmware/profile/SD contents changed during the design/audit tranche.
 
 Hardware deployment uses the stable `/test/mos-uart0/test.bin` path, with
 firmware copies and `readme.txt` beside it. The Author explicitly prefers
@@ -473,3 +470,10 @@ are evidence for investigation, not a supported batch allowance. No failure
 boundary was observed. First close existing TX-018/019/020 evidence/release work
 and TX-006 qualification scope, including stock VDP boot confirmation. No
 commit/push authorization or new physical access is implied by planning.
+
+BT-001/BT-002 are delivered in docs/uart0-cts-batching-api.md and
+ docs/uart0-cts-batching-audit.md. The Author confirms restored stock VDP boot;
+TX-006 closeout is complete with electrical/worst-case timing deferred. The
+proposed table is minor2/length54 with setter/getter at46/49, bitmap at52.
+Service still admits at most16 writes after THRE; selectedN changes checks
+within that cap, never allowance across calls. No firmware implementation yet.
