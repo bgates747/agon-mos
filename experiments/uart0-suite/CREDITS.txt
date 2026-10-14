@@ -1,0 +1,26 @@
+UART0 suite toolchain/runtime credits
+
+AgonDev: Jeroen Venema; AgDev: Paul Cawte; CE Programming contributors.
+CRT source credits Paul Cawte, CE Toolchain and Dean Belfield.
+LLVM and GNU binutils supply compilation tools, not bundled SDK executables.
+MOS/VDP: Dean Belfield, Lennart Benschop and the Agon contributors credited
+in their sources. Flash utility: Jeroen Venema.
+Fab emulator: Tom Morton; Flexe and Golem retain their source credits.
+The physical package includes MOS-LICENSE.txt, VDP-LICENSE.txt and
+FLASH-LICENSE.txt for its unmodified staged upstream components.
+
+The menu's SDK printf implementation uses Charles Nicholson's nanoprintf
+under its offered 0BSD license. Upstream notice follows:
+
+Copyright (C) 2019- by Charles Nicholson <charles.nicholson+nanoprintf@gmail.com>
+
+Permission to use, copy, modify, and/or distribute this software for
+any purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.

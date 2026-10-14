@@ -1,0 +1,10 @@
+{
+  "human_review_passed": true,
+  "run": "0001",
+  "build": "3080ff494d015d78",
+  "verified_payloads": 42,
+  "expected_status": "PENDING",
+  "returned_to_MOS": true,
+  "physical_margin_qualified": false,
+  "report_sha256": "d7c4998b8de87b240b3d47705a06b8537cca257ebbb96e1497ea0705b5b0a361"
+}

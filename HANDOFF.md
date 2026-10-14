@@ -4,7 +4,9 @@ Executive summary: the UART0 candidate is integrated into MOS and passes native
 ZDS II, scripted, production-ROM and both headless Flexe engine tests on Oryx.
 The Author selected callback/session exclusion and retain-and-wait exit handling.
 The Author passed Oryx human review on 2026-10-13 and authorized committing
-and pushing this tranche. Physical qualification remains pending.
+and pushing the accepted work. Console8 baseline and receiver campaigns pass;
+stock-threshold reserve is 62 observed FIFO slots, without an electrical
+timing/worst-case guarantee. Opt-in CTS batching is the next planned extension.
 
 Read `/Agon/mystuff/agon-dev-env/codex/AGENTS.md`, then `OWNERSHIP.md`, `TODO.md`,
 `docs/uart0-async.md`, `docs/tasks/ASY-001.md` and the latest dated development log.
@@ -16,6 +18,17 @@ TX-014/TX-015 progress/diagnostic work is accepted for commit. The Author
 explicitly instructed commit/push after the passing eight-case physical run.
 No new human emulator review is claimed; this direct instruction authorizes
 committing the current tranche. Broader CTS/full-duplex work is next.
+
+Hardware deployment uses the stable `/test/mos-uart0/test.bin` path, with
+firmware copies and `readme.txt` beside it. The Author explicitly prefers
+history and returned results preserved in the project workspace, which is
+sufficient; future deployments should not create SD history directories or
+change the active path. Follow the standing preference in
+[`hardware-deployment.md`](../agon-dev-env/codex/hardware-deployment.md#authors-sd-deployment-preference).
+
+The Author temporarily withdrew SD availability during suite development:
+do not attempt any physical SD writes until further notice. Continue only
+off-device builds, packages and project-owned emulator testing meanwhile.
 
 ## Source and contract
 
@@ -203,3 +216,260 @@ The Author said to commit/push all dirt, then proceed with preparing physical
 CTS/headroom and full-duplex fixtures. This overrides the prior commit hold for
 TX-014/TX-015 only. Their human emulator review is not falsely marked complete.
 Future emulator-related changes retain the canonical human review gate.
+
+## Pause/full-duplex tranche — human review passed
+
+Prior diagnostic work is pushed as 5cb0828. TX-016/TX-017 are promoted in the
+sole TODO and now completed in the development log. New experiments/uart0-stress builds natively on Oryx and passes both
+headless engines (25.717 / 32.396 s) plus compiled-app wrong-token/bad-payload
+controls. It uses the same accepted MOS, CRC32 7E66FD09, and stock VDP APIs.
+It checks all 128 ordered replies (31 per case before TX finishes), 32,768
+stored bytes and fresh RX diagnostic epochs. Four stimuli wait 0/1/4/8 frames.
+Source memory is retained through TEMT, including failure handling.
+
+The new human-review profile is stopped at .emulator/uart0-stress on Oryx.
+Run locally with `cd ~/Agon/mystuff/agon-mos/.emulator/uart0-stress` then
+`./fab-agon-emulator --precise-interrupts`. Review the clear/title, two-minute
+expectation, four cases/progress, final PASS/return and keyboard DIR. The Author
+passed this review with a screenshot on 2026-10-13; the retrieved human report
+also passes offline validation. The review gate is satisfied. No graphical
+instance was launched by the agent.
+The accepted package is build/uart0-stress/console8-accepted-20261013 on Pi
+and Oryx. At the Author's request it was copied and verified on SD UUID
+8658-1C23 at /test/mos-uart0-stress, with no filename collision. See
+experiments/uart0-stress/deployment.json. Firmware copies and readme.txt are
+beside test.bin/checks.bin. Installed MOS/VDP need no change if still the same
+as the passing diagnostic run; all firmware installation remains manual.
+The prior /test/mos-uart0 package/reports and root /MOS.bin were preserved.
+
+The Author has a logic sniffer, model unknown, and doubts UART0 probe access.
+Manufacturer schematic confirms no TX/RX/CTS on EXP1. UART-EN1 is buffer enable,
+not CTS; USB serial is ESP32 debug. Component-pad candidates are documented in
+capture.txt but safe practical CTS attachment remains unestablished. Software
+fixture requires no probes or board changes. Physical headroom remains open;
+stock source threshold 64 and software ring 256 are not a measured reserve.
+
+## Stable hardware test path correction
+
+The Author's next hardware photo showed the old UART0 TRANSMISSION TEST,
+not the new pause/full-duplex fixture, and objected to the changed directory.
+Keep /test/mos-uart0 as the stable location for all subsequent UART fixtures.
+The old benchmark reached its baseline print and failed at SAVE baseline.dat:
+the file already existed from the passing run, and MOS uses FA_CREATE_NEW.
+Baseline, bench and failure reports on the card are unchanged hashes from the
+previous run; the displayed prior RX 0x98 is not the tested case error (0x00).
+See experiments/uart0-stress/misdirected-run.json. No new stress result exists.
+
+Both original directories were copied to host storage before changing the SD.
+The old /test/mos-uart0 was archived intact as /test/mos-uart0-before-stress.
+The accepted, unchanged stress fixture now occupies /test/mos-uart0, with updated
+readme/firmware paths, required firmware copies and no baseline/stress/failure
+report collisions. Copy/sync/hashes and report absence verified. Receipt:
+experiments/uart0-stress/stable-deployment.json. No firmware flashing occurred.
+The off-device package is build/uart0-stress/console8-stable-20261013 on Pi/Oryx.
+Run CD /test/mos-uart0, LOAD test.bin, RUN; expect UART0 PAUSE / FULL-DUPLEX TEST
+and final UART0 STRESS FIXTURE PASS, not the old TRANSMISSION TEST title.
+
+## Physical pause/full-duplex run passed
+
+The Author reported PASS and returned the SD for review. All four saved cases
+validate: 128 replies in order, 31 per case before TX finishes, all 32,768
+receiver bytes checked, zero case RX errors. Raw ticks are 10/12/16/24 for
+0/1/4/8-frame stimuli; these are not calibrated seconds. Baseline RX 0x98
+recurs before the trial epochs and is recorded separately; its origin is
+unknown. No failure.dat exists in the current directory. Packaged fixture,
+checks and firmware copies match the deployed manifest. No independent
+installed-firmware readback is supplied. See physical-results.json.
+
+Evidence is preserved only in project workspace: the complete current test
+directory is archived on Oryx at build/uart0-stress/physical-completed-20261013.tar
+and extracted on Pi at build/uart0-stress/physical-completed-20261013. The card
+was inspected read-only and left unchanged. TX-006 remains for physical CTS
+reserve and calibrated timing; this moderate full-duplex workload now passes.
+
+## Reusable UART0 suite — staged, human review pending
+
+The Author authorized a numbered C menu with individual tests/run-all, explicit
+firmware choices and sequential reports. AgonDev is permitted only for the menu;
+MOS/native fixtures still build with ZDS II under Wine on Oryx. New source is
+experiments/uart0-suite. Keys 1–6 select checks, 0 runs all, 9 firmware/backup,
+Q exits. Flashing never runs automatically; real upstream prompts retain Y/N.
+Numbered Rnnnn.log plus runs.log reserve IDs before tests and avoid the RTC.
+Keep runs.log when moving old reports; native results/baselines are numbered.
+
+Both engines pass two whole suites plus individual diagnostics (124.401 s JIT,
+166.360 s interpreter), including all 196608 receiver bytes and 256 stress
+replies per campaign, zero drops/overruns/backend faults and final MOS prompt.
+Real-key controls (81.588 s) prove menu/calibration input, verified MOS backup,
+both actual upstream N cancellations, safe missing/corrupt-child failures,
+orphan/interrupted IDs skipped and journal sequence retained after removing
+individual old reports. Test source build ID bbf6b8cbadd97332. See results.json.
+
+Full-duplex observation now uses one outstanding GP request preceding each
+256-byte write, waiting for the observed token and TEMT before the next round.
+The dense single-byte GP observer could miss values despite complete ordered
+wire delivery. A trial with extra per-block VSYNC waits stalled the frozen
+interpreter and was not staged. See observer-diagnosis.json. Prior dense
+physical evidence is retained; revised suite workload still awaits hardware.
+Initial pauses 0/1/4/8 and complete payload comparisons remain. The alternating
+benchmark and accepted MOS/VDP images are unchanged.
+
+The Author lifted the SD write hold. UUID 8658-1C23 was rediscovered and checked
+against the exact prior UART manifest and fixture despite another attached
+card. The current verified bundle occupies the SAME /test/mos-uart0/test.bin;
+readme.txt, firmware copies and capture/readback readers are beside it. Host
+package: build/uart0-suite/console8-suite-ready-20261013. Prior contents/results
+are verified in project workspace, starting sd-before-suite-20261013. No SD
+history folder was made, root /MOS.bin stayed unchanged, and no other card was
+written. Current receipt: experiments/uart0-suite/deployment-complete.json.
+No physical firmware flashing occurred; existing passing MOS/VDP need no update.
+
+The stopped Oryx human-review profile is .emulator/uart0-suite. Launch with
+`cd ~/Agon/mystuff/agon-mos/.emulator/uart0-suite` then
+`./fab-agon-emulator --precise-interrupts`. It has its own pinned runtime and
+instructions, truthful Golem snapshot labels, no shim and no graphical launch
+by the agent. Review menu selections/run-all/progress and Q return; ESC can
+skip stopwatch timing, N cancels either firmware prompt. Human review remains
+pending and all new emulator-related changes remain uncommitted/unpushed under
+the canonical gate. TX-018/TX-019 remain in the sole TODO for that acceptance.
+Physical independent clock calibration and CTS reserve/capture remain TX-006.
+
+## Emulator flash review failure — corrected suite ready
+
+The Author's screenshot was a VDP firmware update failure at esp_ota_begin,
+error 258 (invalid argument), followed by upstream flash return zero. Human
+logs show firmware operations only; the Author has not run this suite on
+hardware. The frozen app-only emulator has no qualified VDP OTA update path.
+A missing eligible target is consistent with the error, but the rejected
+partition pointer was not directly captured. Preserve that limit. Original
+human evidence is in build/uart0-suite/human-flash-failure-20261013; durable
+summary: experiments/uart0-suite/human-review-failure.json.
+
+Agon Flash v1.9 can return zero after an updater failure or cancellation. The
+suite now records returned zero as UNVERIFIED/PENDING, command/load errors as
+FAIL and reset handoffs as PENDING. Generated emulator profiles disable VDP
+flashing with vdp_flash=0; menu 9/2 reports SKIP without launching it. Hardware
+config keeps vdp_flash=1. No emulator/VDP backend or upstream utility was changed.
+The Author closed the old human instance before refresh; the generator now
+refuses live-profile replacement, with a tested unchanged-files guard.
+
+Corrected build b0827de750c023bb passes both complete headless campaigns:
+125.130 s JIT, 165.595 s interpreter, plus 93.607 s real-key controls. New controls
+cover UNVERIFIED zero returns, unavailable VDP SKIP and missing utility FAIL.
+No automated Y confirmation or physical firmware write occurred. Local report
+readers pass, including the pending reset-handoff case. See results.json.
+The same stopped Oryx .emulator/uart0-suite is ready for another human review;
+choose 0 for UART tests, ESC to skip stopwatch timing if desired, Q to exit.
+Menu 9/2 should now report SKIP in this profile. The earlier two firmware logs
+remain retained and future run numbers continue sequentially. Human review of
+this corrected build is pending; no commit/push is authorized by a passing
+headless result alone. The Author has not yet tested this suite on hardware.
+
+Current SD staging is now the corrected build, verified at the SAME
+/test/mos-uart0 on rediscovered UUID 8658-1C23. Current receipt supersedes the
+previous one: experiments/uart0-suite/deployment-flash-report-fix.json. Package:
+build/uart0-suite/console8-suite-flash-report-fix-20261013. Prior files are in
+workspace sd-before-flash-report-fix-20261013; root /MOS.bin stayed unchanged,
+no SD history directory was made and no other card was written. Physical config
+keeps VDP flashing enabled; the emulator review config disables it. Firmware
+images are unchanged and no hardware firmware was flashed.
+
+## Corrected human software campaign passed
+
+The Author completed emulator work, including figuring out manual timing.
+Saved run R0004 on build b0827de750c023bb passes tests 1,6,2,3,4 and correctly
+leaves physical CTS test 5 PENDING. All eight benchmark and four stress cases
+validate, with zero RX errors, 128 ordered stress replies and 98304 receiver
+bytes across fixtures. Q returns to MOS; review binary hashes match. Calibration
+is 1226 ticks / 10560 operator milliseconds = 116.098 ticks/s in the emulator,
+not a physical Console8 calibration. Human evidence: human-results.json and
+build/uart0-suite/human-completed-b0827de750c023bb on Pi/Oryx.
+
+results.json records the passing human software campaign. No explicit new
+commit approval was supplied; retain the commit/push hold. TX-018/TX-019 now
+await that approval, rather than another emulator software campaign. The staged
+SD contains this correct build at /test/mos-uart0/test.bin and needs no update
+or firmware flash. Its bundle metadata reflects its earlier staging time.
+Next: the Author runs menu 0 on Console8 and uses an independent stopwatch for
+calibration (about 30 seconds is reasonable); physical CTS capture/reserve stays
+pending. No hardware suite has yet been run and no physical card write occurred
+while reviewing the emulator reports.
+
+## Console8 suite passed — only physical CTS reserve remains
+
+The Author completed Console8 menu 0 and returned the SD. Saved R0001 on build
+b0827de750c023bb passes tests 1,6,2,3,4. Overall PENDING is solely test 5's
+unmeasured physical CTS margin. All eight benchmark and four stress cases
+validate, with 98304 receiver bytes, 128 ordered replies and zero trial RX
+errors. Stress BUSY reply counts are 32/31/32/31. Blocking takes 24 ticks in
+every pair; async takes 16/16/16/14. Physical manual-key calibration is 7304
+ticks over 60730 external ms, approximately 120.270 ticks/s in mode 0. Use this
+as an approximate stopwatch reference, not precision timing or game performance.
+
+Entry RX 0x98 occurs before test output and stays separately recorded. All fresh
+before/after-mode and VSYNC diagnostic epochs are zero. Entry origin is still
+unknown. Installed full-ROM CRC is 239097B7; no independent chip readback exists.
+Packaged fixtures/images match all manifest hashes; VDP version is operator
+labelled. No numbered failure reports exist. Embedded/raw reports and journals
+agree. See experiments/uart0-suite/physical-results.json.
+
+Unique card UUID 8658-1C23 and exact manifest were verified before read-only
+copying. Full evidence is build/uart0-suite/console8-completed-20261013-run0001
+on Pi/Oryx, with an exact-copy receipt alongside. Agon timestamps are wrong
+(2035); sequence/content identify the run. No card write, cleanup, flashing,
+physical board access or emulator changes occurred during this inspection.
+TX-006 now covers only physical CTS margin/receiver reserve. TX-018/TX-019
+remain for explicit commit approval; human and physical software campaigns pass.
+
+## Stopped at the Author's request
+
+Olimex Agon Light 2 Rev B is recorded as a possible CTS measurement target:
+eZ80 U1 lead 71 / ESP32 GPIO13 and two CTS-net PCB vias, plus TX/RX resistor
+pad candidates. Board revision and practical solderless access remain
+unverified. An Olimex result would not automatically establish Console8 margin.
+See TX-006 and the development log for official source references. The Author
+asked to record this possibility and stop. Do not resume investigation or
+other project work without a new instruction.
+
+## TX-020 current continuation: receiver experiment
+
+The Author resumed work to try probe-free Console8 firmware inference. Olimex
+probing stays deferred. `experiments/uart0-margin/` owns the diagnostic VDP,
+ZDS native fixture, offline analyzer and reproducible Oryx build. Menu option 7
+runs 42 threshold/hold trials; option 9/4 restores the supplied stock VDP.
+Normal MOS CTS stays enabled and production MOS is unchanged. No physical
+flash/SD deployment has occurred in this continuation. Human review profile:
+Oryx `~/Agon/mystuff/agon-mos/.emulator/uart0-margin-menu`, launch its
+`./flexe-agon-emulator` manually and select 7. Emulator VDP flashing is blocked.
+Use its README/readme and qualification receipts; emulator counters cannot
+prove physical margin. Keep new changes uncommitted pending human approval.
+
+TX-020 human review completed and evidence archived. The reviewed bundle is
+now staged on the Console8 SD at /test/mos-uart0/test.bin; numbered results and
+runs.log preserved. See experiments/uart0-margin/deployment.json. The next
+physical run requires manually flashing the diagnostic VDP via menu 9/2,
+confirming successful update/reboot, then running 7. Diagnostic CRC32 19236414;
+stock restoration is menu 9/4, CRC32 FFFBFADE. No MOS reflash is required.
+Prior no-SD-deployment notes describe preparation before this accepted staging.
+
+Console8 diagnostic run R0003 passed all 42 valid receiver trials, 172032
+compared bytes and zero UART errors. Stock threshold64 settles at66 bytes in
+all six stock trials (5/20ms ×3): 62 observed free FIFO slots. High thresholds
+saturate at128 without data loss, so no failure boundary was measured; this is
+empirical reserve, not worst-case/electrical timing qualification. Evidence:
+experiments/uart0-margin/physical-results.json; full off-card archive in
+build/uart0-margin/console8-receiver-run0003.tar.gz. Inspection was read-only.
+Stock VDP restoration was requested in R0004; successful installed stock boot
+version is not independently confirmed by the updater's zero return.
+
+## Planned opt-in CTS batching — BT-001 through BT-007
+
+The Author requested a design goal and task plan, not firmware implementation.
+See docs/uart0-cts-batching.md and the sole checklist TODO.md. Aware apps may
+request a session-scoped bounded batch between CTS checks; per-byte default and
+legacy behavior remain. Select sizes only after hardware/in-flight audit and
+measure recovered CPU work as well as throughput. Observed62 spare FIFO slots
+are evidence for investigation, not a supported batch allowance. No failure
+boundary was observed. First close existing TX-018/019/020 evidence/release work
+and TX-006 qualification scope, including stock VDP boot confirmation. No
+commit/push authorization or new physical access is implied by planning.

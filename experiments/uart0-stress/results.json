@@ -1,0 +1,328 @@
+{
+  "task": "TX-016",
+  "date": "2026-10-13",
+  "status": "Human emulator review passed; physical stress qualification pending",
+  "target": "Heber Agon Console8",
+  "build_host": "oryx-linuxlite",
+  "toolchain": "Native ZDS II eZ80Acclaim! 5.3.5 under Wine",
+  "candidate_sha256": "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a",
+  "test_bytes": 45153,
+  "test_sha256": "618db52eb4323823139f3b659e824f16b469f6af8cb7c8c3837bd2c25e3e75e7",
+  "human_review_passed": true,
+  "physical_measurement": false,
+  "physical_cts_headroom_qualified": false,
+  "physical_device_access": false,
+  "firmware_writes": false,
+  "engines": [
+    {
+      "engine": "jit",
+      "elapsed_seconds": 25.717,
+      "records": [
+        {
+          "pause_frames": 0,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8582,
+          "raw_ticks": 10,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 1,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8585,
+          "raw_ticks": 10,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 4,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8594,
+          "raw_ticks": 14,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 8,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8606,
+          "raw_ticks": 24,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        }
+      ],
+      "receiver_bytes_compared": 32768,
+      "ordered_reply_count": 128,
+      "replies_observed_before_tx_drain": true,
+      "corruption_negative_control_passed": true,
+      "startup_clear_and_expectation_verified": true,
+      "ordered_progress_breadcrumbs_verified": true,
+      "baseline_diagnostics": [
+        0,
+        1,
+        0
+      ],
+      "physical_measurement": false,
+      "physical_cts_headroom_qualified": false,
+      "cts_blockage_proven_by_software_fixture": false,
+      "raw_ticks_are_uncalibrated": true,
+      "returned_to_mos": true,
+      "graphical_instance_launched": false,
+      "mapped_requested_backend": true,
+      "backend": {
+        "engine": "jit",
+        "frames": 1468,
+        "cycles": 6069720000,
+        "retired": 5664448183,
+        "uart_rx": 692073,
+        "uart_tx": 25309,
+        "uart_delivered": 25309,
+        "isync": 11,
+        "code_invalidations": 1,
+        "keys": 0,
+        "failed": false,
+        "unhandled": 0,
+        "unregistered": 0,
+        "unmapped": 0
+      },
+      "uart": {
+        "tx_irqs": 2134,
+        "modem_irqs": 69,
+        "rx_irqs": 7893,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 135
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "c3b7e5e5613d332d328023732efa8797b1a0470e623a37d6f8629c3915f2b1be  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "618db52eb4323823139f3b659e824f16b469f6af8cb7c8c3837bd2c25e3e75e7  sdcard/uart0/test.bin",
+        "e1e9fccd360487bb18f6efbc66c944aaa3ba081e7b4676cbb6d95cbd7c89ad34  sdcard/uart0/checks.bin",
+        "74920b5f64d1d51de2e42ab007c18a4ffce3fa8c461106097dd282c30e0b8cf1  sdcard/autoexec.txt"
+      ]
+    },
+    {
+      "engine": "interp",
+      "elapsed_seconds": 32.396,
+      "records": [
+        {
+          "pause_frames": 0,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8582,
+          "raw_ticks": 8,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 1,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8585,
+          "raw_ticks": 10,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 4,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8594,
+          "raw_ticks": 14,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        },
+        {
+          "pause_frames": 8,
+          "expected_replies": 32,
+          "observed_replies": 32,
+          "replies_while_busy": 31,
+          "accepted": 8606,
+          "raw_ticks": 22,
+          "rx_errors": 0,
+          "modem_deltas": 1,
+          "sequence_error": 0,
+          "last_token": 47
+        }
+      ],
+      "receiver_bytes_compared": 32768,
+      "ordered_reply_count": 128,
+      "replies_observed_before_tx_drain": true,
+      "corruption_negative_control_passed": true,
+      "startup_clear_and_expectation_verified": true,
+      "ordered_progress_breadcrumbs_verified": true,
+      "baseline_diagnostics": [
+        0,
+        1,
+        0
+      ],
+      "physical_measurement": false,
+      "physical_cts_headroom_qualified": false,
+      "cts_blockage_proven_by_software_fixture": false,
+      "raw_ticks_are_uncalibrated": true,
+      "returned_to_mos": true,
+      "graphical_instance_launched": false,
+      "mapped_requested_backend": true,
+      "backend": {
+        "engine": "interp",
+        "frames": 914,
+        "cycles": 3815330000,
+        "retired": 2867708793,
+        "uart_rx": 692073,
+        "uart_tx": 25309,
+        "uart_delivered": 25309,
+        "isync": 11,
+        "code_invalidations": 1,
+        "keys": 0,
+        "failed": false,
+        "unhandled": 0,
+        "unregistered": 0,
+        "unmapped": 0
+      },
+      "uart": {
+        "tx_irqs": 2143,
+        "modem_irqs": 13,
+        "rx_irqs": 9979,
+        "tx_drops": 0,
+        "rx_overruns": 0,
+        "cts_edges": 39
+      },
+      "runtime_identities": [
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+        "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "c3b7e5e5613d332d328023732efa8797b1a0470e623a37d6f8629c3915f2b1be  flexe-agon-emulator",
+        "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+        "618db52eb4323823139f3b659e824f16b469f6af8cb7c8c3837bd2c25e3e75e7  sdcard/uart0/test.bin",
+        "e1e9fccd360487bb18f6efbc66c944aaa3ba081e7b4676cbb6d95cbd7c89ad34  sdcard/uart0/checks.bin",
+        "74920b5f64d1d51de2e42ab007c18a4ffce3fa8c461106097dd282c30e0b8cf1  sdcard/autoexec.txt"
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "control": "sequence",
+      "rejected": true,
+      "failure_stage": 1,
+      "sequence_error": 1,
+      "elapsed_seconds": 8.524,
+      "test_sha256": "4c5626590bf432b69e9c3b04803a1b5935be7fa7d457411ab5c56d48fb42d8fa",
+      "separate_profile": true,
+      "graphical_instance_launched": false
+    },
+    {
+      "control": "payload",
+      "rejected": true,
+      "failure_stage": 2,
+      "sequence_error": 0,
+      "elapsed_seconds": 8.83,
+      "test_sha256": "cc17b79086645bec372834b20efa2826fc4c60368483a6b788e2a61f14f7caca",
+      "separate_profile": true,
+      "graphical_instance_launched": false
+    }
+  ],
+  "human_review": {
+    "records": [
+      {
+        "pause_frames": 0,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8582,
+        "raw_ticks": 8,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 1,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8585,
+        "raw_ticks": 8,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 4,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8594,
+        "raw_ticks": 16,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 8,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8606,
+        "raw_ticks": 20,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      }
+    ],
+    "receiver_bytes_compared": 32768,
+    "ordered_reply_count": 128,
+    "physical_cts_headroom_qualified": false,
+    "raw_ticks_are_uncalibrated": true,
+    "date": "2026-10-13",
+    "accepted_by": "Author",
+    "statement": "looks like a pass",
+    "four_cases_visible": true,
+    "mos_return_visible": true,
+    "keyboard_dir_visible": true,
+    "profile_hashes_verified": true,
+    "baseline_diagnostics": [
+      0,
+      1,
+      0
+    ],
+    "report_sha256": "170c52dc21de1445f4db7fcd7cb48ac4edc4005a82a4fe1fcdfdd5fe489603da",
+    "screenshot_sha256": "21199914700c5a0fdef2248608053b71323cc8a2f574c0330750f277acf6af10"
+  }
+}

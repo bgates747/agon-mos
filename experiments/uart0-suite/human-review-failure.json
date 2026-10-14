@@ -1,0 +1,29 @@
+{
+  "review_passed": false,
+  "hardware_suite_run": false,
+  "source_build_id": "bbf6b8cbadd97332",
+  "vdp_update": {
+    "failed": true,
+    "phase": "esp_ota_begin",
+    "error_decimal": 258,
+    "error_name": "ESP_ERR_INVALID_ARG",
+    "utility_return_code": 0,
+    "exact_missing_partition_pointer_not_directly_observed": true,
+    "interpretation": "OTA initialization rejected its arguments. App-only/factory-partition emulator profile is consistent with no eligible update target; no actual VDP update succeeds in this trace."
+  },
+  "mos_update": {
+    "utility_reported_crc_ok_and_reset": true,
+    "different_image_write_demonstrated": false
+  },
+  "cause_of_misleading_return": "Agon Flash v1.9 main returns 0 after VDP update dispatch, including updater rejection; cancellation also returns 0. Return code cannot certify success.",
+  "remedy": "Mark unqualified VDP OTA unavailable in emulator review config. Hardware retains explicit VDP choice. Log returned zero as UNVERIFIED and nonzero/load failures as FAIL. Preserve pending handoff across reset.",
+  "original_evidence_sha256": {
+    "esp32-uart0.log": "3353ed793cce5afa23a37e7ec043e6989601a784924ae7cb9d336e3dc728e976",
+    "mos-to-vdp.bin": "06c9a88c5af79188332d6cb2e7e9c1080cf284b6637474ff9302b9ac06130142",
+    "uart.json": "2214839fc41428cf3d80f2d14b5e1456984543d7f40b854cd6bcd7891620b3d0",
+    "vdp-to-mos-delivered.bin": "5d0f9cf8f50eae91d9e33edeb3430362d420ba94c6e6a5f05e79a3aea9a887e3",
+    "vdp-to-mos.bin": "5d0f9cf8f50eae91d9e33edeb3430362d420ba94c6e6a5f05e79a3aea9a887e3"
+  },
+  "evidence_directory": "build/uart0-suite/human-flash-failure-20261013",
+  "screenshot_attachment": "/Agon/mystuff/agent-state/codex/attachments/fbbf5db2-8c7b-4a90-8c89-5ae78b326219/codex-clipboard-656975b5-455f-4324-b52f-a0310229e8b8.png"
+}

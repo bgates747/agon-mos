@@ -1,0 +1,73 @@
+{
+  "dense_gp_observer": {
+    "delivered_tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "observed": 2,
+    "busy_replies": 2,
+    "sequence_error": 1,
+    "last_sample": 46,
+    "uart": {
+      "tx_irqs": 2729,
+      "modem_irqs": 66,
+      "rx_irqs": 20448,
+      "tx_drops": 0,
+      "rx_overruns": 0,
+      "cts_edges": 133
+    },
+    "evidence_sha256": {
+      "G0001.dat": "9f952cef41279d4a7c8ce7a7dd5470ce4f91feae1e258e54ab6088eb4bd7e722",
+      "stats.json": "a08ef857aaffad89f0087898e1220e6a78b024bb96ce209e0f75c571e47b2660",
+      "uart.json": "277d732fc580f6fd1a8a3bf6f2ab282e01030486f9ba076e59cb6b7be3a81a78",
+      "vdp-to-mos-delivered.bin": "46e7f00343a826929ac46dc5c935eadc36924efd7cf19a833dbd87bf9d0abdbe"
+    },
+    "explanation": "GP sysvar is one last-value byte. Complete ordered ISR delivery does not imply the foreground observes every intermediate value."
+  },
+  "rejected_vsync_pacing": {
+    "status": "Interpreter qualification timed out at pause case 3 before MOS return; never staged",
+    "cause": "Not established beyond this frozen-runtime workload interaction; no claim of UART data loss",
+    "uart": {
+      "tx_irqs": 7580,
+      "modem_irqs": 406,
+      "rx_irqs": 73781,
+      "tx_drops": 0,
+      "rx_overruns": 0,
+      "cts_edges": 815
+    }
+  },
+  "final_protocol": "One outstanding GP request, preceding a 256-byte write. Wait for both its observed token and TEMT before the next round; retain initial 0/1/4/8 VSYNC waits.",
+  "transport_and_observer_distinguished": true,
+  "dense_experiment_preserved": true,
+  "physical_qualification_of_revised_protocol": false
+}

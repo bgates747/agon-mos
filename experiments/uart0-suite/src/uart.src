@@ -1,0 +1,27 @@
+.assume adl=1
+.section .text
+.global _uart_discover
+.global _diag_take
+.extern _diag_function
+.extern _diag_status
+_uart_discover:
+    ld bc,01300h
+    ld a,050h
+    rst.lil 08h
+    or a,a
+    jr nz,missing
+    jp (hl)
+missing:
+    ld hl,0
+    ret
+_diag_take:
+    ld hl,(_diag_function)
+    call indirect
+    ld (_diag_status),a
+    ret
+indirect:
+    jp (hl)
+.global _rom_byte0
+_rom_byte0:
+    ld a,(0)
+    ret

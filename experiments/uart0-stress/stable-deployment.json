@@ -1,0 +1,21 @@
+{
+  "deployed_at": "2026-10-13T18:29:55.430518+00:00",
+  "mount": {
+    "target": "/run/media/smith/AGON1",
+    "source": "/dev/sda1",
+    "fstype": "vfat",
+    "uuid": "8658-1C23",
+    "options": "rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,showexec,utf8,flush,errors=remount-ro"
+  },
+  "destination": "/run/media/smith/AGON1/test/mos-uart0",
+  "package": "/home/smith/Agon/mystuff/agon-mos/build/uart0-stress/console8-stable-20261013",
+  "files": 23,
+  "package_manifest_sha256": "c03f77fe4de3381343194908de1e4e24d0104101c9c88ee313160c8bf578d921",
+  "verified": true,
+  "firmware_flashing_performed": false,
+  "operator": "Author performs manual flashing/testing",
+  "previous_directory_archived": "/run/media/smith/AGON1/test/mos-uart0-before-stress",
+  "operator_files_preserved": [],
+  "old_reports_preserved_in_archive": true,
+  "filename_collision": false
+}

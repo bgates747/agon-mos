@@ -1,0 +1,59 @@
+CONSOLE8 PASSIVE UART0 CAPTURE - ACCESS NOT YET QUALIFIED
+
+No sniffer is needed for the software fixture. Do not alter the board or
+move jumpers to run test.bin. CTS headroom remains a separate measurement.
+
+Heber manual 80-23245 Issue 2, schematic revision 2.0, sheets 1, 3 and 5:
+https://heber.co.uk/wp-content/uploads/2024/01/Heber_Agon_Console8_user_manual-2.pdf
+
+The expansion connector EXP1 does not expose UART0 TX, RX or CTS.
+The USB-to-serial bridge is the ESP32 programming/debug port, not UART0.
+UART-EN1 controls the two serial buffers; it is NOT a CTS probe connector.
+Leave its normal fitted jumper in place.
+
+Schematic signal references (not an instruction to attach probes):
+  eZ80 -> VDP: eZ80TxD, U3 pin 4 / R17, continuing to U6 GPIO34.
+  VDP -> eZ80: eZ80RxD, U2 pin 2, fed by U6 GPIO2 through R54.
+  VDP ready -> eZ80 CTS: eZ80CTS, U6 GPIO13 / U1 PD3-CTS0.
+The schematic has no labelled UART0 test-point header. U2/U3 are small
+surface-mount buffers; CTS has no comparable series resistor shown.
+A practical CTS attachment point is still unknown. Actual PCB revision and
+accessible pads need inspection before recommending clips or ground points.
+Nothing here requires soldering, touching QFN pins, driving CTS or cutting
+tracks. If passive attachment is impractical, defer this measurement.
+
+If suitable attachment is later confirmed, use input-only 3.3 V-compatible
+channels and a verified board ground, with short leads attached unpowered.
+Never use an RS-232 voltage interface or an active transmitter as a probe.
+Record board revision, sniffer model, sample rate and channel mapping.
+Suggested sampling: at least 20 MS/s; capture all three lines together.
+Decode TX/RX as 1,152,000 baud, 8N1, non-inverted. CTS is active LOW.
+Capture a selected case from before its first byte through final ready and
+reply. Do not mistake a capture-buffer overflow for a long quiet interval.
+
+Offline normalized CSV for the existing analyzer:
+  kind,time_s,end_s,value
+  cts,0,,1
+  tx,0.00001,0.000018680556,23
+Use one decoded tx/rx row per byte: start-bit start, stop-bit end, decimal
+byte. CTS values are LOGICAL ready (1 for low/ready, 0 for high/blocked).
+Include initial/final ready rows bracketing all decoded frames. Sort rows
+by start time. Preserve framing-error/overflow evidence; do not discard it
+merely to make the analyzer accept a trace.
+
+On a development host:
+  ruby capture-analyze.rb trace capture.csv
+
+The analyzer counts bytes completing/starting during each CTS block. That
+alone is not a headroom qualification. It needs independent receiver FIFO
+reserve, the precise configured threshold and a complete stop/resume trace.
+Stock VDP v2.16.0 calls setHwFlowCtrlMode(..., 64) and requests a 256-byte
+software RX ring. Neither the ring size nor the unused UART_RX_THRESH=128
+constant establishes available hardware FIFO reserve at a CTS edge.
+The software test's modem-delta byte is sticky and undirected; it cannot
+locate or time a CTS block. Replies before drain establish parser activity
+while TX is pending, not simultaneous wire bits or a measured safety margin.
+
+Pinned source:
+https://github.com/AgonPlatform/agon-vdp/blob/c7ac293d2aa81ddfa693390549bcd909069c8fc3/video/vdp_protocol.h
+https://github.com/AgonPlatform/agon-vdp/blob/c7ac293d2aa81ddfa693390549bcd909069c8fc3/video/agon.h

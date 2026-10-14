@@ -1,0 +1,6 @@
+-FORMAT=OMF695,INTEL32
+-map -maxhexlen=64 -quiet -warnoverlap -xref -warn=fatal
+-sort NAME=ascending -debug -NOigcase
+RANGE ROM $080000 : $08FFFF
+ORDER UART_ENTRY
+"host" = "host.obj"

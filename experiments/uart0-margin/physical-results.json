@@ -1,0 +1,106 @@
+{
+  "board": "Heber Agon Console8",
+  "build": "3080ff494d015d78",
+  "run": "0003",
+  "physical_measurements_performed": true,
+  "empirical_receiver_experiment_passed": true,
+  "verified_payloads": 42,
+  "verified_payload_bytes": 172032,
+  "minimum_observed_stock_FIFO_space": 62,
+  "stock_threshold": 64,
+  "stock_settled_occupancy": 66,
+  "observed_additional_bytes_after_threshold": 1,
+  "observations_by_threshold": {
+    "64": {
+      "occupancies": [
+        66
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "96": {
+      "occupancies": [
+        98
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "112": {
+      "occupancies": [
+        114
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "120": {
+      "occupancies": [
+        126
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "124": {
+      "occupancies": [
+        128
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "126": {
+      "occupancies": [
+        128
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    },
+    "127": {
+      "occupancies": [
+        128
+      ],
+      "hold_ms": [
+        5,
+        20
+      ],
+      "repeats": 6
+    }
+  },
+  "overflow_boundary_observed": false,
+  "physical_margin_qualified": false,
+  "electrical_CTS_edge_timing_measured": false,
+  "scope": "Observed reserve under these bounded receiver pauses; no worst-case guarantee. Full FIFO cases are censored and do not establish an overflow boundary.",
+  "diagnostic_firmware_flash_request": {
+    "run": "0002",
+    "crc32": "19236414",
+    "return": "UNVERIFIED",
+    "diagnostic_protocol_observed_in_run0003": true
+  },
+  "stock_restore_request": {
+    "run": "0004",
+    "crc32": "FFFBFADE",
+    "return": "UNVERIFIED",
+    "installed_stock_version_confirmed": false
+  },
+  "report_sha256": "669b4ba5d87b481debbac0fb2563acd8c60ea1ee627dd59b899ddaa35a2f4af7",
+  "archive_sha256": "6b22247f8b945c553b70088507bf0c70a6190c7490dc88206dcff946e6fce14b",
+  "card_uuid": "8658-1C23",
+  "card_manifest_sha256": "98c2dd42053468103d7e20c882eb8524f7d9d7a88fefdc41cfc333f6a437a877",
+  "SD_modified_by_inspection": false
+}

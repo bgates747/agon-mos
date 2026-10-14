@@ -38,7 +38,7 @@ def mount_identity(mount, uuid):
     return row
 
 
-def package_files(package):
+def package_files(package, deployment_path="/test/mos-uart0", require_human_review=False):
     require(package.is_dir(), "Package directory missing")
     expected = {}
     for line in (package / "SHA256SUMS").read_text(encoding="ascii").splitlines():
@@ -53,13 +53,23 @@ def package_files(package):
     require({p.name for p in package.iterdir()} == set(expected) | {"SHA256SUMS"}, "Unlisted package files")
     require(not (package / "SHA256SUMS").is_symlink(), "Unsafe checksum file")
     manifest = json.loads((package / "manifest.json").read_text())
-    require(manifest["deployment_path"] == "/test/mos-uart0", "Unexpected destination")
-    require(manifest["vdp"]["stock_release"] and manifest["vdp"]["version"] == "2.16.0", "Need stock VDP 2.16.0")
+    require(manifest["deployment_path"] == deployment_path, "Unexpected destination")
+    if require_human_review:
+        require(manifest.get("human_review_passed") is True, "Human fixture review required")
+    vdp = manifest["vdp"]
+    diagnostic = manifest.get("receiver_margin_experiment") is True
+    require(vdp["version"] == "2.16.0", "Need VDP 2.16.0 base")
+    if diagnostic:
+        require(vdp.get("stock_release") is False and vdp.get("diagnostic_file") == "vdp-cts-diag.bin" and vdp.get("stock_restore") == "vdp-2.16.0.bin", "Invalid diagnostic firmware declaration")
+        require({"vdp-cts-diag.bin", "margin.bin", "margin.json", "DIAGNOSTIC-VDP-LICENSE.txt", "diagnostic-sources.tar.gz"} <= set(expected), "Incomplete diagnostic package")
+    else:
+        require(vdp["stock_release"], "Need stock VDP 2.16.0")
     require({"readme.txt", "vdp-2.16.0.bin", "mos-candidate.bin", "test.bin", "checks.bin", "flash.bin"} <= set(expected), "Incomplete manual test package")
     return expected
 
 
-def main():
+def main(deployment_path="/test/mos-uart0", require_human_review=False):
+    require(deployment_path in ("/test/mos-uart0", "/test/mos-uart0-stress"), "Unexpected fixture destination")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("package", type=Path)
     parser.add_argument("--mount", required=True, type=Path)
@@ -74,18 +84,18 @@ def main():
     require(mount != Path("/"), "Refusing filesystem root")
     require(not args.receipt.exists(), "Receipt already exists")
     require(not args.receipt.resolve().is_relative_to(mount), "Receipt must remain on the host")
-    expected = package_files(package)
+    expected = package_files(package, deployment_path, require_human_review)
     identity = mount_identity(mount, args.uuid)
     parent = mount / "test"
     require(not parent.is_symlink(), "Refusing linked test directory")
-    target = parent / "mos-uart0"
+    target = parent / Path(deployment_path).name
     require(not target.is_symlink(), "Refusing linked test directory")
     preserve = []
     archive = None
     if target.exists():
         require(args.archive_existing and args.previous_manifest_sha256, "Test directory already exists; preserve it")
         archive = args.archive_existing.resolve()
-        require(archive.parent == parent and archive.name.startswith("mos-uart0-before-"), "Archive must be a sibling named mos-uart0-before-...")
+        require(archive.parent == parent and archive.name.startswith(target.name + "-before-"), "Archive must be a fixture sibling named " + target.name + "-before-...")
         require(not archive.exists(), "Archive already exists")
         require(hashlib.sha256((target / "manifest.json").read_bytes()).hexdigest() == args.previous_manifest_sha256, "Previous deployment manifest mismatch")
         old = json.loads((target / "manifest.json").read_text())
@@ -97,7 +107,7 @@ def main():
         for path in target.iterdir():
             if path.name not in old_files:
                 require(path.is_file() and not path.is_symlink(), "Unexpected directory/link in existing fixture")
-                if path.name not in ("bench.dat", "failure.dat", "baseline.dat"):
+                if path.name not in ("bench.dat", "stress.dat", "failure.dat", "baseline.dat"):
                     require(path.name not in expected, "Operator-file collision: " + path.name)
                     preserve.append(path.name)
     if args.dry_run:

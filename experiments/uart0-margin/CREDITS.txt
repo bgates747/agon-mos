@@ -1,0 +1,13 @@
+UART0 receiver instrumentation and host tests: MOS project additions, MIT.
+Diagnostic VDP derived from Agon VDP 2.16.0 by Dean Belfield and contributors.
+Its stock LICENSE is retained as DIAGNOSTIC-VDP-LICENSE.txt.
+VDP graphics dependency: pinned vdp-gl ac2dd5986daf496c43ae8e7fe41836274aec54a0,
+including its FabGL upstream author notices and licenses.
+CRC 1.0.4 by Rob Tillaart; ESP32Time 2.0.6 by fbiego and contributors.
+Their full notices are retained in diagnostic-sources.tar.gz.
+ESP32 build/runtime: Espressif ESP-IDF 4.4.6 and Arduino-ESP32 2.0.14
+contributors, under their respective upstream licenses.
+The suite's CREDITS.txt separately credits the MOS, firmware updater,
+Agon platform and Flexe/Fab emulator contributors, including Tom Morton,
+Dean Belfield and Lennart Benschop.
+Source identities and content hashes: margin-source.json.

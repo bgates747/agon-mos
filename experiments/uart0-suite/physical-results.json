@@ -1,0 +1,272 @@
+{
+  "source_build_id": "b0827de750c023bb",
+  "target": "Heber Agon Console8",
+  "run": "0001",
+  "overall_status": "PENDING",
+  "tests": {
+    "1": "PASS",
+    "6": "PASS",
+    "2": "PASS",
+    "3": "PASS",
+    "4": "PASS",
+    "5": "PENDING"
+  },
+  "physical_software_campaign_passed": true,
+  "receiver_bytes_verified": 98304,
+  "ordered_stress_replies": 128,
+  "trial_rx_errors": 0,
+  "entry_rx_flags_hex": "98",
+  "entry_rx_flags_origin": "Unresolved; predates test output and is separated from zero fresh diagnostic epochs",
+  "installed_full_ROM_CRC32": "239097B7",
+  "installed_firmware_independently_read_back": false,
+  "VDP_version_label": "Operator supplied; not auto-detected",
+  "benchmark": {
+    "records": [
+      {
+        "mode": 0,
+        "pair": 0,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 0,
+        "raw_ticks": 16,
+        "checksum": 1202774,
+        "overlap_iterations": 38912,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 1,
+        "raw_ticks": 16,
+        "checksum": 1202774,
+        "overlap_iterations": 38656,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 1,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 2,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 2,
+        "raw_ticks": 16,
+        "checksum": 1202774,
+        "overlap_iterations": 39424,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 3,
+        "raw_ticks": 14,
+        "checksum": 1202774,
+        "overlap_iterations": 37632,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 3,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      }
+    ],
+    "pairs": [
+      {
+        "pair": 0,
+        "blocking_ticks": 24,
+        "async_ticks": 16,
+        "ticks_saved": 8,
+        "overlap_iterations": 38912
+      },
+      {
+        "pair": 1,
+        "blocking_ticks": 24,
+        "async_ticks": 16,
+        "ticks_saved": 8,
+        "overlap_iterations": 38656
+      },
+      {
+        "pair": 2,
+        "blocking_ticks": 24,
+        "async_ticks": 16,
+        "ticks_saved": 8,
+        "overlap_iterations": 39424
+      },
+      {
+        "pair": 3,
+        "blocking_ticks": 24,
+        "async_ticks": 14,
+        "ticks_saved": 10,
+        "overlap_iterations": 37632
+      }
+    ],
+    "raw_ticks_are_uncalibrated": true,
+    "physical_qualification_established": false
+  },
+  "stress": {
+    "records": [
+      {
+        "pause_frames": 0,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 32,
+        "accepted": 8582,
+        "raw_ticks": 10,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 1,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8585,
+        "raw_ticks": 12,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 4,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 32,
+        "accepted": 8594,
+        "raw_ticks": 16,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 8,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8606,
+        "raw_ticks": 24,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      }
+    ],
+    "receiver_bytes_compared": 32768,
+    "ordered_reply_count": 128,
+    "physical_cts_headroom_qualified": false,
+    "raw_ticks_are_uncalibrated": true
+  },
+  "calibration": {
+    "raw_ticks": 7304,
+    "external_ms": 60730,
+    "ticks_per_second": 120.27,
+    "method": "manual_keys",
+    "video_mode": 0,
+    "physical_measurement": true,
+    "precision": "Approximate manual key/stopwatch calibration; no precision reference claimed"
+  },
+  "calibrated_pairs_approx": [
+    {
+      "pair": 0,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 38912,
+      "blocking_seconds_approx": 0.19955093099671412,
+      "async_seconds_approx": 0.13303395399780943,
+      "elapsed_tick_reduction_percent": 33.333333333333336
+    },
+    {
+      "pair": 1,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 38656,
+      "blocking_seconds_approx": 0.19955093099671412,
+      "async_seconds_approx": 0.13303395399780943,
+      "elapsed_tick_reduction_percent": 33.333333333333336
+    },
+    {
+      "pair": 2,
+      "blocking_ticks": 24,
+      "async_ticks": 16,
+      "ticks_saved": 8,
+      "overlap_iterations": 39424,
+      "blocking_seconds_approx": 0.19955093099671412,
+      "async_seconds_approx": 0.13303395399780943,
+      "elapsed_tick_reduction_percent": 33.333333333333336
+    },
+    {
+      "pair": 3,
+      "blocking_ticks": 24,
+      "async_ticks": 14,
+      "ticks_saved": 10,
+      "overlap_iterations": 37632,
+      "blocking_seconds_approx": 0.19955093099671412,
+      "async_seconds_approx": 0.11640470974808324,
+      "elapsed_tick_reduction_percent": 41.666666666666664
+    }
+  ],
+  "physical_cts_headroom_qualified": false,
+  "packaged_fixtures_and_firmware_verified": true,
+  "raw_reports_sha256": {
+    "B0001.dat": "8ef959509a95df54f5d2137c80a61b314775f06afa45eaabaabdb5d2d003d05b",
+    "C0001.txt": "73008b73d781a4f2089414a2579a2cb923fb84a708b6b58f1796848a2ba4012a",
+    "D0001.dat": "f43b844a3ba9f34a8f2165b069b53f898cca922c41b7eefdde6e729c5307bd6a",
+    "I0001.dat": "824e714cc4c97e72abd2fff6fca6411e0b4c23537e27ffc7db5c92e40e163db5",
+    "N0001.dat": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+    "P0001.dat": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+    "R0001.log": "7141bdaa4df1aa8159c0d1e66c25df1b9273432f440843aaf0d205a9603a2038",
+    "S0001.dat": "e58775285a2038c29e5f0ae6cbf280b0ea501d3231305098d9078011df7f3e5c",
+    "runs.log": "7141bdaa4df1aa8159c0d1e66c25df1b9273432f440843aaf0d205a9603a2038"
+  },
+  "report_timestamps_unreliable": true,
+  "SD_writes": false,
+  "agent_physical_firmware_writes": false,
+  "evidence_directory": "build/uart0-suite/console8-completed-20261013-run0001",
+  "commit_approval_supplied": false
+}

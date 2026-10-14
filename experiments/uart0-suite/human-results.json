@@ -1,0 +1,219 @@
+{
+  "source_build_id": "b0827de750c023bb",
+  "author_statement": "alright i did what i could on the emulator. the timed run is kind of an odd way to do it but i figured it out.",
+  "human_software_campaign_passed": true,
+  "run_number": "0004",
+  "overall_status": "PENDING",
+  "tests": {
+    "1": "PASS",
+    "6": "PASS",
+    "2": "PASS",
+    "3": "PASS",
+    "4": "PASS",
+    "5": "PENDING"
+  },
+  "benchmark": {
+    "records": [
+      {
+        "mode": 0,
+        "pair": 0,
+        "raw_ticks": 20,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 0,
+        "raw_ticks": 12,
+        "checksum": 1202774,
+        "overlap_iterations": 36352,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 1,
+        "raw_ticks": 14,
+        "checksum": 1202774,
+        "overlap_iterations": 30976,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 1,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 2,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 2,
+        "raw_ticks": 16,
+        "checksum": 1202774,
+        "overlap_iterations": 33280,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "receiver_result": 0
+      },
+      {
+        "mode": 1,
+        "pair": 3,
+        "raw_ticks": 16,
+        "checksum": 1202774,
+        "overlap_iterations": 30976,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      },
+      {
+        "mode": 0,
+        "pair": 3,
+        "raw_ticks": 24,
+        "checksum": 1202774,
+        "overlap_iterations": 0,
+        "accepted": 8210,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "receiver_result": 0
+      }
+    ],
+    "pairs": [
+      {
+        "pair": 0,
+        "blocking_ticks": 20,
+        "async_ticks": 12,
+        "ticks_saved": 8,
+        "overlap_iterations": 36352
+      },
+      {
+        "pair": 1,
+        "blocking_ticks": 24,
+        "async_ticks": 14,
+        "ticks_saved": 10,
+        "overlap_iterations": 30976
+      },
+      {
+        "pair": 2,
+        "blocking_ticks": 24,
+        "async_ticks": 16,
+        "ticks_saved": 8,
+        "overlap_iterations": 33280
+      },
+      {
+        "pair": 3,
+        "blocking_ticks": 24,
+        "async_ticks": 16,
+        "ticks_saved": 8,
+        "overlap_iterations": 30976
+      }
+    ],
+    "raw_ticks_are_uncalibrated": true,
+    "physical_qualification_established": false
+  },
+  "stress": {
+    "records": [
+      {
+        "pause_frames": 0,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 32,
+        "accepted": 8582,
+        "raw_ticks": 10,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 1,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8585,
+        "raw_ticks": 8,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 4,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8594,
+        "raw_ticks": 12,
+        "rx_errors": 0,
+        "modem_deltas": 0,
+        "sequence_error": 0,
+        "last_token": 47
+      },
+      {
+        "pause_frames": 8,
+        "expected_replies": 32,
+        "observed_replies": 32,
+        "replies_while_busy": 31,
+        "accepted": 8606,
+        "raw_ticks": 16,
+        "rx_errors": 0,
+        "modem_deltas": 1,
+        "sequence_error": 0,
+        "last_token": 47
+      }
+    ],
+    "receiver_bytes_compared": 32768,
+    "ordered_reply_count": 128,
+    "physical_cts_headroom_qualified": false,
+    "raw_ticks_are_uncalibrated": true
+  },
+  "calibration": {
+    "raw_ticks": 1226,
+    "external_ms": 10560,
+    "ticks_per_second": 116.098,
+    "method": "manual_keys",
+    "physical_measurement": false,
+    "precision": "Short manual key timing; not a physical Console8 calibration"
+  },
+  "zero_RX_errors": true,
+  "returned_to_mos": true,
+  "physical_suite_run": false,
+  "physical_cts_headroom_qualified": false,
+  "commit_approval_supplied": false,
+  "evidence_directory": "build/uart0-suite/human-completed-b0827de750c023bb/uart0",
+  "files_sha256": {
+    "B0004.dat": "8e910308967a9dd646006e87f91702214e77a3ff80af47a3dfbf251af4d4cad5",
+    "C0004.txt": "cc29f6ab5e814ab6a90ebcf117a3903e81a40a955b530cbfe7712a22ff182529",
+    "D0004.dat": "028e2518bd2b8b19b650bf2ed80b5dbb7105936e582dd82fff99215313d09295",
+    "I0004.dat": "824e714cc4c97e72abd2fff6fca6411e0b4c23537e27ffc7db5c92e40e163db5",
+    "N0004.dat": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+    "P0004.dat": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+    "R0004.log": "b65fe499093de1616f7d55bdd1b529cbe5dfd602f93d4694930eff4ac46aa1ef",
+    "S0004.dat": "affab86b5ada06fc6de1b93838915f94fa69df9e49bf48754ce219899737e675"
+  }
+}

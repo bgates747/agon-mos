@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-13",
+  "target": "Heber Agon Console8",
+  "status": "Old benchmark rerun failed creating existing baseline.dat; stress fixture not run",
+  "screenshot_sha256": "0cfa43616ae4b820fc2f3a03d04587d0cb90e46f60157774bb16c9ce0dcb94cf",
+  "screen_title": "UART0 TRANSMISSION TEST",
+  "failure_position": "After baseline print, before setup PASS",
+  "baseline_rx_displayed": 152,
+  "failed_case_rx_displayed": 0,
+  "active_old_test_sha256": "653ef779aaea62f8e70670bdfd508b672bd705f8244c4a45040a13c705f756f7",
+  "old_report_sha256": {
+    "baseline.dat": "faee935763044f124d7526755a5058a33f9402a595994d59eddd4be8546ff201",
+    "bench.dat": "1fb3c5883119ac81275b52934b4af116452b18f30b6af66939657ba22ca90443",
+    "failure.dat": "ee06f8376088f36af3a81fb850f21bbdde7adddcb60cc8a1d1f61f82ccf0a5af"
+  },
+  "old_reports_unchanged_from_prior_run": true,
+  "save_source": "src/mos.c:1957 FA_CREATE_NEW",
+  "failure_source": "experiments/uart0-bench/bench.asm:111 SAVE baseline.dat followed by failure on nonzero return",
+  "installed_mos_unchanged_reported_by_author": true,
+  "physical_stress_qualification": false,
+  "remedy": "Stable /test/mos-uart0; archive previous directory; omit stale reports; same qualified stress binary and MOS",
+  "original_directories_copied_to_host_before_sd_update": true
+}
