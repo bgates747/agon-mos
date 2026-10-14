@@ -1,11 +1,16 @@
 # Design goal: opt-in UART0 CTS batching
 
-Aware applications should be able to request fewer CTS checks per transmitted
-byte, recovering eZ80 execution time while retaining reliable, ordered UART0
-output on a qualified hardware/VDP combination. Stock MOS legacy blocking
-behavior remains the approved default. Per-byte async and batching are
-experimental; private prototypes exist, but the supported batching API and
-production qualification are incomplete.
+Executive summary: we want an aware application to spend less CPU time sending
+data to the VDP, leaving more time for work such as Jukebox graphics. The
+experimental switch lets MOS send small groups of bytes after each permission
+check. Stock MOS remains the approved baseline, and legacy output keeps its
+stock behavior.
+
+The new switch exists in the development firmware. Before approving it, we
+need to show a worthwhile benefit and reliable delivery on the intended board
+and VDP firmware. The receiver must have room for bytes already on their way
+when it asks MOS to stop. Software checks alone cannot establish that margin,
+and the unresolved VDP receive fault remains a qualification obstacle.
 
 ## Original design anchor
 
@@ -33,7 +38,7 @@ Selection belongs to the active session, with a safe default on every open
 and reset on close/application exit. Unsupported requests fail explicitly;
 there is no silent escalation. The [proposed ABI 1.2](uart0-cts-batching-api.md)
 defines versioned capability discovery and compatibility with the experimental
-1.1 table; its public implementation is pending. Initially,
+1.1 table; its experimental register-ABI implementation is now present. Initially,
 configuration should be permitted only when transmission is quiescent, avoiding
 an ambiguous change in the middle of a published descriptor. Exact quiescence
 and error semantics are part of the contract review.

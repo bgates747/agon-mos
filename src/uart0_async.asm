@@ -1,5 +1,6 @@
 ; Interrupt-based UART0 transmission. ADL assembly API; see docs/uart0-async.md.
 UART0_PRODUCTION EQU 1
+UART0_BATCH_SCALAR EQU 0
     INCLUDE "uart0_tx.inc"
     SEGMENT .STARTUP
     XREF vdp_protocol,_vdp_protocol_data
@@ -11,6 +12,8 @@ UART0_PRODUCTION EQU 1
 _uart0_tx_init:
     ld hl,1
     ld (tx_next_ticket),hl
+    ld a,1
+    ld (tx_cts_batch),a
     ret
 
 ; Existing MOS parser and keyboard state remain the receive owner.
@@ -222,13 +225,15 @@ uart0_async_getapi:
     xor a,a
     ret
 uart0_async_api:
-    DB "UTX1",1,1,uart0_async_api_end-uart0_async_api,7
+    DB "UTX1",1,2,uart0_async_api_end-uart0_async_api,15
     DB 3,16
     DB 255,255,0
     DW24 tx_open,tx_reserve,tx_publish,tx_status,tx_cancel,tx_reap
     DW24 tx_poll_drain,tx_close,tx_kick
     DW24 tx_rx_errors
     DW24 tx_diag_take
+    DW24 tx_set_cts_batch,tx_get_cts_batch
+    DW 0808bh
 uart0_async_api_end:
     SECTION BSS
     XDEF uart0_sync_depth

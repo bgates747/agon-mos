@@ -120,3 +120,9 @@ timing. UART_AB_RECOVER_RX=1 permits one diagnostic INT_ENA MMIO write only
 after a captured receive-wakeup failure, then records whether TX resumes.
 That intervention permanently disqualifies the run as a benchmark or passing
 qualification. These options are not part of the normal fixture or launchers.
+
+The historical private prototypes are frozen to core commit `dcc518e` and
+SHA256 `2a086ac94ce28390ce8eff3266f193f75be4117f309690b29bac0543db0fe584`.
+`prepare.rb` verifies that identity before generation, so later supported-driver
+work does not silently change the measured comparison. ABI1.2 experiments live
+separately in `experiments/uart0-batching`.

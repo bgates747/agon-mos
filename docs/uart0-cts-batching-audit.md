@@ -1,13 +1,16 @@
 # UART0 CTS batching hardware and source audit — BT-002
 
-Executive summary: keep the current FIFO-empty admission and 16-write service
-cap. Investigate CTS intervals 1/2/4/8/16 within that cap. Under an explicitly
-stated no-extra-propagation model, a stopped receiver may still see up to 17
-bytes from one admitted service opportunity: 16 writes plus a prior shift-register
-byte. The observed 62 spare slots support experimentation, not certification.
-No production batch size or throughput gain is established by this audit.
-The original OTIRX goal is mandatory in the experiment; this audit's earlier
-scalar-only counter guidance does not establish a block-copy implementation.
+Executive summary: sending several bytes after one permission check could free
+CPU time, but some bytes will still reach the VDP after it asks MOS to stop.
+We need enough spare room at the receiver to absorb them without losing data.
+The earlier Console8 test suggests room to investigate small batches; it does
+not prove safety under every timing condition or on other hardware.
+
+Keep each refill small and always check permission before starting it. Test
+whether the intended block-copy instruction saves useful CPU work while every
+byte still arrives correctly. This audit permits experiments; it does not
+approve a production setting or establish a throughput gain. The byte budget,
+hardware facts and limitations supporting that conclusion follow below.
 
 ## Primary hardware facts
 

@@ -1,12 +1,16 @@
 # Next tranche: UART0 A/B streaming and application CPU headroom
 
-Executive summary: close Tom Morton's original OTIRX proposal with paired
-sustained-stream measurements and a paced AgonJukebox-shaped workload. Compare
-correct bytes delivered and useful CPU work recovered, not just enqueue speed.
-The [skins audit](uart0-jukebox-skins-audit.md) establishes 735-byte uploads at
-60 Hz for 44.1 kHz PCM and a long blocking timer handler; the paced fixture must
-model a short scheduler ISR with foreground packet production instead.
-This document describes the tranche; TODO.md is the sole actionable checklist.
+Executive summary: we need to establish how much useful CPU time background
+sending gives back, whether bulk transfers become faster, and whether every
+byte still arrives correctly. Earlier Console8 results are promising for CPU
+headroom, but show no bulk-speed gain from batching over our experimental
+one-byte-at-a-time background sender.
+
+First finish the controlled comparisons and reliability checks. Then test a
+workload like Jukebox's regularly scheduled audio uploads, followed by Jukebox
+itself, to see whether the saved CPU time improves graphics without disrupting
+sound. The unresolved VDP receive fault must be addressed before emulator
+passes can support release approval. TODO.md is the sole actionable checklist.
 
 ## Status and qualification gate
 

@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
-require 'fileutils';require 'digest';require 'json'
+require 'fileutils';require 'digest';require 'json';require 'open3'
 root=File.expand_path('../..',__dir__);Dir.chdir(root)
 out='build/uart0-ab';FileUtils.mkdir_p(out)
-base=File.read('src/uart0_tx.inc')
+# Preserve the measured private prototypes when the supported driver evolves.
+# This historical comparison must not silently absorb a new session API/core.
+base,status=Open3.capture2('git','show','dcc518e:src/uart0_tx.inc')
+raise 'Frozen experimental baseline unavailable' unless status.success? && Digest::SHA256.hexdigest(base)=='2a086ac94ce28390ce8eff3266f193f75be4117f309690b29bac0543db0fe584'
 start=base.index("    ld b,16\nservice_next:");finish=base.index("service_running:",start)
 raise 'Core layout changed' unless start && finish
 block=<<~'ASM'

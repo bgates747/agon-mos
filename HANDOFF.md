@@ -1,5 +1,21 @@
 # Interrupt-based UART0 transmission project — handoff
 
+Executive summary: this project aims to give apps such as Jukebox more CPU time
+for graphics while MOS sends data to the VDP in the background. Small-batch
+sending showed useful headroom in an earlier Console8 experiment. The new
+app-controlled version passes software checks, but a VDP receive fault and
+unfinished qualification still prevent approval. Stock MOS remains the approved
+baseline; no new firmware was installed during the latest tranche.
+
+Latest tranche: outstanding work was committed/pushed as 5d1963d at the
+Author's request. New off-device ABI1.2 implements session batching controls and
+bounded OTIRX; see experiments/uart0-batching/README.md and results.json.
+The prior physical MOS remains ABI1.1. New work is uncommitted pending human
+review; no SD deployment or firmware flashing occurred. Both async transports
+remain experimental, not stock/production approved. A combined JIT receiver
+campaign reproduces the known recovery-deadlock state at batch8; later passes
+do not clear AB-006. Menu integration and matched A/B full integrity remain.
+
 Latest return: Console8 R0005 passes all30 A/B phases with zero late feeds and
 case RX errors. Paced OTIRX useful work is31.3% above experimental per-byte async; both take58
 raw ticks for bulk versus96 for blocking. No tick-rate/CPU-cycle assumption.
@@ -7,8 +23,9 @@ Card inspection/archive was read-only. See experiments/uart0-ab/physical-results
 and build/uart0-ab/console8-run0005.tar.gz. UI-001 tracks the Author's separate,
 unexplained menu keyboard delay; do not attribute it to getch without evidence.
 
-Current priority (2026-10-14): complete the experimental session API and driver
-(BT-003), paired with full receiver integrity (AB-003/BT-005). Stock MOS is the
+Remaining priority (2026-10-14): qualify the new experimental session API
+(BT-003), extend matched A/B integrity and integrate numbered menu reports
+(AB-003/BT-005). AB-006 receiver-owner correction remains a qualification gate. Stock MOS is the
 approved baseline; neither async implementation is approved for production.
 The exploratory Console8 comparison is complete. AB-006 still requires a
 receiver-owner correction/regression for the traced VDP cross-core RX race;
@@ -19,7 +36,7 @@ New emulator-related work still requires human review before commit unless
 explicitly overridden. Do not deploy or flash new firmware without the
 applicable manual hardware-test authorization.
 
-Executive summary: accepted UART0 suite, firmware menu, receiver diagnostics and
+Earlier accepted work: UART0 suite, firmware menu, receiver diagnostics and
 batching goal were committed/pushed as a776668 after explicit authorization.
 Console8 R0003 verifies all 42 receiver trials; stock threshold 64 leaves 62
 observed FIFO slots. The Author confirms reboot into normal stock VDP 2.16.0

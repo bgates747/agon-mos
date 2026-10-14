@@ -75,6 +75,8 @@ ENDMACRO
     API tx_close,close_core
     API tx_kick,kick_core
     API tx_diag_take,diag_take_core
+    API tx_set_cts_batch,set_cts_batch_core
+    API tx_get_cts_batch,get_cts_batch_core
     API tx_barrier_enter,barrier_core
     API tx_barrier_leave,unbarrier_core
     API tx_sync_byte,sync_core
@@ -135,6 +137,7 @@ open_core:
     out0 (IER),a
     ld a,1
     ld (tx_opened),a
+    ld (tx_cts_batch),a
     jp ok
 
 ; All ticket values are monotonic across close/open. Zero is never issued.
@@ -397,6 +400,9 @@ close_scan:
     xor a,a
     ld (tx_opened),a
     ld (tx_barrier),a
+    inc a
+    ld (tx_cts_batch),a
+    xor a,a
     ret
 kick_core:
     call check_open
@@ -463,6 +469,47 @@ diag_take_core:
     ld (tx_modem_deltas),a
     ret
 
+; Session policy changes only with no published work and an idle wire.
+; B is the requested/effective size. Rejections leave policy unchanged.
+set_cts_batch_core:
+    call check_open
+    jp z,closed
+    ld a,b
+    cp a,1
+    jr z,batch_valid
+    cp a,2
+    jr z,batch_valid
+    cp a,4
+    jr z,batch_valid
+    cp a,8
+    jr z,batch_valid
+    cp a,16
+    jp nz,invalid
+batch_valid:
+    ld hl,(tx_head)
+    call hl_zero
+    jp nz,busy
+    ld a,(tx_barrier)
+    or a,a
+    jp nz,busy
+    IF UART0_PRODUCTION
+    ld a,(uart0_sync_depth)
+    or a,a
+    jp nz,busy
+    ENDIF
+    call read_lsr
+    bit 6,a
+    jp z,busy
+    ld a,b
+    ld (tx_cts_batch),a
+    jp ok
+get_cts_batch_core:
+    call check_open
+    jp z,closed
+    ld a,(tx_cts_batch)
+    ld b,a
+    jp ok
+
 ; Every LSR/MSR read acknowledges through a shared sticky latch.
 read_lsr:
     in0 a,(LSR)
@@ -499,12 +546,15 @@ read_msr:
     out0 (IER),a
     call read_lsr
     bit 5,a
-    jr z,service_running
+    jp z,service_running
+    ld a,(tx_cts_batch)
+    cp a,1
+    jp nz,service_batch
     ld b,16
 service_next:
     call read_msr
     bit 4,a
-    jr z,service_blocked
+    jp z,service_blocked
     ld ix,(tx_head)
     ld hl,(ix+4)
     ld a,(hl)
@@ -531,9 +581,85 @@ service_next:
     call hl_zero
     jr nz,service_more
     ld (tx_tail),hl
-    jr service_idle
+    jp service_idle
 service_more:
     djnz service_next
+    jp service_running
+
+; Experimental grouped refills. BC is the positive block count, HL the
+; contiguous source and DE the fixed UART port. State survives in private
+; storage under the same DI/sole-consumer exclusion as the scalar path.
+service_batch:
+    ld a,16
+    ld (tx_block_budget),a
+batch_next:
+    call read_msr
+    bit 4,a
+    jp z,service_blocked
+    ld ix,(tx_head)
+    ld a,(tx_cts_batch)
+    ld b,a
+    ld a,(tx_block_budget)
+    cp a,b
+    jr c,batch_limit
+    ld a,b
+batch_limit:
+    ld de,0
+    ld e,a
+    ld hl,(ix+7)
+    or a,a
+    sbc hl,de
+    jr nc,batch_full
+    add hl,de
+    jr batch_count
+batch_full:
+    ex de,hl
+batch_count:
+    ld (tx_block_count),hl
+    push hl
+    pop bc
+    ld hl,(ix+4)
+    ld de,THR
+    IF UART0_BATCH_SCALAR
+batch_copy:
+    ld a,(hl)
+    out0 (THR),a
+    inc hl
+    dec bc
+    ld a,b
+    or a,c
+    jr nz,batch_copy
+    ELSE
+    OTIRX
+    ENDIF
+    ld (ix+4),hl
+    ld a,ACTIVE
+    ld (ix+0),a
+    ld bc,(tx_block_count)
+    ld hl,(ix+10)
+    add hl,bc
+    ld (ix+10),hl
+    ld hl,(ix+7)
+    or a,a
+    sbc hl,bc
+    ld (ix+7),hl
+    ld a,(tx_block_budget)
+    sub a,c
+    ld (tx_block_budget),a
+    call hl_zero
+    jr nz,batch_more
+    ld a,RELEASED
+    ld (ix+0),a
+    ld hl,(ix+16)
+    ld (tx_head),hl
+    call hl_zero
+    jr nz,batch_more
+    ld (tx_tail),hl
+    jp service_idle
+batch_more:
+    ld a,(tx_block_budget)
+    or a,a
+    jp nz,batch_next
 service_running:
     ld a,(tx_ier)
     or a,00ah
@@ -660,6 +786,7 @@ isr_done:
 ; accepted:u24,length:u24,next:u24. Every wide memory access has a 3-byte field.
     XDEF tx_slots,tx_head,tx_tail,tx_next_ticket,tx_rx_errors,tx_modem_deltas
     XDEF tx_opened,tx_barrier,tx_in_isr,tx_unknown_cause
+    XDEF tx_cts_batch,tx_block_budget,tx_block_count
     IF UART0_PRODUCTION
  tx_slots: DS 3*STRIDE
  tx_head: DS 3
@@ -677,6 +804,9 @@ isr_done:
  tx_rx_budget: DS 1
  tx_tx_serviced: DS 1
  tx_unknown_cause: DS 1
+ tx_cts_batch: DS 1
+ tx_block_budget: DS 1
+ tx_block_count: DS 3
     ELSE
  tx_slots: DS 3*STRIDE
  tx_head: DB 0,0,0
@@ -694,4 +824,7 @@ isr_done:
  tx_rx_budget: DB 0
  tx_tx_serviced: DB 0
  tx_unknown_cause: DB 0
+ tx_cts_batch: DB 1
+ tx_block_budget: DB 0
+ tx_block_count: DB 0,0,0
     ENDIF

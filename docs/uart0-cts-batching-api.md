@@ -1,10 +1,15 @@
 # Proposed UART0 CTS batching contract — BT-001
 
-Executive summary: extend UTX1 with a session-scoped maximum number of writes
-between CTS checks. Keep the existing 16-write refill cap and per-byte default.
-Use append-only ABI 1.2 discovery, reject unsupported selections, and change
-policy only with an empty published queue and an idle transmitter. This is the
-contract for the next isolated candidate; installed MOS still implements 1.1.
+Executive summary: an aware application can ask experimental MOS to send a few
+bytes after each clear-to-send check, giving the CPU more time for other work.
+The setting belongs to that application session, can change only when sending
+is idle, and resets when the session ends. Legacy output keeps its stock behavior.
+
+The switch is implemented in the development firmware, but that version has
+not been installed on Console8 or approved for production. Applications must
+check that the feature exists before using it. Successful software tests do
+not resolve the outstanding VDP receive fault or prove safety on every board.
+The precise calling convention and compatibility rules follow below.
 
 ## Discovery layout
 
@@ -108,11 +113,14 @@ default. Larger refills, global IRQ policy changes and DMA are outside scope.
 
 ## Candidate acceptance boundary
 
-The session API is specified; BT-003 must additionally validate the OTIRX
-register/count/flag semantics and chunk-accounting implementation. Qualification must
+The experimental session API and OTIRX path are implemented. Native ZDS II and
+instruction tests exercise count/register semantics, chunk accounting and
+session control; see [evidence](../experiments/uart0-batching/README.md).
+Qualification must
 cover unsupported/zero sizes, busy/closed/context rejection, unchanged state on
 failure, getter behavior while active, reserved-only quiescence, TEMT lag after
 release, default on open/reopen/return, synchronous compatibility and fresh CTS
 sampling at every refill. Preserve the existing default and masked-IFF/ADL=0
 regressions. Publish the ABI change only with matching implementation evidence;
-this document does not claim that firmware already contains the extension.
+the off-device candidate contains the extension, but installed hardware does
+not, and production acceptance remains open.

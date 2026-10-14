@@ -1,15 +1,16 @@
 # MOS TODO
 
-Executive summary: stock MOS remains the approved baseline. The experimental
-per-byte async fork and private grouped-scalar/chunk/OTIRX prototypes are not
-approved production features. Console8 R0005 passes the controlled 30-phase
-comparison: OTIRX recovers 31.3% more paced useful work than experimental
-per-byte async, without improving its bulk drain time. Full bulk receiver
-integrity, supported session API, application integration and release review
-remain open. A captured emulator stall is traced to a VDP receive-recovery race;
-receiver-owner correction and regression remain outstanding. Menu keyboard
-unresponsiveness also remains unexplained. Earlier accepted fixture results
-retain their documented scope; they do not approve these experimental modes.
+Executive summary: the goal is to free the Agon's CPU for useful work while MOS
+sends data to the VDP. An earlier Console8 experiment completed about 31% more
+other work during regularly scheduled sending, without increasing bulk speed
+over our experimental sender that checks permission before every byte. The
+app-controlled batching switch is now implemented and passes software tests.
+
+It remains experimental. A fault in the VDP firmware used by the emulator can
+stop reception permanently; later passing tests do not resolve it. We still
+need complete checks of the benchmark's received data, menu integration, tests
+of the new firmware on Console8 and explicit release approval. The menu's
+keyboard delay also remains unexplained. Stock MOS remains the approved baseline.
 This is the sole unfinished-work checklist.
 
 Subtask IDs are immutable: a short namespace followed by a hyphen and three
@@ -56,9 +57,11 @@ retaining stock legacy behavior, an experimental per-byte session fallback
 and the 16-write service cap. Complete the versioned session API and supported
 settings, including ownership, CTS wakeups, IRQ interaction and exit cleanup. Verify native block-I/O
 register/count semantics, source-span bounds and per-chunk descriptor accounting;
-preserve CTS admission, wakeups and lifetime/ordering fences. Initial interval16
-compiled kernel prototypes and inherited model contracts pass in uart0-ab; the
-public API and other interval settings remain unimplemented.
+preserve CTS admission, wakeups and lifetime/ordering fences. Experimental
+ABI1.2 setter/getter and bounded OTIRX now exist off-device. Scalar and OTIRX
+builds pass 23,640 scripted scenarios across sizes 1/2/4/8/16, plus fault controls
+and linked-ROM checks. Native receiver evidence is in experiments/uart0-batching;
+human review, the receiver-race gate and supported-combination selection remain.
 
 BT-004 [ ] Compare stock-style blocking, experimental per-byte async, grouped-scalar
 and OTIRX throughput and recovered
@@ -71,6 +74,9 @@ See experiments/uart0-ab/RESULTS.md.
 
 BT-005 [ ] Extend menu/reporting and both-engine qualification for batching,
 receiver integrity, negative controls, default regression and session cleanup.
+Native CRC and acknowledged full-duplex children now use the public ABI and
+fixed report-name slots. Sequential menu integration remains pending; combined
+JIT testing reproduced the known receiver race despite later passing runs.
 
 BT-006 [ ] Qualify manually on Console8 with stock threshold and diagnostic
 controls; repeat near any failure boundary without Olimex probing or wiring.
@@ -96,6 +102,11 @@ diagnostic RX re-enable resumes TX. See docs/uart0-ab-stall.md. Receiver-owner
 correction/regression and renewed qualification remain. The Author separately
 authorized an exploratory Console8 comparison on2026-10-14; it does not clear
 the emulator fault or production qualification gate.
+The Author now requires hardware reproduction before a correction and hardware
+regression afterward; emulator-only evidence cannot establish physical failure
+or repair. Request sent through the Flexe/VDP owner's `golem` mailbox route:
+`2026-10-14_03-28-03_agon-mos_uart0-recovery-hardware-one`.
+Owner acknowledgement and investigation are pending; no bench lease is implied.
 
 AB-001 [ ] Build repeated sustained-stream comparisons: stock-style blocking, experimental per-byte async,
 grouped scalar and bounded OTIRX, using identical valid VDP workloads. Initial
@@ -111,6 +122,9 @@ calibrated hardware rates and optimized refill latency remain pending.
 
 AB-003 [ ] Verify byte integrity with diagnostic VDP, and measure performance
 separately with stock VDP using matched commands and completion semantics.
+New ABI1.2 fixtures verify complete 4096-byte raw payloads and 8192-byte stock
+command buffers across all five batch sizes; no physical claim is made.
+Extend these checks to the matched 16KiB A/B command workload.
 Verify every bulk payload byte via count/CRC or equivalent receiver checks,
 not only reply samples. Include sustained full-duplex traffic, descriptor/queue
 boundaries and repeated CTS stop/resume, coordinated with BT-005/BT-006.
@@ -142,3 +156,15 @@ foreground packet production and MOS as sole UART owner. Compare stock app
 behavior with adapted scalar/OTIRX variants using matched scheduling; measure
 audio continuity, feed backlog and graphics/CPU headroom. Keep scheduling gains
 separate from transport gains; synthetic AB-004 alone does not close this task.
+
+## Hardware-first receiver investigation
+
+HW-001 [ ] Prepare a bounded, repeatable Console8 receiver-recovery campaign
+against unchanged official stock VDP 2.16.0 and the already installed ABI1.1
+experimental MOS. Preserve the numbered suite, stable SD entry, sequential
+reports and progress checkpoints; qualify fixture/controls off-device, prepare
+firmware/readme bundle, then coordinate the Author's manual run and analyze its
+return. A pass does not rule out the rare race; a stall alone does not attribute
+it. Flexe instrumentation/repair follows only if needed. See
+[the hardware-first plan](docs/uart0-hardware-recovery.md). AB-006 retains the
+receiver correction and matched physical before/after acceptance boundary.

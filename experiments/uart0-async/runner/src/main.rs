@@ -462,10 +462,10 @@ fn negative_controls(image:&[u8],s:&BTreeMap<String,usize>){
     if let Ok(mode)=env::var("UART_NEGATIVE"){
         let mut changed=image.to_vec();
         if mode=="cts"{
-            // BIT 4,A / JR Z in service_next. Force the branch not to execute.
+            // BIT 4,A / JP Z in service_next. Force the branch not to execute.
             let start=s["service_next"]-CODE;
             assert_eq!(&changed[start+4..start+6],&[0xcb,0x67]);
-            assert_eq!(changed[start+6],0x28);changed[start+6]=0;changed[start+7]=0;
+            assert_eq!(changed[start+6],0xca);changed[start+6..start+10].fill(0);
             let mut r=Rig::new(&changed,s);r.open();r.u.edge(false);let t=r.reserve();r.publish(t,SOURCE,&payload(20,1));
         }else if mode=="burst"{
             let start=s["service_next"]-CODE;assert_eq!(&changed[start-2..start],&[6,16]);changed[start-1]=17;
@@ -565,9 +565,16 @@ fn production(image:&[u8],s:&BTreeMap<String,usize>) {
         assert_eq!(&r.u.mem[table as usize..table as usize+4],b"UTX1");
         assert_eq!(r.u.mem[table as usize+4],1);
         if s.contains_key("tx_diag_take") {
-            assert_eq!(r.u.mem[table as usize+5],1);
-            assert_eq!(r.u.mem[table as usize+6],46);
+            let batching=s.contains_key("tx_set_cts_batch");
+            assert_eq!(r.u.mem[table as usize+5],if batching{2}else{1});
+            assert_eq!(r.u.mem[table as usize+6],if batching{54}else{46});
             assert_eq!(r.u.u24(table as usize+43),s["tx_diag_take"] as u32);
+            if batching {
+                assert_eq!(r.u.mem[table as usize+7],15);
+                assert_eq!(r.u.u24(table as usize+46),s["tx_set_cts_batch"] as u32);
+                assert_eq!(r.u.u24(table as usize+49),s["tx_get_cts_batch"] as u32);
+                assert_eq!(&r.u.mem[table as usize+52..table as usize+54],&[0x8b,0x80]);
+            }
         }
         let ops=["tx_open","tx_reserve","tx_publish","tx_status","tx_cancel","tx_reap","tx_poll_drain","tx_close","tx_kick"];
         for (i,name) in ops.iter().enumerate(){assert_eq!(r.u.u24(table as usize+13+3*i),s[*name]as u32);}

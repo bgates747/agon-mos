@@ -1,15 +1,16 @@
 # DRAFT — MOS asynchronous UART0 API and implementation plan
 
-Executive summary: the candidate MOS image now contains the shared UART0
-transmitter, versioned ADL discovery, ordered synchronous output and an
-application-return fence. The Author resolved C-001/C-002 on 2026-10-13:
-async sessions exclude user keyboard callbacks, and a stalled return retains
-RAM until drain. Native ZDS II linking and automated production-ROM/Flexe
-qualification pass, and the Author passed human review on 2026-10-13.
-Console8 baseline and diagnostic receiver campaigns pass; stock-threshold
-reserve is 62 observed FIFO slots, while electrical/worst-case timing remains
-unmeasured;
-this is a development ABI in this fork, not an upstream MOS allocation.
+Executive summary: this project aims to let MOS send data to the VDP in the
+background so applications can spend more CPU time on sound processing,
+graphics and other work. Apps must explicitly request the experimental service;
+legacy apps retain stock behavior. MOS keeps queued data in order and protects
+an application's memory until it has finished reading that data.
+
+The small-batch approach has shown useful CPU headroom in an earlier Console8
+comparison, and the new app-controlled version passes software checks. It is
+not yet approved for use: a VDP receive fault still blocks reliable emulator
+qualification, and the new firmware needs further tests on Console8. This
+specification describes an experimental MOS fork, not a stock MOS feature.
 
 ## Status and terminology clarification — 2026-10-14
 
@@ -122,20 +123,23 @@ synchronous fallback. No existing function index or RST call changed.
 | Table offset | Size | Meaning |
 |---|---|---|
 | 0 | 4 | ASCII `UTX1` |
-| 4, 5 | 1 each | ABI major 1, minor 1 |
-| 6 | 1 | Table length 46 bytes |
-| 7 | 1 | Flags: bit 0 callback exclusion, bit 1 drain-before-return, bit 2 diagnostic epochs |
+| 4, 5 | 1 each | Experimental ABI major 1, minor 2 |
+| 6 | 1 | Table length 54 bytes |
+| 7 | 1 | Flags: bit 0 callback exclusion, bit 1 drain-before-return, bit 2 diagnostic epochs, bit 3 session CTS batching |
 | 8, 9 | 1 each | 3 descriptors, 16-byte burst cap |
 | 10 | 3 | Maximum transaction length 00FFFFh |
 | 13..39 | 9 × 3 | Operation pointers in the order listed below |
 | 40 | 3 | Pointer to sticky RX error byte, followed by modem-delta byte |
 | 43 | 3 | `tx_diag_take` pointer (minor 1 extension) |
+| 46, 49 | 3 each | `tx_set_cts_batch`, `tx_get_cts_batch` pointers (minor 2) |
+| 52 | 2 | Supported-size bitmap 808Bh: experimental sizes 1/2/4/8/16 |
 
 Operations use the ADL **register ABI**, rather than the C stack ABI.
 A returns OK=0, BUSY=1, INVALID=2, CLOSED=3 or CONTEXT=4. Reserve returns
 HL=ticket; publish consumes DE=ticket, HL=source and BC=length. Status consumes
 DE=ticket and returns B=state and HL=accepted count. Cancel and reap consume
-DE=ticket. Other operations take no arguments. AF/BC/DE/HL are scratch;
+DE=ticket. The batch setter consumes B=size; setter/getter return B=effective size on
+success. Other operations take no arguments. AF/BC/DE/HL are scratch;
 IX/IY, shadow banks, MBASE, ADL and incoming foreground IFF are preserved.
 The session is singleton; no session-handle parameter is passed. Descriptor
 states are RESERVED=1, QUEUED=2, ACTIVE=3, RELEASED=4 and CANCELLED=5.
@@ -300,10 +304,13 @@ session to avoid consuming a modem wakeup from queued transmission. It never
 flushes RX/TX or resets VDP parsing. Repeated occurrences of the same error bits
 are detectable in successive epochs; subtracting a baseline bitmask is invalid.
 
-## Proposed CTS batching extension
+## Experimental CTS batching extension
 
-Installed firmware remains ABI 1.1 with per-byte CTS checks. The concrete
-append-only ABI 1.2 proposal is [specified separately](uart0-cts-batching-api.md);
-its [hardware/source audit](uart0-cts-batching-audit.md) keeps the 16-write refill
-cap independent of the selected CTS interval. No batching implementation or
-production-qualified interval above 1 is claimed yet.
+The Console8 installed candidate remains ABI 1.1 with per-byte CTS checks.
+The off-device source now implements experimental ABI 1.2, including session
+setter/getter and bounded OTIRX for selections above 1. Its
+[contract](uart0-cts-batching-api.md) and [hardware/source audit](uart0-cts-batching-audit.md)
+keep the 16-write refill cap independent of the selected CTS interval. Size 1
+uses the conservative scalar per-byte path; legacy output remains unchanged.
+This source change does not install firmware or approve any async transport
+for production. See [implementation evidence and limits](../experiments/uart0-batching/README.md).
