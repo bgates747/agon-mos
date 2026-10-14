@@ -1,0 +1,1531 @@
+{
+  "scope": "Pinned instruction model with ideal UART: cycle/rate estimates only, not hardware measurements.",
+  "model_campaign_passed": true,
+  "physical_cycle_measurement": false,
+  "physical_throughput_measurement": false,
+  "nominal_baud": 1152000,
+  "format": "8N1",
+  "ideal_UART_data_bytes_per_second": 115200,
+  "model_source": {
+    "production_core_sha256": "2a086ac94ce28390ce8eff3266f193f75be4117f309690b29bac0543db0fe584",
+    "variants": {
+      "default": "2a086ac94ce28390ce8eff3266f193f75be4117f309690b29bac0543db0fe584",
+      "grouped": "3928d09ab7e6de2d6424c997b54723c08ee1181d415755004ffd3b4d11699234",
+      "chunk": "758d47ed4eb1297084c206f1f9cb4e332d648c551d3e36487b796a365e230dc0",
+      "otirx": "45af2b9ec70809ef81a955fcf7d1ddd8bf74903ec6158ed5323d328639445b93"
+    },
+    "note": "Generated isolated kernels only; production source unchanged; CTS-ready performance is not physical margin qualification."
+  },
+  "model_rows_sha256": "444f8539681d63b7a1c704ccd06afcee3d8f6af36276502d101ddd7911b2ed5f",
+  "native_both_engines_qualified": false,
+  "human_review_passed": false,
+  "SD_deployed": false,
+  "production_MOS_changed": false,
+  "paced_two_seconds": [
+    {
+      "variant": "blocking",
+      "UART_service_model_cycles": 14233560,
+      "service_saving_vs_default_percent": -24.54,
+      "useful_work_iterations": 5657640
+    },
+    {
+      "variant": "default",
+      "UART_service_model_cycles": 11429071,
+      "service_saving_vs_default_percent": 0.0,
+      "useful_work_iterations": 6358762
+    },
+    {
+      "variant": "grouped",
+      "UART_service_model_cycles": 7943791,
+      "service_saving_vs_default_percent": 30.49,
+      "useful_work_iterations": 7230082
+    },
+    {
+      "variant": "chunk",
+      "UART_service_model_cycles": 3958711,
+      "service_saving_vs_default_percent": 65.36,
+      "useful_work_iterations": 8226323
+    },
+    {
+      "variant": "otirx",
+      "UART_service_model_cycles": 3000511,
+      "service_saving_vs_default_percent": 73.75,
+      "useful_work_iterations": 8465960
+    }
+  ],
+  "unpaced": [
+    {
+      "variant": "blocking",
+      "UART_data_model_bytes_per_second": 115199.6,
+      "change_vs_default_percent": 4.08
+    },
+    {
+      "variant": "default",
+      "UART_data_model_bytes_per_second": 110688.7,
+      "change_vs_default_percent": 0.0
+    },
+    {
+      "variant": "grouped",
+      "UART_data_model_bytes_per_second": 110448.5,
+      "change_vs_default_percent": -0.22
+    },
+    {
+      "variant": "chunk",
+      "UART_data_model_bytes_per_second": 108536.4,
+      "change_vs_default_percent": -1.94
+    },
+    {
+      "variant": "otirx",
+      "UART_data_model_bytes_per_second": 108536.6,
+      "change_vs_default_percent": -1.94
+    }
+  ],
+  "interpretation": "Substantial modeled UART CPU saving; no unpaced throughput win. Chunk planning before the first FIFO write is a candidate latency cost, not a measured causal diagnosis.",
+  "model_contract_tests": {
+    "unique_kernels": 4,
+    "inherited_cases_per_kernel": 1176,
+    "CTS_cut_resume_cases_per_kernel": 35,
+    "all_bytes_compared": true,
+    "negative_controls": [
+      "payload corruption",
+      "no progress"
+    ]
+  },
+  "pending": [
+    "Human review of stopped dedicated profile",
+    "Physical timing/throughput calibration",
+    "Full receiver integrity for all bulk bytes under changed CTS",
+    "Jukebox sample playback/graphics/SD-jitter workload",
+    "Public opt-in ABI integration"
+  ],
+  "native_test_sha256": "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e",
+  "native_campaigns": {
+    "jit": {
+      "latest": {
+        "engine": "jit",
+        "elapsed_seconds": 43.78,
+        "returned_to_mos": true,
+        "phases": 30,
+        "wire_packets_verified": 945,
+        "receiver_bytes_checked_per_phase": 735,
+        "receiver_bulk_full_payload_verified": false,
+        "physical_qualification": false,
+        "rows": [
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 92,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 396000,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 101152,
+            "irqs": 3144,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 588448,
+            "irqs": 2835,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 58,
+            "useful_work": 194112,
+            "irqs": 3245,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 810560,
+            "irqs": 2853,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 271488,
+            "irqs": 3171,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 735456,
+            "irqs": 2845,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 311904,
+            "irqs": 3248,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 764544,
+            "irqs": 2848,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 58,
+            "useful_work": 305856,
+            "irqs": 3222,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 933952,
+            "irqs": 2844,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 281376,
+            "irqs": 3229,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 735840,
+            "irqs": 2867,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 201536,
+            "irqs": 3276,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 742944,
+            "irqs": 2897,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 89536,
+            "irqs": 3125,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 572960,
+            "irqs": 2836,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 78,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 251808,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 92,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 418272,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 130208,
+            "irqs": 3181,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 582240,
+            "irqs": 2815,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 185824,
+            "irqs": 3236,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 650336,
+            "irqs": 2872,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 288896,
+            "irqs": 3269,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 851584,
+            "irqs": 2858,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 310336,
+            "irqs": 3234,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 743936,
+            "irqs": 2874,
+            "late_feeds": 0,
+            "rx_errors": 0
+          }
+        ],
+        "backend": {
+          "engine": "jit",
+          "frames": 2558,
+          "cycles": 10458975937,
+          "retired": 7669904217,
+          "uart_rx": 1849754,
+          "uart_tx": 16899,
+          "uart_delivered": 16899,
+          "isync": 11,
+          "code_invalidations": 1,
+          "keys": 0,
+          "failed": false,
+          "unhandled": 0,
+          "unregistered": 0,
+          "unmapped": 0
+        },
+        "uart": {
+          "tx_irqs": 69782,
+          "modem_irqs": 3042,
+          "rx_irqs": 7381,
+          "tx_drops": 0,
+          "rx_overruns": 0,
+          "cts_edges": 4249
+        },
+        "runtime_identities": [
+          "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+          "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+          "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+          "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+          "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+          "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+          "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+          "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+          "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e  sdcard/uart0/test.bin",
+          "eae704ce8c539f88d1e7465facc520846db5c92bcbcd72d64f115fa5f4f4576e  sdcard/autoexec.txt"
+        ],
+        "artifact_directory": "build/uart0-ab/evidence-jit/attempt-001"
+      },
+      "previous": {
+        "engine": "jit",
+        "elapsed_seconds": 44.334,
+        "returned_to_mos": true,
+        "phases": 30,
+        "wire_packets_verified": 945,
+        "receiver_bytes_checked_per_phase": 735,
+        "receiver_bulk_full_payload_verified": false,
+        "physical_qualification": false,
+        "rows": [
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 92,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 365216,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 58,
+            "useful_work": 119712,
+            "irqs": 3186,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 568480,
+            "irqs": 2832,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 201344,
+            "irqs": 3316,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 729248,
+            "irqs": 2851,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 56,
+            "useful_work": 275456,
+            "irqs": 3185,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 811136,
+            "irqs": 2848,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 50,
+            "useful_work": 319840,
+            "irqs": 3300,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 756864,
+            "irqs": 2891,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 315520,
+            "irqs": 3283,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 901024,
+            "irqs": 2883,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 291264,
+            "irqs": 3277,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 827904,
+            "irqs": 2806,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 193600,
+            "irqs": 3266,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 656832,
+            "irqs": 2912,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 123168,
+            "irqs": 3166,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 708416,
+            "irqs": 2835,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 90,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 255872,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 80,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 243776,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 62,
+            "useful_work": 129216,
+            "irqs": 3189,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 679680,
+            "irqs": 2836,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 191968,
+            "irqs": 3239,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 652896,
+            "irqs": 2909,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 293952,
+            "irqs": 3304,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 870336,
+            "irqs": 2878,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 60,
+            "useful_work": 317376,
+            "irqs": 3257,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 860000,
+            "irqs": 2861,
+            "late_feeds": 0,
+            "rx_errors": 0
+          }
+        ],
+        "backend": {
+          "engine": "jit",
+          "frames": 2590,
+          "cycles": 10586340000,
+          "retired": 7737389473,
+          "uart_rx": 1849754,
+          "uart_tx": 16899,
+          "uart_delivered": 16899,
+          "isync": 11,
+          "code_invalidations": 1,
+          "keys": 0,
+          "failed": false,
+          "unhandled": 0,
+          "unregistered": 0,
+          "unmapped": 0
+        },
+        "uart": {
+          "tx_irqs": 69745,
+          "modem_irqs": 3565,
+          "rx_irqs": 6392,
+          "tx_drops": 0,
+          "rx_overruns": 0,
+          "cts_edges": 5007
+        },
+        "runtime_identities": [
+          "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+          "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+          "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+          "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+          "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+          "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+          "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+          "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+          "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e  sdcard/uart0/test.bin",
+          "eae704ce8c539f88d1e7465facc520846db5c92bcbcd72d64f115fa5f4f4576e  sdcard/autoexec.txt"
+        ]
+      }
+    },
+    "interp": {
+      "latest": {
+        "engine": "interp",
+        "elapsed_seconds": 70.117,
+        "returned_to_mos": true,
+        "phases": 30,
+        "wire_packets_verified": 945,
+        "receiver_bytes_checked_per_phase": 735,
+        "receiver_bulk_full_payload_verified": false,
+        "physical_qualification": false,
+        "rows": [
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 86,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1029312,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 78528,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1822560,
+            "irqs": 2763,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 44,
+            "useful_work": 159776,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1950688,
+            "irqs": 2762,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 258016,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1928544,
+            "irqs": 2764,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 46,
+            "useful_work": 281152,
+            "irqs": 3072,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1901632,
+            "irqs": 2767,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 54,
+            "useful_work": 281152,
+            "irqs": 3074,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2011168,
+            "irqs": 2760,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 50,
+            "useful_work": 258016,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1983488,
+            "irqs": 2762,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 44,
+            "useful_work": 159776,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2152704,
+            "irqs": 2765,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 79040,
+            "irqs": 3073,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2081632,
+            "irqs": 2761,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 88,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1426976,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1192736,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 79040,
+            "irqs": 3071,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1918400,
+            "irqs": 2763,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 42,
+            "useful_work": 164864,
+            "irqs": 3088,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2204448,
+            "irqs": 2760,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 258464,
+            "irqs": 3072,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2510112,
+            "irqs": 2761,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 44,
+            "useful_work": 281024,
+            "irqs": 3071,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2100384,
+            "irqs": 2770,
+            "late_feeds": 0,
+            "rx_errors": 0
+          }
+        ],
+        "backend": {
+          "engine": "interp",
+          "frames": 2026,
+          "cycles": 8299600000,
+          "retired": 6035162531,
+          "uart_rx": 1849754,
+          "uart_tx": 16899,
+          "uart_delivered": 16899,
+          "isync": 11,
+          "code_invalidations": 1,
+          "keys": 0,
+          "failed": false,
+          "unhandled": 0,
+          "unregistered": 0,
+          "unmapped": 0
+        },
+        "uart": {
+          "tx_irqs": 69947,
+          "modem_irqs": 77,
+          "rx_irqs": 9020,
+          "tx_drops": 0,
+          "rx_overruns": 0,
+          "cts_edges": 123
+        },
+        "runtime_identities": [
+          "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+          "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+          "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+          "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+          "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+          "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+          "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+          "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+          "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e  sdcard/uart0/test.bin",
+          "eae704ce8c539f88d1e7465facc520846db5c92bcbcd72d64f115fa5f4f4576e  sdcard/autoexec.txt"
+        ],
+        "artifact_directory": "build/uart0-ab/evidence-interp/attempt-001"
+      },
+      "previous": {
+        "engine": "interp",
+        "elapsed_seconds": 69.287,
+        "returned_to_mos": true,
+        "phases": 30,
+        "wire_packets_verified": 945,
+        "receiver_bytes_checked_per_phase": 735,
+        "receiver_bulk_full_payload_verified": false,
+        "physical_qualification": false,
+        "rows": [
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 80,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1088416,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 54,
+            "useful_work": 78592,
+            "irqs": 3070,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1829856,
+            "irqs": 2763,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 160256,
+            "irqs": 3075,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1953696,
+            "irqs": 2767,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 258528,
+            "irqs": 3075,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1866240,
+            "irqs": 2763,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 54,
+            "useful_work": 281152,
+            "irqs": 3074,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 0,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1963232,
+            "irqs": 2763,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 50,
+            "useful_work": 282016,
+            "irqs": 3074,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1868992,
+            "irqs": 2767,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 257984,
+            "irqs": 3069,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1958368,
+            "irqs": 2764,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 160352,
+            "irqs": 3073,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1875968,
+            "irqs": 2766,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 44,
+            "useful_work": 79872,
+            "irqs": 3074,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1964544,
+            "irqs": 2762,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 84,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 1,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1324416,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 80,
+            "useful_work": 0,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 1209216,
+            "irqs": 0,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 48,
+            "useful_work": 79456,
+            "irqs": 3073,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2011744,
+            "irqs": 2766,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 0,
+            "ticks": 40,
+            "useful_work": 160192,
+            "irqs": 3073,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 2,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2099136,
+            "irqs": 2766,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 0,
+            "ticks": 52,
+            "useful_work": 258848,
+            "irqs": 3073,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 3,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2271328,
+            "irqs": 2764,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 0,
+            "ticks": 40,
+            "useful_work": 281088,
+            "irqs": 3077,
+            "late_feeds": 0,
+            "rx_errors": 0
+          },
+          {
+            "repeat": 2,
+            "mode": 4,
+            "kind": 1,
+            "ticks": 120,
+            "useful_work": 2054016,
+            "irqs": 2762,
+            "late_feeds": 0,
+            "rx_errors": 0
+          }
+        ],
+        "backend": {
+          "engine": "interp",
+          "frames": 2045,
+          "cycles": 8375430000,
+          "retired": 5983287105,
+          "uart_rx": 1849750,
+          "uart_tx": 16896,
+          "uart_delivered": 16896,
+          "isync": 11,
+          "code_invalidations": 1,
+          "keys": 0,
+          "failed": false,
+          "unhandled": 0,
+          "unregistered": 0,
+          "unmapped": 0
+        },
+        "uart": {
+          "tx_irqs": 69938,
+          "modem_irqs": 115,
+          "rx_irqs": 8425,
+          "tx_drops": 0,
+          "rx_overruns": 0,
+          "cts_edges": 177
+        },
+        "runtime_identities": [
+          "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  flexe-agon-emulator.bin",
+          "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+          "31d25eec03a531b336d78d453f0720bbd1312c7c8516fdfa80130769ab15e49f  esp32-firmware.bin",
+          "51f196eb7b84ed79394a9fde1dff832ad479417c360525c69582fd093c3a0a3a  esp32-firmware.elf",
+          "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+          "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+          "571473e7831d37c13ea33caf9881683ca393e3e72b232be993907d452e52f4a5  fab-agon-emulator",
+          "110558f81c95675af71126d3536356de900aeef41cde7f945934fae6ae650a36  flexe-agon-emulator",
+          "8c7bab73b14a0a9f5903fb781fe252ff6fca1412354993a6f079b911ae184d4e  sdcard/uart0/test.bin",
+          "eae704ce8c539f88d1e7465facc520846db5c92bcbcd72d64f115fa5f4f4576e  sdcard/autoexec.txt"
+        ]
+      }
+    }
+  },
+  "native_scope": "Frozen emulator/Golem VDP command-path qualification only; no physical cycle or rate claim. All host TX packets verified; receiver checks cover 735 bytes at phase end, not every bulk byte.",
+  "native_development_stalls": {
+    "observed": true,
+    "affected": [
+      "blocking baseline verification",
+      "chunk bulk",
+      "OTIRX pace"
+    ],
+    "root_cause_established": false,
+    "changes_before_successful_campaigns": [
+      "Four-comparison GP barriers in untimed verification",
+      "Atomic driver-dispatch update under DI"
+    ],
+    "subsequent_complete_campaigns": 4,
+    "physical_ready": false
+  },
+  "human_review_failure": {
+    "date": "2026-10-14",
+    "phase": "repeat 2 mode 1 phase 0",
+    "kernel": "production scalar async core in isolated fixture",
+    "confirmed_stall": true,
+    "author_closed_emulator": true,
+    "archive": "build/uart0-ab/human-stall-001.tar.gz",
+    "tx_drops": 0,
+    "rx_overruns": 0,
+    "backend_reported_fault": false,
+    "root_cause_established": false,
+    "readiness_revoked": true
+  }
+}

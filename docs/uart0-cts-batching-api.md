@@ -97,11 +97,19 @@ If a sample says stop, write nothing from that group and retain the existing
 blocked-TIE/modem-wakeup reconciliation. Keep all reads through shared status
 helpers. Preserve the existing post-budget return before another IIR read,
 source accepted-byte accounting, release semantics and receive ownership.
-No OTIRX, larger refill, global IRQ policy change or DMA is part of this change.
+Bounded `OTIRX` copying is part of the required implementation comparison;
+CTS is sampled before each admitted block, not during its repeated transfers.
+The block length must be positive and no greater than the selected interval,
+the remaining 16-write service budget and the current descriptor's remaining
+source bytes. Recheck CTS before another block, including at a descriptor
+boundary. Retire/progress each descriptor only after its actual copy completes.
+Scalar grouped copying remains a comparison path. Keep the existing per-byte
+default. Larger refills, global IRQ policy changes and DMA are outside scope.
 
 ## Candidate acceptance boundary
 
-The contract is concrete enough for BT-003 implementation. Qualification must
+The session API is specified; BT-003 must additionally validate the OTIRX
+register/count/flag semantics and chunk-accounting implementation. Qualification must
 cover unsupported/zero sizes, busy/closed/context rejection, unchanged state on
 failure, getter behavior while active, reserved-only quiescence, TEMT lag after
 release, default on open/reopen/return, synchronous compatibility and fresh CTS

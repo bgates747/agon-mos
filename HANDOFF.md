@@ -477,3 +477,55 @@ TX-006 closeout is complete with electrical/worst-case timing deferred. The
 proposed table is minor2/length54 with setter/getter at46/49, bitmap at52.
 Service still admits at most16 writes after THRE; selectedN changes checks
 within that cap, never allowance across calls. No firmware implementation yet.
+
+## Original OTIRX goal restored explicitly
+
+The Author supplied Tom Morton's verbatim comments and Discord provenance:
+https://discord.com/channels/1158535358624039014/1158537054959964220/1559209863954038915
+They now anchor docs/uart0-async.md. BT-003/BT-004 explicitly compare default,
+grouped scalar and bounded OTIRX refills, including per-chunk progress accounting.
+The previous exclusion of OTIRX from the batching contract was an agent planning
+error and is superseded. Its DE-port/BC-count requirements mean the scalar
+D-counter suggestion is not a block-copy register allocation. Tom's final
+sentence remains an open caution; no definite intent is attributed to it.
+
+## Next tranche — A/B stream benchmark and Jukebox workload
+
+The Author requested the A/B plan and immediate skins-branch inspection. See
+ docs/uart0-ab-tranche.md and docs/uart0-jukebox-skins-audit.md; AB-001..AB-005
+are in the sole TODO alongside driver tasks BT-003..BT-007. Inspected current
+GitHub skins f3cd5925a14778f8c5ed4666bac10b2e109731b3 in a MOS-owned reference,
+without modifying the other checkout. Audio is735-byte chunks at60Hz for44.1kHz
+unsigned8-bit mono. Current timer ISR reads SD, sends blocking MOS uploads and
+flushes UI under DI; foreground blocks in mos_getkey. The WAV reference prose
+describes a restructuring not reflected in that source. Synthetic testing must
+use a short due-work ISR and foreground immutable packet publication; a future
+Jukebox integration must separately restructure scheduling. Compare that change
+against OTIRX gain using identical adapted scalar/OTIRX schedules. Actual app
+changes, firmware builds, emulator runs and SD deployment were not performed.
+
+## Controlled A/B initial results available
+
+experiments/uart0-ab contains native ZDS kernels, instruction-model cycle tests
+and a real-VDP native fixture. See RESULTS.md/results.json for scope and evidence.
+Paced modeled UART service cycles fall11.43M→3.00M over two seconds (~74% saved);
+toy useful work rises~33%. Unpaced model throughput110.7k→108.5k data bytes/s:
+no throughput win yet. Only interval16 candidates were tested, not all proposed
+API settings. Production source/public ABI unchanged; public batching API,
+physical timing and complete bulk receiver verification remain pending.
+Final native image passes two campaigns in each Flexe engine (120 phases total),
+following bounded untimed comparison barriers and atomic dispatch updates.
+Earlier timing-sensitive stalls are retained without a definitive causal claim.
+Stopped Oryx review profile: .emulator/uart0-ab; readme.txt in sdcard/uart0.
+No SD write or flash. New changes remain uncommitted pending human review.
+
+## A/B human failure — 2026-10-14
+
+The Author confirmed a stall and closed the human emulator at repeat2/mode1/
+phase0 (current scalar async bulk kernel). Readiness is revoked despite the
+four prior successful headless campaigns. No causal fix has been established.
+Closed-run artifacts are preserved on Pi and Oryx in
+build/uart0-ab/human-stall-001.tar.gz. Counters report zero TX drops/RX overruns
+and no backend fault; those counters do not explain the stall. Do not deploy
+this fixture to hardware or commit it as qualified. Investigate separately;
+production MOS and the physical SD remain unchanged.

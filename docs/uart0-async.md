@@ -11,6 +11,46 @@ reserve is 62 observed FIFO slots, while electrical/worst-case timing remains
 unmeasured;
 this is a development ABI in this fork, not an upstream MOS allocation.
 
+## Original motivation — Tom Morton
+
+Tom Morton's original proposal is the design anchor for this project, including
+the efficient block refill, rather than background transmission alone.
+[Discord provenance](https://discord.com/channels/1158535358624039014/1158537054959964220/1559209863954038915).
+The Author supplied this verbatim text and provenance on 2026-10-13; the quote
+is preserved as supplied, without claiming independent access to Discord:
+
+> why not ask codex to use interrupt-based UART0 transmission?
+> then you can enqueue 16 bytes using a single `otirx` instruction, and walk away to calculate other stuff
+> maybe there is a good reason nobody has done it. 🤷‍♂️
+
+The intended mechanism is an interrupt-driven, bounded FIFO refill using
+`OTIRX`, followed by returning the eZ80 to useful application computation while
+the UART shifts the bytes. `OTIRX` performs CPU-driven block I/O; it is not DMA.
+A full contiguous 16-byte refill is the motivating case. Short source spans,
+descriptor boundaries and remaining service budget require smaller bounded
+copies; never read beyond the published source merely to fill the FIFO.
+
+The final sentence is an open caution. The Author read it as either snark or
+a genuine warning; Tom's intent is not established. Investigate the possible
+reasons through CTS reserve, interrupt/wakeup correctness, receiver integrity
+and measured CPU benefit. Neither dismiss the concern nor turn it into an
+unsupported claim that the mechanism is unsafe.
+
+The implemented per-byte CTS/copying path is the conservative baseline, not
+completion of the block-refill goal. The next experiment must compare that
+baseline, grouped CTS checks with scalar copying, and CTS-guarded bounded
+`OTIRX` copying. Update descriptor progress once per copied chunk where correct,
+retaining ordering, source lifetime, service caps and TEMT drain semantics.
+The 16-write refill cap remains; CTS may change during a block copy, so the
+opt-in mode needs receiver-headroom qualification. Use stock VDP for normal
+operation; diagnostic VDP exists only to measure the experiment.
+
+Measure useful eZ80 work recovered and ISR cost as well as throughput. A mode
+that merely removes some CTS reads while retaining all scalar copy/accounting
+costs does not by itself evaluate Tom's proposal. Any decision to omit `OTIRX`
+from the delivered option must explicitly record its measured or technical
+reason against this design goal.
+
 ## Production integration status
 
 `src/uart0_tx.inc` is the single core used by production MOS and the isolated
@@ -56,8 +96,9 @@ The prototype's per-byte CTS sampling is the baseline. An unconditional
 OTIRX burst cannot observe CTS during the copy. Even per-byte sampling cannot
 recall bytes already in the FIFO/shift register. A 16-byte cap therefore needs
 receiver headroom qualification on hardware; use a smaller configurable cap
-if necessary. OTIRX is a later measured alternative only with a demonstrated
-headroom contract.
+if necessary. Bounded OTIRX refills are a required experimental comparison
+from the original proposal above; adoption still requires demonstrated
+headroom, correctness and a useful measured benefit.
 
 ## Candidate API
 

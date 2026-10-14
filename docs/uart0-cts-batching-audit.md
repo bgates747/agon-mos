@@ -6,6 +6,8 @@ stated no-extra-propagation model, a stopped receiver may still see up to 17
 bytes from one admitted service opportunity: 16 writes plus a prior shift-register
 byte. The observed 62 spare slots support experimentation, not certification.
 No production batch size or throughput gain is established by this audit.
+The original OTIRX goal is mandatory in the experiment; this audit's earlier
+scalar-only counter guidance does not establish a block-copy implementation.
 
 ## Primary hardware facts
 
@@ -51,13 +53,27 @@ next descriptor but shares the same B=16 counter. The physical 16-byte FIFO cap
 is independent of the new N interval. The API wrapper saves IX and restores
 incoming IFF; other preserved registers/shadow banks must remain untouched.
 
-A local group counter must not reuse B, which is the remaining refill budget,
+For the scalar comparison, a local group counter must not reuse B, which is the remaining refill budget,
 or C, which `read_msr` clobbers. Current TX loop/helper paths leave D available
 and preserve it through `hl_zero`; D is scratch for these service callers and
 saved by ISR/compatibility wrappers. Audit this again against assembled code
 when implementing. No persistent remainder should survive a service return.
 Avoid a new per-byte configuration branch in the default path if practical;
 its instruction overhead belongs in the paired measurements either way.
+
+## OTIRX implementation audit still required
+
+Tom's verbatim proposal and provenance now appear in the original specification.
+BT-003 must verify native ZDS II OTIRX semantics against UM0077: BC count, HL
+source progression, fixed DE I/O port, flags and ADL effects. The scalar loop's
+D-counter suggestion cannot be reused blindly: block output needs DE for the
+port and BC for the count, so the remaining total service budget must survive
+elsewhere. Validate the emitted instruction and actual CPU-model execution.
+Clamp each positive block to the current descriptor source span, selected CTS
+interval and remaining 16-write budget; never use a zero count or copy across
+noncontiguous descriptor sources. Account progress/release after each completed
+block. Preserve the first-refill CTS guard and wakeup reconciliation. These
+checks are implementation work, not a claim that OTIRX is already validated.
 
 ## Conditional byte budget
 

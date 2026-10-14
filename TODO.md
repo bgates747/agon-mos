@@ -50,11 +50,18 @@ Budget and source review: [hardware audit](docs/uart0-cts-batching-audit.md).
 BT-001/BT-002 are complete. TX-006 closeout records empirical reserve and
 defers electrical/worst-case qualification; stock restoration is confirmed.
 
-BT-003 [ ] Implement an isolated opt-in candidate with per-byte default,
-bounded service, transmitter-ready checks and existing lifetime/ordering fences.
+BT-003 [ ] Implement isolated grouped-scalar and bounded OTIRX candidates,
+retaining the per-byte default and 16-write service cap. Verify native block-I/O
+register/count semantics, source-span bounds and per-chunk descriptor accounting;
+preserve CTS admission, wakeups and lifetime/ordering fences. Initial interval16
+compiled kernel prototypes and inherited model contracts pass in uart0-ab; the
+public API and other interval settings remain unimplemented.
 
-BT-004 [ ] Measure paired throughput and recovered CPU/useful work, including
+BT-004 [ ] Compare default, grouped-scalar and OTIRX throughput and recovered
+CPU/useful work, including
 service cost and latency; establish whether batching offers a worthwhile gain.
+Initial paced model result:73.75% fewer UART service cycles; unpaced throughput
+does not improve. See experiments/uart0-ab/RESULTS.md.
 
 BT-005 [ ] Extend menu/reporting and both-engine qualification for batching,
 receiver integrity, negative controls, default regression and session cleanup.
@@ -65,3 +72,36 @@ controls; repeat near any failure boundary without Olimex probing or wiring.
 BT-007 [ ] Select conservative supported options from evidence, document
 compatibility/limits, and complete human review; defer shipping if gains do not
 justify the tradeoff.
+
+## Next tranche: A/B streaming and Jukebox-shaped workload
+
+See [the tranche specification](docs/uart0-ab-tranche.md). These identify
+benchmark deliverables; BT-003..BT-007 retain the driver/qualification work and
+are dependencies, not a second implementation of the same tasks.
+
+AB-006 [ ] Trace the intermittent native A/B stall before hardware staging:
+capture stalled CPU/UART/queue state, establish the cause, apply a targeted
+correction and regression check, then repeat both-engine qualification and
+human review. See docs/uart0-ab-tranche.md for evidence and completion gate.
+
+AB-001 [ ] Build repeated sustained-stream comparisons: blocking, default async,
+grouped scalar and bounded OTIRX, using identical valid VDP workloads. Initial
+model and30-phase native fixtures implemented. Human review failed with a
+scalar async bulk stall; trace the cause before further qualification/deployment.
+
+AB-002 [ ] Measure fixed-payload wire-drain time and concurrent useful CPU work,
+service cost and latency; alternate case order and report repeat variation.
+Initial cycle campaign and native raw observations recorded in uart0-ab;
+calibrated hardware rates and optimized refill latency remain pending.
+
+AB-003 [ ] Verify byte integrity with diagnostic VDP, and measure performance
+separately with stock VDP using matched commands and completion semantics.
+
+AB-004 [ ] Build the source-derived Jukebox-shaped fixture: 735-byte PCM feeds
+at 60 Hz, two one-second VDP samples, short due-work ISR and foreground stable
+packet production. Compare scalar/OTIRX with identical adapted scheduling; test
+RAM feeds before SD jitter, bounded graphics, backlog and sample readiness.
+Source inspection is complete; see docs/uart0-jukebox-skins-audit.md.
+
+AB-005 [ ] Package the comparisons and integrity checks into the existing menu;
+qualify headlessly before one manual Console8 hardware campaign.

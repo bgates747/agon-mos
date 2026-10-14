@@ -6,6 +6,16 @@ output on a qualified hardware/VDP combination. The production default remains
 a CTS check before every byte. This is a proposed extension, not an implemented
 or qualified operating mode.
 
+## Original design anchor
+
+Tom Morton proposed interrupt-based UART0 transmission with one `otirx` to
+load 16 bytes, then returning to useful computation. His verbatim comments and
+[Discord provenance](https://discord.com/channels/1158535358624039014/1158537054959964220/1559209863954038915)
+are preserved in the [original specification](uart0-async.md#original-motivation--tom-morton).
+The opt-in CTS setting enables evaluating that bounded block refill; reducing
+CTS reads alone is not the full goal. His final caution remains unresolved in
+intent and is addressed through evidence, not attributed certainty.
+
 ## Intended behavior
 
 An application explicitly selects a supported maximum batch size for its async
@@ -58,12 +68,13 @@ Existing qualification/release bookkeeping is closed; implementation is next.
 BT-001 defines the session API/capability contract, supported values and reset
 semantics. BT-002 audits hardware and assembly paths and establishes a
 conservative in-flight-byte budget before selecting initial batch candidates.
-BT-003 implements an isolated candidate, initially comparing sizes1/2/4/8/16
-only where the audit permits. Include explicit per-byte fallback and bounded
+BT-003 implements an isolated candidate comparing scalar grouped copying
+against bounded OTIRX refills at sizes 1/2/4/8/16 where the audit permits.
+Validate block I/O register semantics and update progress per copied chunk. Include explicit per-byte fallback and bounded
 interrupt service. These are experiment candidates, not promised supported
 production settings.
 
-BT-004 adds paired measurements for blocking/default async/batched async,
+BT-004 compares blocking, default async, grouped scalar async and OTIRX async,
 using identical payloads and useful application work. Measure throughput,
 completed useful work or cycles, interrupt/service cost and latency. Keep
 calibrated coarse MOS ticks separate from precise CPU accounting. A relaxed
