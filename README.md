@@ -15,6 +15,11 @@ AgonDev control exactly; this does not establish hardware/runtime qualification.
 The [initial migration evidence](docs/migration/README.md) records the comparison,
 source receipts and remaining gates.
 
+[Shared API reservations](api/README.md) explains the main-branch allocation
+register and canonical assembly/C interfaces. Custom MOS implementations live
+in their own projects, not special branches here; a reservation adds no feature
+to the stock foundation.
+
 ## Historical upstream README
 
 The material below is preserved from the official v3.0.2 README for background

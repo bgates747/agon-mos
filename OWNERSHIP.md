@@ -20,6 +20,11 @@ the source repository's ownership boundaries.
    system qualification. It consumes qualified pins, not mutable current output.
 5. Official references and the independent experimental UART fork stay
    untouched. No experimental UART enters the foundation by implication.
+6. Every custom MOS variant lives in its own project/repository; do not create
+   a special foundation branch for it. This repository's default `main` branch
+   owns `api/reservations.json` and shared generated bindings. A reservation
+   records ownership, not implementation or release acceptance. Custom owners
+   consume the selected canonical interface package and qualify their variants.
 
 The workspace's central foundation contract owns cross-agent negotiation.
 The new repository remains private. A source commit or matching binary is not

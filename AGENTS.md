@@ -40,3 +40,9 @@ Shared owner contract, when in the larger workspace:
 This agent owns the generic foundation; linux-extender owns downstream EMOS
 adoption within separately authorized scope. No EMOS adoption is released by
 the initial native-foundation tranche.
+
+Custom MOS implementations belong in their own project/repository, not branches
+of this foundation. Main owns `api/reservations.json` and the shared generated
+assembly/C bindings; see `api/README.md`. UART owns experimental getfunction
+index 0x13, not an RST08 number; 0x12 is a retired tombstone. No UART code or
+dispatch implementation belongs here as a consequence of that reservation.

@@ -25,6 +25,7 @@ replacement proves equivalent or deliberately corrected behavior.
 | DEV-010 | ZDS macro names include `TIMER_EXP?` and invocation-local dollars | Keep native macros/calls recognizable; use legal `TIMER_EXP` and unique `\@` private targets | A reviewed macro API change replaces the original names/semantics |
 | DEV-011 | ZDS compiler runtime/printf and automatic linker placement | Pinned shared restricted AgonDev runtime, nanoprintf configuration, i48 helpers and explicit linker assertions | Separate toolchain/runtime/layout qualification; no floats are promised by current formatter |
 | DEV-012 | ff.c compiles under ZDS without the AgonDev allocation constraint | Per-file `-Os`; other C uses `-Oz`, with exact inventory/order in build.json | A qualified compiler passes ff.c at the chosen optimization with regressions/size reviewed |
+| DEV-013 | Official interfaces have no coordinated custom-project reservation register | Include generated identifier constants from api/reservations.json; canonical C overlay imports the unchanged SDK header. No UART code, dispatch slot or firmware feature is added | Replace only through a reviewed shared/upstream allocation authority, preserving compatibility and collision checks |
 
 The shared linker also retains the existing Fab hostfs descriptor in reserved
 reset-page space as part of the selected AgonDev control. This creates no new

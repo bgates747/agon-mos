@@ -52,7 +52,7 @@ class NativeSourceTests(unittest.TestCase):
     def test_every_deviation_has_a_removal_condition(self):
         text=(ROOT/'docs/deviations.md').read_text()
         ids=re.findall(r'^\| (DEV-\d+) \|',text,re.M)
-        self.assertEqual(len(ids),12)
+        self.assertEqual(len(ids),13)
         self.assertEqual(len(ids),len(set(ids)))
         self.assertIn('Removal or replacement condition',text)
 

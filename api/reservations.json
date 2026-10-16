@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "api_revision": 1,
+  "authority": "agon-mos-agondev main; project-local reservations, not upstream allocations",
+  "upstream_commit": "8336409351ee5314e02801a7b72a4f1bb5282519",
+  "reservations": [
+    {
+      "namespace": "mos_getfunction",
+      "value": 18,
+      "owner": "mos-agondev",
+      "purpose": "Retired qsort experiment; excluded and unavailable for reuse",
+      "status": "retired",
+      "asm_symbol": null,
+      "c_symbol": null,
+      "implementation_symbol": "0",
+      "abi": null
+    },
+    {
+      "namespace": "mos_getfunction",
+      "value": 19,
+      "owner": "agon-mos",
+      "purpose": "Opt-in experimental UART0 background transmission discovery",
+      "status": "experimental",
+      "asm_symbol": "mos_function_uart0_async",
+      "c_symbol": "MOS_FUNCTION_UART0_ASYNC",
+      "implementation_symbol": "uart0_async_getapi",
+      "abi": {
+        "magic": "UTX1",
+        "major": 1,
+        "minor": 2,
+        "minimum_table_bytes": 54,
+        "discovery": "RST08 mos_getfunction (0x50), B=index, C=0; check A=0 and HL!=0, then call the returned ADL register-ABI function to obtain the table",
+        "compatibility": "Existing experimental index retained; no new RST08 call or additional index range"
+      }
+    }
+  ]
+}

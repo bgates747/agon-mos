@@ -121,6 +121,9 @@
 ;
 .equiv mos_getfunction, 0x50
 
+; DEV-013: shared custom-project reservations; constants do not enable features.
+.include "mos_api_reservations.inc"
+
 ; Low-level SD card functions
 ;
 .equiv sd_getunlockcode, 0x70

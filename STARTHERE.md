@@ -15,7 +15,8 @@ python3.14 -m venv .venv
 ```
 
 No Python packages are required. Provide a mos-agondev checkout that includes
-`projects/native-foundation/build.py`, plus the pinned AgonDev release layout
+`projects/native-foundation/build.py` and `scripts/generate_api_reservations.py`,
+plus the pinned AgonDev release layout
 (`bin/`, `include/`, `lib/`). A self-contained clone may keep both under ignored
 `.local/`, which is the root Makefile's default:
 
@@ -90,5 +91,7 @@ mechanical syntax/readability changes.
 
 Future upstream updates are reviewed ports against recorded ancestry, not
 overlays over the maintained source. Downstream EMOS adopts an explicitly
-reviewed qualified pin. This first tranche does not set up an emulator, flash
-firmware, authorize EMOS rebasing or qualify hardware timing.
+reviewed qualified pin. Builds do not authorize firmware flashing, EMOS rebasing
+or hardware-timing claims. Emulator acceptance is a separate gate; see the
+[selected candidate review](docs/qualification.md) for current fixture inputs,
+launch commands and qualification limits.
