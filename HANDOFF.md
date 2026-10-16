@@ -186,7 +186,7 @@ controls. Timings are uncalibrated MOS ticks; no physical claim is made.
 
 The Oryx review instance is separate from the accepted production
 profile: `cd ~/Agon/mystuff/agon-mos/.emulator/uart0-bench`, then
-`./fab-agon-emulator --precise-interrupts`. Expect BENCH FIXTURE / BENCH RETURN
+`./flexe-agon-emulator --precise-interrupts`. Expect BENCH FIXTURE / BENCH RETURN
 PASS and `/uart0 *`; check keyboard output with `ECHO UART0 KEYBOARD PASS`.
 The Author supplied the expected screenshot, typed a successful
 `ECHO UART0 BENCH FIXTURE PASS`, and accepted it with "looks like pass to me".
@@ -257,7 +257,7 @@ The Author subsequently authorized commit/push of this tranche after physical su
 
 For review when the Author is available, on Oryx use
 `cd ~/Agon/mystuff/agon-mos/.emulator/uart0-bench`, then
-`./fab-agon-emulator --precise-interrupts`. Verify prior RX flags, breadcrumbs,
+`./flexe-agon-emulator --precise-interrupts`. Verify prior RX flags, breadcrumbs,
 PASS/return and keyboard operation. Keep the old physical bundle on hold; a
 future diagnostic physical test requires manual installation of this new MOS.
 See `experiments/uart0-bench/diagnosis.json` for evidence and unresolved scope.
@@ -302,7 +302,7 @@ Source memory is retained through TEMT, including failure handling.
 
 The new human-review profile is stopped at .emulator/uart0-stress on Oryx.
 Run locally with `cd ~/Agon/mystuff/agon-mos/.emulator/uart0-stress` then
-`./fab-agon-emulator --precise-interrupts`. Review the clear/title, two-minute
+`./flexe-agon-emulator --precise-interrupts`. Review the clear/title, two-minute
 expectation, four cases/progress, final PASS/return and keyboard DIR. The Author
 passed this review with a screenshot on 2026-10-13; the retrieved human report
 also passes offline validation. The review gate is satisfied. No graphical
@@ -399,7 +399,7 @@ No physical firmware flashing occurred; existing passing MOS/VDP need no update.
 
 The stopped Oryx human-review profile is .emulator/uart0-suite. Launch with
 `cd ~/Agon/mystuff/agon-mos/.emulator/uart0-suite` then
-`./fab-agon-emulator --precise-interrupts`. It has its own pinned runtime and
+`./flexe-agon-emulator --precise-interrupts`. It has its own pinned runtime and
 instructions, truthful Golem snapshot labels, no shim and no graphical launch
 by the agent. Review menu selections/run-all/progress and Q return; ESC can
 skip stopwatch timing, N cancels either firmware prompt. Human review remains

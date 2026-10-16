@@ -30,7 +30,7 @@ def key(value):
 try:
     env=dict(os.environ,SDL_VIDEODRIVER='dummy',SDL_AUDIODRIVER='dummy',AGON_FLEXE_ENGINE='jit',LD_PRELOAD=str(root/'build/uart0-suite/keys.so'),UART_SUITE_KEYS=str(keys))
     with (art/'frontend.log').open('w') as log:
-        process=subprocess.Popen(['./fab-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+        process=subprocess.Popen(['./flexe-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         wait(b'Press a choice key:');key(b'8');wait(b'Q Back\r\nChoose:');key(b'q')
         wait(b'Press a choice key:');key(b'8');wait(b'Q Back\r\nChoose:');key(b'2')
         wait(b'Run 0002: PASS',180);wait(b'Press any key for menu.');key(b' ')

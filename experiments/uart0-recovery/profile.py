@@ -37,7 +37,7 @@ commands=b'cd /uart0\r\nload test.bin\r\n'
 commands+=b'run\r\n' if mode=='manual' else (b'run . rxe\r\n' if mode=='extended' else b'run . rx\r\n')
 commands+=b'ECHO UART0 RECOVERY MENU RETURN\r\n'
 (p/'sdcard/autoexec.txt').write_bytes(commands)
-files=['flexe-agon-emulator.bin','flexe-vdp.so','esp32-firmware.bin','esp32-firmware.elf','mos_platform.bin','mos_platform.map','fab-agon-emulator','flexe-agon-emulator','sdcard/autoexec.txt']
+files=['flexe-agon-emulator.bin','flexe-vdp.so','esp32-firmware.bin','esp32-firmware.elf','mos_platform.bin','mos_platform.map','flexe-agon-emulator','sdcard/autoexec.txt']
 files += [str(f.relative_to(p)) for f in app.iterdir() if f.is_file() and f.suffix not in ('.dat','.log')]
 (p/'.runtime.sha256').write_text(''.join(f'{hashlib.sha256((p/n).read_bytes()).hexdigest()}  {n}\n' for n in files))
 print('Prepared stopped recovery profile',p)

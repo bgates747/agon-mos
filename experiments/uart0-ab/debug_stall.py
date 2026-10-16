@@ -42,7 +42,7 @@ for attempt in range(attempts):
     master, slave = pty.openpty()
     env = dict(os.environ, SDL_VIDEODRIVER='dummy', SDL_AUDIODRIVER='dummy',
                AGON_FLEXE_ENGINE=engine, TERM='xterm')
-    proc = subprocess.Popen(['./fab-agon-emulator', '--debugger'] + (['--precise-interrupts'] if precise else []),
+    proc = subprocess.Popen(['./flexe-agon-emulator', '--debugger'] + (['--precise-interrupts'] if precise else []),
                             cwd=profile, env=env, stdin=slave, stdout=slave, stderr=slave,
                             start_new_session=True)
     os.close(slave)

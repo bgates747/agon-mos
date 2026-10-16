@@ -34,7 +34,7 @@ process=None;started=time.monotonic();returned=False;rejected=False
 try:
     env=dict(os.environ,SDL_VIDEODRIVER='dummy',SDL_AUDIODRIVER='dummy',AGON_FLEXE_ENGINE=engine)
     with (artifacts/'frontend.log').open('w') as log:
-        process=subprocess.Popen(['./fab-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+        process=subprocess.Popen(['./flexe-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         while time.monotonic()-started<300:
             p=artifacts/'mos-to-vdp.bin';wire=p.read_bytes() if p.exists() else b''
             if b'UART0 BATCH TRANSPORT FAIL' in wire:

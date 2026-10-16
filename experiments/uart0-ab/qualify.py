@@ -18,7 +18,7 @@ dest=base/f'attempt-{number:03d}';dest.mkdir()
 proc=None;start=time.monotonic();returned=False
 try:
  with (art/'frontend.log').open('w') as log:
-  proc=subprocess.Popen(['./fab-agon-emulator','--precise-interrupts'],cwd=p,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+  proc=subprocess.Popen(['./flexe-agon-emulator','--precise-interrupts'],cwd=p,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
   while time.monotonic()-start<240:
    if probe and (app/'ab-stall.dat').exists():returned=True;break
    assert not (app/'ab-fail.dat').exists(),'Native fixture failure'

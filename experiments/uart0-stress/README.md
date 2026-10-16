@@ -51,7 +51,7 @@ On Oryx, the prepared human-review profile is stopped. Run locally:
 
 ```bash
 cd ~/Agon/mystuff/agon-mos/.emulator/uart0-stress
-./fab-agon-emulator --precise-interrupts
+./flexe-agon-emulator --precise-interrupts
 ```
 
 Expect the initial clear/title and two-minute expectation, setup PASS,

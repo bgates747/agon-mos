@@ -24,7 +24,7 @@ For TX-012, run locally on Oryx after automated qualification:
 
 ```bash
 cd ~/Agon/mystuff/agon-mos/.emulator/uart0-bench
-./fab-agon-emulator --precise-interrupts
+./flexe-agon-emulator --precise-interrupts
 ```
 
 Expect `UART0 BENCH FIXTURE PASS`, `UART0 BENCH RETURN PASS` and `/uart0 *`.

@@ -21,7 +21,7 @@ subprocess.run(['sha256sum','--check','--status','.runtime.sha256'],cwd=p,check=
 env=dict(os.environ,SDL_VIDEODRIVER='dummy',SDL_AUDIODRIVER='dummy',AGON_FLEXE_ENGINE=engine)
 start=time.monotonic();returned=False
 with (art/'frontend.log').open('w') as log:
-    proc=subprocess.Popen(['./fab-agon-emulator','--precise-interrupts'],cwd=p,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+    proc=subprocess.Popen(['./flexe-agon-emulator','--precise-interrupts'],cwd=p,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
     try:
         while time.monotonic()-start<240:
             tx=art/'mos-to-vdp.bin';data=tx.read_bytes() if tx.exists() else b''

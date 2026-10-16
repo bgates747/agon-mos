@@ -45,7 +45,7 @@ for _ in range(int(sys.argv[2]) if len(sys.argv)>2 else 4):
     watcher = None
     watcher_log = None
     with (art/'frontend.log').open('w') as log:
-        proc = subprocess.Popen(['./fab-agon-emulator'] + (['--precise-interrupts'] if precise else []),cwd=p,
+        proc = subprocess.Popen(['./flexe-agon-emulator'] + (['--precise-interrupts'] if precise else []),cwd=p,
                                 env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         try:
             while time.monotonic()-start < 180:

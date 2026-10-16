@@ -32,7 +32,7 @@ def firmware(choice):
     key(b'9');wait(b'0 back');key(choice)
 try:
     with (artifacts/'frontend.log').open('w') as output:
-        process=subprocess.Popen(['./fab-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
+        process=subprocess.Popen(['./flexe-agon-emulator','--precise-interrupts'],cwd=profile,env=env,stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
         menu();key(b'4');wait(b'Press ESC to skip.')
         key(b'\n');wait(b'Timing active;');time.sleep(10.2);key(b'\n')
         wait(b'Enter stopwatch seconds');key(b'10.200\n');wait(b'Run 0001: PASS');key(b' ');menu()

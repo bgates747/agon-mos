@@ -142,7 +142,7 @@ Human review remains a separate gate. On Oryx use the stopped profile:
 
 ```bash
 cd ~/Agon/mystuff/agon-mos/.emulator/uart0-suite
-./fab-agon-emulator --precise-interrupts
+./flexe-agon-emulator --precise-interrupts
 ```
 
 Review numbered selections, run-all (ESC may skip timing), progress, final

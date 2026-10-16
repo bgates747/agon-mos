@@ -92,7 +92,7 @@ cd ~/Agon/mystuff/agon-mos/.emulator
 Expect stock MOS to boot, run the fixture, display `UART0 ASYNC PASS`, and
 return to `/uart *`. Type `dir` and confirm keyboard input and normal MOS
 output still work; then close the window. The earlier functional review passed. The old
-`./fab-agon-emulator` command remains a shim to this primary entry. No agent launches a graphical review instance.
+`./flexe-agon-emulator` command remains a shim to this primary entry. No agent launches a graphical review instance.
 
 ## Model limits and integration boundary
 
