@@ -1,4 +1,27 @@
-# agon-mos
+# agon-mos-agondev
+
+Human-maintained native C/GNU assembly derived from official Agon Platform MOS
+v3.0.2, intended as a reviewed foundation for future EMOS development. Routine
+builds use AgonDev directly, without ZDS or source conversion. This repository
+is private and the native candidate is not an accepted firmware release.
+
+Start with [STARTHERE.md](STARTHERE.md) for native setup/build/development,
+[upstream origin](docs/upstream-origin.md) for ancestry and mappings, and
+[deviations](docs/deviations.md) for why source differs from official MOS.
+[OWNERSHIP.md](OWNERSHIP.md) separates the foundation from build infrastructure
+and Extender/EMOS product work. No experimental UART or EMOS enhancements are
+included. The initial direct native build reproduces the 102,055-byte translated
+AgonDev control exactly; this does not establish hardware/runtime qualification.
+The [initial migration evidence](docs/migration/README.md) records the comparison,
+source receipts and remaining gates.
+
+## Historical upstream README
+
+The material below is preserved from the official v3.0.2 README for background
+and attribution. Its ZDS build, emulator and deployment instructions are
+historical, **not this fork's operating instructions or authorization to flash**.
+Use STARTHERE for the native build and separately approved qualification. The
+unmodified original remains accessible as `git show v3.0.2:README.md`.
 
 Part of the official Agon Platform organisation firmware for all Agon computers.
 

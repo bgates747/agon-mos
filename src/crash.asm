@@ -1,17 +1,17 @@
 ; Native AgonDev source derived from official MOS v3.0.2: src/crash.asm
 ; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
-	XDEF		_on_crash
+	.global		_on_crash
 
-	.ASSUME ADL = 1
+	.assume adl=1
 
-.macro zds_PUTS str
+.macro PUTS str
 	ld hl,\str
 	ld bc,0
 	xor a
 	rst.lil 0x018
 	.endm
 
-.macro zds_PUTC chr
+.macro PUTC chr
 	ld a,\chr
 	rst.lil 0x010
 	.endm
@@ -25,69 +25,69 @@ _on_crash:
 	push bc
 	push af
 
-	zds_PUTC 17
-	zds_PUTC 129
-	zds_PUTC 17
-	zds_PUTC 0
+	PUTC 17
+	PUTC 129
+	PUTC 17
+	PUTC 0
 
-	zds_PUTS _debug_intro
+	PUTS _debug_intro
 
 	ld ix,0
 	add ix,sp
 
-	zds_PUTS _debug_af
+	PUTS _debug_af
 	ld hl,(ix+0)
 	call print_hex24
 
-	zds_PUTS _debug_bc
+	PUTS _debug_bc
 	ld hl,(ix+3)
 	call print_hex24
 
-	zds_PUTS _debug_de
+	PUTS _debug_de
 	ld hl,(ix+6)
 	call print_hex24
 
-	zds_PUTS _debug_hl
+	PUTS _debug_hl
 	ld hl,(ix+9)
 	call print_hex24
 
 	call print_crlf
 
-	zds_PUTS _debug_ix
+	PUTS _debug_ix
 	ld hl,(ix+12)
 	call print_hex24
 
-	zds_PUTS _debug_iy
+	PUTS _debug_iy
 	ld hl,(ix+15)
 	call print_hex24
 
 	call print_crlf
 
-	zds_PUTS _debug_pc
+	PUTS _debug_pc
 	ld hl,(ix+18)
 	call print_hex24
 
-	zds_PUTS _debug_spl
+	PUTS _debug_spl
 	lea hl,ix-18
 	call print_hex24
 
-	zds_PUTS _debug_sps
+	PUTS _debug_sps
 	ld hl,0
 	add.s hl,sp
 	call print_hex24
 
-	zds_PUTS _debug_mb
+	PUTS _debug_mb
 	ld a,mb
 	call print_hex8
 
 	call print_crlf
 
-	zds_PUTS _debug_stack
+	PUTS _debug_stack
 	; dump top of stack
 	ld hl,18
 	add hl,sp
 	ld b, 32
-.Lzds_src_crash_asm_787f2b64_a0001:
+1:
 	ld a, b
 	and 7
 	call z, print_crlf
@@ -97,26 +97,26 @@ _on_crash:
 	call print_hex8
 	ld a, ' '
 	rst.lil 0x010
-	djnz .Lzds_src_crash_asm_787f2b64_a0001
+	djnz 1b
 
 	call print_crlf
-	zds_PUTS _debug_outro
-	zds_PUTC 17
-	zds_PUTC 128
-	zds_PUTC 17
-	zds_PUTC 15
+	PUTS _debug_outro
+	PUTC 17
+	PUTC 128
+	PUTC 17
+	PUTC 15
 
 	ei 		; enable interrupts so user can make keypresses
-.Lzds_src_crash_asm_787f2b64_a0002:	xor a 		; wait for 'r'esume
+1:	xor a 		; wait for 'r'esume
 	rst.lil 0x08
 	cp 'r'
-	jr z, .Lzds_src_crash_asm_787f2b64_a0003
+	jr z, 1f
 	cp 'R'
-	jr z, .Lzds_src_crash_asm_787f2b64_a0003
-	jr .Lzds_src_crash_asm_787f2b64_a0002
+	jr z, 1f
+	jr 1b
 
 	; restore everything and return to userspace
-.Lzds_src_crash_asm_787f2b64_a0003:	pop af
+1:	pop af
 	pop bc
 	pop de
 	pop hl
@@ -149,9 +149,9 @@ print_hex8:
 __print_hex_nibble:
 	add a, 48
 	cp 58
-	jr c, .Lzds_src_crash_asm_787f2b64_a0004
+	jr c, 1f
 	add a, 39
-.Lzds_src_crash_asm_787f2b64_a0004:	rst.lil 0x010
+1:	rst.lil 0x010
 	ret
 
 print_hex24: ; print hex u24 in `hl`

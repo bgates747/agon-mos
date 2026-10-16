@@ -25,13 +25,13 @@
 .equiv SPI_MISO, 6; PB6
 .equiv SPI_CLK, 3; PB3
 
-		XDEF	_init_spi
-		XDEF	_spi_transfer
-		XDEF	_spi_read_one
-		XDEF	_spi_read
-		XDEF	_spi_write
+		.global	_init_spi
+		.global	_spi_transfer
+		.global	_spi_read_one
+		.global	_spi_read
+		.global	_spi_write
 
-		.ASSUME ADL = 1
+		.assume adl=1
 
 
 ; void spi_init(void);
@@ -43,121 +43,121 @@ _init_spi:	;
 		;
 
 		; PB_DR   |=  BIT(2);
-		IN0		A,(PB_DR)
-		SET		2,A
-		OUT0		(PB_DR),A
+		in0		A,(PB_DR)
+		set		2,A
+		out0		(PB_DR),A
 
 		; PB_ALT1 &= ~BIT(2);
-		IN0		A,(PB_ALT1)
-		RES		2,A
-		OUT0		(PB_ALT1),A
+		in0		A,(PB_ALT1)
+		res		2,A
+		out0		(PB_ALT1),A
 
 		; PB_ALT2 &= ~BIT(2);
-		IN0		A,(PB_ALT2)
-		RES		2,A
-		OUT0		(PB_ALT2),A
+		in0		A,(PB_ALT2)
+		res		2,A
+		out0		(PB_ALT2),A
 
 		; PB_DDR  &= ~BIT(2);
-		IN0		A,(PB_DDR)
-		RES		2,A
-		OUT0		(PB_DDR),A
+		in0		A,(PB_DDR)
+		res		2,A
+		out0		(PB_DDR),A
 
 		;
 		; Enable the chip select outputs and deselect
 		;
 
 		; PB_DR   |=  BIT(SD_CS);
-		IN0		A,(PB_DR)
-		SET		4,A
-		OUT0		(PB_DR),A
+		in0		A,(PB_DR)
+		set		4,A
+		out0		(PB_DR),A
 
 		; PB_ALT1 &= ~BIT(SD_CS);
-		IN0		A,(PB_ALT1)
-		RES		4,A
-		OUT0		(PB_ALT1),A
+		in0		A,(PB_ALT1)
+		res		4,A
+		out0		(PB_ALT1),A
 
 		; PB_ALT2 &= ~BIT(SD_CS);
-		IN0		A,(PB_ALT2)
-		RES		0x4,A
-		OUT0		(PB_ALT2),A
+		in0		A,(PB_ALT2)
+		res		0x4,A
+		out0		(PB_ALT2),A
 
 		; PB_DDR  &= ~BIT(SD_CS);
-		IN0		A,(PB_DDR)
-		RES		0x4,A
-		OUT0		(PB_DDR),A
+		in0		A,(PB_DDR)
+		res		0x4,A
+		out0		(PB_DDR),A
 
 		;
 		; Set port B pins 7 (MOSI), 6 (MISO), 3 (SCK), 2 (/SS) to SPI
 		;
 
 		; PB_ALT1 &= ~(BIT(SPI_MOSI) | BIT(SPI_MISO) | BIT(SPI_CLK))
-		IN0		A,(PB_ALT1)
-		AND		A,~((1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK))
-		OUT0		(PB_ALT1),A
+		in0		A,(PB_ALT1)
+		and		A,~((1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK))
+		out0		(PB_ALT1),A
 
 		; PB_ALT2 |=  (BIT(SPI_MOSI) | BIT(SP_MISO) | BIT(SPI_CLK))
-		IN0		A,(PB_ALT2)
-		OR		A,(1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK)
-		OUT0		(PB_ALT2),A
+		in0		A,(PB_ALT2)
+		or		A,(1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK)
+		out0		(PB_ALT2),A
 
 		;
 		; Disable SPI
 		;
 
-		XOR		A,A
-		OUT0		(SPI_CTL),A
-	
+		xor		A,A
+		out0		(SPI_CTL),A
+
 		;
 		; Set SPI baud rate generator divisor registers
 		;
 
-		LD		BC,3		; I changed from 4 to 3
-		OUT0		(SPI_BRG_H),B
-		OUT0		(SPI_BRG_L),C
+		ld		BC,3		; I changed from 4 to 3
+		out0		(SPI_BRG_H),B
+		out0		(SPI_BRG_L),C
 
 		;
 		; Enable SPI as master
 		;
 
-		LD		A,0x30
-		OUT0		(SPI_CTL),A
-	
+		ld		A,0x30
+		out0		(SPI_CTL),A
+
 		; Delay for `SPI_ENA_DELAY' milliseconds
 		;
 
-		zds_DELAY_MS	SPI_ENA_DELAY
+		DELAY_MS	SPI_ENA_DELAY
 
 		; All done
-		RET
+		ret
 
 
 ; unsigned char spi_read_one(void);
 ;
 		; zds2gas: SCOPE
 _spi_read_one:
-		LD		C,0xFF		; Kick SPI into action before
-		OUT0		(SPI_TSR),C	; anything else...
-		POP		HL		; Pop return address for later
-		JR		spi_wait
+		ld		C,0xFF		; Kick SPI into action before
+		out0		(SPI_TSR),C	; anything else...
+		pop		HL		; Pop return address for later
+		jr		spi_wait
 
 ; unsigned char spi_transfer(unsigned char d);
 ;
 _spi_transfer:
-		POP		HL		; Pop return address for later
-		POP		DE		; Transmit the byte ASAP...
-		OUT0		(SPI_TSR),E
-		PUSH		DE
+		pop		HL		; Pop return address for later
+		pop		DE		; Transmit the byte ASAP...
+		out0		(SPI_TSR),E
+		push		DE
 		; fall through (no need for JR spi_wait)
 
 ; Both _spi_read_one and _spi_transfer use spi_wait to complete the operation
 
-spi_wait:	LD		B,0
-.Lzds_src_spi_asm_1373a2f3_s002__24_loop:		IN0		A,(SPI_SR)
-		RLA
-		JR		C,.Lzds_src_spi_asm_1373a2f3_s002__24_done
-		DJNZ		.Lzds_src_spi_asm_1373a2f3_s002__24_loop
-.Lzds_src_spi_asm_1373a2f3_s002__24_done:		IN0		A,(SPI_RBR)
-		JP		(HL)		; Faster than RET if we have HL
+spi_wait:	ld		B,0
+.Lspi_read_one_loop:		in0		A,(SPI_SR)
+		rla
+		jr		C,.Lspi_read_one_done
+		djnz		.Lspi_read_one_loop
+.Lspi_read_one_done:		in0		A,(SPI_RBR)
+		jp		(HL)		; Faster than RET if we have HL
 
 
 ; void spi_read(char *buf, unsigned int len);
@@ -166,116 +166,116 @@ spi_wait:	LD		B,0
 		; zds2gas: SCOPE
 _spi_read:
 		; Request the first byte - do first to minimise delay
-		LD		C,0xFF
-		OUT0		(SPI_TSR),C
+		ld		C,0xFF
+		out0		(SPI_TSR),C
 
 		; Function prologue
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
+		push		IX
+		ld		IX,0
+		add		IX,SP
 
 		; DE := destination address
-		LD		DE,(IX+6)
+		ld		DE,(IX+6)
 
 		; HL := number of bytes to read
-		LD		HL,(IX+9)
+		ld		HL,(IX+9)
 
 		; Decrement the count of bytes
-.Lzds_src_spi_asm_1373a2f3_s003__24_mainloop:	LD		BC,1
-		OR		A,A
-		SBC		HL,BC
+.Lspi_read_mainloop:	ld		BC,1
+		or		A,A
+		sbc		HL,BC
 
 		; If this is the last, break out of loop
-		JR		Z,.Lzds_src_spi_asm_1373a2f3_s003__24_waitlast
+		jr		Z,.Lspi_read_waitlast
 
 		; Wait for byte to arrive then store it
-.Lzds_src_spi_asm_1373a2f3_s003__24_waitnext:	LD		B,0		; (256 iterations)
-		LD		C,0xFF		; pre-load C with dummy byte
-.Lzds_src_spi_asm_1373a2f3_s003__24_loopnext:	IN0		A,(SPI_SR)
-		RLA
-		JR		C,.Lzds_src_spi_asm_1373a2f3_s003__24_gotnext
-		DJNZ		.Lzds_src_spi_asm_1373a2f3_s003__24_loopnext
+.Lspi_read_waitnext:	ld		B,0		; (256 iterations)
+		ld		C,0xFF		; pre-load C with dummy byte
+.Lspi_read_loopnext:	in0		A,(SPI_SR)
+		rla
+		jr		C,.Lspi_read_gotnext
+		djnz		.Lspi_read_loopnext
 		; TODO: detect errors
 
 		; Minimise delay from receiving to requesting the next byte
-.Lzds_src_spi_asm_1373a2f3_s003__24_gotnext:	IN0		A,(SPI_RBR)
-		OUT0		(SPI_TSR),C
-		LD		(DE),A
-		INC		DE
-		JR		.Lzds_src_spi_asm_1373a2f3_s003__24_mainloop
+.Lspi_read_gotnext:	in0		A,(SPI_RBR)
+		out0		(SPI_TSR),C
+		ld		(DE),A
+		inc		DE
+		jr		.Lspi_read_mainloop
 
-.Lzds_src_spi_asm_1373a2f3_s003__24_waitlast:	; Do function epilogue now, we have time
-		LD		SP,IX
-		POP		IX
+.Lspi_read_waitlast:	; Do function epilogue now, we have time
+		ld		SP,IX
+		pop		IX
 
 		; Now wait for last byte
-		LD		B,0		; (256 iterations)
-.Lzds_src_spi_asm_1373a2f3_s003__24_looplast:	IN0		A,(SPI_SR)
-		RLA
-		JR		C,.Lzds_src_spi_asm_1373a2f3_s003__24_gotlast
-		DJNZ		.Lzds_src_spi_asm_1373a2f3_s003__24_looplast
+		ld		B,0		; (256 iterations)
+.Lspi_read_looplast:	in0		A,(SPI_SR)
+		rla
+		jr		C,.Lspi_read_gotlast
+		djnz		.Lspi_read_looplast
 		; TODO: detect errors
 
-.Lzds_src_spi_asm_1373a2f3_s003__24_gotlast:	IN0		A,(SPI_RBR)
-		LD		(DE),A
-		RET
+.Lspi_read_gotlast:	in0		A,(SPI_RBR)
+		ld		(DE),A
+		ret
 
 
 ; void spi_write(char *buf, unsigned int len);
 
 		; zds2gas: SCOPE
 _spi_write:
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
+		push		IX
+		ld		IX,0
+		add		IX,SP
 
 		; DE := source address
-		LD		DE,(IX+6)
+		ld		DE,(IX+6)
 
 		; Write the first byte as soon as we can
-		LD		A,(DE)
-		OUT0		(SPI_TSR),A
-		INC		DE
+		ld		A,(DE)
+		out0		(SPI_TSR),A
+		inc		DE
 
 		; HL := number of bytes to write
-		LD		HL,(IX+9)
+		ld		HL,(IX+9)
 
 		; Decrement the count of bytes
-.Lzds_src_spi_asm_1373a2f3_s004__24_mainloop:	LD		BC,1
-		OR		A,A
-		SBC		HL,BC
+.Lspi_write_mainloop:	ld		BC,1
+		or		A,A
+		sbc		HL,BC
 
 		; If this is the last, break out of loop
-		JR		Z,.Lzds_src_spi_asm_1373a2f3_s004__24_waitlast
+		jr		Z,.Lspi_write_waitlast
 
 		; Wait for the write to complete
-.Lzds_src_spi_asm_1373a2f3_s004__24_waitnext:	LD		B,0		; (256 iterations)
-		LD		A,(DE)		; pre-load C with byte to write
-		LD		C,A
-		INC		DE
+.Lspi_write_waitnext:	ld		B,0		; (256 iterations)
+		ld		A,(DE)		; pre-load C with byte to write
+		ld		C,A
+		inc		DE
 
-.Lzds_src_spi_asm_1373a2f3_s004__24_loopnext:	IN0		A,(SPI_SR)
-		RLA
-		JR		C,.Lzds_src_spi_asm_1373a2f3_s004__24_sentnext
-		DJNZ		.Lzds_src_spi_asm_1373a2f3_s004__24_loopnext
+.Lspi_write_loopnext:	in0		A,(SPI_SR)
+		rla
+		jr		C,.Lspi_write_sentnext
+		djnz		.Lspi_write_loopnext
 		; TODO: detect errors
 
 		; Minimise delay from send complete to sending the next octet
-.Lzds_src_spi_asm_1373a2f3_s004__24_sentnext:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
-		OUT0		(SPI_TSR),C
-		JR		.Lzds_src_spi_asm_1373a2f3_s004__24_mainloop
+.Lspi_write_sentnext:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
+		out0		(SPI_TSR),C
+		jr		.Lspi_write_mainloop
 
-.Lzds_src_spi_asm_1373a2f3_s004__24_waitlast:	; Do function epilogue now, whilst the last byte is transferring
-		LD		SP,IX
-		POP		IX
+.Lspi_write_waitlast:	; Do function epilogue now, whilst the last byte is transferring
+		ld		SP,IX
+		pop		IX
 
-		LD		B,0		; (256 iterations)
-.Lzds_src_spi_asm_1373a2f3_s004__24_looplast:	IN0		A,(SPI_SR)
-		RLA
-		JR		C,.Lzds_src_spi_asm_1373a2f3_s004__24_sentlast
-		DJNZ		.Lzds_src_spi_asm_1373a2f3_s004__24_looplast
+		ld		B,0		; (256 iterations)
+.Lspi_write_looplast:	in0		A,(SPI_SR)
+		rla
+		jr		C,.Lspi_write_sentlast
+		djnz		.Lspi_write_looplast
 		; TODO: detect errors
 
-.Lzds_src_spi_asm_1373a2f3_s004__24_sentlast:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
-		RET
+.Lspi_write_sentlast:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
+		ret
 

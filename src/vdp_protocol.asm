@@ -16,7 +16,7 @@
 ; 09/03/2023:	Added FabGL virtual key data to vdp_protocol_KEY, reset is now CTRL+ALT+DEL
 ; 15/03/2023:	Added vdp_protocol_RTC
 ; 21/03/2023:	Added vdp_protocol_KEYSTATE
-; 26/03/2023:	Added vdp_protocol_GP, checks DEL above cursor block for CTRL+ALT+DEL	
+; 26/03/2023:	Added vdp_protocol_GP, checks DEL above cursor block for CTRL+ALT+DEL
 ; 19/05/2023:	Extended vdp_protocol_MODE to store scrmode
 ; 03/08/2023:	Added user_kbvector in vdp_protocol_KEY
 ; 13/08/2023:	Moved keyboard handling to keyboard.asm
@@ -25,179 +25,179 @@
 			.include "macros.inc"
 			.include "equs.inc"
 
-			.ASSUME	ADL = 1
+			.assume adl=1
 
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-			
-			XDEF	vdp_protocol
 
-			XREF	_keyascii
-			XREF	_keycode
-			XREF	_keymods
-			XREF	_keydown
-			XREF	_keycount
-			XREF	_cursorX
-			XREF	_cursorY
-			XREF	_scrchar
-			XREF	_scrpixel
-			XREF	_audioChannel
-			XREF	_audioSuccess
-			XREF	_scrwidth
-			XREF	_scrheight
-			XREF	_scrcols
-			XREF	_scrrows
-			XREF	_scrcolours
-			XREF	_scrpixelIndex
-			XREF	_scrmode
-			XREF	_rtc
-			XREF	_keydelay 
-			XREF	_keyrate 
-			XREF 	_keyled
-			XREF	_mouseX
-			XREF	_gp
-			XREF	_vpd_protocol_flags
-			XREF	_vdp_protocol_state
-			XREF	_vdp_protocol_cmd
-			XREF	_vdp_protocol_len
-			XREF	_vdp_protocol_ptr
-			XREF	_vdp_protocol_data
+			.global	vdp_protocol
 
-			XREF	_user_kbvector
+			.extern	_keyascii
+			.extern	_keycode
+			.extern	_keymods
+			.extern	_keydown
+			.extern	_keycount
+			.extern	_cursorX
+			.extern	_cursorY
+			.extern	_scrchar
+			.extern	_scrpixel
+			.extern	_audioChannel
+			.extern	_audioSuccess
+			.extern	_scrwidth
+			.extern	_scrheight
+			.extern	_scrcols
+			.extern	_scrrows
+			.extern	_scrcolours
+			.extern	_scrpixelIndex
+			.extern	_scrmode
+			.extern	_rtc
+			.extern	_keydelay
+			.extern	_keyrate
+			.extern 	_keyled
+			.extern	_mouseX
+			.extern	_gp
+			.extern	_vpd_protocol_flags
+			.extern	_vdp_protocol_state
+			.extern	_vdp_protocol_cmd
+			.extern	_vdp_protocol_len
+			.extern	_vdp_protocol_ptr
+			.extern	_vdp_protocol_data
 
-			XREF	keyboard_handler	; In keyboard.asm
+			.extern	_user_kbvector
+
+			.extern	keyboard_handler	; In keyboard.asm
 ;
 ; The UART protocol handler state machine
 ;
-vdp_protocol:		LD	A, (_vdp_protocol_state)
-			OR	A
-			JR	Z, vdp_protocol_state0
-			DEC	A
-			JR	Z, vdp_protocol_state1
-			DEC	A
-			JR	Z, vdp_protocol_state2
-			DEC	A
-			JP	Z, vdp_protocol_state3
-			XOR	A
-			LD	(_vdp_protocol_state), A
-			RET
+vdp_protocol:		ld	A, (_vdp_protocol_state)
+			or	A
+			jr	Z, vdp_protocol_state0
+			dec	A
+			jr	Z, vdp_protocol_state1
+			dec	A
+			jr	Z, vdp_protocol_state2
+			dec	A
+			jp	Z, vdp_protocol_state3 ; [DEV-006: ZDS relaxes this long JR; GNU requires explicit JP.]
+			xor	A
+			ld	(_vdp_protocol_state), A
+			ret
 ;
 ; Wait for control byte (>=80h)
 ;
-vdp_protocol_state0:	LD	A, C			; Wait for a header byte (bit 7 set)
-			SUB	0x80
-			RET	C
-			LD	(_vdp_protocol_cmd), A	; Store the cmd (discard the top bit)
-			LD	(_vdp_protocol_ptr), HL	; Store the buffer pointer
-			LD	A, 1			; Switch to next state
-			LD	(_vdp_protocol_state), A
-			RET
+vdp_protocol_state0:	ld	A, C			; Wait for a header byte (bit 7 set)
+			sub	0x80
+			ret	C
+			ld	(_vdp_protocol_cmd), A	; Store the cmd (discard the top bit)
+			ld	(_vdp_protocol_ptr), HL	; Store the buffer pointer
+			ld	A, 1			; Switch to next state
+			ld	(_vdp_protocol_state), A
+			ret
 
 ;
 ; Read the packet length in
 ;
-vdp_protocol_state1:	LD	A, C			; Fetch the length byte
-			CP	VDPP_BUFFERLEN + 1	; Check if it exceeds buffer length (16)
-			JR	C, .Lzds_src_vdp_protocol_asm_2263d5e2_a0001			;
-			LD	A, 3			; If it does exceed buffer length, switch to state 3 (ignore packet)
-			LD	(_vdp_protocol_state), A
-			RET
+vdp_protocol_state1:	ld	A, C			; Fetch the length byte
+			cp	VDPP_BUFFERLEN + 1	; Check if it exceeds buffer length (16)
+			jr	C, 1f			;
+			ld	A, 3			; If it does exceed buffer length, switch to state 3 (ignore packet)
+			ld	(_vdp_protocol_state), A
+			ret
 ;
-.Lzds_src_vdp_protocol_asm_2263d5e2_a0001:			LD	(_vdp_protocol_len), A	; Store the length
-			OR	A			; If it is zero
-			JR	Z, vdp_protocol_exec	; Then we can skip fetching bytes, otherwise
-			LD	A, 2			; Switch to next state
-			LD	(_vdp_protocol_state), A
-			RET
+1:			ld	(_vdp_protocol_len), A	; Store the length
+			or	A			; If it is zero
+			jr	Z, vdp_protocol_exec	; Then we can skip fetching bytes, otherwise
+			ld	A, 2			; Switch to next state
+			ld	(_vdp_protocol_state), A
+			ret
 
 ; Read the packet body in
 ;
-vdp_protocol_state2:	LD	HL, (_vdp_protocol_ptr)	; Get the buffer pointer
-			LD	(HL), C			; Store the byte in it
-			INC	HL			; Increment the buffer pointer
-			LD	(_vdp_protocol_ptr), HL
-			LD	A, (_vdp_protocol_len)	; Decrement the length
-			DEC	A
-			LD	(_vdp_protocol_len), A
-			RET	NZ			; Stay in this state if there are still bytes to read
+vdp_protocol_state2:	ld	HL, (_vdp_protocol_ptr)	; Get the buffer pointer
+			ld	(HL), C			; Store the byte in it
+			inc	HL			; Increment the buffer pointer
+			ld	(_vdp_protocol_ptr), HL
+			ld	A, (_vdp_protocol_len)	; Decrement the length
+			dec	A
+			ld	(_vdp_protocol_len), A
+			ret	NZ			; Stay in this state if there are still bytes to read
 ;
 ; When len is 0, we can action the packet
 ;
 
-vdp_protocol_exec:	XOR	A			; Reset the state
-			LD	(_vdp_protocol_state), A
-			LD	A, (_vdp_protocol_cmd)	; Get the command byte...
-			CP	vdp_protocol_vesize	; Check whether the command is in bounds
-			RET	NC			; Out of bounds, so just ignore
-			LD	DE, vdp_protocol_vector
-			LD	HL, 0			; Index into the jump table
-			LD	L, A			; ...in HLU
-			ADD	HL, HL			; Multiply by four, as each entry is 4 bytes
-			ADD	HL, HL			; And add the address of the vector table
-			ADD	HL, DE
-			JP	(HL)			; And jump to the entry in the jump table
+vdp_protocol_exec:	xor	A			; Reset the state
+			ld	(_vdp_protocol_state), A
+			ld	A, (_vdp_protocol_cmd)	; Get the command byte...
+			cp	vdp_protocol_vesize	; Check whether the command is in bounds
+			ret	NC			; Out of bounds, so just ignore
+			ld	DE, vdp_protocol_vector
+			ld	HL, 0			; Index into the jump table
+			ld	L, A			; ...in HLU
+			add	HL, HL			; Multiply by four, as each entry is 4 bytes
+			add	HL, HL			; And add the address of the vector table
+			add	HL, DE
+			jp	(HL)			; And jump to the entry in the jump table
 ;
 ; Jump table for UART commands
 ;
-vdp_protocol_vector:	JP	vdp_protocol_GP
-			JP	vdp_protocol_KEY
-			JP	vdp_protocol_CURSOR
-			JP	vpd_protocol_SCRCHAR
-			JP	vdp_protocol_POINT
-			JP	vdp_protocol_AUDIO
-			JP	vdp_protocol_MODE
-			JP	vdp_protocol_RTC
-			JP	vdp_protocol_KEYSTATE
-			JP	vdp_protocol_MOUSE
+vdp_protocol_vector:	jp	vdp_protocol_GP
+			jp	vdp_protocol_KEY
+			jp	vdp_protocol_CURSOR
+			jp	vpd_protocol_SCRCHAR
+			jp	vdp_protocol_POINT
+			jp	vdp_protocol_AUDIO
+			jp	vdp_protocol_MODE
+			jp	vdp_protocol_RTC
+			jp	vdp_protocol_KEYSTATE
+			jp	vdp_protocol_MOUSE
 ;
 .equiv vdp_protocol_vesize, (.-vdp_protocol_vector)/4
 
 ;
 ; Discard data (packet too long)
 ;
-vdp_protocol_state3:	LD	A, (_vdp_protocol_len)
-			DEC	A
-			LD	(_vdp_protocol_len), A
-			RET	NZ			; Stay in this state if there are still bytes to read
-			XOR	A			; Reset the state
-			LD	(_vdp_protocol_state), A
-			RET
+vdp_protocol_state3:	ld	A, (_vdp_protocol_len)
+			dec	A
+			ld	(_vdp_protocol_len), A
+			ret	NZ			; Stay in this state if there are still bytes to read
+			xor	A			; Reset the state
+			ld	(_vdp_protocol_state), A
+			ret
 
 ; General Poll
 ;
-vdp_protocol_GP:	LD	A, (_vdp_protocol_data + 0)
-			LD	(_gp), A
-			RET
+vdp_protocol_GP:	ld	A, (_vdp_protocol_data + 0)
+			ld	(_gp), A
+			ret
 
 ; Keyboard Data
 ; Received after a keypress event in the VPD
 ;
-vdp_protocol_KEY:	LD	HL, (_user_kbvector)		; If a user kbvector is set, call it
-			LD	DE, 0
-			OR	A
-			SBC	HL, DE
-			JR	Z, .Lzds_src_vdp_protocol_asm_2263d5e2_a0002
-			LD	HL, .Lzds_src_vdp_protocol_asm_2263d5e2_a0002
-			PUSH	HL				; Push return address from user routine
-			LD	HL, (_user_kbvector)
-			LD	DE, _vdp_protocol_data		; Pass keyboard packet address to user routine in DE (24-bit)
-			JP	(HL)
+vdp_protocol_KEY:	ld	HL, (_user_kbvector)		; If a user kbvector is set, call it
+			ld	DE, 0
+			or	A
+			sbc	HL, DE
+			jr	Z, 1f
+			ld	HL, 1f
+			push	HL				; Push return address from user routine
+			ld	HL, (_user_kbvector)
+			ld	DE, _vdp_protocol_data		; Pass keyboard packet address to user routine in DE (24-bit)
+			jp	(HL)
 ;
-.Lzds_src_vdp_protocol_asm_2263d5e2_a0002:			LD	A, (_vdp_protocol_data + 0)	; ASCII key code
-			LD	(_keyascii), A
-			LD	A, (_vdp_protocol_data + 1)	; Key modifiers (SHIFT, ALT, etc)
-			LD	(_keymods), A
-			LD	A, (_vdp_protocol_data + 3)	; Key down? (1=down, 0=up)
-			LD	C, A				; C: Keydown
-			LD	(_keydown), A
-			LD	A, (_keycount)			; Increment the key event counter
-			INC	A
-			LD	(_keycount), A
-			LD	A, (_vdp_protocol_data + 2)	; Virtual key code
-			LD	B, A 				; B: Virtual keycode
-			LD	(_keycode), A
+1:			ld	A, (_vdp_protocol_data + 0)	; ASCII key code
+			ld	(_keyascii), A
+			ld	A, (_vdp_protocol_data + 1)	; Key modifiers (SHIFT, ALT, etc)
+			ld	(_keymods), A
+			ld	A, (_vdp_protocol_data + 3)	; Key down? (1=down, 0=up)
+			ld	C, A				; C: Keydown
+			ld	(_keydown), A
+			ld	A, (_keycount)			; Increment the key event counter
+			inc	A
+			ld	(_keycount), A
+			ld	A, (_vdp_protocol_data + 2)	; Virtual key code
+			ld	B, A 				; B: Virtual keycode
+			ld	(_keycode), A
 ;
-			JP	keyboard_handler		; Call the handle keyboard routine (in keyboard.asm)
+			jp	keyboard_handler		; Call the handle keyboard routine (in keyboard.asm)
 
 ; Cursor data
 ; Received after the cursor position is updated in the VPD
@@ -207,29 +207,29 @@ vdp_protocol_KEY:	LD	HL, (_user_kbvector)		; If a user kbvector is set, call it
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vdp_protocol_CURSOR:	LD	A, (_vdp_protocol_data+0)
-			LD	(_cursorX), A
-			LD	A, (_vdp_protocol_data+1)
-			LD	(_cursorY), A
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_CURSOR
-			LD	(_vpd_protocol_flags), A
-			RET
-			
+vdp_protocol_CURSOR:	ld	A, (_vdp_protocol_data+0)
+			ld	(_cursorX), A
+			ld	A, (_vdp_protocol_data+1)
+			ld	(_cursorY), A
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_CURSOR
+			ld	(_vpd_protocol_flags), A
+			ret
+
 ; Screen character data
 ; Received after VDU 23,0,0,x;y;
 ;
-; Byte: ASCII code of character 
+; Byte: ASCII code of character
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vpd_protocol_SCRCHAR:	LD	A, (_vdp_protocol_data+0)
-			LD	(_scrchar), A
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_SCRCHAR
-			LD	(_vpd_protocol_flags), A
-			RET
-			
+vpd_protocol_SCRCHAR:	ld	A, (_vdp_protocol_data+0)
+			ld	(_scrchar), A
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_SCRCHAR
+			ld	(_vpd_protocol_flags), A
+			ret
+
 ; Pixel value data (RGB)
 ; Received after VDU 23,0,1,x;y;
 ;
@@ -240,15 +240,15 @@ vpd_protocol_SCRCHAR:	LD	A, (_vdp_protocol_data+0)
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vdp_protocol_POINT:	LD	HL, (_vdp_protocol_data+0)
-			LD	(_scrpixel), HL
-			LD	A, (_vdp_protocol_data+3)
-			LD	(_scrpixelIndex), A
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_POINT
-			LD	(_vpd_protocol_flags), A
-			RET
-			
+vdp_protocol_POINT:	ld	HL, (_vdp_protocol_data+0)
+			ld	(_scrpixel), HL
+			ld	A, (_vdp_protocol_data+3)
+			ld	(_scrpixelIndex), A
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_POINT
+			ld	(_vpd_protocol_flags), A
+			ret
+
 ; Audio acknowledgement
 ; Received after VDU 23,0,5,channel,volume,frequency,duration
 ;
@@ -257,15 +257,15 @@ vdp_protocol_POINT:	LD	HL, (_vdp_protocol_data+0)
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vdp_protocol_AUDIO:	LD	A, (_vdp_protocol_data+0)
-			LD	(_audioChannel), A
-			LD	A, (_vdp_protocol_data+1)
-			LD	(_audioSuccess), A
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_AUDIO
-			LD	(_vpd_protocol_flags), A
-			RET
-			
+vdp_protocol_AUDIO:	ld	A, (_vdp_protocol_data+0)
+			ld	(_audioChannel), A
+			ld	A, (_vdp_protocol_data+1)
+			ld	(_audioSuccess), A
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_AUDIO
+			ld	(_vpd_protocol_flags), A
+			ret
+
 ; Screen mode details
 ; Received after VDU 23,0,6 or VDU 17, n
 ;
@@ -278,26 +278,26 @@ vdp_protocol_AUDIO:	LD	A, (_vdp_protocol_data+0)
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vdp_protocol_MODE:	LD	A, (_vdp_protocol_data+0)
-			LD	(_scrwidth), A
-			LD	A, (_vdp_protocol_data+1)
-			LD	(_scrwidth+1), A
-			LD	A, (_vdp_protocol_data+2)
-			LD	(_scrheight), A
-			LD	A, (_vdp_protocol_data+3)
-			LD	(_scrheight+1), A
-			LD	A, (_vdp_protocol_data+4)
-			LD	(_scrcols), A
-			LD	A, (_vdp_protocol_data+5)
-			LD	(_scrrows), A
-			LD	A, (_vdp_protocol_data+6)
-			LD	(_scrcolours), A
-			LD	A, (_vdp_protocol_data+7)
-			LD	(_scrmode), A
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_MODE
-			LD	(_vpd_protocol_flags), A			
-			RET
+vdp_protocol_MODE:	ld	A, (_vdp_protocol_data+0)
+			ld	(_scrwidth), A
+			ld	A, (_vdp_protocol_data+1)
+			ld	(_scrwidth+1), A
+			ld	A, (_vdp_protocol_data+2)
+			ld	(_scrheight), A
+			ld	A, (_vdp_protocol_data+3)
+			ld	(_scrheight+1), A
+			ld	A, (_vdp_protocol_data+4)
+			ld	(_scrcols), A
+			ld	A, (_vdp_protocol_data+5)
+			ld	(_scrrows), A
+			ld	A, (_vdp_protocol_data+6)
+			ld	(_scrcolours), A
+			ld	A, (_vdp_protocol_data+7)
+			ld	(_scrmode), A
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_MODE
+			ld	(_vpd_protocol_flags), A
+			ret
 
 ; RTC
 ; Received after VDU 23,0,7
@@ -306,14 +306,14 @@ vdp_protocol_MODE:	LD	A, (_vdp_protocol_data+0)
 ;
 ; Sets vpd_protocol_flags to flag receipt to apps
 ;
-vdp_protocol_RTC:	LD	HL, _vdp_protocol_data
-			LD	DE, _rtc 
-			LD	BC,  6
-			LDIR 
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_RTC
-			LD	(_vpd_protocol_flags), A			
-			RET
+vdp_protocol_RTC:	ld	HL, _vdp_protocol_data
+			ld	DE, _rtc
+			ld	BC,  6
+			ldir
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_RTC
+			ld	(_vpd_protocol_flags), A
+			ret
 
 ; Keyboard status
 ; Received after VDU 23,0,8,delay;rate;led
@@ -322,11 +322,11 @@ vdp_protocol_RTC:	LD	HL, _vdp_protocol_data
 ; Word: rate
 ; Byte: led status
 ;
-vdp_protocol_KEYSTATE:	LD	HL, _vdp_protocol_data
-			LD	DE, _keydelay
-			LD	BC, 5
-			LDIR 
-			RET
+vdp_protocol_KEYSTATE:	ld	HL, _vdp_protocol_data
+			ld	DE, _keydelay
+			ld	BC, 5
+			ldir
+			ret
 
 ; Mouse data
 ; Received after a mouse movement event, if mouse has been activated
@@ -338,11 +338,11 @@ vdp_protocol_KEYSTATE:	LD	HL, _vdp_protocol_data
 ; Word: X delta
 ; Word: Y delta
 ;
-vdp_protocol_MOUSE:	LD	HL, _vdp_protocol_data
-			LD	DE, _mouseX
-			LD	BC, 10
-			LDIR 
-			LD	A, (_vpd_protocol_flags)
-			OR	VDPP_FLAG_MOUSE
-			LD	(_vpd_protocol_flags), A
-			RET
+vdp_protocol_MOUSE:	ld	HL, _vdp_protocol_data
+			ld	DE, _mouseX
+			ld	BC, 10
+			ldir
+			ld	A, (_vpd_protocol_flags)
+			or	VDPP_FLAG_MOUSE
+			ld	(_vpd_protocol_flags), A
+			ret

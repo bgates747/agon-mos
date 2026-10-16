@@ -16,276 +16,276 @@
 			.include "ez80f92.inc"
 			.include "i2c.inc"
 
-			.ASSUME	ADL = 1
+			.assume adl=1
 
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-			
-			XDEF	_vblank_handler
-			XDEF	_uart0_handler
-			XDEF	_i2c_handler
 
-			XREF	_clock
-			XREF	_vdp_protocol_data
-			
-			XREF	UART0_serial_RX
-			XREF	UART0_serial_TX
-			XREF	mos_api
-			XREF	vdp_protocol			
-			
-			XREF	_i2c_slave_rw
-			XREF	_i2c_error
-			XREF	_i2c_role
-			XREF	_i2c_msg_ptr
-			XREF	_i2c_msg_size
+			.global	_vblank_handler
+			.global	_uart0_handler
+			.global	_i2c_handler
+
+			.extern	_clock
+			.extern	_vdp_protocol_data
+
+			.extern	UART0_serial_RX
+			.extern	UART0_serial_TX
+			.extern	mos_api
+			.extern	vdp_protocol
+
+			.extern	_i2c_slave_rw
+			.extern	_i2c_error
+			.extern	_i2c_role
+			.extern	_i2c_msg_ptr
+			.extern	_i2c_msg_size
 
 ; AGON Vertical Blank Interrupt handler
 ;
-_vblank_handler:	DI
-			PUSH		AF
-			zds_SET_GPIO 	PB_DR, 2		; Need to set this to 2 for the interrupt to work correctly
-			PUSH		BC
-			PUSH		DE
-			PUSH		HL	
-			LD 		HL, (_clock)		; Increment the 32-bit clock counter
-			LD		BC, 2			; By 2, effectively timing in centiseconds
-			ADD		HL, BC
-			LD		(_clock), HL
-			LD		A, (_clock + 3)
-			ADC		A, 0
-			LD		(_clock + 3), A			
-			POP		HL
-			POP		DE
-			POP		BC
-			POP		AF
-			EI	
-			RETI.L
-			
+_vblank_handler:	di
+			push		AF
+			SET_GPIO 	PB_DR, 2		; Need to set this to 2 for the interrupt to work correctly
+			push		BC
+			push		DE
+			push		HL
+			ld 		HL, (_clock)		; Increment the 32-bit clock counter
+			ld		BC, 2			; By 2, effectively timing in centiseconds
+			add		HL, BC
+			ld		(_clock), HL
+			ld		A, (_clock + 3)
+			adc		A, 0
+			ld		(_clock + 3), A
+			pop		HL
+			pop		DE
+			pop		BC
+			pop		AF
+			ei
+			reti.l
+
 ; AGON UART0 Interrupt Handler
 ;
-_uart0_handler:		DI
-			PUSH		AF
-			PUSH		BC
-			PUSH		DE
-			PUSH		HL
-			CALL		UART0_serial_RX
-			LD		C, A		
-			LD		HL, _vdp_protocol_data
-			CALL		vdp_protocol
-			POP		HL
-			POP		DE
-			POP		BC
-			POP		AF
-			EI
-			RETI.L	
+_uart0_handler:		di
+			push		AF
+			push		BC
+			push		DE
+			push		HL
+			call		UART0_serial_RX
+			ld		C, A
+			ld		HL, _vdp_protocol_data
+			call		vdp_protocol
+			pop		HL
+			pop		DE
+			pop		BC
+			pop		AF
+			ei
+			reti.l
 
 ; AGON I2C Interrupt handler
 ;
 _i2c_handler:
-			DI
-			PUSH	AF
-			PUSH	HL
-			PUSH	DE
-			IN0		A, (I2C_SR)				; input I2C status register - switch case to this status value
-			AND		0b11111000				; cancel lower 3 bits, so we can use RRA. This will save 1 T-state
-			RRA
-			RRA
-			RRA								; bits [7:3] contain the jumpvector
-			CALL	i2c_handle_sr_vector
+			di
+			push	AF
+			push	HL
+			push	DE
+			in0		A, (I2C_SR)				; input I2C status register - switch case to this status value
+			and		0b11111000				; cancel lower 3 bits, so we can use RRA. This will save 1 T-state
+			rra
+			rra
+			rra								; bits [7:3] contain the jumpvector
+			call	i2c_handle_sr_vector
 			; and switch on the vectors in this table
-			DW		i2c_case_buserror		; 00h
-			DW		i2c_case_master_start	; 08h
-			DW		i2c_case_invalid		; 10h
-			DW		i2c_case_aw_acked		; 18h
-			DW		i2c_case_aw_nacked		; 20h
-			DW		i2c_case_db_acked		; 28h
-			DW		i2c_case_db_nacked		; 30h
-			DW		i2c_case_arblost		; 38h
-			DW		i2c_case_mr_ar_ack		; 40h
-			DW		i2c_case_mr_ar_nack		; 48h
-			DW		i2c_case_mr_dbr_ack		; 50h
-			DW		i2c_case_mr_dbr_nack	; 58h
-			DW		i2c_case_toimplement	; 60h - slave
-			DW		i2c_case_toimplement	; 68h - slave
-			DW		i2c_case_toimplement	; 70h - slave
-			DW		i2c_case_toimplement	; 78h - slave
-			DW		i2c_case_toimplement	; 80h - slave
-			DW		i2c_case_toimplement	; 88h - slave
-			DW		i2c_case_toimplement	; 90h - slave
-			DW		i2c_case_toimplement	; 98h - slave
-			DW		i2c_case_toimplement	; A0h - slave
-			DW		i2c_case_toimplement	; A8h - slave
-			DW		i2c_case_toimplement	; B0h - slave
-			DW		i2c_case_toimplement	; B8h - slave
-			DW		i2c_case_toimplement	; C0h - slave
-			DW		i2c_case_toimplement	; C8h - slave
-			DW		i2c_case_toimplement	; D0h - 10bit I2C address
-			DW		i2c_case_toimplement	; D8h - 10bit I2C address
-			DW		i2c_case_invalid		; E0h
-			DW		i2c_case_invalid		; E8h
-			DW		i2c_case_invalid		; F0h
-			DW		i2c_case_invalid		; F8h - Should never produce an interrupt
+			dw		i2c_case_buserror		; 00h
+			dw		i2c_case_master_start	; 08h
+			dw		i2c_case_invalid		; 10h
+			dw		i2c_case_aw_acked		; 18h
+			dw		i2c_case_aw_nacked		; 20h
+			dw		i2c_case_db_acked		; 28h
+			dw		i2c_case_db_nacked		; 30h
+			dw		i2c_case_arblost		; 38h
+			dw		i2c_case_mr_ar_ack		; 40h
+			dw		i2c_case_mr_ar_nack		; 48h
+			dw		i2c_case_mr_dbr_ack		; 50h
+			dw		i2c_case_mr_dbr_nack	; 58h
+			dw		i2c_case_toimplement	; 60h - slave
+			dw		i2c_case_toimplement	; 68h - slave
+			dw		i2c_case_toimplement	; 70h - slave
+			dw		i2c_case_toimplement	; 78h - slave
+			dw		i2c_case_toimplement	; 80h - slave
+			dw		i2c_case_toimplement	; 88h - slave
+			dw		i2c_case_toimplement	; 90h - slave
+			dw		i2c_case_toimplement	; 98h - slave
+			dw		i2c_case_toimplement	; A0h - slave
+			dw		i2c_case_toimplement	; A8h - slave
+			dw		i2c_case_toimplement	; B0h - slave
+			dw		i2c_case_toimplement	; B8h - slave
+			dw		i2c_case_toimplement	; C0h - slave
+			dw		i2c_case_toimplement	; C8h - slave
+			dw		i2c_case_toimplement	; D0h - 10bit I2C address
+			dw		i2c_case_toimplement	; D8h - 10bit I2C address
+			dw		i2c_case_invalid		; E0h
+			dw		i2c_case_invalid		; E8h
+			dw		i2c_case_invalid		; F0h
+			dw		i2c_case_invalid		; F8h - Should never produce an interrupt
 
 i2c_handle_sr_vector:
-			EX		(SP), HL	; Swap HL with the contents of the top of the stack
-			ADD		A, A		; Multiply A by two
-			ADD		A, L 
-			LD		L, A 
-			ADC		A, H
-			SUB		L
-			LD		H, A		; Add 8bit A to HL 
-			LD		A, (HL)		; Fetch vector adress from the table
-			INC		HL
-			LD		H, (HL)
-			LD		L, A
-			EX		(SP), HL	; Swap this new address back, restores HL
-			RET					; Return program control to this new address		
+			ex		(SP), HL	; Swap HL with the contents of the top of the stack
+			add		A, A		; Multiply A by two
+			add		A, L
+			ld		L, A
+			adc		A, H
+			sub		L
+			ld		H, A		; Add 8bit A to HL
+			ld		A, (HL)		; Fetch vector adress from the table
+			inc		HL
+			ld		H, (HL)
+			ld		L, A
+			ex		(SP), HL	; Swap this new address back, restores HL
+			ret					; Return program control to this new address
 
 i2c_case_buserror: ; 00h
-			LD		A, RET_BUS_ERROR
-			LD		(_i2c_error),A
-			
-			; perform software reset of the bus
-			XOR		A
-			OUT0	(I2C_SRR),A
-			LD		HL, _i2c_role
-			LD		A, I2C_IDLE	; READY state
-			LD		(HL),A
+			ld		A, RET_BUS_ERROR
+			ld		(_i2c_error),A
 
-			POP		DE
-			POP		HL
-			POP		AF
-			EI
-			RETI.L
+			; perform software reset of the bus
+			xor		A
+			out0	(I2C_SRR),A
+			ld		HL, _i2c_role
+			ld		A, I2C_IDLE	; READY state
+			ld		(HL),A
+
+			pop		DE
+			pop		HL
+			pop		AF
+			ei
+			reti.l
 
 i2c_case_master_start:		; 08h
 i2c_case_master_repstart:	; 10h
-			LD		A, (_i2c_slave_rw)		; load slave address and r/w bit
-			OUT0	(I2C_DR), A		; store to I2C Data Register
-			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK
-			OUT0	(I2C_CTL),A		; set to Control register
+			ld		A, (_i2c_slave_rw)		; load slave address and r/w bit
+			out0	(I2C_DR), A		; store to I2C Data Register
+			ld		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK
+			out0	(I2C_CTL),A		; set to Control register
 
-			POP		DE
-			POP		HL
-			POP		AF
-			EI
-			RETI.L
+			pop		DE
+			pop		HL
+			pop		AF
+			ei
+			reti.l
 
 i2c_case_aw_acked:	; 18h
 i2c_case_db_acked:	; 28h
 			; Check size and size--
-			LD		A, (_i2c_msg_size)
-			OR		A
-			JR		Z, i2c_sendstop
-			DEC		A
-			LD		(_i2c_msg_size), A
+			ld		A, (_i2c_msg_size)
+			or		A
+			jr		Z, i2c_sendstop
+			dec		A
+			ld		(_i2c_msg_size), A
 
 			; load pointer
-			LD		HL, _i2c_msg_ptr
+			ld		HL, _i2c_msg_ptr
 			push hl
 			pop de
-			LD		HL, (HL)
+			ld		HL, (HL)
 
 			; Load indexed byte from buffer
-			LD		A, (HL)
+			ld		A, (HL)
 
-			OUT0	(I2C_DR), A		; store to I2C Data Register
-			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK
-			OUT0	(I2C_CTL),A		; set to Control register
+			out0	(I2C_DR), A		; store to I2C Data Register
+			ld		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK
+			out0	(I2C_CTL),A		; set to Control register
 
-			INC		HL				; pointer++
-			EX		DE, HL
-			LD		(HL), DE
+			inc		HL				; pointer++
+			ex		DE, HL
+			ld		(HL), DE
 
-			POP		DE
-			POP		HL
-			POP		AF
-			EI
-			RETI.L
+			pop		DE
+			pop		HL
+			pop		AF
+			ei
+			reti.l
 
 i2c_case_aw_nacked:	; 20h
 i2c_case_mr_ar_nack: ; 48h
-			LD		A, RET_NORESPONSE
-			LD		(_i2c_error),A
-			JP		i2c_sendstop
-			
+			ld		A, RET_NORESPONSE
+			ld		(_i2c_error),A
+			jp		i2c_sendstop
+
 i2c_case_db_nacked:	; 30h
-			LD		A, RET_DATA_NACK
-			LD		(_i2c_error),A
-			JP 		i2c_sendstop
+			ld		A, RET_DATA_NACK
+			ld		(_i2c_error),A
+			jp 		i2c_sendstop
 
 i2c_case_arblost:	; 38h
-			LD		A, RET_ARB_LOST
-			LD		(_i2c_error),A
-			JP 		i2c_sendstop
+			ld		A, RET_ARB_LOST
+			ld		(_i2c_error),A
+			jp 		i2c_sendstop
 
 i2c_case_mr_dbr_ack: ; 50h
 			; calculate offset address into i2c_mbuffer
-			LD		HL, _i2c_msg_ptr
+			ld		HL, _i2c_msg_ptr
 			push hl
 			pop de
-			LD		HL, (HL)
+			ld		HL, (HL)
 
-			IN0		A,(I2C_DR)		; load byte from I2C Data Register
-			LD		(HL),A			; store in buffer at calculated index
+			in0		A,(I2C_DR)		; load byte from I2C Data Register
+			ld		(HL),A			; store in buffer at calculated index
 
-			INC		HL				; pointer++
-			EX		DE, HL
-			LD		(HL), DE
+			inc		HL				; pointer++
+			ex		DE, HL
+			ld		(HL), DE
 ;			; intentionally falling through to next case
-i2c_case_mr_ar_ack: ; 40h		
-			LD		A, (_i2c_msg_size)
-			CP		1					; last byte to receive?
-			JR		Z, .Lzds_src_interrupts_asm_131d5b67_a0001
+i2c_case_mr_ar_ack: ; 40h
+			ld		A, (_i2c_msg_size)
+			cp		1					; last byte to receive?
+			jr		Z, 1f
 
-			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK	; reply with ACK
-			JR		.Lzds_src_interrupts_asm_131d5b67_s000__24_end
-.Lzds_src_interrupts_asm_131d5b67_a0001:
-			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB				; reply without ACK	
-.Lzds_src_interrupts_asm_131d5b67_s000__24_end:		OUT0	(I2C_CTL),A		; set to Control register
+			ld		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK	; reply with ACK
+			jr		.Lvblank_handler_end
+1:
+			ld		A, I2C_CTL_IEN | I2C_CTL_ENAB				; reply without ACK
+.Lvblank_handler_end:		out0	(I2C_CTL),A		; set to Control register
 			; size--
-			LD		A, (_i2c_msg_size)
-			DEC		A
-			LD		(_i2c_msg_size), A
+			ld		A, (_i2c_msg_size)
+			dec		A
+			ld		(_i2c_msg_size), A
 
-			POP		DE
-			POP		HL
-			POP		AF
-			EI
-			RETI.L
-			
+			pop		DE
+			pop		HL
+			pop		AF
+			ei
+			reti.l
+
 i2c_case_mr_dbr_nack: ; 58h
 			; load pointer
-			LD		HL, _i2c_msg_ptr
-			LD		HL, (HL)
+			ld		HL, _i2c_msg_ptr
+			ld		HL, (HL)
 
-			IN0		A,(I2C_DR)			; load byte from I2C Data Register
-			LD		(HL),A				; store in buffer at calculated index
-						
-			JR		i2c_sendstop
+			in0		A,(I2C_DR)			; load byte from I2C Data Register
+			ld		(HL),A				; store in buffer at calculated index
+
+			jr		i2c_sendstop
 
 i2c_case_invalid:
 i2c_case_toimplement:
 i2c_sendstop:
 			; send stop first to go to idle state
-			LD		A, I2C_CTL_ENAB | I2C_CTL_STP			
-			OUT0	(I2C_CTL),A		; set to Control register			
-.Lzds_src_interrupts_asm_131d5b67_a0002:
-			IN0		A,(I2C_CTL)
-			AND		I2C_CTL_STP		; STP bit still in place?
-			JR		NZ, .Lzds_src_interrupts_asm_131d5b67_a0002
-			
-			; Release control of the bus
-			XOR		A				; all bits of I2C_CTL to 0
-			OUT0	(I2C_CTL),A		; set to Control register I2C_CTL
-			LD		HL, _i2c_role
-			LD		A, I2C_IDLE	; IDLE state
-			LD		(HL),A
+			ld		A, I2C_CTL_ENAB | I2C_CTL_STP
+			out0	(I2C_CTL),A		; set to Control register
+1:
+			in0		A,(I2C_CTL)
+			and		I2C_CTL_STP		; STP bit still in place?
+			jr		NZ, 1b
 
-			POP		DE
-			POP		HL
-			POP		AF
-			EI
-			RETI.L
-	
+			; Release control of the bus
+			xor		A				; all bits of I2C_CTL to 0
+			out0	(I2C_CTL),A		; set to Control register I2C_CTL
+			ld		HL, _i2c_role
+			ld		A, I2C_IDLE	; IDLE state
+			ld		(HL),A
+
+			pop		DE
+			pop		HL
+			pop		AF
+			ei
+			reti.l
+
 			; zds2gas: END

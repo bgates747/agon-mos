@@ -25,68 +25,68 @@
 ; 11/11/2023:	Added i2c
 
 			.include "../src/equs.inc"
-			
-			XDEF	_sysvars
-			
-			XDEF 	_keycode
-			XDEF	_keymods
-			XDEF	_keyascii
-			XDEF	_keydown
-			XDEF	_keycount
-			XDEF	_clock
-			XDEF	_cursorX
-			XDEF	_cursorY
-			XDEF	_scrchar
-			XDEF	_scrpixel
-			XDEF	_audioChannel
-			XDEF	_audioSuccess
-			XDEF	_scrwidth
-			XDEF	_scrheight
-			XDEF	_scrcols
-			XDEF	_scrrows
-			XDEF	_scrcolours
-			XDEF	_scrpixelIndex
-			XDEF	_rtc
-			XDEF	_keydelay 
-			XDEF	_keyrate 
-			XDEF 	_keyled
-			XDEF	_scrmode
-			XDEF	_rtc_enable
-			XDEF	_mouseX
-			XDEF	_mouseY
-			XDEF	_mouseButtons
-			XDEF	_mouseWheel
-			XDEF	_mouseXDelta
-			XDEF	_mouseYDelta
 
-			XDEF	_errno
-			XDEF 	_coldBoot
-			XDEF	_gp
-			XDEF	_serialFlags
-			XDEF 	_callSM
-			XDEF	_scratchpad
-			XDEF	_keymap 
+			.global	_sysvars
 
-			XDEF	_vpd_protocol_flags
-			XDEF	_vdp_protocol_state
-			XDEF	_vdp_protocol_cmd
-			XDEF	_vdp_protocol_len
-			XDEF	_vdp_protocol_ptr
-			XDEF	_vdp_protocol_data
+			.global 	_keycode
+			.global	_keymods
+			.global	_keyascii
+			.global	_keydown
+			.global	_keycount
+			.global	_clock
+			.global	_cursorX
+			.global	_cursorY
+			.global	_scrchar
+			.global	_scrpixel
+			.global	_audioChannel
+			.global	_audioSuccess
+			.global	_scrwidth
+			.global	_scrheight
+			.global	_scrcols
+			.global	_scrrows
+			.global	_scrcolours
+			.global	_scrpixelIndex
+			.global	_rtc
+			.global	_keydelay
+			.global	_keyrate
+			.global 	_keyled
+			.global	_scrmode
+			.global	_rtc_enable
+			.global	_mouseX
+			.global	_mouseY
+			.global	_mouseButtons
+			.global	_mouseWheel
+			.global	_mouseXDelta
+			.global	_mouseYDelta
 
-			XDEF	_user_kbvector
+			.global	_errno
+			.global 	_coldBoot
+			.global	_gp
+			.global	_serialFlags
+			.global 	_callSM
+			.global	_scratchpad
+			.global	_keymap
 
-			XDEF	_history_no
-			XDEF	_history_size
+			.global	_vpd_protocol_flags
+			.global	_vdp_protocol_state
+			.global	_vdp_protocol_cmd
+			.global	_vdp_protocol_len
+			.global	_vdp_protocol_ptr
+			.global	_vdp_protocol_data
 
-			XDEF	_i2c_slave_rw
-			XDEF	_i2c_error
-			XDEF	_i2c_role
-			XDEF	_i2c_msg_ptr
-			XDEF	_i2c_msg_size
+			.global	_user_kbvector
+
+			.global	_history_no
+			.global	_history_size
+
+			.global	_i2c_slave_rw
+			.global	_i2c_error
+			.global	_i2c_role
+			.global	_i2c_msg_ptr
+			.global	_i2c_msg_size
 
 			.section .bss,"aw",@nobits; This section is reset to 0 in cstartup.asm
-			
+
 _sysvars:					; Please make sure the sysvar offsets match those in mos_api.inc
 ;
 _clock:			.skip 4; + 00h: Clock timer in centiseconds (incremented by 2 every VBLANK)
@@ -97,7 +97,7 @@ _cursorX:		.skip 1; + 07h: Cursor X position
 _cursorY:		.skip 1; + 08h: Cursor Y position
 _scrchar:		.skip 1; + 09h: Character read from screen
 _scrpixel:		.skip 3; + 0Ah: Pixel data read from screen (R,B,G)
-_audioChannel:		.skip 1; + 0Dh: Audio channel 
+_audioChannel:		.skip 1; + 0Dh: Audio channel
 _audioSuccess:		.skip 1; + 0Eh: Audio channel note queued (0 = no, 1 = yes)
 _scrwidth:		.skip 2; + 0Fh: Screen width in pixels
 _scrheight:		.skip 2; + 11h: Screen height in pixels

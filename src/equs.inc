@@ -1,5 +1,6 @@
 ; Native AgonDev source derived from official MOS v3.0.2: src/equs.inc
 ; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; DEV-009: guard repeated includes; SDK hardware aliases are checked by the build.
 .ifndef AGON_MOS_SRC_EQUS_INC
 .set AGON_MOS_SRC_EQUS_INC,1
 ;
@@ -24,7 +25,7 @@
 ; MOS specific
 ;
 .equiv VDPP_BUFFERLEN, 16; VDP Protocol Buffer Length
-	
+
 .equiv VDPP_FLAG_CURSOR, 0b00000001
 .equiv VDPP_FLAG_SCRCHAR, 0b00000010
 .equiv VDPP_FLAG_POINT, 0b00000100
@@ -53,7 +54,7 @@
 .equ PD_DDR, 0xA3
 .equ PD_ALT1, 0xA4
 .equ PD_ALT2, 0xA5
-	
+
 .equiv GPIOMODE_OUT, 0; Output
 .equiv GPIOMODE_IN, 1; Input
 .equiv GPIOMODE_DIO, 2; Open Drain IO
@@ -64,7 +65,7 @@
 .equiv GPIOMODE_INTAH, 7; Interrupt, Active High
 .equiv GPIOMODE_INTFE, 8; Interrupt, Falling Edge
 .equiv GPIOMODE_INTRE, 9; Interrupt, Rising Edge
-	
+
 ; For interrupts.asm
 ;
 
@@ -83,7 +84,7 @@
 .equiv PB5_IVECT, 0x3A
 .equiv PB6_IVECT, 0x3C
 .equiv PB7_IVECT, 0x3E
-                       
+
 .equiv PC0_IVECT, 0x40
 .equiv PC1_IVECT, 0x42
 .equiv PC2_IVECT, 0x44
@@ -92,7 +93,7 @@
 .equiv PC5_IVECT, 0x4A
 .equiv PC6_IVECT, 0x4C
 .equiv PC7_IVECT, 0x4E
-                       
+
 .equiv PD0_IVECT, 0x50
 .equiv PD1_IVECT, 0x52
 .equiv PD2_IVECT, 0x54

@@ -19,54 +19,54 @@
 
 			.include "ez80f92.inc"
 
-			XREF	__stack
-			XREF	__init_default_vectors
-			XREF	__c_startup
-			XREF	__cstartup
-			XREF	_main
-			XREF	__CS0_LBR_INIT_PARAM
-			XREF	__CS0_UBR_INIT_PARAM
-			XREF	__CS0_CTL_INIT_PARAM
-			XREF	__CS1_LBR_INIT_PARAM
-			XREF	__CS1_UBR_INIT_PARAM
-			XREF	__CS1_CTL_INIT_PARAM
-			XREF	__CS2_LBR_INIT_PARAM
-			XREF	__CS2_UBR_INIT_PARAM
-			XREF	__CS2_CTL_INIT_PARAM
-			XREF	__CS3_LBR_INIT_PARAM
-			XREF	__CS3_UBR_INIT_PARAM
-			XREF	__CS3_CTL_INIT_PARAM
-			XREF	__CS0_BMC_INIT_PARAM
-			XREF	__CS1_BMC_INIT_PARAM
-			XREF	__CS2_BMC_INIT_PARAM
-			XREF	__CS3_BMC_INIT_PARAM
-			XREF	__FLASH_CTL_INIT_PARAM
-			XREF	__FLASH_ADDR_U_INIT_PARAM
-			XREF	__RAM_CTL_INIT_PARAM
-			XREF	__RAM_ADDR_U_INIT_PARAM
+			.extern	__stack
+			.extern	__init_default_vectors
+			.extern	__c_startup
+			.extern	__cstartup
+			.extern	_main
+			.extern	__CS0_LBR_INIT_PARAM
+			.extern	__CS0_UBR_INIT_PARAM
+			.extern	__CS0_CTL_INIT_PARAM
+			.extern	__CS1_LBR_INIT_PARAM
+			.extern	__CS1_UBR_INIT_PARAM
+			.extern	__CS1_CTL_INIT_PARAM
+			.extern	__CS2_LBR_INIT_PARAM
+			.extern	__CS2_UBR_INIT_PARAM
+			.extern	__CS2_CTL_INIT_PARAM
+			.extern	__CS3_LBR_INIT_PARAM
+			.extern	__CS3_UBR_INIT_PARAM
+			.extern	__CS3_CTL_INIT_PARAM
+			.extern	__CS0_BMC_INIT_PARAM
+			.extern	__CS1_BMC_INIT_PARAM
+			.extern	__CS2_BMC_INIT_PARAM
+			.extern	__CS3_BMC_INIT_PARAM
+			.extern	__FLASH_CTL_INIT_PARAM
+			.extern	__FLASH_ADDR_U_INIT_PARAM
+			.extern	__RAM_CTL_INIT_PARAM
+			.extern	__RAM_ADDR_U_INIT_PARAM
 
-			XDEF	__init
-			XDEF	_abort
-			XDEF	__exit
-			XDEF	_exit
-			
-			XREF	__exec16
-			XREF	_exec16
-			
-			XREF	GPIOB_SETMODE
-			
-			XREF 	_coldBoot		
-			XREF 	_keycode
-			XREF 	_timer2
-			XREF 	_callSM
-			XREF 	_tmpLHU			
-;			
+			.global	__init
+			.global	_abort
+			.global	__exit
+			.global	_exit
+
+			.extern	__exec16
+			.extern	_exec16
+
+			.extern	GPIOB_SETMODE
+
+			.extern 	_coldBoot
+			.extern 	_keycode
+			.extern 	_timer2
+			.extern 	_callSM
+			.extern 	_tmpLHU
+;
 ; Startup code
 ;
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-			
-			.ASSUME ADL = 1
+
+			.assume adl=1
 
 ; Minimum default initialization
 ;
@@ -137,7 +137,7 @@ __init:			ld a, 0xFF
 			out0 (CS3_BMC), a
 			ld a, __CS3_CTL_INIT_PARAM
 			out0 (CS3_CTL), a
-;   
+;
 ; Enable internal memory
 ;
 			ld a, __FLASH_ADDR_U_INIT_PARAM
@@ -183,11 +183,11 @@ __skip_memclr:
 ; Detect hardware reset
 ;
 			ld a, i			; Register I should be 0 on cold boot
-			or a, a		
+			or a, a
 			ld a, 1			; Set to 1 if cold boot
-			jr z, .Lzds_src_startup_init_params_f92_asm_e3ce1bd7_a0001
+			jr z, 1f
 			dec a			; Otherwise set to 0
-.Lzds_src_startup_init_params_f92_asm_e3ce1bd7_a0001:			push af 		; Stack AF, will store later as __c_startup clears globals area
+1:			push af 		; Stack AF, will store later as __c_startup clears globals area
 
 ;
 ; Initialize the interrupt vector table
@@ -196,18 +196,18 @@ __skip_memclr:
 ;
 ; Further hardware/firmware initialisation
 ;
-			LD	A, GPIOMODE_INTRE
-			LD	B, 2
-			CALL	GPIOB_SETMODE
+			ld	A, GPIOMODE_INTRE
+			ld	B, 2
+			call	GPIOB_SETMODE
 
 ; Protect flash pages by default
-			
-			LD        A, 0xb6    ; unlock
-			OUT0    (0xF5), A
-			LD        A, 0x49
-			OUT0    (0xF5), A
-			LD        A, 0xff    ; protect all pages
-			OUT0    (0xFA), A			
+
+			ld        A, 0xb6    ; unlock
+			out0    (0xF5), A
+			ld        A, 0x49
+			out0    (0xF5), A
+			ld        A, 0xff    ; protect all pages
+			out0    (0xFA), A
 
 ;
 ; Start application
@@ -236,9 +236,9 @@ _abort:			jr .                	; If we return from main loop forever here
 
 ; Define global constants
 ;
-			XREF _SYS_CLK_FREQ
-			XDEF _SysClkFreq
+			.extern _SYS_CLK_FREQ
+			.global _SysClkFreq
 
 _SysClkFreq:		d32 _SYS_CLK_FREQ
-			
+
 			; zds2gas: END

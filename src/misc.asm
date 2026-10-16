@@ -18,104 +18,104 @@
 			.include "macros.inc"
 			.include "equs.inc"
 
-			.ASSUME	ADL = 1
+			.assume adl=1
 
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
-			XDEF	SWITCH_A
-			XDEF	SET_AHL24
-			XDEF	FIX_HLU24
-			XDEF	FIX_HLU24_no_mb_check
-			XDEF	SET_ADE24
-			XDEF	SET_ABC24
-			XDEF	SET_AIX24
+			.global	SWITCH_A
+			.global	SET_AHL24
+			.global	FIX_HLU24
+			.global	FIX_HLU24_no_mb_check
+			.global	SET_ADE24
+			.global	SET_ABC24
+			.global	SET_AIX24
 
-			XDEF	__exec16
-			XDEF	__exec24
-			XDEF	__wait_timer0 
+			.global	__exec16
+			.global	__exec24
+			.global	__wait_timer0
 
-			XDEF	_exec16			
-			XDEF	_exec24
-			XDEF	_wait_timer0
-			XDEF	_timer0_delay
+			.global	_exec16
+			.global	_exec24
+			.global	_wait_timer0
+			.global	_timer0_delay
 
-			XREF	_callSM
-			
+			.extern	_callSM
+
 ; Switch on A - lookup table immediately after call
 ;  A: Index into lookup table
 ;
-SWITCH_A:		EX	(SP), HL		; Swap HL with the contents of the top of the stack
-			ADD	A, A			; Multiply A by two
-			zds_ADD8U_HL 			; Add to HL (macro)
-			LD	A, (HL)			; follow the call. Fetch an address from the
-			INC	HL 			; table.
-			LD	H, (HL)
-			LD	L, A
-			EX	(SP), HL		; Swap this new address back, restores HL
-			RET				; Return program control to this new address
+SWITCH_A:		ex	(SP), HL		; Swap HL with the contents of the top of the stack
+			add	A, A			; Multiply A by two
+			ADD8U_HL 			; Add to HL (macro)
+			ld	A, (HL)			; follow the call. Fetch an address from the
+			inc	HL 			; table.
+			ld	H, (HL)
+			ld	L, A
+			ex	(SP), HL		; Swap this new address back, restores HL
+			ret				; Return program control to this new address
 
 ; Set the MSB of HL (U) to A
 ;
-SET_AHL24:		PUSH	HL
-			LD	HL, 2
-			ADD	HL, SP
-			LD	(HL), A
-			POP	HL
-			RET	
+SET_AHL24:		push	HL
+			ld	HL, 2
+			add	HL, SP
+			ld	(HL), A
+			pop	HL
+			ret
 
 ; Optionally set MSB of HL(U) to MB, if needed
 ; Sets U of HLU to MB if MB != 0 and U is not already set
 ;
-FIX_HLU24:		LD	A, MB
-			OR	A
-			RET	Z
+FIX_HLU24:		ld	A, MB
+			or	A
+			ret	Z
 ; Get the MSB of HLU in A (pushing HLU to the stack)
-FIX_HLU24_no_mb_check:	PUSH	HL 
-			LD	HL, 2
-			ADD	HL, SP
-			LD	A, (HL)
-			OR 	A, A
+FIX_HLU24_no_mb_check:	push	HL
+			ld	HL, 2
+			add	HL, SP
+			ld	A, (HL)
+			or 	A, A
 ; top byte of HLU (on stack) already set so return
-			JR	NZ, .Lzds_src_misc_asm_51158981_a0001
+			jr	NZ, 1f
 ; set top byte of HLU (on stack) to MB
-			LD	A, MB
-			LD	(HL), A
-.Lzds_src_misc_asm_51158981_a0001:			POP	HL
-			RET
+			ld	A, MB
+			ld	(HL), A
+1:			pop	HL
+			ret
 
 ; Set the MSB of DE (U) to A
 ;
-SET_ADE24:		EX	DE, HL
-			PUSH	HL
-			LD	HL, 2
-			ADD	HL, SP
-			LD	(HL), A
-			POP	HL
-			EX	DE, HL
-			RET
+SET_ADE24:		ex	DE, HL
+			push	HL
+			ld	HL, 2
+			add	HL, SP
+			ld	(HL), A
+			pop	HL
+			ex	DE, HL
+			ret
 
 ; Set the MSB of BC (U) to A
 ; can't use EX BC, HL as that instruction doesn't exist
-SET_ABC24:		PUSH	HL	; push current HL to stack to save it
-			PUSH	BC
-			LD	HL, 2
-			ADD	HL, SP
-			LD	(HL), A
-			POP	BC
-			POP	HL	; restore HL
-			RET
+SET_ABC24:		push	HL	; push current HL to stack to save it
+			push	BC
+			ld	HL, 2
+			add	HL, SP
+			ld	(HL), A
+			pop	BC
+			pop	HL	; restore HL
+			ret
 
 ; Set the MSB of IX (U) to A
 ;
-SET_AIX24:		PUSH	HL
-			PUSH	IX
-			LD	HL, 2
-			ADD	HL, SP
-			LD	(HL), A
-			POP	IX
-			POP	HL
-			RET
+SET_AIX24:		push	HL
+			push	IX
+			ld	HL, 2
+			add	HL, SP
+			ld	(HL), A
+			pop	IX
+			pop	HL
+			ret
 
 ; Execute a program in RAM
 ; int * _exec24(UINT24 address, char * params)
@@ -127,29 +127,29 @@ SET_AIX24:		PUSH	HL
 ; The called function must do a RET and take care of preserving registers
 ;
 __exec24:
-_exec24:		PUSH 	IY
-			LD	IY, 0
-			ADD	IY, SP		; Standard prologue
-			PUSH 	AF		; Stack any registers being used
-			PUSH	DE
-			PUSH	IX
-			LD	A, MB 		; Preserve the MBASE register
-			PUSH	AF 
-			XOR	A
-			LD	MB, A		; Clear MBASE so API calls from this ADL binary don't identify process as Z80-mode
-			LD	DE, (IY+6)	; Get the address
-			LD	A, (IY+8)	; And the high byte for the code segment
-			LD	HL, (IY+9)	; Load HLU with the pointer to the params
+_exec24:		push 	IY
+			ld	IY, 0
+			add	IY, SP		; Standard prologue
+			push 	AF		; Stack any registers being used
+			push	DE
+			push	IX
+			ld	A, MB 		; Preserve the MBASE register
+			push	AF
+			xor	A
+			ld	MB, A		; Clear MBASE so API calls from this ADL binary don't identify process as Z80-mode
+			ld	DE, (IY+6)	; Get the address
+			ld	A, (IY+8)	; And the high byte for the code segment
+			ld	HL, (IY+9)	; Load HLU with the pointer to the params
 ;
 ; Write out a short subroutine "JP (DE)" to RAM
-;			
-			LD	IX, _callSM	; Storage for the self modified routine
-			LD	(IX + 0), 0xC3	; JP llhhuu
-			LD	(IX + 1), E
-			LD	(IX + 2), D
-			LD	(IX + 3), A	
 ;
-			JR	_execSM		; Save some bytes, jump to _exec16 to finish the call
+			ld	IX, _callSM	; Storage for the self modified routine
+			ld	(IX + 0), 0xC3	; JP llhhuu
+			ld	(IX + 1), E
+			ld	(IX + 2), D
+			ld	(IX + 3), A
+;
+			jr	_execSM		; Save some bytes, jump to _exec16 to finish the call
 
 ; Execute a program in RAM
 ; int * _exec16(UINT24 address, char * params)
@@ -161,63 +161,63 @@ _exec24:		PUSH 	IY
 ; The called function must do a RET.LIS (49h, C9h) and take care of preserving registers
 ;
 __exec16:
-_exec16:		PUSH 	IY
-			LD	IY, 0
-			ADD	IY, SP		; Standard prologue
-			PUSH 	AF		; Stack any registers being used
-			PUSH	DE
-			PUSH	IX
-			LD	A, MB		; Preserve the MBASE register
-			PUSH	AF
-			LD	DE, (IY+6)	; Get the address
-			LD	A, (IY+8)	; And the high byte for the code segment
-			LD	MB, A		; Set the MBASE register
-			LD	HL, (IY+9)	; Load HLU with the pointer to the params			
+_exec16:		push 	IY
+			ld	IY, 0
+			add	IY, SP		; Standard prologue
+			push 	AF		; Stack any registers being used
+			push	DE
+			push	IX
+			ld	A, MB		; Preserve the MBASE register
+			push	AF
+			ld	DE, (IY+6)	; Get the address
+			ld	A, (IY+8)	; And the high byte for the code segment
+			ld	MB, A		; Set the MBASE register
+			ld	HL, (IY+9)	; Load HLU with the pointer to the params
 ;
 ; Write out a short subroutine "CALL.IS (DE): RET" to RAM
 ;
 
-			LD	IX, _callSM	; Storage for the self modified routine
-			LD	(IX + 0), 0x49	; CALL.IS llhh
-			LD	(IX + 1), 0xCD
-			LD	(IX + 2), E
-			LD	(IX + 3), D
-			LD	(IX + 4), 0xC9	; RET		
+			ld	IX, _callSM	; Storage for the self modified routine
+			ld	(IX + 0), 0x49	; CALL.IS llhh
+			ld	(IX + 1), 0xCD
+			ld	(IX + 2), E
+			ld	(IX + 3), D
+			ld	(IX + 4), 0xC9	; RET
 ;
-_execSM:		CALL	_callSM		; Call the subroutine
+_execSM:		call	_callSM		; Call the subroutine
 ;
-			POP	AF		; Restore the MBASE register
-			LD	MB, A
-			POP	IX
-			POP	DE
-			POP 	AF
-			LD	SP, IY          ; Standard epilogue
-			POP	IY
-			RET	
+			pop	AF		; Restore the MBASE register
+			ld	MB, A
+			pop	IX
+			pop	DE
+			pop 	AF
+			ld	SP, IY          ; Standard epilogue
+			pop	IY
+			ret
 
 ; Wait for timer0 to hit 0
 ;
 __wait_timer0:
-_wait_timer0:		PUSH	AF 
-			PUSH	BC 
-			IN0	A, (TMR0_CTL)	; Enable the timer
-			OR	3
-			OUT0	(TMR0_CTL), A
-.Lzds_src_misc_asm_51158981_a0002:			IN0	B, (TMR0_DR_L)	; Fetch the counter L
-			IN0 	A, (TMR0_DR_H)	; And the counter H
-			OR	B 
-			JR	NZ, .Lzds_src_misc_asm_51158981_a0002
-			POP	BC 
-			POP	AF 
-			RET
+_wait_timer0:		push	AF
+			push	BC
+			in0	A, (TMR0_CTL)	; Enable the timer
+			or	3
+			out0	(TMR0_CTL), A
+1:			in0	B, (TMR0_DR_L)	; Fetch the counter L
+			in0 	A, (TMR0_DR_H)	; And the counter H
+			or	B
+			jr	NZ, 1b
+			pop	BC
+			pop	AF
+			ret
 
 _timer0_delay:
-			POP		HL
-			POP		BC
-			PUSH		BC
-			zds_TIMER_SET_BC	0
-			zds_TIMER_START	0
-			zds_TIMER_WAIT	0
-			JP		(HL)
+			pop		HL
+			pop		BC
+			push		BC
+			TIMER_SET_BC	0
+			TIMER_START	0
+			TIMER_WAIT	0
+			jp		(HL)
 
 ; zds2gas: END

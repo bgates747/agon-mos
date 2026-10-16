@@ -12,102 +12,102 @@
 			.include "macros.inc"
 			.include "equs.inc"
 
-			.ASSUME	ADL = 1
+			.assume adl=1
 
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-				
-			XDEF	GPIOB_SETMODE				
-			XREF	SWITCH_A
-			
+
+			.global	GPIOB_SETMODE
+			.extern	SWITCH_A
+
 ;  A: Mode
 ;  B: Pins
-;  				
-GPIOB_SETMODE:		CALL	SWITCH_A
-			DW	GPIOB_M0	; Output
-			DW	GPIOB_M1	; Input
-			DW	GPIOB_M2	; Open Drain IO
-			DW	GPIOB_M3	; Open Source IO
-			DW	GPIOB_M4	; Interrupt, Dual Edge
-			DW	GPIOB_M5	; Alt Function
-			DW	GPIOB_M6	; Interrupt, Active Low
-			DW	GPIOB_M7	; Interrupt, Active High
-			DW	GPIOB_M8	; Interrupt, Falling Edge
-			DW	GPIOB_M9	; Interrupt, Rising Edge
+;
+GPIOB_SETMODE:		call	SWITCH_A
+			dw	GPIOB_M0	; Output
+			dw	GPIOB_M1	; Input
+			dw	GPIOB_M2	; Open Drain IO
+			dw	GPIOB_M3	; Open Source IO
+			dw	GPIOB_M4	; Interrupt, Dual Edge
+			dw	GPIOB_M5	; Alt Function
+			dw	GPIOB_M6	; Interrupt, Active Low
+			dw	GPIOB_M7	; Interrupt, Active High
+			dw	GPIOB_M8	; Interrupt, Falling Edge
+			dw	GPIOB_M9	; Interrupt, Rising Edge
 
 ; Output
 ;
-GPIOB_M0:		zds_RES_GPIO PB_DDR,  B
-			zds_RES_GPIO PB_ALT1, B
-			zds_RES_GPIO PB_ALT2, B
-			RET
+GPIOB_M0:		RES_GPIO PB_DDR,  B
+			RES_GPIO PB_ALT1, B
+			RES_GPIO PB_ALT2, B
+			ret
 
 ; Input
 ;
-GPIOB_M1:		zds_SET_GPIO PB_DDR,  B
-			zds_RES_GPIO PB_ALT1, B
-			zds_RES_GPIO PB_ALT2, B
-			RET
+GPIOB_M1:		SET_GPIO PB_DDR,  B
+			RES_GPIO PB_ALT1, B
+			RES_GPIO PB_ALT2, B
+			ret
 
 ; Open Drain IO
 ;
-GPIOB_M2:		zds_RES_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_RES_GPIO PB_ALT2, B
-			RET
+GPIOB_M2:		RES_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			RES_GPIO PB_ALT2, B
+			ret
 
 ; Open Source IO
 ;
-GPIOB_M3:		zds_SET_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_RES_GPIO PB_ALT2, B
-			RET
+GPIOB_M3:		SET_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			RES_GPIO PB_ALT2, B
+			ret
 
 ; Interrupt, Dual Edge
 ;
-GPIOB_M4:		zds_SET_GPIO PB_DR,   B
-			zds_RES_GPIO PB_DDR,  B
-			zds_RES_GPIO PB_ALT1, B
-			zds_RES_GPIO PB_ALT2, B
-			RET
+GPIOB_M4:		SET_GPIO PB_DR,   B
+			RES_GPIO PB_DDR,  B
+			RES_GPIO PB_ALT1, B
+			RES_GPIO PB_ALT2, B
+			ret
 
 ; Alt Function
 ;
-GPIOB_M5:		zds_SET_GPIO PB_DDR,  B
-			zds_RES_GPIO PB_ALT1, B
-			zds_SET_GPIO PB_ALT2, B
-			RET
+GPIOB_M5:		SET_GPIO PB_DDR,  B
+			RES_GPIO PB_ALT1, B
+			SET_GPIO PB_ALT2, B
+			ret
 
 ; Interrupt, Active Low
 ;
-GPIOB_M6:		zds_RES_GPIO PB_DR,   B
-			zds_RES_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_SET_GPIO PB_ALT2, B
-			RET
+GPIOB_M6:		RES_GPIO PB_DR,   B
+			RES_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			SET_GPIO PB_ALT2, B
+			ret
 
 
 ; Interrupt, Active High
 ;
-GPIOB_M7:		zds_SET_GPIO PB_DR,   B
-			zds_RES_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_SET_GPIO PB_ALT2, B
-			RET
+GPIOB_M7:		SET_GPIO PB_DR,   B
+			RES_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			SET_GPIO PB_ALT2, B
+			ret
 
 
 ; Interrupt, Falling Edge
 ;
-GPIOB_M8:		zds_RES_GPIO PB_DR,   B
-			zds_SET_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_SET_GPIO PB_ALT2, B
-			RET
-	
+GPIOB_M8:		RES_GPIO PB_DR,   B
+			SET_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			SET_GPIO PB_ALT2, B
+			ret
+
 ; Interrupt, Rising Edge
 ;
-GPIOB_M9:		zds_SET_GPIO PB_DR,   B
-			zds_SET_GPIO PB_DDR,  B
-			zds_SET_GPIO PB_ALT1, B
-			zds_SET_GPIO PB_ALT2, B
-			RET	
+GPIOB_M9:		SET_GPIO PB_DR,   B
+			SET_GPIO PB_DDR,  B
+			SET_GPIO PB_ALT1, B
+			SET_GPIO PB_ALT2, B
+			ret

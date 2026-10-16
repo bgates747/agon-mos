@@ -1,5 +1,6 @@
 ; Native AgonDev source derived from official MOS v3.0.2: src/mos_api.inc
 ; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; DEV-009: guard repeated includes; SDK hardware aliases are checked by the build.
 .ifndef AGON_MOS_SRC_MOS_API_INC
 .set AGON_MOS_SRC_MOS_API_INC,1
 ;
@@ -181,7 +182,7 @@
 ;
 .equiv ffs_flseek_p, 0xA6
 
-	
+
 ; File access modes
 ;
 .equiv fa_read, 0x01
@@ -191,7 +192,7 @@
 .equiv fa_create_always, 0x08
 .equiv fa_open_always, 0x10
 .equiv fa_open_append, 0x30
-	
+
 ; System variable indexes for api_sysvars
 ; Index into _sysvars in globals.asm
 ;
@@ -203,7 +204,7 @@
 .equiv sysvar_cursorY, 0x08; 1: Cursor Y position
 .equiv sysvar_scrchar, 0x09; 1: Character read from screen
 .equiv sysvar_scrpixel, 0x0A; 3: Pixel data read from screen (R,B,G)
-.equiv sysvar_audioChannel, 0x0D; 1: Audio channel 
+.equiv sysvar_audioChannel, 0x0D; 1: Audio channel
 .equiv sysvar_audioSuccess, 0x0E; 1: Audio channel note queued (0 = no, 1 = yes)
 .equiv sysvar_scrWidth, 0x0F; 2: Screen width in pixels
 .equiv sysvar_scrHeight, 0x11; 2: Screen height in pixels
@@ -228,7 +229,7 @@
 .equiv sysvar_mouseXDelta, 0x2F; 2: Mouse X delta
 .equiv sysvar_mouseYDelta, 0x31; 2: Mouse Y delta
 .equiv sysvar_gp, 0x37; 1: General poll packet data
-	
+
 ; Flags for the VPD protocol
 ;
 .equiv vdp_pflag_cursor, 0b00000001
@@ -285,7 +286,7 @@
 ; zds2gas: .ENDSTRUCT FIL (36 bytes)
 ;
 ; Directory object structure (DIR)
-; 
+;
 ; zds2gas: .STRUCT DIR
 .equiv DIR.obj, 0
 ; zds2gas: obj:		.TAG	FFOBJID (15 bytes, no allocation); Object identifier
@@ -327,9 +328,9 @@
 ; Parameters:
 ; - function: One of the function numbers listed above
 ;
-.macro zds_MOSCALL function
-			LD	A, \function
-			RST.LIS	0x08
+.macro MOSCALL function
+			ld	A, \function
+			rst.lis	0x08
 			.endm
 
 .endif

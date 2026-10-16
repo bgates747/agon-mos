@@ -33,17 +33,17 @@
 
 .equiv SD_CMD_LEN, 6
 
-		XDEF		_SD_init
-		XDEF		_SD_readBlocks
-		XDEF		_SD_writeBlocks
+		.global		_SD_init
+		.global		_SD_readBlocks
+		.global		_SD_writeBlocks
 
-		XREF		_spi_transfer
-		XREF		_spi_read_one
-		XREF		_spi_read
-		XREF		_spi_write
-		XREF		_sdcardDelay
+		.extern		_spi_transfer
+		.extern		_spi_read_one
+		.extern		_spi_read
+		.extern		_spi_write
+		.extern		_sdcardDelay
 
-		.ASSUME ADL = 1
+		.assume adl=1
 
 
 ; BYTE SD_init(void)
@@ -56,81 +56,81 @@
 
 _SD_init:
 		; Function prologue
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
+		push		IX
+		ld		IX,0
+		add		IX,SP
 
 		; Make space for local variables
-		LD		HL,-6
-		ADD		HL,SP
-		LD		SP,HL
+		ld		HL,-6
+		add		HL,SP
+		ld		SP,HL
 
 		; Off we go
-		CALL		_SD_powerUpSeq
+		call		_SD_powerUpSeq
 
 		; Command card to idle
-		LD		B,10
-.Lzds_src_sd_asm_45f24809_s001__24_loop1:		PUSH		BC
-		CALL		_SD_goIdleState
-		POP		BC
-		LD		(IX-6),A
-		CP		A,0x01
-		JR		Z,.Lzds_src_sd_asm_45f24809_s001__24_success1
-		DJNZ		.Lzds_src_sd_asm_45f24809_s001__24_loop1
+		ld		B,10
+.LSD_init_loop1:		push		BC
+		call		_SD_goIdleState
+		pop		BC
+		ld		(IX-6),A
+		cp		A,0x01
+		jr		Z,.LSD_init_success1
+		djnz		.LSD_init_loop1
 
 		; Failed after 10 attempts
-		JR		.Lzds_src_sd_asm_45f24809_s001__24_out_error
-		
+		jr		.LSD_init_out_error
+
 		; Send interface conditions
-.Lzds_src_sd_asm_45f24809_s001__24_success1:	PEA		IX-6
-		CALL		_SD_sendIfCond
-		POP		BC
+.LSD_init_success1:	pea		IX-6
+		call		_SD_sendIfCond
+		pop		BC
 
 		; Check first byte of response is 0x01
-		LD		A,(IX-6)
-		CP		A,1
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s001__24_out_error
+		ld		A,(IX-6)
+		cp		A,1
+		jr		NZ,.LSD_init_out_error
 
 		; Check fifth byte of response is 0xAA
-		LD		A,(IX-2)
-		CP		A,0xAA
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s001__24_out_error
+		ld		A,(IX-2)
+		cp		A,0xAA
+		jr		NZ,.LSD_init_out_error
 
 		; Attempt to initialize card
 
 		; Repeat up to 100 times
-		LD		B,100
-.Lzds_src_sd_asm_45f24809_s001__24_loop2:		PUSH		BC
-		CALL		_SD_sendApp
-		CP		A,2		; is res[0] < 2 ?
-		JR		NC,.Lzds_src_sd_asm_45f24809_s001__24_wait2
-		CALL		_SD_sendOpCond
-		CP		A,SD_READY
-		JR		Z,.Lzds_src_sd_asm_45f24809_s001__24_success2
+		ld		B,100
+.LSD_init_loop2:		push		BC
+		call		_SD_sendApp
+		cp		A,2		; is res[0] < 2 ?
+		jr		NC,.LSD_init_wait2
+		call		_SD_sendOpCond
+		cp		A,SD_READY
+		jr		Z,.LSD_init_success2
 
 		; Wait 10ms before we try again
-.Lzds_src_sd_asm_45f24809_s001__24_wait2:		zds_DELAY_MS	10
-		POP		BC
-		DJNZ		.Lzds_src_sd_asm_45f24809_s001__24_loop2
+.LSD_init_wait2:		DELAY_MS	10
+		pop		BC
+		djnz		.LSD_init_loop2
 
 		; Timeout: error
-		JR		.Lzds_src_sd_asm_45f24809_s001__24_out_error
+		jr		.LSD_init_out_error
 
-.Lzds_src_sd_asm_45f24809_s001__24_success2:	PEA		IX-6
-		CALL		_SD_readOCR
-		POP		BC
-		LD		A,(IX-5)
-		RLA
-		JR		C,.Lzds_src_sd_asm_45f24809_s001__24_out_success
+.LSD_init_success2:	pea		IX-6
+		call		_SD_readOCR
+		pop		BC
+		ld		A,(IX-5)
+		rla
+		jr		C,.LSD_init_out_success
 		; Fall through to $out_error
 
-.Lzds_src_sd_asm_45f24809_s001__24_out_error:	LD		A,SD_ERROR
-		JR		.Lzds_src_sd_asm_45f24809_s001__24_exit
+.LSD_init_out_error:	ld		A,SD_ERROR
+		jr		.LSD_init_exit
 
-.Lzds_src_sd_asm_45f24809_s001__24_out_success:	XOR		A,A	; LD A,LD_SUCCESS
-.Lzds_src_sd_asm_45f24809_s001__24_exit:		LD		SP,IX
-		POP		IX
-		RET
+.LSD_init_out_success:	xor		A,A	; LD A,LD_SUCCESS
+.LSD_init_exit:		ld		SP,IX
+		pop		IX
+		ret
 
 
 ; BYTE SD_readBlocks(DWORD addr, BYTE *buf, WORD count)
@@ -144,66 +144,66 @@ _SD_init:
 
 _SD_readBlocks:
 		; Function prologue
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
-		PUSH		BC	; 3 bytes for local variables
+		push		IX
+		ld		IX,0
+		add		IX,SP
+		push		BC	; 3 bytes for local variables
 
 		; sign-extend count (it's unsigned, so set top byte to 0)
-		LD		(IX+17),0
+		ld		(IX+17),0
 
 		; HL := count, then jump to the check for zero
-		LD		HL,(IX+15)
-		JR		.Lzds_src_sd_asm_45f24809_s002__24_start
-		
+		ld		HL,(IX+15)
+		jr		.LSD_readBlocks_start
+
 		; Read current block
-.Lzds_src_sd_asm_45f24809_s002__24_loop:		CALL		SD_readSingleBlock
+.LSD_readBlocks_loop:		call		SD_readSingleBlock
 
 		; Exit with SD_ERROR if res1 >= 2
-		CP		A,2
-		JR		NC,.Lzds_src_sd_asm_45f24809_s002__24_err_exit
+		cp		A,2
+		jr		NC,.LSD_readBlocks_err_exit
 
 		; or if token != SD_DATA_ACCEPTED
-		LD		A,(IX-1)
-		CP		A,0xFE
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s002__24_err_exit
-		
+		ld		A,(IX-1)
+		cp		A,0xFE
+		jr		NZ,.LSD_readBlocks_err_exit
+
 		; Update sector, buf and count
 		; HL is set to the updated value of count
-		CALL		SD_updateIOVars
-.Lzds_src_sd_asm_45f24809_s002__24_start:		LD		A,H
-		OR		A,L
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s002__24_loop
-		
+		call		SD_updateIOVars
+.LSD_readBlocks_start:		ld		A,H
+		or		A,L
+		jr		NZ,.LSD_readBlocks_loop
+
 		; Finished, return SD_SUCCESS (which happens to be zero)
-.Lzds_src_sd_asm_45f24809_s002__24_done:		XOR		A,A
-.Lzds_src_sd_asm_45f24809_s002__24_exit:		LD		SP,IX
-		POP		IX
-		RET
+.LSD_readBlocks_done:		xor		A,A
+.LSD_readBlocks_exit:		ld		SP,IX
+		pop		IX
+		ret
 
 		; Error exit, slow path so can save a couple of bytes
-.Lzds_src_sd_asm_45f24809_s002__24_err_exit:	LD		A,SD_ERROR
-		JR		.Lzds_src_sd_asm_45f24809_s002__24_exit
+.LSD_readBlocks_err_exit:	ld		A,SD_ERROR
+		jr		.LSD_readBlocks_exit
 
 ; Delay by 30ms. Roughly how long an old 5.25" disk takes to read 512 bytes
 SD_delayDisc:
-		LD		A, (_sdcardDelay)
-		OR		A
-		RET		Z
+		ld		A, (_sdcardDelay)
+		or		A
+		ret		Z
 
-		PUSH	HL
-		PUSH	DE
+		push	HL
+		push	DE
 
-		LD		DE, 1
-		LD		HL, 81000
+		ld		DE, 1
+		ld		HL, 81000
 		; 81000 * 6 cycles per loop
-.Lzds_src_sd_asm_45f24809_s002__24_loop4:	AND		A
-		SBC		HL, DE
-		JR		NZ, .Lzds_src_sd_asm_45f24809_s002__24_loop4
+.LSD_readBlocks_loop4:	and		A
+		sbc		HL, DE
+		jr		NZ, .LSD_readBlocks_loop4
 
-		POP		DE
-		POP		HL
-		RET
+		pop		DE
+		pop		HL
+		ret
 
 
 ; SD_readSingleBlock
@@ -216,59 +216,59 @@ SD_delayDisc:
 		; zds2gas: SCOPE
 
 SD_readSingleBlock:
-		CALL	SD_delayDisc
-		LD		(IX-3),CMD17     | 0x40
-		LD		(IX-2),CMD17_CRC | 0x01
-		
-		CALL		SD_sendIOCmd	; Sets *token to 0xFF too
-		PUSH		AF		; Save res1 to be returned
-		CP		A,0xFF
-		JR		Z,.Lzds_src_sd_asm_45f24809_s003__24_out3
+		call	SD_delayDisc
+		ld		(IX-3),CMD17     | 0x40
+		ld		(IX-2),CMD17_CRC | 0x01
+
+		call		SD_sendIOCmd	; Sets *token to 0xFF too
+		push		AF		; Save res1 to be returned
+		cp		A,0xFF
+		jr		Z,.LSD_readSingleBlock_out3
 
 		; Wait for a response token (timeout = 100ms)
-		zds_TIMER_SET	0,100
-		zds_TIMER_START	0
-		
-.Lzds_src_sd_asm_45f24809_s003__24_loop1:		CALL		_spi_read_one
-		LD		B,A		; Move byte read to B
-		CP		A,0xFF
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s003__24_out1
+		TIMER_SET	0,100
+		TIMER_START	0
+
+.LSD_readSingleBlock_loop1:		call		_spi_read_one
+		ld		B,A		; Move byte read to B
+		cp		A,0xFF
+		jr		NZ,.LSD_readSingleBlock_out1
 
 		; Continue until the timer expires
-		zds_TIMER_EXP_3f_	0		; (clobbers just A)
-		JR		NC,.Lzds_src_sd_asm_45f24809_s003__24_loop1
-		
-.Lzds_src_sd_asm_45f24809_s003__24_out1:		zds_TIMER_RESET	0		; (clobbers just A)
+		TIMER_EXP	0		; (clobbers just A)
+		jr		NC,.LSD_readSingleBlock_loop1
+
+.LSD_readSingleBlock_out1:		TIMER_RESET	0		; (clobbers just A)
 
 		; Check if card response is SD_START_TOKEN
 
 		; *token = read
-		LD		(IX-1),B
+		ld		(IX-1),B
 
 		; If response token is 0xFE then read the sector
-		LD		A,SD_START_TOKEN
-		CP		A,B
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s003__24_out3
+		ld		A,SD_START_TOKEN
+		cp		A,B
+		jr		NZ,.LSD_readSingleBlock_out3
 
 		; Read the sector
-		LD		BC,SD_BLOCK_LEN
-		PUSH		BC
-		LD		BC,(IX+12)	; buf
-		PUSH		BC
-		CALL		_spi_read
-		POP		BC
-		POP		BC
+		ld		BC,SD_BLOCK_LEN
+		push		BC
+		ld		BC,(IX+12)	; buf
+		push		BC
+		call		_spi_read
+		pop		BC
+		pop		BC
 
 		; Read and discard the two CRC bytes
-		CALL		_spi_read_one
-		CALL		_spi_read_one
+		call		_spi_read_one
+		call		_spi_read_one
 
 		; Deassert chip select
-.Lzds_src_sd_asm_45f24809_s003__24_out3:		CALL		_SD_CS_disable
+.LSD_readSingleBlock_out3:		call		_SD_CS_disable
 
 		; Restore res1 to return to caller
-		POP		AF
-		RET
+		pop		AF
+		ret
 
 
 ; BYTE SD_writeBlocks(DWORD addr, BYTE *buf, WORD count)
@@ -282,45 +282,45 @@ SD_readSingleBlock:
 
 _SD_writeBlocks:
 		; Function prologue
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
-		PUSH		BC	; 3 bytes for local variables
+		push		IX
+		ld		IX,0
+		add		IX,SP
+		push		BC	; 3 bytes for local variables
 
 		; sign extend count (it's unsigned, so set top byte to 0)
-		LD		(IX+17),0
+		ld		(IX+17),0
 
 		; HL := count, then jump to the check for zero
-		LD		HL,(IX+15)
-		JR		.Lzds_src_sd_asm_45f24809_s004__24_start
+		ld		HL,(IX+15)
+		jr		.LSD_writeBlocks_start
 
-.Lzds_src_sd_asm_45f24809_s004__24_loop:		CALL		SD_writeSingleBlock
+.LSD_writeBlocks_loop:		call		SD_writeSingleBlock
 
 		; Exit with SD_ERROR if res1 != 0x00
-		OR		A,A
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s004__24_err_exit
+		or		A,A
+		jr		NZ,.LSD_writeBlocks_err_exit
 
 		; or if token != SD_DATA_ACCEPTED
-		LD		A,(IX-1)
-		CP		A,SD_DATA_ACCEPTED
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s004__24_err_exit
-		
+		ld		A,(IX-1)
+		cp		A,SD_DATA_ACCEPTED
+		jr		NZ,.LSD_writeBlocks_err_exit
+
 		; Update sector, buf and count
 		; HL is set to the updated value of count
-		CALL		SD_updateIOVars
-.Lzds_src_sd_asm_45f24809_s004__24_start:		LD		A,H
-		OR		A,L
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s004__24_loop
-		
+		call		SD_updateIOVars
+.LSD_writeBlocks_start:		ld		A,H
+		or		A,L
+		jr		NZ,.LSD_writeBlocks_loop
+
 		; Finished, return SD_SUCCESS (which happens to be zero)
-.Lzds_src_sd_asm_45f24809_s004__24_done:		XOR		A,A
-.Lzds_src_sd_asm_45f24809_s004__24_exit:		LD		SP,IX
-		POP		IX
-		RET
+.LSD_writeBlocks_done:		xor		A,A
+.LSD_writeBlocks_exit:		ld		SP,IX
+		pop		IX
+		ret
 
 		; Error exit, slow path so can save a couple of bytes
-.Lzds_src_sd_asm_45f24809_s004__24_err_exit:	LD		A,SD_ERROR
-		JR		.Lzds_src_sd_asm_45f24809_s004__24_exit
+.LSD_writeBlocks_err_exit:	ld		A,SD_ERROR
+		jr		.LSD_writeBlocks_exit
 
 
 ; SD_writeSingleBlock
@@ -333,84 +333,84 @@ _SD_writeBlocks:
 		; zds2gas: SCOPE
 
 SD_writeSingleBlock:
-		CALL	SD_delayDisc
-		LD		(IX-3),CMD24     | 0x40
-		LD		(IX-2),CMD24_CRC | 0x01
-		
-		CALL		SD_sendIOCmd	; Sets *token to 0xFF too
-		PUSH		AF		; Save res1 to be returned
-		CP		A,SD_READY
-		JP		NZ,.Lzds_src_sd_asm_45f24809_s005__24_out3
+		call	SD_delayDisc
+		ld		(IX-3),CMD24     | 0x40
+		ld		(IX-2),CMD24_CRC | 0x01
+
+		call		SD_sendIOCmd	; Sets *token to 0xFF too
+		push		AF		; Save res1 to be returned
+		cp		A,SD_READY
+		jp		NZ,.LSD_writeSingleBlock_out3 ; [DEV-006: ZDS relaxes this long JR; GNU requires explicit JP.]
 
 		; Send start token
-		LD		C,SD_START_TOKEN
-		PUSH		BC
-		CALL		_spi_transfer
-		POP		BC
+		ld		C,SD_START_TOKEN
+		push		BC
+		call		_spi_transfer
+		pop		BC
 
 		; Write buffer to card
-		LD		BC,SD_BLOCK_LEN
-		PUSH		BC
-		LD		BC,(IX+12)
-		PUSH		BC
-		CALL		_spi_write
-		POP		BC
-		POP		BC
+		ld		BC,SD_BLOCK_LEN
+		push		BC
+		ld		BC,(IX+12)
+		push		BC
+		call		_spi_write
+		pop		BC
+		pop		BC
 
 		; Wait for a response token (timeout = 250ms)
-		zds_TIMER_SET	0,250
-		zds_TIMER_START	0
-		
-.Lzds_src_sd_asm_45f24809_s005__24_loop1:		CALL		_spi_read_one
-		LD		B,A		; Save byte read
-		CP		A,0xFF
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s005__24_gotit1
+		TIMER_SET	0,250
+		TIMER_START	0
+
+.LSD_writeSingleBlock_loop1:		call		_spi_read_one
+		ld		B,A		; Save byte read
+		cp		A,0xFF
+		jr		NZ,.LSD_writeSingleBlock_gotit1
 
 		; Continue until the timer expires
-		zds_TIMER_EXP_3f_	0		; (clobbers just A)
-		JR		NC,.Lzds_src_sd_asm_45f24809_s005__24_loop1
+		TIMER_EXP	0		; (clobbers just A)
+		jr		NC,.LSD_writeSingleBlock_loop1
 
 		; Timeout - just fall through
 
-.Lzds_src_sd_asm_45f24809_s005__24_gotit1:	zds_TIMER_RESET	0		; (clobbers just A)
+.LSD_writeSingleBlock_gotit1:	TIMER_RESET	0		; (clobbers just A)
 
 		; If data accepted
-		LD		A,0x1F
-		AND		A,B
-		CP		A,5
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s005__24_out3
+		ld		A,0x1F
+		and		A,B
+		cp		A,5
+		jr		NZ,.LSD_writeSingleBlock_out3
 
 		; *token = 0x05 (conveniently left in register A)
-		LD		(IX-1),A
+		ld		(IX-1),A
 
 		; Wait for write to finish (timeout = 250ms)
-		zds_TIMER_SET	0,250
-		zds_TIMER_START	0
+		TIMER_SET	0,250
+		TIMER_START	0
 
-.Lzds_src_sd_asm_45f24809_s005__24_loop2:		CALL		_spi_read_one
-		CP		A,0x00
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s005__24_gotit2
+.LSD_writeSingleBlock_loop2:		call		_spi_read_one
+		cp		A,0x00
+		jr		NZ,.LSD_writeSingleBlock_gotit2
 
 		; Continue until the timer expires
-		zds_TIMER_EXP_3f_	0
-		JR		NC,.Lzds_src_sd_asm_45f24809_s005__24_loop2
+		TIMER_EXP	0
+		jr		NC,.LSD_writeSingleBlock_loop2
 
 		; Timeout, skip over setting token
-		JR		.Lzds_src_sd_asm_45f24809_s005__24_notgot
+		jr		.LSD_writeSingleBlock_notgot
 
-.Lzds_src_sd_asm_45f24809_s005__24_gotit2:	; Success: set token to 0x00
-		XOR		A,A
-		LD		A,(IX-1)
+.LSD_writeSingleBlock_gotit2:	; Success: set token to 0x00
+		xor		A,A
+		ld		A,(IX-1)
 
-.Lzds_src_sd_asm_45f24809_s005__24_notgot:	; Reset the timer
-		zds_TIMER_RESET	0
+.LSD_writeSingleBlock_notgot:	; Reset the timer
+		TIMER_RESET	0
 
 		; Deassert chip select
-.Lzds_src_sd_asm_45f24809_s005__24_out3:		CALL		_SD_CS_disable
+.LSD_writeSingleBlock_out3:		call		_SD_CS_disable
 
 		; Restore res1 to return to caller
-		POP		AF
-		RET
+		pop		AF
+		ret
 
 
 ; SD_sendIOCmd
@@ -428,45 +428,45 @@ SD_writeSingleBlock:
 
 SD_sendIOCmd:
 		; Set token to none
-		LD		(IX-1),0xFF
+		ld		(IX-1),0xFF
 
 		; Assert chip select
-		CALL		_SD_CS_enable
+		call		_SD_CS_enable
 
 		; Push arguments on to stack first
-		LD		HL,SD_CMD_LEN
-		PUSH		HL
-		LD		HL,sd_cmd_buffer
-		PUSH		HL
+		ld		HL,SD_CMD_LEN
+		push		HL
+		ld		HL,sd_cmd_buffer
+		push		HL
 
 		; buf[0] := command
-		LD		B,(IX-3)
-		LD		(HL),B
-		INC		HL
+		ld		B,(IX-3)
+		ld		(HL),B
+		inc		HL
 
 		; buf[1..4] := address (big endian so swap bytes around)
-		LD		BC,(IX+8)
-		LD		(HL),B
-		INC		HL
-		LD		(HL),C
-		INC		HL
-		LD		BC,(IX+6)
-		LD		(HL),B
-		INC		HL
-		LD		(HL),C
-		INC		HL
+		ld		BC,(IX+8)
+		ld		(HL),B
+		inc		HL
+		ld		(HL),C
+		inc		HL
+		ld		BC,(IX+6)
+		ld		(HL),B
+		inc		HL
+		ld		(HL),C
+		inc		HL
 
 		; buf[5] : = CRC
-		LD		B,(IX-2)
-		LD		(HL),B
+		ld		B,(IX-2)
+		ld		(HL),B
 
 		; Send contents of sd_cmd_buffer
-		CALL		_spi_write
-		POP		HL
-		POP		HL
+		call		_spi_write
+		pop		HL
+		pop		HL
 
 		; res1 = SD_readRes1();
-		JP		_SD_readRes1
+		jp		_SD_readRes1
 
 
 ; SD_updateIOVars
@@ -481,26 +481,26 @@ SD_sendIOCmd:
 
 SD_updateIOVars:
 		; sector++
-		LD		HL,(IX+6)
-		LD		BC,1
-		XOR		A,A
-		ADD		HL,BC
-		ADC		A,(IX+9)
-		LD		(IX+6),HL
-		LD		(IX+9),A
+		ld		HL,(IX+6)
+		ld		BC,1
+		xor		A,A
+		add		HL,BC
+		adc		A,(IX+9)
+		ld		(IX+6),HL
+		ld		(IX+9),A
 
 		; buf += SD_BLOCK_LEN
-		LD		HL,(IX+12)
-		LD		DE,SD_BLOCK_LEN	; Use DE here so that BC can
-		ADD		HL,DE		; be re-used below
-		LD		(IX+12),HL
+		ld		HL,(IX+12)
+		ld		DE,SD_BLOCK_LEN	; Use DE here so that BC can
+		add		HL,DE		; be re-used below
+		ld		(IX+12),HL
 
 		; --count
-		LD		HL,(IX+15)
-		OR		A,A
-		SBC		HL,BC		; BC still set to 1 from above
-		LD		(IX+15),HL
-		RET
+		ld		HL,(IX+15)
+		or		A,A
+		sbc		HL,BC		; BC still set to 1 from above
+		ld		(IX+15),HL
+		ret
 
 
 ; BYTE SD_readRes1(void)
@@ -508,14 +508,14 @@ SD_updateIOVars:
 
 		; zds2gas: SCOPE
 
-_SD_readRes1:	LD		B,9
-.Lzds_src_sd_asm_45f24809_s008__24_loop:		PUSH		BC	; save B over call to _spi_read_one
-		CALL		_spi_read_one
-		POP		BC
-		CP		A,0xFF
-		JR		NZ,.Lzds_src_sd_asm_45f24809_s008__24_out
-		DJNZ		.Lzds_src_sd_asm_45f24809_s008__24_loop
-.Lzds_src_sd_asm_45f24809_s008__24_out:		RET
+_SD_readRes1:	ld		B,9
+.LSD_readRes1_loop:		push		BC	; save B over call to _spi_read_one
+		call		_spi_read_one
+		pop		BC
+		cp		A,0xFF
+		jr		NZ,.LSD_readRes1_out
+		djnz		.LSD_readRes1_loop
+.LSD_readRes1_out:		ret
 
 
 ; void SD_readRes7(BYTE *res)
@@ -524,33 +524,33 @@ _SD_readRes1:	LD		B,9
 		; zds2gas: SCOPE
 
 _SD_readRes7:	; Function prologue
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
+		push		IX
+		ld		IX,0
+		add		IX,SP
 
-		CALL		_SD_readRes1
-		LD		HL,(IX+6)
+		call		_SD_readRes1
+		ld		HL,(IX+6)
 
 		; Restore IX now, so we can "RET NC" later
 		; No local variables so no need to restore SP
-		POP		IX
+		pop		IX
 
 		; Save byte read into res[0]
-		LD		(HL),A
-	
+		ld		(HL),A
+
 		; Exit if byte read is >1 (in other words, >= 2)
-		CP		A,2
-		RET		NC
+		cp		A,2
+		ret		NC
 
 		; Otherwise read the next four bytes
-		LD		BC,4
-		PUSH		BC
-		INC		HL
-		PUSH		HL
-		CALL		_spi_read
-		POP		HL
-		POP		BC
-		RET
+		ld		BC,4
+		push		BC
+		inc		HL
+		push		HL
+		call		_spi_read
+		pop		HL
+		pop		BC
+		ret
 
 
 ; NB: The following functions all jump to SD_sendCmdReadRes1
@@ -565,42 +565,42 @@ _SD_readRes7:	; Function prologue
 		; zds2gas: SCOPE
 
 _SD_goIdleState:
-		LD		BC,cmd0_string
-		JR		SD_sendCmdReadRes1
+		ld		BC,cmd0_string
+		jr		SD_sendCmdReadRes1
 
 
 ; UINT8 SD_sendApp(void)
 ;
 
 _SD_sendApp:
-		LD		BC,cmd55_string
-		JR		SD_sendCmdReadRes1
+		ld		BC,cmd55_string
+		jr		SD_sendCmdReadRes1
 
 
 ; UINT8 SD_sendOpCond(void)
 ;
 _SD_sendOpCond:
-		LD		BC,acmd41_string
+		ld		BC,acmd41_string
 		; Fallthrough instead of JR SD_sendCmdReadRes1
 
 SD_sendCmdReadRes1:
-		LD		DE,SD_CMD_LEN
-		PUSH		DE		; push arguments to _spi_write
-		PUSH		BC		; (also saves them around the
+		ld		DE,SD_CMD_LEN
+		push		DE		; push arguments to _spi_write
+		push		BC		; (also saves them around the
 						; call to _SD_CS_enable)
-		CALL		_SD_CS_enable
+		call		_SD_CS_enable
 
-		CALL		_spi_write
-		POP		BC
-		POP		BC
+		call		_spi_write
+		pop		BC
+		pop		BC
 
-		CALL		_SD_readRes1
+		call		_SD_readRes1
 
-		PUSH		AF
-		CALL		_SD_CS_disable
-		POP		AF
+		push		AF
+		call		_SD_CS_disable
+		pop		AF
 
-		RET
+		ret
 
 
 ; The following commands jump to SD_sendCmdReadRes7
@@ -613,47 +613,47 @@ SD_sendCmdReadRes1:
 		; zds2gas: SCOPE
 
 _SD_sendIfCond:
-		LD		BC,cmd8_string
-		JR		SD_sendCmdReadRes7
+		ld		BC,cmd8_string
+		jr		SD_sendCmdReadRes7
 
 
 ; void SD_readOCR(BYTE *res);
 ;
 
 _SD_readOCR:
-		LD		BC,cmd58_string
+		ld		BC,cmd58_string
 		; Fallthrough instead of JR SD_sendCmdRead7
 
 SD_sendCmdReadRes7:
 		; Function prologue on behalf of the function who jumped here
-		PUSH		IX
-		LD		IX,0
-		ADD		IX,SP
+		push		IX
+		ld		IX,0
+		add		IX,SP
 
 		; Push the arguments to _spi_write, also saves them around the
 		; call to _SD_CS_enable
-		LD		DE,SD_CMD_LEN
-		PUSH		DE
-		PUSH		BC
+		ld		DE,SD_CMD_LEN
+		push		DE
+		push		BC
 
-		CALL		_SD_CS_enable
+		call		_SD_CS_enable
 
-		CALL		_spi_write
-		POP		BC		
-		POP		BC
+		call		_spi_write
+		pop		BC
+		pop		BC
 
-		LD		HL,(IX+6)
-		PUSH		HL
-		CALL		_SD_readRes7
-		POP		HL
-		PUSH		AF
-		CALL		_SD_CS_disable
-		POP		AF
+		ld		HL,(IX+6)
+		push		HL
+		call		_SD_readRes7
+		pop		HL
+		push		AF
+		call		_SD_CS_disable
+		pop		AF
 
 		; Function epilogue
-		POP		IX
-		RET
-		
+		pop		IX
+		ret
+
 
 ; void SD_powerUpSeq(void)
 ;
@@ -661,17 +661,17 @@ SD_sendCmdReadRes7:
 		; zds2gas: SCOPE
 
 _SD_powerUpSeq:
-		CALL		_SD_CS_disable_raw
-		zds_DELAY_MS	10
-		CALL		_spi_read_one
-		CALL		_SD_CS_disable_raw
+		call		_SD_CS_disable_raw
+		DELAY_MS	10
+		call		_spi_read_one
+		call		_SD_CS_disable_raw
 
-		LD		B,SD_INIT_CYCLES
-.Lzds_src_sd_asm_45f24809_s012__24_loop:		PUSH		BC
-		CALL		_spi_read_one
-		POP		BC
-		DJNZ		.Lzds_src_sd_asm_45f24809_s012__24_loop
-		RET
+		ld		B,SD_INIT_CYCLES
+.LSD_powerUpSeq_loop:		push		BC
+		call		_spi_read_one
+		pop		BC
+		djnz		.LSD_powerUpSeq_loop
+		ret
 
 
 ; void SD_CS_enable();
@@ -680,11 +680,11 @@ _SD_powerUpSeq:
 		; zds2gas: SCOPE
 
 _SD_CS_enable:
-		CALL		_spi_read_one
-		IN0		A,(PB_DR)
-		RES		SD_CS,A
-		OUT0		(PB_DR),A
-		JP		_spi_read_one
+		call		_spi_read_one
+		in0		A,(PB_DR)
+		res		SD_CS,A
+		out0		(PB_DR),A
+		jp		_spi_read_one
 
 
 ; void SD_CS_disable();
@@ -693,11 +693,11 @@ _SD_CS_enable:
 		; zds2gas: SCOPE
 
 _SD_CS_disable:
-		CALL		_spi_read_one
-		IN0		A,(PB_DR)
-		SET		SD_CS,A
-		OUT0		(PB_DR),A
-		JP		_spi_read_one
+		call		_spi_read_one
+		in0		A,(PB_DR)
+		set		SD_CS,A
+		out0		(PB_DR),A
+		jp		_spi_read_one
 
 
 ; void SD_CS_disable_raw();
@@ -706,48 +706,48 @@ _SD_CS_disable:
 		; zds2gas: SCOPE
 
 _SD_CS_disable_raw:
-		IN0		A,(PB_DR)
-		SET		SD_CS,A
-		OUT0		(PB_DR),A
-		RET
+		in0		A,(PB_DR)
+		set		SD_CS,A
+		out0		(PB_DR),A
+		ret
 
 
 		.section .text
 
-cmd0_string:	DB		CMD0 | 0x40
-		DB		CMD0_ARG >> 24 & 0xFF
-		DB		CMD0_ARG >> 16 & 0xFF
-		DB		CMD0_ARG >>  8 & 0xFF
-		DB		CMD0_ARG       & 0xFF
-		DB		CMD0_CRC | 0x01
+cmd0_string:	db		CMD0 | 0x40
+		db		CMD0_ARG >> 24 & 0xFF
+		db		CMD0_ARG >> 16 & 0xFF
+		db		CMD0_ARG >>  8 & 0xFF
+		db		CMD0_ARG       & 0xFF
+		db		CMD0_CRC | 0x01
 
-cmd8_string:	DB		CMD8 | 0x40
-		DB		CMD8_ARG >> 24 & 0xFF
-		DB		CMD8_ARG >> 16 & 0xFF
-		DB		CMD8_ARG >>  8 & 0xFF
-		DB		CMD8_ARG       & 0xFF
-		DB		CMD8_CRC | 0x01
+cmd8_string:	db		CMD8 | 0x40
+		db		CMD8_ARG >> 24 & 0xFF
+		db		CMD8_ARG >> 16 & 0xFF
+		db		CMD8_ARG >>  8 & 0xFF
+		db		CMD8_ARG       & 0xFF
+		db		CMD8_CRC | 0x01
 
-cmd55_string:	DB		CMD55 | 0x40
-		DB		CMD55_ARG >> 24 & 0xFF
-		DB		CMD55_ARG >> 16 & 0xFF
-		DB		CMD55_ARG >>  8 & 0xFF
-		DB		CMD55_ARG       & 0xFF
-		DB		CMD55_CRC | 0x01
+cmd55_string:	db		CMD55 | 0x40
+		db		CMD55_ARG >> 24 & 0xFF
+		db		CMD55_ARG >> 16 & 0xFF
+		db		CMD55_ARG >>  8 & 0xFF
+		db		CMD55_ARG       & 0xFF
+		db		CMD55_CRC | 0x01
 
-acmd41_string:	DB		ACMD41 | 0x40
-		DB		ACMD41_ARG >> 24 & 0xFF
-		DB		ACMD41_ARG >> 16 & 0xFF
-		DB		ACMD41_ARG >>  8 & 0xFF
-		DB		ACMD41_ARG       & 0xFF
-		DB		ACMD41_CRC | 0x01
+acmd41_string:	db		ACMD41 | 0x40
+		db		ACMD41_ARG >> 24 & 0xFF
+		db		ACMD41_ARG >> 16 & 0xFF
+		db		ACMD41_ARG >>  8 & 0xFF
+		db		ACMD41_ARG       & 0xFF
+		db		ACMD41_CRC | 0x01
 
-cmd58_string:	DB		CMD58 | 0x40
-		DB		CMD58_ARG >> 24 & 0xFF
-		DB		CMD58_ARG >> 16 & 0xFF
-		DB		CMD58_ARG >>  8 & 0xFF
-		DB		CMD58_ARG       & 0xFF
-		DB		CMD58_CRC | 0x01
+cmd58_string:	db		CMD58 | 0x40
+		db		CMD58_ARG >> 24 & 0xFF
+		db		CMD58_ARG >> 16 & 0xFF
+		db		CMD58_ARG >>  8 & 0xFF
+		db		CMD58_ARG       & 0xFF
+		db		CMD58_CRC | 0x01
 
 		.section .bss,"aw",@nobits
 sd_cmd_buffer:	.skip 6

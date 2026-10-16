@@ -1,5 +1,6 @@
 ; Native AgonDev source derived from official MOS v3.0.2: src/i2c.inc
 ; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; DEV-009: guard repeated includes; SDK hardware aliases are checked by the build.
 .ifndef AGON_MOS_SRC_I2C_INC
 .set AGON_MOS_SRC_I2C_INC,1
 ;* Return status codes to read/write caller

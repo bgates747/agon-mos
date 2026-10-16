@@ -21,42 +21,42 @@
 			.include "../src/macros.inc"
 			.include "../src/equs.inc"
 
-			XREF 	__init
-			XREF 	__low_rom
-			
-			XDEF 	_reset
-			XDEF 	__default_nmi_handler
-			XDEF 	__default_mi_handler
-			XDEF 	__nvectors
-			XDEF 	_init_default_vectors
-			XDEF 	__init_default_vectors
-			XDEF 	_set_vector
-			XDEF	__set_vector
-			XDEF	__2nd_jump_table
-			XDEF	__1st_jump_table
-			XDEF	__vector_table
-			
-			XREF	_on_crash
-			XREF	mos_api
-			XREF	UART0_serial_PUTCH 
-			XREF	SET_AHL24
+			.extern 	__init
+			.extern 	__low_rom
+
+			.global 	_reset
+			.global 	__default_nmi_handler
+			.global 	__default_mi_handler
+			.global 	__nvectors
+			.global 	_init_default_vectors
+			.global 	__init_default_vectors
+			.global 	_set_vector
+			.global	__set_vector
+			.global	__2nd_jump_table
+			.global	__1st_jump_table
+			.global	__vector_table
+
+			.extern	_on_crash
+			.extern	mos_api
+			.extern	UART0_serial_PUTCH
+			.extern	SET_AHL24
 
 .equiv NVECTORS, 48; Number of interrupt vectors
 
 ; Save Interrupt State
 ;
-.macro zds_SAVEIMASK
-			LD	A, I		; Sets parity bit to value of IEF2
-			PUSH	AF
-			DI			; Disable interrupts while loading table 
+.macro SAVEIMASK
+			ld	A, I		; Sets parity bit to value of IEF2
+			push	AF
+			di			; Disable interrupts while loading table
 			.endm
 
 ; Restore Interrupt State
 ;
-.macro zds_RESTOREIMASK
-			POP	AF
-			JP	PO, .+5		; Parity bit is IEF2
-			EI
+.macro RESTOREIMASK
+			pop	AF
+			jp	PO, .+5		; Parity bit is IEF2
+			ei
 			.endm
 
 ; Reset and all RST nn's
@@ -64,33 +64,33 @@
 			; zds2gas: DEFINE .RESET, SPACE = ROM
 			.section .RESET,"ax",@progbits
 
-_reset:	
-_rst0:			DI
-			STMIX
-			JP.LIL	__init
-		
-_rst8:			JP.LIL	_rst_08_handler
-			.skip 3, 0xff
-		
-_rst10:			JP.LIL	_rst_10_handler
+_reset:
+_rst0:			di
+			stmix
+			jp.lil	__init
+
+_rst8:			jp.lil	_rst_08_handler
 			.skip 3, 0xff
 
-_rst18:			JP.LIL	_rst_18_handler
+_rst10:			jp.lil	_rst_10_handler
 			.skip 3, 0xff
-		
-_rst20:			RET
-			.skip 7, 0xff
-		
-_rst28:			RET
+
+_rst18:			jp.lil	_rst_18_handler
+			.skip 3, 0xff
+
+_rst20:			ret
 			.skip 7, 0xff
 
-_rst30:			RET
+_rst28:			ret
 			.skip 7, 0xff
 
-_rst38:			JP.LIL	__rst_38_handler
+_rst30:			ret
+			.skip 7, 0xff
+
+_rst38:			jp.lil	__rst_38_handler
 			.skip 0x29, 0xff
-		
-_nmi:			JP.LIL	__default_nmi_handler
+
+_nmi:			jp.lil	__default_nmi_handler
 
 ;
 ; Startup code
@@ -98,13 +98,13 @@ _nmi:			JP.LIL	__default_nmi_handler
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
-			.ASSUME ADL=1
+			.assume adl=1
 
 ; Number of vectors supported
 ;
-__nvectors:		DW NVECTORS            ; extern unsigned short _num_vectors;
+__nvectors:		dw NVECTORS            ; extern unsigned short _num_vectors;
 
-;	
+;
 ; AGON RST handlers
 ;
 
@@ -112,15 +112,15 @@ __nvectors:		DW NVECTORS            ; extern unsigned short _num_vectors;
 ; Parameters
 ; - A: The API command to run
 ;
-_rst_08_handler:	CALL	mos_api
-			RET.L
+_rst_08_handler:	call	mos_api
+			ret.l
 
 ; Output a single character to the ESP32
 ; Parameters:
 ; - A: The character
 ;
-_rst_10_handler:	CALL	UART0_serial_PUTCH
-			RET.L
+_rst_10_handler:	call	UART0_serial_PUTCH
+			ret.l
 
 ; Write a block of bytes out to the ESP32
 ; Parameters:
@@ -128,97 +128,97 @@ _rst_10_handler:	CALL	UART0_serial_PUTCH
 ; -  BC: Size of buffer
 ; -   A: Delimiter (only if BCU = 0)
 ;
-_rst_18_handler:	LD	E, A 			; Preserve the delimiter
-			LD	A, MB			; Check if MBASE is 0
-			OR	A, A 
-			CALL	NZ, SET_AHL24		; No, so create a 24-bit pointer
-			LD	A, B			; Check for BC = 0
-			OR	C 			; Yes, so run in delimited mode?
-			JR	Z, _rst_18_handler_1
+_rst_18_handler:	ld	E, A 			; Preserve the delimiter
+			ld	A, MB			; Check if MBASE is 0
+			or	A, A
+			call	NZ, SET_AHL24		; No, so create a 24-bit pointer
+			ld	A, B			; Check for BC = 0
+			or	C 			; Yes, so run in delimited mode?
+			jr	Z, _rst_18_handler_1
 ;
 ; Standard loop mode
 ;
-_rst_18_handler_0:	LD 	A, (HL)			; Fetch the character
-			CALL	UART0_serial_PUTCH	; Output
-			INC 	HL 			; Increment the buffer pointer
-			DEC	BC 			; Decrement the loop counter
-			LD	A, B 			; Is it 0?
-			OR 	C 
-			JR	NZ, _rst_18_handler_0	; No, so loop
-			RET.L
+_rst_18_handler_0:	ld 	A, (HL)			; Fetch the character
+			call	UART0_serial_PUTCH	; Output
+			inc 	HL 			; Increment the buffer pointer
+			dec	BC 			; Decrement the loop counter
+			ld	A, B 			; Is it 0?
+			or 	C
+			jr	NZ, _rst_18_handler_0	; No, so loop
+			ret.l
 ;
 ; Delimited mode
 ;
-_rst_18_handler_1:	LD 	A, (HL)			; Fetch the character
-			CP 	E 			; Is it the delimiter?
-			RET.L	Z 			; Yes, so return
-			CALL	UART0_serial_PUTCH	; Output
-			INC 	HL 			; Increment the buffer pointer
-			JR 	_rst_18_handler_1	; Loop
+_rst_18_handler_1:	ld 	A, (HL)			; Fetch the character
+			cp 	E 			; Is it the delimiter?
+			ret.l	Z 			; Yes, so return
+			call	UART0_serial_PUTCH	; Output
+			inc 	HL 			; Increment the buffer pointer
+			jr 	_rst_18_handler_1	; Loop
 
 ; Crash handler
-__rst_38_handler:	JP	_on_crash
+__rst_38_handler:	jp	_on_crash
 
 ; Default Non-Maskable Interrupt handler
 ;
-__default_nmi_handler:	RETN.LIL
+__default_nmi_handler:	retn.lil
 
 ; Default Maskable Interrupt handler
 ;
-__default_mi_handler:	EI
-			RETI.L
-					
+__default_mi_handler:	ei
+			reti.l
+
 ; Initialize all potential interrupt vector locations with a known
 ; default handler.
 ;
 ; void _init_default_vectors(void);
 ;
 __init_default_vectors:
-_init_default_vectors:	PUSH	AF
-			zds_SAVEIMASK
-			LD	HL, __default_mi_handler
-			LD	A, 0xC3
-			LD 	(__2nd_jump_table), A		; Place jp opcode
-			LD 	(__2nd_jump_table + 1), HL	; __default_hndlr
-			LD 	HL, __2nd_jump_table
-			LD	DE, __2nd_jump_table + 4
-			LD	BC, NVECTORS * 4 - 4
-			LDIR
-			IM	2
-			LD 	A, __vector_table >> 8
-			LD 	I, A				; Load interrupt vector base
-			zds_RESTOREIMASK
-			POP	AF
-			RET
+_init_default_vectors:	push	AF
+			SAVEIMASK
+			ld	HL, __default_mi_handler
+			ld	A, 0xC3
+			ld 	(__2nd_jump_table), A		; Place jp opcode
+			ld 	(__2nd_jump_table + 1), HL	; __default_hndlr
+			ld 	HL, __2nd_jump_table
+			ld	DE, __2nd_jump_table + 4
+			ld	BC, NVECTORS * 4 - 4
+			ldir
+			im	2
+			ld 	A, __vector_table >> 8
+			ld 	I, A				; Load interrupt vector base
+			RESTOREIMASK
+			pop	AF
+			ret
 
 ; Installs a user interrupt handler in the 2nd interrupt vector jump table
 ;
 ; void * _set_vector(unsigned int vector, void(*handler)(void));
 ;
 __set_vector:
-_set_vector:		PUSH	IY
-			LD	IY, 0
-			ADD	IY, SP				; Standard prologue
-			PUSH	AF
-			zds_SAVEIMASK
-			LD	BC, 0				; Clear BC
-			LD	B, 2				; Calculate 2nd jump table offset
-			LD	C, (IY + 6)			; Vector offset
-			MLT	BC				; BC is 2nd jp table offset
-			LD	HL, __2nd_jump_table
-			ADD	HL, BC				; HL is location of jp in 2nd jp table
-			LD 	(HL), 0xC3			; Place jp opcode just in case
-			INC	HL				; HL is jp destination address
-			LD	BC, (IY + 9)			; BC is isr address
-			LD 	DE, (HL)			; Save previous handler
-			LD 	(HL), BC			; Store new isr address
-			PUSH	DE
-			POP	HL				; Return previous handler
-			zds_RESTOREIMASK
-			POP	AF
-			LD 	SP, IY				; Standard epilogue
-			POP	IY
-			RET
+_set_vector:		push	IY
+			ld	IY, 0
+			add	IY, SP				; Standard prologue
+			push	AF
+			SAVEIMASK
+			ld	BC, 0				; Clear BC
+			ld	B, 2				; Calculate 2nd jump table offset
+			ld	C, (IY + 6)			; Vector offset
+			mlt	BC				; BC is 2nd jp table offset
+			ld	HL, __2nd_jump_table
+			add	HL, BC				; HL is location of jp in 2nd jp table
+			ld 	(HL), 0xC3			; Place jp opcode just in case
+			inc	HL				; HL is jp destination address
+			ld	BC, (IY + 9)			; BC is isr address
+			ld 	DE, (HL)			; Save previous handler
+			ld 	(HL), BC			; Store new isr address
+			push	DE
+			pop	HL				; Return previous handler
+			RESTOREIMASK
+			pop	AF
+			ld 	SP, IY				; Standard epilogue
+			pop	IY
+			ret
 
 			; zds2gas: DEFINE IVJMPTBL, SPACE = RAM
 			.section IVJMPTBL,"aw",@nobits
@@ -238,106 +238,106 @@ __2nd_jump_table:	.skip NVECTORS * 4
 			; zds2gas: DEFINE .IVECTS, SPACE = ROM, ALIGN = 0x100
 			.section .IVECTS,"ax",@progbits
 
-__vector_table:		DW __1st_jump_table + 0x00
-			DW __1st_jump_table + 0x04
-			DW __1st_jump_table + 0x08
-			DW __1st_jump_table + 0x0c
-			DW __1st_jump_table + 0x10
-			DW __1st_jump_table + 0x14
-			DW __1st_jump_table + 0x18
-			DW __1st_jump_table + 0x1c
-			DW __1st_jump_table + 0x20
-			DW __1st_jump_table + 0x24
-			DW __1st_jump_table + 0x28
-			DW __1st_jump_table + 0x2c
-			DW __1st_jump_table + 0x30
-			DW __1st_jump_table + 0x34
-			DW __1st_jump_table + 0x38
-			DW __1st_jump_table + 0x3c
-			DW __1st_jump_table + 0x40
-			DW __1st_jump_table + 0x44
-			DW __1st_jump_table + 0x48
-			DW __1st_jump_table + 0x4c
-			DW __1st_jump_table + 0x50
-			DW __1st_jump_table + 0x54
-			DW __1st_jump_table + 0x58
-			DW __1st_jump_table + 0x5c
-			DW __1st_jump_table + 0x60
-			DW __1st_jump_table + 0x64
-			DW __1st_jump_table + 0x68
-			DW __1st_jump_table + 0x6c
-			DW __1st_jump_table + 0x70
-			DW __1st_jump_table + 0x74
-			DW __1st_jump_table + 0x78
-			DW __1st_jump_table + 0x7c
-			DW __1st_jump_table + 0x80
-			DW __1st_jump_table + 0x84
-			DW __1st_jump_table + 0x88
-			DW __1st_jump_table + 0x8c
-			DW __1st_jump_table + 0x90
-			DW __1st_jump_table + 0x94
-			DW __1st_jump_table + 0x98
-			DW __1st_jump_table + 0x9c
-			DW __1st_jump_table + 0xa0
-			DW __1st_jump_table + 0xa4
-			DW __1st_jump_table + 0xa8
-			DW __1st_jump_table + 0xac
-			DW __1st_jump_table + 0xb0
-			DW __1st_jump_table + 0xb4
-			DW __1st_jump_table + 0xb8
-			DW __1st_jump_table + 0xbc
+__vector_table:		dw __1st_jump_table + 0x00
+			dw __1st_jump_table + 0x04
+			dw __1st_jump_table + 0x08
+			dw __1st_jump_table + 0x0c
+			dw __1st_jump_table + 0x10
+			dw __1st_jump_table + 0x14
+			dw __1st_jump_table + 0x18
+			dw __1st_jump_table + 0x1c
+			dw __1st_jump_table + 0x20
+			dw __1st_jump_table + 0x24
+			dw __1st_jump_table + 0x28
+			dw __1st_jump_table + 0x2c
+			dw __1st_jump_table + 0x30
+			dw __1st_jump_table + 0x34
+			dw __1st_jump_table + 0x38
+			dw __1st_jump_table + 0x3c
+			dw __1st_jump_table + 0x40
+			dw __1st_jump_table + 0x44
+			dw __1st_jump_table + 0x48
+			dw __1st_jump_table + 0x4c
+			dw __1st_jump_table + 0x50
+			dw __1st_jump_table + 0x54
+			dw __1st_jump_table + 0x58
+			dw __1st_jump_table + 0x5c
+			dw __1st_jump_table + 0x60
+			dw __1st_jump_table + 0x64
+			dw __1st_jump_table + 0x68
+			dw __1st_jump_table + 0x6c
+			dw __1st_jump_table + 0x70
+			dw __1st_jump_table + 0x74
+			dw __1st_jump_table + 0x78
+			dw __1st_jump_table + 0x7c
+			dw __1st_jump_table + 0x80
+			dw __1st_jump_table + 0x84
+			dw __1st_jump_table + 0x88
+			dw __1st_jump_table + 0x8c
+			dw __1st_jump_table + 0x90
+			dw __1st_jump_table + 0x94
+			dw __1st_jump_table + 0x98
+			dw __1st_jump_table + 0x9c
+			dw __1st_jump_table + 0xa0
+			dw __1st_jump_table + 0xa4
+			dw __1st_jump_table + 0xa8
+			dw __1st_jump_table + 0xac
+			dw __1st_jump_table + 0xb0
+			dw __1st_jump_table + 0xb4
+			dw __1st_jump_table + 0xb8
+			dw __1st_jump_table + 0xbc
 
 ; 1st Interrupt Vector Jump Table
 ;  - this table must reside in the first 64K bytes of memory
 ;  - each 4-byte entry is a jump to the 2nd jump table plus offset
 ;
-__1st_jump_table:	JP __2nd_jump_table + 0x00
-			JP __2nd_jump_table + 0x04
-			JP __2nd_jump_table + 0x08
-			JP __2nd_jump_table + 0x0c
-			JP __2nd_jump_table + 0x10
-			JP __2nd_jump_table + 0x14
-			JP __2nd_jump_table + 0x18
-			JP __2nd_jump_table + 0x1c
-			JP __2nd_jump_table + 0x20
-			JP __2nd_jump_table + 0x24
-			JP __2nd_jump_table + 0x28
-			JP __2nd_jump_table + 0x2c
-			JP __2nd_jump_table + 0x30
-			JP __2nd_jump_table + 0x34
-			JP __2nd_jump_table + 0x38
-			JP __2nd_jump_table + 0x3c
-			JP __2nd_jump_table + 0x40
-			JP __2nd_jump_table + 0x44
-			JP __2nd_jump_table + 0x48
-			JP __2nd_jump_table + 0x4c
-			JP __2nd_jump_table + 0x50
-			JP __2nd_jump_table + 0x54
-			JP __2nd_jump_table + 0x58
-			JP __2nd_jump_table + 0x5c
-			JP __2nd_jump_table + 0x60
-			JP __2nd_jump_table + 0x64
-			JP __2nd_jump_table + 0x68
-			JP __2nd_jump_table + 0x6c
-			JP __2nd_jump_table + 0x70
-			JP __2nd_jump_table + 0x74
-			JP __2nd_jump_table + 0x78
-			JP __2nd_jump_table + 0x7c
-			JP __2nd_jump_table + 0x80
-			JP __2nd_jump_table + 0x84
-			JP __2nd_jump_table + 0x88
-			JP __2nd_jump_table + 0x8c
-			JP __2nd_jump_table + 0x90
-			JP __2nd_jump_table + 0x94
-			JP __2nd_jump_table + 0x98
-			JP __2nd_jump_table + 0x9c
-			JP __2nd_jump_table + 0xa0
-			JP __2nd_jump_table + 0xa4
-			JP __2nd_jump_table + 0xa8
-			JP __2nd_jump_table + 0xac
-			JP __2nd_jump_table + 0xb0
-			JP __2nd_jump_table + 0xb4
-			JP __2nd_jump_table + 0xb8
-			JP __2nd_jump_table + 0xbc
+__1st_jump_table:	jp __2nd_jump_table + 0x00
+			jp __2nd_jump_table + 0x04
+			jp __2nd_jump_table + 0x08
+			jp __2nd_jump_table + 0x0c
+			jp __2nd_jump_table + 0x10
+			jp __2nd_jump_table + 0x14
+			jp __2nd_jump_table + 0x18
+			jp __2nd_jump_table + 0x1c
+			jp __2nd_jump_table + 0x20
+			jp __2nd_jump_table + 0x24
+			jp __2nd_jump_table + 0x28
+			jp __2nd_jump_table + 0x2c
+			jp __2nd_jump_table + 0x30
+			jp __2nd_jump_table + 0x34
+			jp __2nd_jump_table + 0x38
+			jp __2nd_jump_table + 0x3c
+			jp __2nd_jump_table + 0x40
+			jp __2nd_jump_table + 0x44
+			jp __2nd_jump_table + 0x48
+			jp __2nd_jump_table + 0x4c
+			jp __2nd_jump_table + 0x50
+			jp __2nd_jump_table + 0x54
+			jp __2nd_jump_table + 0x58
+			jp __2nd_jump_table + 0x5c
+			jp __2nd_jump_table + 0x60
+			jp __2nd_jump_table + 0x64
+			jp __2nd_jump_table + 0x68
+			jp __2nd_jump_table + 0x6c
+			jp __2nd_jump_table + 0x70
+			jp __2nd_jump_table + 0x74
+			jp __2nd_jump_table + 0x78
+			jp __2nd_jump_table + 0x7c
+			jp __2nd_jump_table + 0x80
+			jp __2nd_jump_table + 0x84
+			jp __2nd_jump_table + 0x88
+			jp __2nd_jump_table + 0x8c
+			jp __2nd_jump_table + 0x90
+			jp __2nd_jump_table + 0x94
+			jp __2nd_jump_table + 0x98
+			jp __2nd_jump_table + 0x9c
+			jp __2nd_jump_table + 0xa0
+			jp __2nd_jump_table + 0xa4
+			jp __2nd_jump_table + 0xa8
+			jp __2nd_jump_table + 0xac
+			jp __2nd_jump_table + 0xb0
+			jp __2nd_jump_table + 0xb4
+			jp __2nd_jump_table + 0xb8
+			jp __2nd_jump_table + 0xbc
 
 			; zds2gas: END

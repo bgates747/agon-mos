@@ -2,3 +2,8 @@ Debug/
 Release/
 .vscode/
 .DS_Store
+.venv/
+.build/
+.emulator/
+.local/
+__pycache__/

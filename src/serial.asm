@@ -16,32 +16,32 @@
 			.include "macros.inc"
 			.include "equs.inc"
 
-			.ASSUME	ADL = 1
-			
+			.assume adl=1
+
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-			
-			XDEF	UART0_serial_TX
-			XDEF	UART0_serial_RX
-			XDEF	UART0_serial_GETCH
-			XDEF	UART0_serial_PUTCH 
 
-			XDEF	UART1_serial_TX
-			XDEF	UART1_serial_RX
-			XDEF	UART1_serial_GETCH
-			XDEF	UART1_serial_PUTCH 
+			.global	UART0_serial_TX
+			.global	UART0_serial_RX
+			.global	UART0_serial_GETCH
+			.global	UART0_serial_PUTCH
 
-			XDEF	_putch
-			XDEF	_getch 
-			
-			XDEF	putch 		
-			XDEF	getch 
+			.global	UART1_serial_TX
+			.global	UART1_serial_RX
+			.global	UART1_serial_GETCH
+			.global	UART1_serial_PUTCH
 
-			XREF	_serialFlags	; In globals.asm
-				
+			.global	_putch
+			.global	_getch
+
+			.global	putch
+			.global	getch
+
+			.extern	_serialFlags	; In globals.asm
+
 .equiv UART0_PORT, 0xC0; UART0
 .equiv UART1_PORT, 0xD0; UART1
-				
+
 .equiv UART0_REG_RBR, UART0_PORT+0; Receive buffer
 .equiv UART0_REG_THR, UART0_PORT+0; Transmitter holding
 .equiv UART0_REG_DLL, UART0_PORT+0; Divisor latch low
@@ -77,14 +77,14 @@
 
 ; Check whether we're clear to send (UART0 only)
 ;
-UART0_wait_CTS:		IN0		A, (UART0_REG_MSR)
-			BIT		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
-			JR		Z, UART0_wait_CTS
-			RET
+UART0_wait_CTS:		in0		A, (UART0_REG_MSR)
+			bit		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
+			jr		Z, UART0_wait_CTS
+			ret
 
-UART1_wait_CTS:		zds_GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
-			JR		NZ, UART1_wait_CTS
-			RET
+UART1_wait_CTS:		GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
+			jr		NZ, UART1_wait_CTS
+			ret
 
 ; Write a character to UART0
 ; Parameters:
@@ -93,25 +93,25 @@ UART1_wait_CTS:		zds_GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
 ; - F: C if written
 ; - F: NC if timed out
 ;
-UART0_serial_TX:	PUSH		BC			; Stack BC
-			PUSH		AF 			; Stack AF
-			LD		BC,TX_WAIT		; Set CB to the transmit timeout
-UART0_serial_TX1:	IN0		A,(UART0_REG_LSR)	; Get the line status register
-			AND 		UART_LSR_ETH		; Check for TX hold register empty
-			JR		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
-			DEC		BC
-			LD		A, B
-			OR		C
-			JR		NZ, UART0_serial_TX1
-			POP		AF			; We've timed out at this point so
-			POP		BC			; Restore the stack
-			OR		A			; Clear the carry flag and preserve A
-			RET	
-UART0_serial_TX2:	POP		AF			; Good to send at this point, so
-			OUT0		(UART0_REG_THR),A	; Write the character to the UART transmit buffer
-			POP		BC			; Restore BC
-			SCF					; Set the carry flag
-			RET 
+UART0_serial_TX:	push		BC			; Stack BC
+			push		AF 			; Stack AF
+			ld		BC,TX_WAIT		; Set CB to the transmit timeout
+UART0_serial_TX1:	in0		A,(UART0_REG_LSR)	; Get the line status register
+			and 		UART_LSR_ETH		; Check for TX hold register empty
+			jr		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
+			dec		BC
+			ld		A, B
+			or		C
+			jr		NZ, UART0_serial_TX1
+			pop		AF			; We've timed out at this point so
+			pop		BC			; Restore the stack
+			or		A			; Clear the carry flag and preserve A
+			ret
+UART0_serial_TX2:	pop		AF			; Good to send at this point, so
+			out0		(UART0_REG_THR),A	; Write the character to the UART transmit buffer
+			pop		BC			; Restore BC
+			scf					; Set the carry flag
+			ret
 
 ; Write a character to UART1
 ; Parameters:
@@ -120,25 +120,25 @@ UART0_serial_TX2:	POP		AF			; Good to send at this point, so
 ; - F: C if written
 ; - F: NC if timed out
 ;
-UART1_serial_TX:	PUSH		BC			; Stack BC
-			PUSH		AF 			; Stack AF
-			LD		BC,TX_WAIT		; Set CB to the transmit timeout
-UART1_serial_TX1:	IN0		A,(UART1_REG_LSR)	; Get the line status register
-			AND 		UART_LSR_ETH		; Check for TX hold register empty
-			JR		NZ, UART1_serial_TX2	; If set, then TX is empty, goto transmit
-			DEC		BC
-			LD		A, B
-			OR		C
-			JR		NZ, UART1_serial_TX1
-			POP		AF			; We've timed out at this point so
-			POP		BC			; Restore the stack
-			OR		A			; Clear the carry flag and preserve A
-			RET	
-UART1_serial_TX2:	POP		AF			; Good to send at this point, so
-			OUT0		(UART1_REG_THR),A	; Write the character to the UART transmit buffer
-			POP		BC			; Restore BC
-			SCF					; Set the carry flag
-			RET 
+UART1_serial_TX:	push		BC			; Stack BC
+			push		AF 			; Stack AF
+			ld		BC,TX_WAIT		; Set CB to the transmit timeout
+UART1_serial_TX1:	in0		A,(UART1_REG_LSR)	; Get the line status register
+			and 		UART_LSR_ETH		; Check for TX hold register empty
+			jr		NZ, UART1_serial_TX2	; If set, then TX is empty, goto transmit
+			dec		BC
+			ld		A, B
+			or		C
+			jr		NZ, UART1_serial_TX1
+			pop		AF			; We've timed out at this point so
+			pop		BC			; Restore the stack
+			or		A			; Clear the carry flag and preserve A
+			ret
+UART1_serial_TX2:	pop		AF			; Good to send at this point, so
+			out0		(UART1_REG_THR),A	; Write the character to the UART transmit buffer
+			pop		BC			; Restore BC
+			scf					; Set the carry flag
+			ret
 
 ; Read a character from UART0
 ; Returns:
@@ -146,12 +146,12 @@ UART1_serial_TX2:	POP		AF			; Good to send at this point, so
 ; - F: C if character read
 ; - F: NC if no character read
 ;
-UART0_serial_RX:	IN0		A,(UART0_REG_LSR)	; Get the line status register
-			AND 		UART_LSR_RDY		; Check for characters in buffer
-			RET		Z			; Just ret (with carry clear) if no characters
-			IN0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
-			SCF 					; Set the carry flag
-			RET
+UART0_serial_RX:	in0		A,(UART0_REG_LSR)	; Get the line status register
+			and 		UART_LSR_RDY		; Check for characters in buffer
+			ret		Z			; Just ret (with carry clear) if no characters
+			in0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
+			scf 					; Set the carry flag
+			ret
 
 ; Read a character from UART1
 ; Returns:
@@ -159,12 +159,12 @@ UART0_serial_RX:	IN0		A,(UART0_REG_LSR)	; Get the line status register
 ; - F: C if character read
 ; - F: NC if no character read
 ;
-UART1_serial_RX:	IN0		A,(UART1_REG_LSR)	; Get the line status register
-			AND 		UART_LSR_RDY		; Check for characters in buffer
-			RET		Z			; Just ret (with carry clear) if no characters
-			IN0		A,(UART1_REG_RBR)	; Read the character from the UART receive buffer
-			SCF 					; Set the carry flag
-			RET
+UART1_serial_RX:	in0		A,(UART1_REG_LSR)	; Get the line status register
+			and 		UART_LSR_RDY		; Check for characters in buffer
+			ret		Z			; Just ret (with carry clear) if no characters
+			in0		A,(UART1_REG_RBR)	; Read the character from the UART receive buffer
+			scf 					; Set the carry flag
+			ret
 
 ; Read a character from UART0 (blocking)
 ; Returns:
@@ -172,14 +172,14 @@ UART1_serial_RX:	IN0		A,(UART1_REG_LSR)	; Get the line status register
 ; - F: C if read
 ; - F: NC if UART not enabled
 ;
-UART0_serial_GETCH:	PUSH		AF 
-			LD		A, (_serialFlags)
-			TST		0x01
-			JR		Z, UART_serial_NE
-			POP		AF
-.Lzds_src_serial_asm_ee44dd47_a0001:			CALL 		UART0_serial_RX
-			JR		NC,.Lzds_src_serial_asm_ee44dd47_a0001
-			RET 
+UART0_serial_GETCH:	push		AF
+			ld		A, (_serialFlags)
+			tst		0x01
+			jr		Z, UART_serial_NE
+			pop		AF
+1:			call 		UART0_serial_RX
+			jr		NC,1b
+			ret
 
 ; Read a character from UART1 (blocking)
 ; Returns:
@@ -187,14 +187,14 @@ UART0_serial_GETCH:	PUSH		AF
 ; - F: C if read
 ; - F: NC if UART not enabled
 ;
-UART1_serial_GETCH:	PUSH		AF 
-			LD		A, (_serialFlags)
-			TST		0x10
-			JR		Z, UART_serial_NE
-			POP		AF
-.Lzds_src_serial_asm_ee44dd47_a0002:			CALL 		UART1_serial_RX
-			JR		NC,.Lzds_src_serial_asm_ee44dd47_a0002
-			RET 
+UART1_serial_GETCH:	push		AF
+			ld		A, (_serialFlags)
+			tst		0x10
+			jr		Z, UART_serial_NE
+			pop		AF
+1:			call 		UART1_serial_RX
+			jr		NC,1b
+			ret
 
 ; Write a character to UART0 (blocking)
 ; Parameters:
@@ -203,16 +203,16 @@ UART1_serial_GETCH:	PUSH		AF
 ; - F: C if written
 ; - F: NC if UART not enabled
 ;
-UART0_serial_PUTCH:	PUSH	AF
-			LD	A, (_serialFlags)		; Get the serial flags
-			TST	0x01				; Check UART is enabled
-			JR	Z, UART_serial_NE		; If not, then skip
-			TST	0x02				; If hardware flow control enabled then
-			CALL	NZ, UART0_wait_CTS		; Wait for clear to send signal
-			POP	AF
-.Lzds_src_serial_asm_ee44dd47_a0003:			CALL	UART0_serial_TX			; Send the character
-			JR	NC, .Lzds_src_serial_asm_ee44dd47_a0003				; Repeat until sent
-			RET
+UART0_serial_PUTCH:	push	AF
+			ld	A, (_serialFlags)		; Get the serial flags
+			tst	0x01				; Check UART is enabled
+			jr	Z, UART_serial_NE		; If not, then skip
+			tst	0x02				; If hardware flow control enabled then
+			call	NZ, UART0_wait_CTS		; Wait for clear to send signal
+			pop	AF
+1:			call	UART0_serial_TX			; Send the character
+			jr	NC, 1b				; Repeat until sent
+			ret
 
 ; Write a character to UART1 (blocking)
 ; Parameters:
@@ -221,22 +221,22 @@ UART0_serial_PUTCH:	PUSH	AF
 ; - F: C if written
 ; - F: NC if UART not enabled
 ;
-UART1_serial_PUTCH:	PUSH	AF
-			LD	A, (_serialFlags)		; Get the serial flags
-			TST	0x10				; Check UART is enabled
-			JR	Z, UART_serial_NE		; If not, then skip (reuses UART0 routine here)
-			TST	0x20				; If hardware flow control enabled then
-			CALL	NZ, UART1_wait_CTS		; Wait for clear to send signal
-			POP	AF			
-.Lzds_src_serial_asm_ee44dd47_a0004:			CALL	UART1_serial_TX			; Send the character
-			JR	NC, .Lzds_src_serial_asm_ee44dd47_a0004				; Repeat until sent
-			RET
+UART1_serial_PUTCH:	push	AF
+			ld	A, (_serialFlags)		; Get the serial flags
+			tst	0x10				; Check UART is enabled
+			jr	Z, UART_serial_NE		; If not, then skip (reuses UART0 routine here)
+			tst	0x20				; If hardware flow control enabled then
+			call	NZ, UART1_wait_CTS		; Wait for clear to send signal
+			pop	AF
+1:			call	UART1_serial_TX			; Send the character
+			jr	NC, 1b				; Repeat until sent
+			ret
 
 ; Called by UART0 and UART1 PUTCH and GETCH if the UART is not enabled
 ;
-UART_serial_NE:		POP	AF				; Tidy up the stack
-			OR	A 				; Clear the carry flag
-			RET
+UART_serial_NE:		pop	AF				; Tidy up the stack
+			or	A 				; Clear the carry flag
+			ret
 ;
 ; The C wrappers
 ;
@@ -250,18 +250,18 @@ UART_serial_NE:		POP	AF				; Tidy up the stack
 ; - The character written
 ;
 _putch:
-putch:			PUSH	IY				; Standard C prologue
-			LD	IY, 0
-			ADD	IY, SP	
+putch:			push	IY				; Standard C prologue
+			ld	IY, 0
+			add	IY, SP
 
-			LD	A, (IY+6)			; INT ch (least significant byte)
-			LD	HL, 0				; HLU: The return value
-			LD	L, A 
-			CALL	UART0_serial_PUTCH		; Output the character
+			ld	A, (IY+6)			; INT ch (least significant byte)
+			ld	HL, 0				; HLU: The return value
+			ld	L, A
+			call	UART0_serial_PUTCH		; Output the character
 
-			LD 	SP, IY				; Standard epilogue
-			POP	IY
-			RET
+			ld 	SP, IY				; Standard epilogue
+			pop	IY
+			ret
 
 ; INT getch(VOID);
 ;
@@ -270,14 +270,14 @@ putch:			PUSH	IY				; Standard C prologue
 ; - The character read
 ;
 _getch:
-getch:			PUSH	IY				; Standard C prologue
-			LD	IY, 0
-			ADD	IY, SP	
+getch:			push	IY				; Standard C prologue
+			ld	IY, 0
+			add	IY, SP
 
-			CALL	UART0_serial_GETCH		; Read the character
-			LD	HL, 0				; HLU: The return value
-			LD	L, A
+			call	UART0_serial_GETCH		; Read the character
+			ld	HL, 0				; HLU: The return value
+			ld	L, A
 
-			LD 	SP, IY				; Standard epilogue
-			POP	IY
-			RET
+			ld 	SP, IY				; Standard epilogue
+			pop	IY
+			ret

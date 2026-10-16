@@ -1,0 +1,468 @@
+{
+  "schema": 1,
+  "upstream_commit": "8336409351ee5314e02801a7b72a4f1bb5282519",
+  "files": [
+    {
+      "path": ".github/FUNDING.yml",
+      "upstream_sha256": "db26e588677583cb91b638a668f0f28c03204b97c412cc6d210dbc28622e3d14",
+      "first_tranche_sha256": "db26e588677583cb91b638a668f0f28c03204b97c412cc6d210dbc28622e3d14",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": ".gitignore",
+      "upstream_sha256": "bb21f33a18af5ccd44fbc19720bc350994a9ab5c42b7bc8542526d4f038cb5ae",
+      "first_tranche_sha256": "827c615a820d10cd474cce19c9f8ca59259ad44117189794c80f88de66a18f7b",
+      "changed": true,
+      "kind": "project-documentation"
+    },
+    {
+      "path": "LICENSE",
+      "upstream_sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "first_tranche_sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "MOS.wsp",
+      "upstream_sha256": "5efb42f1143e188dc831d893fd2db2f4d5a54f498bf73eca2bd78efa3b733255",
+      "first_tranche_sha256": "5efb42f1143e188dc831d893fd2db2f4d5a54f498bf73eca2bd78efa3b733255",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "MOS.zdsproj",
+      "upstream_sha256": "a282d2a51fd5d0281646ac3ee0ef1e5c5f6de521f92b49ccaa4118c6f7967f20",
+      "first_tranche_sha256": "a282d2a51fd5d0281646ac3ee0ef1e5c5f6de521f92b49ccaa4118c6f7967f20",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "README.md",
+      "upstream_sha256": "bdbdbb7df57ed856d77226bfa2c9d51bd7fe01385855675eaaee0f7c317bc976",
+      "first_tranche_sha256": "b9885009f50a5244f3a80ae32296b9e9a05f852829f94b1a1826e3c26f9eef87",
+      "changed": true,
+      "kind": "project-documentation"
+    },
+    {
+      "path": "eZ80F92_AGON_Flash.ztgt",
+      "upstream_sha256": "3e39ccd4df4b4f2e65c68aa9404fc1f4a3bbe9fc0f6b78fbb083cdb0a3fb5ab4",
+      "first_tranche_sha256": "3e39ccd4df4b4f2e65c68aa9404fc1f4a3bbe9fc0f6b78fbb083cdb0a3fb5ab4",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "main.c",
+      "upstream_sha256": "8f8689da9bf119a9e98593e047263a3408cc842c84f0e8d8dd82e0a406f94155",
+      "first_tranche_sha256": "5120a4df9276e15ef11d92cdd53cf2c5a3a9b85f901289d78ad0f1170dd7b256",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/clock.c",
+      "upstream_sha256": "9c75fa3fc47971e7a953818e822fedf69330d1f57731e06b6ec51680e3667f7b",
+      "first_tranche_sha256": "9c75fa3fc47971e7a953818e822fedf69330d1f57731e06b6ec51680e3667f7b",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/clock.h",
+      "upstream_sha256": "1616a487008a6a5072d1dee479acdd3a132b9988c88fca0245f5211935c4a24f",
+      "first_tranche_sha256": "5759256e26d1ae12caf0c4c89f2e0c6fd463a2247483c8229cc14069d721e31b",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/config.h",
+      "upstream_sha256": "0eb6b42f47dd05f75289af21adff6163c26da6f9ddc4001534340b6fcb19b8e4",
+      "first_tranche_sha256": "0eb6b42f47dd05f75289af21adff6163c26da6f9ddc4001534340b6fcb19b8e4",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/crash.asm",
+      "upstream_sha256": "be28c6f15e63642acb898fc711edc6aed197dd9ef68d1ca535b8ab6f65c2d736",
+      "first_tranche_sha256": "eb9c911c3d20d7d4447d31da5af6539f0fdb315c2de3bc373f07e227d184bf16",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/defines.h",
+      "upstream_sha256": "43403dbda34d91a58aa355d8b67d0fe5d228fd130a96931abc728e2b2a84be70",
+      "first_tranche_sha256": "3db4d35001b934d8434b0e87186006c83ecce8a9c62284ce805e9464429651f5",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/equs.inc",
+      "upstream_sha256": "4cbf0779e32ace92f725fc6cb5e8e32a4389f46bec1e43c7d660b10b95647fbb",
+      "first_tranche_sha256": "b9c4224c87dc3e006cf834b5e524080865a0d046b0367e809cc5fb2971071879",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/gpio.asm",
+      "upstream_sha256": "cd312f54dc7ce5a6dbeaa54ef593caf341b5dc71cfc0fe3f119b457638b9ef63",
+      "first_tranche_sha256": "df7f8ab7221ddf3e0d7894789808a3192b50e5753d776e6a57fc540eb4b990ab",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/i2c.c",
+      "upstream_sha256": "b721b72de93ad698620c2087b3509db648c1c0f95a69b81c854cfd0b72abe123",
+      "first_tranche_sha256": "b721b72de93ad698620c2087b3509db648c1c0f95a69b81c854cfd0b72abe123",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/i2c.h",
+      "upstream_sha256": "e763025c5ccf74983ab9af6d7ec36f5ce2ff7f4e24327182d0974e646c0d45dc",
+      "first_tranche_sha256": "e763025c5ccf74983ab9af6d7ec36f5ce2ff7f4e24327182d0974e646c0d45dc",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/i2c.inc",
+      "upstream_sha256": "c22627b41177a9b520a294f7a7186a56c9b323e5ef185bdfe70e4b6287da1040",
+      "first_tranche_sha256": "ab6da62b99f8f2c48e1d5e2ab748108bb8e1c332dc33f98edeefd776825a7068",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/interrupts.asm",
+      "upstream_sha256": "8cc01976ade723da300897a0c59d53b45f294e910b6ad1b7a69626c5dc13b1b0",
+      "first_tranche_sha256": "05e976df675fde834d07df7bfae78f6bc3486ebdc3e5f3f1b2a8759c6549f3a1",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/keyboard.asm",
+      "upstream_sha256": "79dbadd08fca2838d2e92a6ea7c4f36caf44677becdb3ccacf2049bf701aa591",
+      "first_tranche_sha256": "afafd1b94786b0c6c71c9e3c2cbde36aae5fe769e496ab60d1fbf908a985893c",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/macros.inc",
+      "upstream_sha256": "e6cf5daaac8787a255144ddaa2abbd349d02a5f4a68e3050a8cf4c7af415ddb5",
+      "first_tranche_sha256": "8bafbfc3fc3df73c1d147b521c471f3fca942e8b3079041e339dc422aac6f8c1",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/misc.asm",
+      "upstream_sha256": "e147e4a350ceca6c5f8f77becec7148c76bb322d16cde777fb73cb4fd9f945fb",
+      "first_tranche_sha256": "fcea9fee336bc6e1a505b90dd2dfebf5721c5c402911d2b178b5d0c871f2a089",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/mos.c",
+      "upstream_sha256": "37b1e644a380a727c0d0fcf3e5494eadf9a5143cb6d07e437319b6c5e5bed9a0",
+      "first_tranche_sha256": "40cd9046b61b0cf075388f2867423b3024c37eab07505168617ca13d241559ae",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos.h",
+      "upstream_sha256": "5de92100151c569751a4f4d99786f259978613befc4c3f2b93c8c4e9afd2ff30",
+      "first_tranche_sha256": "5de92100151c569751a4f4d99786f259978613befc4c3f2b93c8c4e9afd2ff30",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_api.asm",
+      "upstream_sha256": "85d930816d0d80831d8ad1fa47194bb2b4b9c825c6b402b8badbce929add4bab",
+      "first_tranche_sha256": "a1c1cd4c60211eaa8e7f93fd916a4578b9cc6fedca31f489c1df5d3a9b84efd5",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/mos_api.inc",
+      "upstream_sha256": "71713320e619c7d8e8d90885e14706a00c6b07509ee644e75ebb033fd1cdc669",
+      "first_tranche_sha256": "5fd5e04d40c0887ebccee37c2d59195b5751e85b872285a6bb9fdf9e533a7581",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/mos_editor.c",
+      "upstream_sha256": "a82a857f2b64e5a07e750ed010bc06c4b6b94685b610ee166c53ec6d29d270d9",
+      "first_tranche_sha256": "63a53e8d910b9b9f141da0d43dc12f5aa54e8f658d5c2f9cc7deaa45b4184ee8",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_editor.h",
+      "upstream_sha256": "15bf1dae3e1dd5fecb8ca75d582f3ac59e1b6b76c63d5410f7dcd2744daed3e4",
+      "first_tranche_sha256": "15bf1dae3e1dd5fecb8ca75d582f3ac59e1b6b76c63d5410f7dcd2744daed3e4",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_file.c",
+      "upstream_sha256": "6339d3ada02522e707c7dcc03fcbce0c2fc01aea47d8c973e83ba1b8372d6eda",
+      "first_tranche_sha256": "6339d3ada02522e707c7dcc03fcbce0c2fc01aea47d8c973e83ba1b8372d6eda",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_file.h",
+      "upstream_sha256": "80243f9dab7c6c034e3b2f31ada12be7378d283453fd92ba6d8353355d4a524d",
+      "first_tranche_sha256": "80243f9dab7c6c034e3b2f31ada12be7378d283453fd92ba6d8353355d4a524d",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_sysvars.c",
+      "upstream_sha256": "712c6f62babb0f156a5ba400b4340e33b48173b55f0ba0e74db4afbef0b77df8",
+      "first_tranche_sha256": "712c6f62babb0f156a5ba400b4340e33b48173b55f0ba0e74db4afbef0b77df8",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/mos_sysvars.h",
+      "upstream_sha256": "06793a0b42fa9a2942b423659e05d80af83b478533d5c963e70b5d99967ebbed",
+      "first_tranche_sha256": "06793a0b42fa9a2942b423659e05d80af83b478533d5c963e70b5d99967ebbed",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/rtc.asm",
+      "upstream_sha256": "7d953d3fd3ea6f8ca7f6ddcee79b220fc49fe5f038e11817750d04691229442b",
+      "first_tranche_sha256": "515044dc0590cec5c6a7bd083686ef7f3763d36247f4a262095ade207e2c28df",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/sd.asm",
+      "upstream_sha256": "dcdb5806ff9edf2bf2cdacdf1a196428b1fc8c2591cbdc7309fd8da626cadbd2",
+      "first_tranche_sha256": "3b44ca8348c95d59561acda2bb9acc821a045179ba49fd98ad30dd72c5d4b952",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/sd.h",
+      "upstream_sha256": "032148657e8c5a6aca63467ac19a1db7e1a8be71d7eaacb2c9e5f117a02c976d",
+      "first_tranche_sha256": "032148657e8c5a6aca63467ac19a1db7e1a8be71d7eaacb2c9e5f117a02c976d",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/sd.inc",
+      "upstream_sha256": "dee7d6fc4b4db928783c5afff88f0b8a4d5ca665225055662bda659cf962cf2c",
+      "first_tranche_sha256": "e7f220b1aaea921b5327a4634120cc93e984bae96e52bf546dd50428e2e3b513",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/serial.asm",
+      "upstream_sha256": "53905f372f388256968f61d5304d510069f463b2967931224c81a73fa8575b47",
+      "first_tranche_sha256": "088f46ddceffb6bc8f0f2ebbc6c4ab658d4ad3267101ea7fb62a50fa7d0b1f16",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/spi.asm",
+      "upstream_sha256": "45ef74fdf99b067be36c6078eaf34306722bd8222f511e2d5ecf06187eba0975",
+      "first_tranche_sha256": "86902d595ac3ba09bafc9b96e1b5737e9a4a5f773212b76139a3acbf95bb1794",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/spi.h",
+      "upstream_sha256": "290a49ea6402678943f8e882b32c6960be4d23b3b5e1b5fb18febdc66568e814",
+      "first_tranche_sha256": "290a49ea6402678943f8e882b32c6960be4d23b3b5e1b5fb18febdc66568e814",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/strings.c",
+      "upstream_sha256": "cd6ed04b69708ad7ac1ca7875b64e21d23d5743ea392e1e34eec3047a3f5bc4c",
+      "first_tranche_sha256": "cd6ed04b69708ad7ac1ca7875b64e21d23d5743ea392e1e34eec3047a3f5bc4c",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/strings.h",
+      "upstream_sha256": "7a051e414077110373c2ce873df0c1d8e4ab0df59965b8114a1e9212315d988b",
+      "first_tranche_sha256": "7a051e414077110373c2ce873df0c1d8e4ab0df59965b8114a1e9212315d988b",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/tests.c",
+      "upstream_sha256": "56f1cf90c537bfa6e3c3e1ef48f90b62390e97f23181bd9bdeb3278bf57d0824",
+      "first_tranche_sha256": "56f1cf90c537bfa6e3c3e1ef48f90b62390e97f23181bd9bdeb3278bf57d0824",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/tests.h",
+      "upstream_sha256": "80937931cedcc034f3bc2092b7a346fe4896910e42fedb278aa6752c161dc2da",
+      "first_tranche_sha256": "80937931cedcc034f3bc2092b7a346fe4896910e42fedb278aa6752c161dc2da",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/timer.c",
+      "upstream_sha256": "15a139f8fc768c8cc55d76db7f818c4157aafe7fb7f6b4d6dd4fe4439684862e",
+      "first_tranche_sha256": "e31e8b19f107a313da81ac27ae1a52ecb64ddce2dd5ee3e608df16a5adcca487",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/timer.h",
+      "upstream_sha256": "0bf80c5a27dd156b130fc6d7266a44da8984c34572c31bbaeee21ebb95b940bc",
+      "first_tranche_sha256": "0bf80c5a27dd156b130fc6d7266a44da8984c34572c31bbaeee21ebb95b940bc",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/uart.c",
+      "upstream_sha256": "eea52c27b6ab35ba3f8dac9fa0f95824465fe2b9c06779edd6965852e826373a",
+      "first_tranche_sha256": "cf159bc3c575fe890636aafe04286b5ee081cb863041d5639451c97c1333e786",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/uart.h",
+      "upstream_sha256": "a53d6fb51506f1e9f96ed3f818c13ec17e0f81d68fd40251c119d87f8b84e5a9",
+      "first_tranche_sha256": "a53d6fb51506f1e9f96ed3f818c13ec17e0f81d68fd40251c119d87f8b84e5a9",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src/vdp_protocol.asm",
+      "upstream_sha256": "56ef61c794ba61d3d9e1ef4a454955343cde0564ef5bbc6059f84fd2dbb55e71",
+      "first_tranche_sha256": "ef24cc6d319d0fca7a04a44e52bbf47514d501a55fbcb595ff1db1ebde863488",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src/version.h",
+      "upstream_sha256": "6ae1129abac9e2b2292313715cff5b0978ac49a95fe5f35b7f305e92ed04d82c",
+      "first_tranche_sha256": "6ae1129abac9e2b2292313715cff5b0978ac49a95fe5f35b7f305e92ed04d82c",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/LICENSE",
+      "upstream_sha256": "b896e32fb2cdb3fc8b3b6fd854706fca4ac55619fbb6d5eb2429cb05ee338966",
+      "first_tranche_sha256": "b896e32fb2cdb3fc8b3b6fd854706fca4ac55619fbb6d5eb2429cb05ee338966",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "src_fatfs/diskio.c",
+      "upstream_sha256": "639c14c81a04e7695f10d8c01843f79738dbed3791e34a95db58b50abc469add",
+      "first_tranche_sha256": "8610046c2f7ea1a5f745801e3d58ca31618b3fae50edb1d469a67ddc526afe54",
+      "changed": true,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/diskio.h",
+      "upstream_sha256": "6bfcf244c5354616ec6612c39cc231c940c33fc8e286495f72474faa6e3c1484",
+      "first_tranche_sha256": "6bfcf244c5354616ec6612c39cc231c940c33fc8e286495f72474faa6e3c1484",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/ff.c",
+      "upstream_sha256": "ec97d9bceabd12ade1daf28b9c957e6b8433afddd6e349b556d20e099fbfaf64",
+      "first_tranche_sha256": "ec97d9bceabd12ade1daf28b9c957e6b8433afddd6e349b556d20e099fbfaf64",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/ff.h",
+      "upstream_sha256": "4c884d57f86b5ed0ddabd3e24b4b58017716e6b020dc45fadc2f7e0afc3f2c18",
+      "first_tranche_sha256": "4c884d57f86b5ed0ddabd3e24b4b58017716e6b020dc45fadc2f7e0afc3f2c18",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/ffconf.h",
+      "upstream_sha256": "bc1e2179cb6a1c7f859a79804f10d2b99c5cd1317ec9174f76c2493a43b15ef9",
+      "first_tranche_sha256": "bc1e2179cb6a1c7f859a79804f10d2b99c5cd1317ec9174f76c2493a43b15ef9",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/ffsystem.c",
+      "upstream_sha256": "db848df3b1deb9c6455a8bae61fb96eae14b0221870f145645328761d998be3d",
+      "first_tranche_sha256": "db848df3b1deb9c6455a8bae61fb96eae14b0221870f145645328761d998be3d",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_fatfs/ffunicode.c",
+      "upstream_sha256": "a0eb530fda99a089b7bbd4dde8d702b61d073bc77f415a2624347b5cfc7ee110",
+      "first_tranche_sha256": "a0eb530fda99a089b7bbd4dde8d702b61d073bc77f415a2624347b5cfc7ee110",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_startup/cstartup.asm",
+      "upstream_sha256": "4b5e3c88c5c89e362ae65de06c297689dee92de6e54655850dbfd31eab5f3e65",
+      "first_tranche_sha256": "4bf9d348f9ffcde7d2adffaf84ef7b96c1415ea9285f4867414c03ec6ff62b2c",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src_startup/globals.asm",
+      "upstream_sha256": "c98bc967c118ee01eed06e507543b6865c29686e0a6e890cb5893d5a669f826c",
+      "first_tranche_sha256": "190e4e602989bdd4576dbe4c3609da78a2dc8a8467fc17c0d091f06e4c49bff5",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src_startup/init_params_f92.asm",
+      "upstream_sha256": "a3b7a4375250e98c5fa4d3b5e7f9f21aa216498221f990e19683c6379630b723",
+      "first_tranche_sha256": "5a6cef4e42f2e4a111b04e37d868256efd88a52b3ae24aac423835269a2a3f89",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src_startup/vectors16.asm",
+      "upstream_sha256": "851971ea9299555c3a9905901c2c47ed6358cc7b23169c9d65eb6a3fcb3390c0",
+      "first_tranche_sha256": "e70ca790ae717a67c1651c1d3c755386b754703500b993abcd3a0fe76a06064c",
+      "changed": true,
+      "kind": "native-assembly"
+    },
+    {
+      "path": "src_umm_malloc/LICENSE",
+      "upstream_sha256": "4794832279fc2df5e952a6e16b542bb2c816bfc88d15018974cc5d2a8d024f22",
+      "first_tranche_sha256": "4794832279fc2df5e952a6e16b542bb2c816bfc88d15018974cc5d2a8d024f22",
+      "changed": false,
+      "kind": "unchanged-upstream"
+    },
+    {
+      "path": "src_umm_malloc/umm_malloc.c",
+      "upstream_sha256": "a07b37a512861992e0a685f45db94687bb147f0f7e8a8bfd5c98a1e98a167f66",
+      "first_tranche_sha256": "a07b37a512861992e0a685f45db94687bb147f0f7e8a8bfd5c98a1e98a167f66",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_umm_malloc/umm_malloc.h",
+      "upstream_sha256": "6889b07d7f15dc8665ddda1eb4545a8a118cd7f96b10728d87fb72b5524b1973",
+      "first_tranche_sha256": "6889b07d7f15dc8665ddda1eb4545a8a118cd7f96b10728d87fb72b5524b1973",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_umm_malloc/umm_malloc_cfg.h",
+      "upstream_sha256": "a8ebd98617d795c0c86214120d683413d69e9033cf6e6e80424e451e05c61a74",
+      "first_tranche_sha256": "a8ebd98617d795c0c86214120d683413d69e9033cf6e6e80424e451e05c61a74",
+      "changed": false,
+      "kind": "C-portability"
+    },
+    {
+      "path": "src_umm_malloc/umm_malloc_cfgport.h",
+      "upstream_sha256": "8d6e2b7123af87659115376ada64799f43c759ebf310a3f1cdc2cdaee7fea0d7",
+      "first_tranche_sha256": "8d6e2b7123af87659115376ada64799f43c759ebf310a3f1cdc2cdaee7fea0d7",
+      "changed": false,
+      "kind": "C-portability"
+    }
+  ]
+}

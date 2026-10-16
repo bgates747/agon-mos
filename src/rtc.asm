@@ -12,23 +12,23 @@
 			.include "macros.inc"
 			.include "equs.inc"
 
-			.ASSUME	ADL = 1
+			.assume adl=1
 
 			; zds2gas: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
-			
-			XDEF	__init_rtc
-			XDEF	_init_rtc
 
-			XREF	_rtc_enable
+			.global	__init_rtc
+			.global	_init_rtc
+
+			.extern	_rtc_enable
 
 ; Initialise the real time clock registers
 ;
 __init_rtc:
-_init_rtc:		
-			PUSH	AF
-			LD	A, 1
-			LD	(_rtc_enable), A
-			POP	AF
-			RET
+_init_rtc:
+			push	AF
+			ld	A, 1
+			ld	(_rtc_enable), A
+			pop	AF
+			ret
 
