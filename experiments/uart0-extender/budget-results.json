@@ -1,0 +1,67 @@
+{
+  "assessment_complete": true,
+  "integration_implemented": false,
+  "native_EMOS_fits": false,
+  "hardware_test_performed": false,
+  "firmware_changed": false,
+  "toolchain": "ZDS II eZ80Acclaim!5.3.5 under Wine on Oryx",
+  "source_baseline": "cf10f0b1848346bc5d04056e4663bbbc166b2480",
+  "native_compatibility_changes": [
+    "Structure copy initialization uses explicit memcpy",
+    "Command fallback declarations precede executable statements"
+  ],
+  "installed_saved_ROM_bytes": 131072,
+  "installed_payload_extent_bytes": 128622,
+  "installed_trailing_erased_bytes": 2450,
+  "installed_saved_ROM_sha256": "6f83bc21558ea7dcb665b60c18aa3a5c3030367f901e3e32ccbbf99eaf7f4019",
+  "native_attempts": [
+    {
+      "attempt": "native-baseline-003",
+      "native_C_and_assembly_compiled": true,
+      "link_passed": false,
+      "ROM_used_bytes": 138752,
+      "ROM_overflow_bytes": 7680,
+      "log_sha256": "078084aa5722a9e33c929e4c5f2ebfc5a8447985a66793cc5eed50e2a9d8d35f",
+      "map_sha256": "aceae184a9ce5f86373ac846c8a289a823527ce290bd32a1e417e88cebf202fb"
+    },
+    {
+      "attempt": "native-baseline-005",
+      "native_C_and_assembly_compiled": true,
+      "link_passed": false,
+      "ROM_used_bytes": 134514,
+      "ROM_overflow_bytes": 3442,
+      "log_sha256": "77d848bc1cb42aaeca3598880b5d953d815cd909743662f116eae9ad1416daac",
+      "map_sha256": "de4541ade393ecdde83ec067aeacb5d6ebe10e044964ab2b36128c456885e433"
+    },
+    {
+      "attempt": "native-baseline-006",
+      "native_C_and_assembly_compiled": true,
+      "link_passed": false,
+      "ROM_used_bytes": 134514,
+      "ROM_overflow_bytes": 3442,
+      "log_sha256": "77d848bc1cb42aaeca3598880b5d953d815cd909743662f116eae9ad1416daac",
+      "map_sha256": "6770136d4eb613c58467b5b3e9dc82c0551ae853cf0c7497a9a0fdb3746bcb21"
+    },
+    {
+      "attempt": "native-baseline-007",
+      "native_C_and_assembly_compiled": true,
+      "link_passed": false,
+      "ROM_used_bytes": 134514,
+      "ROM_overflow_bytes": 3442,
+      "log_sha256": "77d848bc1cb42aaeca3598880b5d953d815cd909743662f116eae9ad1416daac",
+      "map_sha256": "a71d2fbe776f731e9c711844ffc406d222837d99a841ff54c4b6c71725e75049"
+    }
+  ],
+  "best_native_ROM_used_bytes": 134514,
+  "best_native_ROM_overflow_bytes": 3442,
+  "generic_sender_module_ROM_bytes": 2497,
+  "sender_map_sha256": "b77bd6a23f4ce85e72b3b81a398c24a9a7d097ca0d209bec6ef87391f3f0c733",
+  "simple_additive_budget_gap_bytes": 5939,
+  "additive_gap_is_not_an_integrated_link": true,
+  "budget_limit": "Final integration also adds hooks and replaces some existing code; measure actual link rather than promise an exact saving",
+  "existing_diagnostic_MOSlet_reference": "agon-emos commits c98f80e and8f06429",
+  "diagnostic_backport_size_measured": false,
+  "toolchain_exception_authorized": false,
+  "recommendation": "Keep ZDS II and first scope measured EMOS ROM compaction, starting with existing owner-designed diagnostic MOSlets; preserve input, SD and routing; do not flash overflowing code",
+  "execution_state": "Stopped for Author review; no automatic continuation"
+}

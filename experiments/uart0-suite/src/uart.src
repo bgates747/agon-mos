@@ -25,3 +25,102 @@ indirect:
 _rom_byte0:
     ld a,(0)
     ret
+
+; Input-only ISR callback. MOS continues its normal keymap/parser afterward.
+; Installed only while menus are active; removed before UART session tests.
+.global _menu_key_callback
+.extern _menu_key_head
+.extern _menu_key_tail
+.extern _menu_key_data
+.extern _menu_key_held
+_menu_key_callback:
+    push af
+    push bc
+    push de
+    push hl
+    ld a,(de)
+    ld c,a
+    inc de
+    inc de
+    ld a,(de)
+    ld b,a
+    inc de
+    ld a,(de)
+    ld e,a
+    ; Some emulator keyboard sources supply ASCII but no virtual-key code
+    ; or release event. Do not treat all such characters as one held key.
+    ld a,b
+    or a,a
+    jr z,menu_key_without_code
+    ld a,b
+    and 7
+    ld hl,menu_key_masks
+    ld d,0
+    push de
+    ld de,0
+    ld e,a
+    add hl,de
+    ld a,(hl)
+    pop de
+    ld d,a
+    ld a,b
+    rrca
+    rrca
+    rrca
+    and 31
+    ld hl,_menu_key_held
+    ld b,0
+    push bc
+    ld bc,0
+    ld c,a
+    add hl,bc
+    pop bc
+    ld a,e
+    or a,a
+    jr z,menu_key_up
+    ld a,(hl)
+    and d
+    jr nz,menu_key_done
+    ld a,(hl)
+    or d
+    ld (hl),a
+menu_key_enqueue:
+    ld a,c
+    or a,a
+    jr z,menu_key_done
+    ld a,(_menu_key_head)
+    ld b,a
+    inc a
+    and 15
+    ld e,a
+    ld a,(_menu_key_tail)
+    cp e
+    jr z,menu_key_done
+    ld hl,_menu_key_data
+    push de
+    ld de,0
+    ld e,b
+    add hl,de
+    ld (hl),c
+    pop de
+    ld a,e
+    ld (_menu_key_head),a
+    jr menu_key_done
+menu_key_without_code:
+    ld a,e
+    or a,a
+    jr nz,menu_key_enqueue
+    jr menu_key_done
+menu_key_up:
+    ld a,d
+    cpl
+    and (hl)
+    ld (hl),a
+menu_key_done:
+    pop hl
+    pop de
+    pop bc
+    pop af
+    ret
+menu_key_masks:
+    .db 1,2,4,8,16,32,64,128

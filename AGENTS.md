@@ -8,7 +8,12 @@ race triggers, test integration and interpretation. The Flexe agent owns the
 emulator and its model/regression work; do not delegate VDP firmware ownership
 to it. The Author clarified this boundary on 2026-10-14. Keep upstream VDP and
 SDK checkouts read-only and build diagnostic copies in this project's workspace.
-Physical firmware flashing and board execution remain manual Author actions.
+Physical Console8 firmware flashing and board execution remain manual Author
+actions. On2026-10-15 the Author separately authorized unattended UART hardware
+testing through Agon Extender, adapting the suites and integrating the sender
+into EMOS at least in Legacy mode. Follow Extender's test-appliance lifecycle,
+bench ownership, installation and recovery protocols for that target; this does
+not authorize interrupting another owner's test or changing wiring.
 
 ## Network access authority
 

@@ -1,0 +1,2008 @@
+{
+  "receiver_fix_implemented": true,
+  "software_qualification_passed": true,
+  "matched_before_after_passed": true,
+  "repaired_without_rescue": true,
+  "candidate_normal_command_compatibility_passed": true,
+  "fixture_checks_passed": true,
+  "menu_integration_passed": true,
+  "physical_repair_verified": false,
+  "human_review_passed": false,
+  "release_qualified": false,
+  "upstream_or_installed_SDK_modified": false,
+  "physical_firmware_writes": false,
+  "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+  "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+  "checks": {
+    "checks-before-jit-native": {
+      "passed": true,
+      "error": null,
+      "variant": "before",
+      "engine": "jit",
+      "case": "native",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": false,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 92,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 252,
+                "stash": 27,
+                "cycles": 2366771136
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 35,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 116,
+                "stash": 27,
+                "cycles": 2017486874
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 252,
+                "stash": 27,
+                "cycles": 2366771317
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": false,
+            "outcome": 2,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": true,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 128,
+              "enabled": 148,
+              "raw": 16643,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 32,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 234,
+                "stash": 32,
+                "cycles": 2507811176
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 9,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 197,
+                "stash": 32,
+                "cycles": 2157136711
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 0,
+                "fifo": 9,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 0,
+                "stash": 32,
+                "cycles": 2507815345
+              },
+              {
+                "type": 4,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 128,
+                "enabled": 405,
+                "raw": 16387,
+                "buffered": 0,
+                "stash": 32,
+                "cycles": 2162143515
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": false,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": true,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 10.06,
+      "seed_image_sha256": "e14a4f0bec0bb87a17b83f289325150dd001eadb954934c5d28a410f7bc6dca6",
+      "menu_sha256": "17d3534cd0d1c4df583690d6fb2ad1d0af00d9298e28873f72229fa942f2c222",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2  esp32-firmware.bin",
+        "057e14040263c97bd13381c54a8f9eee94003f14a069072ee2ae21dad1b75e50  esp32-firmware.elf"
+      ]
+    },
+    "checks-before-interp-native": {
+      "passed": true,
+      "error": null,
+      "variant": "before",
+      "engine": "interp",
+      "case": "native",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": false,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 240,
+                "stash": 77,
+                "cycles": 2292803355
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 154,
+                "stash": 77,
+                "cycles": 1944563035
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 240,
+                "stash": 77,
+                "cycles": 2292803536
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": false,
+            "outcome": 2,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": true,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 128,
+              "enabled": 148,
+              "raw": 16643,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 38,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 236,
+                "stash": 38,
+                "cycles": 2357192114
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 41,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 205,
+                "stash": 38,
+                "cycles": 2008600929
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 0,
+                "fifo": 41,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 0,
+                "stash": 38,
+                "cycles": 2357195345
+              },
+              {
+                "type": 4,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 128,
+                "enabled": 405,
+                "raw": 16387,
+                "buffered": 0,
+                "stash": 38,
+                "cycles": 2013586103
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": false,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": true,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 10.263,
+      "seed_image_sha256": "33110e20d21b221301a7b4c1f8af7c88e8bf94add6b70105ab21ec2dfa21dc6e",
+      "menu_sha256": "17d3534cd0d1c4df583690d6fb2ad1d0af00d9298e28873f72229fa942f2c222",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2  esp32-firmware.bin",
+        "057e14040263c97bd13381c54a8f9eee94003f14a069072ee2ae21dad1b75e50  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-native": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "native",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 98,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 214,
+                "stash": 64,
+                "cycles": 2367851529
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 38,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 115,
+                "stash": 64,
+                "cycles": 2018877873
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 214,
+                "stash": 64,
+                "cycles": 2367851629
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 5,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 256,
+                "stash": 11,
+                "cycles": 2506371044
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 19,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 198,
+                "stash": 11,
+                "cycles": 2156634246
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 256,
+                "stash": 11,
+                "cycles": 2506371144
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": true
+      },
+      "elapsed_seconds": 10.057,
+      "seed_image_sha256": "e8263ad165732831a721aeb4a3e3b0039b75bafc58e5a08575700ce45c4d266e",
+      "menu_sha256": "17d3534cd0d1c4df583690d6fb2ad1d0af00d9298e28873f72229fa942f2c222",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-interp-native": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "interp",
+      "case": "native",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 241,
+                "stash": 46,
+                "cycles": 2293802524
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 64,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 124,
+                "stash": 46,
+                "cycles": 1945509883
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 241,
+                "stash": 46,
+                "cycles": 2293802624
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 5,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 211,
+                "stash": 92,
+                "cycles": 2358764609
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 13,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 234,
+                "stash": 92,
+                "cycles": 2009691068
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 211,
+                "stash": 92,
+                "cycles": 2358764709
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": true
+      },
+      "elapsed_seconds": 10.261,
+      "seed_image_sha256": "00aeef381cd506393bfbe152aba0ad85c0f628d62cd04ef6fd1c48abdf5d0378",
+      "menu_sha256": "17d3534cd0d1c4df583690d6fb2ad1d0af00d9298e28873f72229fa942f2c222",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-before-jit-menu": {
+      "passed": true,
+      "error": null,
+      "variant": "before",
+      "engine": "jit",
+      "case": "menu",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": false,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 87,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 241,
+                "stash": 31,
+                "cycles": 911993871
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 116,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 169,
+                "stash": 31,
+                "cycles": 524824670
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 241,
+                "stash": 31,
+                "cycles": 911994052
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": false,
+            "outcome": 2,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": true,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 128,
+              "enabled": 148,
+              "raw": 16643,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 22,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 251,
+                "stash": 22,
+                "cycles": 1045883801
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 43,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 22,
+                "stash": 22,
+                "cycles": 657664125
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 0,
+                "fifo": 43,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 17,
+                "stash": 22,
+                "cycles": 1046068040
+              },
+              {
+                "type": 4,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 128,
+                "enabled": 405,
+                "raw": 16387,
+                "buffered": 0,
+                "stash": 22,
+                "cycles": 662696219
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": false,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": true,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 22.807,
+      "seed_image_sha256": "85e73796b4e395f6ea956ab1790187d49daedae98f59f72868b7d3c34a4fc0ca",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2  esp32-firmware.bin",
+        "057e14040263c97bd13381c54a8f9eee94003f14a069072ee2ae21dad1b75e50  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-menu": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "menu",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 113,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 244,
+                "stash": 28,
+                "cycles": 926204883
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 22,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 167,
+                "stash": 28,
+                "cycles": 536113051
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 244,
+                "stash": 28,
+                "cycles": 926204983
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 5,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 2,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 244,
+                "stash": 26,
+                "cycles": 1053834387
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 63,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 26,
+                "stash": 26,
+                "cycles": 662224115
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 244,
+                "stash": 26,
+                "cycles": 1053834487
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": true
+      },
+      "elapsed_seconds": 22.775,
+      "seed_image_sha256": "cf62b9712b1d335e54b6927eacc36ce8c2df311ddd5413649f2a42d6ebc183a6",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-interp-menu": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "interp",
+      "case": "menu",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 250,
+                "stash": 30,
+                "cycles": 3188791218
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 39,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 171,
+                "stash": 30,
+                "cycles": 2828216523
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 250,
+                "stash": 30,
+                "cycles": 3188791318
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 5,
+            "received": 4096,
+            "crc32": "87897582",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": true,
+            "evidence_valid": true,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 56,
+                "cycles": 3251811468
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 128,
+                "enabled": 405,
+                "raw": 16387,
+                "buffered": 56,
+                "stash": 56,
+                "cycles": 2890791294
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 56,
+                "cycles": 3251811568
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": true,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": true
+      },
+      "elapsed_seconds": 23.016,
+      "seed_image_sha256": "3c3d3202252f1c4aca2ca46b3319d5059d0da030f7b5fa3733f47bd382c241b4",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-candidate-jit-campaign": {
+      "passed": true,
+      "error": null,
+      "variant": "candidate",
+      "engine": "jit",
+      "case": "campaign",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "state": {
+          "stage": 0,
+          "total_cases": 6,
+          "completed": 6,
+          "active_case": 6,
+          "repeats": 1,
+          "failure_code": 0,
+          "baseline_rx": 0,
+          "checkpoint_tick": 12422,
+          "last_progress_tick": 11944,
+          "last_accepted": 264,
+          "packets_completed": 32,
+          "wire_bytes": 8448
+        },
+        "campaign_passed": true,
+        "records": [
+          {
+            "case": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 1040,
+            "wire_bytes": 525184,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 610,
+            "wire_bytes": 525184,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 3,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 56,
+            "wire_bytes": 8576,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 32,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 4,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 48,
+            "wire_bytes": 8576,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 32,
+            "replies_while_busy": 32,
+            "rx_errors": 0
+          },
+          {
+            "case": 5,
+            "mode": 0,
+            "kind": 2,
+            "ticks": 62,
+            "wire_bytes": 8448,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 6,
+            "mode": 1,
+            "kind": 2,
+            "ticks": 62,
+            "wire_bytes": 8448,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          }
+        ],
+        "final_buffer_bytes_checked": 49152,
+        "intermediate_bulk_payloads_verified": false,
+        "physical_race_ruled_out": false,
+        "receiver_race_attributed": false
+      },
+      "elapsed_seconds": 119.349,
+      "seed_image_sha256": "85fd2048f7b85649056b482ff9e428f6f7a521bd9d5875e7f23764f9fd8cca23",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c  esp32-firmware.bin",
+        "0270e225efc23c47e510a1b6a89ab84dbf75e9a82a71b37e3464984f0f3ab644  esp32-firmware.elf"
+      ]
+    },
+    "checks-candidate-interp-campaign": {
+      "passed": true,
+      "error": null,
+      "variant": "candidate",
+      "engine": "interp",
+      "case": "campaign",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "state": {
+          "stage": 0,
+          "total_cases": 6,
+          "completed": 6,
+          "active_case": 6,
+          "repeats": 1,
+          "failure_code": 0,
+          "baseline_rx": 0,
+          "checkpoint_tick": 7090,
+          "last_progress_tick": 6844,
+          "last_accepted": 264,
+          "packets_completed": 32,
+          "wire_bytes": 8448
+        },
+        "campaign_passed": true,
+        "records": [
+          {
+            "case": 1,
+            "mode": 0,
+            "kind": 0,
+            "ticks": 880,
+            "wire_bytes": 525184,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 2,
+            "mode": 1,
+            "kind": 0,
+            "ticks": 534,
+            "wire_bytes": 525184,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 3,
+            "mode": 0,
+            "kind": 1,
+            "ticks": 26,
+            "wire_bytes": 8576,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 32,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 4,
+            "mode": 1,
+            "kind": 1,
+            "ticks": 22,
+            "wire_bytes": 8576,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 32,
+            "replies_while_busy": 32,
+            "rx_errors": 0
+          },
+          {
+            "case": 5,
+            "mode": 0,
+            "kind": 2,
+            "ticks": 62,
+            "wire_bytes": 8448,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          },
+          {
+            "case": 6,
+            "mode": 1,
+            "kind": 2,
+            "ticks": 62,
+            "wire_bytes": 8448,
+            "verified_final_buffer_bytes": 8192,
+            "replies": 0,
+            "replies_while_busy": 0,
+            "rx_errors": 0
+          }
+        ],
+        "final_buffer_bytes_checked": 49152,
+        "intermediate_bulk_payloads_verified": false,
+        "physical_race_ruled_out": false,
+        "receiver_race_attributed": false
+      },
+      "elapsed_seconds": 154.554,
+      "seed_image_sha256": "dea12fe4162084ccc3d9d9536bb5c99d44fd97dd78b111a5e22f827677891ea2",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c  esp32-firmware.bin",
+        "0270e225efc23c47e510a1b6a89ab84dbf75e9a82a71b37e3464984f0f3ab644  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-native-badcrc": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "native",
+      "control": "badcrc",
+      "control_rejected": true,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 1,
+            "received": 4096,
+            "crc32": "DD51DCAE",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": false,
+            "evidence_valid": false,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 3,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 248,
+                "stash": 25,
+                "cycles": 2364170013
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 110,
+                "stash": 25,
+                "cycles": 2014441842
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 248,
+                "stash": 25,
+                "cycles": 2364170113
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 5,
+            "received": 4096,
+            "crc32": "DD51DCAE",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": false,
+            "evidence_valid": false,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 12,
+                "cycles": 2486267146
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 18,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 190,
+                "stash": 12,
+                "cycles": 2135459967
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 12,
+                "cycles": 2486267246
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": false,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 10.066,
+      "seed_image_sha256": "4bc6f0d1c8299cd2d88904172e6973ce81858630597b296dd5775f1f0250bacf",
+      "menu_sha256": "3ae422e09ca2d0c200501a3be73d4d25a9e24046ed653b1a29fb7f4b59bd023b",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-native-noend": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "native",
+      "control": "noend",
+      "control_rejected": true,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 0,
+        "completed": 2,
+        "cases": [
+          {
+            "mode": 0,
+            "receiver_fixed": true,
+            "outcome": 4,
+            "received": 4097,
+            "crc32": "A634B462",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": false,
+            "evidence_valid": false,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 2,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 212,
+                "stash": 46,
+                "cycles": 2364324727
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 3,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 95,
+                "stash": 46,
+                "cycles": 2014313429
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 212,
+                "stash": 46,
+                "cycles": 2364324827
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          },
+          {
+            "mode": 1,
+            "receiver_fixed": true,
+            "outcome": 4,
+            "received": 4097,
+            "crc32": "A634B462",
+            "RX_errors": 0,
+            "MOS_RX_errors": 0,
+            "driver_state": 7,
+            "rescued": false,
+            "integrity_passed": false,
+            "evidence_valid": false,
+            "pre_escape": {
+              "fifo": 0,
+              "enabled": 405,
+              "raw": 16386,
+              "full_flag": 0,
+              "buffered": 0,
+              "stash": 1,
+              "remaining": 0
+            },
+            "events": [
+              {
+                "type": 1,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 17,
+                "cycles": 3187960515
+              },
+              {
+                "type": 2,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 5,
+                "enabled": 405,
+                "raw": 16386,
+                "buffered": 195,
+                "stash": 17,
+                "cycles": 2836331716
+              },
+              {
+                "type": 3,
+                "core": 1,
+                "full_flag": 1,
+                "fifo": 0,
+                "enabled": 148,
+                "raw": 16386,
+                "buffered": 247,
+                "stash": 17,
+                "cycles": 3187960615
+              },
+              {
+                "type": 0,
+                "core": 0,
+                "full_flag": 0,
+                "fifo": 0,
+                "enabled": 0,
+                "raw": 0,
+                "buffered": 0,
+                "stash": 0,
+                "cycles": 0
+              }
+            ]
+          }
+        ],
+        "receiver_fixed": true,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": true,
+        "regression_passed": false,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 15.794,
+      "seed_image_sha256": "b83e3338d1f1f0d9abed7fc42afc19d9727e967325d7ba7582ca25ce71cfd595",
+      "menu_sha256": "3ae422e09ca2d0c200501a3be73d4d25a9e24046ed653b1a29fb7f4b59bd023b",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-native-wrong-variant": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "native",
+      "control": "wrong-variant",
+      "control_rejected": true,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 3,
+        "completed": 0,
+        "cases": [],
+        "receiver_fixed": null,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": false,
+        "regression_passed": false,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 8.707,
+      "seed_image_sha256": "13750124085bcecb093c38bb457f51e8a6dde086384d3db5ada847e0812c9e56",
+      "menu_sha256": "3ae422e09ca2d0c200501a3be73d4d25a9e24046ed653b1a29fb7f4b59bd023b",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    },
+    "checks-original-jit-native": {
+      "passed": true,
+      "error": null,
+      "variant": "original",
+      "engine": "jit",
+      "case": "native",
+      "control": null,
+      "control_rejected": false,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": {
+        "stage": 3,
+        "completed": 0,
+        "cases": [],
+        "receiver_fixed": null,
+        "natural_stock_failure_reproduced": false,
+        "physical_repair_verified": false,
+        "protocol_complete": false,
+        "regression_passed": false,
+        "baseline_fault_captured": false,
+        "repaired_without_rescue": false
+      },
+      "elapsed_seconds": 8.801,
+      "seed_image_sha256": "66ca62ee1bd487ab45b5a8140338d024102afbda8a3d7a8bcdbe54baa5d3c8f5",
+      "menu_sha256": "3ae422e09ca2d0c200501a3be73d4d25a9e24046ed653b1a29fb7f4b59bd023b",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f  esp32-firmware.bin",
+        "85510f805eb2551bb8bb08ce2114ea4157984caf7c0556e0bee98ab3ee651ce1  esp32-firmware.elf"
+      ]
+    },
+    "checks-fixed-jit-campaign-wrong-candidate": {
+      "passed": true,
+      "error": null,
+      "variant": "fixed",
+      "engine": "jit",
+      "case": "campaign",
+      "control": "wrong-candidate",
+      "control_rejected": true,
+      "actual_MOS_FatFS": true,
+      "hostfs_disabled": true,
+      "physical_test_performed": false,
+      "physical_repair_verified": false,
+      "result": null,
+      "elapsed_seconds": 16.037,
+      "seed_image_sha256": "dd2808f4010410acbb0c39cfe82b786684da205fa26570e6391c368090aabfbc",
+      "menu_sha256": "cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf",
+      "native_sha256": "3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091",
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "runtime_identities": [
+        "70968eea798c4003fbb40daea09a7a6cac50c0eeefdeaffd1045c5f309725854  fab-agon-emulator",
+        "412089a89a5adccb3c1c0fc4b121472da28f2d3d48c435c88a660028d7cd84d9  fab-agon-emulator.bin",
+        "77b3cbf76564d54628c2bb876aa96ef3834c6b363d53df4892b8a3ab4248e5cd  flexe-vdp.so",
+        "e7fc0732fba1ba6f94a30cc4bdab7e740c51a2b066cc35259f2abfc101fa848a  mos_platform.bin",
+        "71c17176a38a93c7d12c6c1738f4a6d85cdc6c1146e3bb95ae6caa5a07f4792f  mos_platform.map",
+        "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e  esp32-firmware.bin",
+        "b66d16c01d5fa539d3ed954b026eb231195dfa77d689ac0fcfe02e0f2fd157cd  esp32-firmware.elf"
+      ]
+    }
+  },
+  "audit": {
+    "source_and_link_audit_passed": true,
+    "variants": {
+      "before": {
+        "driver_override_linked": true,
+        "original_archive_object_excluded": true,
+        "blocking_wait_outside_UART_lock": true,
+        "rescue_function_linked": true,
+        "full_flag_store": "400d129c",
+        "preceding_critical_call": {
+          "address": "400d1278",
+          "function": "vPortExitCritical"
+        },
+        "following_critical_call": {
+          "address": "400d12b3",
+          "function": "xPortEnterCriticalTimeout"
+        },
+        "firmware_sha256": "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2",
+        "driver_source_sha256": "ec7d7abc2fdc256feaf4a42e11b61c0d8587ae90843904aa6a9e232c04b5fc6e"
+      },
+      "fixed": {
+        "driver_override_linked": true,
+        "original_archive_object_excluded": true,
+        "blocking_wait_outside_UART_lock": true,
+        "rescue_function_linked": false,
+        "full_flag_store": "400d129b",
+        "preceding_critical_call": {
+          "address": "400d1298",
+          "function": "xPortEnterCriticalTimeout"
+        },
+        "following_critical_call": {
+          "address": "400d12cb",
+          "function": "vPortExitCritical"
+        },
+        "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+        "driver_source_sha256": "4f13b4416f0150c31b3147982f9778668c48164172014337d0e62a67fd988c31"
+      },
+      "candidate": {
+        "driver_override_linked": true,
+        "original_archive_object_excluded": true,
+        "blocking_wait_outside_UART_lock": true,
+        "rescue_function_linked": false,
+        "full_flag_store": "400d1170",
+        "preceding_critical_call": {
+          "address": "400d1159",
+          "function": "xPortEnterCriticalTimeout"
+        },
+        "following_critical_call": {
+          "address": "400d1182",
+          "function": "vPortExitCritical"
+        },
+        "firmware_sha256": "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c",
+        "driver_source_sha256": "6fe284dbb987890ec80d337d6863a5f7113c2986b080f37269b9bba49be8e38c"
+      }
+    },
+    "invalid_evidence_controls_rejected": [
+      "rescue_used",
+      "reader_same_core",
+      "mask_after_reader",
+      "RX_not_enabled"
+    ],
+    "original_driver_sha256": "0a90ac006b6a0cadaac4c47ab035a54c782fb6171fda82e9dd059a3d84c4b0be",
+    "fixed_driver_sha256": "6fe284dbb987890ec80d337d6863a5f7113c2986b080f37269b9bba49be8e38c",
+    "physical_repair_verified": false,
+    "upstream_or_installed_SDK_modified": false
+  },
+  "physical_before_evidence": "experiments/uart0-race/physical-results.json",
+  "fixed_driver_sha256": "6fe284dbb987890ec80d337d6863a5f7113c2986b080f37269b9bba49be8e38c"
+}

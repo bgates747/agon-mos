@@ -58,12 +58,22 @@ def package_files(package, deployment_path="/test/mos-uart0", require_human_revi
         require(manifest.get("human_review_passed") is True, "Human fixture review required")
     vdp = manifest["vdp"]
     diagnostic = manifest.get("receiver_margin_experiment") is True
+    recovery = manifest.get("receiver_recovery_diagnostic") is True
     require(vdp["version"] == "2.16.0", "Need VDP 2.16.0 base")
-    if diagnostic:
+    require(not (diagnostic and recovery), "Ambiguous diagnostic firmware scope")
+    if recovery:
+        require(manifest.get("experiment") == "uart0-race" and vdp.get("stock_release") is False and vdp.get("diagnostic_file") == "vdp-race-diag.bin" and vdp.get("stock_restore") == "vdp-2.16.0.bin", "Invalid recovery diagnostic declaration")
+        require({"vdp-race-diag.bin", "race.bin", "race-source.json", "race-sources.tar.gz", "ESP-IDF-LICENSE", "RACE-CREDITS.txt"} <= set(expected), "Incomplete recovery diagnostic package")
+    elif diagnostic:
         require(vdp.get("stock_release") is False and vdp.get("diagnostic_file") == "vdp-cts-diag.bin" and vdp.get("stock_restore") == "vdp-2.16.0.bin", "Invalid diagnostic firmware declaration")
         require({"vdp-cts-diag.bin", "margin.bin", "margin.json", "DIAGNOSTIC-VDP-LICENSE.txt", "diagnostic-sources.tar.gz"} <= set(expected), "Incomplete diagnostic package")
     else:
         require(vdp["stock_release"], "Need stock VDP 2.16.0")
+    if manifest.get("receiver_sync_repair") is True:
+        require(recovery and manifest.get("subexperiment") == "uart0-repair", "Invalid receiver repair scope")
+        require({"repair.bin", "vdp-race-before.bin", "vdp-race-fixed.bin", "vdp-rx-fixed.bin",
+                 "rx-fix-checks.json", "rx-fix-audit.json", "rx-fix-sources.tar.gz", "RX-FIX-CREDITS.txt"} <= set(expected), "Incomplete receiver repair bundle")
+        require(manifest.get("software_qualification_passed") is True, "Receiver repair software checks required")
     require({"readme.txt", "vdp-2.16.0.bin", "mos-candidate.bin", "test.bin", "checks.bin", "flash.bin"} <= set(expected), "Incomplete manual test package")
     return expected
 

@@ -23,6 +23,7 @@ def main():
     scope=p.add_mutually_exclusive_group()
     scope.add_argument('--exploratory-uart0-ab',action='store_true',help='Author-authorized physical A/B comparison despite known emulator receiver race')
     scope.add_argument('--exploratory-receiver-recovery',action='store_true',help='Author-authorized unchanged-VDP Console8 receiver investigation')
+    scope.add_argument('--exploratory-receiver-diagnostic',action='store_true',help='Author-authorized controlled physical receiver diagnostic preparation')
     p.add_argument('--dry-run',action='store_true');a=p.parse_args()
     package=a.package.resolve(strict=True);mount=a.mount.resolve(strict=True)
     backup=a.backup.resolve();receipt=a.receipt.resolve()
@@ -36,6 +37,9 @@ def main():
         and bool(manifest.get('hardware_test_authorization'))
         and ((a.exploratory_uart0_ab and manifest.get('experiment')=='uart0-ab')
             or (a.exploratory_receiver_recovery and manifest.get('experiment')=='uart0-recovery'
+                and manifest.get('fixture_checks_passed') is True)
+            or (a.exploratory_receiver_diagnostic and manifest.get('experiment')=='uart0-race'
+                and manifest.get('receiver_recovery_diagnostic') is True
                 and manifest.get('fixture_checks_passed') is True)))
     require(manifest.get('suite') is True and (manifest.get('automated_qualification_passed') is True or exploratory),'Need a qualified suite or explicitly authorized exploratory UART0 investigation')
     identity=selected_mount(mount,a.uuid)

@@ -1,0 +1,11 @@
+MOS-owned UART0 diagnostic hooks, host and reporting additions: MIT.
+Agon VDP 2.16.0: Dean Belfield, Steve Sims and upstream contributors.
+Existing VDP, vdp-gl/FabGL, CRC/Rob Tillaart and ESP32Time/fbiego notices
+are preserved in the complete diagnostic source archive and prior notices.
+ESP-IDF UART driver: Espressif Systems (Shanghai) CO LTD, Apache-2.0.
+Its copyright/SPDX header is retained, ESP-IDF-LICENSE is supplied, and
+the private copied uart.c is explicitly modified by inserted diagnostic hooks.
+Arduino-ESP32 2.0.14 and SDK dependencies retain their upstream licenses.
+The suite's existing CREDITS.txt credits MOS, Agon platform, firmware updater,
+Flexe/Fab emulator and their authors, including Dean Belfield, Lennart Benschop
+and Tom Morton. No upstream code is relicensed by the new MIT additions.

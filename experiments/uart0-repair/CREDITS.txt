@@ -1,0 +1,14 @@
+UART0 receiver synchronization repair and diagnostic additions
+
+New patch commentary, hooks, native fixtures, menu integration and analysis:
+2026 the Author (bgates747), with Codex assistance; MIT, as in MOS-LICENSE.txt.
+
+Copied ESP-IDF UART driver: original Espressif Systems contributors, Apache-2.0.
+Its original source copyright/header and ESP-IDF-LICENSE are preserved; the
+derived driver is not relicensed as a whole.
+
+Agon VDP 2.16.0 and libraries retain their original notices and licenses.
+See RACE-CREDITS.txt, CREDITS.txt, VDP-LICENSE.txt and the source archives for
+Dean Belfield, Lennart Benschop, Steve Sims, Tom Morton, Jeroen Venema, Damien
+Guard, Igor Chaves Cananea, and the other Agon, FabGL/vdp-gl, MOS and SDK authors.
+The fixed candidate is experimental and is not an upstream-approved release.

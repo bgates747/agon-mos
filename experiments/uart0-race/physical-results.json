@@ -1,0 +1,179 @@
+{
+  "target": "Heber Agon Console8",
+  "run": 10,
+  "physical_test_performed": true,
+  "physical_diagnostic_passed": true,
+  "diagnostic_induced_physical_ordering_reproduced": true,
+  "natural_stock_failure_reproduced": false,
+  "physical_race_ruled_out": false,
+  "receiver_repair_verified": false,
+  "release_qualified": false,
+  "payload_bytes_checked": 8192,
+  "checkpoint_matches_final": true,
+  "menu_and_index_agree": true,
+  "case_RX_errors": 0,
+  "baseline_RX_flags": 0,
+  "baseline_modem_flags": 1,
+  "entry_RX_flags": "98",
+  "entry_RX_origin_traced": false,
+  "menu_hardware_confirmed": true,
+  "stock_VDP_restored_operator_confirmation": "no",
+  "diagnostic_VDP_still_installed_operator_confirmation": true,
+  "firmware_identity_source": "Diagnostic protocol handshake and byte-checked staged files; no independent flash readback",
+  "physical_duration_measured": false,
+  "SD_writes": false,
+  "prior_reports_preserved": true,
+  "report_sha256": "52403183cefe3fef0a168c9566e6d2d801a85c7a2d32ec017ea56e744da35ced",
+  "journal_sha256": "891b7a7510c9cefbfcc759a3597ac75e722fdbdeb7fa201d124a2e7ef1177cdc",
+  "fixture_pins": {
+    "test.bin": "841045e1b78aa3d6f3191f0bad46c19ef96c50e4ec9f496942201b2c4cef30ac",
+    "race.bin": "ac3f8a7ef9bf50e371f3c7319a6c877c4f225b4a489d9f55f22cedcfdef4db3f",
+    "vdp-race-diag.bin": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f"
+  },
+  "evidence_capture": "/home/smith/Agon/mystuff/agon-mos/build/uart0-race/hardware-return-002",
+  "evidence_archive": "build/uart0-race-console8-r0010.tar.gz",
+  "result": {
+    "stage": 0,
+    "completed": 2,
+    "cases": [
+      {
+        "mode": 0,
+        "outcome": 1,
+        "received": 4096,
+        "crc32": "87897582",
+        "RX_errors": 0,
+        "MOS_RX_errors": 0,
+        "driver_state": 7,
+        "integrity_passed": true,
+        "actual_other_core_recovery": true,
+        "evidence_valid": true,
+        "pre_escape": {
+          "fifo": 0,
+          "enabled": 405,
+          "raw": 28738,
+          "full_flag": 0,
+          "buffered": 0,
+          "stash": 5,
+          "remaining": 0
+        },
+        "events": [
+          {
+            "type": 1,
+            "core": 1,
+            "full_flag": 1,
+            "fifo": 0,
+            "enabled": 405,
+            "raw": 28738,
+            "buffered": 198,
+            "stash": 66,
+            "cycles": 1272230598
+          },
+          {
+            "type": 2,
+            "core": 0,
+            "full_flag": 0,
+            "fifo": 10,
+            "enabled": 405,
+            "raw": 28738,
+            "buffered": 94,
+            "stash": 66,
+            "cycles": 1329016532
+          },
+          {
+            "type": 3,
+            "core": 1,
+            "full_flag": 1,
+            "fifo": 1,
+            "enabled": 148,
+            "raw": 28738,
+            "buffered": 198,
+            "stash": 66,
+            "cycles": 1272231636
+          },
+          {
+            "type": 0,
+            "core": 0,
+            "full_flag": 0,
+            "fifo": 0,
+            "enabled": 0,
+            "raw": 0,
+            "buffered": 0,
+            "stash": 0,
+            "cycles": 0
+          }
+        ]
+      },
+      {
+        "mode": 1,
+        "outcome": 2,
+        "received": 4096,
+        "crc32": "87897582",
+        "RX_errors": 0,
+        "MOS_RX_errors": 0,
+        "driver_state": 7,
+        "integrity_passed": true,
+        "actual_other_core_recovery": true,
+        "evidence_valid": true,
+        "pre_escape": {
+          "fifo": 66,
+          "enabled": 148,
+          "raw": 28994,
+          "full_flag": 0,
+          "buffered": 0,
+          "stash": 66,
+          "remaining": 0
+        },
+        "events": [
+          {
+            "type": 1,
+            "core": 1,
+            "full_flag": 1,
+            "fifo": 0,
+            "enabled": 405,
+            "raw": 28738,
+            "buffered": 198,
+            "stash": 66,
+            "cycles": 1797633288
+          },
+          {
+            "type": 2,
+            "core": 0,
+            "full_flag": 0,
+            "fifo": 2,
+            "enabled": 405,
+            "raw": 28738,
+            "buffered": 185,
+            "stash": 66,
+            "cycles": 1854404687
+          },
+          {
+            "type": 3,
+            "core": 1,
+            "full_flag": 0,
+            "fifo": 3,
+            "enabled": 148,
+            "raw": 28738,
+            "buffered": 185,
+            "stash": 66,
+            "cycles": 1797641064
+          },
+          {
+            "type": 4,
+            "core": 0,
+            "full_flag": 0,
+            "fifo": 66,
+            "enabled": 405,
+            "raw": 28994,
+            "buffered": 0,
+            "stash": 66,
+            "cycles": 1859385464
+          }
+        ]
+      }
+    ],
+    "physical_race_ruled_out": false,
+    "natural_stock_failure_reproduced": false,
+    "protocol_complete": true,
+    "diagnostic_evidence_valid": true
+  }
+}

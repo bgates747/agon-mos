@@ -1,0 +1,81 @@
+{
+  "physical_test_performed": true,
+  "installed_mos_crc32": "239097B7",
+  "ABI": "1.1",
+  "branded_MOS_physically_tested": false,
+  "branding_invalidates_prior_sender_results": false,
+  "ab_runs": [
+    26,
+    27,
+    28
+  ],
+  "ab_phases_passed": 90,
+  "late_feeds": 0,
+  "case_RX_errors": 0,
+  "compatibility_run": 29,
+  "compatibility_passed": true,
+  "compatibility_tests": [
+    1,
+    6,
+    2,
+    3,
+    10
+  ],
+  "receiver_final_buffer_bytes_verified": 49152,
+  "summary": [
+    {
+      "mode": 0,
+      "paced_median_useful_work": 225984,
+      "paced_work_range": [
+        217792,
+        227168
+      ],
+      "bulk_median_ticks": 98
+    },
+    {
+      "mode": 1,
+      "paced_median_useful_work": 542336,
+      "paced_work_range": [
+        541824,
+        555648
+      ],
+      "bulk_median_ticks": 58
+    },
+    {
+      "mode": 2,
+      "paced_median_useful_work": 618304,
+      "paced_work_range": [
+        617024,
+        618912
+      ],
+      "bulk_median_ticks": 58
+    },
+    {
+      "mode": 3,
+      "paced_median_useful_work": 706464,
+      "paced_work_range": [
+        705056,
+        707264
+      ],
+      "bulk_median_ticks": 58
+    },
+    {
+      "mode": 4,
+      "paced_median_useful_work": 715168,
+      "paced_work_range": [
+        713856,
+        715776
+      ],
+      "bulk_median_ticks": 58
+    }
+  ],
+  "otirx_paced_work_gain_over_per_byte_percent": 31.87,
+  "full_AB_bulk_receiver_integrity_verified": false,
+  "exact_CPU_cycles_measured": false,
+  "VDP_identity": "Candidate compatibility protocol gate; A/B same-session attribution, no independent flash readback",
+  "stock_VDP_restoration_confirmed": false,
+  "release_qualified": false,
+  "SD_writes": false,
+  "operator_reports_different_VDP_for_other_testing": true,
+  "stock_restore_requested_now": false
+}

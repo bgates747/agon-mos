@@ -1,0 +1,96 @@
+{
+  "menu_input_checks_passed": true,
+  "physical_menu_confirmation": true,
+  "physical_missed_key_cause_reproduced": false,
+  "hardware_diagnostic_status": "PASS_R0010_CONTROLLED_PHYSICAL_ORDERING",
+  "firmware_and_native_images_changed": false,
+  "menu_sha256": "841045e1b78aa3d6f3191f0bad46c19ef96c50e4ec9f496942201b2c4cef30ac",
+  "checks": {
+    "after-jit-02": {
+      "passed": true,
+      "failure": null,
+      "engine": "jit",
+      "checks": [
+        "late_down_up_same_poll",
+        "eight_submenu_short_taps",
+        "held_key_one_selection_and_experiment_back",
+        "ignore_invalid_keys_and_safe_firmware_selection_with_existing_journal",
+        "callback_detached_for_native_async_session_and_reattached_after",
+        "returned_to_MOS"
+      ],
+      "menu_sha256": "841045e1b78aa3d6f3191f0bad46c19ef96c50e4ec9f496942201b2c4cef30ac",
+      "shim_sha256": "1a26051c70e19bd8148564afc69d9773e304ffa6165d0d4f4a53602fd9d4a9f8",
+      "VDP_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+      "prior_reports_preserved": true,
+      "physical_test_performed": false,
+      "elapsed_seconds": 22.509
+    },
+    "after-interp": {
+      "passed": true,
+      "failure": null,
+      "engine": "interp",
+      "checks": [
+        "late_zero_hold_SDL_tap",
+        "eight_submenu_short_taps",
+        "held_key_one_selection_and_experiment_back",
+        "ignore_invalid_keys_and_safe_firmware_selection_with_existing_journal",
+        "callback_detached_for_native_async_session_and_reattached_after",
+        "returned_to_MOS"
+      ],
+      "menu_sha256": "841045e1b78aa3d6f3191f0bad46c19ef96c50e4ec9f496942201b2c4cef30ac",
+      "shim_sha256": "1a26051c70e19bd8148564afc69d9773e304ffa6165d0d4f4a53602fd9d4a9f8",
+      "VDP_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+      "prior_reports_preserved": true,
+      "physical_test_performed": false,
+      "elapsed_seconds": 23.045
+    },
+    "packets-jit": {
+      "passed": true,
+      "failure": null,
+      "engine": "jit",
+      "checks": [
+        "physical_packet_paths_on_eZ80"
+      ],
+      "menu_sha256": "dd32e01923644889b9729b978f47aa4699d5a826686f5bcb11779d5aeed64d91",
+      "shim_sha256": "1a26051c70e19bd8148564afc69d9773e304ffa6165d0d4f4a53602fd9d4a9f8",
+      "VDP_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+      "prior_reports_preserved": true,
+      "physical_test_performed": false,
+      "elapsed_seconds": 8.29
+    },
+    "packets-interp": {
+      "passed": true,
+      "failure": null,
+      "engine": "interp",
+      "checks": [
+        "physical_packet_paths_on_eZ80"
+      ],
+      "menu_sha256": "dd32e01923644889b9729b978f47aa4699d5a826686f5bcb11779d5aeed64d91",
+      "shim_sha256": "1a26051c70e19bd8148564afc69d9773e304ffa6165d0d4f4a53602fd9d4a9f8",
+      "VDP_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+      "prior_reports_preserved": true,
+      "physical_test_performed": false,
+      "elapsed_seconds": 8.28
+    }
+  },
+  "before_SDL_probe": {
+    "passed": true,
+    "failure": null,
+    "engine": "jit",
+    "checks": [
+      "late_down_up_same_poll",
+      "returned_to_MOS"
+    ],
+    "menu_sha256": "f43c3fdc617e582bf16439889665b4ab0b6030a454365e375b641e363577132f",
+    "shim_sha256": "1a26051c70e19bd8148564afc69d9773e304ffa6165d0d4f4a53602fd9d4a9f8",
+    "VDP_sha256": "59fe20e7e72c1e5c9b47341c50faf7cb180ac8f6a00755f074be7d44cfab4f0f",
+    "prior_reports_preserved": true,
+    "physical_test_performed": false,
+    "elapsed_seconds": 14.285
+  },
+  "source_sha256": {
+    "experiments/uart0-suite/src/main.c": "cd22f4d544a66da2984cc01ff00dfa7b1c6984d23b349061248b2670f18782db",
+    "experiments/uart0-suite/src/uart.src": "4f297772f21b846b9e08edb47ad886dae46dec5391d88a972eaf68d5506a6773"
+  },
+  "physical_confirmation_source": "Author confirmed the keypress repair after the Console8 R0010 session"
+}

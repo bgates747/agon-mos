@@ -13,6 +13,10 @@
 #define SKIP 2
 #define PENDING 3
 #define CHILD ((char *)0x80000)
+/* Banner-only native rebuild of the pinned, hardware-tested API1.1 sender. */
+#define UART0_BRANDED_API11_ROM_CRC 0x44BC5C07UL
+/* Flexe fills the unused ROM tail with zero; physical erased flash uses FF. */
+#define UART0_BRANDED_API11_FLEXE_CRC 0xDD9A1288UL
 extern const uint8_t *uart_discover(void);
 extern uint24_t diag_take(void);
 extern uint8_t rom_byte0(void);
@@ -24,6 +28,27 @@ static volatile uint8_t *sv;
 static uint32_t crc_table[256],rom_crc;
 static unsigned run_id;
 static uint8_t detail,index_log;
+volatile uint8_t menu_key_head,menu_key_tail,menu_key_data[16],menu_key_held[32];
+extern void menu_key_callback(void);
+static int menu_input_active;
+static void menu_input_begin(void) {
+    if(menu_input_active)return;
+    menu_key_head=menu_key_tail=0;
+    memset((void *)menu_key_held,0,sizeof(menu_key_held));
+    mos_setkbvector(menu_key_callback,0);menu_input_active=1;
+}
+static void menu_input_end(void) {
+    if(menu_input_active){mos_setkbvector(NULL,0);menu_input_active=0;}
+}
+static char menu_key(void) {
+    while(menu_key_head==menu_key_tail){}
+    char key=menu_key_data[menu_key_tail];menu_key_tail=(menu_key_tail+1)&15;
+    return key;
+}
+static char menu_choice(const char *valid) {
+    char key;do{key=menu_key();}while(!strchr(valid,key));
+    printf("Selected %c\n",key);return key;
+}
 static int log_ok;
 static char line[256],name[32];
 static char board[64]="unspecified hardware";
@@ -85,7 +110,7 @@ static unsigned last_run(void) {
 }
 static int begin_run(const char *action) {
     /* Reserve the run log first; an interrupted run's number cannot be reused. */
-    const char *prefixes="BNFSPGDIKJHLEAXYZC";
+    const char *prefixes="BNFSPGDIKJHLEAXYZCUOV";
     for(run_id=last_run()+1;run_id<10000;run_id++) {
         filename(name,'R',"log");if(exists(name))continue;
         int used=0;
@@ -270,16 +295,16 @@ static int ab_test(void) {
     journal("AB_SCOPE raw MOS ticks; receiver735 bytes/phase; full bulk integrity and physical CPU cycles not measured\r\n");
     return PASS;
 }
-static int recovery_test(int extended) {
-    puts("Receiver recovery investigation: unchanged stock VDP 2.16.0.");
+static int recovery_test(int extended,int repaired) {
+    puts(repaired?"Receiver workload: repaired candidate, normal stock commands.":"Receiver recovery investigation: unchanged stock VDP 2.16.0.");
     puts(extended?"Extended: 24 cases, allow eight minutes; no progress for two minutes means FAIL.":"Short: six cases, allow about two minutes; a stall is FAIL.");
     puts("A pass covers this workload only; it cannot rule out a rare hardware race.");
     if(!available()){puts("SKIP: experimental MOS UART0 API 1.1 is required.");return SKIP;}
     /* Same 110695-byte image; physical erased tail is FF, emulator tail is 00. */
-    if(rom_crc!=0x239097B7UL && rom_crc!=0x2A87C5B5UL){puts("FAIL: this investigation requires the previously tested ABI1.1 MOS image.");return FAIL;}
+    if(rom_crc!=0x239097B7UL && rom_crc!=0x2A87C5B5UL && rom_crc!=UART0_BRANDED_API11_ROM_CRC && rom_crc!=UART0_BRANDED_API11_FLEXE_CRC){puts("FAIL: this investigation requires the previously tested ABI1.1 MOS image.");return FAIL;}
     if(mos_load("recovery.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01URH1",9))return FAIL;
     filename(CHILD+73,'Y',"dat");filename(CHILD+89,'Z',"dat");filename(CHILD+105,'C',"dat");CHILD[121]=extended?4:1;
-    snprintf(line,sizeof(line),"RECOVERY_START report=Y%04u.dat checkpoint=Z%04u.dat failure=C%04u.dat cases=%u VDP=operator-confirmed-stock\r\n",run_id,run_id,run_id,extended?24:6);
+    snprintf(line,sizeof(line),"RECOVERY_START report=Y%04u.dat checkpoint=Z%04u.dat failure=C%04u.dat cases=%u VDP=%s\r\n",run_id,run_id,run_id,extended?24:6,repaired?"RX-sync-candidate":"operator-confirmed-stock");
     journal(line);checkpoint();
     if(!log_ok)return FAIL;
     char command[]="RUN &80000";
@@ -293,7 +318,7 @@ static int recovery_test(int extended) {
         if(kind==1 && mode && !r[6])return FAIL;
         snprintf(line,sizeof(line),"RECOVERY case=%u mode=%u kind=%u ticks=%lu wire=%lu final_verified=8192 replies=%u overlap_replies=%u rx=%02X\r\n",i+1,mode,kind,(unsigned long)u24(r+8),(unsigned long)u24(r+11),r[5],r[6],r[3]);journal(line);
     }
-    snprintf(line,sizeof(line),"RECOVERY_SCOPE stock-VDP unchanged; final buffers verified=%lu bytes; intermediate bulk overwrites not checked; rare race not ruled out; receiver state uninstrumented\r\n",(unsigned long)cases*8192);journal(line);
+    snprintf(line,sizeof(line),"RECOVERY_SCOPE %s; final buffers verified=%lu bytes; intermediate bulk overwrites not checked; rare race not ruled out; receiver state uninstrumented\r\n",repaired?"RX-sync-candidate using normal stock commands":"stock-VDP unchanged",(unsigned long)cases*8192);journal(line);
     return PASS;
 }
 static uint32_t parse_ms(const char *s) {
@@ -329,6 +354,93 @@ static int calibration(int automated) {
     return ok?PASS:FAIL;
 }
 static uint32_t u32(const uint8_t *p) {return (uint32_t)p[0]+((uint32_t)p[1]<<8)+((uint32_t)p[2]<<16)+((uint32_t)p[3]<<24);}
+static int file_crc(const char *path,uint32_t *crc,uint32_t *size);
+static int race_case_valid(const uint8_t *r,unsigned mode) {
+    const uint8_t *pub=r+64,*reader=r+88,*masked=r+112,*escape=r+136;
+    int cores=pub[1]<2 && pub[1]==masked[1] && reader[1]==1-pub[1] && r[52]==pub[1] && r[53]==reader[1];
+    int common=pub[0]==1 && reader[0]==2 && masked[0]==3 && pub[2]==1 && !reader[2] && (u32(reader+4)&0x101)==0x101 && r[54]==1 && r[55]==64 && (u32(r+56)&0x101)==0x101;
+    if(!cores || !common)return 0;
+    if(!mode)return r[7]==1 && r[6]==3 && !r[60] && masked[2]==1 && !(u32(masked+4)&0x101) && !escape[0];
+    return r[7]==2 && r[6]==4 && r[60]==1 && u32(r+20)==7 && !masked[2] && !(u32(masked+4)&0x101) && u32(r+24)>0 && u32(r+24)<=128 && !(u32(r+28)&0x101) && (u32(r+32)&0x101) && !u32(r+36) && !u32(r+40) && !u32(r+48) && escape[0]==4 && (u32(escape+4)&0x101)==0x101;
+}
+static int receiver_race(void) {
+    puts("Controlled receiver diagnostic: requires the staged recovery diagnostic VDP.");
+    puts("Two cases; allow two minutes. Forced diagnostic failure is not a natural stock failure.");
+    if(!available())return SKIP;
+    if(rom_crc!=0x239097B7UL && rom_crc!=0x2A87C5B5UL && rom_crc!=UART0_BRANDED_API11_ROM_CRC && rom_crc!=UART0_BRANDED_API11_FLEXE_CRC)return FAIL;
+    if(mos_load("race.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01URD1",9))return FAIL;
+    filename(CHILD+73,'U',"dat");filename(CHILD+89,'L',"dat");filename(CHILD+105,'V',"dat");filename(CHILD+121,'O',"dat");
+    snprintf(line,sizeof(line),"RACE_START result=U%04u.dat progress=O%04u.dat failure=V%04u.dat VDP=diagnostic_handshake_required\r\n",run_id,run_id,run_id);journal(line);checkpoint();
+    if(!log_ok)return FAIL;
+    char command[]="RUN &80000";uint8_t error=mos_oscli(command,NULL,0),b[333],p[333];filename(name,'U',"dat");
+    if(error || !read_report(name,b,332) || memcmp(b,"URDHOST1\x01",9) || b[10]!=2)return FAIL;
+    if(b[9]==3 && !b[11]){journal("RACE SKIP diagnostic_VDP_required\r\n");return SKIP;}
+    if(b[9] || b[11]!=2)return FAIL;
+    filename(name,'O',"dat");if(!read_report(name,p,332) || memcmp(b,p,332))return FAIL;
+    int valid=1;
+    for(unsigned i=0;i<2;i++) {
+        const uint8_t *r=b+12+i*160;
+        if(memcmp(r,"URD1\x01",5) || r[5]!=i || u32(r+8)!=4096 || u32(r+12)!=0x87897582UL || u32(r+16) || r[61] || r[62]!=1)return FAIL;
+        int observed=race_case_valid(r,i);if(!observed)valid=0;
+        snprintf(line,sizeof(line),"RACE mode=%u outcome=%u valid=%u ISR_core=%u reader_core=%u pre_fifo=%lu pre_enabled=%08lX pre_raw=%08lX escape=%u CRC=%08lX RX=%02X\r\n",i,r[7],observed,r[52],r[53],(unsigned long)u32(r+24),(unsigned long)u32(r+28),(unsigned long)u32(r+32),r[60],(unsigned long)u32(r+12),r[61]);puts(line);journal(line);
+    }
+    snprintf(line,sizeof(line),"RACE_SCOPE physical_target=%u evidence_valid=%u diagnostic_induced=1 natural_stock_failure=NOT_ESTABLISHED repair=NOT_TESTED\r\n",physical_receiver,valid);journal(line);
+    if(!valid){puts("INCONCLUSIVE: required receiver ordering/state was not established; preserve reports.");return PENDING;}
+    if(!physical_receiver){puts("Emulator diagnostic evidence complete; physical result remains pending.");return PENDING;}
+    puts("CONTROLLED RECEIVER DIAGNOSTIC PASS; forced ordering captured and payload recovered.");return PASS;
+}
+static int repaired_case_valid(const uint8_t *r,unsigned mode) {
+    const uint8_t *pub=r+64,*reader=r+88,*masked=r+112,*escape=r+136;
+    int cores=pub[1]<2 && pub[1]==masked[1] && reader[1]==1-pub[1] && r[52]==pub[1] && r[53]==reader[1];
+    return cores && pub[0]==1 && reader[0]==2 && masked[0]==3 && pub[2]==1 && !reader[2] &&
+        (u32(reader+4)&0x101)==0x101 && r[54]==1 && r[55]==64 && (u32(r+56)&0x101)==0x101 &&
+        r[7]==(mode?5:1) && r[6]==3 && !r[60] && u32(r+20)==7 && masked[2]==1 &&
+        !(u32(masked+4)&0x101) && !escape[0] && !u32(r+24) && (u32(r+28)&0x101)==0x101 &&
+        !u32(r+36) && !u32(r+40) && !u32(r+48);
+}
+static int receiver_repair(unsigned fixed) {
+    printf("Receiver synchronization test: expected %s diagnostic VDP.\n",fixed?"REPAIRED":"BASELINE");
+    puts("Two cases, under two minutes. The repaired version must need no rescue.");
+    if(!available())return SKIP;
+    if(rom_crc!=0x239097B7UL && rom_crc!=0x2A87C5B5UL && rom_crc!=UART0_BRANDED_API11_ROM_CRC && rom_crc!=UART0_BRANDED_API11_FLEXE_CRC)return FAIL;
+    uint32_t crc,size;
+    if(!file_crc("repair.bin",&crc,&size) || size>0x10000 || mos_load("repair.bin",CHILD,0x10000) || memcmp(CHILD+64,"MOS\x00\x01URF1",9))return FAIL;
+    filename(CHILD+73,'U',"dat");filename(CHILD+89,'L',"dat");filename(CHILD+105,'V',"dat");filename(CHILD+121,'O',"dat");CHILD[137]=fixed;
+    snprintf(line,sizeof(line),"RXFIX_START expected_fixed=%u native_bytes=%lu native_CRC32=%08lX result=U%04u.dat progress=O%04u.dat\r\n",fixed,(unsigned long)size,(unsigned long)crc,run_id,run_id);journal(line);checkpoint();
+    if(!log_ok)return FAIL;
+    char command[]="RUN &80000";uint8_t error=mos_oscli(command,NULL,0),b[333],p[333];filename(name,'U',"dat");
+    if(error || !read_report(name,b,332) || memcmp(b,"URFHOST1\x01",9) || b[10]!=2)return FAIL;
+    if(b[9]==3 && !b[11]){puts("SKIP: the expected matched diagnostic VDP is not installed.");journal("RXFIX SKIP wrong_or_missing_diagnostic_VDP\r\n");return SKIP;}
+    if(b[9] || b[11]!=2)return FAIL;
+    filename(name,'O',"dat");if(!read_report(name,p,332) || memcmp(b,p,332))return FAIL;
+    int valid=1;
+    for(unsigned mode=0;mode<2;mode++) {
+        const uint8_t *r=b+12+mode*160;
+        if(memcmp(r,"URF1\x01",5) || r[5]!=mode || r[63]!=fixed || u32(r+8)!=4096 || u32(r+12)!=0x87897582UL || u32(r+16) || r[61] || r[62]!=1)return FAIL;
+        int observed=fixed?repaired_case_valid(r,mode):race_case_valid(r,mode);if(!observed)valid=0;
+        snprintf(line,sizeof(line),"RXFIX fixed=%u mode=%u outcome=%u valid=%u rescued=%u received=%lu CRC=%08lX RX=%02X\r\n",fixed,mode,r[7],observed,r[60],(unsigned long)u32(r+8),(unsigned long)u32(r+12),r[61]);puts(line);journal(line);
+    }
+    snprintf(line,sizeof(line),"RXFIX_SCOPE physical_target=%u expected_fixed=%u evidence_valid=%u natural_stock_failure=NOT_ESTABLISHED\r\n",physical_receiver,fixed,valid);journal(line);
+    if(!valid){puts("INCONCLUSIVE: required ordering/state was not captured; preserve reports.");return PENDING;}
+    if(!physical_receiver){puts("Emulator checks complete; hardware confirmation pending.");return PENDING;}
+    puts(fixed?"REPAIRED RECEIVER PASS: all payload bytes recovered WITHOUT rescue.":"BASELINE DIAGNOSTIC PASS: original fault captured and rescued.");return PASS;
+}
+static int receiver_candidate(void) {
+    puts("Candidate compatibility campaign: normal commands, legacy/async, full byte checks.");
+    puts("Requires UART0 RX sync candidate; allow three minutes, report any stalled phase.");
+    if(!available())return SKIP;
+    uint8_t hello[]={23,0,0xe6,2};sv[sysvar_gp]=0xfe;mos_puts((const char *)hello,sizeof(hello),0);
+    uint32_t at=getsysvar_time();while(sv[sysvar_gp]==0xfe)if((uint32_t)(getsysvar_time()-at)>600)return SKIP;
+    if(sv[sysvar_gp]!=0xda){puts("SKIP: candidate without timing/rescue hooks is not installed.");return SKIP;}
+    const unsigned tests[]={1,6,2,3,10};
+    for(unsigned i=0;i<5;i++) {
+        printf("Candidate phase %u/5: test %u...\n",i+1,tests[i]);int status;
+        if(tests[i]==1)status=diagnostics();else if(tests[i]==6)status=integration();
+        else if(tests[i]==10)status=recovery_test(0,1);else status=child_test(tests[i]);
+        record_status(tests[i],status);checkpoint();if(status!=PASS)return status;
+    }
+    puts("CANDIDATE COMPATIBILITY PASS: timing and rescue hooks absent.");return PASS;
+}
 static int receiver_margin(void) {
     puts("T7: diagnostic VDP receiver-margin experiment; 42 trials, under two minutes.");
     if(!available())return SKIP;
@@ -382,18 +494,21 @@ static int backup_mos(void) {
     snprintf(line,sizeof(line),"BACKUP %s bytes=%lu CRC32=%08lX\r\n",name,(unsigned long)size,(unsigned long)crc);puts(line);journal(line);return PASS;
 }
 static void firmware_menu(void) {
-    puts("STAGED FIRMWARE: 1 MOS; 2 VDP; 3 MOS backup; 4 restore stock VDP; 0 back");
+    puts("STAGED FIRMWARE: 1 MOS; 2 original diagnostic VDP; 3 MOS backup; 4 restore stock VDP");
+    puts("5 repaired diagnostic; 6 matched baseline diagnostic; 7 candidate without timing/rescue hooks; 0 back");
     puts("Read firmware.txt for backup/recovery and VDP update restrictions.");
     if(!vdp_flash)puts("VDP flashing is unavailable in this emulator profile.");
-    char choice=getch();if(choice<'1'||choice>'4')return;
+    char choice=menu_choice("01234567qQ");if(choice=='0'||choice=='q'||choice=='Q')return;
+    menu_input_end();
+    puts("Opening the numbered result log...");
     if(!begin_run("firmware"))return;
     if(choice=='3'){finish_run(backup_mos());return;}
-    if((choice=='2'||choice=='4') && !vdp_flash) {
+    if(choice!='1' && !vdp_flash) {
         puts("VDP flashing unavailable in this emulator profile; updater not launched.");
         journal("FLASH_SKIP target=VDP reason=emulator_OTA_not_qualified\r\n");
         finish_run(SKIP);return;
     }
-    const char *image=choice=='1'?mos_image:choice=='4'?vdp_restore:vdp_image;
+    const char *image=choice=='1'?mos_image:choice=='4'?vdp_restore:choice=='5'?"vdp-race-fixed.bin":choice=='6'?"vdp-race-before.bin":choice=='7'?"vdp-rx-fixed.bin":vdp_image;
     uint32_t crc,size;
     printf("Checking staged %s...\n",image);
     if(!file_crc(image,&crc,&size) || (choice=='1'&&size>0x20000)){puts("Firmware file missing/invalid size.");finish_run(FAIL);return;}
@@ -420,7 +535,10 @@ static void firmware_menu(void) {
     }
 }
 static int execute(unsigned test,int automated) {
-    if(test==10 || test==11)return recovery_test(test==11);
+    if(test==13 || test==14)return receiver_repair(test==14);
+    if(test==15)return receiver_candidate();
+    if(test==12)return receiver_race();
+    if(test==10 || test==11)return recovery_test(test==11,0);
     if(test==8)return ab_test();
     if(test==7)return receiver_margin();
     if(test==6)return integration();
@@ -428,6 +546,8 @@ static int execute(unsigned test,int automated) {
     if(test==4)return calibration(automated);return capture_guide();
 }
 static int selection(unsigned test,int automated) {
+    menu_input_end();
+    puts("Opening the numbered result log...");
     if(!begin_run(test?"individual":"all"))return FAIL;
     int overall=PASS;
     const unsigned order[]={1,6,2,3,4,5,8,10};
@@ -449,28 +569,33 @@ int main(int argc,char **argv) {
     crc_init();putch(12);puts("UART0 QUALIFICATION SUITE v1");
     puts("Reading installed MOS fingerprint...");rom_crc=installed_crc();config();
     if(argc>1) {
+        if(!strcmp(argv[1],"before") || !strcmp(argv[1],"fixed") || !strcmp(argv[1],"candidate"))return selection(!strcmp(argv[1],"candidate")?15:!strcmp(argv[1],"fixed")?14:13,0)==FAIL;
+        if(!strcmp(argv[1],"race"))return selection(12,0)==FAIL;
         if(!strcmp(argv[1],"rx") || !strcmp(argv[1],"rxe"))return selection(!strcmp(argv[1],"rxe")?11:10,0)==FAIL;
         if(!strcmp(argv[1],"auto")){int r=selection(0,1);puts(r==FAIL?"UART0 SUITE AUTO FAIL":"UART0 SUITE AUTO COMPLETE; manual measurements pending");return r==FAIL;}
         if(argv[1][0]>='1'&&argv[1][0]<='8'&&!argv[1][1])return selection(argv[1][0]-'0',0)==FAIL;
     }
+    menu_input_begin();
     for(;;) {
         puts("\nUART0 QUALIFICATION SUITE v1");
         printf("Hardware label: %s; installed MOS CRC32 %08lX\n",board,(unsigned long)rom_crc);
         printf("VDP label: %s (operator supplied)\n",vdp_label);
         puts("1 Firmware/API and phased RX diagnostics\n2 Legacy/async benchmark\n3 Pause / full-duplex stress\n4 Independent stopwatch calibration\n5 CTS capture preparation\n6 API / masked-IFF / exit / ADL=0 smoke tests\n7 Diagnostic VDP receiver-margin experiment (separate)\n8 Controlled experiments: A/B and stock-VDP receiver recovery\n0 Run all baseline tests plus A/B (manual timing can be skipped)\n9 Staged firmware / MOS backup\nQ Return to MOS\nPress a choice key:");
-        char c=getch();if(c=='q'||c=='Q')break;
-if(c=='9'){firmware_menu();continue;}
-if(c=='8') {
-    puts("1 Previous controlled A/B comparison\n2 Receiver recovery: short, six cases\n3 Receiver recovery: extended, 24 cases\n0 Run A/B then short recovery campaign\nQ Back\nChoose:");
-    char e=getch();
-    if(e=='1')selection(8,0);
-    else if(e=='2'||e=='3')selection(e=='3'?11:10,0);
-    else if(e=='0'){if(selection(8,0)!=FAIL)selection(10,0);}
-    else continue;
-    puts("Press any key for menu.");getch();continue;
-}
-        if(c>='0'&&c<='8'){selection(c-'0',0);puts("Press any key for menu.");getch();}
-        else puts("Choose 0-9 or Q.");
+        char c=menu_choice("0123456789qQ");if(c=='q'||c=='Q')break;
+        if(c=='9'){firmware_menu();menu_input_begin();continue;}
+        if(c=='8') {
+            puts("1 Previous controlled A/B comparison\n2 Receiver recovery: short, six cases\n3 Receiver recovery: extended, 24 cases\n4 Original receiver-race diagnostic\n5 Matched BASELINE receiver diagnostic\n6 REPAIRED receiver diagnostic (no rescue)\n7 Candidate compatibility campaign\n0 Run A/B then short recovery campaign\nQ Back\nChoose:");
+            char e=menu_choice("01234567qQ");
+            if(e=='q'||e=='Q')continue;
+            if(e=='1')selection(8,0);
+            else if(e=='2'||e=='3')selection(e=='3'?11:10,0);
+            else if(e=='4')selection(12,0);
+            else if(e>='5'&&e<='7')selection(e-'5'+13,0);
+            else if(e=='0'){if(selection(8,0)!=FAIL)selection(10,0);}
+            menu_input_begin();puts("Press any key for menu.");menu_key();continue;
+        }
+        selection(c-'0',0);menu_input_begin();puts("Press any key for menu.");menu_key();
     }
+    menu_input_end();
     puts("UART0 SUITE RETURN PASS");return 0;
 }

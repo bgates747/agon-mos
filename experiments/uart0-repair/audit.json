@@ -1,0 +1,66 @@
+{
+  "source_and_link_audit_passed": true,
+  "variants": {
+    "before": {
+      "driver_override_linked": true,
+      "original_archive_object_excluded": true,
+      "blocking_wait_outside_UART_lock": true,
+      "rescue_function_linked": true,
+      "full_flag_store": "400d129c",
+      "preceding_critical_call": {
+        "address": "400d1278",
+        "function": "vPortExitCritical"
+      },
+      "following_critical_call": {
+        "address": "400d12b3",
+        "function": "xPortEnterCriticalTimeout"
+      },
+      "firmware_sha256": "5a7fa9802cd036523dd6ecba3de929765f74b62098d1481f1c6c7b2ab188c1a2",
+      "driver_source_sha256": "ec7d7abc2fdc256feaf4a42e11b61c0d8587ae90843904aa6a9e232c04b5fc6e"
+    },
+    "fixed": {
+      "driver_override_linked": true,
+      "original_archive_object_excluded": true,
+      "blocking_wait_outside_UART_lock": true,
+      "rescue_function_linked": false,
+      "full_flag_store": "400d129b",
+      "preceding_critical_call": {
+        "address": "400d1298",
+        "function": "xPortEnterCriticalTimeout"
+      },
+      "following_critical_call": {
+        "address": "400d12cb",
+        "function": "vPortExitCritical"
+      },
+      "firmware_sha256": "a9845b1a3e3999c54c3f8f698977d8715b199dafb3493202dc17276c0dde008e",
+      "driver_source_sha256": "4f13b4416f0150c31b3147982f9778668c48164172014337d0e62a67fd988c31"
+    },
+    "candidate": {
+      "driver_override_linked": true,
+      "original_archive_object_excluded": true,
+      "blocking_wait_outside_UART_lock": true,
+      "rescue_function_linked": false,
+      "full_flag_store": "400d1170",
+      "preceding_critical_call": {
+        "address": "400d1159",
+        "function": "xPortEnterCriticalTimeout"
+      },
+      "following_critical_call": {
+        "address": "400d1182",
+        "function": "vPortExitCritical"
+      },
+      "firmware_sha256": "f6659881d0638e2497f91f9006b9bb65ba72a4afd8d6b0d0eaad156eabf0287c",
+      "driver_source_sha256": "6fe284dbb987890ec80d337d6863a5f7113c2986b080f37269b9bba49be8e38c"
+    }
+  },
+  "invalid_evidence_controls_rejected": [
+    "rescue_used",
+    "reader_same_core",
+    "mask_after_reader",
+    "RX_not_enabled"
+  ],
+  "original_driver_sha256": "0a90ac006b6a0cadaac4c47ab035a54c782fb6171fda82e9dd059a3d84c4b0be",
+  "fixed_driver_sha256": "6fe284dbb987890ec80d337d6863a5f7113c2986b080f37269b9bba49be8e38c",
+  "physical_repair_verified": false,
+  "upstream_or_installed_SDK_modified": false
+}

@@ -1,5 +1,12 @@
 # AB-006: native A/B receiver stall
 
+2026-10-15 update: the MOS-owned VDP driver correction is confirmed by matched
+Console8 diagnostics R0012/R0014 and normal candidate compatibility R0017.
+The baseline needs rescue; the repaired driver verifies every byte without it.
+Stock VDP restoration is confirmed. See uart0-receiver-sync-fix.md. The original
+A/B workload still needs replay against the repaired receiver; the captured
+emulator evidence below is retained and does not itself claim that regression.
+
 Executive summary: a hardware-watchpoint trace catches the VDP receive ISR
 disabling RX interrupts after the other core has recovered its buffered data
 and cleared the recovery flag. This strands incoming bytes and holds CTS

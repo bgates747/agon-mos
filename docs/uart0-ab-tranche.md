@@ -9,10 +9,22 @@ one-byte-at-a-time background sender.
 First finish the controlled comparisons and reliability checks. Then test a
 workload like Jukebox's regularly scheduled audio uploads, followed by Jukebox
 itself, to see whether the saved CPU time improves graphics without disrupting
-sound. The unresolved VDP receive fault must be addressed before emulator
-passes can support release approval. TODO.md is the sole actionable checklist.
+sound. The VDP receive fault now has a hardware-confirmed repair under controlled
+timing. Requalify the original A/B workload against that repair before relying
+on emulator passes for release approval. TODO.md is the sole actionable checklist.
 
 ## Status and qualification gate
+
+Console8 replay on 2026-10-16 passes all 90 phases across R0026/R0027/R0028,
+followed by candidate compatibility PASS R0029 and 49,152 final-buffer bytes
+verified. OTIRX provides 31.87% more median paced useful work than experimental
+per-byte async; their median bulk time remains equal. These tests used the
+unbranded API1.1 MOS and repaired VDP candidate. The branding-only rebuild does
+not invalidate sender results; it has separate native/emulator evidence and
+has not been physically tested. No full rerun is requested for branding alone.
+The Author installed another project's VDP afterward; leave that firmware alone.
+Remaining AB-006 work is emulator regression/coordination and renewed human
+qualification. Full A/B bulk integrity and supported ABI1.2 tests remain separate.
 
 Stock MOS is the approved baseline. Experimental per-byte async, grouped
 scalar, chunk-accounted scalar and OTIRX are development candidates, not
@@ -29,11 +41,12 @@ byte, measure exact CPU cycles or approve a production feature.
 The human Flexe stall at `A/B repeat 2 mode 1 phase 0` led to a captured VDP
 cross-core receive-buffer recovery race: the ISR disables RX after reader
 recovery clears its full flag. See [failure evidence](uart0-ab-stall.md).
-AB-006 now owns correction/regression with the receiver owner and renewed
-both-engine/human qualification. Diagnostic RX re-enable is evidence, not a
-fix. Passing runs and the separately authorized hardware campaign do not close
-that dependency. Historical failed attempts and runtime identities remain
-archived in the workspace.
+The MOS agent's private VDP correction now passes the matched Console8 pair:
+R0012 captures/rescues the baseline fault, R0014 recovers every byte without
+rescue, and R0017 passes candidate compatibility. Stock restoration is confirmed.
+AB-006 retains regression of the original A/B workload, Flexe coordination and
+renewed both-engine/human qualification. See uart0-receiver-sync-fix.md.
+Historical failed attempts and runtime identities remain archived in the workspace.
 
 ## Remaining route to release
 
@@ -49,8 +62,8 @@ variation and explicit baseline identities. AB-004 adds the source-derived
 paced audio fixture; AB-007 separately scopes actual skins-branch Jukebox
 integration and audio/graphics measurements with the application owner.
 
-UI-001 retains the unexplained menu keyboard delay. AB-006 retains the receiver
-race dependency before emulator passes can support release qualification.
+UI-001's keyboard fix is confirmed on hardware. AB-006 retains original-workload
+regression and emulator acceptance after the physical receiver repair.
 BT-007 assembles the repeatable tests, supported combinations, compatibility
 limits and safety rationale into a release candidate for explicit Author
 approval. Neither successful hardware tests nor permission to commit constitutes

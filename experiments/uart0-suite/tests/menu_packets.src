@@ -1,0 +1,8 @@
+.assume ADL=1
+.section .text
+.global _menu_test_event
+.extern _menu_test_packet
+.extern _menu_key_callback
+_menu_test_event:
+    ld de,_menu_test_packet
+    jp _menu_key_callback

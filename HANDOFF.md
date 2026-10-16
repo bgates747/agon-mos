@@ -1,11 +1,261 @@
 # Interrupt-based UART0 transmission project — handoff
 
-Executive summary: this project aims to give apps such as Jukebox more CPU time
-for graphics while MOS sends data to the VDP in the background. Small-batch
-sending showed useful headroom in an earlier Console8 experiment. The new
-app-controlled version passes software checks, but a VDP receive fault and
-unfinished qualification still prevent approval. Stock MOS remains the approved
-baseline; no new firmware was installed during the latest tranche.
+Latest, 2026-10-16: Console8 replay PASSES. R0026/R0027/R0028 pass all 90
+original A/B phases with zero late feeds/case RX errors; R0029 passes candidate
+compatibility and verifies 49,152 final-buffer bytes. Tested MOS is unbranded
+API1.1/ROM CRC239097B7; do not relabel this as a physical branded-ROM test.
+OTIRX yields 31.87% more median paced useful work than per-byte async, with
+equal bulk time (58 median ticks; stock-style blocking is 98). Full A/B bulk
+byte verification and supported ABI1.2 qualification remain unfinished.
+The Author installed a different VDP for other testing; leave it unchanged.
+Interpretation: experiments/uart0-branding/physical-results-20261016.json.
+
+Raw archive on Pi/Oryx: build/uart0-console8-ab-pass-20261016.tar.gz,
+54,544,623 bytes, SHA256
+0cf62c4b069f1b2030d8c9a1c1f2f9f03cad2aad107b8e0a1b226a3b1461ba19.
+After archiving, staged branded MOS/menu at the SAME card directory. No flash
+or hardware run. Short readme marks the campaign complete and offers optional
+menu9/1 branding installation; no full rerun or VDP change is requested.
+All detailed reports/root boot files are intact. Index is compacted through
+0029; next run0030. New baseline: build/uart0-branding/deployed-card-state-20261016.
+Manifest SHA256 5c606c70efd7a334b377b9d7e64fd296153ab716edb6141e4d57e0bd2d84d993;
+running-log SHA256 badd0b9ae09e4842ac71eb0725e6871df71fc072b4ea3da1f140c9b076bb3644.
+BR-001 retains optional physical banner confirmation. EMOS remains stopped.
+
+Latest preparation, 2026-10-15: the Author requested a visibly branded custom
+MOS to prevent stock/experimental confusion, then said the card is absent and
+will report when available. NO card writes until that notice. Off-card package
+on Oryx: build/uart0-branding/console8-branded. Boot subtitle is
+"Arthur - UART0 async EXPERIMENTAL"; native file CRCAD9C0F96, physical erased
+ROM CRC44BC5C07, API1.1. It retains the earlier hardware-tested API1.1 sender,
+NOT the newer ABI1.2 implementation. The unmodified pinned source reproduced
+the old firmware hash exactly; only version.h subtitle differs in the branded
+native snapshot. Both final Flexe checks pass tests1/6/10 through actual FatFS,
+and the native runner passes27 production-ROM scenarios. One earlier interpreter
+integration failure is retained/unassigned; passing repeats do not erase it.
+Menu accepts branded physical/zero-fill fingerprints, retains original ones,
+and keeps the hardware-confirmed keypress code. BR-001 tracks deployment at the
+same /test/mos-uart0, preserving reports/compact log. No flash/hardware run.
+Branding evidence is SHA-verified on Pi/Oryx:
+build/uart0-branding-evidence-20261015.tar.gz, 66,909,919 bytes,
+SHA256 a50245803d17354194ab1ad1409124e2213d6814f5b17b4a9f2631746fa3d77d.
+
+Latest card maintenance, 2026-10-15: Author requested shorter on-card text,
+with complete history retained in the project. Full pre-change card snapshot
+is SHA-verified on Pi/Oryx in build/uart0-card-before-short-text-20261015.tar.gz
+(54,497,587 bytes), SHA256
+c92e978135ad95b6f9a9af711407c5c413d06f59d9cac608a3846cc08f22ff04.
+readme.txt is now843 bytes, firmware.txt343, runs.log907 (one summary per run).
+Detailed numbered reports remain unchanged on card and in the archive.
+The unchanged menu's run scanner still finds24, so next report is0025.
+Current manifest SHA256 a16101e21189c0e88467a6cd95ad636c308daab1af85cad516af10ba9de94b83;
+current running-log SHA256 ba3ace4ee5b2c601ee8f9d790742ef89129fb1cdfebf9908089a623e5db3a0f3.
+Use build/uart0-suite/short-text-20261015 as the new post-compaction baseline
+when checking future append-only returns; comparing against the old full log
+would incorrectly flag this explicitly authorized maintenance. All other card
+files, compiled code and boot files verify unchanged. Quickstart now explicitly
+requires MOS CRC239097B7/API1.1 and includes menu9/1 to install it if absent.
+
+Latest return inspection, 2026-10-15: Console8 replay did NOT execute.
+R0021..R0023 record TEST 8 SKIP; R0024 records TEST 15 SKIP. All report
+MOS_ROM128K_CRC32=466F018D API=0.0, unlike the earlier passing API1.1
+image CRC239097B7. Root stock MOS.bin padded with erased FF to 128KiB
+has CRC466F018D, matching the reported installed fingerprint. The staged
+experimental mos-candidate.bin remains correct (file CRC7E66FD09, padded
+ROM CRC239097B7). This identifies a missing prerequisite, not a failed
+receiver test. No new VDP stock-restoration handoff is recorded after R0020.
+All staged files and earlier reports verify unchanged; only workspace evidence
+was written. Archive on Pi/Oryx: build/uart0-repair-console8-ab-return-20261015.tar.gz,
+SHA256 2551ae29c80e7539fc7ecfbda9c5b0e856929a70b324c8be03f605b1339f2391.
+For a future manual run, menu9/1 installs the staged experimental MOS; require
+reboot/menu CRC239097B7 API1.1 before replay. No card update/flash was performed.
+
+Latest action, 2026-10-15: the Author requested the pending tests on the mounted
+Console8 card while toolchain review proceeds. Staged the retained original
+30-phase A/B workload and repaired VDP candidate at the SAME /test/mos-uart0
+entry, with new readme/configuration only; no new binary or firmware build.
+Instructions: 9/7 flash candidate and reboot, confirm RX sync candidate banner;
+8/1 three times, 8/7 compatibility, then 9/4 restore stock and confirm banner.
+All 54 existing result/log/backup files, root MOS.bin and autoexec.txt verify
+unchanged. Card UUID 8658-1C23, label AGONC8. Manifest SHA256
+74c69beb964143f59258383d41ac19f7ac8ee92c40716914a77801b90e44fb8b.
+Receipt/verification: build/uart0-repair/ab-replay-{deployment,verification}-20261015.json.
+Manual hardware results are pending; EMOS implementation remains stopped.
+
+Current stop,2026-10-15: the Author requested finishing the interrupted native
+EMOS build/flash-budget assessment, then stopping for review. Assessment is
+complete; no unattended UART hardware test or firmware change was performed.
+The new Extender test-appliance procedure was found/read and linked in chat;
+the Author confirms it is correct. Real EMOS Legacy integration is required.
+Saved installed EMOS has2450 bytes free; native ZDS size baseline overflows
+ROM by3442 bytes before the generic2497-byte sender module and integration
+accounting. Two minimal C compatibility edits permit compilation, but no fitting
+native image or native-linked behavioral qualification exists. Retain ZDS;
+no EMOS-only compiler exception was authorized by the Author's "I do not know".
+Recommended next scope is measured EMOS ROM compaction using existing owner
+diagnostic MOSlets; its backport saving is unmeasured and no such change started.
+All native build processes are finished. No automatic continuation after stop.
+
+Evidence archive verified on Pi and Oryx:
+build/uart0-extender-native-assessment-20261015.tar.gz, 28,411,507 bytes,
+SHA256 85a465ac8fb2ca04d2171b1de03735036ad40914d824a52f0a29bfa938169b1b.
+The full archive stream was read; all 1,740 entries are accessible, including
+source snapshots, isolated EMOS changes, installed baseline ROM, native build
+logs/maps and assessment notes. These completion notes follow that snapshot.
+
+EX-001..EX-004 are recorded in the sole TODO. Research and results:
+docs/uart0-extender-tranche.md and experiments/uart0-extender/budget-results.json.
+Isolated EMOS-owned source is branch codex/uart0-legacy at sibling
+agon-emos-uart0, based on installed sourcecf10f0b, with UTX-001 task/compatibility
+changes/native wrapper uncommitted. Maintained agon-emos/Extender source is
+unchanged. The Author confirms Olimex idle CLI/inserted SD/available; only three
+read-only status queries were made. No keyboard, transfer, serial, reset, flash,
+startup edit or test occurred. Temporary private bench reservation is released;
+future use needs fresh ownership/state checks. No commit, push or peer message.
+
+Completed receiver work before this assessment:
+
+Executive summary: the receiver synchronization repair now passes matched tests
+on physical Console8. The baseline strands66 FIFO bytes and needs rescue; the
+repaired diagnostic receives both4096-byte payloads without rescue or receive
+errors. The candidate without timing/rescue hooks passes its five-phase
+compatibility campaign. Stock VDP2.16.0 is restored and its normal boot banner
+is confirmed by the Author. This resolves the tested receiver defect; resume
+original A/B and batching qualification before making performance/release claims.
+
+Latest authorized work: inspect/archive the returned Console8 card. The unique
+removable UUID remains8658-1C23, label AGONC8. All86 staged package files match;
+all29 prior report/config files are unchanged, and runs.log retains its previous
+prefix while appending runs0011..0018. Root /MOS.bin is unchanged. Inspection
+wrote only workspace evidence, never the card. Other BMOW media was untouched.
+No firmware flash/reset/run, peer message, git commit or push was performed.
+
+R0012 is the baseline pair: control normal, forced fault captured/rescued.
+R0014 is the repaired pair: outcomes1/5, CRC87897582 on both complete payloads,
+zero case receive errors, rescued=0, RX reenabled with no unread FIFO bytes.
+Both physical U/O files and menu/running journals agree. The repaired diagnostic
+has no linked rescue function. R0017 passes phased RX, API/callback/masked-IFF/
+exit/ADL0, eight benchmark records, four pause/full-duplex cases and six receiver
+pattern/mode cases with49152 final-buffer bytes checked. R0018 records stock
+restoration; the Author separately confirms the normal stock2.16.0 reboot banner.
+Firmware return0 alone remains unverified. No natural stock failure frequency,
+electrical CTS timing, new CPU-cycle result or release approval is established.
+
+Interpretation: experiments/uart0-repair/physical-results.json, generated by
+hardware_return.py from build/uart0-repair/hardware-return-001. Generic operator
+VDP labels are stale; evidence uses pinned images and enforced variant/candidate
+protocol gates, without independent flash readback. Software results.json and
+audit.json remain the frozen preparation snapshot. Notes and completed IDs are
+in docs/devlog-2026-10-15.md and docs/uart0-receiver-sync-fix.md.
+RX-001..RX-003 and HW-002 are complete and removed from the sole TODO. AB-006
+retains original-workload replay, emulator coordination and renewed human
+qualification. Broader supported MOS batching, receiver integrity, performance
+and release work remain open. All work stays uncommitted pending explicit
+human approval to commit; stock MOS remains the approved production baseline.
+Installed MOS during tests is unchanged experimental API1.1/ROM CRC239097B7.
+
+The stable card entry remains /test/mos-uart0/test.bin with firmware/readme beside
+it. Menu SHA cfc6480b35cbfeaf212a326c86501e9ea1ffb6869c2827ea24fe503a94c182bf;
+repair.bin SHA3d9d6f2e4a24dfd723eeb28b356b469c2299b4bb0aab76cd4945e2558b511091.
+No new SD deployment was needed. The repaired Oryx human emulator profile
+.emulator/uart0-repair-fixed remains separate from automated evidence; no
+new graphical launch was performed. Prior complete software/build archive on
+Pi/Oryx is build/uart0-receiver-repair-evidence-20261014.tar.gz,188345070bytes,
+SHA256fcaa507f2fc610fb3bca7538427a0f38ba46fc880bd76ff04d6eb48c5b7c4766.
+The physical return archive is verified on Pi/Oryx:
+build/uart0-repair-console8-r0012-r0018.tar.gz,54562278bytes, SHA256
+1b171c90f76b77d31f18848413c85f280f163bd4f14438302e9a9d859b5d7445.
+It includes raw reports, all staged firmware, source companions and interpretation.
+Volume rename receipts are build/uart0-repair/card-check-20261015-before.json
+and card-relabel-20261015.json; the new return confirms AGONC8 mounts normally.
+The earlier remount failure was desktop authorization; the Author then ejected
+it. Do not reuse a stale /dev/sd name or assume a label alone identifies the card.
+
+Previous physical reproduction:
+
+Latest physical return: Console8 R0010 PASSES the controlled receiver diagnostic.
+The Author confirms the menu keypress repair, closing UI-001. Both4096-byte
+payloads match CRC87897582 with zero case receive errors. The forced timing
+case captures reader recovery on core0 followed by ISR RX-disable on core1,
+then66 unread FIFO bytes with RX masked/full flag false. Diagnostic rescue
+reenables RX and recovers the whole payload. This establishes the mechanism
+under a deliberate hardware timing trigger; natural stock-failure frequency
+and a production receiver repair remain unestablished.
+
+All returned assets, prior numbered reports and root MOS are verified unchanged.
+No SD writes or firmware actions were performed during inspection. New raw
+evidence is build/uart0-race/hardware-return-002, archived as
+build/uart0-race-console8-r0010.tar.gz; interpretation is
+experiments/uart0-race/physical-results.json. The Author confirms diagnostic VDP
+is STILL INSTALLED, so HW-002 remains open for stock restoration confirmation.
+Next AB-006 work is the receiver synchronization fix plus matched before/after
+hardware tests; keep all diagnostic waits outside the UART lock. No new fix
+implementation, deployment or peer message is started by this return review.
+
+Previous preparation:
+Latest authorized work: prepare a substantive hardware receiver test together
+with the menu repair; the Author declines a separate menu-only bench visit.
+UI-001 now uses a menu-only key-down queue and immediate choice
+echo, qualified with both Flexe engines and complete physical-format keyboard
+packet tests. Updated test.bin is staged at the SAME /test/mos-uart0 on unique
+removable UUID8658-1C23, SHA841045e1b78aa3d6f3191f0bad46c19ef96c50e4ec9f496942201b2c4cef30ac.
+All26 numbered/operator reports are verified preserved; root MOS and VDP images
+are unchanged. The repaired native race.bin is now SHA
+ac3f8a7ef9bf50e371f3c7319a6c877c4f225b4a489d9f55f22cedcfdef4db3f.
+Use9 then0 to check menu input, then8 then4 for the actual two-case diagnostic.
+If the recovery diagnostic VDP remains installed, no reflash is needed.
+
+HW-002 physical run R0009 HUNG in the first case, with zero completed records.
+R0008 records diagnostic VDP flash handoff/return0, which alone is unverified.
+R0009 reached the diagnostic handshake and saved O0009 stage1 and L0009.
+The old fixture deterministically halts on its second MOS SAVE because that
+API uses CREATE_NEW and cannot replace the progress file. Actual MOS FatFS/SPI
+emulator regression reproduces the same returned checkpoint; hostfs concealed
+the error. The repair also avoids FatFS RTC commands during raw payload transfer.
+Both-engine FatFS native checks and full real-key FAT-menu integration now pass
+all bytes/CRCs and expected diagnostic ordering. Corrupt/missing payload,
+missing handshake and checkpoint-write failure controls are rejected.
+The repaired fixture is staged for one meaningful retry; no receiver repair
+or new physical race result is claimed. Restore stock VDP afterward and confirm
+its normal banner. Raw return is preserved under build/uart0-race/hardware-return-001;
+new evidence is build/uart0-race/checkpoint-fix-20261014 and
+experiments/uart0-race/checkpoint-results.json. See docs/uart0-checkpoint-failure.md.
+The broader stop remains outside this authorized repair/retry preparation.
+Outstanding work before
+implementation was committed/pushed as 0e01958. New diagnostic/menu/deployment
+changes after that checkpoint are uncommitted, with no implied human emulator
+acceptance or release approval.
+
+Previous diagnostic preparation (physical run has since hung): `/test/mos-uart0/test.bin` on Console8 SD
+UUID8658-1C23, hash-verified with all22 existing reports/journals preserved.
+Menu9/2 stages the manual flash of `vdp-race-diag.bin`, file CRC3039EE5C,
+1081344bytes; reboot must show "UART0 recovery diagnostic". Then menu8/4
+runs the two-case diagnostic. Menu9/4 restores official stock VDP; reboot and
+confirm the normal banner. Required old experimental MOS remains API1.1,
+physical ROM CRC239097B7. Root /MOS.bin is unchanged; no new MOS flash needed.
+Firmware copies, `firmware.txt` identities and `readme.txt` are beside test.bin.
+
+Native protocol JIT/interpreter checks pass9.040s/9.335s; integrated menu
+checks14.053s/14.303s. Corrupt payload, missing end marker and absent handshake
+controls reject as intended; contradictory core/interrupt/full-flag evidence
+is rejected independently. Real SDL menu input passes16.335s, preserves an
+orphan U0001 and refuses emulator firmware flashing. Both engines capture the
+controlled recovery-before-disable ordering and verify both4096-byte payloads.
+This is emulator evidence from the compiled diagnostic, not physical proof.
+The fresh Oryx `.emulator/uart0-race` profile is prepared and stopped.
+
+Evidence: experiments/uart0-race/results.json and Oryx build/uart0-race/
+contain receipts, all attempts, actual firmware/ELF/map, original and linked
+driver disassembly, bundle and deployment receipt. Prior complete SD contents
+are backed up on Oryx at build/uart0-suite/before-race-20261014. The Author's
+subsequent archive-only follow-up is complete: full raw build/evidence is now
+mirrored and SHA-verified on Pi and Oryx as
+build/uart0-race-evidence-20261014.tar.gz, with .sha256/.contents.txt and a
+Pi .receipt.json. Missing Oryx AGENTS/OWNERSHIP and stale notes were synchronized;
+the failed user archive was preserved as .incomplete-1.tar.gz on Oryx. No new
+test/deployment/flash was started during the archive-only follow-up. The later
+R0009 physical run hung; diagnosis, restoration confirmation and return
+analysis remain open under HW-002. No receiver repair is implemented.
 
 Latest instruction: the Author clarified that this agent owns VDP firmware
 diagnostics as well as MOS, while Flexe owns the emulator. HW-002 and
@@ -15,7 +265,7 @@ implementation; this overrides the prior commit hold without implying emulator
 acceptance or release approval. New work after that checkpoint retains the
 normal human-validation boundary. No automatic physical flash/run is authorized.
 
-Latest tranche: the Author selected MOS-first preparation of a Console8 test
+Previous baseline tranche: the Author selected MOS-first preparation of a Console8 test
 with unchanged stock VDP, before controlled receiver instrumentation/repair. Outstanding work
 was committed/pushed as 0bda05b before execution; the related canonical mail and
 English-summary preference were pushed as b660a7c in agon-dev-env. The new
@@ -32,8 +282,9 @@ Menu8 then2 runs six cases;8 then3 runs24. Keep the old experimental ABI1.1 MOS
 suffix. JIT/interpreter short campaigns, interactive short+extended and deliberate
 corrupt/missing-reply controls pass. The frozen emulator VDP is a Golem snapshot,
 not the exact official release binary; these checks validate the fixture, not a
-receiver repair. A hardware pass cannot exclude a rare race. New fixture/profile/
-deployment changes remain uncommitted pending the standing human-validation gate.
+receiver repair. A hardware pass cannot exclude a rare race. Baseline fixture/
+profile/deployment work was committed in0e01958 at the Author's instruction.
+New HW-002 work remains uncommitted pending the standing human-validation gate.
 The stopped Oryx review profile is `.emulator/uart0-recovery`: locally cd there,
 then `./fab-agon-emulator`. No graphical instance was launched by the agent.
 
@@ -58,10 +309,10 @@ Card inspection/archive was read-only. See experiments/uart0-ab/physical-results
 and build/uart0-ab/console8-run0005.tar.gz. UI-001 tracks the Author's separate,
 unexplained menu keyboard delay; do not attribute it to getch without evidence.
 
-Remaining priority (2026-10-14): AB-006 receiver-owner coordination now has a
-passing unchanged-VDP hardware baseline. A controlled physical diagnostic is
-needed to distinguish the suspected cross-core ordering from an emulator-only
-failure; hardware reproduction and matched repair evidence remain outstanding.
+Remaining priority when resumed: HW-002 manual controlled hardware diagnostic
+and return analysis, after the passing unchanged-VDP baseline. This agent owns
+the VDP firmware work. Physical reproduction and matched repair evidence remain
+outstanding; Flexe owns only emulator/model/regression work.
 Qualify the new experimental session API
 (BT-003), extend matched A/B integrity and integrate numbered menu reports
 (AB-003/BT-005). AB-006 receiver-owner correction remains a qualification gate. Stock MOS is the

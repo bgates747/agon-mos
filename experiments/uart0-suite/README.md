@@ -29,6 +29,37 @@ readback verification. A reset leaves the handoff pending. Menu 9/3 saves a full
 128 KiB MOS backup. Read firmware.txt before relying on a backup or flashing.
 No physical firmware access or flashing is performed by build/deployment tools.
 
+Menu input now uses a bounded key-down queue through the MOS keyboard callback.
+The callback records each physical press before a release can overwrite MOS's
+last-event state, suppresses held-key repeats when virtual-key codes are
+available, and performs no UART or filesystem operations. It stays installed
+through submenu transitions and is removed before every test/firmware action,
+then reinstalled for the menu. This respects the experimental MOS rule that
+user keyboard callbacks and async UART sessions cannot coexist. Valid choices
+echo immediately; invalid keys are ignored. Stopwatch calibration retains its
+existing separate input behavior.
+
+`tests/menu_input.py` exercises the compiled menu with real SDL events after
+submenu prompts, short/held keys, both submenu back paths, an existing numbered
+journal, safe emulator flash refusal and native async-session execution. The
+frozen frontend sends ASCII with no virtual-key code or release packet for
+these keys, so it does not reproduce the reported physical missed taps.
+`tests/menu_packets.c` executes the actual callback on the eZ80 with complete
+press/release packets, all virtual-key bits, repeats, FIFO wrap and overflow.
+Both checks pass with the JIT and interpreter. The Author subsequently confirms
+the input repair works on Console8; the same session's controlled receiver
+diagnostic R0010 passes. No physical cause for the old missed taps is claimed
+from the SDL checks. UI-001 is complete.
+
+The receiver synchronization repair adds matched baseline/repaired tests at
+8/5 and8/6, and a five-phase candidate compatibility campaign at8/7. Firmware
+choices9/6,9/5 and9/7 stage their corresponding manual updates;9/4 retains
+stock restoration. Expected firmware is checked by a versioned handshake.
+The repaired diagnostic requires complete payload recovery with no rescue;
+the candidate uses normal VDP commands without timing/event/rescue hooks.
+See [the repair procedure](../uart0-repair/readme.txt). These firmware variants
+remain experimental pending the matched Console8 return.
+
 Human review exposed `esp_ota_begin` error 258 (ESP_ERR_INVALID_ARG) when the
 VDP update was attempted. The frozen app-only emulator VDP has no qualified
 OTA target/update path. Its generated review/automatic profiles now configure

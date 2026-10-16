@@ -1,0 +1,25 @@
+CONSOLE8 UART TEST - QUICK STEPS
+CD /test/mos-uart0
+LOAD test.bin
+RUN
+
+C8-005 [ ] 9 -> 1 flashes branded mos-candidate.bin; reboot and reload.
+Require MOS banner: Arthur - UART0 async EXPERIMENTAL
+Menu must show CRC44BC5C07, API1.1.
+Do NOT flash root /MOS.bin (stock; these tests will SKIP).
+
+C8-001 [ ] 9 -> 7: flash repaired VDP; reboot and reload.
+Require banner: UART0 RX sync candidate.
+
+C8-002 [ ] 8 -> 1: A/B test, THREE runs, <=2 minutes each.
+Expect 30 phases per run and PASS.
+
+C8-003 [ ] Optional repeat: 8 -> 7 compatibility, <=3 minutes.
+Require CANDIDATE COMPATIBILITY PASS.
+
+C8-004 [ ] 9 -> 4: restore stock VDP; reboot.
+Confirm normal 2.16.0 banner, no UART subtitle.
+
+Any updater error or stalled test is failure. Note last progress line;
+reset if needed. Return card with results and banner observations.
+History is archived in the project; reports keep sequential numbers.

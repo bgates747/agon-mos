@@ -6,11 +6,14 @@ other work during regularly scheduled sending, without increasing bulk speed
 over our experimental sender that checks permission before every byte. The
 app-controlled batching switch is now implemented and passes software tests.
 
-It remains experimental. A fault in the VDP firmware used by the emulator can
-stop reception permanently; later passing tests do not resolve it. We still
-need complete checks of the benchmark's received data, menu integration, tests
-of the new firmware on Console8 and explicit release approval. The menu's
-keyboard delay also remains unexplained. Stock MOS remains the approved baseline.
+It remains experimental. Console8 R0010 captured a receiver synchronization
+fault under forced timing. Its lock correction is now implemented in private
+VDP builds and passes paired and compatibility checks in both emulator engines.
+Console8 R0012/R0014 now confirm the repair under matched forced timing;
+R0017 passes candidate compatibility, and stock VDP restoration is confirmed.
+Complete benchmark receiver checks, batching menu integration, new MOS
+qualification and release approval
+remain. The keypress repair is confirmed; stock MOS remains the approved baseline.
 This is the sole unfinished-work checklist.
 
 Subtask IDs are immutable: a short namespace followed by a hyphen and three
@@ -24,8 +27,23 @@ The Author lifted the SD write hold and authorized staging the suite. Multiple
 cards may be attached to Oryx: rediscover the unique UUID 8658-1C23 and match
 the prior UART manifest/fixture immediately before deployment. Keep the active
 /test/mos-uart0 path; preserve history only in project workspace.
+The Author requested concise card text and full project-side history.
+Keep readme.txt/firmware.txt short; archive a complete verified snapshot before
+compacting runs.log. Preserve run numbering and individual evidence. The latest
+post-compaction baseline is build/uart0-branding/deployed-card-state-20261016
+(through0029; next run0030).
+
+BR-001 [ ] Confirm the experimental banner/CRC44BC5C07/API1.1 if the Author
+installs the optional branded MOS. Firmware/menu are staged in the SAME Console8
+directory after its2026-10-16 return. The original sender's A/B and compatibility
+campaigns pass; no full rerun is needed for branding. Leave the other-project
+VDP unchanged. Evidence: experiments/uart0-branding.
 
 ## Provenance
+
+UI-001 was accepted on physical Console8 after the R0010 session; the Author
+confirms that the queued-input repair fixes submenu keypresses. Its immutable
+ID and evidence are recorded in docs/devlog-2026-10-14.md.
 
 TX-016/TX-017 fixture and capture-preparation work completed on 2026-10-13.
 The Author passed human emulator review; subsequent Console8 physical software
@@ -89,44 +107,61 @@ defer shipping if gains do not justify the tradeoff.
 
 ## Next tranche: A/B streaming and Jukebox-shaped workload
 
+EX-001 [ ] Audit Agon Extender's unattended test lifecycle, installed EMOS
+flash/RAM headroom and native ZDS II build compatibility. Record the explicit
+Legacy-mode integration and bench/recovery boundaries in
+docs/uart0-extender-tranche.md; use the installed source baseline rather than
+assuming the newest EMOS branch is on hardware.
+Assessment delivered for review: saved installed headroom2450bytes; native ZDS
+size build overflows3442bytes, sender module2497bytes. No integration or hardware
+test yet. The Author requests stop after this assessment; see budget-results.json.
+
+EX-002 [ ] Implement the generic UART sender in an isolated EMOS-owned
+candidate, preserving Legacy routing, Extender input, SD services and return
+cleanup within the128KiB ROM limit. Build with ZDS II/Wine on Oryx and verify
+actual link placement, baud divisor and relevant owner checks. A RAM-only
+prototype does not satisfy this integration requirement.
+Prerequisite: preserve EMOS functionality while resolving the native baseline's
+ROM overflow. Existing diagnostic MOSlet extraction is a research lead, with
+unmeasured backport savings; no toolchain exception or feature removal approved.
+
+EX-003 [ ] Adapt the relevant existing Console8 tests for explicit unattended
+Pi coordination on Extender/Olimex: phased RX, API/legacy/callback/masked-IFF/
+exit/ADL0, byte/CRC integrity, pause/full-duplex and matched receiver repair.
+Preserve individual invocation, modes/routes, sequential reports and ordinary
+startup. Preserve/verify incoming firmware and recovery before installation;
+collect and archive evidence, then restore an actual responsive CLI.
+
+EX-004 [ ] Run the next controlled A/B tranche on the integrated EMOS Legacy
+candidate, including original30-phase replay, full matched payload verification,
+paced useful work and unpaced wire-drain time. Keep these outcomes separate from
+Console8 evidence and exact CPU-cycle/CTS timing claims. AB/BT tasks retain
+their broader final MOS, application and release gates.
+
 See [the tranche specification](docs/uart0-ab-tranche.md). These identify
 benchmark deliverables; BT-003..BT-007 retain the driver/qualification work and
 are dependencies, not a second implementation of the same tasks.
 
-AB-006 [ ] Close the traced intermittent native A/B stall: implement the VDP
-receiver diagnostic/correction in this project's owned copies and coordinate
-emulator regression with Flexe, then
-repeat both-engine qualification and human review before relying on emulator
-passes for release qualification. See docs/uart0-ab-tranche.md for evidence and completion gate.
-Diagnosis is traced in the emulator: VDP ISR disables RX after reader recovery clears the flag;
-diagnostic RX re-enable resumes TX. See docs/uart0-ab-stall.md. Receiver-owner
-correction/regression and renewed qualification remain. The Author separately
-authorized an exploratory Console8 comparison on2026-10-14; it does not clear
-the emulator fault or production qualification gate.
-The Author now requires hardware reproduction before a correction and hardware
-regression afterward; emulator-only evidence cannot establish physical failure
-or repair. Earlier request sent through the emulator owner's `golem` mailbox route:
-`2026-10-14_03-28-03_agon-mos_uart0-recovery-hardware-one`.
-The owner's task log acknowledges the request. Unchanged-VDP Console8 short
-and extended campaigns R0006/R0007 now pass all30 cases with245760 final-buffer
-bytes checked and zero case RX errors. HW-001 preparation/return is complete;
-the emulator race remains unresolved and no physical race was reproduced.
-The Author corrected ownership: MOS owns VDP firmware work, Flexe owns the
-emulator. HW-002 now owns the controlled physical diagnostic preparation;
-do not treat these passes as proof of a repair. See
-experiments/uart0-recovery/physical-results.json. No bench lease is implied.
-
-HW-002 [ ] Build and qualify the controlled Console8 VDP receive-recovery
-diagnostic, MOS workload and numbered-suite integration. Audit/pin the actual
-ESP32 driver, observe the real ISR/reader ordering, and use bounded diagnostic
-scheduling hooks to exercise that ordering on hardware. Include a no-trigger
-control, independently checked failure-state evidence, bounded recovery with
-byte/CRC checks, versioned sequential reports, stock restoration and unchanged
-MOS. Qualify compiled images and negative controls off-device, package at the
-stable SD path, then analyze the Author's manual return. Distinguish natural
-stock failure, diagnostic-induced physical ordering and emulator-only behavior.
-See [the diagnostic plan](docs/uart0-recovery-diagnostic.md). A firmware repair
-and its matched physical regression remain AB-006 work after reproduction.
+AB-006 [ ] Finish emulator regression of the original intermittent native A/B workload
+against the repaired receiver, coordinate the corresponding emulator regression
+with Flexe, and obtain renewed both-engine/human qualification before release
+claims. The receiver defect is now reproduced and repaired on physical Console8:
+R0012 captures the baseline stuck state/rescue, R0014 verifies both4096-byte
+payloads without rescue, and R0017 passes the normal candidate's five-phase
+compatibility campaign. Stock VDP restoration is operator-confirmed after R0018.
+RX-001..RX-003 and HW-002 are complete; their evidence/disposition is recorded
+in docs/devlog-2026-10-15.md and experiments/uart0-repair/physical-results.json.
+Supported batching API/full receiver integrity and performance/release
+qualification remain separate unfinished work.
+The original workload's Console8 replay now passes R0026/R0027/R0028 (90 phases),
+followed by candidate compatibility PASS R0029. Remaining AB-006 scope includes
+emulator regression/coordination and renewed human qualification; do not repeat
+the completed physical replay for branding alone.
+The Author subsequently installed another project's VDP; leave it unchanged.
+The branded MOS is optional; completed-readme.txt records the completed campaign.
+MOS owns VDP firmware; Flexe owns emulator models/regressions. No natural
+stock-image failure frequency, new CPU-cycle measurements or release approval
+is established. Existing failed traces and raw returns remain archived.
 
 AB-001 [ ] Build repeated sustained-stream comparisons: stock-style blocking, experimental per-byte async,
 grouped scalar and bounded OTIRX, using identical valid VDP workloads. Initial
@@ -163,11 +198,6 @@ integration passed60 JIT phases across repeated runs and30 interpreter phases;
 Console8 R0005 passes all30 phases; useful paced work rises31.3% with OTIRX
 versus experimental per-byte async, with equal bulk ticks. Full receiver integrity and broader
 qualification remain. See experiments/uart0-ab/physical-results.json.
-
-UI-001 [ ] Diagnose the Author-reported Console8 suite menu keyboard delay.
-getch uses normal blocking MOS getkey; no deliberate polling delay is present.
-Compare against the MOS prompt and a minimal getkey fixture before changing
-input handling. The R0005 A/B run completed; keyboard delay remains untraced.
 
 AB-007 [ ] Scope and coordinate actual AgonJukebox skins integration after the
 controlled fixtures establish benefit and integrity. Arrange explicit app-owner
