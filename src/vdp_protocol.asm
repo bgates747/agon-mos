@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/vdp_protocol.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - VDP serial protocol
 ; Author:	Dean Belfield
@@ -20,13 +22,13 @@
 ; 13/08/2023:	Moved keyboard handling to keyboard.asm
 ; 26/09/2023:	RTC packet length reduced to 6 bytes
 
-			INCLUDE	"macros.inc"
-			INCLUDE	"equs.inc"
+			.include "macros.inc"
+			.include "equs.inc"
 
 			.ASSUME	ADL = 1
 
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			
 			XDEF	vdp_protocol
 
@@ -75,7 +77,7 @@ vdp_protocol:		LD	A, (_vdp_protocol_state)
 			DEC	A
 			JR	Z, vdp_protocol_state2
 			DEC	A
-			JR	Z, vdp_protocol_state3
+			JP	Z, vdp_protocol_state3
 			XOR	A
 			LD	(_vdp_protocol_state), A
 			RET
@@ -83,7 +85,7 @@ vdp_protocol:		LD	A, (_vdp_protocol_state)
 ; Wait for control byte (>=80h)
 ;
 vdp_protocol_state0:	LD	A, C			; Wait for a header byte (bit 7 set)
-			SUB	80h
+			SUB	0x80
 			RET	C
 			LD	(_vdp_protocol_cmd), A	; Store the cmd (discard the top bit)
 			LD	(_vdp_protocol_ptr), HL	; Store the buffer pointer
@@ -96,12 +98,12 @@ vdp_protocol_state0:	LD	A, C			; Wait for a header byte (bit 7 set)
 ;
 vdp_protocol_state1:	LD	A, C			; Fetch the length byte
 			CP	VDPP_BUFFERLEN + 1	; Check if it exceeds buffer length (16)
-			JR	C, $F			;
+			JR	C, .Lzds_src_vdp_protocol_asm_2263d5e2_a0001			;
 			LD	A, 3			; If it does exceed buffer length, switch to state 3 (ignore packet)
 			LD	(_vdp_protocol_state), A
 			RET
 ;
-$$:			LD	(_vdp_protocol_len), A	; Store the length
+.Lzds_src_vdp_protocol_asm_2263d5e2_a0001:			LD	(_vdp_protocol_len), A	; Store the length
 			OR	A			; If it is zero
 			JR	Z, vdp_protocol_exec	; Then we can skip fetching bytes, otherwise
 			LD	A, 2			; Switch to next state
@@ -148,7 +150,7 @@ vdp_protocol_vector:	JP	vdp_protocol_GP
 			JP	vdp_protocol_KEYSTATE
 			JP	vdp_protocol_MOUSE
 ;
-vdp_protocol_vesize:	EQU	($-vdp_protocol_vector)/4
+.equiv vdp_protocol_vesize, (.-vdp_protocol_vector)/4
 
 ;
 ; Discard data (packet too long)
@@ -174,14 +176,14 @@ vdp_protocol_KEY:	LD	HL, (_user_kbvector)		; If a user kbvector is set, call it
 			LD	DE, 0
 			OR	A
 			SBC	HL, DE
-			JR	Z, $F
-			LD	HL, $F
+			JR	Z, .Lzds_src_vdp_protocol_asm_2263d5e2_a0002
+			LD	HL, .Lzds_src_vdp_protocol_asm_2263d5e2_a0002
 			PUSH	HL				; Push return address from user routine
 			LD	HL, (_user_kbvector)
 			LD	DE, _vdp_protocol_data		; Pass keyboard packet address to user routine in DE (24-bit)
 			JP	(HL)
 ;
-$$:			LD	A, (_vdp_protocol_data + 0)	; ASCII key code
+.Lzds_src_vdp_protocol_asm_2263d5e2_a0002:			LD	A, (_vdp_protocol_data + 0)	; ASCII key code
 			LD	(_keyascii), A
 			LD	A, (_vdp_protocol_data + 1)	; Key modifiers (SHIFT, ALT, etc)
 			LD	(_keymods), A

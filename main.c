@@ -29,12 +29,12 @@
  * 11/11/2023:				RC3	+ See Github for full list of changes
  */
 
-#include <eZ80.h>
+#include <ez80.h>
 #include <defines.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <CTYPE.h>
-#include <String.h>
+#include <ctype.h>
+#include <string.h>
 
 #include "defines.h"
 #include "version.h"
@@ -124,10 +124,13 @@ void init_interrupts(void) {
 	set_vector(I2C_IVECT, i2c_handler);			// 0x1C
 }
 
+/* DEV-003: ZDS's implicit HL return is not a defined C return for Clang.
+ * Model the refresh-register byte explicitly; the integer return widens it.
+ */
 int quickrand(void) {
-	asm("ld a,r\n"
-		"ld hl,0\n"
-		"ld l,a\n");
+	unsigned char value;
+	__asm__ volatile ("ld a,r" : "=a"(value) : : "cc");
+	return value;
 }
 
 void rainbow_msg(char* msg) {
@@ -170,7 +173,7 @@ bool shiftPressed() {
 }
 
 //extern UINT24 bottom;
-extern void _heapbot[];
+extern unsigned char _heapbot[];
 
 // The main loop
 //

@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src_startup/init_params_f92.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - C Startup Code
 ; Author:	Copyright (C) 2005 by ZiLOG, Inc.  All Rights Reserved.
@@ -12,10 +14,10 @@
 ; 26/07/2022:	Added _tmpLHU
 ; 01/08/2022:	Moved global variables to globals.asm
 
-			INCLUDE	"../src/macros.inc"
-			INCLUDE	"../src/equs.inc"
+			.include "../src/macros.inc"
+			.include "../src/equs.inc"
 
-			INCLUDE "ez80f92.inc"
+			.include "ez80f92.inc"
 
 			XREF	__stack
 			XREF	__init_default_vectors
@@ -61,8 +63,8 @@
 ;			
 ; Startup code
 ;
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			
 			.ASSUME ADL = 1
 
@@ -71,11 +73,11 @@
 ; Disable internal peripheral interrupt sources
 ; -- this will help during a RAM debug session --
 ;
-__init:			ld a, %FF
+__init:			ld a, 0xFF
 			out0 (PB_DDR), a         ; GPIO
 			out0 (PC_DDR), a         ;
 			out0 (PD_DDR), a         ;
-			ld a, %00
+			ld a, 0x00
 			out0 (PB_ALT1), a        ;
 			out0 (PC_ALT1), a        ;
 			out0 (PD_ALT1), a        ;
@@ -92,10 +94,10 @@ __init:			ld a, %FF
 			out0 (UART1_IER), a      ;
 			out0 (I2C_CTL), a        ; I2C
 			out0 (FLASH_IRQ), a      ; Flash
-			ld a, %04
+			ld a, 0x04
 			out0 (SPI_CTL), a        ; SPI
 			in0 a, (RTC_CTRL)        ; RTC, Writing to the RTC_CTRL register also
-			and a, %BE               ;      resets the RTC count prescaler allowing
+			and a, 0xBE               ;      resets the RTC count prescaler allowing
 			out0 (RTC_CTRL), a       ;      the RTC to be synchronized to another time source
 ;
 ; Configure external memory/io
@@ -143,7 +145,7 @@ __init:			ld a, %FF
 			; Change the flash control register to zero wait states
 			; NB using a constant here as I couldn't work out how __FLASH_CTL_INIT_PARAM is set
 			; ld a, __FLASH_CTL_INIT_PARAM
-			ld a, 08h
+			ld a, 0x08
 			out0 (FLASH_CTRL), a
 
 			ld a, __RAM_ADDR_U_INIT_PARAM
@@ -159,21 +161,21 @@ __init:			ld a, %FF
 ; Detect preserved ram
 ;
 			ld de, __warmboot_magic	; If warm boot, __warmboot_magic (pushed by 'call _main') will
-			ld hl, (0bfffah)	; be the int24 at __stack-6 (ie 0bfffah)
+			ld hl, (0x0bfffa)	; be the int24 at __stack-6 (ie 0bfffah)
 			or a
 			sbc hl,de
 			jr z, __skip_memclr
 ; Cold boot: wipe external 512k RAM (initialize to $ff (rst $38))
-			ld hl, 40000h
-			ld de, 40001h
-			ld bc, 80000h - 1
-			ld (hl), 0ffh
+			ld hl, 0x40000
+			ld de, 0x40001
+			ld bc, 0x80000 - 1
+			ld (hl), 0x0ff
 			ldir
 ; Cold boot: wipe internal SRAM
-			ld hl, 0b7e000h
-			ld de, 0b7e001h
-			ld bc, 2000h - 1
-			ld (hl), 0ffh
+			ld hl, 0x0b7e000
+			ld de, 0x0b7e001
+			ld bc, 0x2000 - 1
+			ld (hl), 0x0ff
 			ldir
 __skip_memclr:
 
@@ -183,9 +185,9 @@ __skip_memclr:
 			ld a, i			; Register I should be 0 on cold boot
 			or a, a		
 			ld a, 1			; Set to 1 if cold boot
-			jr z, $F
+			jr z, .Lzds_src_startup_init_params_f92_asm_e3ce1bd7_a0001
 			dec a			; Otherwise set to 0
-$$:			push af 		; Stack AF, will store later as __c_startup clears globals area
+.Lzds_src_startup_init_params_f92_asm_e3ce1bd7_a0001:			push af 		; Stack AF, will store later as __c_startup clears globals area
 
 ;
 ; Initialize the interrupt vector table
@@ -200,12 +202,12 @@ $$:			push af 		; Stack AF, will store later as __c_startup clears globals area
 
 ; Protect flash pages by default
 			
-			LD        A, b6h    ; unlock
-			OUT0    (F5h), A
-			LD        A, 49h
-			OUT0    (F5h), A
-			LD        A, ffh    ; protect all pages
-			OUT0    (FAh), A			
+			LD        A, 0xb6    ; unlock
+			OUT0    (0xF5), A
+			LD        A, 0x49
+			OUT0    (0xF5), A
+			LD        A, 0xff    ; protect all pages
+			OUT0    (0xFA), A			
 
 ;
 ; Start application
@@ -230,13 +232,13 @@ __warmboot_magic:	pop de			; clean the stack
 
 __exit:
 _exit:
-_abort:			jr $                	; If we return from main loop forever here
+_abort:			jr .                	; If we return from main loop forever here
 
 ; Define global constants
 ;
 			XREF _SYS_CLK_FREQ
 			XDEF _SysClkFreq
 
-_SysClkFreq:		DL _SYS_CLK_FREQ
+_SysClkFreq:		d32 _SYS_CLK_FREQ
 			
-			END
+			; zds2gas: END

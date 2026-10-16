@@ -1,18 +1,20 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/crash.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 	XDEF		_on_crash
 
 	.ASSUME ADL = 1
 
-PUTS:	MACRO str
-	ld hl,str
+.macro zds_PUTS str
+	ld hl,\str
 	ld bc,0
 	xor a
-	rst.lil 018h
-	ENDMACRO
+	rst.lil 0x018
+	.endm
 
-PUTC:	MACRO chr
-	ld a,chr
-	rst.lil 010h
-	ENDMACRO
+.macro zds_PUTC chr
+	ld a,\chr
+	rst.lil 0x010
+	.endm
 
 _on_crash:
 	di
@@ -23,69 +25,69 @@ _on_crash:
 	push bc
 	push af
 
-	PUTC 17
-	PUTC 129
-	PUTC 17
-	PUTC 0
+	zds_PUTC 17
+	zds_PUTC 129
+	zds_PUTC 17
+	zds_PUTC 0
 
-	PUTS _debug_intro
+	zds_PUTS _debug_intro
 
 	ld ix,0
 	add ix,sp
 
-	PUTS _debug_af
+	zds_PUTS _debug_af
 	ld hl,(ix+0)
 	call print_hex24
 
-	PUTS _debug_bc
+	zds_PUTS _debug_bc
 	ld hl,(ix+3)
 	call print_hex24
 
-	PUTS _debug_de
+	zds_PUTS _debug_de
 	ld hl,(ix+6)
 	call print_hex24
 
-	PUTS _debug_hl
+	zds_PUTS _debug_hl
 	ld hl,(ix+9)
 	call print_hex24
 
 	call print_crlf
 
-	PUTS _debug_ix
+	zds_PUTS _debug_ix
 	ld hl,(ix+12)
 	call print_hex24
 
-	PUTS _debug_iy
+	zds_PUTS _debug_iy
 	ld hl,(ix+15)
 	call print_hex24
 
 	call print_crlf
 
-	PUTS _debug_pc
+	zds_PUTS _debug_pc
 	ld hl,(ix+18)
 	call print_hex24
 
-	PUTS _debug_spl
+	zds_PUTS _debug_spl
 	lea hl,ix-18
 	call print_hex24
 
-	PUTS _debug_sps
+	zds_PUTS _debug_sps
 	ld hl,0
 	add.s hl,sp
 	call print_hex24
 
-	PUTS _debug_mb
+	zds_PUTS _debug_mb
 	ld a,mb
 	call print_hex8
 
 	call print_crlf
 
-	PUTS _debug_stack
+	zds_PUTS _debug_stack
 	; dump top of stack
 	ld hl,18
 	add hl,sp
 	ld b, 32
-$$:
+.Lzds_src_crash_asm_787f2b64_a0001:
 	ld a, b
 	and 7
 	call z, print_crlf
@@ -94,27 +96,27 @@ $$:
 	inc hl
 	call print_hex8
 	ld a, ' '
-	rst.lil 010h
-	djnz $B
+	rst.lil 0x010
+	djnz .Lzds_src_crash_asm_787f2b64_a0001
 
 	call print_crlf
-	PUTS _debug_outro
-	PUTC 17
-	PUTC 128
-	PUTC 17
-	PUTC 15
+	zds_PUTS _debug_outro
+	zds_PUTC 17
+	zds_PUTC 128
+	zds_PUTC 17
+	zds_PUTC 15
 
 	ei 		; enable interrupts so user can make keypresses
-$$:	xor a 		; wait for 'r'esume
-	rst.lil 08h
+.Lzds_src_crash_asm_787f2b64_a0002:	xor a 		; wait for 'r'esume
+	rst.lil 0x08
 	cp 'r'
-	jr z, $F
+	jr z, .Lzds_src_crash_asm_787f2b64_a0003
 	cp 'R'
-	jr z, $F
-	jr $B
+	jr z, .Lzds_src_crash_asm_787f2b64_a0003
+	jr .Lzds_src_crash_asm_787f2b64_a0002
 
 	; restore everything and return to userspace
-$$:	pop af
+.Lzds_src_crash_asm_787f2b64_a0003:	pop af
 	pop bc
 	pop de
 	pop hl
@@ -134,11 +136,11 @@ print_hex8:
 	srl a
 	srl a
 	srl a
-	and 0fh
+	and 0x0f
 	; print high nibble
 	call __print_hex_nibble
 	ld a, b
-	and 0fh
+	and 0x0f
 	; print low nibble
 	call __print_hex_nibble
 	pop bc
@@ -147,9 +149,9 @@ print_hex8:
 __print_hex_nibble:
 	add a, 48
 	cp 58
-	jr c, $F
+	jr c, .Lzds_src_crash_asm_787f2b64_a0004
 	add a, 39
-$$:	rst.lil 010h
+.Lzds_src_crash_asm_787f2b64_a0004:	rst.lil 0x010
 	ret
 
 print_hex24: ; print hex u24 in `hl`
@@ -172,9 +174,9 @@ print_hex24: ; print hex u24 in `hl`
 
 print_crlf:
 	ld a,13
-	rst.lil 010h
+	rst.lil 0x010
 	ld a,10
-	rst.lil 010h
+	rst.lil 0x010
 	ret
 
 _debug_intro: db "== RST $38 panic. Guru meditation    ==",13,10,0

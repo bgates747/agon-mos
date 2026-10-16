@@ -1,3 +1,7 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/mos_api.inc
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+.ifndef AGON_MOS_SRC_MOS_API_INC
+.set AGON_MOS_SRC_MOS_API_INC,1
 ;
 ; Title:	AGON MOS - API for user projects
 ; Author:	Dean Belfield
@@ -28,212 +32,212 @@
 
 ; VDP control (VDU 23, 0, n)
 ;
-vdp_gp:			EQU 	80h
-vdp_keycode:		EQU 	81h
-vdp_cursor:		EQU	82h
-vdp_scrchar:		EQU	83h
-vdp_scrpixel:		EQU	84h
-vdp_audio:		EQU	85h
-vdp_mode:		EQU	86h
-vdp_rtc:		EQU	87h
-vdp_keystate:		EQU	88h
-vdp_logicalcoords:	EQU	C0h
-vdp_terminalmode:	EQU	FFh
+.equiv vdp_gp, 0x80
+.equiv vdp_keycode, 0x81
+.equiv vdp_cursor, 0x82
+.equiv vdp_scrchar, 0x83
+.equiv vdp_scrpixel, 0x84
+.equiv vdp_audio, 0x85
+.equiv vdp_mode, 0x86
+.equiv vdp_rtc, 0x87
+.equiv vdp_keystate, 0x88
+.equiv vdp_logicalcoords, 0xC0
+.equiv vdp_terminalmode, 0xFF
 
 ; MOS high level functions
 ;
-mos_getkey:		EQU	00h
-mos_load:		EQU	01h
-mos_save:		EQU	02h
-mos_cd:			EQU	03h
-mos_dir:		EQU	04h
-mos_del:		EQU	05h
-mos_ren:		EQU	06h
-mos_mkdir:		EQU	07h
-mos_sysvars:		EQU	08h
-mos_editline:		EQU	09h
-mos_fopen:		EQU	0Ah
-mos_fclose:		EQU	0Bh
-mos_fgetc:		EQU	0Ch
-mos_fputc:		EQU	0Dh
-mos_feof:		EQU	0Eh
-mos_getError:		EQU	0Fh
-mos_oscli:		EQU	10h
-mos_copy:		EQU	11h
-mos_getrtc:		EQU	12h
-mos_setrtc:		EQU	13h
-mos_setintvector:	EQU	14h
-mos_uopen:		EQU	15h
-mos_uclose:		EQU	16h
-mos_ugetc:		EQU	17h
-mos_uputc:		EQU 	18h
-mos_getfil:		EQU	19h
-mos_fread:		EQU	1Ah
-mos_fwrite:		EQU	1Bh
-mos_flseek:		EQU	1Ch
-mos_setkbvector:	EQU	1Dh
-mos_getkbmap:		EQU	1Eh
-mos_i2c_open:		EQU	1Fh
-mos_i2c_close:		EQU	20h
-mos_i2c_write:		EQU	21h
-mos_i2c_read:		EQU	22h
-mos_unpackrtc:		EQU	23h
-mos_flseek_p:		EQU	24h
+.equiv mos_getkey, 0x00
+.equiv mos_load, 0x01
+.equiv mos_save, 0x02
+.equiv mos_cd, 0x03
+.equiv mos_dir, 0x04
+.equiv mos_del, 0x05
+.equiv mos_ren, 0x06
+.equiv mos_mkdir, 0x07
+.equiv mos_sysvars, 0x08
+.equiv mos_editline, 0x09
+.equiv mos_fopen, 0x0A
+.equiv mos_fclose, 0x0B
+.equiv mos_fgetc, 0x0C
+.equiv mos_fputc, 0x0D
+.equiv mos_feof, 0x0E
+.equiv mos_getError, 0x0F
+.equiv mos_oscli, 0x10
+.equiv mos_copy, 0x11
+.equiv mos_getrtc, 0x12
+.equiv mos_setrtc, 0x13
+.equiv mos_setintvector, 0x14
+.equiv mos_uopen, 0x15
+.equiv mos_uclose, 0x16
+.equiv mos_ugetc, 0x17
+.equiv mos_uputc, 0x18
+.equiv mos_getfil, 0x19
+.equiv mos_fread, 0x1A
+.equiv mos_fwrite, 0x1B
+.equiv mos_flseek, 0x1C
+.equiv mos_setkbvector, 0x1D
+.equiv mos_getkbmap, 0x1E
+.equiv mos_i2c_open, 0x1F
+.equiv mos_i2c_close, 0x20
+.equiv mos_i2c_write, 0x21
+.equiv mos_i2c_read, 0x22
+.equiv mos_unpackrtc, 0x23
+.equiv mos_flseek_p, 0x24
 
 ; MOS string functions
 ;
-mos_pmatch:		EQU	28h
-mos_getargument:	EQU	29h
-mos_extractstring:	EQU	2Ah
-mos_extractnumber:	EQU	2Bh
-mos_escapestring:	EQU	2Ch
+.equiv mos_pmatch, 0x28
+.equiv mos_getargument, 0x29
+.equiv mos_extractstring, 0x2A
+.equiv mos_extractnumber, 0x2B
+.equiv mos_escapestring, 0x2C
 
 ; System variables and related functions
 ;
-mos_setvarval:		EQU	30h
-mos_readvarval:		EQU	31h
-mos_gsinit:		EQU	32h
-mos_gsread:		EQU	33h
-mos_gstrans:		EQU	34h
-mos_substituteargs:	EQU	35h
-mos_evaluateexpression:	EQU	36h	; not implemented, yet
+.equiv mos_setvarval, 0x30
+.equiv mos_readvarval, 0x31
+.equiv mos_gsinit, 0x32
+.equiv mos_gsread, 0x33
+.equiv mos_gstrans, 0x34
+.equiv mos_substituteargs, 0x35
+.equiv mos_evaluateexpression, 0x36; not implemented, yet
 ; 37h not yet used
 
 ; Path resolution functions
 ;
-mos_resolvepath:	EQU	38h
-mos_getdirforpath:	EQU	39h
-mos_getleafname:	EQU	3Ah
-mos_isdirectory:	EQU	3Bh
-mos_getabsolutepath:	EQU	3Ch
+.equiv mos_resolvepath, 0x38
+.equiv mos_getdirforpath, 0x39
+.equiv mos_getleafname, 0x3A
+.equiv mos_isdirectory, 0x3B
+.equiv mos_getabsolutepath, 0x3C
 
 ; VDP Protocol apis
 ;
-mos_clearvdpflags:	EQU	40h
-mos_waitforvdpflags:	EQU	41h
+.equiv mos_clearvdpflags, 0x40
+.equiv mos_waitforvdpflags, 0x41
 
 ; Function and module APIs
 ;
-mos_getfunction:	EQU	50h
+.equiv mos_getfunction, 0x50
 
 ; Low-level SD card functions
 ;
-sd_getunlockcode:	EQU	70h
-sd_init:		EQU	71h
-sd_readblocks:		EQU	72h
-sd_writeblocks:		EQU	73h
+.equiv sd_getunlockcode, 0x70
+.equiv sd_init, 0x71
+.equiv sd_readblocks, 0x72
+.equiv sd_writeblocks, 0x73
 
 ; FatFS file access functions
 ;
-ffs_fopen:		EQU	80h
-ffs_fclose:		EQU	81h
-ffs_fread:		EQU	82h
-ffs_fwrite:		EQU	83h
-ffs_flseek:		EQU	84h
-ffs_ftruncate:		EQU	85h
-ffs_fsync:		EQU	86h
-ffs_fforward:		EQU	87h
-ffs_fexpand:		EQU	88h
-ffs_fgets:		EQU	89h
-ffs_fputc:		EQU	8Ah
-ffs_fputs:		EQU	8Bh
-ffs_fprintf:		EQU	8Ch
-ffs_ftell:		EQU	8Dh
-ffs_feof:		EQU	8Eh
-ffs_fsize:		EQU	8Fh
-ffs_ferror:		EQU	90h
+.equiv ffs_fopen, 0x80
+.equiv ffs_fclose, 0x81
+.equiv ffs_fread, 0x82
+.equiv ffs_fwrite, 0x83
+.equiv ffs_flseek, 0x84
+.equiv ffs_ftruncate, 0x85
+.equiv ffs_fsync, 0x86
+.equiv ffs_fforward, 0x87
+.equiv ffs_fexpand, 0x88
+.equiv ffs_fgets, 0x89
+.equiv ffs_fputc, 0x8A
+.equiv ffs_fputs, 0x8B
+.equiv ffs_fprintf, 0x8C
+.equiv ffs_ftell, 0x8D
+.equiv ffs_feof, 0x8E
+.equiv ffs_fsize, 0x8F
+.equiv ffs_ferror, 0x90
 
 ; FatFS directory access functions
 ;
-ffs_dopen:		EQU	91h
-ffs_dclose:		EQU	92h
-ffs_dread:		EQU	93h
-ffs_dfindfirst:		EQU	94h
-ffs_dfindnext:		EQU	95h
+.equiv ffs_dopen, 0x91
+.equiv ffs_dclose, 0x92
+.equiv ffs_dread, 0x93
+.equiv ffs_dfindfirst, 0x94
+.equiv ffs_dfindnext, 0x95
 
 ; FatFS file and directory management functions
 ;
-ffs_stat:		EQU	96h
-ffs_unlink:		EQU	97h
-ffs_rename:		EQU	98h
-ffs_chmod:		EQU	99h
-ffs_utime:		EQU	9Ah
-ffs_mkdir:		EQU	9Bh
-ffs_chdir:		EQU	9Ch
-ffs_chdrive:		EQU	9Dh
-ffs_getcwd:		EQU	9Eh
+.equiv ffs_stat, 0x96
+.equiv ffs_unlink, 0x97
+.equiv ffs_rename, 0x98
+.equiv ffs_chmod, 0x99
+.equiv ffs_utime, 0x9A
+.equiv ffs_mkdir, 0x9B
+.equiv ffs_chdir, 0x9C
+.equiv ffs_chdrive, 0x9D
+.equiv ffs_getcwd, 0x9E
 
 ; FatFS volume management and system configuration functions
 ;
-ffs_mount:		EQU	9Fh
-ffs_mkfs:		EQU	A0h
-ffs_fdisk:		EQU	A1h
-ffs_getfree:		EQU	A2h
-ffs_getlabel:		EQU	A3h
-ffs_setlabel:		EQU	A4h
-ffs_setcp:		EQU	A5h
+.equiv ffs_mount, 0x9F
+.equiv ffs_mkfs, 0xA0
+.equiv ffs_fdisk, 0xA1
+.equiv ffs_getfree, 0xA2
+.equiv ffs_getlabel, 0xA3
+.equiv ffs_setlabel, 0xA4
+.equiv ffs_setcp, 0xA5
 
 ; Additional fatfs calls
 ;
-ffs_flseek_p:		EQU	A6h
+.equiv ffs_flseek_p, 0xA6
 
 	
 ; File access modes
 ;
-fa_read:		EQU	01h
-fa_write:		EQU	02h
-fa_open_existing:	EQU	00h
-fa_create_new:		EQU	04h
-fa_create_always:	EQU	08h
-fa_open_always:		EQU	10h
-fa_open_append:		EQU	30h
+.equiv fa_read, 0x01
+.equiv fa_write, 0x02
+.equiv fa_open_existing, 0x00
+.equiv fa_create_new, 0x04
+.equiv fa_create_always, 0x08
+.equiv fa_open_always, 0x10
+.equiv fa_open_append, 0x30
 	
 ; System variable indexes for api_sysvars
 ; Index into _sysvars in globals.asm
 ;
-sysvar_time:		EQU	00h	; 4: Clock timer in centiseconds (incremented by 2 every VBLANK)
-sysvar_vpd_pflags:	EQU	04h	; 1: Flags to indicate completion of VDP commands
-sysvar_keyascii:	EQU	05h	; 1: ASCII keycode, or 0 if no key is pressed
-sysvar_keymods:		EQU	06h	; 1: Keycode modifiers
-sysvar_cursorX:		EQU	07h	; 1: Cursor X position
-sysvar_cursorY:		EQU	08h	; 1: Cursor Y position
-sysvar_scrchar:		EQU	09h	; 1: Character read from screen
-sysvar_scrpixel:	EQU	0Ah	; 3: Pixel data read from screen (R,B,G)
-sysvar_audioChannel:	EQU	0Dh	; 1: Audio channel 
-sysvar_audioSuccess:	EQU	0Eh	; 1: Audio channel note queued (0 = no, 1 = yes)
-sysvar_scrWidth:	EQU	0Fh	; 2: Screen width in pixels
-sysvar_scrHeight:	EQU	11h	; 2: Screen height in pixels
-sysvar_scrCols:		EQU	13h	; 1: Screen columns in characters
-sysvar_scrRows:		EQU	14h	; 1: Screen rows in characters
-sysvar_scrColours:	EQU	15h	; 1: Number of colours displayed
-sysvar_scrpixelIndex:	EQU	16h	; 1: Index of pixel data read from screen
-sysvar_vkeycode:	EQU	17h	; 1: Virtual key code from FabGL
-sysvar_vkeydown:	EQU	18h	; 1: Virtual key state from FabGL (0=up, 1=down)
-sysvar_vkeycount:	EQU	19h	; 1: Incremented every time a key packet is received
-sysvar_rtc:		EQU	1Ah	; 6: Real time clock data
-sysvar_spare:		EQU	20h	; 2: Spare, previously used by rtc
-sysvar_keydelay:	EQU	22h	; 2: Keyboard repeat delay
-sysvar_keyrate:		EQU	24h	; 2: Keyboard repeat reat
-sysvar_keyled:		EQU	26h	; 1: Keyboard LED status
-sysvar_scrMode:		EQU	27h	; 1: Screen mode
-sysvar_rtcEnable:	EQU	28h	; 1: RTC enable flag (0: disabled, 1: use ESP32 RTC)
-sysvar_mouseX:		EQU	29h	; 2: Mouse X position
-sysvar_mouseY:		EQU	2Bh	; 2: Mouse Y position
-sysvar_mouseButtons:	EQU	2Dh	; 1: Mouse button state
-sysvar_mouseWheel:	EQU	2Eh	; 1: Mouse wheel delta
-sysvar_mouseXDelta:	EQU	2Fh	; 2: Mouse X delta
-sysvar_mouseYDelta:	EQU	31h	; 2: Mouse Y delta
-sysvar_gp:		EQU	37h	; 1: General poll packet data
+.equiv sysvar_time, 0x00; 4: Clock timer in centiseconds (incremented by 2 every VBLANK)
+.equiv sysvar_vpd_pflags, 0x04; 1: Flags to indicate completion of VDP commands
+.equiv sysvar_keyascii, 0x05; 1: ASCII keycode, or 0 if no key is pressed
+.equiv sysvar_keymods, 0x06; 1: Keycode modifiers
+.equiv sysvar_cursorX, 0x07; 1: Cursor X position
+.equiv sysvar_cursorY, 0x08; 1: Cursor Y position
+.equiv sysvar_scrchar, 0x09; 1: Character read from screen
+.equiv sysvar_scrpixel, 0x0A; 3: Pixel data read from screen (R,B,G)
+.equiv sysvar_audioChannel, 0x0D; 1: Audio channel 
+.equiv sysvar_audioSuccess, 0x0E; 1: Audio channel note queued (0 = no, 1 = yes)
+.equiv sysvar_scrWidth, 0x0F; 2: Screen width in pixels
+.equiv sysvar_scrHeight, 0x11; 2: Screen height in pixels
+.equiv sysvar_scrCols, 0x13; 1: Screen columns in characters
+.equiv sysvar_scrRows, 0x14; 1: Screen rows in characters
+.equiv sysvar_scrColours, 0x15; 1: Number of colours displayed
+.equiv sysvar_scrpixelIndex, 0x16; 1: Index of pixel data read from screen
+.equiv sysvar_vkeycode, 0x17; 1: Virtual key code from FabGL
+.equiv sysvar_vkeydown, 0x18; 1: Virtual key state from FabGL (0=up, 1=down)
+.equiv sysvar_vkeycount, 0x19; 1: Incremented every time a key packet is received
+.equiv sysvar_rtc, 0x1A; 6: Real time clock data
+.equiv sysvar_spare, 0x20; 2: Spare, previously used by rtc
+.equiv sysvar_keydelay, 0x22; 2: Keyboard repeat delay
+.equiv sysvar_keyrate, 0x24; 2: Keyboard repeat reat
+.equiv sysvar_keyled, 0x26; 1: Keyboard LED status
+.equiv sysvar_scrMode, 0x27; 1: Screen mode
+.equiv sysvar_rtcEnable, 0x28; 1: RTC enable flag (0: disabled, 1: use ESP32 RTC)
+.equiv sysvar_mouseX, 0x29; 2: Mouse X position
+.equiv sysvar_mouseY, 0x2B; 2: Mouse Y position
+.equiv sysvar_mouseButtons, 0x2D; 1: Mouse button state
+.equiv sysvar_mouseWheel, 0x2E; 1: Mouse wheel delta
+.equiv sysvar_mouseXDelta, 0x2F; 2: Mouse X delta
+.equiv sysvar_mouseYDelta, 0x31; 2: Mouse Y delta
+.equiv sysvar_gp, 0x37; 1: General poll packet data
 	
 ; Flags for the VPD protocol
 ;
-vdp_pflag_cursor:	EQU	00000001b
-vdp_pflag_scrchar:	EQU	00000010b
-vdp_pflag_point:	EQU	00000100b
-vdp_pflag_audio:	EQU	00001000b
-vdp_pflag_mode:		EQU	00010000b
-vdp_pflag_rtc:		EQU	00100000b
-vdp_pflag_mouse:	EQU	01000000b
+.equiv vdp_pflag_cursor, 0b00000001
+.equiv vdp_pflag_scrchar, 0b00000010
+.equiv vdp_pflag_point, 0b00000100
+.equiv vdp_pflag_audio, 0b00001000
+.equiv vdp_pflag_mode, 0b00010000
+.equiv vdp_pflag_rtc, 0b00100000
+.equiv vdp_pflag_mouse, 0b01000000
 ; vdp_pflag_buffered:	EQU	10000000b
 
 ;
@@ -242,57 +246,90 @@ vdp_pflag_mouse:	EQU	01000000b
 ;
 ; Object ID and allocation information (FFOBJID)
 ;
-FFOBJID	.STRUCT
-	fs:		DS	3	; Pointer to the hosting volume of this object
-	id:		DS	2	; Hosting volume mount ID
-	attr:		DS	1	; Object attribute
-	stat:		DS	1	; Object chain status (b1-0: =0:not contiguous, =2:contiguous, =3:fragmented in this session, b2:sub-directory stretched)
-	sclust:		DS	4	; Object data start cluster (0:no cluster or root directory)
-	objsize:	DS	4	; Object size (valid when sclust != 0)
-FFOBJID_SIZE .ENDSTRUCT FFOBJID
+; zds2gas: .STRUCT FFOBJID
+.equiv FFOBJID.fs, 0
+; zds2gas: fs:		DS	3 (3 bytes, no allocation); Pointer to the hosting volume of this object
+.equiv FFOBJID.id, 3
+; zds2gas: id:		DS	2 (2 bytes, no allocation); Hosting volume mount ID
+.equiv FFOBJID.attr, 5
+; zds2gas: attr:		DS	1 (1 bytes, no allocation); Object attribute
+.equiv FFOBJID.stat, 6
+; zds2gas: stat:		DS	1 (1 bytes, no allocation); Object chain status (b1-0: =0:not contiguous, =2:contiguous, =3:fragmented in this session, b2:sub-directory stretched)
+.equiv FFOBJID.sclust, 7
+; zds2gas: sclust:		DS	4 (4 bytes, no allocation); Object data start cluster (0:no cluster or root directory)
+.equiv FFOBJID.objsize, 11
+; zds2gas: objsize:	DS	4 (4 bytes, no allocation); Object size (valid when sclust != 0)
+.equiv FFOBJID_SIZE, 15
+; zds2gas: .ENDSTRUCT FFOBJID (15 bytes)
 ;
 ; File object structure (FIL)
 ;
-FIL .STRUCT
-	obj:		.TAG	FFOBJID	; Object identifier
-	flag:		DS	1	; File status flags
-	err:		DS	1	; Abort flag (error code)
-	fptr:		DS	4	; File read/write pointer (Zeroed on file open)
-	clust:		DS	4	; Current cluster of fpter (invalid when fptr is 0)
-	sect:		DS	4	; Sector number appearing in buf[] (0:invalid)
-	dir_sect:	DS	4	; Sector number containing the directory entry
-	dir_ptr:	DS	3	; Pointer to the directory entry in the win[]
-FIL_SIZE .ENDSTRUCT FIL
+; zds2gas: .STRUCT FIL
+.equiv FIL.obj, 0
+; zds2gas: obj:		.TAG	FFOBJID (15 bytes, no allocation); Object identifier
+.equiv FIL.flag, 15
+; zds2gas: flag:		DS	1 (1 bytes, no allocation); File status flags
+.equiv FIL.err, 16
+; zds2gas: err:		DS	1 (1 bytes, no allocation); Abort flag (error code)
+.equiv FIL.fptr, 17
+; zds2gas: fptr:		DS	4 (4 bytes, no allocation); File read/write pointer (Zeroed on file open)
+.equiv FIL.clust, 21
+; zds2gas: clust:		DS	4 (4 bytes, no allocation); Current cluster of fpter (invalid when fptr is 0)
+.equiv FIL.sect, 25
+; zds2gas: sect:		DS	4 (4 bytes, no allocation); Sector number appearing in buf[] (0:invalid)
+.equiv FIL.dir_sect, 29
+; zds2gas: dir_sect:	DS	4 (4 bytes, no allocation); Sector number containing the directory entry
+.equiv FIL.dir_ptr, 33
+; zds2gas: dir_ptr:	DS	3 (3 bytes, no allocation); Pointer to the directory entry in the win[]
+.equiv FIL_SIZE, 36
+; zds2gas: .ENDSTRUCT FIL (36 bytes)
 ;
 ; Directory object structure (DIR)
 ; 
-DIR .STRUCT
-	obj:		.TAG	FFOBJID	; Object identifier
-	dptr:		DS	4	; Current read/write offset
-	clust:		DS	4	; Current cluster
-	sect:		DS	4	; Current sector (0:Read operation has terminated)
-	dir:		DS	3	; Pointer to the directory item in the win[]
-	fn:		DS	12	; SFN (in/out) {body[8],ext[3],status[1]}
-	blk_ofs:	DS	4	; Offset of current entry block being processed (0xFFFFFFFF:Invalid)
-DIR_SIZE .ENDSTRUCT DIR
+; zds2gas: .STRUCT DIR
+.equiv DIR.obj, 0
+; zds2gas: obj:		.TAG	FFOBJID (15 bytes, no allocation); Object identifier
+.equiv DIR.dptr, 15
+; zds2gas: dptr:		DS	4 (4 bytes, no allocation); Current read/write offset
+.equiv DIR.clust, 19
+; zds2gas: clust:		DS	4 (4 bytes, no allocation); Current cluster
+.equiv DIR.sect, 23
+; zds2gas: sect:		DS	4 (4 bytes, no allocation); Current sector (0:Read operation has terminated)
+.equiv DIR.dir, 27
+; zds2gas: dir:		DS	3 (3 bytes, no allocation); Pointer to the directory item in the win[]
+.equiv DIR.fn, 30
+; zds2gas: fn:		DS	12 (12 bytes, no allocation); SFN (in/out) {body[8],ext[3],status[1]}
+.equiv DIR.blk_ofs, 42
+; zds2gas: blk_ofs:	DS	4 (4 bytes, no allocation); Offset of current entry block being processed (0xFFFFFFFF:Invalid)
+.equiv DIR_SIZE, 46
+; zds2gas: .ENDSTRUCT DIR (46 bytes)
 ;
 ; File information structure (FILINFO)
 ;
-FILINFO .STRUCT
-	fsize:		DS 	4	; File size
-	fdate:		DS	2	; Modified date
-	ftime:		DS	2	; Modified time
-	fattrib:	DS	1	; File attribute
-	altname:	DS	13	; Alternative file name
-	fname:		DS	256	; Primary file name
-FILINFO_SIZE .ENDSTRUCT FILINFO
+; zds2gas: .STRUCT FILINFO
+.equiv FILINFO.fsize, 0
+; zds2gas: fsize:		DS 	4 (4 bytes, no allocation); File size
+.equiv FILINFO.fdate, 4
+; zds2gas: fdate:		DS	2 (2 bytes, no allocation); Modified date
+.equiv FILINFO.ftime, 6
+; zds2gas: ftime:		DS	2 (2 bytes, no allocation); Modified time
+.equiv FILINFO.fattrib, 8
+; zds2gas: fattrib:	DS	1 (1 bytes, no allocation); File attribute
+.equiv FILINFO.altname, 9
+; zds2gas: altname:	DS	13 (13 bytes, no allocation); Alternative file name
+.equiv FILINFO.fname, 22
+; zds2gas: fname:		DS	256 (256 bytes, no allocation); Primary file name
+.equiv FILINFO_SIZE, 278
+; zds2gas: .ENDSTRUCT FILINFO (278 bytes)
 
 ;
 ; Macro for calling the API
 ; Parameters:
 ; - function: One of the function numbers listed above
 ;
-MOSCALL:		MACRO	function
-			LD	A, function
-			RST.LIS	08h
-			ENDMACRO 	
+.macro zds_MOSCALL function
+			LD	A, \function
+			RST.LIS	0x08
+			.endm
+
+.endif

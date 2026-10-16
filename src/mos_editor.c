@@ -14,7 +14,7 @@
  * 31/03/2023:		Added timeout for VDP protocol
  */
 
-#include <eZ80.h>
+#include <ez80.h>
 #include <defines.h>
 #include <stdio.h>
 #include <stdlib.h>

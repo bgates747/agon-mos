@@ -23,7 +23,7 @@
  
 #include <stddef.h>
 #include <stdio.h>
-#include <eZ80.h>
+#include <ez80.h>
 #include <defines.h>
 #include <gpio.h>
 

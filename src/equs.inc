@@ -1,3 +1,7 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/equs.inc
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+.ifndef AGON_MOS_SRC_EQUS_INC
+.set AGON_MOS_SRC_EQUS_INC,1
 ;
 ; Title:	AGON MOS - Equs
 ; Author:	Dean Belfield
@@ -15,93 +19,95 @@
 ; 08/06/2023:	Add MASTERCLOCK to permit clock delay calculations
 
 ; System clock speed in Hz
-MASTERCLOCK:		EQU		18432000
+.equiv MASTERCLOCK, 18432000
 
 ; MOS specific
 ;
-VDPP_BUFFERLEN:		EQU		16	; VDP Protocol Buffer Length
+.equiv VDPP_BUFFERLEN, 16; VDP Protocol Buffer Length
 	
-VDPP_FLAG_CURSOR:	EQU		00000001b
-VDPP_FLAG_SCRCHAR:	EQU		00000010b
-VDPP_FLAG_POINT:	EQU		00000100b
-VDPP_FLAG_AUDIO:	EQU		00001000b	
-VDPP_FLAG_MODE:		EQU		00010000b
-VDPP_FLAG_RTC:		EQU		00100000b
-VDPP_FLAG_MOUSE:	EQU		01000000b
+.equiv VDPP_FLAG_CURSOR, 0b00000001
+.equiv VDPP_FLAG_SCRCHAR, 0b00000010
+.equiv VDPP_FLAG_POINT, 0b00000100
+.equiv VDPP_FLAG_AUDIO, 0b00001000
+.equiv VDPP_FLAG_MODE, 0b00010000
+.equiv VDPP_FLAG_RTC, 0b00100000
+.equiv VDPP_FLAG_MOUSE, 0b01000000
 ; VDPP_FLAG_BUFFERED:	EQU		10000000b
 
 ; For GPIO
 ; PA not available on eZ80F92
 ;
-PA_DR:			EQU		96h
-PA_DDR:			EQU		97h
-PA_ALT1:		EQU		98h
-PA_ALT2:		EQU		99h
-PB_DR:          	EQU		9Ah
-PB_DDR:        	 	EQU		9Bh
-PB_ALT1:        	EQU		9Ch
-PB_ALT2:        	EQU		9Dh
-PC_DR:          	EQU		9Eh
-PC_DDR:         	EQU		9Fh
-PC_ALT1:        	EQU		A0h
-PC_ALT2:        	EQU		A1h
-PD_DR:          	EQU		A2h
-PD_DDR:			EQU		A3h
-PD_ALT1:		EQU		A4h
-PD_ALT2:		EQU		A5h
+.equ PA_DR, 0x96
+.equ PA_DDR, 0x97
+.equ PA_ALT1, 0x98
+.equ PA_ALT2, 0x99
+.equ PB_DR, 0x9A
+.equ PB_DDR, 0x9B
+.equ PB_ALT1, 0x9C
+.equ PB_ALT2, 0x9D
+.equ PC_DR, 0x9E
+.equ PC_DDR, 0x9F
+.equ PC_ALT1, 0xA0
+.equ PC_ALT2, 0xA1
+.equ PD_DR, 0xA2
+.equ PD_DDR, 0xA3
+.equ PD_ALT1, 0xA4
+.equ PD_ALT2, 0xA5
 	
-GPIOMODE_OUT:		EQU		0	; Output
-GPIOMODE_IN:		EQU		1	; Input
-GPIOMODE_DIO:		EQU		2	; Open Drain IO
-GPIOMODE_SIO:		EQU		3	; Open Source IO
-GPIOMODE_INTD:		EQU		4	; Interrupt, Dual Edge
-GPIOMODE_ALTF:		EQU		5;	; Alt Function
-GPIOMODE_INTAL:		EQU		6	; Interrupt, Active Low
-GPIOMODE_INTAH:		EQU		7	; Interrupt, Active High
-GPIOMODE_INTFE:		EQU		8	; Interrupt, Falling Edge
-GPIOMODE_INTRE:		EQU		9	; Interrupt, Rising Edge
+.equiv GPIOMODE_OUT, 0; Output
+.equiv GPIOMODE_IN, 1; Input
+.equiv GPIOMODE_DIO, 2; Open Drain IO
+.equiv GPIOMODE_SIO, 3; Open Source IO
+.equiv GPIOMODE_INTD, 4; Interrupt, Dual Edge
+.equiv GPIOMODE_ALTF, 5;	; Alt Function
+.equiv GPIOMODE_INTAL, 6; Interrupt, Active Low
+.equiv GPIOMODE_INTAH, 7; Interrupt, Active High
+.equiv GPIOMODE_INTFE, 8; Interrupt, Falling Edge
+.equiv GPIOMODE_INTRE, 9; Interrupt, Rising Edge
 	
 ; For interrupts.asm
 ;
 
 ;UARTs
 ;
-UART0_IVECT		EQU	18h
-UART1_IVECT		EQU	1Ah
+.equ UART0_IVECT, 0x18
+.equ UART1_IVECT, 0x1A
 
 ;Ports
 ;
-PB0_IVECT   		EQU   	30h	; AGON ITRP Interrupt   (Pin 28/IO17 of the ESP32)
-PB1_IVECT  	  	EQU  	32h	; AGON VBLANK Interrupt (Pin 23/IO15 of the ESP32)
-PB2_IVECT  	  	EQU   	34h
-PB3_IVECT  	  	EQU   	36h
-PB4_IVECT    		EQU   	38h
-PB5_IVECT    		EQU   	3Ah
-PB6_IVECT    		EQU   	3Ch
-PB7_IVECT    		EQU   	3Eh
+.equiv PB0_IVECT, 0x30; AGON ITRP Interrupt   (Pin 28/IO17 of the ESP32)
+.equiv PB1_IVECT, 0x32; AGON VBLANK Interrupt (Pin 23/IO15 of the ESP32)
+.equiv PB2_IVECT, 0x34
+.equiv PB3_IVECT, 0x36
+.equiv PB4_IVECT, 0x38
+.equiv PB5_IVECT, 0x3A
+.equiv PB6_IVECT, 0x3C
+.equiv PB7_IVECT, 0x3E
                        
-PC0_IVECT    		EQU   	40h
-PC1_IVECT    		EQU   	42h
-PC2_IVECT    		EQU   	44h
-PC3_IVECT    		EQU   	46h
-PC4_IVECT    		EQU   	48h
-PC5_IVECT    		EQU   	4Ah
-PC6_IVECT    		EQU   	4Ch
-PC7_IVECT    		EQU   	4Eh
+.equiv PC0_IVECT, 0x40
+.equiv PC1_IVECT, 0x42
+.equiv PC2_IVECT, 0x44
+.equiv PC3_IVECT, 0x46
+.equiv PC4_IVECT, 0x48
+.equiv PC5_IVECT, 0x4A
+.equiv PC6_IVECT, 0x4C
+.equiv PC7_IVECT, 0x4E
                        
-PD0_IVECT    		EQU   	50h
-PD1_IVECT    		EQU   	52h
-PD2_IVECT    		EQU   	54h
-PD3_IVECT    		EQU   	56h
-PD4_IVECT    		EQU   	58h
-PD5_IVECT    		EQU   	5Ah
-PD6_IVECT    		EQU   	5Ch
-PD7_IVECT    		EQU   	5Eh
+.equiv PD0_IVECT, 0x50
+.equiv PD1_IVECT, 0x52
+.equiv PD2_IVECT, 0x54
+.equiv PD3_IVECT, 0x56
+.equiv PD4_IVECT, 0x58
+.equiv PD5_IVECT, 0x5A
+.equiv PD6_IVECT, 0x5C
+.equiv PD7_IVECT, 0x5E
 
 ; For vectors16.asm
 ;
-TMR0_CTL		EQU	80h
-TMR0_DR_L               EQU     81h
-TMR0_RR_L               EQU     81h
-TMR0_DR_H               EQU     82h
-TMR0_RR_H               EQU     82h
+.equ TMR0_CTL, 0x80
+.equ TMR0_DR_L, 0x81
+.equ TMR0_RR_L, 0x81
+.equ TMR0_DR_H, 0x82
+.equ TMR0_RR_H, 0x82
+
+.endif

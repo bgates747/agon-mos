@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src_startup/cstartup.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - C Startup Code
 ; Author:	Copyright (C) 2005 by ZiLOG, Inc.  All Rights Reserved.
@@ -26,10 +28,10 @@
 			XREF __low_code
 			XREF __low_romcode
 
-__cstartup		EQU %1
+.equiv __cstartup, 0x1
 
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			.ASSUME ADL=1
 
 __c_startup:
@@ -88,4 +90,4 @@ _copy_code_to_ram_done:
 ;
 			RET
 
-			END
+			; zds2gas: END

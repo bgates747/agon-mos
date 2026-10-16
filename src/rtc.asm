@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/rtc.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - RTC
 ; Author:	Dean Belfield
@@ -7,13 +9,13 @@
 ; Modinfo:
 ; 05/06/2023:	System variable rtc_enable now set
 
-			INCLUDE	"macros.inc"
-			INCLUDE	"equs.inc"
+			.include "macros.inc"
+			.include "equs.inc"
 
 			.ASSUME	ADL = 1
 
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			
 			XDEF	__init_rtc
 			XDEF	_init_rtc

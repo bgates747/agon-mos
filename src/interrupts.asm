@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/interrupts.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - Interrupt handlers
 ; Author:	Dean Belfield
@@ -9,15 +11,15 @@
 ; 29/03/2023:	Added support for UART1
 ; 10/11/2023:	Added support for I2C
 
-			INCLUDE	"macros.inc"
-			INCLUDE	"equs.inc"
-			INCLUDE "ez80f92.inc"
-			INCLUDE "i2c.inc"
+			.include "macros.inc"
+			.include "equs.inc"
+			.include "ez80f92.inc"
+			.include "i2c.inc"
 
 			.ASSUME	ADL = 1
 
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			
 			XDEF	_vblank_handler
 			XDEF	_uart0_handler
@@ -41,7 +43,7 @@
 ;
 _vblank_handler:	DI
 			PUSH		AF
-			SET_GPIO 	PB_DR, 2		; Need to set this to 2 for the interrupt to work correctly
+			zds_SET_GPIO 	PB_DR, 2		; Need to set this to 2 for the interrupt to work correctly
 			PUSH		BC
 			PUSH		DE
 			PUSH		HL	
@@ -85,7 +87,7 @@ _i2c_handler:
 			PUSH	HL
 			PUSH	DE
 			IN0		A, (I2C_SR)				; input I2C status register - switch case to this status value
-			AND		11111000b				; cancel lower 3 bits, so we can use RRA. This will save 1 T-state
+			AND		0b11111000				; cancel lower 3 bits, so we can use RRA. This will save 1 T-state
 			RRA
 			RRA
 			RRA								; bits [7:3] contain the jumpvector
@@ -180,7 +182,8 @@ i2c_case_db_acked:	; 28h
 
 			; load pointer
 			LD		HL, _i2c_msg_ptr
-			LD		DE, HL
+			push hl
+			pop de
 			LD		HL, (HL)
 
 			; Load indexed byte from buffer
@@ -219,7 +222,8 @@ i2c_case_arblost:	; 38h
 i2c_case_mr_dbr_ack: ; 50h
 			; calculate offset address into i2c_mbuffer
 			LD		HL, _i2c_msg_ptr
-			LD		DE, HL
+			push hl
+			pop de
 			LD		HL, (HL)
 
 			IN0		A,(I2C_DR)		; load byte from I2C Data Register
@@ -232,13 +236,13 @@ i2c_case_mr_dbr_ack: ; 50h
 i2c_case_mr_ar_ack: ; 40h		
 			LD		A, (_i2c_msg_size)
 			CP		1					; last byte to receive?
-			JR		Z, $F
+			JR		Z, .Lzds_src_interrupts_asm_131d5b67_a0001
 
 			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB | I2C_CTL_AAK	; reply with ACK
-			JR		$end
-$$:
+			JR		.Lzds_src_interrupts_asm_131d5b67_s000__24_end
+.Lzds_src_interrupts_asm_131d5b67_a0001:
 			LD		A, I2C_CTL_IEN | I2C_CTL_ENAB				; reply without ACK	
-$end:		OUT0	(I2C_CTL),A		; set to Control register
+.Lzds_src_interrupts_asm_131d5b67_s000__24_end:		OUT0	(I2C_CTL),A		; set to Control register
 			; size--
 			LD		A, (_i2c_msg_size)
 			DEC		A
@@ -266,10 +270,10 @@ i2c_sendstop:
 			; send stop first to go to idle state
 			LD		A, I2C_CTL_ENAB | I2C_CTL_STP			
 			OUT0	(I2C_CTL),A		; set to Control register			
-$$:
+.Lzds_src_interrupts_asm_131d5b67_a0002:
 			IN0		A,(I2C_CTL)
 			AND		I2C_CTL_STP		; STP bit still in place?
-			JR		NZ, $B
+			JR		NZ, .Lzds_src_interrupts_asm_131d5b67_a0002
 			
 			; Release control of the bus
 			XOR		A				; all bits of I2C_CTL to 0
@@ -284,4 +288,4 @@ $$:
 			EI
 			RETI.L
 	
-			END
+			; zds2gas: END

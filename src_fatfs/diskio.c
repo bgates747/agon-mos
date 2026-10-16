@@ -114,7 +114,8 @@ DWORD get_fattime(void) {
 	rtc_update();
 	rtc_unpack(&rtc, &tstruct);
 	
-	yr =  (tstruct.year - EPOCH_YEAR) << 25;
+	/* DEV-005: widen before shifting; native unsigned int is only 24 bits. */
+	yr =  (DWORD)(tstruct.year - EPOCH_YEAR) << 25;
 	mo =  (tstruct.month + 1) << 21;
 	da =  tstruct.day         << 16;
 	hr =  tstruct.hour        << 11;

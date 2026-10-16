@@ -12,6 +12,9 @@
 #ifndef RTC_H
 #define RTC_H
 
+/* DEV-004: this header uses MOS types independently of its caller's includes. */
+#include <defines.h>
+
 #define EPOCH_YEAR	1980
 
 // RTC time structure

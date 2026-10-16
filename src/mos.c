@@ -37,7 +37,7 @@
  * 11/11/2023:		Added mos_cmdHELP, mos_cmdTYPE, mos_cmdCLS, mos_cmdMOUNT, mos_mount
  */
 
-#include <eZ80.h>
+#include <ez80.h>
 #include <defines.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -1658,7 +1658,7 @@ int mos_cmdTIME(char *ptr) {
 	return FR_OK;
 }
 
-extern void sysvars[];
+extern unsigned char sysvars[];
 
 // MEM
 // Returns:

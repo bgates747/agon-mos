@@ -32,12 +32,15 @@ typedef BOOL bool;
 #define	DEBUG					0			// Set to 0 for production, 1 for extra debug information
 
 // ZDS segment stuff
-extern void _heapbot[];
-extern void _heaptop[];
-extern void _stack[];
-extern void _low_data[];
-extern void _low_bss[];
-extern void _low_romdata[];
+/* DEV-002: linker addresses are byte-array boundaries, not illegal void
+ * arrays. No storage is allocated here; startup/linker symbol names stay put.
+ */
+extern unsigned char _heapbot[];
+extern unsigned char _heaptop[];
+extern unsigned char _stack[];
+extern unsigned char _low_data[];
+extern unsigned char _low_bss[];
+extern unsigned char _low_romdata[];
 extern int _len_data;
 
 /**

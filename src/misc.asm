@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/misc.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - Miscellaneous helper functions
 ; Author:	Dean Belfield
@@ -13,13 +15,13 @@
 ; 20/03/2023:	Function exec24 now preserves MB
 ; 15/04/2023:	Added GET_AHL24
 
-			INCLUDE	"macros.inc"
-			INCLUDE	"equs.inc"
+			.include "macros.inc"
+			.include "equs.inc"
 
 			.ASSUME	ADL = 1
 
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 
 			XDEF	SWITCH_A
 			XDEF	SET_AHL24
@@ -45,7 +47,7 @@
 ;
 SWITCH_A:		EX	(SP), HL		; Swap HL with the contents of the top of the stack
 			ADD	A, A			; Multiply A by two
-			ADD8U_HL 			; Add to HL (macro)
+			zds_ADD8U_HL 			; Add to HL (macro)
 			LD	A, (HL)			; follow the call. Fetch an address from the
 			INC	HL 			; table.
 			LD	H, (HL)
@@ -75,11 +77,11 @@ FIX_HLU24_no_mb_check:	PUSH	HL
 			LD	A, (HL)
 			OR 	A, A
 ; top byte of HLU (on stack) already set so return
-			JR	NZ, $F
+			JR	NZ, .Lzds_src_misc_asm_51158981_a0001
 ; set top byte of HLU (on stack) to MB
 			LD	A, MB
 			LD	(HL), A
-$$:			POP	HL
+.Lzds_src_misc_asm_51158981_a0001:			POP	HL
 			RET
 
 ; Set the MSB of DE (U) to A
@@ -142,7 +144,7 @@ _exec24:		PUSH 	IY
 ; Write out a short subroutine "JP (DE)" to RAM
 ;			
 			LD	IX, _callSM	; Storage for the self modified routine
-			LD	(IX + 0), C3h	; JP llhhuu
+			LD	(IX + 0), 0xC3	; JP llhhuu
 			LD	(IX + 1), E
 			LD	(IX + 2), D
 			LD	(IX + 3), A	
@@ -176,11 +178,11 @@ _exec16:		PUSH 	IY
 ;
 
 			LD	IX, _callSM	; Storage for the self modified routine
-			LD	(IX + 0), 49h	; CALL.IS llhh
-			LD	(IX + 1), CDh
+			LD	(IX + 0), 0x49	; CALL.IS llhh
+			LD	(IX + 1), 0xCD
 			LD	(IX + 2), E
 			LD	(IX + 3), D
-			LD	(IX + 4), C9h	; RET		
+			LD	(IX + 4), 0xC9	; RET		
 ;
 _execSM:		CALL	_callSM		; Call the subroutine
 ;
@@ -201,10 +203,10 @@ _wait_timer0:		PUSH	AF
 			IN0	A, (TMR0_CTL)	; Enable the timer
 			OR	3
 			OUT0	(TMR0_CTL), A
-$$:			IN0	B, (TMR0_DR_L)	; Fetch the counter L
+.Lzds_src_misc_asm_51158981_a0002:			IN0	B, (TMR0_DR_L)	; Fetch the counter L
 			IN0 	A, (TMR0_DR_H)	; And the counter H
 			OR	B 
-			JR	NZ, $B
+			JR	NZ, .Lzds_src_misc_asm_51158981_a0002
 			POP	BC 
 			POP	AF 
 			RET
@@ -213,9 +215,9 @@ _timer0_delay:
 			POP		HL
 			POP		BC
 			PUSH		BC
-			TIMER_SET_BC	0
-			TIMER_START	0
-			TIMER_WAIT	0
+			zds_TIMER_SET_BC	0
+			zds_TIMER_START	0
+			zds_TIMER_WAIT	0
 			JP		(HL)
 
-END
+; zds2gas: END

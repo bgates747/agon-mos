@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/serial.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - UART code
 ; Author:	Dean Belfield
@@ -11,13 +13,13 @@
 ; 23/03/2023:	Renamed serial_RX_WAIT to seral_GETCH
 ; 29/03/2023:	Added support for UART1
 
-			INCLUDE	"macros.inc"
-			INCLUDE	"equs.inc"
+			.include "macros.inc"
+			.include "equs.inc"
 
 			.ASSUME	ADL = 1
 			
-			DEFINE .STARTUP, SPACE = ROM
-			SEGMENT .STARTUP
+			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			.section .STARTUP,"ax",@progbits
 			
 			XDEF	UART0_serial_TX
 			XDEF	UART0_serial_RX
@@ -37,41 +39,41 @@
 
 			XREF	_serialFlags	; In globals.asm
 				
-UART0_PORT		EQU	%C0		; UART0
-UART1_PORT		EQU	%D0		; UART1
+.equiv UART0_PORT, 0xC0; UART0
+.equiv UART1_PORT, 0xD0; UART1
 				
-UART0_REG_RBR:		EQU	UART0_PORT+0	; Receive buffer
-UART0_REG_THR:		EQU	UART0_PORT+0	; Transmitter holding
-UART0_REG_DLL:		EQU	UART0_PORT+0	; Divisor latch low
-UART0_REG_IER:		EQU	UART0_PORT+1	; Interrupt enable
-UART0_REG_DLH:		EQU	UART0_PORT+1	; Divisor latch high
-UART0_REG_IIR:		EQU	UART0_PORT+2	; Interrupt identification
-UART0_REG_FCT:		EQU	UART0_PORT+2;	; Flow control
-UART0_REG_LCR:		EQU	UART0_PORT+3	; Line control
-UART0_REG_MCR:		EQU	UART0_PORT+4	; Modem control
-UART0_REG_LSR:		EQU	UART0_PORT+5	; Line status
-UART0_REG_MSR:		EQU	UART0_PORT+6	; Modem status
-UART0_REG_SCR:		EQU 	UART0_PORT+7	; Scratch
+.equiv UART0_REG_RBR, UART0_PORT+0; Receive buffer
+.equiv UART0_REG_THR, UART0_PORT+0; Transmitter holding
+.equiv UART0_REG_DLL, UART0_PORT+0; Divisor latch low
+.equiv UART0_REG_IER, UART0_PORT+1; Interrupt enable
+.equiv UART0_REG_DLH, UART0_PORT+1; Divisor latch high
+.equiv UART0_REG_IIR, UART0_PORT+2; Interrupt identification
+.equiv UART0_REG_FCT, UART0_PORT+2;	; Flow control
+.equiv UART0_REG_LCR, UART0_PORT+3; Line control
+.equiv UART0_REG_MCR, UART0_PORT+4; Modem control
+.equiv UART0_REG_LSR, UART0_PORT+5; Line status
+.equiv UART0_REG_MSR, UART0_PORT+6; Modem status
+.equiv UART0_REG_SCR, UART0_PORT+7; Scratch
 
-UART1_REG_RBR:		EQU	UART1_PORT+0	; Receive buffer
-UART1_REG_THR:		EQU	UART1_PORT+0	; Transmitter holding
-UART1_REG_DLL:		EQU	UART1_PORT+0	; Divisor latch low
-UART1_REG_IER:		EQU	UART1_PORT+1	; Interrupt enable
-UART1_REG_DLH:		EQU	UART1_PORT+1	; Divisor latch high
-UART1_REG_IIR:		EQU	UART1_PORT+2	; Interrupt identification
-UART1_REG_FCT:		EQU	UART1_PORT+2;	; Flow control
-UART1_REG_LCR:		EQU	UART1_PORT+3	; Line control
-UART1_REG_MCR:		EQU	UART1_PORT+4	; Modem control
-UART1_REG_LSR:		EQU	UART1_PORT+5	; Line status
-UART1_REG_MSR:		EQU	UART1_PORT+6	; Modem status
-UART1_REG_SCR:		EQU 	UART1_PORT+7	; Scratch
+.equiv UART1_REG_RBR, UART1_PORT+0; Receive buffer
+.equiv UART1_REG_THR, UART1_PORT+0; Transmitter holding
+.equiv UART1_REG_DLL, UART1_PORT+0; Divisor latch low
+.equiv UART1_REG_IER, UART1_PORT+1; Interrupt enable
+.equiv UART1_REG_DLH, UART1_PORT+1; Divisor latch high
+.equiv UART1_REG_IIR, UART1_PORT+2; Interrupt identification
+.equiv UART1_REG_FCT, UART1_PORT+2;	; Flow control
+.equiv UART1_REG_LCR, UART1_PORT+3; Line control
+.equiv UART1_REG_MCR, UART1_PORT+4; Modem control
+.equiv UART1_REG_LSR, UART1_PORT+5; Line status
+.equiv UART1_REG_MSR, UART1_PORT+6; Modem status
+.equiv UART1_REG_SCR, UART1_PORT+7; Scratch
 
-TX_WAIT			EQU	16384 		; Count before a TX times out
+.equiv TX_WAIT, 16384; Count before a TX times out
 
-UART_LSR_ERR		EQU 	%80		; Error
-UART_LSR_ETX		EQU 	%40		; Transmit empty
-UART_LSR_ETH		EQU	%20		; Transmit holding register empty
-UART_LSR_RDY		EQU	%01		; Data ready
+.equiv UART_LSR_ERR, 0x80; Error
+.equiv UART_LSR_ETX, 0x40; Transmit empty
+.equiv UART_LSR_ETH, 0x20; Transmit holding register empty
+.equiv UART_LSR_RDY, 0x01; Data ready
 
 ; Check whether we're clear to send (UART0 only)
 ;
@@ -80,7 +82,7 @@ UART0_wait_CTS:		IN0		A, (UART0_REG_MSR)
 			JR		Z, UART0_wait_CTS
 			RET
 
-UART1_wait_CTS:		GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
+UART1_wait_CTS:		zds_GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
 			JR		NZ, UART1_wait_CTS
 			RET
 
@@ -172,11 +174,11 @@ UART1_serial_RX:	IN0		A,(UART1_REG_LSR)	; Get the line status register
 ;
 UART0_serial_GETCH:	PUSH		AF 
 			LD		A, (_serialFlags)
-			TST		01h
+			TST		0x01
 			JR		Z, UART_serial_NE
 			POP		AF
-$$:			CALL 		UART0_serial_RX
-			JR		NC,$B
+.Lzds_src_serial_asm_ee44dd47_a0001:			CALL 		UART0_serial_RX
+			JR		NC,.Lzds_src_serial_asm_ee44dd47_a0001
 			RET 
 
 ; Read a character from UART1 (blocking)
@@ -187,11 +189,11 @@ $$:			CALL 		UART0_serial_RX
 ;
 UART1_serial_GETCH:	PUSH		AF 
 			LD		A, (_serialFlags)
-			TST		10h
+			TST		0x10
 			JR		Z, UART_serial_NE
 			POP		AF
-$$:			CALL 		UART1_serial_RX
-			JR		NC,$B
+.Lzds_src_serial_asm_ee44dd47_a0002:			CALL 		UART1_serial_RX
+			JR		NC,.Lzds_src_serial_asm_ee44dd47_a0002
 			RET 
 
 ; Write a character to UART0 (blocking)
@@ -203,13 +205,13 @@ $$:			CALL 		UART1_serial_RX
 ;
 UART0_serial_PUTCH:	PUSH	AF
 			LD	A, (_serialFlags)		; Get the serial flags
-			TST	01h				; Check UART is enabled
+			TST	0x01				; Check UART is enabled
 			JR	Z, UART_serial_NE		; If not, then skip
-			TST	02h				; If hardware flow control enabled then
+			TST	0x02				; If hardware flow control enabled then
 			CALL	NZ, UART0_wait_CTS		; Wait for clear to send signal
 			POP	AF
-$$:			CALL	UART0_serial_TX			; Send the character
-			JR	NC, $B				; Repeat until sent
+.Lzds_src_serial_asm_ee44dd47_a0003:			CALL	UART0_serial_TX			; Send the character
+			JR	NC, .Lzds_src_serial_asm_ee44dd47_a0003				; Repeat until sent
 			RET
 
 ; Write a character to UART1 (blocking)
@@ -221,13 +223,13 @@ $$:			CALL	UART0_serial_TX			; Send the character
 ;
 UART1_serial_PUTCH:	PUSH	AF
 			LD	A, (_serialFlags)		; Get the serial flags
-			TST	10h				; Check UART is enabled
+			TST	0x10				; Check UART is enabled
 			JR	Z, UART_serial_NE		; If not, then skip (reuses UART0 routine here)
-			TST	20h				; If hardware flow control enabled then
+			TST	0x20				; If hardware flow control enabled then
 			CALL	NZ, UART1_wait_CTS		; Wait for clear to send signal
 			POP	AF			
-$$:			CALL	UART1_serial_TX			; Send the character
-			JR	NC, $B				; Repeat until sent
+.Lzds_src_serial_asm_ee44dd47_a0004:			CALL	UART1_serial_TX			; Send the character
+			JR	NC, .Lzds_src_serial_asm_ee44dd47_a0004				; Repeat until sent
 			RET
 
 ; Called by UART0 and UART1 PUTCH and GETCH if the UART is not enabled

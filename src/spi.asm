@@ -1,3 +1,5 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/spi.asm
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
 ;
 ; Title:	AGON MOS - SPI low level assembly language
 ; Author:	Leigh Brown
@@ -12,16 +14,16 @@
 ;    and sending the next request.
 ; 2) Getting as much done whilst the byte is being shifted out/in
 
-		INCLUDE "ez80F92.inc"
-		INCLUDE "macros.inc"
+		.include "ez80f92.inc"
+		.include "macros.inc"
 
-SPI_ENA_DELAY	.equ	50
+.equiv SPI_ENA_DELAY, 50
 
-SD_CS		.equ	4	; Bit 4
+.equiv SD_CS, 4; Bit 4
 
-SPI_MOSI	.equ	7	; PB7
-SPI_MISO	.equ	6	; PB6
-SPI_CLK		.equ	3	; PB3
+.equiv SPI_MOSI, 7; PB7
+.equiv SPI_MISO, 6; PB6
+.equiv SPI_CLK, 3; PB3
 
 		XDEF	_init_spi
 		XDEF	_spi_transfer
@@ -34,7 +36,7 @@ SPI_CLK		.equ	3	; PB3
 
 ; void spi_init(void);
 
-		SCOPE
+		; zds2gas: SCOPE
 
 _init_spi:	;
 		; SS must remain high for SPI to work properly
@@ -76,12 +78,12 @@ _init_spi:	;
 
 		; PB_ALT2 &= ~BIT(SD_CS);
 		IN0		A,(PB_ALT2)
-		RES		%4,A
+		RES		0x4,A
 		OUT0		(PB_ALT2),A
 
 		; PB_DDR  &= ~BIT(SD_CS);
 		IN0		A,(PB_DDR)
-		RES		%4,A
+		RES		0x4,A
 		OUT0		(PB_DDR),A
 
 		;
@@ -95,7 +97,7 @@ _init_spi:	;
 
 		; PB_ALT2 |=  (BIT(SPI_MOSI) | BIT(SP_MISO) | BIT(SPI_CLK))
 		IN0		A,(PB_ALT2)
-		OR		A,((1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK))
+		OR		A,(1<<SPI_MOSI)|(1<<SPI_MISO)|(1<<SPI_CLK)
 		OUT0		(PB_ALT2),A
 
 		;
@@ -117,13 +119,13 @@ _init_spi:	;
 		; Enable SPI as master
 		;
 
-		LD		A,%30
+		LD		A,0x30
 		OUT0		(SPI_CTL),A
 	
 		; Delay for `SPI_ENA_DELAY' milliseconds
 		;
 
-		DELAY_MS	SPI_ENA_DELAY
+		zds_DELAY_MS	SPI_ENA_DELAY
 
 		; All done
 		RET
@@ -131,9 +133,9 @@ _init_spi:	;
 
 ; unsigned char spi_read_one(void);
 ;
-		SCOPE
+		; zds2gas: SCOPE
 _spi_read_one:
-		LD		C,%FF		; Kick SPI into action before
+		LD		C,0xFF		; Kick SPI into action before
 		OUT0		(SPI_TSR),C	; anything else...
 		POP		HL		; Pop return address for later
 		JR		spi_wait
@@ -150,21 +152,21 @@ _spi_transfer:
 ; Both _spi_read_one and _spi_transfer use spi_wait to complete the operation
 
 spi_wait:	LD		B,0
-$loop:		IN0		A,(SPI_SR)
+.Lzds_src_spi_asm_1373a2f3_s002__24_loop:		IN0		A,(SPI_SR)
 		RLA
-		JR		C,$done
-		DJNZ		$loop
-$done:		IN0		A,(SPI_RBR)
+		JR		C,.Lzds_src_spi_asm_1373a2f3_s002__24_done
+		DJNZ		.Lzds_src_spi_asm_1373a2f3_s002__24_loop
+.Lzds_src_spi_asm_1373a2f3_s002__24_done:		IN0		A,(SPI_RBR)
 		JP		(HL)		; Faster than RET if we have HL
 
 
 ; void spi_read(char *buf, unsigned int len);
 ;
 
-		SCOPE
+		; zds2gas: SCOPE
 _spi_read:
 		; Request the first byte - do first to minimise delay
-		LD		C,%FF
+		LD		C,0xFF
 		OUT0		(SPI_TSR),C
 
 		; Function prologue
@@ -179,49 +181,49 @@ _spi_read:
 		LD		HL,(IX+9)
 
 		; Decrement the count of bytes
-$mainloop:	LD		BC,1
+.Lzds_src_spi_asm_1373a2f3_s003__24_mainloop:	LD		BC,1
 		OR		A,A
 		SBC		HL,BC
 
 		; If this is the last, break out of loop
-		JR		Z,$waitlast
+		JR		Z,.Lzds_src_spi_asm_1373a2f3_s003__24_waitlast
 
 		; Wait for byte to arrive then store it
-$waitnext:	LD		B,0		; (256 iterations)
-		LD		C,%FF		; pre-load C with dummy byte
-$loopnext:	IN0		A,(SPI_SR)
+.Lzds_src_spi_asm_1373a2f3_s003__24_waitnext:	LD		B,0		; (256 iterations)
+		LD		C,0xFF		; pre-load C with dummy byte
+.Lzds_src_spi_asm_1373a2f3_s003__24_loopnext:	IN0		A,(SPI_SR)
 		RLA
-		JR		C,$gotnext
-		DJNZ		$loopnext
+		JR		C,.Lzds_src_spi_asm_1373a2f3_s003__24_gotnext
+		DJNZ		.Lzds_src_spi_asm_1373a2f3_s003__24_loopnext
 		; TODO: detect errors
 
 		; Minimise delay from receiving to requesting the next byte
-$gotnext:	IN0		A,(SPI_RBR)
+.Lzds_src_spi_asm_1373a2f3_s003__24_gotnext:	IN0		A,(SPI_RBR)
 		OUT0		(SPI_TSR),C
 		LD		(DE),A
 		INC		DE
-		JR		$mainloop
+		JR		.Lzds_src_spi_asm_1373a2f3_s003__24_mainloop
 
-$waitlast:	; Do function epilogue now, we have time
+.Lzds_src_spi_asm_1373a2f3_s003__24_waitlast:	; Do function epilogue now, we have time
 		LD		SP,IX
 		POP		IX
 
 		; Now wait for last byte
 		LD		B,0		; (256 iterations)
-$looplast:	IN0		A,(SPI_SR)
+.Lzds_src_spi_asm_1373a2f3_s003__24_looplast:	IN0		A,(SPI_SR)
 		RLA
-		JR		C,$gotlast
-		DJNZ		$looplast
+		JR		C,.Lzds_src_spi_asm_1373a2f3_s003__24_gotlast
+		DJNZ		.Lzds_src_spi_asm_1373a2f3_s003__24_looplast
 		; TODO: detect errors
 
-$gotlast:	IN0		A,(SPI_RBR)
+.Lzds_src_spi_asm_1373a2f3_s003__24_gotlast:	IN0		A,(SPI_RBR)
 		LD		(DE),A
 		RET
 
 
 ; void spi_write(char *buf, unsigned int len);
 
-		SCOPE
+		; zds2gas: SCOPE
 _spi_write:
 		PUSH		IX
 		LD		IX,0
@@ -239,41 +241,41 @@ _spi_write:
 		LD		HL,(IX+9)
 
 		; Decrement the count of bytes
-$mainloop:	LD		BC,1
+.Lzds_src_spi_asm_1373a2f3_s004__24_mainloop:	LD		BC,1
 		OR		A,A
 		SBC		HL,BC
 
 		; If this is the last, break out of loop
-		JR		Z,$waitlast
+		JR		Z,.Lzds_src_spi_asm_1373a2f3_s004__24_waitlast
 
 		; Wait for the write to complete
-$waitnext:	LD		B,0		; (256 iterations)
+.Lzds_src_spi_asm_1373a2f3_s004__24_waitnext:	LD		B,0		; (256 iterations)
 		LD		A,(DE)		; pre-load C with byte to write
 		LD		C,A
 		INC		DE
 
-$loopnext:	IN0		A,(SPI_SR)
+.Lzds_src_spi_asm_1373a2f3_s004__24_loopnext:	IN0		A,(SPI_SR)
 		RLA
-		JR		C,$sentnext
-		DJNZ		$loopnext
+		JR		C,.Lzds_src_spi_asm_1373a2f3_s004__24_sentnext
+		DJNZ		.Lzds_src_spi_asm_1373a2f3_s004__24_loopnext
 		; TODO: detect errors
 
 		; Minimise delay from send complete to sending the next octet
-$sentnext:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
+.Lzds_src_spi_asm_1373a2f3_s004__24_sentnext:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
 		OUT0		(SPI_TSR),C
-		JR		$mainloop
+		JR		.Lzds_src_spi_asm_1373a2f3_s004__24_mainloop
 
-$waitlast:	; Do function epilogue now, whilst the last byte is transferring
+.Lzds_src_spi_asm_1373a2f3_s004__24_waitlast:	; Do function epilogue now, whilst the last byte is transferring
 		LD		SP,IX
 		POP		IX
 
 		LD		B,0		; (256 iterations)
-$looplast:	IN0		A,(SPI_SR)
+.Lzds_src_spi_asm_1373a2f3_s004__24_looplast:	IN0		A,(SPI_SR)
 		RLA
-		JR		C,$sentlast
-		DJNZ		$looplast
+		JR		C,.Lzds_src_spi_asm_1373a2f3_s004__24_sentlast
+		DJNZ		.Lzds_src_spi_asm_1373a2f3_s004__24_looplast
 		; TODO: detect errors
 
-$sentlast:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
+.Lzds_src_spi_asm_1373a2f3_s004__24_sentlast:	; Don't bother reading the dummy byte (IN0 A,(SPI_RBR))
 		RET
 

@@ -13,7 +13,7 @@
  * 03/08/2023:		Fixed timer0 setup overflow in init_timer0
  */
 
-#include <eZ80.h>
+#include <ez80.h>
 #include <defines.h>
 
 #include "timer.h"

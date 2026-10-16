@@ -1,3 +1,7 @@
+; Native AgonDev source derived from official MOS v3.0.2: src/sd.inc
+; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+.ifndef AGON_MOS_SRC_SD_INC
+.set AGON_MOS_SRC_SD_INC,1
 ;
 ; Title:	AGON MOS - Low level SD card assembler defines
 ; Author:	Leigh Brown
@@ -7,29 +11,31 @@
 ; Modinfo:
 
 
-CMD0:			.EQU        0
-CMD0_ARG:		.EQU    %00000000
-CMD0_CRC:		.EQU    %94
+.equiv CMD0, 0
+.equiv CMD0_ARG, 0x00000000
+.equiv CMD0_CRC, 0x94
 
-CMD8:			.EQU        8
-CMD8_ARG:		.EQU    %0000001AA
-CMD8_CRC:		.EQU    %86 ;(1000011 << 1)
+.equiv CMD8, 8
+.equiv CMD8_ARG, 0x0000001AA
+.equiv CMD8_CRC, 0x86;(1000011 << 1)
 
-CMD17:			.EQU       17
-CMD17_CRC:		.EQU   %00
+.equiv CMD17, 17
+.equiv CMD17_CRC, 0x00
 
-CMD24:			.EQU       24
-CMD24_CRC:		.EQU   %00
+.equiv CMD24, 24
+.equiv CMD24_CRC, 0x00
 
-CMD55:			.EQU       55
-CMD55_ARG:		.EQU   %00000000
-CMD55_CRC:		.EQU   %00
+.equiv CMD55, 55
+.equiv CMD55_ARG, 0x00000000
+.equiv CMD55_CRC, 0x00
 
-CMD58:			.EQU       58
-CMD58_ARG:		.EQU   %00000000
-CMD58_CRC:		.EQU   %00
+.equiv CMD58, 58
+.equiv CMD58_ARG, 0x00000000
+.equiv CMD58_CRC, 0x00
 
-ACMD41:			.EQU      41
-ACMD41_ARG:		.EQU  %40000000
-ACMD41_CRC:		.EQU  %00
+.equiv ACMD41, 41
+.equiv ACMD41_ARG, 0x40000000
+.equiv ACMD41_CRC, 0x00
 
+
+.endif
