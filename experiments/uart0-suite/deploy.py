@@ -32,6 +32,11 @@ def main():
     require(not backup.is_relative_to(mount) and not receipt.is_relative_to(mount),'Evidence must stay off-card')
     expected=shared.package_files(package)
     manifest=json.loads((package/'manifest.json').read_text())
+    # N-007: this exact native image programs the wrong VDP baud divisor.
+    # Preserve the sealed failed package as evidence, but never redeploy it.
+    require(expected.get('mos-candidate.bin') !=
+        '5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9',
+        'Withdrawn MOS image: native baud-rate boot failure (N-007)')
     exploratory=(manifest.get('exploratory_hardware') is True
         and manifest.get('menu_integration_passed') is True
         and bool(manifest.get('hardware_test_authorization'))

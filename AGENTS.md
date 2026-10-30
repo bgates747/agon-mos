@@ -15,6 +15,16 @@ into EMOS at least in Legacy mode. Follow Extender's test-appliance lifecycle,
 bench ownership, installation and recovery protocols for that target; this does
 not authorize interrupting another owner's test or changing wiring.
 
+## Hardware instructions to the Author
+
+Use wire colors in physical instructions: GREEN is the ZDI clock wire and BLUE
+is the bidirectional ZDI data wire at both WROOM and Agon. The Author explicitly
+requested colors on 2026-10-29. GPIO/pin numbers may be secondary technical
+references, but must not replace colors in bench instructions. Do not invent a
+color for the ground wire. Distinguish meter leads and analyzer probes from the
+signal wires when naming colors; added RED/BROWN analyzer probes are separate
+from the GREEN/BLUE ZDI wiring.
+
 ## Network access authority
 
 For access between development machines, read the [canonical network instructions](https://github.com/bgates747/agon-dev-env/blob/feature/standardized-deployment/codex/environment.md#ssh-between-development-machines) in `~/Agon/mystuff/agon-dev-env/codex/environment.md` and its machine-local `.local/ssh-001/CONNECTIONS.md` guide. They own current hostnames, discovery, SSH identities, sudo, and LAN shares. Do not duplicate access recipes or revive old aliases, addresses, or share mappings in this project. Project-specific device/protocol and bench-safety instructions remain local.

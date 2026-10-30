@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/Agon/mystuff/agon-mos/HANDOFF.md",
+    "bytes": 84351,
+    "sha256": "c2ac4793ad92211f9873b513589fa40deddea7954409fba46a158ae77284da3f"
+  },
+  {
+    "path": "/Agon/mystuff/agon-mos/docs/devlog-2026-10-29.md",
+    "bytes": 39810,
+    "sha256": "7deb81f163000f5baa2a28fe4f8b7c9b392b54f61b2aae14b4d6f1563f12f2af"
+  },
+  {
+    "path": "/Agon/mystuff/agon-mos/build/c8-zdi/c8-both-added-disconnected-01/probe-removal-review.json",
+    "bytes": 7221,
+    "sha256": "e60253c54404bd730a97f00291b07b7cf307081eb58395d7d9892c9e058ecbb9"
+  },
+  {
+    "path": "/Agon/mystuff/agon-mos/build/c8-zdi/c8-connector-five.py",
+    "bytes": 4237,
+    "sha256": "818dd8555021e9b5b7f886af5f6c590794d7b430d04e6694c567f6a25c7ddcf4"
+  },
+  {
+    "path": "/Agon/mystuff/agon-mos/build/c8-zdi/c8-connector-five-01/result.json",
+    "bytes": 1927,
+    "sha256": "c07c5d5532f7c886531c9cac7a771c8db6f30179e6d07d33a633afcd951b3262"
+  },
+  {
+    "path": "/Agon/mystuff/agon-mos/build/c8-zdi/wroom-20261029-sniffer/analyze_polling.py",
+    "bytes": 2273,
+    "sha256": "88f53fa70339b84d0e01997c6ad398c8d7e58b83c2c6577f6231eab3a123ac32"
+  },
+  {
+    "path": "/Agon/mystuff/agon-hardware/first_steps/docs/logic-analyzer.md",
+    "bytes": 1522,
+    "sha256": "9736e3df1564c02408c351869a81e6b595daeb9b8007eef77f736340edaa6aa3"
+  },
+  {
+    "path": "/Agon/mystuff/agon-extender-legacy/design/wiring-diagram.svg",
+    "bytes": 35430,
+    "sha256": "8c58bfda00ab77e236b25da750b50e441317e5431ae2867d063e68c29fc93c2e"
+  }
+]

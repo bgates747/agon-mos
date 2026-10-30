@@ -1,5 +1,10 @@
 # Repository ownership
 
+The experimental native regular-MOS UART variant also belongs to this project,
+on codex/uart0-otirx-native in an isolated worktree. It consumes the explicitly
+pinned generic foundation, shared interface and reusable helpers; none of those
+owner checkouts becomes our feature branch. EMOS integration remains separate.
+
 For the interrupt-based UART0 project, this agent also owns diagnostic VDP
 firmware preparation and physical receiver investigation in project-local build
 copies. The Author explicitly clarified this on2026-10-14. Flexe owns emulator

@@ -1,0 +1,269 @@
+{
+  "status": "withdrawn-image-proven-baud-defect-fixed-off-device",
+  "hardware_readiness": false,
+  "observed_by_author": "Updater countdown without apparent automatic reset; manual reset and two full power cycles show VDP banner/cursor but no MOS banner",
+  "confirmed_cause": "24-bit multiplication before 32-bit assignment; UART0 and UART1 program divisor11 rather than1 at1152000 baud",
+  "inherited_from_native_foundation": true,
+  "independent_of_async_opt_in": true,
+  "flash_interruption_excluded": false,
+  "physical_flash_readback_obtained": false,
+  "withdrawn": {
+    "bytes": 104658,
+    "sha256": "5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9",
+    "file_CRC32": "07259758",
+    "ROM_CRC32": "5B36B5B1"
+  },
+  "corrected": {
+    "build": "uart-012-boot-audit",
+    "bytes": 104636,
+    "sha256": "680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79",
+    "file_CRC32": "085DB775",
+    "ROM_CRC32": "4E326ABC",
+    "ELF_sha256": "6160fba057bb4d4658270898c6ec7bfa48fd16291198707b2dac837ad9b5e913"
+  },
+  "matched_boot_register_controls": {
+    "withdrawn2": {
+      "passed": false,
+      "hardware_qualified": false,
+      "ROM_sha256": "5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9",
+      "ELF_sha256": "a00a284dd9a3eae59ebfd5163a5177aa7d9dfec9bde7d63736f7b3dee87ac463",
+      "harness_sha256": "6ef71b9333aa6c542a2a88c7469a9aadd738fafa0a48029ce1dae2f54ec72073",
+      "CPU_source_sha256": {
+        "Cargo.toml": "0e5bbbcba06823f59e01f1517750c45dac01afef736d8d39bad87f91e21eddd5",
+        "LICENSE": "0ae86696771523f912eeb8dc1230bfa874b3fbb7be51226c34308215720a319e",
+        "src/bin/cpuville.rs": "89a0cc0d91bb176b6955f8497f88574580f442b0892459d5370c6d9e9ab1baa1",
+        "src/bin/rom/tinybasic2dms.bin": "25671d6ef91cd2b0c86f2d2422b9d87b8bee6e5e459457902c230689405f4a50",
+        "src/bin/simplest.rs": "712a88b466236d1ed3466d51345d8f0ae9c7202e80a3083d46ef4b7585972c01",
+        "src/bin/simplest8080.rs": "45ed297dc68d413c6f1d4df5337e35b25bc95aad1baee8ea00b2d561f8e55d0e",
+        "src/cpu.rs": "f481a92b26ed33f5dcfc342f3825c764669c7d29cc3461655d31305883e9e6e0",
+        "src/decoder_8080.rs": "e4db0d6222bbf8ac64e8ad6bf940bb370d5b13edda6f9d684f376a71f198232c",
+        "src/decoder_ez80.rs": "a5a6159a75744562aa1bb540eb02d4e2a5c20c478b46c239a5ef2270cf29e9ff",
+        "src/decoder_z80.rs": "96024e4206bb7f840f9aef764f0d0db45311a8aca0b363cdb1264988000a034d",
+        "src/disassembler.rs": "6627a7806a2208684f02de595b3763384905452b62c00d1b0e65afa3a0ac8345",
+        "src/environment.rs": "afbaf47931c653114aff953d31844929b1f8de54ba5c9163b37c461d383c0931",
+        "src/lib.rs": "bf1c05d201b0aaab9a342529fd3b5e620a6b2a34b1a30216418aee95fa01e5ec",
+        "src/machine.rs": "442eef034ab522fe08f0d75a2573b1b15f4a8ef1b5e5020a5fc78fcb2b9d5843",
+        "src/opcode.rs": "91c03c7fd1193950b37ca635c035ef8873e549f96e49311c4d72edbfcd9d4204",
+        "src/opcode_alu.rs": "f27385e30378194f5430b3093acbc521544646c3bcf17de87e83c074657534ac",
+        "src/opcode_arith.rs": "26cc4f3acce0839cc2e97bb4b92d13082f5adcc58b1e6f14f55d993b40461602",
+        "src/opcode_bits.rs": "4c5c5eb2368b8bba770e5886e13c4e0834c65f81bc8fea72cfc1834580310f5a",
+        "src/opcode_io.rs": "bf83f216e948d69a5fe5776a58540e3ee9d340e5e261d54c36d42f866769f905",
+        "src/opcode_jumps.rs": "1a2902cc4c10286c9bcc4ed9fb739d3a4d22028fb9dcb9cfe1c4617738bd7d39",
+        "src/opcode_ld.rs": "cb8b85c809032e9ad150dee01c300508630a93ec9de65f910863eab0c6b91346",
+        "src/operators.rs": "489d8a55714b720ab8be6a2541e85622adf245b4684f2ddded6dd54eafdca1ed",
+        "src/registers.rs": "0e96b2ca5d7b6badc2f7fc68e083f256cf3caf0823417b7b056b3f58dc6f566f",
+        "src/state.rs": "30828324c06b31688e951388cbba31307c737547830589d6f5d77e6cbb2e4ce9",
+        "src/z80_mem_tools.rs": "8289f6c8323c761dae50339eb0c22e5c1770991fb11870f6b5480bd238c220f7"
+      },
+      "scope": [
+        "UART0/UART1 divisors at seven rates",
+        "reset to main, cold/retained RAM",
+        "data/BSS/vectors/stack",
+        "baud-aware boot peer through GP/mode/palette to bootmsg"
+      ],
+      "limits": [
+        "flat memory/register latches",
+        "idealized timer expiry/IRQ delivery",
+        "minimal peer, not compiled ESP32 firmware",
+        "no physical flash readback"
+      ],
+      "returncode": 1
+    },
+    "foundation2": {
+      "passed": false,
+      "hardware_qualified": false,
+      "ROM_sha256": "f891721bbb2a0bc2845dbb13edbeb449365a315f11be48500d8e65e2ab1aebb4",
+      "ELF_sha256": "bc75f9388b4136b58351bffe94a9d080255deab7fea106107967abb6fb0c10d7",
+      "harness_sha256": "6ef71b9333aa6c542a2a88c7469a9aadd738fafa0a48029ce1dae2f54ec72073",
+      "CPU_source_sha256": {
+        "Cargo.toml": "0e5bbbcba06823f59e01f1517750c45dac01afef736d8d39bad87f91e21eddd5",
+        "LICENSE": "0ae86696771523f912eeb8dc1230bfa874b3fbb7be51226c34308215720a319e",
+        "src/bin/cpuville.rs": "89a0cc0d91bb176b6955f8497f88574580f442b0892459d5370c6d9e9ab1baa1",
+        "src/bin/rom/tinybasic2dms.bin": "25671d6ef91cd2b0c86f2d2422b9d87b8bee6e5e459457902c230689405f4a50",
+        "src/bin/simplest.rs": "712a88b466236d1ed3466d51345d8f0ae9c7202e80a3083d46ef4b7585972c01",
+        "src/bin/simplest8080.rs": "45ed297dc68d413c6f1d4df5337e35b25bc95aad1baee8ea00b2d561f8e55d0e",
+        "src/cpu.rs": "f481a92b26ed33f5dcfc342f3825c764669c7d29cc3461655d31305883e9e6e0",
+        "src/decoder_8080.rs": "e4db0d6222bbf8ac64e8ad6bf940bb370d5b13edda6f9d684f376a71f198232c",
+        "src/decoder_ez80.rs": "a5a6159a75744562aa1bb540eb02d4e2a5c20c478b46c239a5ef2270cf29e9ff",
+        "src/decoder_z80.rs": "96024e4206bb7f840f9aef764f0d0db45311a8aca0b363cdb1264988000a034d",
+        "src/disassembler.rs": "6627a7806a2208684f02de595b3763384905452b62c00d1b0e65afa3a0ac8345",
+        "src/environment.rs": "afbaf47931c653114aff953d31844929b1f8de54ba5c9163b37c461d383c0931",
+        "src/lib.rs": "bf1c05d201b0aaab9a342529fd3b5e620a6b2a34b1a30216418aee95fa01e5ec",
+        "src/machine.rs": "442eef034ab522fe08f0d75a2573b1b15f4a8ef1b5e5020a5fc78fcb2b9d5843",
+        "src/opcode.rs": "91c03c7fd1193950b37ca635c035ef8873e549f96e49311c4d72edbfcd9d4204",
+        "src/opcode_alu.rs": "f27385e30378194f5430b3093acbc521544646c3bcf17de87e83c074657534ac",
+        "src/opcode_arith.rs": "26cc4f3acce0839cc2e97bb4b92d13082f5adcc58b1e6f14f55d993b40461602",
+        "src/opcode_bits.rs": "4c5c5eb2368b8bba770e5886e13c4e0834c65f81bc8fea72cfc1834580310f5a",
+        "src/opcode_io.rs": "bf83f216e948d69a5fe5776a58540e3ee9d340e5e261d54c36d42f866769f905",
+        "src/opcode_jumps.rs": "1a2902cc4c10286c9bcc4ed9fb739d3a4d22028fb9dcb9cfe1c4617738bd7d39",
+        "src/opcode_ld.rs": "cb8b85c809032e9ad150dee01c300508630a93ec9de65f910863eab0c6b91346",
+        "src/operators.rs": "489d8a55714b720ab8be6a2541e85622adf245b4684f2ddded6dd54eafdca1ed",
+        "src/registers.rs": "0e96b2ca5d7b6badc2f7fc68e083f256cf3caf0823417b7b056b3f58dc6f566f",
+        "src/state.rs": "30828324c06b31688e951388cbba31307c737547830589d6f5d77e6cbb2e4ce9",
+        "src/z80_mem_tools.rs": "8289f6c8323c761dae50339eb0c22e5c1770991fb11870f6b5480bd238c220f7"
+      },
+      "scope": [
+        "UART0/UART1 divisors at seven rates",
+        "reset to main, cold/retained RAM",
+        "data/BSS/vectors/stack",
+        "baud-aware boot peer through GP/mode/palette to bootmsg"
+      ],
+      "limits": [
+        "flat memory/register latches",
+        "idealized timer expiry/IRQ delivery",
+        "minimal peer, not compiled ESP32 firmware",
+        "no physical flash readback"
+      ],
+      "returncode": 1
+    },
+    "fixed2": {
+      "passed": true,
+      "hardware_qualified": false,
+      "ROM_sha256": "680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79",
+      "ELF_sha256": "6160fba057bb4d4658270898c6ec7bfa48fd16291198707b2dac837ad9b5e913",
+      "harness_sha256": "6ef71b9333aa6c542a2a88c7469a9aadd738fafa0a48029ce1dae2f54ec72073",
+      "CPU_source_sha256": {
+        "Cargo.toml": "0e5bbbcba06823f59e01f1517750c45dac01afef736d8d39bad87f91e21eddd5",
+        "LICENSE": "0ae86696771523f912eeb8dc1230bfa874b3fbb7be51226c34308215720a319e",
+        "src/bin/cpuville.rs": "89a0cc0d91bb176b6955f8497f88574580f442b0892459d5370c6d9e9ab1baa1",
+        "src/bin/rom/tinybasic2dms.bin": "25671d6ef91cd2b0c86f2d2422b9d87b8bee6e5e459457902c230689405f4a50",
+        "src/bin/simplest.rs": "712a88b466236d1ed3466d51345d8f0ae9c7202e80a3083d46ef4b7585972c01",
+        "src/bin/simplest8080.rs": "45ed297dc68d413c6f1d4df5337e35b25bc95aad1baee8ea00b2d561f8e55d0e",
+        "src/cpu.rs": "f481a92b26ed33f5dcfc342f3825c764669c7d29cc3461655d31305883e9e6e0",
+        "src/decoder_8080.rs": "e4db0d6222bbf8ac64e8ad6bf940bb370d5b13edda6f9d684f376a71f198232c",
+        "src/decoder_ez80.rs": "a5a6159a75744562aa1bb540eb02d4e2a5c20c478b46c239a5ef2270cf29e9ff",
+        "src/decoder_z80.rs": "96024e4206bb7f840f9aef764f0d0db45311a8aca0b363cdb1264988000a034d",
+        "src/disassembler.rs": "6627a7806a2208684f02de595b3763384905452b62c00d1b0e65afa3a0ac8345",
+        "src/environment.rs": "afbaf47931c653114aff953d31844929b1f8de54ba5c9163b37c461d383c0931",
+        "src/lib.rs": "bf1c05d201b0aaab9a342529fd3b5e620a6b2a34b1a30216418aee95fa01e5ec",
+        "src/machine.rs": "442eef034ab522fe08f0d75a2573b1b15f4a8ef1b5e5020a5fc78fcb2b9d5843",
+        "src/opcode.rs": "91c03c7fd1193950b37ca635c035ef8873e549f96e49311c4d72edbfcd9d4204",
+        "src/opcode_alu.rs": "f27385e30378194f5430b3093acbc521544646c3bcf17de87e83c074657534ac",
+        "src/opcode_arith.rs": "26cc4f3acce0839cc2e97bb4b92d13082f5adcc58b1e6f14f55d993b40461602",
+        "src/opcode_bits.rs": "4c5c5eb2368b8bba770e5886e13c4e0834c65f81bc8fea72cfc1834580310f5a",
+        "src/opcode_io.rs": "bf83f216e948d69a5fe5776a58540e3ee9d340e5e261d54c36d42f866769f905",
+        "src/opcode_jumps.rs": "1a2902cc4c10286c9bcc4ed9fb739d3a4d22028fb9dcb9cfe1c4617738bd7d39",
+        "src/opcode_ld.rs": "cb8b85c809032e9ad150dee01c300508630a93ec9de65f910863eab0c6b91346",
+        "src/operators.rs": "489d8a55714b720ab8be6a2541e85622adf245b4684f2ddded6dd54eafdca1ed",
+        "src/registers.rs": "0e96b2ca5d7b6badc2f7fc68e083f256cf3caf0823417b7b056b3f58dc6f566f",
+        "src/state.rs": "30828324c06b31688e951388cbba31307c737547830589d6f5d77e6cbb2e4ce9",
+        "src/z80_mem_tools.rs": "8289f6c8323c761dae50339eb0c22e5c1770991fb11870f6b5480bd238c220f7"
+      },
+      "scope": [
+        "UART0/UART1 divisors at seven rates",
+        "reset to main, cold/retained RAM",
+        "data/BSS/vectors/stack",
+        "baud-aware boot peer through GP/mode/palette to bootmsg"
+      ],
+      "limits": [
+        "flat memory/register latches",
+        "idealized timer expiry/IRQ delivery",
+        "minimal peer, not compiled ESP32 firmware",
+        "no physical flash readback"
+      ],
+      "returncode": 0
+    }
+  },
+  "both_engines": {
+    "jit": {
+      "passed": true,
+      "error": null,
+      "engine": "jit",
+      "elapsed_seconds": 119.768,
+      "actual_native_MOS": true,
+      "ROM_sha256": "680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79",
+      "actual_compiled_ESP32": true,
+      "VDP_sha256": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "no_quiescence_negative_control": false,
+      "CRC_payload_bytes_verified": 40960,
+      "receiver_final_bytes_compared": 163840,
+      "ordered_full_duplex_replies": 640,
+      "batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "actual_FatFS": true,
+      "hardware_qualified": false,
+      "human_review_passed": false,
+      "raw_history": "/home/smith/Agon/mystuff/agon-mos/build/uart0-native/flexe-jit-bootaudit",
+      "profile": "/home/smith/Agon/mystuff/worktrees/uart-native-001/uart/.emulator/uart0-jit-bootaudit"
+    },
+    "interp": {
+      "passed": true,
+      "error": null,
+      "engine": "interp",
+      "elapsed_seconds": 266.403,
+      "actual_native_MOS": true,
+      "ROM_sha256": "680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79",
+      "actual_compiled_ESP32": true,
+      "VDP_sha256": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "no_quiescence_negative_control": false,
+      "CRC_payload_bytes_verified": 40960,
+      "receiver_final_bytes_compared": 163840,
+      "ordered_full_duplex_replies": 640,
+      "batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "actual_FatFS": true,
+      "hardware_qualified": false,
+      "human_review_passed": false,
+      "raw_history": "/home/smith/Agon/mystuff/agon-mos/build/uart0-native/flexe-interp-bootaudit",
+      "profile": "/home/smith/Agon/mystuff/worktrees/uart-native-001/uart/.emulator/uart0-interp-bootaudit"
+    }
+  },
+  "behavior": {
+    "passed": true,
+    "ROM_sha256": "680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79",
+    "independent_instruction_oracle": true,
+    "idealized_UART_timing": true,
+    "production_integration_cases": 27,
+    "policy_cases": 538,
+    "descriptor_cases": 425,
+    "source_boundary_cases": 150,
+    "repeats_for_batch_sizes": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "negative_controls": {
+      "bad-guard": {
+        "rejected": true,
+        "reason": "CTS group allowance exceeded"
+      },
+      "burst": {
+        "rejected": true,
+        "reason": "burst exceeds 16"
+      },
+      "release": {
+        "rejected": true,
+        "reason": "early source release"
+      }
+    },
+    "hardware_qualified": false,
+    "source_sha256": "995e0bc4d4f90bceef293a5eb36436db90f6a31f49b2ffc0724d35c7b27f6178"
+  },
+  "deployment_withdrawal": {
+    "passed": true,
+    "withdrawn_image_rejected_before_media_discovery": true,
+    "card_access": false,
+    "output": "Traceback (most recent call last):\n  File \"/home/smith/Agon/mystuff/agon-mos/experiments/uart0-suite/deploy.py\", line 94, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/home/smith/Agon/mystuff/agon-mos/experiments/uart0-suite/deploy.py\", line 37, in main\n    require(expected.get('mos-candidate.bin') !=\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        '5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9',\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        'Withdrawn MOS image: native baud-rate boot failure (N-007)')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/smith/Agon/mystuff/agon-mos/experiments/uart0-bench/deploy.py\", line 19, in require\n    raise ValueError(message)\nValueError: Withdrawn MOS image: native baud-rate boot failure (N-007)\n"
+  },
+  "completed_task": "N-007",
+  "remaining_physical_qualification": "N-006",
+  "commit_approval": "N-005",
+  "board_access": false,
+  "SD_access": false,
+  "firmware_flashing": false,
+  "commit_or_push": false,
+  "recovery_owner": "Author and Extender agent",
+  "report": "BOOT-FAILURE.md"
+}

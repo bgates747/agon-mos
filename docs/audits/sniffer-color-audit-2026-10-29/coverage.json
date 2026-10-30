@@ -1,0 +1,11 @@
+{
+  "broad_search_complete": false,
+  "document_inventory_complete": false,
+  "local_document_paths_listed": 360297,
+  "broad_candidates_listed": 2748,
+  "other_project_files_read": 1659,
+  "other_project_unique_contents": 409,
+  "other_project_skipped_files": 58,
+  "oryx_eligible_text_files": 122295,
+  "note": "Lists are discovery snapshots, not proof every file was inspected. Findings/report distinguish scoped agent reviews and historical bus wiring."
+}

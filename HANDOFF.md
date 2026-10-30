@@ -1,5 +1,433 @@
 # Interrupt-based UART0 transmission project — handoff
 
+CURRENT HANDOFF — 2026-10-30: Author requests notes, commit/push, then wait
+until they are ready for further tests. Do not run the queued diagnostics now.
+TRY-001..TRY-006 are recorded in TODO.md with detailed scope in
+[the next-test document](docs/tasks/C8-ZDI-next-tests.md).
+Latest completed evidence: [four-probe diagnosis](docs/c8-zdi-four-probe-diagnosis-2026-10-29.md).
+WROOM remains quiet identity-only v7, both outputs released. No C8 recovery
+flash occurred; MOS remains unrecovered and P4 normal restoration is deferred.
+Canonical probes: D0 GREEN/C8 clock, D2 BLUE/C8 data, D5 RED/WROOM clock,
+D7 BROWN/WROOM data. The BROWN=D3 assertion in the older entry below conflicts
+with the Author-confirmed map; preserve it as history, not current authority.
+See [the audit](docs/audits/sniffer-color-audit-2026-10-29.md).
+
+Historical entries below are retained unchanged.
+
+LATEST C8 / ORYX, 2026-10-29: WROOM is directly on USB; Console8 and the
+analyzer share a hub. User removed the two added probes; physical red maps to
+D5, physical brown maps to D3, not the assumed D7. Do not treat the earlier
+hypothetical D5/D3 comparison as verified resistor endpoints. Separate-register
+reads fail as well as block reads. DATA B/O/B/O driver comparison also gives
+0/5 valid per phase; open-drain adds some sustained bad levels and is not a fix.
+
+Current WROOM is identity-only v6, app SHA256
+42fe5a152d6b59ea195e8005f87f8e5167bb05190883c74f56b6a699acff66cd.
+Source: experiments/zdi-wroom-diagnostic/. O/B selects DATA open-drain/push-pull;
+clock stays push-pull. The reviewed handler changes pad_driver with output
+released, preserving input/pull-up. Baseline push-pull/CAP2 is restored.
+
+Author reset Console8 with WROOM clock held HIGH and DATA released. DATA idle
+changed LOW to HIGH, but five subsequent reads repeat exactly the same invalid
+five replies as the initial C8 run. Reset alone does not fix communication.
+Author then moved ORIGINAL green/D0 to Console8 connector pin4 TCK and blue/D2
+to pin6 TDI; actual wiring/resistors/grounds unchanged, added red/brown absent.
+Connector-side five-read capture also fails, with 225 clock rises/falls and
+92 DATA transitions. Independent settled inspection: 16/65 DATA bits wrong throughout +/-5us at
+connector, while all65 WROOM local input/output/enable snapshots match command.
+Ten intended LOWs observed HIGH, six intended HIGHs observed LOW. Reply bytes
+match software throughout. Leading next checks: resistor value/contact/loading
+or opposing drive; no specific component fault established. Asked Author for
+resistance of both series resistors (boards OFF, one end disconnected), or band
+colors. Author answers 33 ohms. Next pending physical check is complete powered-
+off paths, resistors reconnected: Author reports both intended signal paths
+measure33ohms. Cross-signal measurements are18.6kohms (Agon blue to WROOM
+green) and17.96kohms in the opposite cross-combination. These are in-circuit
+measurements; not evidence of a direct short or a precise intersignal resistor.
+Author reports ground-to-ground has 'perfect continuity'. All intended paths
+therefore pass the powered-off check; this does not measure powered ground
+offset or isolate a dedicated lead from parallel USB returns. Asked Author to
+restore power, keep meter black on C8 ZDI GND, and report DC volts at WROOM GND,
+WROOM3V3, WROOM BLUE, and C8 BLUE. Author reports0V,3.3V,3.4V,3.4V respectively.
+These are quiet idle readings: no substantial measured ground offset and BLUE
+agrees HIGH at both ends. They do not establish driven/dynamic signal quality.
+Author says USE COLORS: GREEN=clock, BLUE=data, both boards. See AGENTS.md.
+WROOM v5 boots quiet with both GPIOs released. Preparing a brief bounded driven-
+LOW control, avoiding a long push-pull hold against an unresolved target driver.
+v6 now installed/verified in WROOM app0. C does max5 short BLUE open-drain LOW
+pulses with GREEN held LOW, then releases/restores everything before printing.
+First C source checks all pass (2/0/2), but NO passive capture was obtained:
+sniffer USB is absent (confirmed lsusb/scan/kernel log). First host runner sent
+C before noticing missing analyzer; evidence c8-line-control-01 is an INCOMPLETE
+capture, not an end-to-end pass. Author reconnected sniffer USB. Guarded02 sends
+no C while FX2 cold firmware reloads. Readiness-checked03 captures2M samples at
+1MHz: BLUE already LOW throughout, so C aborts at0pulses; GREEN LOW222us only.
+C01 post-control P had both lines HIGH. Sniffer loading/state remains unproved.
+NEXT PENDING AUTHOR ACTION: keep all powered, remove ONLY BLUE sniffer probe
+from C8 BLUE signal; actual BLUE interboard wire/GREEN/grounds stay connected.
+After confirmation run prepared c8-blue-status.py (P only, no requested reset
+or pin changes). Do not retry identity/control first; preserve this comparison.
+Both signal GPIO outputs released, no serial owner/polling. No C8 flash.
+Evidence: build/c8-zdi/c8-{both-added-disconnected-01,baseline-single-register-01,
+data-mode-compare-01,park-for-reset-01,after-manual-reset-01,connector-five-01},
+Pi/Oryx. No target programming requested. Final Q, both WROOM pins released,
+serial closed/no polling. Stock MOS repair remains incomplete; P4 restore deferred.
+
+LATEST C8/ORYX, PROBES WROOM-SIDE: Author addedsniffer,still0/5valid. Detailed
+capture shows narrow41–83ns DATAglitchesatCLOCKrise, not persistent wronglevels;
+all65 transmitbitscorrectat±1us. Prior 'corruption' wordingneeds thisrefinement.
+Author confirmsprobesBEFORE33ohmresistors; Olimexprobeplacementuncertain.
+Privatev4 nowinstalledWROOMapp0 SHA256
+8ed6a8f980fae4973461e1a22b76683b853b213cb6d4d53ac788d2756cf731e8.
+R/L/R/L drivecomparison0/5each; weakdriveWORSE(sustainedbadlevels). WeakI
+individualreadsrepeat07 08 E0 83; becauseaddressesbad,thisdoesnotisolateblock
+incrementfailure. Source/commandsinexperiments/zdi-wroom-diagnostic/.
+NOW restoreddefaultCAP2(R),thenQ,bothpinsreleased,serialclosed,no polling.
+NoC8flash/resetoperation. PendingAuthor USBhubhypothesis: WROOM+sniffershare
+hub5-1,C8direct3-2; no railvoltagemeasurement. Proposed controllednextstepmove
+ONLYWROOMUSBto directOryxport,keepresistors/probes/signalsfixed. Thenrepeat
+five slowreadsv4, noautomatic firmwareprogrammingwithoutstableidentification.
+Evidence c8-damped-sniffer-five-01/glitch-review.json,c8-drive-compare-01,
+c8-v4-installed-01 onPi/Oryx; devlog2026-10-29 hasfullscope/caveats.
+
+LATEST C8/ORYX STATE: Author moved C8+resistor-equippedWROOM toOryx, no sniffer.
+Same v3 probe gives0/5slow,0/10medium,0/10fast valididentities. Slow65drive
+snapshots allmatch commandedbits; no wire-level capture available. One host
+READY-boundary abort is retained separately; corrected RESULT-boundary runner
+completesboth10-readsets. Evidence: build/c8-zdi/c8-damped-20261029-{identify,
+speed,speed-02}, Oryx/Pi. No C8 firmware/reset operation; repair NOT attempted.
+WROOM remainsquietidentity-v3, Q/pinsreleased, serialclosed. Next dependency:
+attach passive sniffer toC8/Oryx tocomparephysicalsignal and effectofprobe
+loading; previous5/5successwasOlimexWITHsniffer. Otherground/pinchoicesretain
+Author's confirmedwiring. P4 normalrestore remainsdeferred.
+
+LATEST SUCCESS, 2026-10-29: after the Author's next physical adjustment,
+same five slowT probes ALL return07 00 AA 1C (product0007/revAA/status1C).
+Sniffer confirms5/5 exact matches, correct45clock framing/address/separators;
+all65 driven-bit samples match commands. Evidence: today's sniffer build/
+olimex-repeat-five-02. Author confirms the preceding change was adding33ohm
+in series on BOTH signals, near WROOM. This damped setup passes5/5 versus the
+previous undamped failures; long-run/other-rate tests remain pending. Only slow
+identity reads on Olimex are now proven, not other rates or Console8 recovery.
+WROOM remains quiet identity-only v3; both pins released, serial closed.
+No target flash/reset was sent. Previous speed-failure state below is history.
+
+LATEST SPEED COMPARISON, 2026-10-29: Olimex/WROOM/sniffer reconnected with
+grounds confirmed. Same v3 session S/M/F/S,10reads each:0/40valid. Measured
+reply clocks48.29kHz/328.77kHz/3MHz/48.29kHz; request corruption remains all
+rates. Fast software sampling additionally disagrees with physical rising-edge
+data; slower captures/software agree. Exact unmodified Jeroen application was
+then installed/verified as control on same wiring: threeZDI-down messages at
+about2.4MHz, no menu/identity. Its startup clears debug/breakpoint controls;
+no recovery option, target reset or target firmware programming was requested.
+Restored/verified quiet identity-only v3 afterward, SHA256
+abaa0bc98876389f14a2f92a47115a5e95a5009dd1975f61a026d74978984fd9.
+Both pins released/pull-ups, no polling, serial closed; physical wiring remains
+Olimex+WROOM+sniffer. No Agon firmware write. Full details/evidence in today's
+devlog and sniffer build/{olimex-speed-compare-01,upstream-control-01,
+quiet-restored-01}. Increasing clock rate did not recover reliable communication.
+Prior sniffer-only state below is history. P4 restoration remains deferred.
+
+LATEST PHYSICAL STATE: Author disconnected WROOM; Olimex ZDI is connected only
+to passive analyzer (greenD0clock, blueD2data, commonGND). Four seconds24MHz
+capture confirms BOTH lines continuously HIGH, zero transitions/LOW samples.
+Evidence: build/c8-zdi/olimex-idle-20261029/idle-01.{bin,json}. WROOMUSB absent.
+No serial port/reset/target command used. Earlier connected state below is history.
+
+LATEST REPEATABILITY RESULT: five identical slowT reads in one serial session
+give five different invalid replies; no resets between trials. Sniffer confirms
+four exact byte matches and an extra clock edge in the fourth frame. Driven-bit
+mismatches recur; corrected ground did not establish lasting resolution.
+Evidence: build/c8-zdi/wroom-20261029-sniffer/olimex-repeat-five-01.
+WROOM v3 nowQ/quiet, both pins released, serial closed. No target flash/reset.
+
+GROUND CORRECTION: Author found OlimexGND andRESET still connected toPi;
+GND now goes toWROOM andRESET is disconnected, probesunchanged. Fresh single
+slow read olimex-ground-fixed-01 has all13drive samples correct and correctly
+framed address00/READ, but reply01 03 F0 E0 remains invalid. WROOM parkedH
+again (park-high-02); await manual OlimexRESET with WROOMpowered, then retry
+single read. No target flash/reset sent. Earlier drive conflict is absent in
+this corrected-ground observation; reason for remaining bad reply unproved.
+
+LATEST CONNECTED STATE, 2026-10-29: WROOM and sniffer are connected to Olimex
+on Pi5. Author confirms exact previously successful ZDI wiring and viewing
+orientation: notchTOP, uppermiddleGND, lowerleftblue/TDI, lowermiddlegreen/TCK.
+Use docs/images/zdi-operator-view.svg for both Olimex and Console8.
+Slow connected identity reads remain inconsistent. A single v3 traced request
+confirms data input sometimes disagrees with commanded output even with output
+enable set. Physical cause remains unproved; do not declare an Agon board fault.
+WROOM now has identity-only v3, SHA256
+abaa0bc98876389f14a2f92a47115a5e95a5009dd1975f61a026d74978984fd9.
+No target firmware/reset operation occurred. WROOM is parkedH: clock driven
+HIGH, data released, both input levels HIGH, serial closed. Await deliberate
+manual Olimex reset, then a single slow read without resetting WROOM first.
+Evidence: today's sniffer build/{olimex-connected-01,drive-test-01,park-high-01};
+details in docs/devlog-2026-10-29.md. Older v2/disconnected state below is history.
+
+LATEST WROOM DIAGNOSTICS, 2026-10-29: WROOM is now on Pi5, connected ONLY to
+the passive logic analyzer; Author explicitly confirmed Agon disconnected.
+Canonical green/D0=GPIO26/TCK, blue/D2=GPIO27/TDI; earlier swapped capture is
+explained by Author. GPIO self-test passes, including data-pin local input.
+Upstream recovery executable and bundled files verified intact; twelve changed
+OTA metadata bytes explain whole-flash digest mismatch. Full incoming flash
+readback retained on Pi/Oryx. No target firmware operation was performed.
+
+CURRENT WROOM IMAGE IS IDENTITY-ONLY DIAGNOSTIC v2, app SHA256
+3ba3b05424e82764498f50d8f2d59cd4ae2323dbcf97cd602f2823da491963f5,
+not upstream recovery. It has no MOS payload, flash/halt/control writes or BOOT
+shortcut. Both pins are released with pull-ups, no polling, serial closed.
+H=clock HIGH idle, Q=release, S/M/F=ten identity reads with10/1/0us delays.
+Disconnected control: slow/medium allFF, fastest all1F internally sampled;
+analyzer confirms30 correctly framed read requests. This establishes settling
+on the weak-pull-up disconnected line, NOT the reason for previous Agon failures.
+Next dependency: Author reconnect Olimex+commonGND (retain probes if practical),
+then a fresh slow identity/reply capture. Evidence, source and interpretation:
+docs/devlog-2026-10-29.md, experiments/zdi-wroom-diagnostic/,
+build/c8-zdi/wroom-20261029-sniffer/. Do not run old recovery-menu scripts against
+this diagnostic. P4 recovery firmware remains installed; N-009 repair pending.
+
+WROOM INSTALLED AND ISOLATED STARTUP PASSED, 2026-10-28: after the Author
+changed USB connection, CP2102 enumerated and esptool confirmed the exact
+historical WROOM MAC/chipESP32-D0WD-V3/rev3.0/4MiB. All GPIO remained
+disconnected under the operator handback. Incoming4MiB flash was preserved on
+Oryx and Pi, SHA256c36ad97a269b1cc32ee1d16b0a947a37a44292b8f4f38d8ec5c9db2515fe622e,
+and verified against hardware. Unmodified upstream recovery image was installed;
+the expected complete4MiB composition passes flash-digest verification, including
+the unchanged last64KiB. A bounded zero-input startup capture has two expected
+"ZDI down - check cabling" messages, no application fault. No Agon operation
+was performed. The reader is closed; recovery firmware is running on WROOM.
+Evidence: build/c8-zdi/wroom-20261028/{installation,startup-isolated}, both hosts.
+Next Author action: power off WROOM and Console8; move the three P4 leads to
+WROOM26/TCK(existinggreen),27/TDI(existingblue),GND. Leave P4 disconnected from
+ZDI; no power rails joined. Restore power and report ready for target checks.
+Do not hold WROOM BOOT while its recovery app is running. P4 normal firmware
+was not restored. N-009 MOS repair remains pending.
+
+WROOM ROUTE PREPARED, 2026-10-28: the Author has the WROOM DevKit used by
+Extender Legacy and directed us to its pinout. Legacy REFERENCE.md points to
+the frozen agon-hardware-wroom-reference checkout, commitc200d97. Its
+extender/docs/esp32-devkitc-pinout.md identifies a38-pin ESP32-DevKitC/WROOM-32D;
+esp32-wroom-32d.md records4MiB flash and ESP32-D0WD-V3. Use silkscreen26 for
+TCK(existinggreen),27 for TDI(existingblue),GND for targetGND. No power-rail join.
+First operator step is WROOM USB ONLY on Oryx, with GPIO disconnected, so its
+incoming firmware can be replaced before moving any target leads. Do not wire
+an old Extender image to Console8 as if it were recovery firmware.
+
+Unmodified Jeroen upstream recovery firmware is prepared on Pi/Oryx under
+build/c8-zdi/wroom-20261028,4128768 bytes,SHA256
+15f6fa8a0ebe7363809a51597c69ea328994065d6d207ca74583e956a46de091,
+offset0, matching both official web-installer and pinned repository bytes.
+It bundles MOS3.0; stock3.0.2 remains available for normal update after recovery.
+Startup clears debug/breakpoint registers and repeatedly probes ID; it does
+not erase/program on boot. Serial option2/Y or a running BOOT-button hold over
+2seconds starts MOS programming. No WROOM hardware operation has occurred.
+Oryx's last read-only check had no /dev/serial/by-id directory. P4 standard
+restoration remains deferred. N-009 continues; earlier P4 research is below.
+
+RESEARCH UPDATE, 2026-10-28: the Author requested Internet research only; no
+hardware was accessed in that research turn. Revise the simple power-cycle
+dependency below: Zilog PS0153 Table110 says TCK sampled LOW during RESET
+selects OCI/JTAG, HIGH selects ZDI. Both ZDI signals should be deliberately HIGH
+or released to verified target pull-ups throughout a controlled target reset;
+do not clock ZDI during reset. The present failure is NOT proved to be this
+mechanism. Zilog TN0035 also recommends tristated idle drivers and short/good
+ground connections. P4 output-high signals can feed an off target rail through
+the C8 pull-ups, so target-only power-off with driven lines is not a clean
+power-cycle experiment. This is a circuit-based inference, not a measured fault.
+
+Jeroen Venema (envenomator) maintains AgonPlatform/agon-recovery. Its ready
+firmware targets classic ESP32/esp32dev, not P4. A classic WROOM DevKit with the
+upstream utility is the documented Console8 fallback, avoiding our P4 port.
+It needs three wires and MOS-only recovery option2. The bundled MOS is3.0
+(upstream commit95d68464); our selected stock3.0.2 payload must be deliberate.
+His unlinked console8_zdi_pullup.png shows two10k pull-ups, but C8Rev2 already
+shows R92/R93,10k to3V3, on its schematic. Do not assume missing resistors or
+add them blindly. Detailed source links/research are in today's development log.
+
+LATEST N-009 STATE, 2026-10-28: repair is NOT complete. No DUMP, target halt,
+RAM upload, erase or MOS programming was reached. The stock-payload programmer
+compiled and its application was installed/verified, but initial native startup
+faulted before ZDI (Arduino NVS access with the startup stack in SPM). A16KiB
+main-task stack corrects startup. The next build reads C1E0/83/83 and refuses;
+explicit1us ZDI timing padding reads C1E0/84/83 and refuses. The timing hypothesis
+is NOT established. The previously successful original programmer was then
+reinstalled/verified as a read-only control: it ALSO fails, with7878/78/C4.
+No further attempt followed that control refusal. The new build alone does not
+explain the changed identity; wiring/target state remains unresolved.
+
+CURRENT P4 is the original maintained RECOVERY application SHA256
+0f609f95e0e8aae5f1a98de78d5d6476127e3e62682fbb65e09f1382da94191b,
+NOT standard Extender firmware. Its embedded Olimex EMOS must NOT be armed on
+Console8. The original16MiB P4 backup remains retained; standard firmware was
+not restored. Prepared stock-payload application SHA256
+56507082e09e2e189448a1ee3ce89deb2c7223a4bfd02e5a0c0600f4b8b9e616
+is retained on both hosts under build/c8-zdi/repair-20261028 (Pi: returned/).
+Next dependency: Author full Console8 power cycle, keeping P4/wiring in place,
+then a fresh identity check. No remote eZ80 reset actuator is connected; do not
+substitute a VDP/CP2104 reset blindly. Raw attempt receipts/logs are copied to
+Pi. No active serial reader remains. N-009 remains unfinished.
+
+REPAIR AUTHORIZED, 2026-10-28: the Author confirmed switched P4 wires caused
+the initial identity refusal, then explicitly directed this agent to repair MOS
+without another backup-only handback. N-009 now owns the target repair. Selected
+known-good stock MOS3.0.2 is108490 bytes, SHA256
+d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae.
+The identification programmer contains an Olimex EMOS payload and must NOT arm
+that payload on Console8. A private stock-payload build of the unchanged
+maintained recovery algorithm is compiling on Oryx under
+build/c8-zdi/repair-20261028. The maintained pre-write readback/full post-write
+comparison are internal execution steps, not a separate Author task or gate.
+P4 restoration stays deferred until MOS repair is complete. These instructions
+supersede the earlier separate-authorization requirement below.
+
+RECOVERY STATE, 2026-10-28: N-008 identity check PASSES after the Author's
+"try now" instruction. A fresh P4-only startup capture records three consistent
+product 0007/revision AA/status 1C reads and WAIT DUMP. This establishes the
+functional ZDI identity path; no DUMP, RESTORE, target halt or flash write was
+sent. Programmer stays installed. Capture/result (Pi and Oryx):
+build/c8-zdi/identify-20261028/startup-ordinary-02. Earlier refusal below is
+preserved history, superseded by this successful check. Further MOS recovery
+requires a selected payload and separately authorized dump/repair operation.
+The unarmed programmer may time out; do not assume this gate stays live.
+
+The Author explicitly authorized the Oryx P4
+backup/programmer installation and three read-only ZDI identity reads (N-008).
+This narrowly supersedes the older no-board-access hold below. The full 16 MiB
+original P4 flash was backed up, verified against the device and copied to Pi;
+the recovery programmer was installed and its full flash composition verified.
+The initial passive capture was empty. A corrected capture, open before one
+P4-only reset, proves the programmer boots but reads product FFFF, revision FF,
+status FF and refuses at its first identity gate. Expected product/revision
+is 0007/AA. No working ZDI connection has been established; no automatic retry.
+No DUMP or RESTORE command was sent and no Agon erase/program was attempted.
+The Author then directed: DO NOT RESTORE THE P4 STANDARD FIRMWARE UNTIL MOS
+REPAIR IS COMPLETE. Leave the recovery programmer installed, including after
+failed identification. Original backup: build/c8-zdi/identify-20261028/
+p4-before-16MiB.bin, SHA256
+e479ca9d667e25f1c53f69e1553dd78b2de2d319336130114c97ba0f3155a76f.
+At the preceding failed attempt, N-008 awaited a powered-off connection check:
+Author-reported blue/TDI must reach P4 GPIO47 (EXT2 pin6), green/TCK must reach
+GPIO46 (EXT2 pin7), with common ground. Do not guess Console8 connector positions
+from schematic numbering. All-ones reads do not identify which lead or target
+condition is responsible. Capture/result: build/c8-zdi/identify-20261028/
+startup-ordinary-01. Target MOS recovery needs separate authorization.
+
+HARDWARE HOLD,2026-10-16: the Author reports that flashing the native MOS
+candidate left Console8 unable to boot MOS. The updater counted down but did
+not reset; manual reset and two power cycles show only the VDP banner/cursor.
+Candidate SHA2565543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9
+is withdrawn from hardware readiness. Earlier software PASS/deployment records
+are historical evidence, not authorization to flash it again. The Author and
+Extender agent own recovery; this agent must not access boards or the card.
+N-007's off-device audit is complete: the native C multiplication overflow
+programs UART0/UART1 divisor 11 instead of 1 at the VDP boot rate. The same
+defect exists in the clean native foundation. Both routines now widen before
+multiplication; old images fail the same actual-instruction test that the
+correction passes. Corrected uart-012-boot-audit is 104636 bytes, SHA256
+680daf76d6a0e4073f43130fda48fdcf681a4570ac709f99dd3c9e04335e6e79,
+ROM CRC4E326ABC. It remains OFF-DEVICE. N-006 holds replacement packaging,
+fresh review and physical acceptance; no deployment/recovery is authorized.
+Boot/startup checks, root/source checks, actual-ROM sender scenarios and both
+complete Flexe campaigns pass. No additional defect was found in the reviewed
+UART hooks. There is no physical flash readback, so an additional write failure
+is not excluded. Preserve all original evidence and the withdrawn package.
+Deploy/packaging tools now reject the old image. Full audit and receipts:
+experiments/uart0-native/BOOT-FAILURE.md and incident.json. The earlier staging
+instructions immediately below are HISTORICAL and must not be followed.
+
+Latest Console8 deployment,2026-10-16: the Author's native emulator screenshot
+shows four PASS cases, NATIVE UART REVIEW COMPLETE and typed DIR. The Author
+authorized SD deployment. Guarded native package is verified at the SAME
+/test/mos-uart0/test.bin on unique AGONC8 UUID8658-1C23. Root MOS.bin and
+autoexec.txt, all existing numbered/operator reports and runs.log are unchanged.
+Next run0030. Other BMOW media was not touched. Physical firmware is not flashed.
+
+This is a NEW native MOS, not a branding-only update. Menu9/3 backs up installed
+MOS;9/1 flashes mos-candidate.bin. Require Arthur - UART0 OTIRX EXPERIMENTAL
+ABI1.2 and installed ROM CRC5B36B5B1. Menu9/7 installs supplied vdp-rx-fixed.bin;
+confirm RX sync candidate banner after reboot. Then menu3 runs the reviewed
+native16-byte fixture; repeat once for fresh numbered output. Optional1/6 are
+diagnostics/compatibility;0 excludes old ABI1.1-only investigations for native
+MOS. Old8 investigations are not this native qualification. Menu9/4 restores
+supplied stock VDP2.16.0. Short on-card readme contains exact LOAD/RUN commands.
+
+The menu now recognizes UBD1 with its FF reserved bytes, gates it on the exact
+native image/API and retains per-run filename patching. Both engines pass
+3,3,6,1,2 through actual FAT with the same repaired no-timing/rescue VDP staged
+on card. Source/firmware companions and licenses are adjacent to the fixture.
+New host native-return reader verifies journal/binary agreement and excludes
+old runs; old Ruby stress reader retains default-zero padding and explicitly
+accepts the native convention through package metadata. Both formats and a
+corrupt-padding control are checked. Menu keyboard code is unchanged.
+
+Predeployment166-file snapshot is SHA-verified on Pi/Oryx:
+build/uart0-native-card-before-20261016.tar.gz, SHA256
+e6578df1aec00c33e60c22082c619098b91efe3d55c4214b2e06fd13879f8d55.
+Final deployed manifest SHA256
+88b5f07621e9fcb1df98ada16123e044192a15af3a34ced74067cb1357ae23ff;
+deployment/verification: build/uart0-native/deployment{,-final}.json.
+Preparation scripts: experiments/uart0-native/{package_hardware,finalize_hardware,
+check_hardware_menu,inspect_hardware}.py. The new native/MOS/menu work remains
+uncommitted; no new commit approval is inferred from deployment. N-006 awaits
+the returned physical reports. Older stop/no-card notes below are superseded.
+
+Latest native implementation,2026-10-16: regular MOS source is implemented and
+software-qualified in our own isolated agon-mos worktree
+/Agon/mystuff/worktrees/uart-native-001/uart, branch codex/uart0-otirx-native.
+The Author authorized full OTIRX and regular MOS implementation after committing
+and pushing existing work. Checkpoints: agon-mos d4569e8; isolated EMOS assessment
+e147549, both pushed. New implementation/profile changes remain uncommitted
+pending the canonical human emulator review and explicit commit approval.
+EMOS remains deferred. No card, physical firmware or graphical launch occurred.
+
+Foundation/interface ab95feee301d2cd40470cf2bda85a0fe1c3c008e; infrastructure
+49dc33fee817cb184572351ee71dae7da9a139c4. Both owner's sources remain untouched.
+Regular byte-exact canonical exports are under native src/shared-api; forwarding
+includes and C/C++ overlay consumers use them. No private global IDs;13h is the
+two-stage UART discovery,12h remains null/retired. No qsort public experiment.
+Normal builds use maintained GNU assembly directly, with no dialect translator.
+The original ZDS tree here is the frozen reference, not the new build root.
+
+Clean native stock reproduces102055 bytes/SHA256
+f891721bbb2a0bc2845dbb13edbeb449365a315f11be48500d8e65e2ab1aebb4.
+Final native branded ROM104658bytes/SHA256
+5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9,
+from uart-010-final on Oryx. Its bytes equal tested uart-009-final. UART-only
+cost2569 ROM/86 RAM; branding adds34 ROM. Core2497bytes/300 relocations match
+the frozen encoding oracle exactly. Root shared/runtime/layout/stack/provenance
+and product linked-image checks pass, including corrupt-image controls and
+canonical C/C++ compilation. Nine source checks pass. Independent actual-ROM
+runs cover policy/descriptor/address boundaries and intended fault controls.
+
+Both Flexe engines complete CRC and full-duplex campaigns using actual native
+MOS, actual FAT16 and privately compiled repaired diagnostic VDP. Per engine:
+40960 CRC bytes,163840 final-buffer bytes compared,640 ordered replies, zero
+TX drops/RX overruns. Intermediate stress buffer contents are not individually
+receiver-compared. Original failed-validator receipts are retained: reserved
+FF padding was wrongly treated as error flags. validated-receipt.json correctly
+interprets the raw successful runs; corrupt report/wire controls are rejected.
+The native stress client now drains before changing policy; a no-drain control
+proves the prior setter BUSY status1. No driver rule was weakened. Initial
+deadline and masked-IRQ harness failures remain in the archive history.
+
+Details/results and reproduction: experiments/uart0-native/README.md/results.json.
+Raw final runs: Oryx build/uart0-native/flexe-{jit,interp}-fixed2. Complete archive
+is build/uart0-native-evidence-20261016.tar.gz; archive.json/verification records
+its final checksum and verified Pi copy. Original .pio diagnostic build,
+toolchain, exact native working source/API exports and all failed attempts are
+included. Archive closeout follows its snapshot in the development log.
+
+Stopped human review on Oryx:
+cd ~/Agon/mystuff/worktrees/uart-native-001/uart/.emulator/uart0-review1
+./flexe-agon-emulator --precise-interrupts
+Expect experimental branding, four progressing batch16 pause/full-duplex cases,
+UART0 STRESS FIXTURE PASS and NATIVE UART REVIEW COMPLETE, then usable help/dir.
+Allow about two minutes. No generic-foundation probe/reboot drill is required.
+Only TODO.md is actionable; N-005 holds review/commit approval. Remaining BT/AB
+menu integration, native hardware acceptance, supported policy, application
+integration and release approval are still open. Leave the Console8's
+other-project VDP alone. Older entries below are historical, not new authority.
+
 Latest, 2026-10-16: Console8 replay PASSES. R0026/R0027/R0028 pass all 90
 original A/B phases with zero late feeds/case RX errors; R0029 passes candidate
 compatibility and verifies 49,152 final-buffer bytes. Tested MOS is unbranded

@@ -1,0 +1,11 @@
+{
+  "archive": "/home/smith/Agon/mystuff/agon-mos/build/uart0-native-evidence-20261016.tar.gz",
+  "bytes": 144095070,
+  "sha256": "0b4142e7e8e620471ef29ab024d7df774062f01c19f83043c407814f43edfbd4",
+  "every_regular_member_read": true,
+  "members": 8485,
+  "uncompressed_regular_bytes": 771954581,
+  "native_source_sha256": "41a83acc5b6656b095849e2abb798c672a12023a37aefb0c07150465899b6f93",
+  "human_review_passed": false,
+  "hardware_qualified": false
+}

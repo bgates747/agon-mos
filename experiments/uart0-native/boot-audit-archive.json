@@ -1,0 +1,11 @@
+{
+  "archive": "build/uart0-native-boot-audit-20261016.tar.gz",
+  "bytes": 4485565,
+  "sha256": "b14de74e985be53608cc78a59aa0ad010f18149dc0f421202ec992d862868e33",
+  "members_read": 988,
+  "verified_on_oryx": true,
+  "verified_on_pi": true,
+  "contains_failed_and_corrected_images": true,
+  "hardware_qualified": false,
+  "pi_regular_payloads_read": 890
+}

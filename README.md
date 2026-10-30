@@ -1,6 +1,16 @@
 # agon-mos
 
+Hardware hold: the native Console8 candidate failed to boot. Its startup baud
+calculation is corrected and tested off-device; the withdrawn image must not
+be flashed again. See [the audit](experiments/uart0-native/BOOT-FAILURE.md).
+
 Repository scope and cross-project ownership are defined in `OWNERSHIP.md`.
+
+The maintained native experimental UART variant is being qualified in the
+isolated codex/uart0-otirx-native worktree. See
+[native regular MOS status](experiments/uart0-native/README.md) for source,
+builds and review. This working branch retains the frozen ZDS implementation
+and its Console8 evidence; it is not the new native build entry point.
 
 Part of the official Agon Platform organisation firmware for all Agon computers.
 

@@ -5,3 +5,6 @@ Release/
 build/
 .emulator/
 .venv/
+
+# Generated discovery inventories retained locally/on Oryx; findings are versioned.
+docs/audits/sniffer-color-audit-2026-10-29/broad-*-partial.txt

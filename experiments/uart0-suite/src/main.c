@@ -17,6 +17,9 @@
 #define UART0_BRANDED_API11_ROM_CRC 0x44BC5C07UL
 /* Flexe fills the unused ROM tail with zero; physical erased flash uses FF. */
 #define UART0_BRANDED_API11_FLEXE_CRC 0xDD9A1288UL
+/* Native regular MOS uart-010-final, SHA256 5543d6ac...2f0f4c9. */
+#define UART0_NATIVE_API12_ROM_CRC 0x5B36B5B1UL
+#define UART0_NATIVE_API12_FLEXE_CRC 0x3448E183UL
 extern const uint8_t *uart_discover(void);
 extern uint24_t diag_take(void);
 extern uint8_t rom_byte0(void);
@@ -222,7 +225,7 @@ static int integration(void) {
     journal("INTEGRATION accepted=128/4110/128 GP=63 exit_session_closed=1 ADL0_return=1\r\n");
     return PASS;
 }
-static int validate_child(unsigned test,const uint8_t *b,unsigned size) {
+static int validate_child(unsigned test,const uint8_t *b,unsigned size,int native) {
     if(test==2) {
         if(size!=148 || memcmp(b,"UART0BN1\x01\x00\x08\x00",12))return 0;
         for(unsigned n=0;n<8;n++) {
@@ -235,7 +238,8 @@ static int validate_child(unsigned test,const uint8_t *b,unsigned size) {
         if(size!=76 || memcmp(b,"UART0ST1\x01\x00\x04\x00",12))return 0;
         for(unsigned n=0;n<4;n++) {
             const uint8_t *r=b+12+n*16;
-            if(r[0]!=pause[n] || r[1]!=32 || r[2]!=32 || !r[3] || r[3]>32 || u24(r+4)!=bytes[n] || r[10] || r[12] || r[13]!=47 || r[14] || r[15])return 0;
+            uint8_t padding=native?0xff:0;
+            if(r[0]!=pause[n] || r[1]!=32 || r[2]!=32 || !r[3] || r[3]>32 || u24(r+4)!=bytes[n] || r[10] || r[12] || r[13]!=47 || r[14]!=padding || r[15]!=padding)return 0;
         }
     }
     return 1;
@@ -246,7 +250,12 @@ static int child_test(unsigned test) {
     const char *bin=test==2?"bench.bin":"stress.bin";
     uint8_t error=mos_load(bin,CHILD,0x10000);
     if(error){printf("Cannot load %s; MOS error %u\n",bin,error);return FAIL;}
-    if(memcmp(CHILD+64,"MOS\x00\x01UTC1",9)){puts("Child fixture header mismatch.");return FAIL;}
+    int native=test==3 && !memcmp(CHILD+64,"MOS\x00\x01UBD1",9);
+    if(!native && memcmp(CHILD+64,"MOS\x00\x01UTC1",9)){puts("Child fixture header mismatch.");return FAIL;}
+    if(native && (api[5]<2 || api[6]<54 || (rom_crc!=UART0_NATIVE_API12_ROM_CRC && rom_crc!=UART0_NATIVE_API12_FLEXE_CRC))) {
+        puts("FAIL: native batch16 test requires the staged native MOS API1.2.");return FAIL;
+    }
+    if(native)puts("Native regular MOS: opt-in16-byte OTIRX batches; numbered reports.");
     filename(CHILD+73,test==2?'B':'S',"dat");
     filename(CHILD+89,test==2?'N':'P',"dat");
     filename(CHILD+105,test==2?'F':'G',"dat");
@@ -254,7 +263,7 @@ static int child_test(unsigned test) {
     error=mos_oscli(command,NULL,0);
     uint8_t b[150];unsigned size=test==2?148:76;
     filename(name,test==2?'B':'S',"dat");
-    int ok=!error && read_report(name,b,size) && validate_child(test,b,size);
+    int ok=!error && read_report(name,b,size) && validate_child(test,b,size,native);
     if(ok) {
         char hx[3];snprintf(line,sizeof(line),"REPORT %s hex=",name);journal(line);
         for(unsigned n=0;n<size;n++){snprintf(hx,sizeof(hx),"%02X",b[n]);journal(hx);}journal("\r\n");
@@ -551,7 +560,9 @@ static int selection(unsigned test,int automated) {
     if(!begin_run(test?"individual":"all"))return FAIL;
     int overall=PASS;
     const unsigned order[]={1,6,2,3,4,5,8,10};
-    unsigned count=test?1:(exists("recovery.bin")?8:exists("ab.bin")?7:6);
+    int native_rom=rom_crc==UART0_NATIVE_API12_ROM_CRC || rom_crc==UART0_NATIVE_API12_FLEXE_CRC;
+    unsigned count=test?1:native_rom?6:(exists("recovery.bin")?8:exists("ab.bin")?7:6);
+    if(!test && native_rom)puts("Native baseline suite; old ABI1.1-only controlled investigations remain separate.");
     for(unsigned i=0;i<count;i++) {
         unsigned n=test?test:order[i];
         int status=execute(n,automated);

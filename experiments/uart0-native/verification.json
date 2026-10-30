@@ -1,0 +1,20 @@
+{
+  "verified_on": [
+    "oryx-linuxlite",
+    "raspberrypi"
+  ],
+  "main": {
+    "bytes": 144095070,
+    "sha256": "0b4142e7e8e620471ef29ab024d7df774062f01c19f83043c407814f43edfbd4",
+    "all_regular_members_read_on_both": true,
+    "members": 8485
+  },
+  "encoding_reference": {
+    "bytes": 827842,
+    "sha256": "030baad1d8d5f35e6c53c97a24b46b480f7eb1d2fe575df679c28b51f687c573",
+    "all_regular_members_read_on_both": true
+  },
+  "ROM_sha256": "5543d6acaa64bebd3006cb034a8dda9b61cfe92c82cbbffe2c391a9392f0f4c9",
+  "human_review_pending": true,
+  "all_new_changes_uncommitted": true
+}
