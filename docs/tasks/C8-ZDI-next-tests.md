@@ -1,5 +1,18 @@
 # Console8 recovery: next diagnostic tests
 
+Latest2026-10-30: Author handed back Console8/WROOM on direct Oryx USB. With no
+reported signal-probe reconnection, the first identity is invalid F8 10 3E 46;
+test stopped, outputs released, no target programming. See
+[the C8 run](../c8-zdi-unprobed-2026-10-30.md). TRY-003 remains the next physical
+comparison; preserve an unprobed baseline before attaching measurement leads.
+
+Update2026-10-30: the Author authorized the Pi5 Olimex campaign. TRY-001,
+TRY-002 and TRY-005 are complete with scoped outcomes in
+[the campaign record](../olimex-zdi-control-2026-10-30.md). With all signal
+probes disconnected, the control gives20/20 exact identities. Two-probe
+operation remains intermittent. Remaining physical work and the Console8
+handback await the Author. The specifications below remain the recorded plan.
+
 Recorded 2026-10-30 at the Author's request. **Await the Author's readiness;
 do not execute these tests or change hardware merely because they are listed.**
 The unfinished checkboxes are in [TODO.md](../../TODO.md); identifiers below

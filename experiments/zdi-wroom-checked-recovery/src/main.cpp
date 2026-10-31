@@ -1,0 +1,470 @@
+/* WROOM checked stock-MOS recovery: Jeroen's normal identity, MOS RAM CRC,
+ * and post-flash MOS CRC checks. No pre-erase dump or extra PC/RAM gates.
+ * Algorithm: AgonPlatform/agon-recovery 95d68464afd049945e1dfd780c1c07621d565450.
+ * Direct GPIO timing matches the proven WROOM identity-only slow reader.
+ */
+#include <Arduino.h>
+#include <array>
+#include <cstdarg>
+#include <cstdint>
+#include <cstdio>
+#include <driver/gpio.h>
+#include <soc/gpio_struct.h>
+#include <cstring>
+
+#include "generated/mos_recovery_payload.hpp"
+
+namespace {
+
+using namespace agon_extender::diagnostic::recovery_payload;
+
+constexpr uint8_t kZdiTckPin = 26;
+constexpr uint8_t kZdiTdiPin = 27;
+constexpr uint16_t kExpectedProductId = 0x0007;
+constexpr uint8_t kExpectedRevision = 0xAA;
+constexpr uint32_t kFlashAgentLoad = 0x040000;
+constexpr uint32_t kMosLoad = 0x050000;
+constexpr uint32_t kMosSizeAddress = 0x070000;
+constexpr uint32_t kDoneAddress = 0x070003;
+constexpr size_t kChunkSize = 256; // Yield between short ZDI bursts for IDF idle tasks.
+
+// eZ80F92 I/O addresses copied from the same agon-recovery authority.
+constexpr uint8_t kTmr0Ctl = 0x80;
+constexpr uint8_t kTmr1Ctl = 0x83;
+constexpr uint8_t kTmr2Ctl = 0x86;
+constexpr uint8_t kTmr3Ctl = 0x89;
+constexpr uint8_t kTmr4Ctl = 0x8C;
+constexpr uint8_t kTmr5Ctl = 0x8F;
+constexpr uint8_t kPbDdr = 0x9B;
+constexpr uint8_t kPbAlt1 = 0x9C;
+constexpr uint8_t kPbAlt2 = 0x9D;
+constexpr uint8_t kPcDdr = 0x9F;
+constexpr uint8_t kPcAlt1 = 0xA0;
+constexpr uint8_t kPcAlt2 = 0xA1;
+constexpr uint8_t kPdDdr = 0xA3;
+constexpr uint8_t kPdAlt1 = 0xA4;
+constexpr uint8_t kPdAlt2 = 0xA5;
+constexpr uint8_t kCs0Lbr = 0xA8;
+constexpr uint8_t kCs0Ubr = 0xA9;
+constexpr uint8_t kCs0Ctl = 0xAA;
+constexpr uint8_t kCs1Ctl = 0xAD;
+constexpr uint8_t kCs2Ctl = 0xB0;
+constexpr uint8_t kCs3Ctl = 0xB3;
+constexpr uint8_t kRamCtl = 0xB4;
+constexpr uint8_t kRamAddrU = 0xB5;
+constexpr uint8_t kSpiCtl = 0xBA;
+constexpr uint8_t kUart0Ier = 0xC1;
+constexpr uint8_t kI2cCtl = 0xCB;
+constexpr uint8_t kUart1Ier = 0xD1;
+constexpr uint8_t kRtcCtrl = 0xED;
+constexpr uint8_t kCs0Bmc = 0xF0;
+constexpr uint8_t kFlashAddrU = 0xF7;
+constexpr uint8_t kFlashCtrl = 0xF8;
+constexpr uint8_t kFlashIrq = 0xFB;
+
+static_assert(kMosSize > 0 && kMosSize <= 131072);
+static_assert(kFlashAgentSize == 90);
+
+void report(const char* format, ...) {
+  char text[1024];
+  va_list arguments;
+  va_start(arguments, format);
+  int n = vsnprintf(text, sizeof(text), format, arguments);
+  va_end(arguments);
+  if (n < 0 || n >= static_cast<int>(sizeof(text))) {
+    while (true) delay(1000);
+  }
+  // Own USB Serial/JTAG explicitly; historical stdin/Arduino Serial did not
+  // deliver input reliably. A failed output halts progression, never retries erase.
+  if (Serial.write(reinterpret_cast<const uint8_t*>(text), n) != n) {
+    while (true) delay(1000);
+  }
+}
+
+class Crc32 {
+ public:
+  void update(const uint8_t* data, size_t size) {
+    while (size-- != 0) {
+      value_ ^= *data++;
+      for (int bit = 0; bit < 8; ++bit) {
+        value_ = (value_ >> 1) ^
+                 ((value_ & 1U) != 0 ? 0xEDB88320U : 0U);
+      }
+    }
+  }
+  uint32_t finish() const { return ~value_; }
+
+ private:
+  uint32_t value_ = 0xFFFFFFFFU;
+};
+
+uint32_t crc32(const uint8_t* data, size_t size) {
+  Crc32 crc;
+  crc.update(data, size);
+  return crc.finish();
+}
+
+class Zdi {
+ public:
+  enum class Register : uint8_t {
+    IdLow = 0x00,
+    IdRevision = 0x02,
+    Status = 0x03,
+    BreakControl = 0x10,
+    WriteDataLow = 0x13,
+    ReadWriteControl = 0x16,
+    Instruction2 = 0x23,
+    Instruction1 = 0x24,
+    Instruction0 = 0x25,
+    ReadLow = 0x10,
+    ReadMemory = 0x20,
+    WriteMemory = 0x30,
+  };
+
+  enum class CpuRegister : uint8_t {
+    AfMb = 0,
+    Bc = 1,
+    De = 2,
+    Hl = 3,
+    Ix = 4,
+    Iy = 5,
+    Sp = 6,
+    Pc = 7,
+    SetAdl = 8,
+  };
+
+  void begin() {
+    GPIO.out_w1ts = (1U << kZdiTckPin) | (1U << kZdiTdiPin);
+    GPIO.enable_w1ts = 1U << kZdiTckPin;
+    GPIO.enable_w1tc = 1U << kZdiTdiPin;
+  }
+
+  uint8_t readRegister(Register reg) {
+    uint8_t value = 0;
+    readRegisters(reg, 1, &value);
+    return value;
+  }
+
+  void readRegisters(Register reg, uint8_t count, uint8_t* values) {
+    noInterrupts();
+    signalStart();
+    addressRegister(static_cast<uint8_t>(reg), true);
+    while (count-- != 0) {
+      signalContinue();
+      delayMicroseconds(3);
+      *values++ = readByte();
+    }
+    signalDone();
+    delayMicroseconds(3);
+    interrupts();
+  }
+
+  void writeRegister(Register reg, uint8_t value) {
+    writeRegisters(reg, 1, &value);
+  }
+
+  void writeRegisters(Register reg, uint8_t count, const uint8_t* values) {
+    noInterrupts();
+    signalStart();
+    addressRegister(static_cast<uint8_t>(reg), false);
+    while (count-- != 0) {
+      signalContinue();
+      delayMicroseconds(3);
+      writeByte(*values++);
+    }
+    signalDone();
+    delayMicroseconds(3);
+    interrupts();
+  }
+
+  uint16_t productId() {
+    uint8_t bytes[2] = {};
+    readRegisters(Register::IdLow, 2, bytes);
+    return static_cast<uint16_t>(bytes[0]) |
+           (static_cast<uint16_t>(bytes[1]) << 8);
+  }
+
+  uint8_t revision() { return readRegister(Register::IdRevision); }
+  uint8_t status() { return readRegister(Register::Status); }
+  void halt() { writeRegister(Register::BreakControl, 0x80); }
+  void resume() { writeRegister(Register::BreakControl, 0x00); }
+
+  uint32_t readCpuRegister(CpuRegister reg) {
+    writeRegister(Register::ReadWriteControl, static_cast<uint8_t>(reg));
+    uint8_t bytes[3] = {};
+    readRegisters(Register::ReadLow, 3, bytes);
+    return static_cast<uint32_t>(bytes[0]) |
+           (static_cast<uint32_t>(bytes[1]) << 8) |
+           (static_cast<uint32_t>(bytes[2]) << 16);
+  }
+
+  void writeCpuRegister(CpuRegister reg, uint32_t value) {
+    const uint8_t bytes[3] = {
+        static_cast<uint8_t>(value),
+        static_cast<uint8_t>(value >> 8),
+        static_cast<uint8_t>(value >> 16),
+    };
+    writeRegisters(Register::WriteDataLow, 3, bytes);
+    writeRegister(Register::ReadWriteControl,
+                  static_cast<uint8_t>(reg) | 0x80);
+  }
+
+  void readMemory(uint32_t address, size_t count, uint8_t* output) {
+    // Preserve/restore PC as upstream read_memory does; no new PC-value gate.
+    const uint32_t oldPc = readCpuRegister(CpuRegister::Pc);
+    writeCpuRegister(CpuRegister::Pc, address);
+    noInterrupts();
+    signalStart();
+    addressRegister(static_cast<uint8_t>(Register::ReadMemory), true);
+    while (count-- != 0) {
+      signalContinue();
+      delayMicroseconds(3);
+      *output++ = readByte();
+    }
+    signalDone();
+    delayMicroseconds(3);
+    interrupts();
+    writeCpuRegister(CpuRegister::Pc, oldPc);
+  }
+
+  void writeMemory(uint32_t address, size_t count, const uint8_t* input) {
+    writeCpuRegister(CpuRegister::Pc, address);
+    noInterrupts();
+    signalStart();
+    addressRegister(static_cast<uint8_t>(Register::WriteMemory), false);
+    while (count-- != 0) {
+      signalContinue();
+      delayMicroseconds(3);
+      writeByte(*input++);
+    }
+    signalDone();
+    delayMicroseconds(3);
+    interrupts();
+  }
+
+  void writeMemory24(uint32_t address, uint32_t value) {
+    const uint8_t bytes[3] = {
+        static_cast<uint8_t>(value),
+        static_cast<uint8_t>(value >> 8),
+        static_cast<uint8_t>(value >> 16),
+    };
+    writeMemory(address, sizeof(bytes), bytes);
+  }
+
+  void injectOut(uint8_t port, uint8_t value) {
+    writeRegister(Register::Instruction1, value);
+    writeRegister(Register::Instruction0, 0x3E);  // LD A,value
+    writeRegister(Register::Instruction1, port);
+    writeRegister(Register::Instruction0, 0xD3);  // OUT (port),A
+  }
+
+  void disableInterrupts() { writeRegister(Register::Instruction0, 0xF3); }
+
+ private:
+  void signalStart() {
+    GPIO.out_w1ts = (1U << kZdiTckPin) | (1U << kZdiTdiPin);
+    GPIO.enable_w1ts = (1U << kZdiTckPin) | (1U << kZdiTdiPin);
+    delayMicroseconds(10);
+    GPIO.out_w1tc = 1U << kZdiTdiPin;
+    delayMicroseconds(10);
+  }
+  void signalContinue() { writeBit(false); }
+  void signalDone() { writeBit(true); }
+  void writeBit(bool value) {
+    GPIO.out_w1tc = 1U << kZdiTckPin;
+    delayMicroseconds(10);
+    if (value) GPIO.out_w1ts = 1U << kZdiTdiPin;
+    else GPIO.out_w1tc = 1U << kZdiTdiPin;
+    GPIO.enable_w1ts = 1U << kZdiTdiPin;
+    delayMicroseconds(10);
+    GPIO.out_w1ts = 1U << kZdiTckPin;
+    delayMicroseconds(10);
+  }
+  bool readBit() {
+    GPIO.enable_w1tc = 1U << kZdiTdiPin;
+    GPIO.out_w1tc = 1U << kZdiTckPin;
+    delayMicroseconds(10);
+    const bool value = (GPIO.in >> kZdiTdiPin) & 1U;
+    GPIO.out_w1ts = 1U << kZdiTckPin;
+    delayMicroseconds(10);
+    return value;
+  }
+  void addressRegister(uint8_t reg, bool read) {
+    for (int bit = 6; bit >= 0; --bit) {
+      writeBit((reg & (1U << bit)) != 0);
+    }
+    writeBit(read);
+  }
+  void writeByte(uint8_t value) {
+    for (int bit = 7; bit >= 0; --bit) {
+      writeBit((value & (1U << bit)) != 0);
+    }
+  }
+  uint8_t readByte() {
+    uint8_t value = 0;
+    for (int bit = 7; bit >= 0; --bit) {
+      value = static_cast<uint8_t>((value << 1) | (readBit() ? 1U : 0U));
+    }
+    return value;
+  }
+};
+
+Zdi zdi;
+std::array<uint8_t, kChunkSize> scratch;
+
+void initializeEz80() {
+  zdi.halt();
+  zdi.readCpuRegister(Zdi::CpuRegister::SetAdl);
+  zdi.disableInterrupts();
+  zdi.injectOut(kSpiCtl, 0x04);
+  for (const uint8_t port : {kPbDdr, kPcDdr, kPdDdr}) zdi.injectOut(port, 0xFF);
+  for (const uint8_t port : {kPbAlt1, kPcAlt1, kPdAlt1,
+                             kPbAlt2, kPcAlt2, kPdAlt2}) zdi.injectOut(port, 0);
+  for (const uint8_t port : {kTmr0Ctl, kTmr1Ctl, kTmr2Ctl,
+                             kTmr3Ctl, kTmr4Ctl, kTmr5Ctl,
+                             kUart0Ier, kUart1Ier, kI2cCtl,
+                             kFlashIrq}) zdi.injectOut(port, 0);
+  zdi.injectOut(kSpiCtl, 0x04);
+  zdi.injectOut(kRtcCtrl, 0);
+  zdi.injectOut(kFlashAddrU, 0x00);
+  zdi.injectOut(kFlashCtrl, 0x28);
+  zdi.injectOut(kRamAddrU, 0xB7);
+  zdi.injectOut(kRamCtl, 0x80);
+  zdi.injectOut(kCs0Lbr, 0x04);
+  zdi.injectOut(kCs0Ubr, 0x0B);
+  zdi.injectOut(kCs0Bmc, 0x01);
+  zdi.injectOut(kCs0Ctl, 0x08);
+  zdi.injectOut(kCs1Ctl, 0x00);
+  zdi.injectOut(kCs2Ctl, 0x00);
+  zdi.injectOut(kCs3Ctl, 0x00);
+  zdi.writeCpuRegister(Zdi::CpuRegister::Sp, 0x0BFFFF);
+  zdi.writeCpuRegister(Zdi::CpuRegister::Pc, 0x000000);
+}
+
+void upload(uint32_t address, const uint8_t* data, size_t size) {
+  size_t done = 0;
+  while (done < size) {
+    const size_t count = min(kChunkSize, size - done);
+    zdi.writeMemory(address + done, count, data + done);
+    done += count;
+    delay(1);
+    if ((done % (16 * kChunkSize)) == 0 || done == size) {
+      report("  uploaded %u/%u bytes\n", static_cast<unsigned>(done),
+             static_cast<unsigned>(size));
+    }
+  }
+}
+
+uint32_t memoryCrc(uint32_t address, size_t size) {
+  zdi.halt(); // Upstream getZDImemoryCRC enters break before reading.
+  Crc32 crc;
+  size_t done = 0;
+  while (done < size) {
+    const size_t count = min(kChunkSize, size - done);
+    zdi.readMemory(address + done, count, scratch.data());
+    crc.update(scratch.data(), count);
+    done += count;
+    delay(1);
+  }
+  return crc.finish();
+}
+
+void releaseZdi() {
+  GPIO.enable_w1tc = (1U << kZdiTckPin) | (1U << kZdiTdiPin);
+}
+
+[[noreturn]] void finish(const char* result) {
+  releaseZdi();
+  report("RESULT %s\n", result);
+  report("BLUE and GREEN released; no automatic retry.\n");
+  while (true) delay(1000);
+}
+
+void waitForFlash() {
+  char line[16] = {};
+  size_t used = 0;
+  bool overflow = false;
+  uint32_t last = millis() - 2000U;
+  while (true) {
+    if (millis() - last >= 2000U) {
+      report("READY WROOM-CHECKED r01 BLUE=26 GREEN=27\n");
+      last = millis();
+    }
+    char ch;
+    if (!Serial.available()) { delay(1); continue; }
+    ch = static_cast<char>(Serial.read());
+    if (ch == '\r') continue;
+    if (ch == '\n') {
+      line[used] = 0;
+      if (!overflow && strcmp(line, "FLASH") == 0) return;
+      used = 0;
+      overflow = false;
+    } else if (used + 1 < sizeof(line)) {
+      line[used++] = ch;
+    } else {
+      overflow = true;
+    }
+  }
+}
+
+[[noreturn]] void recover() {
+  zdi.begin();
+  // Upstream requires product ID 7; revision and status are informational.
+  const uint16_t product = zdi.productId();
+  const uint8_t revision = zdi.revision();
+  const uint8_t status = zdi.status();
+  report("IDENTITY product=%04X revision=%02X status=%02X expected-product=0007\n",
+         product, revision, status);
+  if (product != kExpectedProductId) {
+    report("ZDI identity failed; MOS upload/erase/program not attempted.\n");
+    finish("identity_failed");
+  }
+  report("ZDI identity PASS\n");
+  initializeEz80();
+  report("Uploading stock MOS: %u bytes\n", static_cast<unsigned>(kMosSize));
+  upload(kMosLoad, kMosImage, kMosSize);
+  const uint32_t ramCrc = memoryCrc(kMosLoad, kMosSize);
+  report("MOS RAM CRC32 expected=%08lX actual=%08lX\n",
+         static_cast<unsigned long>(kMosCrc32), static_cast<unsigned long>(ramCrc));
+  if (ramCrc != kMosCrc32) {
+    report("CRC32 ERROR; flash agent not uploaded or executed.\n");
+    finish("ram_crc_failed");
+  }
+  report("MOS RAM CRC32 OK\n");
+  zdi.writeMemory24(kMosSizeAddress, kMosSize);
+  report("Uploading original 90-byte flash agent\n");
+  upload(kFlashAgentLoad, kFlashAgent, kFlashAgentSize);
+  report("Executing flash agent; waiting 10 seconds without ZDI access\n");
+  zdi.writeCpuRegister(Zdi::CpuRegister::Pc, kFlashAgentLoad);
+  zdi.resume();
+  for (int second = 1; second <= 10; ++second) {
+    delay(1000);
+    report("  flash wait %d/10\n", second);
+  }
+  zdi.halt();
+  const uint32_t flashCrc = memoryCrc(0, kMosSize);
+  report("MOS FLASH CRC32 expected=%08lX actual=%08lX\n",
+         static_cast<unsigned long>(kMosCrc32), static_cast<unsigned long>(flashCrc));
+  if (flashCrc != kMosCrc32) {
+    report("CRC32 ERROR after flash.\n");
+    finish("flash_crc_failed");
+  }
+  report("MOS FLASH CRC32 OK; reset Console8 to boot stock MOS.\n");
+  finish("flash_crc_pass");
+}
+
+} // namespace
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(kZdiTckPin, INPUT_PULLUP);
+  pinMode(kZdiTdiPin, INPUT_PULLUP);
+  releaseZdi();
+  delay(1000);
+  report("\nWROOM-CHECKED r01; stock MOS 3.0.2; BLUE=GPIO26 GREEN=GPIO27\n");
+  report("Payload %u bytes SHA256 %s\n", static_cast<unsigned>(kMosSize), kMosSha256);
+  report("Jeroen checks: identity, MOS RAM CRC32, post-flash MOS CRC32; 10us edges.\n");
+  waitForFlash();
+  recover();
+}
+void loop() { delay(1000); }

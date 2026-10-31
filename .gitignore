@@ -5,6 +5,15 @@ Release/
 build/
 .emulator/
 .venv/
+__pycache__/
+*.pyc
 
 # Generated discovery inventories retained locally/on Oryx; findings are versioned.
 docs/audits/sniffer-color-audit-2026-10-29/broad-*-partial.txt
+
+experiments/zdi-wroom-diagnostic/__pycache__/
+
+# Local stock firmware payloads and ESP32 build artifacts.
+experiments/zdi-wroom-checked-recovery/src/generated/
+experiments/zdi-wroom-checked-recovery/.pio/
+experiments/zdi-wroom-checked-recovery/__pycache__/

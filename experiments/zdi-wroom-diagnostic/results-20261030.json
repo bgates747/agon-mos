@@ -1,0 +1,191 @@
+{
+  "target": "Olimex Agon Light 2",
+  "runs": [
+    {
+      "run": "olimex-baseline-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v7",
+      "probes": "four",
+      "reads": 5,
+      "valid_id_revision": 0,
+      "exact_07_00_AA_1C": 0,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-clock-strength-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v8",
+      "probes": "four",
+      "reads": 20,
+      "valid_id_revision": 0,
+      "exact_07_00_AA_1C": 0,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged; CLOCK drive level2 restored, DATA remains level2"
+    },
+    {
+      "run": "olimex-original-v3-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "four",
+      "reads": 5,
+      "valid_id_revision": 0,
+      "exact_07_00_AA_1C": 0,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-no-signal-probes-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "none",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-no-signal-probes-002",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "none",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-no-signal-probes-003",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "none",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-no-signal-probes-004",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "none",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-red-only-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-plus-red",
+      "reads": 5,
+      "valid_id_revision": 0,
+      "exact_07_00_AA_1C": 0,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-red-removed-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-only",
+      "reads": 5,
+      "valid_id_revision": 4,
+      "exact_07_00_AA_1C": 4,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-red-removed-002",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-only",
+      "reads": 5,
+      "valid_id_revision": 3,
+      "exact_07_00_AA_1C": 2,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-target-probes-001",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-only",
+      "reads": 5,
+      "valid_id_revision": 3,
+      "exact_07_00_AA_1C": 3,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-target-probes-002",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-only",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    },
+    {
+      "run": "olimex-v3-target-probes-003",
+      "completed": true,
+      "firmware": "WROOM ZDI IDENTITY ONLY v3",
+      "probes": "target-only",
+      "reads": 5,
+      "valid_id_revision": 5,
+      "exact_07_00_AA_1C": 5,
+      "target_flash_operations": 0,
+      "target_reset_requested": false,
+      "final_state": "Both GPIO outputs released; GREEN clock push-pull restored, BLUE mode unchanged"
+    }
+  ],
+  "conclusion": "20/20 exact identities with all signal probes disconnected. Probe attachment changes results; RED alone reproduces failure. Two-probe condition remains intermittent.",
+  "current_wroom_app_sha256": "abaa0bc98876389f14a2f92a47115a5e95a5009dd1975f61a026d74978984fd9",
+  "final_probe_state": "All four signal probes disconnected; grounds and USB retained; 33-ohm signal wires unchanged",
+  "limits": [
+    "No Console8 test in this campaign",
+    "No analog voltage/current measurement",
+    "No RAM upload or MOS programming requested",
+    "Probe-related mechanism remains unresolved; no claim of a defective analyzer channel"
+  ],
+  "archive": {
+    "archive": "zdi-qualification-20261030-evidence-r01.tar.gz",
+    "bytes": 7677262,
+    "sha256": "0d4a4d9a9aa5d7ccbf4c1d7ac9e170f75ed7e9cda4c3ae30bf14938be13851df",
+    "regular_members": 142,
+    "all_regular_bytes_read": 1550845994,
+    "raw_captures_verified": 29,
+    "passed": true,
+    "verified_on": [
+      "raspberrypi",
+      "oryx-linuxlite"
+    ],
+    "location": "build/zdi-qualification-20261030-evidence-r01.tar.gz"
+  },
+  "source_sha256": {
+    "experiments/zdi-wroom-diagnostic/capture.py": "4f206cdba01e34ae4eb36e5d753a7a571ddd9913bc255ec63016a907981cce20",
+    "experiments/zdi-wroom-diagnostic/review_phases.py": "e4aa4c20d15a208cf9729ae96e053f0d171b0e753364b22f1778ec749429c452",
+    "experiments/zdi-wroom-diagnostic/review_target.py": "c3553404c60d313c2770f64da7bcef76829de11ace377b917ea61bea9f6ce013",
+    "experiments/zdi-wroom-diagnostic/review.py": "5dd879ce0c3311ba2d0f64b80b24028dceff2edcbbeef1286d729605d82699fa",
+    "experiments/zdi-wroom-diagnostic/src/main.cpp": "ea0025c3fc1385820d125042b6c124a02aec787acbcbb908c98fc1f29feb47a4"
+  }
+}

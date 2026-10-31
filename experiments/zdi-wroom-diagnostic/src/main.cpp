@@ -147,7 +147,7 @@ void setup() {
     pinMode(26, INPUT_PULLUP);
     pinMode(27, INPUT_PULLUP);
     delay(200);
-    Serial.println("WROOM ZDI IDENTITY ONLY v7 - GPIO26=TCK GPIO27=TDI");
+    Serial.println("WROOM ZDI IDENTITY ONLY v8 - GPIO26=TCK GPIO27=TDI");
     Serial.printf("MUX26=%08lX MUX27=%08lX INPUT=%u,%u\r\n",
                   (unsigned long)REG_READ(PERIPHS_IO_MUX_GPIO26_U),
                   (unsigned long)REG_READ(PERIPHS_IO_MUX_GPIO27_U),
@@ -159,6 +159,7 @@ void setup() {
     Serial.println("L=weakest output drive; R=restore default drive (clock/data, no clocks)");
     Serial.println("O=DATA open-drain; B=DATA push-pull baseline (clock stays push-pull)");
     Serial.println("C=short BLUE LOW/release control with GREEN held LOW, then both released");
+    Serial.println("0..3=GREEN clock drive only; BLUE DATA drive unchanged");
     Serial.println("A=GREEN open-drain clock; Z=GREEN push-pull clock baseline (BLUE unchanged)");
     pinState();
     Serial.println("READY");
@@ -187,6 +188,25 @@ void loop() {
         Serial.printf("GREEN mode=%s pad_driver=%u\r\n",
                       command == 'A' ? "open-drain" : "push-pull",
                       unsigned(GPIO.pin[26].pad_driver));
+        pinState();
+        Serial.println("READY");
+    } else if (command >= '0' && command <= '3') {
+        // Clock-only comparison. Leave DATA drive capability and direction intact.
+        // Release CLOCK before adjustment; retain its baseline HIGH latch.
+        GPIO.enable_w1tc = 1U << 26;
+        GPIO.out_w1ts = 1U << 26;
+        gpio_drive_cap_t beforeData = GPIO_DRIVE_CAP_2;
+        gpio_drive_cap_t afterData = GPIO_DRIVE_CAP_2;
+        gpio_drive_cap_t actualClock = GPIO_DRIVE_CAP_2;
+        esp_err_t readBefore = gpio_get_drive_capability(GPIO_NUM_27, &beforeData);
+        esp_err_t changed = gpio_set_drive_capability(GPIO_NUM_26,
+                                      gpio_drive_cap_t(command - '0'));
+        esp_err_t readClock = gpio_get_drive_capability(GPIO_NUM_26, &actualClock);
+        esp_err_t readAfter = gpio_get_drive_capability(GPIO_NUM_27, &afterData);
+        Serial.printf("CLOCK DRIVE requested=%u actual=%u data_before=%u data_after=%u errors=%d,%d,%d,%d\r\n",
+                      unsigned(command - '0'), unsigned(actualClock),
+                      unsigned(beforeData), unsigned(afterData),
+                      int(readBefore), int(changed), int(readClock), int(readAfter));
         pinState();
         Serial.println("READY");
     } else if (command == 'O' || command == 'B') {
