@@ -1,5 +1,396 @@
 # Interrupt-based UART0 transmission project — handoff
 
+LATEST 2026-10-31 — AUTHOR CONFIRMS C8 MOS BOOTS: “praise jesus, it worked.”
+N-009 complete: stockMOS3.0.2 target RAM/flash CRC PASS plus physical boot.
+Author attaches C8 SD onOryx and asks recover any missingdiagnostics. Confirmed
+AGONC8 UUID8658-1C23; read-only snapshot257files/67,826,138bytes, allfiveUART
+fixture directories plusrootMOS/startup. New loose-evidence matches absent for
+R0030.log, runs.log, oldfailure.dat, oldbench.dat andautoexec.txt. R0030 captures
+candidateflashHANDOFF PENDING, not success. Fullsnapshot/hasharchive verified
+onOryx andPi; sourcecardUNCHANGED and LEFTMOUNTED. RootMOS.bin=knownstock3.0.2.
+Evidence build/c8-sd-recovery-20261031/return-001; report:
+docs/c8-sd-recovery-2026-10-31.md. ArchiveSHAe462d136...fd1634f3.
+WROOM remains CHECKEDr01 quietterminal/pinsreleased unless Author powercycles;
+no new programmer/target commands in SDcollection. P4 unused; its deferred
+original-firmware restoration remains separatecleanup pending availability.
+Withdrawn nativeMOS candidate is still onSD as historicalcapture, unchanged;
+no new experimental firmwaredeployment or performance testing authorized here.
+Older bootpending/N-009incomplete entries below are historical/superseded.
+
+LATEST 2026-10-31 — Author requests RESTORE MOS. Completed one checked WROOM
+stock MOS3.0.2 recovery on Oryx: identity0007/AA, RAM CRC15BD0583 PASS,
+post-flash MOS CRC15BD0583 PASS. This is target CRC-VERIFIED programming,
+not blind completion. Boot NOT yet confirmed; Author told to PRESS CONSOLE8
+RESET now and check MOS banner. Target was left in break after flash CRC;
+WROOM outputs released, host serial closed, no retry/reset ongoing. WROOM NOW
+WROOM-CHECKED r01 (ac75fbb4...), NOT identity-onlyv3. Normal startup unarmed,
+exact FLASH required; no BOOT shortcut. Keep wiring BLUE26clock/GREEN27data,
+upper-middle ground, no resistors, improved breadboard; no physical change.
+Same10us timing, original90byteagent and normal checks; no added PC/dump gates.
+P4 unused and original restoration still deferred until physical MOS boot.
+Report docs/c8-stock-mos-recovery-2026-10-31.md. Raw Pi/Oryx:
+build/c8-wroom-checked-20261031/run-001; verified archive same prefix
+-evidence-r01.tar.gz SHA b8ed26b7...c12d0355. Await Author reset/banner result.
+All prior claims C8 unprogrammed or WROOM identity-only below are historical.
+
+LATEST — Author moved CONSOLE8+WROOM toORYX with same proven wiring:
+BLUE26clock/ZDI4, GREEN27data/ZDI6, upper-middle ground, no resistors, same
+breadboard. Requested1000identity-only probes. Oryx run001 completed with
+1000/1000correct0007/AA,996status1C/4status18(IEF1flag),13000local drive
+checks pass; firstafterWROOMrestart10/10valid, all tenepochs100/100. Same
+quietv3/S10us firmware; only runner target label generalized. NO Console8
+reset/halt/RAM/flash. WROOM remains quietv3 onOryx, output drivers released,
+BLUE/GREENHIGH, host closed, no polling. C8 MOS still NOT restored or boot
+verified. Clean read link is established for these conditions; no flash/RAM/
+high-speed qualification. P4 unused, original restoration deferred.
+Evidence Pi/Oryx build/c8-wroom-identity-20261030/run-001; report:
+docs/c8-wroom-identity-2026-10-30.md. No target writes under this read-only task.
+Earlier invalidC8 ID results below are historical, not current link status.
+
+LATEST — Olimex startup incident cleared without reflashing: Author reports
+normal boot with WROOM disconnected, then restores direct upper-middle-ground
+wiring (BLUE26clock/GREEN27data, no resistors), powers WROOM first/Olimex second,
+and confirms MOS prompt. Explicitly requested repeat: same quietv3/S10us,
+ten WROOM-only restart epochs,1000/1000correct0007/AA,998status1C/2status18,
+all13000local drive checks pass, firstafterrestart10/10valid. No Olimex reset,
+halt/RAM/flash. Outputs released, BLUE/GREENHIGH, host closed, no polling.
+Latest evidence run004-ground3-ordered-power in campaign Pi/Oryx. Report:
+docs/olimex-wroom-ground3-power-sequence-2026-10-30.md. Post-test physicalCLI
+not observed by agent. C8 STILL unrecovered; P4 unused/restoration deferred.
+Older INCIDENT HOLD entries below are superseded for this completed authorized
+identity test; no new flash or investigation authorized by its success.
+
+INCIDENT — Author now reports OLIMEX VDP branding but NO MOS branding after
+last identity run. Confirms WROOM WAS STILL ATTACHED during this boot. All
+hardware access STOPPED; audit inspected local files only. No recovery/reset/
+readback or other device command sent. Asked Author to power BOTH boards off,
+disconnect ALL WROOM-to-Olimex leads, then boot Olimex ALONE to check banners.
+Await that result. Do not assume flash corruption or intact flash. No remote
+reset/flash/test authorized by this report. Latest commanded WROOM state was
+released outputs, not a proof of current physical state. Last wiring upper-left
+ground and direct BLUE26clock/GREEN27data. Identity-onlyv3 stays installed.
+Audit confirms only P/Q/S host commands and esptool writes to WROOM app, tenv3
+banners in each run; actual wire effects not captured. Exactv3 source snapshot
+not yet recovered; later v7/v8 source is not a substitute for executedv3.
+Incident: docs/olimex-mos-startup-incident-2026-10-30.md. Older claims of
+normal Olimex operation below predate this incident. Console8 also unrecovered.
+
+LATEST — Author corrects prior clean run002: ground NEVER MOVED; actual
+upper-middle(reportedpin3), not upper-left5. Raw result/filename preserved,
+correction sidecar at campaignparent/operator-correction-run-002.json; previous
+human report explicitly corrected. Author NOW moved ground alone to upper-left,
+all other setup unchanged (direct/no resistors, BLUE26clock/GREEN27data).
+Requested matched1000reads completed run003-ground5-only-change: ZERO correct,
+1000×FF FF FF FF, all13000local drive checks pass; firstafterreset0/10.
+Prior upper-middle run1000/1000correct. No cause established beyond association
+with changed connection; do not assume physical pin identification/continuity
+or chip damage. Current upper-left ground remains; do NOT blind flash.
+Same WROOM quietv3/S10us, outputs released, BLUE/GREENHIGH, serial closed.
+No Olimex reset/halt/RAM/flash. Evidence Pi/Oryx:
+build/olimex-wroom-breadboard-20261030/run-003-ground5-only-change. Report:
+docs/olimex-wroom-ground-comparison-2026-10-30.md. Older pin5-pass claims below
+are superseded by Author correction; do not reuse them as pin5 success evidence.
+
+LATEST — Author confirms rewiring complete, WROOM/Pi5/Olimex: BLUE clock
+GPIO26->ZDI4, GREEN dataGPIO27->ZDI6, ground moved upper-middle3 to upper-left5,
+NO INLINE RESISTORS. Same higher-quality breadboard. Author believes only
+colors changed on signals, not signal functions. Same identity-onlyv3 and
+S/10us firmware; ten100-read WROOM-only reset epochs:1000/1000correct0007/AA.
+999status1C,1status18 (IEF1bit2 difference); all13000local drive checks pass,
+firstafterreset10/10valid. No Olimex reset/halt/RAM/flash. Both output drivers
+released; BLUE and GREEN bothHIGH; host closed, no polling. WROOM quietv3
+remains. P4 not used; original P4 restoration still deferred. REWIRING HOLD
+IS CLEARED for this completed authorized test, not blanket flash permission.
+Observed clean identity setup, not flash/high-speed qualification or isolation
+of ground/resistor effects. Earlier1000run had33ohms, now0. Evidence Pi/Oryx:
+build/olimex-wroom-breadboard-20261030/run-002-ground5-direct. Report:
+docs/olimex-wroom-ground5-direct-2026-10-30.md. Older states below historical.
+
+LATEST — Author supplied upstream Jeroen ZDI connector and Console8/WROOM
+breadboard diagrams and announces rewiring to match them: BLUE CLOCK GPIO26
+-> target pin4/lower middle; GREEN DATA GPIO27 -> pin6/lower left, notch at
+top. This SUPERSEDES earlier GREEN-clock/BLUE-data instructions. Own AGENTS.md
+updated; old test logs remain unchanged. REWIRING NOT YET CONFIRMED COMPLETE:
+NO HARDWARE COMMANDS while Author changes leads. WROOM remains identity-onlyv3;
+last test ended with output drivers released. No new read/flash/reset performed.
+Original diagrams, pinned provenance/checksums and upstream MIT notice stored
+canonically in ../agon-extender/docs/mos-recovery/, embedded in its maintained
+../agon-extender/docs/mos-recovery.md. Both pictures agree; WROOM26/27 labels
+must not be applied to P4 (clock46/data47). Earlier statistical run is historical
+under its reported wiring, not a post-correction validation or electrical cause.
+
+LATEST — Author moved WROOM toPi5/Olimex, GREEN CLOCK26/BLUE DATA27,
+33-ohm series resistors, improved breadboard; requested meaningful ID statistics.
+Preserved WROOM incoming app span; installed archived quiet identity-onlyv3.
+1000reads,10WROOM-only resets, S/10us edges:325correct0007/AA,675wrong,
+280also have status1C. All13000local drive checks pass. Per100correct:
+31,32,27,37,27,35,35,36,30,35. Firstafterreset3/10valid. No Olimex halt,
+reset/RAM/flash. WROOM NOW quietv3 on26/27, outputs released; final local
+GREENHIGH/BLUELOW; serial closed, no polling. P4 not involved; its original
+restoration remains deferred. No physical cause assigned or direct P4 rate
+comparison. Report docs/olimex-wroom-breadboard-2026-10-30.md; raw evidence
+Pi/Oryx build/olimex-wroom-breadboard-20261030. Older states superseded below.
+
+LATEST — Author installed100-ohm series resistors on Pi5/P4/Olimex and
+requested repeated ID reads only. Same IDENTITY-ONLYr01; P4-only reset once
+before ten batches of three reads, no reset between batches. Run005-100ohm:
+16/30 full0007/AA/1C,14 corrupt. ALL TEN first reads invalid. Batches2and3
+entirely corrupt; batches1and4..10 have correct reads2and3. No Olimex reset,
+CPU halt, RAM access or MOS programming. Both signals released, host closed.
+CURRENT WIRING IS100OHMS, not direct/33ohms. P4 remains identity-only on Pi5.
+Observed baselines:33ohms4/6, direct0/9,100ohms16/30; unequal samples and
+uncontrolled wiring changes do not rank resistor values or prove a cause.
+Evidence build/olimex-p4-identity-20261030/run-005-100ohm. ConsoleSHA256
+2fa12e69f8f92ec722cf96b2bcba2033962e690a2670dec1e61cd9cca859babb.
+
+LATEST — Author removed series resistors: Olimex directly wired to P4 on
+Pi5. Identity-only comparison: run003-direct console timed out before any
+identity result; queued READY output was drained, no complete batch. Reset
+P4 ONLY (not Olimex) and ran run004-direct, three batches/nine reads. ZERO
+full0007/AA/1C matches; four product0007 but revisionAB/status1E or1F. Other
+products83FF/83C1/FFFF/D8C4. This trial is worse than preceding33-ohm4/6
+full matches; does not establish an electrical cause. No target reset/halt,
+RAM access or MOS flash. Direct wiring remains current; do not assume33ohms.
+P4 still IDENTITY-ONLY r01 on Pi5, GREEN46/BLUE47 released, serial closed.
+Known idle console stalled and required P4-only restart; no automatic retries.
+Evidence build/olimex-p4-identity-20261030/run-00{3,4}-direct.
+
+LATEST — Author moved P4 to Pi5 and Olimex; explicitly IDENTITY ONLY,
+DO NOT FLASH OLIMEX MOS. Replaced checked-recovery P4 app with dedicated
+P4-IDENTITY-ONLY r01 (NO MOS/agent payload or CPU halt/write/flash API).
+GREEN CLOCK46/BLUE DATA47, same transaction timing. Two IDENTIFY batches:
+run001 [FFFF/FF/FF, 0007/AA/1C, 0007/AA/1C]; run002 without explicit P4
+reset [6262/07/1C, 0007/AA/1C, 0007/AA/1C]. Four of six exact identities,
+first reading of BOTH batches invalid. This proves communication is possible
+on Olimex but not reliably on the first read after ZDI begin; cause unassigned.
+No Olimex CPU halt, RAM access or MOS erase/program requested. GREEN/BLUE
+released; host closed. P4 NOW identity-only on Pi5, not checked recovery on
+Oryx. Original P4 restore still deferred; Console8 remains unrecovered.
+Do not send FLASH on this setup or reintroduce a flash-capable build without
+new scope. Evidence build/olimex-p4-identity-20261030; source
+experiments/zdi-p4-identity-only. Prior state entries below are historical.
+
+LATEST — Author confirms repeated blind P4 flash did NOT restore MOS and
+explicitly requests Jeroen's normal checks. Built/installed P4-CHECKED r01:
+identity(product7), MOS RAM CRC, post-flash MOS CRC; no custom dumps/PC gates.
+Run001 IDENTITY product=FFFF revision=FF status=FF expected-product=0007.
+RESULT identity_failed. Stopped BEFORE MOS upload/erase/program; flash agent
+NOT started. P4 currently CHECKED r01, not FLASH-ONLY. GREEN46/BLUE47 released,
+no serial host remains, no automatic retry/reset/P4 restoration. NO SNIFFERS.
+Both33-ohm resistors and Oryx powered setup remain Author-confirmed. Console8
+still unrecovered; no new power-cycle request needed for this identity refusal.
+Evidence Pi/Oryx: build/c8-zdi/p4-checked-20261030/run-001/. Source:
+experiments/zdi-p4-checked/. Checks/algorithm follow upstream95d68464; only
+P4 GPIO/USB/isolation/timing and bounded host command UI adapted.
+Older blind-sequence completion/monitor-pending entries below are superseded.
+
+LATEST — Author explicitly ordered immediate Console8 restoration again.
+Reset P4 ONLY to rearm installed FLASH-ONLY r01 and sent one FLASH command.
+Run003 completed full stockMOS and flash-agent uploads, resume and ten-second
+wait; GREEN/BLUE released. NO eZ80 read/identification/verification; no target
+reset or P4 restoration. P4 message proves only sequence completion. Await
+Author Console8 power-cycle/monitor MOS banner. No host process remains.
+Evidence Pi/Oryx: build/c8-zdi/p4-flash-only-20261030/run-003/.
+
+LATEST — Author reports WROOM blind flash left Console8 bricked. At Author's
+request, built/installed P4 FLASH-ONLY r01 using GREEN CLOCK GPIO46/EXT2 pin7,
+BLUE DATA GPIO47/EXT2 pin6, both outside normal Extender harness. Author wired
+both 33-ohm series resistors and powered/connected both boards on Oryx.
+P4 programmer verified; one FLASH command completed stock MOS108490-byte
+upload, original90-byte agent upload, resume and ten-second wait. NO TARGET
+READS or readback gates. Completion is NOT verified MOS success. GREEN/BLUE
+released as inputs; P4 remains on one-shot programmer. No host process remains,
+no automatic retry/reset, NO SNIFFERS. Await Author Console8 power-cycle and
+monitor MOS-banner observation. Do not restore normal P4 firmware yet.
+Raw run002, original P4 full backup and compiled artifacts preserved Pi/Oryx:
+build/c8-zdi/p4-flash-only-20261030/. Run001 was USB permission denial before
+any device access; run002 used authorized sudo. Source/host tools:
+experiments/zdi-p4-flash-only/. Transcript SHA256:
+b0b796dff68f2d04ca1bf6232a4ff554d26308ec24bf149cf2d1ba2b611816e5.
+Original pre-recovery P4 backup from20261028 also retained unchanged.
+Older state entries below are historical and superseded by this paragraph.
+
+LATEST — Author explicitly ordered REMOVE ALL CHECKS, theorizing readback
+corruption, and says monitor boot is the required validation. Implemented
+write-only recovery: no target ID/status/PC/readback/CRC reads, SetADL write
+only; retain original init/write/upload/size/flash-agent/resume/10secondwait.
+Normal menu2/Y executed once. Run-009-blind completes MOS upload, flash-tool
+upload, emits Flashing MOS and BLIND FLASH SEQUENCE FINISHED. This is a
+COMPLETED BLIND COMMAND SEQUENCE, NOT VERIFIED FLASH SUCCESS. User informed
+to power-cycle Console8 and check MOS banner. Await physical boot outcome.
+Do not require a readback check contrary to the Author's explicit instruction.
+
+Current WROOM is serial-only BLIND recovery mode, GREEN CLOCK27/BLUE DATA26,
+unmodified upstream ZDI driver, target reads disabled, original BOOT-hold
+recovery action remains. No host process/polling remains; do NOT assert pins
+released or CPU state known. Flash agent was commanded to run and spins after
+its work; physical reset/power cycle required. No automated target reset sent.
+NO SNIFFERS. P4 standard firmware restoration deferred until repair confirmed.
+Raw evidence Pi/Oryx: build/c8-zdi/jeroen-stock-20261030/run-009-blind/,
+consoleSHA ca69178d844dce8749de20bc76529228e064afccff8d9585ddfce0c368f78b05.
+
+LATEST AUTHOR DIRECTIVE — Stop custom diagnostic barriers. Author explicitly
+ordered FLASH GOOD MOS and follow Jeroen's exact recovery protocol; no added
+PC preservation/admission checks. Earlier customr03 stopped on added RAM
+parameter check and is superseded. Ran original flashMOS/init_ez80/CRC code,
+finally with byte-identical upstream ZDI driver, through normal menu2/Y.
+MOS RAM upload completed then original CRC32 ERROR; no flash phase entered.
+MOS HAS NOT BEEN FLASHED. No successful recovery/boot/full readback claim.
+
+Current WROOM is upstream-based serial-only recovery utility: GREEN CLOCK27,
+BLUE DATA26, inputs enabled, no VGA/PS2 startup, menu exposed despite status
+display under Author force-recovery order. Actual recovery/ZDI/CPU code matches
+upstream95d68464; final source receipt preserved. NOT quietv11/v10/v3: boot
+writes normal ZDI/CPU initialization and BOOT-hold recovery remains active.
+No host script/serial process remains; no ongoing ID polling in idle front end;
+do NOT claim GPIO outputs released. Target CPU state unverified after normal
+break request/RAM transfer. NO SNIFFERS. Physical wiring unchanged from Author's
+tighter ground leads + series resistors; no further bench request pending.
+
+Details/attempt accounting: [stock recovery](docs/c8-stock-recovery-2026-10-30.md).
+Archive verified Pi/Oryx build/c8-zdi/jeroen-stock-20261030-evidence-r01.tar.gz
+SHA3835f91f...4649fbde. Console8 remains unrecovered; P4 restore still deferred.
+Do not resume the old custom PC/RAM diagnostic workflow without Author request.
+
+LATEST BREAKTHROUGH — Author reconfirmed BLUE=TDI GPIO26/GREEN=TCK GPIO27
+and requested one more repeat. Same restored v11 returns exact identity
+07 00 AA 1C and HALT statuses9C/9C/9C, all valid. Then stops at original-PC
+verification, before RAM mapping/access/write or flash. The firmware does NOT
+print PC samples, so the failure may be first readFFFFFF or a mismatch between
+reads; do not assert which. Both outputs released; local GREENHIGH/BLUELOW,
+serial closed. CPU last verified halted (9C), no resume/reset requested.
+Single valid run does not establish sustained reliability or prove the cause
+of prior failures. No new physical change reported beyond previous ground-lead
+replacement. Evidence Pi/Oryx: build/zdi-ram-probe-20261030/probe-repeat-003/.
+Next software work: expose PC samples and audit CPU-register read timing/
+protocol against upstream before another hardware probe. No board operation
+remains running; WROOM remains quiet-command-gated v11 on GREEN27/BLUE26.
+
+LATEST — Author declined meter check, replaced ground leads with tighter ones
+and requested repeat. Same v11(GREEN clock27/BLUE data26): identityallFF,
+HALT statusFF/FF/FF. Then completed queued software-crossed controlv12,
+CLOCK26/BLUE DATA27/GREEN without changing wiring: identity07 01 11 41,
+HALT statuses87/70/07, all invalid. Both send oneHALT but stop before ANY RAM
+mapping/access/write or flash operation. No target reset requested; actual
+CPU halt state UNVERIFIED. Restored original quiet v11 afterwards, full
+readback and exact original app-span match. Both outputs released; final
+GREEN27LOW/BLUE26HIGH at WROOM; serial closed, no operation running. NO SNIFFERS.
+No repeat meter/wiring request pending. Evidence/limits:
+[ground/control record](docs/c8-zdi-ground-control-2026-10-30.md).
+Ground replacement alone did not resolve communication; crossed assignment
+changes sampled data but does not establish correct target pinout or recovery.
+
+LATEST — Author explicitly wired BLUE DATA GPIO26/GREEN CLOCK GPIO27, series
+resistors, NO SNIFFERS, and authorized best-next diagnostics. Installed matching
+identity v10, readback-verified;5reads allFF. Then installed quiet RAM-only v11
+(SHA7f60ec5e...0a68f76), full readback verified. Sent one actual HALT request
+despite invalid identity; three independent status reads FF/FF/FF, rejected
+reserved bits, so NO RAM attempt and NO flash operation. Both outputs released,
+inputsHIGH, serial closed; actual target CPU halt state UNVERIFIED. WROOM NOW
+v11 RAM-only on GREEN27/BLUE26, not identity-only v10/v9/v3. It boots quiet,
+requires exact host command, and has no automatic retry or flash API/payload.
+
+Author then asked about ground. Further board operations HELD pending fresh
+ground check; requested both boards OFF and both USB cables UNPLUGGED, then
+resistance WROOM GND -> Console8 ZDI GND at board pins. Prior continuity check
+predates replaced leads. Crossed-function v12(clock26/data27) built OFF DEVICE
+but NOT installed/executed. Do not run during ground check/power changes.
+Evidence Pi/Oryx build/zdi-ram-probe-20261030/{wroom-v11-install-001,probe-001}/;
+source and stage dispositions in experiments/zdi-ram-probe/README.md.
+
+LATEST — Author reports leads attached WROOM-side of series resistors and
+explicitly confirms NO SNIFFERS ATTACHED. Do not ask again without evidence
+of a new analyzer attachment. Same v9 GPIO18/19:5reads allFF,65 local drive
+checks pass. Outputs released, local inputsHIGH, serial closed. No target
+reset/halt/RAM/flash. Evidence Pi/Oryx:
+build/zdi-unprobed-20261030/c8-wroom-side-attachment-five-001/.
+Initial receipt said probe-state unknown because agent misread update;
+operator-clarification.json preserves the correction without changing raw logs.
+
+LATEST — Author replaced all leads with those that passed Olimex. Same v9
+GPIO18/19 diagnostic still returns FF FF FF FF for all5reads;65 local drive
+checks pass. Released both outputs, both local inputs HIGH, serial closed.
+No target reset/halt/RAM/flash. Physical endpoints and retention of the last
+reported33ohm resistors not independently reconfirmed after lead replacement.
+Evidence Pi/Oryx: build/zdi-unprobed-20261030/c8-olimex-leads-five-001/.
+
+LATEST — Author reversed GREEN/BLUE after alternate-pin test. WROOM remains
+v9 CLOCK=GPIO18/DATA=GPIO19; series resistors retained. Five consecutive reads
+all FF FF FF FF;65 local drive snapshots pass. Outputs released, both local
+inputs HIGH, serial closed. No Console8 reset/halt/RAM/flash. Wiring remains
+AUTHOR-REVERSED: logical GPIO/color receipt labels are not physical endpoint
+verification. Evidence Pi/Oryx:
+build/zdi-unprobed-20261030/c8-alt18-19-swapped-five-001/.
+
+LATEST — Author authorized WROOM alternate-pin flash/test and restored series
+resistors (last measured33ohms). Installed and fully readback-verified v9:
+GREEN CLOCK GPIO18, BLUE DATA GPIO19, image SHA097b58aa...e248d08. Old v3
+affected app span backed up and verified before write. First read allFF;
+follow-up five consecutive slow reads also allFF, all78 local drive checks
+pass across6reads. No valid identity. Both outputs released/local inputsHIGH,
+serial closed. No Console8 reset/halt/RAM/flash requested. Actual pin endpoints
+not independently measured; no probes reported reconnected. Pi/Oryx evidence:
+build/zdi-alt-pins-20261030/wroom-v9-install-001/ and
+build/zdi-unprobed-20261030/c8-alt18-19-{resistors,repeat-five}-001/.
+WROOM NOW v9/18-19; the earlier preparation and v3 entries below are history.
+
+PREPARED, NOT INSTALLED — Author proposed different WROOM pins. Off-device
+v9 variant built on Oryx in build/zdi-alt-pins-20261030/: GREEN clock GPIO18,
+BLUE data GPIO19. Exact v8 source transformation changes only26->18,27->19
+and banner version; signaling/timing unchanged. Existing WROOM remains v3 on
+GPIO26/27. Host identify_unprobed.py now supports --pins18-19 with an exact
+v9 banner guard and corrected output-enable/input masks. No board firmware
+or wiring changed during preparation. Author must power off both boards to
+move wires; confirm GREEN at C8 CLOCK pin4, BLUE at C8 DATA pin6, since the
+earlier swap was not reported reversed. No automated target programming.
+
+LATEST — Author requested five identical direct-wire reads. Replies vary:
+C6 7F FF FF; FF FF FF FF; FF FF FF FF; FF 88 1E 62. Trial4 additionally fails
+local driven-bit input check, so stopped before fifth read. No resets between
+reads. Both outputs released, GREEN HIGH/BLUE LOW, serial closed; no target
+reset/halt/RAM/flash. Pi/Oryx evidence:
+build/zdi-unprobed-20261030/c8-direct-wires-repeat-five-001/.
+No resistors; preceding Author GREEN/BLUE swap not reported reversed.
+
+LATEST — Author bypassed both series resistors; no reversal of the preceding
+GREEN/BLUE swap reported. Direct-wire Console8 check still fails on first read:
+C6 7F FF FF,13 local drive checks pass. Outputs released, both local inputs
+HIGH, serial closed; no target reset/halt/RAM/flash. Evidence Pi/Oryx:
+build/zdi-unprobed-20261030/c8-direct-wires-001/. Physical endpoints remain
+unverified; do not assume standard color/function mapping has been restored.
+
+LATEST — Author swapped GREEN/BLUE and requested repeat. Console8 identity
+still fails: first read FF FF FF FF, all13 WROOM local drive checks pass.
+Stopped, outputs released, both inputs HIGH, serial closed. Physical wiring
+remains AUTHOR-SWAPPED; do not assume the prior color-to-function assignment
+is restored. No target reset/halt/RAM/flash requested. Evidence on Pi/Oryx:
+build/zdi-unprobed-20261030/c8-swapped-signals-001/. See the comparison in
+[the C8 record](docs/c8-zdi-unprobed-2026-10-30.md).
+
+LATEST — Console8 direct Oryx USB, no signal probes,2026-10-30: Author powered
+Console8 after initial discovery found it off. Both board USB bridges now
+enumerate directly; WROOM remains quiet original identity-only v3. First slow
+identity returns F8 10 3E 46, invalid;13 local drive snapshots pass. Stopped
+after that read, Q/P confirm both outputs released, GREEN HIGH/BLUE LOW;
+serial closed. No target reset/halt/RAM/flash operation requested. Probe
+removal solves Olimex identification but has NOT solved this Console8 link.
+Raw receipt/transcript/runner copied and hash-checked on Pi/Oryx. See
+[the unprobed C8 record](docs/c8-zdi-unprobed-2026-10-30.md). Console8 remains
+unrecovered; no blind programming. Next physical comparison is TRY-003,
+retaining the no-probe setup. P4 normal restoration remains deferred.
+
+LATEST — Pi5 Olimex probe-control campaign,2026-10-30: Author authorized tests.
+Current WROOM is exact original quiet v3 (SHAabaa0bc...84fd9), NOT v7/v8.
+Both signal outputs released; GREEN/BLUE HIGH, serial/capture closed. Actual
+GREEN/BLUE signal wires and33ohm resistors unchanged. ALL FOUR SNIFFER SIGNAL
+PROBES DISCONNECTED; sniffer ground/USB retained. No Agon flash/reset requested.
+No-probe result20/20 exact07 00 AA 1C. Two-probe tests pass in places but remain
+intermittent; adding RED alone gives0/5. Measurement attachments perturb link,
+mechanism unresolved. TRY-001/002/005 complete; see
+[the campaign](docs/olimex-zdi-control-2026-10-30.md). Console8 is not tested here
+and remains unrecovered. Await Author Console8 handback for minimal-probe ID
+checks before any RAM/flash gates. P4 normal restoration remains deferred.
+
 CURRENT HANDOFF — 2026-10-30: Author requests notes, commit/push, then wait
 until they are ready for further tests. Do not run the queued diagnostics now.
 TRY-001..TRY-006 are recorded in TODO.md with detailed scope in

@@ -23,6 +23,74 @@ receiver integrity, the traced emulator receiver race, application integration
 and explicit release approval. Use these qualified names rather than calling
 an experimental transport “current.”
 
+## Stock startup and explicit activation — Author requirement, 2026-10-31
+
+Compiler policy: retain the upstream MOS ZDS II build, using Wine on Oryx.
+The Author's reason is to keep the modification familiar and straightforward
+for upstream users/developers to build, test and approve. Prefer AgonDev or
+other open-source tools for our original software, including the standalone
+menu/test applications. The later native MOS port is retained as reference,
+not the selected delivery path; it does not supersede this compiler policy.
+
+MOS must reach a useful CLI using the proven stock transport before this
+project's experimental transport can run. A CLI command or an aware application
+must explicitly request activation. After a reset, the experimental transport
+is disabled again, so a failure during an experiment need not prevent using
+the ordinary CLI and firmware updater on the next boot.
+
+This is stronger than the existing session opt-in. The delivered candidate
+starts with `tx_opened` clear, but installs `tx_isr` as the UART0 interrupt
+handler and routes ordinary status reads through experimental helpers even
+while closed. That implementation does not meet this new requirement. Earlier
+claims about opt-in describe session/queue behavior, not stock startup isolation.
+
+The required boundary is:
+
+- Reset/startup, UART clock/divisor and FIFO setup, initial VDP exchanges,
+  receive parsing, keyboard handling and blocking output use a versioned,
+  hardware-proven stock baseline while the feature is disabled. Preserve the
+  working versioned release's existing startup routines and their transport
+  dependencies; do not redesign startup for this feature. The concrete v3.0.2
+  [source trace and identified changes](uart0-native-tranche.md#working-release-startup-trace--2026-10-31)
+  records what must be restored or moved to explicit activation. Experimental
+  service, status latching, queue setup and block refills are not called merely
+  because their code is linked into the ROM. Any dispatch guard is minimal,
+  separately reviewed and tested before it admits experimental code.
+- Activation is an explicit, foreground operation shared by the CLI and
+  application entry paths. Capability discovery and ordinary legacy calls do
+  not activate anything. Existing application session-open is a candidate for
+  that boundary; final command syntax and any ABI changes require review.
+  Activation preserves the line rate and RX/parser state, waits or refuses
+  when ownership cannot transfer safely, and publishes the active state only
+  after initialization is complete. Do not clear FIFOs to force a transition.
+- The enable state exists only in RAM. Every supported reset path, including
+  resets retaining RAM, establishes disabled state before UART interrupts or
+  transport dispatch can run. This project must not persist enablement in
+  flash, configuration, or its default startup files. User-authored startup
+  commands that explicitly enable it would defeat that recovery default.
+- Normal session close and application return drain accepted traffic, retain
+  borrowed buffers until release, and restore stock dispatch before the CLI
+  resumes. Disabling cannot discard a partial VDP command or abandon a source.
+  During a crash with untrustworthy state, reset is the recovery boundary;
+  do not promise that a live switch back to stock can repair corrupted state.
+
+An enable switch alone would not have prevented the 2026-10-16 failure. The
+adopted native foundation itself calculated the wrong boot baud divisor before
+any session opened. A source path called “stock” but rebuilt with different
+integer widths is not a proven startup. Establish the selected baseline
+independently and check its actual linked startup instructions and UART
+register values. The native compiler-port arithmetic fix remains reference
+evidence; preserve the working ZDS II release behavior in the selected fork.
+
+Acceptance must show that disabled boot never enters experimental routines,
+then exercise explicit activation, normal return to stock, and reset during
+active/partially initialized experiments followed by a useful stock CLI and
+available updater. A partial VDP packet can require resetting the VDP as well
+as the eZ80. This design reduces transport-fault exposure; it cannot guarantee
+boot after a corrupt flash image, unrelated startup defect or hardware fault.
+Implementation and acceptance are tracked only in TODO.md as BO-001..BO-004;
+the existing physical deployment hold remains in force.
+
 ## Original motivation — Tom Morton
 
 Tom Morton's original proposal is the design anchor for this project, including

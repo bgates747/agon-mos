@@ -1,5 +1,21 @@
 # Agent instructions
 
+## Preserve upstream toolchains
+
+The Author clarified the policy on 2026-10-31: modifications or extensions to
+official upstream firmware/software written for ZDS II must retain ZDS II.
+Keep changes familiar and directly buildable for upstream developers and users
+reviewing, testing or approving them. For this MOS fork, use ZDS II under Wine
+on Oryx; do not migrate the firmware to AgonDev merely to add UART features.
+Earlier native AgonDev MOS work remains historical/reference evidence, not the
+selected delivery path. A toolchain migration needs explicit Author direction.
+
+For original software, prefer free/open-source tools, including AgonDev. This
+includes our standalone menu/test applications. Apply the upstream project's
+own existing toolchain to VDP modifications; this policy does not mean building
+ESP32 firmware with ZDS II. Permission to use AgonDev for original applications
+does not authorize changing an upstream firmware project's compiler.
+
 ## UART0 project ownership
 
 This agent owns MOS-side UART0 work and the diagnostic VDP firmware needed for
@@ -17,13 +33,19 @@ not authorize interrupting another owner's test or changing wiring.
 
 ## Hardware instructions to the Author
 
-Use wire colors in physical instructions: GREEN is the ZDI clock wire and BLUE
-is the bidirectional ZDI data wire at both WROOM and Agon. The Author explicitly
-requested colors on 2026-10-29. GPIO/pin numbers may be secondary technical
-references, but must not replace colors in bench instructions. Do not invent a
-color for the ground wire. Distinguish meter leads and analyzer probes from the
-signal wires when naming colors; added RED/BROWN analyzer probes are separate
-from the GREEN/BLUE ZDI wiring.
+Use wire colors in physical instructions. On 2026-10-30 the Author directed
+matching Jeroen Venema's original diagrams: **BLUE is ZDI clock/TCK, WROOM
+GPIO26 to target ZDI pin4 (lower middle); GREEN is bidirectional data/TDI,
+WROOM GPIO27 to target pin6 (lower left)**, in the pictured notch-at-top view.
+This supersedes the earlier 2026-10-29 GREEN-clock/BLUE-data convention;
+preserve historical logs unchanged. Current diagrams and provenance are at
+`../agon-extender/docs/mos-recovery/`, linked from its maintained
+`../agon-extender/docs/mos-recovery.md` procedure. P4 uses GPIO46 for clock
+and GPIO47 for data; do not transplant WROOM GPIO numbers onto P4.
+GPIO/pin numbers supplement colors in bench instructions. Never infer that an
+announced wire change is completed; use the latest Author-confirmed setup.
+Do not invent a ground-wire color. Distinguish meter leads and analyzer probes
+from signal wires; added RED/BROWN probes are separate physical leads.
 
 ## Network access authority
 

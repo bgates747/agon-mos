@@ -1,18 +1,23 @@
 # MOS TODO
 
-## Console8 recovery diagnostics — waiting for Author readiness
+## Recovery complete; remaining cleanup
 
-Recorded 2026-10-30. Do not start these tests until the Author is ready.
-Details and completion criteria: [next diagnostic tests](docs/tasks/C8-ZDI-next-tests.md).
-These support N-009; they do not authorize another MOS flash or physical change
-without its documented gates. The four-probe baseline and clock-mode comparison
-still give invalid IDs. WROOM is quiet v7, both signal outputs released.
+Stock MOS3.0.2 recovery passed target CRC checks and the Author confirmed MOS
+boots on2026-10-31. N-009 completed; evidence and disposition in today's devlog.
+SDdiagnostics recovered/hashverified toPi/Oryx,257files includingR0030 and
+updatedjournal; card unchanged andmounted. WROOM is CHECKEDr01, not identityv3.
+No new experimental MOS deployment or performance test is authorized here.
 
-TRY-001 [ ] Re-audit measurements, probe assumptions, channel behavior and framing.
-TRY-002 [ ] Compare reduced GREEN CLOCK drive only, leaving BLUE DATA unchanged.
+N-010 [ ] Restore and verify the temporarily repurposed P4's original firmware
+when that identified board is attached and available under its bench protocol.
+Original16MiB backup remains preserved; do not interrupt another owner or infer
+availability. This deferred cleanup is distinct from completed Console8 repair.
+
+Reports: [MOS recovery](docs/c8-stock-mos-recovery-2026-10-31.md),
+[SD evidence](docs/c8-sd-recovery-2026-10-31.md).
+
 TRY-003 [ ] Test shorter GREEN/BLUE leads and improved nearby ground returns.
 TRY-004 [ ] Inspect analog waveforms with an oscilloscope, if available.
-TRY-005 [ ] Repeat the proven Olimex identity control with the same programmer/harness.
 TRY-006 [ ] Investigate safe temporary reuse of Console8 onboard ESP32 mouse pins.
 
 Hardware hold: the first native MOS failed to boot on Console8. N-007 proved
@@ -21,7 +26,7 @@ is in experiments/uart0-native/BOOT-FAILURE.md and the development log.
 The failed image is withdrawn, and the corrected image has not been staged
 or physically accepted. The Author has now authorized this agent's scoped
 Oryx P4/ZDI identification under N-008 and scoped MOS repair under N-009.
-Repair remains dependent on reestablishing reliable debug communication.
+Recovery is not established by a completed blind programming sequence.
 
 Executive summary: the goal is to free the Agon's CPU for useful work while MOS
 sends data to the VDP. An earlier Console8 experiment completed about 31% more
@@ -41,44 +46,8 @@ This is the sole unfinished-work checklist.
 
 N-008 identity checks passed; completion and evidence are in
 docs/devlog-2026-10-28.md and docs/tasks/N-008.md. P4 programmer remains installed
-until MOS repair is finished. N-009 now owns the authorized target repair.
+until MOS repair is finished. N-009 completed the target repair on2026-10-31; N-010 owns deferred P4 cleanup.
 
-N-009 [ ] Execute the Author-authorized Console8 MOS repair using verified stock
-MOS 3.0.2, not the Olimex EMOS payload embedded in the identification programmer.
-Build a stock-payload programmer in this project's workspace, verify its installed
-application, perform the maintained arming/readback protocol and compare all
-128 KiB after programming. Leave the P4 programmer installed until MOS repair
-is complete. The Author confirmed the earlier P4 TDI/TCK wires were switched.
-Latest instruction authorizes target repair; the earlier identity-only gate is
-superseded for this scoped repair. Evidence: build/c8-zdi/repair-20261028.
-No MOS operation was reached: the new programmer failed its identity gate,
-and a verified reinstallation of the previously working recovery application
-also fails identity. Await Author full Console8 power cycle and fresh identity
-check. The P4 remains on recovery firmware, with the EMOS payload unarmed.
-The Author has now selected the available legacy WROOM board. Its documented
-38-pin DevKitC mapping and the verified unmodified upstream recovery image are
-prepared under build/c8-zdi/wroom-20261028. Next is connecting WROOM USB alone,
-GPIO disconnected, for identification and firmware preparation before rewiring.
-This supersedes the immediate P4-reset dependency; P4 restoration stays deferred.
-WROOM installation and isolated startup now PASS, with incoming firmware
-preserved and complete flash composition verified. Await Author power-off
-rewiring to GPIO26/TCK,GPIO27/TDI,GND and power restoration for target checks.
-No Agon recovery write has occurred.
-2026-10-29 update: local WROOM GPIO tests pass. With 33-ohm series resistors,
-Olimex gives 5/5 valid identities, but Console8 on Oryx remains invalid. Separate
-register reads, DATA open-drain mode and manual C8 reset with clock held HIGH do
-not fix it. WROOM now runs private identity-only v5 (cannot program MOS). Original
-D0/D2 probes are now at actual Console8 ZDI connector pins4/6, added probes absent;
-connector-side capture shows16/65 sustained wrongDATA bits despite matching local
-WROOM pin checks. Author confirms33ohms for both complete signal paths and
-perfect ground continuity; cross-signal18kohm readings are in-circuit. Await
-powered driven-level control. Idle DC values are ground0V, WROOM3V3=3.3V,
-BLUE=3.4V at both ends. v6 short-control C01 source checks pass without capture;
-after sniffer USB return, C03 finds BLUE already LOW and aborts before pulsing.
-Await removal of ONLY BLUE sniffer probe, then status-only P with no reset or
-pin change requested. Use GREEN/BLUE colors in bench instructions. Both WROOM
-pins released, serial closed. No Agon recovery write has occurred. Keep upstream
-checkouts read-only. Full receipts, hardware state and scope in today's devlog.
 
 Subtask IDs are immutable: a short namespace followed by a hyphen and three
 zero-padded digits, then a checkbox. Reordering never renumbers an item.
@@ -173,6 +142,48 @@ defer shipping if gains do not justify the tradeoff.
 
 ## Native regular MOS implementation
 
+Toolchain decision,2026-10-31: deliver the upstream MOS modification with
+ZDS II under Wine on Oryx. Original menu/test software may use AgonDev. The
+native MOS port below is retained as historical/reference work, not the selected
+firmware delivery path. Preserve upstream source/build conventions for review.
+
+The Author's2026-10-31 requirement strengthens opt-in to preserve a proven stock
+boot and UART path until explicit activation. The existing closed-session
+implementation does not meet it. These tasks precede N-006; no replacement
+firmware installation is authorized by recording this design.
+
+BO-001 [ ] Preserve the working versioned MOS v3.0.2 startup and its transport
+dependencies, using tag8336409351ee5314e02801a7b72a4f1bb5282519 as the source
+reference. Startup trace and identified deltas are recorded in
+docs/uart0-native-tranche.md. Restore release routines rather than designing
+new startup code; review reset, UART setup, ISR, RX, status reads, output and
+CLI dependencies. Use the release's ZDS II toolchain and retain actual-ROM baud
+checks. The native-port arithmetic correction remains reference evidence; do
+not import compiler-port changes into the ZDS II baseline without a need.
+
+BO-002 [ ] Implement isolated stock/experimental transport dispatch with explicit
+foreground activation through CLI/application entry paths in the ZDS II MOS
+fork, preserving upstream source conventions. Review command/API
+semantics, preserve discovery without activation, and transfer ownership only
+at a safe boundary without changing baud or flushing RX/TX. Enable last after
+initialization; normal close/return drains and restores stock dispatch. Enable
+state is volatile and disabled before transport/IRQ use on every reset. Move
+uart0_tx_init out of main's boot sequence; use MOS's existing RAM vector switching
+to install the experimental handler only on activation and restore stock later.
+
+BO-003 [ ] Qualify the exact linked image: disabled cold/retained-RAM boot never
+executes experimental service/helpers; normal CLI, keyboard, legacy output and
+updater entry work. Test activation/rejection, cleanup and reset during active
+or partial initialization, including a controlled failing experimental path.
+Check stock recovery after an appropriate whole-board reset when a partial VDP
+packet prevents eZ80-only recovery. Bind results to the exact packaged ROM hash.
+
+BO-004 [ ] After off-device acceptance and Author authorization, prepare focused
+hardware acceptance of stock boot, explicit activation and reset back to a
+useful stock CLI/updater. Retain the verified WROOM recovery procedure and stock
+image. Remove the withdrawn candidate from active SD/menu use while preserving
+workspace history; no performance campaign before these checks pass.
+
 N-001..N-004 are delivered: pinned dependencies, native stock reproduction,
 maintained OTIRX implementation, linked contracts and actual-ROM/both-engine
 qualification. Evidence and disposed identifiers are in the2026-10-16 log and
@@ -186,7 +197,9 @@ The baud correction now also needs fresh human review before commit approval.
 Keep new affected changes uncommitted until approval. BT/AB release gates remain.
 
 N-006 [ ] After recovery and Author authorization, prepare and qualify a
-replacement package/menu for corrected MOS ROM CRC4E326ABC/API1.2, obtain fresh
+ZDS II MOS replacement package/menu after BO-001..BO-004. The arithmetic-only corrected
+MOS ROM CRC4E326ABC/API1.2 is an off-device reference, not a package satisfying
+the new stock-startup requirement. Pin the revised image identity, obtain fresh
 human review and perform a minimal boot check before the larger campaign.
 The former native CRC5B36B5B1 is withdrawn and must never be accepted again.
 Inspect the returned Console8 campaign: require matching staged assets and two fresh numbered
