@@ -1,5 +1,10 @@
 # Native MOS candidate review
 
+Historical shared-foundation qualification only. It does not qualify this
+UART feature, and the old Fab commands below are not its review profile.
+See uart0-native-source.md and ../../../agon-mos/docs/uart0-native-tranche.md
+for this product's actual-image checks and dedicated Flexe review.
+
 The committed native candidate reproduces the selected AgonDev stock image and
 passes bounded headless boot, shell and two-cold-boot API checks. The Author's
 graphical boot, help, directory and fixture-read checks passed. The initial

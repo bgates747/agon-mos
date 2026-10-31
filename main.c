@@ -56,6 +56,7 @@ extern void *	set_vector(unsigned int vector, void(*handler)(void));
 
 extern void 	vblank_handler(void);
 extern void 	uart0_handler(void);
+extern void     uart0_tx_init(void);
 extern void 	i2c_handler(void);
 
 extern char 			coldBoot;		// 1 = cold boot, 0 = warm boot
@@ -181,6 +182,7 @@ int main(void) {
 	UART 	pUART0;
 
 	DI();											// Ensure interrupts are disabled before we do anything
+	uart0_tx_init(); // After BSS clear, under DI, before enabling UART.
 	init_interrupts();								// Initialise the interrupt vectors
 	init_rtc();										// Initialise the real time clock
 	init_spi();										// Initialise SPI comms for the SD card interface

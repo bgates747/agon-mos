@@ -1,24 +1,31 @@
-# agon-mos-agondev
+# agon-mos — experimental native UART0 variant
 
-Human-maintained native C/GNU assembly derived from official Agon Platform MOS
-v3.0.2, intended as a reviewed foundation for future EMOS development. Routine
-builds use AgonDev directly, without ZDS or source conversion. This repository
-is private and the native candidate is not an accepted firmware release.
+Hardware hold, 2026-10-16: the first native candidate failed to boot Console8.
+Its adopted baud calculation overflowed at 24-bit width. The correction passes
+linked-code startup/UART tests, but is still off-device and not physically
+accepted. See [the source incident note](docs/uart0-native-source.md).
+
+This experimental regular MOS lets applications send data to the VDP in the
+background, leaving more CPU time for sound processing, graphics and other
+work. Applications must opt in; legacy output remains blocking. It uses the
+full bounded OTIRX sender selected after the Console8 comparisons. This native
+port still needs its own human emulator review and physical acceptance.
 
 Start with [STARTHERE.md](STARTHERE.md) for native setup/build/development,
 [upstream origin](docs/upstream-origin.md) for ancestry and mappings, and
 [deviations](docs/deviations.md) for why source differs from official MOS.
-[OWNERSHIP.md](OWNERSHIP.md) separates the foundation from build infrastructure
-and Extender/EMOS product work. No experimental UART or EMOS enhancements are
-included. The initial direct native build reproduces the 102,055-byte translated
-AgonDev control exactly; this does not establish hardware/runtime qualification.
-The [initial migration evidence](docs/migration/README.md) records the comparison,
-source receipts and remaining gates.
+[OWNERSHIP.md](OWNERSHIP.md) separates this product from the shared foundation,
+build infrastructure and emulator. The native foundation and its complete
+official ancestry are retained; C/GNU source is maintained directly, without
+normal-build translation. This is regular MOS; EMOS integration remains deferred.
+[UART source provenance](docs/uart0-native-source.md) and the
+[application contract](docs/uart0-api.md) explain the feature.
 
-[Shared API reservations](api/README.md) explains the main-branch allocation
-register and canonical assembly/C interfaces. Custom MOS implementations live
-in their own projects, not special branches here; a reservation adds no feature
-to the stock foundation.
+[Shared API reservations](api/README.md) are imported from the exact foundation
+pin in dependencies.json, without private allocations. The clean native control
+reproduces102055 bytes exactly; the branded UART candidate is104658 bytes.
+This product belongs to agon-mos on codex/uart0-otirx-native. It is not a feature
+branch in either shared owner's repository.
 
 ## Historical upstream README
 

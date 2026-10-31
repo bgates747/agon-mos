@@ -7,3 +7,6 @@ Release/
 .emulator/
 .local/
 __pycache__/
+
+# Immutable shared interface dependency export; managed by selected Git pin.
+/src/shared-api/

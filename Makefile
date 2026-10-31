@@ -1,6 +1,7 @@
 PYTHON ?= .venv/bin/python
 MOS_AGONDEV_ROOT ?= .local/mos-agondev
 AGONDEV_TOOLCHAIN ?= .local/agondev
+MOS_API_ROOT ?= src/shared-api
 REFERENCE_BIN ?=
 BUILD_DIR ?=
 
@@ -8,7 +9,8 @@ BUILD_DIR ?=
 .PHONY: firmware-check baseline-check test api-check
 
 api-check:
-	"$(PYTHON)" "$(MOS_AGONDEV_ROOT)/scripts/generate_api_reservations.py" --source-root . --check
+	"$(PYTHON)" tools/select_api.py
+	"$(PYTHON)" "$(MOS_AGONDEV_ROOT)/scripts/generate_api_reservations.py" --source-root "$(MOS_API_ROOT)" --check
 
 firmware-check: api-check
 	"$(PYTHON)" "$(MOS_AGONDEV_ROOT)/projects/native-foundation/build.py" \

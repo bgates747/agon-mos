@@ -1,5 +1,4 @@
-; Native AgonDev source derived from official MOS v3.0.2: src_startup/vectors16.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src_startup/vectors16.asm; origin: docs/uart0-native-source.md.
 ;
 ; Title:	AGON MOS - C Startup Code
 ; Author:	Copyright (C) 2005 by ZiLOG, Inc.  All Rights Reserved.
@@ -39,6 +38,7 @@
 			.extern	_on_crash
 			.extern	mos_api
 			.extern	UART0_serial_PUTCH
+			.extern	uart0_sync_begin,uart0_sync_end
 			.extern	SET_AHL24
 
 .equiv NVECTORS, 48; Number of interrupt vectors
@@ -61,7 +61,7 @@
 
 ; Reset and all RST nn's
 ;
-			; zds2gas: DEFINE .RESET, SPACE = ROM
+			; Original segment placement: DEFINE .RESET, SPACE = ROM
 			.section .RESET,"ax",@progbits
 
 _reset:
@@ -95,7 +95,7 @@ _nmi:			jp.lil	__default_nmi_handler
 ;
 ; Startup code
 ;
-			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			; Original segment placement: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
 			.assume adl=1
@@ -128,7 +128,8 @@ _rst_10_handler:	call	UART0_serial_PUTCH
 ; -  BC: Size of buffer
 ; -   A: Delimiter (only if BCU = 0)
 ;
-_rst_18_handler:	ld	E, A 			; Preserve the delimiter
+_rst_18_handler:	call	uart0_sync_begin
+			ld	E, A 			; Preserve the delimiter
 			ld	A, MB			; Check if MBASE is 0
 			or	A, A
 			call	NZ, SET_AHL24		; No, so create a 24-bit pointer
@@ -145,16 +146,20 @@ _rst_18_handler_0:	ld 	A, (HL)			; Fetch the character
 			ld	A, B 			; Is it 0?
 			or 	C
 			jr	NZ, _rst_18_handler_0	; No, so loop
+			call	uart0_sync_end
 			ret.l
 ;
 ; Delimited mode
 ;
 _rst_18_handler_1:	ld 	A, (HL)			; Fetch the character
 			cp 	E 			; Is it the delimiter?
-			ret.l	Z 			; Yes, so return
+			jr	Z, _rst_18_done		; Yes, so release scope
 			call	UART0_serial_PUTCH	; Output
 			inc 	HL 			; Increment the buffer pointer
 			jr 	_rst_18_handler_1	; Loop
+
+_rst_18_done:		call	uart0_sync_end
+			ret.l
 
 ; Crash handler
 __rst_38_handler:	jp	_on_crash
@@ -220,7 +225,7 @@ _set_vector:		push	IY
 			pop	IY
 			ret
 
-			; zds2gas: DEFINE IVJMPTBL, SPACE = RAM
+			; Original segment placement: DEFINE IVJMPTBL, SPACE = RAM
 			.section IVJMPTBL,"aw",@nobits
 
 ; 2nd Interrupt Vector Jump Table
@@ -235,7 +240,7 @@ __2nd_jump_table:	.skip NVECTORS * 4
 ;    the 64K byte boundry
 ;  - each 2-byte entry is a 2-byte vector address
 ;
-			; zds2gas: DEFINE .IVECTS, SPACE = ROM, ALIGN = 0x100
+			; Original segment placement: DEFINE .IVECTS, SPACE = ROM, ALIGN = 0x100
 			.section .IVECTS,"ax",@progbits
 
 __vector_table:		dw __1st_jump_table + 0x00

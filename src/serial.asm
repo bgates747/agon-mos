@@ -1,5 +1,4 @@
-; Native AgonDev source derived from official MOS v3.0.2: src/serial.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src/serial.asm; origin: docs/uart0-native-source.md.
 ;
 ; Title:	AGON MOS - UART code
 ; Author:	Dean Belfield
@@ -18,7 +17,7 @@
 
 			.assume adl=1
 
-			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			; Original segment placement: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
 			.global	UART0_serial_TX
@@ -37,6 +36,7 @@
 			.global	putch
 			.global	getch
 
+			.extern	tx_opened,uart0_sync_put,uart0_read_lsr,uart0_read_msr
 			.extern	_serialFlags	; In globals.asm
 
 .equiv UART0_PORT, 0xC0; UART0
@@ -77,7 +77,7 @@
 
 ; Check whether we're clear to send (UART0 only)
 ;
-UART0_wait_CTS:		in0		A, (UART0_REG_MSR)
+UART0_wait_CTS:		call		uart0_read_msr
 			bit		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
 			jr		Z, UART0_wait_CTS
 			ret
@@ -93,10 +93,19 @@ UART1_wait_CTS:		GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
 ; - F: C if written
 ; - F: NC if timed out
 ;
-UART0_serial_TX:	push		BC			; Stack BC
+UART0_serial_TX:	push		AF
+			ld		A,(tx_opened)
+			or		A,A
+			jr		Z,UART0_tx_legacy
+			pop		AF
+			call		uart0_sync_put
+			scf
+			ret
+UART0_tx_legacy:	pop		AF
+			push		BC			; Stack BC
 			push		AF 			; Stack AF
 			ld		BC,TX_WAIT		; Set CB to the transmit timeout
-UART0_serial_TX1:	in0		A,(UART0_REG_LSR)	; Get the line status register
+UART0_serial_TX1:	call		uart0_read_lsr	; Get the line status register
 			and 		UART_LSR_ETH		; Check for TX hold register empty
 			jr		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
 			dec		BC
@@ -146,7 +155,7 @@ UART1_serial_TX2:	pop		AF			; Good to send at this point, so
 ; - F: C if character read
 ; - F: NC if no character read
 ;
-UART0_serial_RX:	in0		A,(UART0_REG_LSR)	; Get the line status register
+UART0_serial_RX:	call		uart0_read_lsr	; Get the line status register
 			and 		UART_LSR_RDY		; Check for characters in buffer
 			ret		Z			; Just ret (with carry clear) if no characters
 			in0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
@@ -204,6 +213,14 @@ UART1_serial_GETCH:	push		AF
 ; - F: NC if UART not enabled
 ;
 UART0_serial_PUTCH:	push	AF
+			ld	A,(tx_opened)
+			or	A,A
+			jr	Z,UART0_putch_legacy
+			pop	AF
+			call	uart0_sync_put
+			scf
+			ret
+UART0_putch_legacy:
 			ld	A, (_serialFlags)		; Get the serial flags
 			tst	0x01				; Check UART is enabled
 			jr	Z, UART_serial_NE		; If not, then skip

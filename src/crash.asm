@@ -1,6 +1,6 @@
-; Native AgonDev source derived from official MOS v3.0.2: src/crash.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src/crash.asm; origin: docs/uart0-native-source.md.
 	.global		_on_crash
+	.extern		uart0_return_fence,tx_in_isr,tx_opened
 
 	.assume adl=1
 
@@ -24,6 +24,20 @@ _on_crash:
 	push de
 	push bc
 	push af
+
+	; Preserve legacy panic behavior when async is closed. Never recurse
+	; into an interrupted open consumer: retain its borrowed RAM for reset.
+	ld a,(tx_opened)
+	or a,a
+	jr z,crash_fence
+	ld a,(tx_in_isr)
+	or a,a
+	jr z,crash_fence
+crash_uart_hold:
+	halt
+	jr crash_uart_hold
+crash_fence:
+	call uart0_return_fence
 
 	PUTC 17
 	PUTC 129

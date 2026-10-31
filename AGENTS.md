@@ -1,48 +1,45 @@
-# Native MOS foundation agent instructions
+# Agent instructions
 
-This repository maintains readable native C/GNU assembly derived from official
-MOS. When available, read `../agon-dev-env/codex/AGENTS.md` first. Read
-`OWNERSHIP.md`, `docs/upstream-origin.md` and `docs/deviations.md` before source
-changes. `TODO.md` is the sole local source-task index; migration coordination
-remains in mos-agondev's BUILD-005 rather than a duplicated checklist here.
+## UART0 project ownership
 
-Shared project policy is consolidated in
-`../mos-agondev/docs/POLICIES.md` in the larger workspace (or `docs/POLICIES.md`
-in the selected mos-agondev dependency). Read it before API or build-identity
-work. Canonical interface files own allocations; consumer projects do not
-manufacture private variants. The accepted reservation/identity policy is not
-yet an implemented interface-distribution or metadata feature.
+This agent owns MOS-side UART0 work and the diagnostic VDP firmware needed for
+its physical Console8 tests, including receiver instrumentation, controlled
+race triggers, test integration and interpretation. The Flexe agent owns the
+emulator and its model/regression work; do not delegate VDP firmware ownership
+to it. The Author clarified this boundary on 2026-10-14. Keep upstream VDP and
+SDK checkouts read-only and build diagnostic copies in this project's workspace.
+Physical Console8 firmware flashing and board execution remain manual Author
+actions. On2026-10-15 the Author separately authorized unattended UART hardware
+testing through Agon Extender, adapting the suites and integrating the sender
+into EMOS at least in Legacy mode. Follow Extender's test-appliance lifecycle,
+bench ownership, installation and recovery protocols for that target; this does
+not authorize interrupting another owner's test or changing wiring.
 
-1. Preserve upstream history, names, comments, licenses and source structure.
-   Explain meaningful deviations beside code and in the stable deviation
-   register. Do not expand native macros or globalize private labels for ease
-   of editing. GNU `.L` names are file-local, not ZDS procedure scopes.
-2. Source under `src/` and `src_startup/` is now maintained GNU assembly;
-   edit it directly. Do not run the migration script over this worktree or
-   replace it from disposable translation output.
-3. Build only through root `firmware-check`/`baseline-check`, selecting an
-   explicit mos-agondev helper and qualified toolchain as in STARTHERE.
-   The helper must execute every product-owned linked-image checker in
-   `build.json`; low-level object linking is not a qualified product build.
-4. Stock official v3.0.2 is the first control. No experimental UART or EMOS
-   policy belongs in this generic foundation. Generic fixes are owner-reviewed;
-   future upstream imports preserve the selected tag/commit and native mapping.
-5. New implementation is an unqualified candidate until the required human
-   emulator/hardware gates and release acceptance. Do not flash, reset, stage
-   SD files, start graphical emulators, move qualified pins or publish publicly
-   without explicit authorization. The GitHub repository must remain private.
-6. Read official MOS/VDP documentation before API/ABI/format/hardware changes.
-   Preserve eZ80 ADL widths, IFF and calling conventions; source appearance or
-   emulator success alone does not establish physical timing or width safety.
+## Network access authority
 
-Shared owner contract, when in the larger workspace:
-`../agon-dev-env/cross-agent/mos_agondev_foundation/CONTRACT.md`.
-This agent owns the generic foundation; linux-extender owns downstream EMOS
-adoption within separately authorized scope. No EMOS adoption is released by
-the initial native-foundation tranche.
+For access between development machines, read the [canonical network instructions](https://github.com/bgates747/agon-dev-env/blob/feature/standardized-deployment/codex/environment.md#ssh-between-development-machines) in `~/Agon/mystuff/agon-dev-env/codex/environment.md` and its machine-local `.local/ssh-001/CONNECTIONS.md` guide. They own current hostnames, discovery, SSH identities, sudo, and LAN shares. Do not duplicate access recipes or revive old aliases, addresses, or share mappings in this project. Project-specific device/protocol and bench-safety instructions remain local.
 
-Custom MOS implementations belong in their own project/repository, not branches
-of this foundation. Main owns `api/reservations.json` and the shared generated
-assembly/C bindings; see `api/README.md`. UART owns experimental getfunction
-index 0x13, not an RST08 number; 0x12 is a retired tombstone. No UART code or
-dispatch implementation belongs here as a consequence of that reservation.
+## Emulator product names
+
+Select the name from the runtime and VDP backend: Fab uses a native host VDP;
+Flexe executes actual ESP32 VDP firmware. From the profile directory, launch
+Fab with `./fab-agon-emulator` and raw link `fab-agon-emulator.bin`, or Flexe
+with `./flexe-agon-emulator` and raw link `flexe-agon-emulator.bin`.
+Each entry must be a real generated wrapper with its existing host-library,
+MOS/runtime identity and backend guards. Flexe must have no Fab-named launcher,
+symlink or compatibility shim. Existing Fab launch instructions apply only to
+Fab profiles. For Flexe, call the canonical setup tool's `name_flexe_profile`
+after customization and before recording deployment checksums.
+
+## Native regular MOS variant
+
+This is agon-mos's isolated native UART variant, not generic foundation main.
+Maintain C/GNU assembly directly; no normal build invokes a dialect converter.
+Use the explicit selected foundation/shared API and build helper pins. Shared
+API includes are forwarding imports into an immutable dependency export,
+never private identifier definitions.
+Only getfunction13 is reserved;12 stays null and qsort export is excluded.
+Root firmware-check runs all product checkers and shared memory/runtime guards.
+The authoritative unfinished tasks remain in ../../../agon-mos/TODO.md.
+Do not modify foundation/infrastructure owner sources or EMOS. No physical
+firmware operations, graphical launch or release is authorized by this port.

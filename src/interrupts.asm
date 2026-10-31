@@ -1,5 +1,4 @@
-; Native AgonDev source derived from official MOS v3.0.2: src/interrupts.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src/interrupts.asm; origin: docs/uart0-native-source.md.
 ;
 ; Title:	AGON MOS - Interrupt handlers
 ; Author:	Dean Belfield
@@ -18,7 +17,7 @@
 
 			.assume adl=1
 
-			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			; Original segment placement: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
 			.global	_vblank_handler
@@ -28,6 +27,7 @@
 			.extern	_clock
 			.extern	_vdp_protocol_data
 
+			.extern	tx_isr
 			.extern	UART0_serial_RX
 			.extern	UART0_serial_TX
 			.extern	mos_api
@@ -63,21 +63,7 @@ _vblank_handler:	di
 
 ; AGON UART0 Interrupt Handler
 ;
-_uart0_handler:		di
-			push		AF
-			push		BC
-			push		DE
-			push		HL
-			call		UART0_serial_RX
-			ld		C, A
-			ld		HL, _vdp_protocol_data
-			call		vdp_protocol
-			pop		HL
-			pop		DE
-			pop		BC
-			pop		AF
-			ei
-			reti.l
+_uart0_handler:		jp		tx_isr
 
 ; AGON I2C Interrupt handler
 ;

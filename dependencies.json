@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "foundation": {
+    "repository": "https://github.com/bgates747/agon-mos-agondev.git",
+    "commit": "ab95feee301d2cd40470cf2bda85a0fe1c3c008e"
+  },
+  "infrastructure": {
+    "repository": "https://github.com/bgates747/mos-agondev.git",
+    "commit": "49dc33fee817cb184572351ee71dae7da9a139c4"
+  },
+  "api_files": {
+    "api/README.md": "0258a7497b293c1dbd816ced5d4edc92cf90ee014daf235d639ee6dd3e23d80e",
+    "api/include/agon/mos.h": "fc93ccc1f527889637d204567519f463f6d9ed6b210aaef27f1c0bfaa6ab8150",
+    "api/include/mos_api_reservations.h": "434fe229d12925a0fc213f6fd6b44b0dd1c0e5619e5405141cdf478a53c20193",
+    "api/reservations.json": "12a683216ccf2a522e9eaf3ac95f1dcf1584a57e9908e40b9e375f6217f8d6f6",
+    "src/mos_api.asm": "a1c1cd4c60211eaa8e7f93fd916a4578b9cc6fedca31f489c1df5d3a9b84efd5",
+    "src/mos_api.inc": "640d15f6225cd52c2a85675cdd359a4bcac6f0448624eeb3c2c0945756cc0066",
+    "src/mos_api_reservations.inc": "d167288309e8d2ead12079205a40c8801b6e6043ff06e1526e5a6edd50e71c05"
+  },
+  "toolchain": {
+    "clang_commit": "c76386c0083e6a6236ff774275227e2389f85538",
+    "clang_version": "15.0.7",
+    "binutils": "2.45",
+    "libagon_sha256": "5de7878342ab6780593fbf8d54d8005960e2471bd0e34c0e307fbcfe42fef28a"
+  },
+  "frozen_UART_source_sha256": "38321531d35faff356b065daab1b4ac64dea9a4acb4e3d1e0b72177937dacc9f"
+}

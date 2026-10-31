@@ -1,5 +1,4 @@
-; Native AgonDev source derived from official MOS v3.0.2: src/mos_api.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src/mos_api.asm; origin: docs/uart0-native-source.md.
 ;
 ; Title:	AGON MOS - API code
 ; Author:	Dean Belfield
@@ -28,9 +27,10 @@
 ; 10/11/2023:	Added mos_api_i2c_close, mos_api_i2c_open, mos_api_i2c_read, mos_api_i2c_write
 
 
+			.include "mos_api.inc"
 			.assume adl=1
 
-			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			; Original segment placement: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
 			.global	mos_api
@@ -94,6 +94,7 @@
 			.extern	_sysvars
 			.extern	_scratchpad
 			.extern	_vpd_protocol_flags
+			.extern	uart0_return_fence,uart0_async_getapi
 			.extern	_user_kbvector
 			.extern	_keymap
 
@@ -156,7 +157,7 @@
 ;  A: function to call
 ;
 mos_api:		cp	0x80			; Check if it is a FatFS command
-			jp	NC, 1f			; Yes, so jump to next block [DEV-006: ZDS relaxes this long JR; GNU requires explicit JP.]
+			jp	NC, 1f			; DEV-006: preserve foundation's explicit long branch.
 			cp	mos_api_block1_size	; Check if out of bounds
 			jp	NC, mos_api_not_implemented
 			call	SWITCH_A		; Switch on this table
@@ -757,7 +758,8 @@ mos_api_getError:	ld	A, MB		; Check if MBASE is 0
 ; Returns:
 ;   A: MOS error code
 ;
-mos_api_oscli:		ld	A, MB		; Check if MBASE is 0
+mos_api_oscli:		call	uart0_return_fence
+			ld	A, MB		; Check if MBASE is 0
 			or	A, A
 			call	NZ, SET_AHL24	; If it is running in classic Z80 mode, set U to MB
 ;
@@ -833,7 +835,8 @@ mos_api_setintvector:	ld	A, E
 ;   C: If non-zero then set the top byte of HLU(callback address)  to MB (for ADL=0 callers)
 ; HLU: Pointer to callback
 ;
-mos_api_setkbvector:	push	DE
+mos_api_setkbvector:	call	uart0_return_fence
+			push	DE
 			xor	A
 			or	C		; If C!=0 set top byte (bits 16:23) to MB
 			jr	Z, 1f
@@ -2370,5 +2373,10 @@ mos_function_block_start:
 			d24	_resolveRelativePath	; 0x0F
 			d24	func_getsysvars	; 0x10
 			d24	func_getkbmap	; 0x11
+			d24	0		; Retired getfunction12 tombstone
+			.if (. - mos_function_block_start) / 3 != mos_function_uart0_async
+			.error "UART slot disagrees with canonical reservation"
+			.endif
+			d24	uart0_async_getapi	; 0x13, ADL UART0 API discovery
 
 .equiv mos_function_block_size, (. - mos_function_block_start) / 3

@@ -2,24 +2,51 @@
   "schema": 1,
   "upstream_commit": "8336409351ee5314e02801a7b72a4f1bb5282519",
   "c_sources": [
-    "main.c", "src/clock.c", "src/i2c.c", "src/mos.c",
-    "src/mos_editor.c", "src/mos_file.c", "src/mos_sysvars.c",
-    "src/strings.c", "src/tests.c", "src/timer.c", "src/uart.c",
-    "src_fatfs/diskio.c", "src_fatfs/ff.c", "src_fatfs/ffsystem.c",
-    "src_fatfs/ffunicode.c", "src_umm_malloc/umm_malloc.c"
+    "main.c",
+    "src/clock.c",
+    "src/i2c.c",
+    "src/mos.c",
+    "src/mos_editor.c",
+    "src/mos_file.c",
+    "src/mos_sysvars.c",
+    "src/strings.c",
+    "src/tests.c",
+    "src/timer.c",
+    "src/uart.c",
+    "src_fatfs/diskio.c",
+    "src_fatfs/ff.c",
+    "src_fatfs/ffsystem.c",
+    "src_fatfs/ffunicode.c",
+    "src_umm_malloc/umm_malloc.c"
   ],
   "asm_sources": [
-    "src/crash.asm", "src/gpio.asm", "src/interrupts.asm",
-    "src/keyboard.asm", "src/misc.asm", "src/mos_api.asm",
-    "src/rtc.asm", "src/sd.asm", "src/serial.asm", "src/spi.asm",
-    "src/vdp_protocol.asm", "src_startup/cstartup.asm",
-    "src_startup/globals.asm", "src_startup/init_params_f92.asm",
-    "src_startup/vectors16.asm"
+    "src/crash.asm",
+    "src/gpio.asm",
+    "src/interrupts.asm",
+    "src/keyboard.asm",
+    "src/misc.asm",
+    "src/mos_api.asm",
+    "src/rtc.asm",
+    "src/sd.asm",
+    "src/serial.asm",
+    "src/spi.asm",
+    "src/vdp_protocol.asm",
+    "src_startup/cstartup.asm",
+    "src_startup/globals.asm",
+    "src_startup/init_params_f92.asm",
+    "src_startup/vectors16.asm",
+    "src/uart0_async.asm"
   ],
   "c_optimization": "-Oz",
-  "c_overrides": {"src_fatfs/ff.c": "-Os"},
-  "cppflags": [],
-  "firmware_link_checks": [],
+  "c_overrides": {
+    "src_fatfs/ff.c": "-Os"
+  },
+  "cppflags": [
+    "-DUART0_EXPERIMENTAL_BRANDING=1"
+  ],
+  "firmware_link_checks": [
+    "tools/check_uart0_native.py"
+  ],
   "reference_binary": {
     "bytes": 102055,
     "sha256": "f891721bbb2a0bc2845dbb13edbeb449365a315f11be48500d8e65e2ab1aebb4"

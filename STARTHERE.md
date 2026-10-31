@@ -1,10 +1,10 @@
-# Developing the native AgonDev MOS foundation
+# Developing the native regular MOS UART variant
 
-Edit the C and GNU assembly directly. The source is maintained, not generated
-build output. This candidate targets official MOS v3.0.2 behavior with the
-documented portability changes; it is not an accepted replacement firmware and
-contains no experimental UART or EMOS enhancements. Matching the translated
-AgonDev control does not prove unrestricted C/runtime parity with the ZDS build.
+This experimental MOS gives aware applications a background sender so they can
+spend more CPU time on useful work. Legacy output remains blocking. Edit C/GNU
+assembly directly; normal builds use neither ZDS nor a converter. This regular
+MOS port still needs human emulator review and physical acceptance. EMOS remains
+deferred. See docs/uart0-api.md for the application contract.
 
 ## Python and build dependencies
 
@@ -31,6 +31,21 @@ The first control uses Clang 15.0.7 / LLVM
 `c76386c0083e6a6236ff774275227e2389f85538` and `libagon.a` SHA-256
 `5de7878342ab6780593fbf8d54d8005960e2471bd0e34c0e307fbcfe42fef28a`.
 Accepting a different toolchain/runtime is a separate qualification change.
+dependencies.json selects foundation/interface
+ab95feee301d2cd40470cf2bda85a0fe1c3c008e and infrastructure
+49dc33fee817cb184572351ee71dae7da9a139c4. Oryx staging uses matching x86 host
+tools and the exact qualified target SDK. Original SDKs stay untouched.
+Export the canonical interface from committed blobs:
+
+```bash
+.venv/bin/python tools/select_api.py --foundation PATH_TO_FOUNDATION_REPOSITORY
+```
+
+The ignored src/shared-api export is verified byte for byte. Assembly entry
+files forward into it; the api link exposes its documentation. Actual compile
+paths use regular files for provenance checks. C/C++ users put
+src/shared-api/api/include before the SDK include path. No private global IDs or
+SDK edits are introduced.
 The shared helper's exact consumed source hashes are recorded by each build;
 select an immutable helper revision for qualification rather than an unrelated
 current checkout. BUILD-005 in mos-agondev records the selected candidate pins.
@@ -60,8 +75,14 @@ product-owned linked-image checks. FatFS `ff.c` uses `-Os` because the pinned
 compiler cannot allocate registers at `-Oz`. Do not remove a checker or weaken
 runtime/link guards to make a build pass. Fresh builds are intentional during
 this first tranche; incremental-build behavior has not been introduced.
+The isolated Oryx paths are ../dependencies/infrastructure and ../toolchain.
+Branding is explicit: Arthur - UART0 OTIRX EXPERIMENTAL ABI1.2.
+Root checks include tools/check_uart0_native.py against the actual ELF.
+tools/qualify_link.py also rejects controlled corrupt ELFs and compiles real
+canonical C/C++ consumers. tools/build_clients.py builds native public-API
+stress clients using the pinned packet corpus and an explicit output directory.
 
-For migration-equivalence qualification, provide the pinned translated control:
+Only the separate, unmodified stock control uses migration-equivalence checking:
 
 ```bash
 make baseline-check REFERENCE_BIN=PATH_TO_PINNED_CONTROL
@@ -81,6 +102,11 @@ Start with [upstream origin](docs/upstream-origin.md) and the
 records original and native assembly/include paths, initial hashes, macro/local
 symbol mappings and line origins. It is a frozen initial migration receipt,
 not a requirement that future source edits retain those file hashes forever.
+docs/uart0-native-mapping.json and docs/uart0-native-source.md record the UART
+port separately. Its core matches all2497 reference bytes and300 explicit
+relocations. UART-only cost is2569 ROM bytes and86 RAM bytes; branding adds34
+ROM bytes. The unrelated VDP oversized-packet fix and qsort public experiment
+are excluded; the inherited stock defect remains documented.
 
 Use recognizable native macros and descriptive `.Lroutine_name` labels.
 Anonymous `1f`/`1b` branches are supported; macro-local `\@` labels prevent

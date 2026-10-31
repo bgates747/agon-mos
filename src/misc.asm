@@ -1,5 +1,4 @@
-; Native AgonDev source derived from official MOS v3.0.2: src/misc.asm
-; Upstream ancestry and changes: docs/upstream-origin.md and docs/deviations.md.
+; Maintained native UART variant: src/misc.asm; origin: docs/uart0-native-source.md.
 ;
 ; Title:	AGON MOS - Miscellaneous helper functions
 ; Author:	Dean Belfield
@@ -20,7 +19,7 @@
 
 			.assume adl=1
 
-			; zds2gas: DEFINE .STARTUP, SPACE = ROM
+			; Original segment placement: DEFINE .STARTUP, SPACE = ROM
 			.section .STARTUP,"ax",@progbits
 
 			.global	SWITCH_A
@@ -40,6 +39,7 @@
 			.global	_wait_timer0
 			.global	_timer0_delay
 
+			.extern	uart0_return_fence
 			.extern	_callSM
 
 ; Switch on A - lookup table immediately after call
@@ -184,8 +184,10 @@ _exec16:		push 	IY
 			ld	(IX + 3), D
 			ld	(IX + 4), 0xC9	; RET
 ;
-_execSM:		call	_callSM		; Call the subroutine
+_execSM:		call	uart0_return_fence
+			call	_callSM		; Call the subroutine
 ;
+			call	uart0_return_fence
 			pop	AF		; Restore the MBASE register
 			ld	MB, A
 			pop	IX

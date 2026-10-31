@@ -42,11 +42,11 @@ class NativeSourceTests(unittest.TestCase):
         self.assertNotIn('prepare_mos_worktree',make)
         self.assertNotIn('zds2gas',make)
 
-    def test_experimental_uart_not_in_composition(self):
+    def test_uart_profile_preserves_native_foundation_inventory(self):
         profile=json.loads((ROOT/'build.json').read_text())
         self.assertEqual(len(profile['c_sources']),16)
-        self.assertEqual(len(profile['asm_sources']),15)
-        self.assertFalse(any('uart0_async' in n for n in profile['asm_sources']))
+        self.assertEqual(len(profile['asm_sources']),16)
+        self.assertEqual(profile['asm_sources'][-1], 'src/uart0_async.asm')
         self.assertEqual(profile['c_overrides'],{'src_fatfs/ff.c':'-Os'})
 
     def test_every_deviation_has_a_removal_condition(self):

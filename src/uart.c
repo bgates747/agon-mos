@@ -61,8 +61,9 @@ void init_UART1() {
 // - pUART: Structure containing the initialisation data
 //
 BYTE open_UART0(UART * pUART) {
+	// Widen BEFORE multiplication: AgonDev int is 24-bit; 16 * 1152000 overflows.
 	UINT32	mc = MASTERCLOCK;										// UART baud rate calculation
-	UINT32	cb = CLOCK_DIVISOR_16 * pUART->baudRate;				// split to avoid eZ80 maths overflow error
+	UINT32	cb = (UINT32)CLOCK_DIVISOR_16 * pUART->baudRate;				// split to avoid eZ80 maths overflow error
 	UINT32	br = mc / cb;											// with larger baud rate values
 
 	UCHAR	pins = PORTPIN_ZERO | PORTPIN_ONE;						// The transmit and receive pins											
@@ -100,8 +101,9 @@ BYTE open_UART0(UART * pUART) {
 // - pUART: Structure containing the initialisation data
 //
 BYTE open_UART1(UART * pUART) {
+	// Widen BEFORE multiplication: AgonDev int is 24-bit; 16 * 1152000 overflows.
 	UINT32	mc = MASTERCLOCK;										// UART baud rate calculation
-	UINT32	cb = CLOCK_DIVISOR_16 * pUART->baudRate;				// split to avoid eZ80 maths overflow error
+	UINT32	cb = (UINT32)CLOCK_DIVISOR_16 * pUART->baudRate;				// split to avoid eZ80 maths overflow error
 	UINT32	br = mc / cb;											// with larger baud rate values
 
 	UCHAR	pins = PORTPIN_ZERO | PORTPIN_ONE;						// The transmit and receive pins											
