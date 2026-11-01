@@ -132,6 +132,12 @@ open_core:
     jr nz,busy
     in0 a,(IER)
     ld (tx_saved_ier),a
+    IF UART0_PRODUCTION
+    call uart0_activate
+    or a,a
+    ret nz
+    ENDIF
+    ld a,(tx_saved_ier)
     or a,5
     ld (tx_ier),a
     out0 (IER),a
@@ -397,6 +403,9 @@ close_scan:
     ld a,(tx_saved_ier)
     out0 (IER),a
     ld (tx_ier),a
+    IF UART0_PRODUCTION
+    call uart0_deactivate
+    ENDIF
     xor a,a
     ld (tx_opened),a
     ld (tx_barrier),a

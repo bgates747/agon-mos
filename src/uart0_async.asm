@@ -7,14 +7,57 @@ UART0_BATCH_SCALAR EQU 0
     XDEF _uart0_tx_init,uart0_sync_begin,uart0_sync_end,uart0_sync_put
     XDEF uart0_return_fence,_uart0_return_fence,uart0_read_lsr,uart0_read_msr
     XDEF uart0_async_getapi,tx_rx_sink
+    XREF _set_vector,_uart0_handler
+    XDEF uart0_activate,uart0_deactivate,uart0_install_vector
+    XDEF uart0_initialized,uart0_saved_vector
+    XDEF uart0_pump
 
-; Called with DI after C startup clears BSS, before the first UART enable.
+; Lazy initialization, called only on the first explicit successful activation.
+; Ordinary release BSS initialization leaves the driver disabled after reset.
 _uart0_tx_init:
+    ld a,(uart0_initialized)
+    or a,a
+    ret nz
     ld hl,1
     ld (tx_next_ticket),hl
     ld a,1
     ld (tx_cts_batch),a
+    ld (uart0_initialized),a
     ret
+
+; API holds DI. Do not activate over bytes still leaving the stock transport.
+; set_vector is the release's existing C-ABI RAM-vector operation.
+uart0_activate:
+    call read_lsr            ; Explicit activation retains acknowledged errors.
+    bit 6,a
+    jp z,busy
+    ld hl,tx_isr
+    call uart0_install_vector
+    ld (uart0_saved_vector),hl
+    ld de,_uart0_handler
+    or a,a
+    sbc hl,de
+    jr z,activate_owned
+    ; A user replaced the stock UART handler: restore it, refuse ownership.
+    ld hl,(uart0_saved_vector)
+    call uart0_install_vector
+    jp busy
+activate_owned:
+    call _uart0_tx_init
+    jp ok
+
+uart0_deactivate:
+    ld hl,(uart0_saved_vector)
+    jp uart0_install_vector
+
+uart0_install_vector:
+    push hl                  ; C argument 2: handler.
+    ld hl,018h
+    push hl                  ; C argument 1: UART0 vector.
+    call _set_vector
+    pop bc
+    pop bc
+    ret                      ; HL = previous handler.
 
 ; Existing MOS parser and keyboard state remain the receive owner.
 tx_rx_sink:
@@ -238,4 +281,6 @@ uart0_async_api_end:
     SECTION BSS
     XDEF uart0_sync_depth
 uart0_sync_depth: DS 1
+uart0_initialized: DS 1
+uart0_saved_vector: DS 3
     END

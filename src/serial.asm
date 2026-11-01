@@ -76,7 +76,7 @@ UART_LSR_RDY		EQU	%01		; Data ready
 
 ; Check whether we're clear to send (UART0 only)
 ;
-UART0_wait_CTS:		CALL		uart0_read_msr
+UART0_wait_CTS:		IN0		A, (UART0_REG_MSR)
 			BIT		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
 			JR		Z, UART0_wait_CTS
 			RET
@@ -104,7 +104,7 @@ UART0_tx_legacy:	POP		AF
 			PUSH		BC			; Stack BC
 			PUSH		AF 			; Stack AF
 			LD		BC,TX_WAIT		; Set CB to the transmit timeout
-UART0_serial_TX1:	CALL		uart0_read_lsr	; Get the line status register
+UART0_serial_TX1:	IN0		A,(UART0_REG_LSR)	; Get the line status register
 			AND 		UART_LSR_ETH		; Check for TX hold register empty
 			JR		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
 			DEC		BC
@@ -154,7 +154,16 @@ UART1_serial_TX2:	POP		AF			; Good to send at this point, so
 ; - F: C if character read
 ; - F: NC if no character read
 ;
-UART0_serial_RX:	CALL		uart0_read_lsr	; Get the line status register
+UART0_serial_RX:	PUSH		AF
+			LD		A,(tx_opened)
+			OR		A,A
+			JR		Z,UART0_rx_stock
+			POP		AF
+			CALL		uart0_read_lsr
+			JR		UART0_rx_ready
+UART0_rx_stock:		POP		AF
+			IN0		A,(UART0_REG_LSR)
+UART0_rx_ready:	; Get the line status register
 			AND 		UART_LSR_RDY		; Check for characters in buffer
 			RET		Z			; Just ret (with carry clear) if no characters
 			IN0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
