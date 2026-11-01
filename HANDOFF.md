@@ -1,5 +1,111 @@
 # Interrupt-based UART0 transmission project — handoff
 
+LATEST 2026-11-01 — Author approved logical commit/push checkpoint, then BO-004.
+MOS implementation9754da6; qualified suite/resultsdfeb102; policy/task/hardware
+notes form the final checkpoint group. Next develop the deliberate-reset fixture;
+previous hardware round is complete and passed. See today's development log.
+Older uncommitted/approval-pending statements below are historical.
+
+LATEST 2026-11-01 — CONSOLE8 HARDWARE RETURN PASSES.
+NEXT TASK: develop a fixture to test deliberate reset during active transmission
+(BO-004), qualify it, then provide a separate hardware procedure. The Author
+completed every test requested in the last round; no reset-during-send fixture
+was supplied or expected in that round.
+R0031/33/34 stock discovery PASS;R0032 activation/close/reopen PASS;
+R0035/R0036 fullfourtests PASS. Exact reviewed menubuild32d6d885f3b8b8e0 and
+firmware/children match deployment. Across eightpausecases:65536payloadbytes
+verified,256orderedreplies, zero RX/orderingerrors, masked-IFF/app-exit/stock
+handler restoration pass. No newfailurefiles; journal complete; oldreports
+unchanged. Normal resetsteps operator-reported. BO-004 owns development of the
+next deliberate-reset fixture. No new speed/CTS-margin/release claim.
+
+AUTHOR LEFT EXPERIMENTAL MOS + TEST VDP INSTALLED deliberately; dedicatedConsole8
+will not be used between tests. Do NOT treat stockrestoration as overdue.
+No agentflash/boardcommand/cardwrite/emulatorlaunch ininspection. AGONC8 still
+mounted onOryx, unchanged by inspection. Returnedautoexec nowcommentsJukebox
+andCDs/test/mos-uart0 only, noautoactivation; rootstockMOSunchanged. Prefer installed `flash mos <filename>` / `flash vdp
+<filename>` over longLOAD/RUNfallback. Verified /mos/flash.bin is EXACT official
+bundled1.9 SHA480b4767...75eb57. Policy inAGENTS.md.
+
+Full113files return verifiedonOryx/Pi; archive1,388,310bytes SHA
+bf26310a96d97f5a6bbd45356cf307184d18ac3b234ef2f3d2bdf0c28ce399e3,
+build/uart0-startup-safe/card-return001.tar.gz. Source/JSON offlineanalysis in
+card-return001; per-run analysis in experiments/uart0-startup-safe/README.md.
+New code UNCOMMITTED; Author reported tests complete, not commit/push approval.
+Earlier hardwarepending/stockrestorerequired statements below are superseded
+for this completed normal campaign. BO-004 stronger recovery and BT/AB remain.
+
+LATEST 2026-10-31 — CONSOLE8 APPLIANCE DEPLOYED at Author request.
+AGONC8 UUID8658-1C23 onOryx /test/mos-uart0, same activepath;23files verified.
+Exact reviewed ZDSMOS89ea8694...12aa42b, fileCRC29DCC1FC/ROMCRC0C5886FC;
+newtest.bin/menu32d6d885f3b8b8e0, same nativechildren/checks. Matched testVDP,
+stockVDP2.16.0, stockMOSrollback, officialFLASH1.9 and shortreadmes supplied.
+H-001..005: MOSbootwithstockVDPfirst, menu1/2+idlepowercycle, installmatchedVDP,
+menu0 twice withidlepowercycle, thenrestorenormalstockVDP2.16.0. Explicit
+LOADflash.bin &B0000 / RUN &B0000 mos mos-candidate.bin; rootMOS.bin staysSTOCK.
+Oldwithdrawnpackage fully preserved173files/hashverifiedonPi/Oryx beforewrites;
+75numberedreports retainedunchanged, nextR0031, journalcompactedworkspacehistory.
+No newhistorydirectories oncard. Rootautoexec unchanged. CardLEFTMOUNTED.
+No firmwareflashed/boardrun/emulatortouched. Physicalacceptance PENDING;
+idlecompleted-sessionreset doesnotprove partial-command/crash recovery.
+Buildartifacts/receipt/scripts: build/uart0-startup-safe/card-deploy001.
+Newwork UNCOMMITTED; do not assume staging authorizes agent firmwareflashing.
+
+LATEST 2026-10-31 — HUMAN REVIEW R0001 PASSES; ORYX RELEASED.
+Exact startup-preserving ZDS MOS89ea8694...12aa42b/menu32d6d885f3b8b8e0.
+Allfourtests PASS; four pauses each8192verifiedbytes/32orderedreplies,
+32768totalbytes/128replies, full wire packets/checkcommands match. Masked-IFF,
+queued-source app exit, stock handler return, Q/typedDIR/liveprompt pass;
+0frontendfault/TXdrop/RXoverrun. Capture contains one boot, not independent
+proof of close/relaunch. BO-003 functional/software review complete; BO-004
+physical boot/activation/integrity/whole-board reset recovery still required.
+Ready to prepare that focused hardware test after authorization; nothing newly
+staged to a physical card/flashed. No new throughput/CPU performance claim.
+New code remains UNCOMMITTED pending explicit commit approval.
+
+Reviewgeneration48/requestc16e3260c12d RELEASED14:59:41EDT with new idleproof,
+after verified Pi evidence retrieval. Next Rallyrequest5c6fe3061222 notified
+through existing chat by immediate steering; it then checked outgeneration49.
+Do not reuse old lease06a6... or launch review profile without a NEW reservation.
+Raw verified23filearchive Pi/Oryx run004/human-return001.tar.gz SHA
+c10d3e6308a07d076a10ca74a178f15dc40f7a71c000a038c5d91bf7630d18a2.
+Analysis/evidence limits: experiments/uart0-startup-safe/README.md and today's
+log; raw offline analysis under build/uart0-startup-safe/run004/human-return001.
+Earlier human-review-pending/lease-held statements below are superseded.
+
+LATEST 2026-10-31 — BO-001/BO-002 implemented OFF-DEVICE with ZDS II/Wine.
+Working release startup, UART setup and original handler restored; initializer
+runs only on explicit successful open. RAM vector switches then; close/app
+return restores stock. Cold/retained-RAM reset leaves experimental state off.
+Main/uart/interrupts/cstartup/init_params source matches v3.0.2 byte-for-byte.
+Minimal serial/RST dispatch guards remain; do not claim identical whole ROM.
+
+Candidate run004 MOS111239bytes SHA89ea8694194e0488337bf1dcbfa91e2b084b3afc75a9c3916f4acc9ae12aa42b,
+erased-tailCRC0C5886FC/FlexeCRC16A52145, startup-safe EXPERIMENTAL subtitle.
+Actual-ROM baud/reset/crashed-experimental-handler/RST18/vector controls pass;
+27production+538batch cases per size1/2/4/8/16 pass. Both Flexe engines pass two
+full suites each,65536comparedbytes/256replies each,0fault/drop/overrun. Real20ms
+key taps and official updater USAGE/CLI return pass. Uses compiled repaired
+DIAGNOSTIC VDP, not stock. New RST18 CALL.LIL repair rejects bad run003 control.
+No new physical result, firmware approval, deployment, board/card operation.
+
+New review profile STAGED AND STOPPED onOryx:
+/home/smith/Agon/mystuff/agon-mos/.emulator/uart0-startup-safe-review
+Menu1..4,0all,QCLI; opens WITHOUT activation. Reserve/check out Oryx when Author
+ready; do not send launch instructions until checkout. Shared FIFO/lease policy
+is linked in AGENTS.md; no Golem grant. New runners enforce lease immediately
+before emulator launch. Other owner's checkout preserved; no lease claimed for
+completed runs that predate this session's notice of policy.
+
+Checkpoint/push completed BEFORE implementation: main d5268d2/a45912b; historical
+native branch e493d97. NEW WORK UNCOMMITTED pending human review/commit approval.
+N-005 checkpoint disposed; BO-003 human/BO-004 physical acceptance remain.
+Full evidence archive verified onPi/Oryx f20322d4...e4ac9cd5,625regularfiles:
+build/uart0-startup-safe-20261031-r01.tar.gz. README in
+experiments/uart0-startup-safe/README.md; today's devlog records dispositions.
+Stock MOS3.0.2 recovery is boot-confirmed. Console8 VDP was restored to official
+stock2.16.0 and Author confirmed back up; leave physical hardware untouched.
+
 LATEST 2026-10-31 — AUTHOR CONFIRMS C8 MOS BOOTS: “praise jesus, it worked.”
 N-009 complete: stockMOS3.0.2 target RAM/flash CRC PASS plus physical boot.
 Author attaches C8 SD onOryx and asks recover any missingdiagnostics. Confirmed

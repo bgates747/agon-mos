@@ -140,7 +140,7 @@ defer shipping if gains do not justify the tradeoff.
 
 ## Next tranche: A/B streaming and Jukebox-shaped workload
 
-## Native regular MOS implementation
+## Stock-startup ZDS II MOS implementation
 
 Toolchain decision,2026-10-31: deliver the upstream MOS modification with
 ZDS II under Wine on Oryx. Original menu/test software may use AgonDev. The
@@ -148,53 +148,43 @@ native MOS port below is retained as historical/reference work, not the selected
 firmware delivery path. Preserve upstream source/build conventions for review.
 
 The Author's2026-10-31 requirement strengthens opt-in to preserve a proven stock
-boot and UART path until explicit activation. The existing closed-session
-implementation does not meet it. These tasks precede N-006; no replacement
-firmware installation is authorized by recording this design.
+boot and UART path until explicit activation. BO-001/BO-002 are implemented and
+software-qualified in the ZDS II fork; completed dispositions are in today's
+development log. Candidate CRC0C5886FC and the rewritten menu/fixture are described
+in experiments/uart0-startup-safe/README.md. Actual-ROM checks, both Flexe engines,
+wrong-image rejection and quick-key/updater-entry controls pass. No board or SD
+operation occurred. The dedicated Oryx review profile is staged stopped; reserve
+through the shared FIFO for any reuse. BO-003 off-device/functional human review
+now passes R0001:32768comparedbytes,128orderedreplies, allfourtests and live CLI
+DIR return; no drops/overruns/frontend faults. Evidence is in the new fixture's
+README and today's development log. The retained capture proves one boot, not
+a separately recorded relaunch; physical reset recovery remains BO-004.
+Review checkout is released and Rally was notified. The Author approved the
+completed-work commit/push checkpoint on2026-11-01 before BO-004 implementation.
+These gates precede N-006.
 
-BO-001 [ ] Preserve the working versioned MOS v3.0.2 startup and its transport
-dependencies, using tag8336409351ee5314e02801a7b72a4f1bb5282519 as the source
-reference. Startup trace and identified deltas are recorded in
-docs/uart0-native-tranche.md. Restore release routines rather than designing
-new startup code; review reset, UART setup, ISR, RX, status reads, output and
-CLI dependencies. Use the release's ZDS II toolchain and retain actual-ROM baud
-checks. The native-port arithmetic correction remains reference evidence; do
-not import compiler-port changes into the ZDS II baseline without a need.
-
-BO-002 [ ] Implement isolated stock/experimental transport dispatch with explicit
-foreground activation through CLI/application entry paths in the ZDS II MOS
-fork, preserving upstream source conventions. Review command/API
-semantics, preserve discovery without activation, and transfer ownership only
-at a safe boundary without changing baud or flushing RX/TX. Enable last after
-initialization; normal close/return drains and restores stock dispatch. Enable
-state is volatile and disabled before transport/IRQ use on every reset. Move
-uart0_tx_init out of main's boot sequence; use MOS's existing RAM vector switching
-to install the experimental handler only on activation and restore stock later.
-
-BO-003 [ ] Qualify the exact linked image: disabled cold/retained-RAM boot never
-executes experimental service/helpers; normal CLI, keyboard, legacy output and
-updater entry work. Test activation/rejection, cleanup and reset during active
-or partial initialization, including a controlled failing experimental path.
-Check stock recovery after an appropriate whole-board reset when a partial VDP
-packet prevents eZ80-only recovery. Bind results to the exact packaged ROM hash.
-
-BO-004 [ ] After off-device acceptance and Author authorization, prepare focused
-hardware acceptance of stock boot, explicit activation and reset back to a
-useful stock CLI/updater. Retain the verified WROOM recovery procedure and stock
-image. Remove the withdrawn candidate from active SD/menu use while preserving
-workspace history; no performance campaign before these checks pass.
+BO-004 [ ] Develop a fixture to test deliberate reset during an active
+transmission. Give it a clear reset-ready indication, defined manual reset
+steps and persistent evidence for checking stock startup/CLI recovery afterward.
+Qualify the fixture off-device before asking the Author to run the next hardware
+test, including partial-command/whole-board recovery where needed. This fixture
+was not part of the completed hardware round; the Author completed all requested
+tests. The normal boot/activation,
+completed-session power cycles and cleanup campaign now passes on Console8:
+R0031..R0036, with two full suites R0035/R0036 verifying65536payloadbytes and
+256orderedreplies, no RX/order errors. These passes do not establish deliberate
+in-flight crash recovery. See experiments/uart0-startup-safe/README.md for the
+exact firmware, evidence and limits. No additional board action is authorized
+by this inspection; physical execution remains manual.
+The Author elected to retain experimental MOS/testVDP between tests on dedicated
+Console8; stock restoration is not a pending requirement for this campaign.
+Use the standard installed flash MOSlet in future instructions; its binary
+matches the bundled copy. Preserve verified stock/recovery assets.
 
 N-001..N-004 are delivered: pinned dependencies, native stock reproduction,
 maintained OTIRX implementation, linked contracts and actual-ROM/both-engine
 qualification. Evidence and disposed identifiers are in the2026-10-16 log and
 experiments/uart0-native. This is software delivery, not firmware/release approval.
-
-N-005 [ ] Obtain explicit commit approval for the native changes. The Author's
-2026-10-16 screenshot confirms four native stress cases, clean return and typed
-directory listing; the Author then authorized Console8 deployment. The menu
-adapter passes both-engine checks; its physical review accompanies N-006.
-The baud correction now also needs fresh human review before commit approval.
-Keep new affected changes uncommitted until approval. BT/AB release gates remain.
 
 N-006 [ ] After recovery and Author authorization, prepare and qualify a
 ZDS II MOS replacement package/menu after BO-001..BO-004. The arithmetic-only corrected
@@ -202,10 +192,12 @@ MOS ROM CRC4E326ABC/API1.2 is an off-device reference, not a package satisfying
 the new stock-startup requirement. Pin the revised image identity, obtain fresh
 human review and perform a minimal boot check before the larger campaign.
 The former native CRC5B36B5B1 is withdrawn and must never be accepted again.
-Inspect the returned Console8 campaign: require matching staged assets and two fresh numbered
-menu3 passes, with complete ordered replies and final-buffer comparisons.
+The first returned hardware campaign is now inspected: staged assets match and
+R0035/R0036 each pass the full suite including batch16 byte verification and
+ordered replies. Remaining BO-004 recovery acceptance still gates final closeout.
 The supplied repaired VDP candidate is selected. Manual flashing/execution
-remain Author actions; no electrical CTS-margin or release claim follows.
+remain Author actions; the pair stays installed by Author choice. No electrical
+CTS-margin or release claim follows.
 
 EX-001 [ ] Audit Agon Extender's unattended test lifecycle, installed EMOS
 flash/RAM headroom and native ZDS II build compatibility. Record the explicit

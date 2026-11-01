@@ -62,3 +62,31 @@ MOS/runtime identity and backend guards. Flexe must have no Fab-named launcher,
 symlink or compatibility shim. Existing Fab launch instructions apply only to
 Fab profiles. For Flexe, call the canonical setup tool's `name_flexe_profile`
 after customization and before recording deployment checksums.
+
+## Oryx emulator scheduling
+
+Follow the shared [reservation and checkout procedure](../agon-dev-env/cross-agent/vdplet-rollout/README.md)
+on the Pi. It uses a self-service FIFO queue; Golem approval is no longer needed.
+Only one Oryx emulator session may run, including headless tests and human
+reviews. Reserve through `oryx_lease.py`, check out with fresh whole-host idle
+evidence, and assert the lease immediately before each emulator process. Stop
+only owned processes, preserve results, obtain fresh idle evidence, release and
+immediately notify the next agent through its recorded chat using steering.
+For human review, reserve when the Author is ready, stage the profile stopped
+and retain checkout until review and shutdown are complete. Do not maintain a
+local queue or edit shared scheduling state by hand.
+
+## Console8 firmware workflow
+
+The Author prefers the installed `flash` MOSlet: from the appliance directory,
+use `flash mos <filename>` or `flash vdp <filename>`. The bundled `flash.bin` is
+a fallback for a self-contained appliance, not a mandatory invocation path.
+On 2026-11-01 the installed `/mos/flash.bin` matched the bundled official1.9
+binary byte for byte. Use explicit firmware filenames and retain the normal
+updater checks. Physical flashing remains an Author action.
+
+The Author elected to leave the startup-preserving experimental MOS and matched
+test VDP installed between tests while Console8 is dedicated to this project.
+Record that state; do not require stock restoration merely to close each run.
+Keep stock restoration files available and revisit firmware choice before using
+Console8 for another project. This is not stock-firmware or release approval.

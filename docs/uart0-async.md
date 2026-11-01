@@ -38,11 +38,20 @@ must explicitly request activation. After a reset, the experimental transport
 is disabled again, so a failure during an experiment need not prevent using
 the ordinary CLI and firmware updater on the next boot.
 
-This is stronger than the existing session opt-in. The delivered candidate
-starts with `tx_opened` clear, but installs `tx_isr` as the UART0 interrupt
-handler and routes ordinary status reads through experimental helpers even
-while closed. That implementation does not meet this new requirement. Earlier
+This is stronger than the earlier session opt-in. The earlier candidate
+started with `tx_opened` clear, but installed `tx_isr` as the UART0 interrupt
+handler and routed ordinary status reads through experimental helpers even
+while closed. That implementation did not meet this new requirement. Earlier
 claims about opt-in describe session/queue behavior, not stock startup isolation.
+
+BO-002 now implements this boundary in the ZDS II fork. The
+[startup-preserving candidate and qualification](../experiments/uart0-startup-safe/README.md)
+restore the working release's startup/handler source, initialize only on explicit
+open, and restore stock dispatch on close/application return. Actual linked-ROM
+and both-engine checks pass, and the Author's functional emulator review now
+passes R0001. Physical acceptance remains pending. The retained human capture
+does not independently establish a separate emulator relaunch; see the linked
+result for exact limits.
 
 The required boundary is:
 
@@ -135,13 +144,18 @@ reason against this design goal.
 
 `src/uart0_tx.inc` is the single core used by production MOS and the isolated
 wrapper. `src/uart0_async.asm` supplies MOS state, receive-parser routing,
-legacy synchronization, polling and discovery. Startup clears BSS and seeds
-the ticket counter before enabling interrupts. `_uart0_handler` dispatches
-real UART causes through that core without a private receive owner.
+legacy synchronization, polling and discovery. Release startup clears BSS and
+installs the original `_uart0_handler`; it does not initialize experimental
+queues or install `tx_isr`. Explicit successful open lazily seeds the ticket
+counter and uses the release RAM-vector setter to select `tx_isr`. Close and
+application return restore the stock handler. The MOS receive parser remains
+the sole receive owner throughout.
 
-Build the complete image with `tools/zds/build.sh`. Reproduce all automated
-qualification with `experiments/uart0-mos/build.sh`. Both use native ZDS II
-under Wine on Oryx; no assembly translation or AgonDev build is used.
+Build the complete image with `tools/zds/build.sh`. The updated actual-ROM,
+both-engine and fixture reproduction commands are in
+`experiments/uart0-startup-safe/README.md`; older qualification wrappers predate
+the stock-handler boundary. MOS and native test children use ZDS II under Wine
+on Oryx; the original standalone menu uses AgonDev.
 Legacy applications retain blocking output. CPU/work overlap requires explicit
 use of the discovered async operations.
 
@@ -160,7 +174,9 @@ temporarily uses a capture sink, not the production MOS receive parser.
 
 The selected MOS source revision is recorded in [ASY-001](tasks/ASY-001.md).
 `src/uart.c` enables/clears UART0 FIFOs with FCTL=07h and takes the IER mask
-from its configuration. `src/interrupts.asm::_uart0_handler` now routes to the bounded UART cause dispatcher. `src/serial.asm` retains CTS/THRE polling when closed and routes output
+from its configuration. `src/interrupts.asm::_uart0_handler` retains the release
+receive handler; explicit activation selects the bounded UART cause dispatcher
+through the RAM vector. `src/serial.asm` retains CTS/THRE polling when closed and routes output
 through the ordered compatibility path when an async session is open. `src_startup/vectors16.asm` routes RST10 and each
 RST18 byte through PUTCH. Simply enabling TIE is unsafe.
 
@@ -216,19 +232,23 @@ All pointers and counters below are unsigned 24-bit values stored in three
 bytes. Do not store them in `dw` fields. Maximum transaction length is 65,535;
 reject zero lengths and address wrap. Borrowed data must be stable readable
 application RAM in [040000h, 0BC000h) until release. MOS RAM is excluded.
-The foreground producer is single-owner. UART receive callbacks return CONTEXT;
-NMI and other application-owned ISR calls are unsupported.
+The foreground producer is single-owner. Calls from the active experimental
+UART ISR return CONTEXT; NMI and other application-owned ISR calls are unsupported.
+The preserved stock handler does not run experimental context bookkeeping.
+With a user keyboard callback installed, open returns BUSY, including an open
+attempt from that callback. Other operations from a stock callback are outside
+the supported foreground contract; do not depend on CONTEXT detection there.
 
 | Operation | Inputs | Result and behavior |
 |---|---|---|
-| `tx_open` | none | Exclusive singleton session; BUSY if already open. Preserve baud, FIFO configuration and RX. |
+| `tx_open` | none | Explicit activation of an exclusive singleton session; BUSY if already open, stock TX has not reached TEMT, a user callback is installed or the UART vector is caller-owned. Preserve baud, FIFO configuration and RX. |
 | `tx_reserve` | none | Nonblocking descriptor reservation or BUSY; reserves one of three slots before rendering. |
 | `tx_publish` | DE=ticket, HL=source, BC=length | Atomic publication of the reserved ticket; no payload copy. Failure leaves reservation/source caller-owned. |
 | `tx_status` | ticket | RESERVED, QUEUED, ACTIVE, RELEASED or CANCELLED, with accepted-byte count and diagnostics available through the table pointer. |
 | `tx_cancel` | ticket | Cancel reserved or wholly unstarted transaction only; ACTIVE returns BUSY without changing progress. |
 | `tx_reap` | released/cancelled ticket | Free descriptor; stale tickets rejected. |
 | `tx_poll_drain` | none | Nonblocking DONE only when no published work remains and TEMT=1; otherwise PENDING. |
-| `tx_close` | none | Nonblocking close only after drain and all reservations/tickets resolved; otherwise BUSY. |
+| `tx_close` | none | Nonblocking close only after drain and all reservations/tickets resolved; otherwise BUSY. Restore stock UART vector and saved interrupt mask. |
 | `tx_diag_take` | none; session must be closed | Atomically sample pending LSR/MSR, return HL=00:modem-deltas:RX-errors, then clear those software latches. BUSY while a session is open; no FIFO/parser reset, byte read or transmit wakeup acknowledgement on rejection. |
 | `tx_kick` | none | Bounded service opportunity for masked-interrupt callers; preserves their IFF state. |
 
@@ -308,8 +328,10 @@ keyboard callback is installed or a synchronous-output scope is active.
 clears the callback. Existing callbacks retain their ISR timing and synchronous
 output behavior. Async applications must use MOS keyboard state/map or polling;
 installing a callback invalidates their session and tickets after drain.
-The new API returns CONTEXT from the UART ISR/receive callback, or with nonzero
-MBASE. NMI and other application-owned ISR entry remain outside its contract.
+The new API returns CONTEXT from the active experimental UART ISR or with
+nonzero MBASE. The preserved stock callback path excludes open with BUSY and
+does not enter experimental context bookkeeping. NMI and other application-owned
+ISR entry remain outside its contract.
 Applications that replace UART vectors, modify UART registers or write private
 MOS state directly do not satisfy this ownership contract.
 

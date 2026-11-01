@@ -32,6 +32,15 @@ and BO-001..BO-004 in TODO.md now precede N-006. Correcting the baud calculation
 alone is insufficient to satisfy the new acceptance requirement. No revised
 firmware or replacement package has been built or deployed for this revision.
 
+Implementation update,2026-10-31: BO-001/BO-002 now restore the release startup
+and handler, move initialization to explicit open and restore stock dispatch
+on close/return in the ZDS II fork. The
+[new candidate, fixture and qualification](../experiments/uart0-startup-safe/README.md)
+pass actual-ROM and both-engine software checks. Functional human review also
+passes R0001. That update supersedes the preceding design-only status; physical
+acceptance remains open, including actual reset recovery.
+The native-port results below remain historical evidence.
+
 ### Working release startup trace — 2026-10-31
 
 The Author clarified that this means preserving the working versioned release's
