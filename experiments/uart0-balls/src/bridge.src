@@ -1,0 +1,198 @@
+.assume adl=1
+.section .text
+.global _bd_discover,_bd_api_call,_bd_notify
+.extern _bd_api_function,_bd_hl,_bd_bc,_bd_de,_bd_result_hl
+.extern _bd_notify_id,_bd_notify_context,_bd_notify_status,_bd_note_completion
+_bd_discover:
+ ld bc,01300h
+ ld a,050h
+ rst.lil 08h
+ or a
+ jr nz,bd_missing
+ ld de,0
+ or a
+ sbc hl,de
+ jr z,bd_missing
+ jp (hl)
+bd_missing:
+ ld hl,0
+ ret
+_bd_api_call:
+ push ix
+ ld ix,(_bd_api_function)
+ ld hl,(_bd_hl)
+ ld bc,(_bd_bc)
+ ld de,(_bd_de)
+ call bd_indirect
+ ld (_bd_result_hl),hl
+ pop ix
+ ret
+bd_indirect:
+ jp (ix)
+_bd_notify:
+ ld (_bd_notify_id),hl
+ ld (_bd_notify_context),de
+ ld (_bd_notify_status),a
+ call _bd_capture_notification
+ call _bd_note_completion
+ ret
+.macro bd_save
+ push af
+ push bc
+ push de
+ push hl
+ push ix
+ push iy
+ ex af,af'
+ exx
+ push af
+ push bc
+ push de
+ push hl
+.endm
+.macro bd_restore
+ pop hl
+ pop de
+ pop bc
+ pop af
+ exx
+ ex af,af'
+ pop iy
+ pop ix
+ pop hl
+ pop de
+ pop bc
+ pop af
+.endm
+.extern _bd_timer1_wraps,_bd_timer2_wraps,_bd_keys_tick
+.global _bd_timer1_isr
+_bd_timer1_isr:
+ di
+ bd_save
+ in0 a,(131)
+ bit 7,a
+ jr z,bd_timer1_done
+ ld hl,(_bd_timer1_wraps)
+ inc hl
+ ld (_bd_timer1_wraps),hl
+bd_timer1_done:
+ bd_restore
+ ei
+ reti.l
+.global _bd_timer2_isr
+_bd_timer2_isr:
+ di
+ bd_save
+ in0 a,(134)
+ bit 7,a
+ jr z,bd_timer2_done
+ ld hl,(_bd_timer2_wraps)
+ inc hl
+ ld (_bd_timer2_wraps),hl
+ call _bd_keys_tick
+bd_timer2_done:
+ bd_restore
+ ei
+ reti.l
+.global _bd_capture_clock
+.extern _bd_clock_wrap,_bd_clock_count
+_bd_capture_clock:
+ ld a,i
+ push af
+ di
+ in0 a,(131)
+ bit 7,a
+ jr z,bd_clock_read
+ ld hl,(_bd_timer1_wraps)
+ inc hl
+ ld (_bd_timer1_wraps),hl
+bd_clock_read:
+ ld de,0
+ in0 e,(132)
+ in0 d,(133)
+ in0 a,(131)
+ bit 7,a
+ jr z,bd_clock_save
+ ld hl,(_bd_timer1_wraps)
+ inc hl
+ ld (_bd_timer1_wraps),hl
+ in0 e,(132)
+ in0 d,(133)
+bd_clock_save:
+ ld (_bd_clock_count),de
+ ld hl,(_bd_timer1_wraps)
+ ld (_bd_clock_wrap),hl
+ pop af
+ jp po,bd_clock_masked
+ ei
+ ret
+bd_clock_masked:
+ ret
+.global _bd_capture_wall
+.extern _bd_wall_wrap,_bd_wall_count
+_bd_capture_wall:
+ ld a,i
+ push af
+ di
+ in0 a,(134)
+ bit 7,a
+ jr z,bd_wall_read
+ ld hl,(_bd_timer2_wraps)
+ inc hl
+ ld (_bd_timer2_wraps),hl
+bd_wall_read:
+ ld de,0
+ in0 e,(135)
+ in0 d,(136)
+ in0 a,(134)
+ bit 7,a
+ jr z,bd_wall_save
+ ld hl,(_bd_timer2_wraps)
+ inc hl
+ ld (_bd_timer2_wraps),hl
+ in0 e,(135)
+ in0 d,(136)
+bd_wall_save:
+ ld (_bd_wall_count),de
+ ld hl,(_bd_timer2_wraps)
+ ld (_bd_wall_wrap),hl
+ pop af
+ jp po,bd_wall_masked
+ ei
+ ret
+bd_wall_masked:
+ ret
+.global _bd_capture_notification
+.extern _bd_notify_wrap,_bd_notify_count
+_bd_capture_notification:
+ ld a,i
+ push af
+ di
+ in0 a,(131)
+ bit 7,a
+ jr z,bd_notification_read
+ ld hl,(_bd_timer1_wraps)
+ inc hl
+ ld (_bd_timer1_wraps),hl
+bd_notification_read:
+ ld de,0
+ in0 e,(132)
+ in0 d,(133)
+ in0 a,(131)
+ bit 7,a
+ jr z,bd_notification_save
+ ld hl,(_bd_timer1_wraps)
+ inc hl
+ ld (_bd_timer1_wraps),hl
+ in0 e,(132)
+ in0 d,(133)
+bd_notification_save:
+ ld (_bd_notify_count),de
+ ld hl,(_bd_timer1_wraps)
+ ld (_bd_notify_wrap),hl
+ pop af
+ jp po,bd_notification_masked
+ ei
+ ret
+bd_notification_masked:
+ ret
