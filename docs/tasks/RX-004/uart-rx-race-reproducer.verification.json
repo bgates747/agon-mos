@@ -1,0 +1,8 @@
+{
+  "zip": "docs/tasks/RX-004/uart-rx-race-reproducer.zip",
+  "bytes": 34661114,
+  "sha256": "e4babd18fa38620aa38900b4a60f298cea17479168ce4e3995180d820659ad79",
+  "files": 5369,
+  "clean_extraction_hashes_verified": true,
+  "unpacked_pair_decoder_passed": true
+}

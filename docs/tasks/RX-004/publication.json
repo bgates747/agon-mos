@@ -1,0 +1,34 @@
+{
+  "PR": "https://github.com/AgonPlatform/agon-vdp/pull/354",
+  "author": "bgates747",
+  "state": "OPEN",
+  "is_draft": false,
+  "commit": "1a0840e58f380e0c802981e4a95ebed025032691",
+  "release": {
+    "assets": [
+      {
+        "browser_download_url": "https://github.com/bgates747/agon-vdp/releases/download/uart-rx-race-reproducer-2026-11-02/uart-rx-race-reproducer.zip",
+        "digest": "sha256:e4babd18fa38620aa38900b4a60f298cea17479168ce4e3995180d820659ad79",
+        "name": "uart-rx-race-reproducer.zip",
+        "size": 34661114
+      },
+      {
+        "browser_download_url": "https://github.com/bgates747/agon-vdp/releases/download/uart-rx-race-reproducer-2026-11-02/uart-rx-race-reproducer.zip.sha256",
+        "digest": "sha256:2475b3eb52c77fff18d1efbaca7303f30981b1f7720e3285b2d8725f457ebff6",
+        "name": "uart-rx-race-reproducer.zip.sha256",
+        "size": 94
+      }
+    ],
+    "html_url": "https://github.com/bgates747/agon-vdp/releases/tag/uart-rx-race-reproducer-2026-11-02",
+    "id": 431764860,
+    "prerelease": true
+  },
+  "verification": {
+    "zip": "docs/tasks/RX-004/uart-rx-race-reproducer.zip",
+    "bytes": 34661114,
+    "sha256": "e4babd18fa38620aa38900b4a60f298cea17479168ce4e3995180d820659ad79",
+    "files": 5369,
+    "clean_extraction_hashes_verified": true,
+    "unpacked_pair_decoder_passed": true
+  }
+}

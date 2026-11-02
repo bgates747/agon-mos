@@ -1,0 +1,14 @@
+--- a/uart.c
++++ b/uart.c
+@@ -988,8 +988,10 @@
+                 //If we fail to push data to ring buffer, we will have to stash the data, and send next time.
+                 //Mainly for applications that uses flow control or small ring buffer.
+                 if (pdFALSE == xRingbufferSendFromISR(p_uart->rx_ring_buf, p_uart->rx_data_buf, p_uart->rx_stash_len, &HPTaskAwoken)) {
++                    UART_ENTER_CRITICAL_ISR(&(uart_context[uart_num].spinlock));
++                    // Publish full and mask RX together against reader recovery.
++                    // The reader clears this flag under the same UART lock.
+                     p_uart->rx_buffer_full_flg = true;
+-                    UART_ENTER_CRITICAL_ISR(&(uart_context[uart_num].spinlock));
+                     uart_hal_disable_intr_mask(&(uart_context[uart_num].hal), UART_INTR_RXFIFO_TOUT | UART_INTR_RXFIFO_FULL);
+                     UART_EXIT_CRITICAL_ISR(&(uart_context[uart_num].spinlock));
+                     if (uart_event.type == UART_PATTERN_DET) {
