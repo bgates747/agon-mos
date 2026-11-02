@@ -1,4 +1,4 @@
-# DRAFT — BD-001: bouncing-balls UART demonstration
+# BD-001: bouncing-balls UART demonstration
 
 Build an interactive demo that makes the value of background transmission
 visible: the eZ80 calculates ball motion/collisions and draws coloured balls
@@ -7,11 +7,11 @@ load and compare ordinary blocking output, async output without a callback,
 and async output with a callback. Show where time is spent, rather than imply
 that callbacks or OTIRX necessarily improve every workload.
 
-**Status: task written for Author review; implementation is paused.** No source
-implementation, build, emulator booking, deployment or bench operation is
-authorized by completion of this document. The Author explicitly requested
-stopping here. Execution items live only in [TODO.md](../../../TODO.md),
-BD-001 through BD-006; this is their common specification and task silo.
+**Status: Author approved execution on 2026-11-02.** The pre-task checkpoint
+was committed/pushed as four logical commits ending7218650. Original C source,
+builds, finite sweeps and raw evidence now live in `experiments/uart0-balls/`
+and `build/uart0-balls/`. Delivery/physical qualification are still separate.
+The actionable checklist remains [TODO.md](../../../TODO.md), BD-001..006.
 
 ## Application and display
 
@@ -42,7 +42,11 @@ Use `-` to remove balls and `=` to add them. Proposed remaining keys are
 `1`/`2`/`3` for transport, `B` for bitmap/circle output, `C` for wall-only versus
 ball collisions, `R` for repeatable scene restart and `Q` to quit. Display them
 on screen. Poll MOS keyboard state with press-edge handling; do not install a
-MOS keyboard callback that excludes an async session, or require key spamming.
+MOS keyboard callback that excludes an async session, or require key spamming. A100Hz PRT sampler also checks MOS's public event
+counter, ASCII and final up/down state: a long VDU operation can delay reporting
+until a press/release pair is delivered together. Recover that last complete
+tap when both transitions occurred between samples. This is bounded last-event
+recovery, not an unlimited queue for arbitrarily many simultaneous taps.
 
 Wall-only motion has a fixed amount of work per ball. Optional all-pairs
 ball-to-ball collision detection checks N(N-1)/2 unique pairs per physics step.
@@ -107,7 +111,9 @@ Use a continuously running PRT timebase for stage timestamps, with documented
 clock/divider/tick frequency, wrap handling and measurement overhead. Audit
 timer/vector ownership before selecting timers: the AgonDev delay helper uses
 timer0, so do not silently combine it with timer0 measurement. Preserve and
-restore any borrowed timer/vector configuration.
+restore any borrowed timer/vector configuration. Reload registers are write-only: claim only initially disabled
+timers, restore their disabled controls, source routing and vectors, and require
+future owners to configure their own reload values normally.
 
 Capture raw ticks for these named intervals:
 
@@ -120,7 +126,7 @@ Capture raw ticks for these named intervals:
 |Submission|Enter the complete frame's send sequence to foreground regaining control after its submissions.|
 |Source consumption|First frame submission to all that frame's borrowed sources released; report completion-observation delay where foreground collection affects the timestamp.|
 |Transmission|First frame submission to the final frame byte leaving UART hardware, including UART queueing/CTS stalls.|
-|Presentation confirmation|Flip submission to receipt of the verified post-flip confirmation; includes reply/observation latency.|
+|Frame confirmation|First complete-frame submission to receipt of its verified post-flip reply; includes payload transmission, flip waiting and reply/observation latency.|
 
 For each duration, display raw ticks or milliseconds and **equivalent FPS**:
 
@@ -226,3 +232,140 @@ task does not assign Jukebox work, publish another PR or authorize new bench use
 - /Agon/agondev/src/lib/libtimer/timer.c: timer0 ownership by delay().
 - experiments/uart0-completion/README.md: API, callback/lifetime contract and
   Console8 R0039 correctness results; not a demo performance claim.
+
+## Input follow-up requested during implementation
+
+On2026-11-02 the Author pointed out that latching keyboard events in the
+keyboard receive interrupt avoids losing taps. That is the reliable full-event
+solution. The selected MOS ABI currently excludes an application keyboard
+callback while an async session is open. The demo's bounded public-sysvar
+recovery is an interim application-only solution, not an all-events guarantee.
+KI-001 in TODO.md records a compatible MOS-side event latch/queue follow-up;
+no MOS/VDP firmware change is included in BD-001's demo implementation.
+
+## Implementation and off-device return —2026-11-02
+
+The demo now makes the comparison visible: coloured balls animate beside live
+controls and timing figures, and increasing the ball count adds real collision
+work. Background output can overlap that work with sending the previous frame.
+Both async modes work in the finite emulator tests; callbacks do not show a
+consistent frame-rate advantage over foreground completion collection. The
+remaining acceptance step is Console8 execution and performance comparison.
+
+Original C/AgonDev build **b57893f6a9450c82** is frozen at
+`build/uart0-balls/run007/`. Application SHA256:
+`9677bd86a8feba29205214fd0168e9728d5d0b2a477cc8bd54957e243ee0e993`.
+Compiler15.0.7/AgonLLVMc76386c, build logs, map/ELF, exact source hashes and
+unchanged firmware are retained there. No firmware source change was made.
+
+[Evidence manifest](evidence.json) records the exact runtime/firmware identities,
+raw-file hashes and stage summaries. The final192-frame/24-case sweep passed;
+all1,902,240bitmap/circle scene bytes matched independent host-generated
+oracles. A corrupted-pixel negative control was rejected. The measured PRT
+ratio was15.999306:1. Portable arithmetic/raster/packet tests passed480frames
+under address/undefined-behaviour sanitizers; key-edge tests cover delayed taps,
+holds/releases and counter wrap. The real SDL20ms tap sequence passed every
+control through compiled VDP/MOS, including normal quit/CLI return. These are
+functional emulator results, not hardware timing or visual acceptance.
+
+The first frozen runtime's ASCII-only keyboard path failed key-map input.
+A separate maintained runtime cohort uses frontend7e7d0e1b/backend0866265b,
+keeping the same MOS/VDP/app pair. Its input test exposed batched make/break
+loss; the application's bounded last-event recovery fixed the tested sequence.
+Old cohorts and failed attempts remain untouched in run001..006. Do not pool
+cohort timings or call this a receiver/emulator repair.
+
+Within the final nominal-guest sweep, bitmap output with16balls/walls was
+3.34FPS standard,4.27FPS async events and4.36FPS callback. With64balls/all-pairs
+it was2.26/3.19/3.20FPS. Those short windows illustrate overlap, not calibrated
+hardware gains or a callback speedup. The identical full-image checksum pass
+costs substantial foreground time and is reported separately. Interactive SD
+logging between twelve-frame windows pauses animation; that time is excluded
+from the displayed within-window FPS.
+
+[Captured emulator display](preview.png) is the actual SDL texture, not a mockup.
+The first confirmation token is chosen to differ from MOS's existing GP state;
+all tokens are logged and checked, avoiding a stale startup reply.
+
+The workspace-only [appliance readme](../../../build/uart0-balls/run007/appliance/readme.txt)
+is ready beside test.bin, matched candidate MOS/VDP, stock restoration files,
+flash fallback and licenses. The installed standard flash MOSlet is preferred.
+The [review ZIP](../../../build/uart0-balls/run007/balls-demo.zip) contains that
+appliance, exact original application source, ELF/map, build identities,
+verification helpers and raw final reports/traces. Size1,571,691bytes;
+SHA2569af5bc0f8a25436582ccd5dd1b3aa219cf2963938dc28f9c5ba29f60281bf354.
+
+No SD deployment or physical run of the balls demo has occurred. BD-006 keeps
+those steps open. The shared Oryx checkout was released after fresh idle
+inspection; the next waiting Golem request5178bcbae8bc was notified in its
+recorded chat. No emulator remains owned/running by this task.
+
+## Authorized SD deployment —2026-11-02
+
+Author selected `/test/mos-uart0/balls`. Identified AGONC8 UUID8658-1C23,
+archived all17existing UART files on both machines, then moved them byte-for-byte
+into `/test/mos-uart0/callback`. The UART root now contains only those two
+subdirectories. Deployed the final demo and matched firmware/licenses into
+`balls`, with report counter40 and a short path-correct readme. All deployed
+files and moved originals were independently hashed after sync. No firmware
+flashing or board execution occurred; no remount/eject was attempted.
+
+Archive/receipt: `build/uart0-balls/card-deploy001/`. Before archive SHA256:
+5894142445b3c05f0ffc1a183af3e1757bcc4675a14156a624d1559453b52588.
+The card's autoexec was changed externally during deployment to CD into balls;
+our deployment did not edit it. Both original and final versions are retained.
+BD-006 remains open for the Author's physical run and returned-report analysis.
+
+## Console8 return — R0040
+
+Author returned an interactive24-ball bitmap run. All511reported scene hashes
+matched host reference simulation and the application ended PASS. Matched
+active-window performance improved about28% without ball collisions and35%
+with them; direct callbacks showed no convincing advantage over foreground
+completion collection. [Hardware analysis and limits](hardware-R0040.md).
+Circle mode and the automated matrix remain unrun in this return.
+
+## Continuous interaction correction — BD-007
+
+Author reported that repeated stops and resetting rates made the demo difficult
+to explore. The original live mode did retain selected options, but it saved SD
+logs, closed/reopened transmission and cleared statistics every12frames. It
+also reseeded the scene on any control change. That behaviour is superseded.
+
+Interactive operation now has no frame/scenario timeout and no periodic SD
+writes. Rolling eight-frame rates stay visible. A selected scenario runs until
+a user action; changing output/transport/collision mode or count preserves the
+surviving ball state. Only R restarts. Option changes and Q drain accepted bytes
+and save reports. Raw storage is a128-record RAM ring with explicit total and
+overwrite counters, not a reason to stop animation. Automated quick/sweep runs
+remain finite and explicitly selected. Version2 records scenario setup, frame
+ordinal and scene step for independent host replay. No firmware change.
+
+Continuous build790222e035a1fed1 compiles with the same Oryx AgonDev toolchain.
+The real C application loop was exercised with mocked MOS I/O under ASan/UBSan:
+187frames,9user-directed scenarios,140frames in one scenario, no periodic disk
+writes, and12old raw records overwritten while continuing normally. Host replay
+independently verifies all175retained frames, configuration/scene continuity
+and confirmation tokens. This tests application control flow, not eZ80/MOS/VDP
+execution. [Readiness](continuous-readiness.json) records the binary identity.
+The finite end-to-end emulator regression is prepared and first in the FIFO
+behind Wolf3D's active human review; requestdb18783ba736. No takeover or emulator
+run on Pi. The updated appliance is workspace-only; the card still has the
+previously tested build. Deployment waits for the end-to-end check.
+
+Author explicitly requested deployment before the queued emulator check.
+Continuous build790222e035a1fed1 is now on AGONC8 at `/test/mos-uart0/balls`.
+Only test.bin/readme.txt and the checksum manifest changed. All prior reports,
+journal and next-counter41 are preserved; firmware is unchanged. Before archive
+and verified deployment receipt are in `build/uart0-balls/card-deploy002/` on
+both machines. No flashing, remount or eject. End-to-end emulator check remains
+pending; the on-card readme states that limitation.
+
+## Continuous Console8 return — R0041
+
+Continuous build790222e035a1fed1 ended PASS after1,530frames/36scenarios, both
+output strategies, all transports and24..76balls. Independent replay verifies
+all1,528retained raw records; bounded retention replaced two older records as
+intended. Scene continuity survives all35option/count changes. The old automatic
+stops are gone. [Hardware findings and performance](hardware-R0041.md).
+The redundant queued emulator check was withdrawn after this physical return.

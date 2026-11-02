@@ -1,0 +1,130 @@
+{
+  "build": "790222e035a1fed1",
+  "test_sha256": "2130f0bd059c63fa19ff6144289883315f808c241bc76cbf547f45cb501ba8a9",
+  "compiled_on": "Oryx AgonDev",
+  "firmware_changed": false,
+  "core_host_test_frames": 480,
+  "application_controller_host_test": {
+    "passed": true,
+    "total_frames": 187,
+    "retained_frames_verified": 175,
+    "overwritten_raw_frames": 12,
+    "scenarios": 9,
+    "scene_continuity_verified": true,
+    "cases": [
+      {
+        "case": 0,
+        "mode": 0,
+        "output": 0,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 1,
+        "frames": 26,
+        "retained": 26,
+        "overwritten": 0,
+        "scenario_fps": 237.95097769209585
+      },
+      {
+        "case": 1,
+        "mode": 1,
+        "output": 0,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 244.89795918367346
+      },
+      {
+        "case": 2,
+        "mode": 2,
+        "output": 0,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      },
+      {
+        "case": 3,
+        "mode": 2,
+        "output": 1,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      },
+      {
+        "case": 4,
+        "mode": 2,
+        "output": 1,
+        "balls": 24,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 140,
+        "retained": 128,
+        "overwritten": 12,
+        "scenario_fps": 237.6806047268204
+      },
+      {
+        "case": 5,
+        "mode": 2,
+        "output": 1,
+        "balls": 28,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      },
+      {
+        "case": 6,
+        "mode": 2,
+        "output": 1,
+        "balls": 24,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      },
+      {
+        "case": 7,
+        "mode": 2,
+        "output": 1,
+        "balls": 24,
+        "collisions": 1,
+        "fresh": 1,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      },
+      {
+        "case": 8,
+        "mode": 0,
+        "output": 1,
+        "balls": 24,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 3,
+        "retained": 3,
+        "overwritten": 0,
+        "scenario_fps": 245.73378839590444
+      }
+    ],
+    "physical_qualification": false
+  },
+  "host_test_scope": "Real C application loop with mocked MOS I/O under ASan/UBSan; not CPU or firmware execution",
+  "emulator_end_to_end": "queued, not run",
+  "queue_request": "db18783ba736",
+  "SD_deployed": false
+}

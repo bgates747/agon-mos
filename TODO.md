@@ -291,28 +291,59 @@ separate from transport gains; synthetic AB-004 alone does not close this task.
 
 ## Application convenience and completion notification
 
-BD-001 [ ] Review the [bouncing-balls demo task](docs/tasks/BD-001/README.md),
+BD-001 [x] Review the [bouncing-balls demo task](docs/tasks/BD-001/README.md),
 then verify the public-command flip/confirmation path and timer ownership.
-Author requested TASK DOCUMENT ONLY, THEN PAUSE; BD-002..006 are not started.
+Author approved execution2026-11-02 after the plan checkpoint7218650.
+Source/command inspection confirms VDP-side swap waiting; ordered GP replies
+confirmed every completed frame in the initial finite emulator sweeps.
+PRT1/2 leave timer0 alone; only initially disabled timers are borrowed.
 
-BD-002 [ ] Implement the original C/AgonDev scene, deterministic wall/all-pairs
+BD-002 [x] Implement the original C/AgonDev scene, deterministic wall/all-pairs
 physics, local RGBA2222 renderer and responsive controls/HUD under BD-001.
 
-BD-003 [ ] Implement bitmap-upload/VDP-circle output crossed with standard,
+BD-003 [x] Implement bitmap-upload/VDP-circle output crossed with standard,
 async foreground-event and async direct-callback transport, preserving matched
 CPU work, source ownership and non-blocking flip.
 
-BD-004 [ ] Implement raw-PRT stage metrics/equivalent FPS, separate wall-time
+BD-004 [x] Implement raw-PRT stage metrics/equivalent FPS, separate wall-time
 FPS and verified presentation confirmation; distinguish overlap, drain, source
 release and measurement overhead as specified by BD-001.
 
-BD-005 [ ] Qualify deterministic output, timing/accounting and interaction;
+BD-005 [x] Qualify deterministic output, timing/accounting and interaction;
 prepare a finite matched sweep spanning transmit- and compute-bound workloads.
-Use the shared Oryx lease for emulator execution; no new recovery campaign.
+Completed original C build b57893f6a9450c82:192matched frames/24cases,
+1,902,240UART scene bytes independently compared,20ms real SDL taps through
+compiled VDP/MOS passed, normal return and PRT ratio checked. Evidence:
+docs/tasks/BD-001/evidence.json. Shared lease released; no hardware claim.
 
-BD-006 [ ] Package the demo, source, identified firmware and concise operating
+BD-006 [x] Package the demo, source, identified firmware and concise operating
 instructions for explicit review/deployment; archive returned physical results
 and interpret measured gains/limits without implying upstream release approval.
+Workspace appliance/ZIP are in build/uart0-balls/run007/. Authorized SD
+deployment completed to /test/mos-uart0/balls; old root files moved to callback.
+Console8 R0040 returned:511frames,24balls/bitmap, all transports and both
+collision settings; analysis archived in docs/tasks/BD-001/hardware-R0040.md.
+R0041 adds both output strategies/all transports with24..76balls:1,530frames,
+1,528retained records verified. Results: docs/tasks/BD-001/hardware-R0041.md.
+The automatic16/64-ball matrix was not run on hardware; interactive demo and
+application-trial readiness are established within the recorded scope.
+
+BD-007 [x] Replace disruptive twelve-frame interactive blocks with continuous,
+user-controlled scenarios, rolling eight-frame rates and bounded recent-frame
+logging only at option changes/quit. Preserve ball state across option/load
+changes; R explicitly restarts. Build790222e035a1fed1 in run008 compiles on Oryx. Host controller test
+passes187frames/9user-directed scenarios, preserving state and exercising
+raw-ring rollover with no periodic SD writes. ASan/UBSan and independent host
+replay pass. End-to-end normal interaction has now passed on Console8 in R0041; the
+redundant queued emulator requestdb18783ba736 was cancelled. Author explicitly requested deployment before emulator verification; revised
+binary deployed to /test/mos-uart0/balls, reports/counter41 and firmware
+preserved. Receipt: build/uart0-balls/card-deploy002/deployment.json.
+
+KI-001 [ ] Design opt-in keyboard event latching/queueing in MOS's existing
+receive handler that can coexist with async UART output. Preserve stock keyboard
+callbacks/default timing, account for EMOS space, and verify rapid queued taps.
+Author recommendation2026-11-02; demo key-state/event-counter sampling is an
+interim last-event recovery mechanism, not a guarantee to retain every event.
 
 UX-001 [x] Develop the completion-callback and opt-in queued-RST18 experiment.
 Implemented tentative ABI1.3, borrowed convenience writes, source-consumed

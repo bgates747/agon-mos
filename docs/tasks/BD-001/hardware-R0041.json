@@ -1,0 +1,2900 @@
+{
+  "collection": {
+    "UUID": "8658-1C23",
+    "files": {
+      "vdp-2.16.0.bin": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f",
+      "flash.bin": "480b476703b798cf8d93294cac42d77cad93f7747003b061520b86685c75eb57",
+      "CREDITS.txt": "b8edb70f8f0bbde603f3a5dfb748a970b5c54d3af16dd08d349fed19f0dee1bc",
+      "ESP-IDF-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "mos-stock.bin": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae",
+      "DEMO-LICENSE.txt": "0db98d06c58378ac21408c94149b1b675c44a8ebff8a32cb8fb875c9ed033bf3",
+      "vdp-test.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "runs.log": "d04b9395d709c7d5b3958679ad1a2ef31950405ab034dbe02c45b974e07b5290",
+      "SHA256SUMS": "611c3f88516d074eaffe31514a2aedaa924bf680d77f0b232d03dd15a1ffc416",
+      "readme.txt": "1f4119a5cbee2556b11652e18de9688ab82c5a8f2196eca65a7ee91c8652a5da",
+      "next.txt": "9e4c59bb9e5ca6ca840eb57555c3f45692474ff6c1379d3579eec60e18667cbe",
+      "VDP-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "mos-candidate.bin": "cb1d0f4e066395533a2f07c7454246fa3a1ed46134bf155b883bb8c6e8353128",
+      "test.bin": "2130f0bd059c63fa19ff6144289883315f808c241bc76cbf547f45cb501ba8a9",
+      "DIAGNOSTIC-VDP-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "FLASH-LICENSE.txt": "7f5a596f6c9f72cb9d38b53cdc33b84bfdc068baa705ff8b8f3faab41e9eff99",
+      "RX-FIX-CREDITS.txt": "b236bf837922ae619bcb7d124c5fce2b204e3f32c234887641bbd52169ca744d",
+      "mos-candidate.map": "66494f3dcd19fb1f71bf6bc62c8ab690316705ce2123037a8c1db051555f2370",
+      "MOS-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "R0040.log": "fc1c5354f9c3e9eae41de2b5b908775e0756dfd625b34ea72bab9ea169e456df",
+      "R0041.log": "1fce4503a1f94fbb013f185dab253f29535f06d12adbc91c33c94824af517490"
+    },
+    "archive_sha256": "052f45545395f831206d30c196b6c663ac23edb38390ad14124dc37334920c7d",
+    "static_file_matches": {
+      "vdp-2.16.0.bin": true,
+      "flash.bin": true,
+      "CREDITS.txt": true,
+      "ESP-IDF-LICENSE": true,
+      "mos-stock.bin": true,
+      "DEMO-LICENSE.txt": true,
+      "vdp-test.bin": true,
+      "VDP-LICENSE.txt": true,
+      "mos-candidate.bin": true,
+      "test.bin": true,
+      "DIAGNOSTIC-VDP-LICENSE.txt": true,
+      "FLASH-LICENSE.txt": true,
+      "RX-FIX-CREDITS.txt": true,
+      "mos-candidate.map": true,
+      "MOS-LICENSE.txt": true
+    },
+    "SD_written": false
+  },
+  "replay": {
+    "passed": true,
+    "total_frames": 1530,
+    "retained_frames_verified": 1528,
+    "overwritten_raw_frames": 2,
+    "scenarios": 36,
+    "scene_continuity_verified": true,
+    "cases": [
+      {
+        "case": 0,
+        "mode": 0,
+        "output": 0,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 1,
+        "frames": 25,
+        "retained": 25,
+        "overwritten": 0,
+        "scenario_fps": 3.048758036128519
+      },
+      {
+        "case": 1,
+        "mode": 0,
+        "output": 1,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 75,
+        "retained": 75,
+        "overwritten": 0,
+        "scenario_fps": 6.221848679810361
+      },
+      {
+        "case": 2,
+        "mode": 1,
+        "output": 1,
+        "balls": 24,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 130,
+        "retained": 128,
+        "overwritten": 2,
+        "scenario_fps": 8.222199224172694
+      },
+      {
+        "case": 3,
+        "mode": 1,
+        "output": 1,
+        "balls": 24,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 61,
+        "retained": 61,
+        "overwritten": 0,
+        "scenario_fps": 7.102123113498548
+      },
+      {
+        "case": 4,
+        "mode": 1,
+        "output": 1,
+        "balls": 28,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 18,
+        "retained": 18,
+        "overwritten": 0,
+        "scenario_fps": 6.765923707162364
+      },
+      {
+        "case": 5,
+        "mode": 1,
+        "output": 1,
+        "balls": 32,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 32,
+        "retained": 32,
+        "overwritten": 0,
+        "scenario_fps": 6.22367185113899
+      },
+      {
+        "case": 6,
+        "mode": 1,
+        "output": 1,
+        "balls": 36,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 34,
+        "retained": 34,
+        "overwritten": 0,
+        "scenario_fps": 5.755352552813603
+      },
+      {
+        "case": 7,
+        "mode": 1,
+        "output": 1,
+        "balls": 40,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 32,
+        "retained": 32,
+        "overwritten": 0,
+        "scenario_fps": 5.3421709989365125
+      },
+      {
+        "case": 8,
+        "mode": 1,
+        "output": 1,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 50,
+        "retained": 50,
+        "overwritten": 0,
+        "scenario_fps": 4.909648823729969
+      },
+      {
+        "case": 9,
+        "mode": 0,
+        "output": 1,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 85,
+        "retained": 85,
+        "overwritten": 0,
+        "scenario_fps": 4.019224483372275
+      },
+      {
+        "case": 10,
+        "mode": 1,
+        "output": 1,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 33,
+        "retained": 33,
+        "overwritten": 0,
+        "scenario_fps": 4.946479622365534
+      },
+      {
+        "case": 11,
+        "mode": 2,
+        "output": 1,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 80,
+        "retained": 80,
+        "overwritten": 0,
+        "scenario_fps": 4.890588751645871
+      },
+      {
+        "case": 12,
+        "mode": 0,
+        "output": 1,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 20,
+        "retained": 20,
+        "overwritten": 0,
+        "scenario_fps": 4.138459573381019
+      },
+      {
+        "case": 13,
+        "mode": 0,
+        "output": 0,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 44,
+        "retained": 44,
+        "overwritten": 0,
+        "scenario_fps": 2.435508162657152
+      },
+      {
+        "case": 14,
+        "mode": 1,
+        "output": 0,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 51,
+        "retained": 51,
+        "overwritten": 0,
+        "scenario_fps": 4.002227997672174
+      },
+      {
+        "case": 15,
+        "mode": 0,
+        "output": 0,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 16,
+        "retained": 16,
+        "overwritten": 0,
+        "scenario_fps": 2.4937347388629263
+      },
+      {
+        "case": 16,
+        "mode": 1,
+        "output": 0,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 20,
+        "retained": 20,
+        "overwritten": 0,
+        "scenario_fps": 3.992876904780977
+      },
+      {
+        "case": 17,
+        "mode": 2,
+        "output": 0,
+        "balls": 44,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 33,
+        "retained": 33,
+        "overwritten": 0,
+        "scenario_fps": 4.007692183384237
+      },
+      {
+        "case": 18,
+        "mode": 2,
+        "output": 0,
+        "balls": 44,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 78,
+        "retained": 78,
+        "overwritten": 0,
+        "scenario_fps": 4.007681389329548
+      },
+      {
+        "case": 19,
+        "mode": 2,
+        "output": 1,
+        "balls": 44,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 68,
+        "retained": 68,
+        "overwritten": 0,
+        "scenario_fps": 7.293623604818212
+      },
+      {
+        "case": 20,
+        "mode": 2,
+        "output": 1,
+        "balls": 48,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 14,
+        "retained": 14,
+        "overwritten": 0,
+        "scenario_fps": 7.389541745779238
+      },
+      {
+        "case": 21,
+        "mode": 2,
+        "output": 1,
+        "balls": 52,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 17,
+        "retained": 17,
+        "overwritten": 0,
+        "scenario_fps": 7.14162908494571
+      },
+      {
+        "case": 22,
+        "mode": 2,
+        "output": 1,
+        "balls": 56,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 17,
+        "retained": 17,
+        "overwritten": 0,
+        "scenario_fps": 6.996042053986124
+      },
+      {
+        "case": 23,
+        "mode": 2,
+        "output": 1,
+        "balls": 60,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 20,
+        "retained": 20,
+        "overwritten": 0,
+        "scenario_fps": 6.826226192482724
+      },
+      {
+        "case": 24,
+        "mode": 2,
+        "output": 1,
+        "balls": 64,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 16,
+        "retained": 16,
+        "overwritten": 0,
+        "scenario_fps": 6.724124129466072
+      },
+      {
+        "case": 25,
+        "mode": 2,
+        "output": 1,
+        "balls": 68,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 14,
+        "retained": 14,
+        "overwritten": 0,
+        "scenario_fps": 6.632786230827103
+      },
+      {
+        "case": 26,
+        "mode": 2,
+        "output": 1,
+        "balls": 72,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 34,
+        "retained": 34,
+        "overwritten": 0,
+        "scenario_fps": 6.340522377585813
+      },
+      {
+        "case": 27,
+        "mode": 2,
+        "output": 1,
+        "balls": 76,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 84,
+        "retained": 84,
+        "overwritten": 0,
+        "scenario_fps": 6.169130731445326
+      },
+      {
+        "case": 28,
+        "mode": 1,
+        "output": 1,
+        "balls": 76,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 28,
+        "retained": 28,
+        "overwritten": 0,
+        "scenario_fps": 6.2508139080609455
+      },
+      {
+        "case": 29,
+        "mode": 0,
+        "output": 1,
+        "balls": 76,
+        "collisions": 0,
+        "fresh": 0,
+        "frames": 88,
+        "retained": 88,
+        "overwritten": 0,
+        "scenario_fps": 4.621743991807452
+      },
+      {
+        "case": 30,
+        "mode": 0,
+        "output": 1,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 32,
+        "retained": 32,
+        "overwritten": 0,
+        "scenario_fps": 2.438113126191543
+      },
+      {
+        "case": 31,
+        "mode": 1,
+        "output": 1,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 36,
+        "retained": 36,
+        "overwritten": 0,
+        "scenario_fps": 2.786593389581237
+      },
+      {
+        "case": 32,
+        "mode": 2,
+        "output": 1,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 33,
+        "retained": 33,
+        "overwritten": 0,
+        "scenario_fps": 2.791748332393161
+      },
+      {
+        "case": 33,
+        "mode": 2,
+        "output": 0,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 22,
+        "retained": 22,
+        "overwritten": 0,
+        "scenario_fps": 2.5030766984418347
+      },
+      {
+        "case": 34,
+        "mode": 1,
+        "output": 0,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 22,
+        "retained": 22,
+        "overwritten": 0,
+        "scenario_fps": 2.5026025328423134
+      },
+      {
+        "case": 35,
+        "mode": 0,
+        "output": 0,
+        "balls": 76,
+        "collisions": 1,
+        "fresh": 0,
+        "frames": 68,
+        "retained": 68,
+        "overwritten": 0,
+        "scenario_fps": 1.7617624149195177
+      }
+    ],
+    "hardware_report": true,
+    "full_hardware_matrix_qualified": false
+  },
+  "performance": {
+    "run": 41,
+    "hardware_observations": true,
+    "frames": 1530,
+    "retained_frames_verified": 1528,
+    "scenarios": 36,
+    "clock_ratio": 15.999583853516437,
+    "per_scenario_clock_ratio_range": [
+      15.99992048293365,
+      16.000026256091413
+    ],
+    "configuration_summaries": [
+      {
+        "balls": 24,
+        "collisions": 0,
+        "output": "bitmap",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          0
+        ],
+        "observed_frames": 25,
+        "retained_measured_frames": 24,
+        "confirmed_fps": 3.048758036128519,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 61023.940851148436,
+        "stages": {
+          "physics": {
+            "mean_ticks": 1295.7916666666667,
+            "mean_ms": 1.1248191550925926,
+            "min_ms": 1.1145833333333333,
+            "max_ms": 1.2152777777777777,
+            "equivalent_fps": 889.0318016656483
+          },
+          "collision": {
+            "mean_ticks": 1075.875,
+            "mean_ms": 0.9339192708333334,
+            "min_ms": 0.9236111111111112,
+            "max_ms": 1.0234375,
+            "equivalent_fps": 1070.756361101429
+          },
+          "draw": {
+            "mean_ticks": 19853.291666666668,
+            "mean_ms": 17.233760127314817,
+            "min_ms": 17.164930555555557,
+            "max_ms": 17.29079861111111,
+            "equivalent_fps": 58.02564226335263
+          },
+          "checksum": {
+            "mean_ticks": 78867.125,
+            "mean_ms": 68.46104600694444,
+            "min_ms": 68.37934027777777,
+            "max_ms": 68.54861111111111,
+            "equivalent_fps": 14.606846642374753
+          },
+          "build": {
+            "mean_ticks": 30516.083333333332,
+            "mean_ms": 26.489655671296294,
+            "min_ms": 16.98003472222222,
+            "max_ms": 27.453125,
+            "equivalent_fps": 37.75058507399104
+          },
+          "submit": {
+            "mean_ticks": 247114.41666666666,
+            "mean_ms": 214.50904224537035,
+            "min_ms": 208.16493055555554,
+            "max_ms": 222.61892361111111,
+            "equivalent_fps": 4.661808143528655
+          },
+          "release": {
+            "mean_ticks": 247090.66666666666,
+            "mean_ms": 214.48842592592592,
+            "min_ms": 208.14496527777777,
+            "max_ms": 222.59809027777777,
+            "equivalent_fps": 4.662256229831964
+          },
+          "confirm": {
+            "mean_ticks": 376646.5,
+            "mean_ms": 326.95008680555554,
+            "min_ms": 235.0234375,
+            "max_ms": 339.5364583333333,
+            "equivalent_fps": 3.058570834987183
+          }
+        },
+        "mean_frame_pre_submit_ms": 115.84270109953704
+      },
+      {
+        "balls": 24,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          1
+        ],
+        "observed_frames": 75,
+        "retained_measured_frames": 74,
+        "confirmed_fps": 6.221848679810361,
+        "bytes_per_frame": 1157,
+        "bytes_per_second": 7198.678922540588,
+        "stages": {
+          "physics": {
+            "mean_ticks": 1299.554054054054,
+            "mean_ms": 1.1280851163663663,
+            "min_ms": 1.1145833333333333,
+            "max_ms": 1.2222222222222223,
+            "equivalent_fps": 886.4579325548266
+          },
+          "collision": {
+            "mean_ticks": 1076.4054054054054,
+            "mean_ms": 0.9343796921921922,
+            "min_ms": 0.9236111111111112,
+            "max_ms": 1.0251736111111112,
+            "equivalent_fps": 1070.2287392974615
+          },
+          "draw": {
+            "mean_ticks": 19861.45945945946,
+            "mean_ms": 17.240850225225227,
+            "min_ms": 17.164930555555557,
+            "max_ms": 17.303819444444443,
+            "equivalent_fps": 58.00177989696193
+          },
+          "checksum": {
+            "mean_ticks": 78861.52702702703,
+            "mean_ms": 68.4561866554054,
+            "min_ms": 68.35069444444444,
+            "max_ms": 68.54861111111111,
+            "equivalent_fps": 14.607883507064127
+          },
+          "build": {
+            "mean_ticks": 32779.18918918919,
+            "mean_ms": 28.45415728228228,
+            "min_ms": 18.38715277777778,
+            "max_ms": 28.828125,
+            "equivalent_fps": 35.144249400163254
+          },
+          "submit": {
+            "mean_ticks": 49776.94594594595,
+            "mean_ms": 43.209154466966964,
+            "min_ms": 36.62065972222222,
+            "max_ms": 49.140625,
+            "equivalent_fps": 23.1432438874612
+          },
+          "release": {
+            "mean_ticks": 49753.33783783784,
+            "mean_ms": 43.18866131756757,
+            "min_ms": 36.599826388888886,
+            "max_ms": 49.119791666666664,
+            "equivalent_fps": 23.154225426136016
+          },
+          "confirm": {
+            "mean_ticks": 184313.8108108108,
+            "mean_ms": 159.99462743993993,
+            "min_ms": 67.16579861111111,
+            "max_ms": 167.39496527777777,
+            "equivalent_fps": 6.2502098726745565
+          }
+        },
+        "mean_frame_pre_submit_ms": 117.82593140015015
+      },
+      {
+        "balls": 24,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          2
+        ],
+        "observed_frames": 130,
+        "retained_measured_frames": 128,
+        "confirmed_fps": 8.222199224172694,
+        "bytes_per_frame": 1157,
+        "bytes_per_second": 9513.084502367807,
+        "stages": {
+          "physics": {
+            "mean_ticks": 1756.9921875,
+            "mean_ms": 1.5251668294270833,
+            "min_ms": 1.4609375,
+            "max_ms": 1.6475694444444444,
+            "equivalent_fps": 655.6659774561462
+          },
+          "collision": {
+            "mean_ticks": 1458.8125,
+            "mean_ms": 1.2663302951388888,
+            "min_ms": 1.1857638888888888,
+            "max_ms": 1.3663194444444444,
+            "equivalent_fps": 789.6833897433701
+          },
+          "draw": {
+            "mean_ticks": 21478.0546875,
+            "mean_ms": 18.644144694010418,
+            "min_ms": 18.31857638888889,
+            "max_ms": 18.98003472222222,
+            "equivalent_fps": 53.636142414259325
+          },
+          "checksum": {
+            "mean_ticks": 79843,
+            "mean_ms": 69.30815972222223,
+            "min_ms": 68.96788194444444,
+            "max_ms": 69.56336805555556,
+            "equivalent_fps": 14.428315569304761
+          },
+          "build": {
+            "mean_ticks": 33094.984375,
+            "mean_ms": 28.728285047743057,
+            "min_ms": 18.307291666666668,
+            "max_ms": 28.914930555555557,
+            "equivalent_fps": 34.808899951323816
+          },
+          "submit": {
+            "mean_ticks": 148.28125,
+            "mean_ms": 0.1287163628472222,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1371527777777778,
+            "equivalent_fps": 7769.020021074815
+          },
+          "release": {
+            "mean_ticks": 139096.3046875,
+            "mean_ms": 120.74332004123264,
+            "min_ms": 40.22309027777778,
+            "max_ms": 121.57204861111111,
+            "equivalent_fps": 8.282031665673182
+          },
+          "confirm": {
+            "mean_ticks": 139375.2890625,
+            "mean_ms": 120.98549397786458,
+            "min_ms": 62.118923611111114,
+            "max_ms": 121.65538194444444,
+            "equivalent_fps": 8.265453709541074
+          }
+        },
+        "mean_frame_pre_submit_ms": 120.86465115017361
+      },
+      {
+        "balls": 24,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          3
+        ],
+        "observed_frames": 61,
+        "retained_measured_frames": 60,
+        "confirmed_fps": 7.102123113498548,
+        "bytes_per_frame": 1157,
+        "bytes_per_second": 8217.15644231782,
+        "stages": {
+          "physics": {
+            "mean_ticks": 26678.766666666666,
+            "mean_ms": 23.15865162037037,
+            "min_ms": 21.41579861111111,
+            "max_ms": 23.750868055555557,
+            "equivalent_fps": 43.18040689037349
+          },
+          "collision": {
+            "mean_ticks": 26384.816666666666,
+            "mean_ms": 22.903486689814812,
+            "min_ms": 21.223958333333332,
+            "max_ms": 23.497395833333332,
+            "equivalent_fps": 43.66147449701186
+          },
+          "draw": {
+            "mean_ticks": 20569.383333333335,
+            "mean_ms": 17.855367476851853,
+            "min_ms": 17.164930555555557,
+            "max_ms": 18.19097222222222,
+            "equivalent_fps": 56.0055681461849
+          },
+          "checksum": {
+            "mean_ticks": 78949.21666666666,
+            "mean_ms": 68.53230613425926,
+            "min_ms": 68.40190972222223,
+            "max_ms": 68.74305555555556,
+            "equivalent_fps": 14.591658393064066
+          },
+          "build": {
+            "mean_ticks": 32647.433333333334,
+            "mean_ms": 28.33978587962963,
+            "min_ms": 18.31857638888889,
+            "max_ms": 28.84982638888889,
+            "equivalent_fps": 35.28608170320689
+          },
+          "submit": {
+            "mean_ticks": 150.08333333333334,
+            "mean_ms": 0.1302806712962963,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7675.735702387562
+          },
+          "release": {
+            "mean_ticks": 160726.98333333334,
+            "mean_ms": 139.51995081018518,
+            "min_ms": 41.69184027777778,
+            "max_ms": 141.79427083333334,
+            "equivalent_fps": 7.1674337196440465
+          },
+          "confirm": {
+            "mean_ticks": 161304,
+            "mean_ms": 140.02083333333334,
+            "min_ms": 67.45572916666667,
+            "max_ms": 141.87934027777777,
+            "equivalent_fps": 7.141794375836929
+          }
+        },
+        "mean_frame_pre_submit_ms": 140.5236400462963
+      },
+      {
+        "balls": 28,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          4
+        ],
+        "observed_frames": 18,
+        "retained_measured_frames": 17,
+        "confirmed_fps": 6.765923707162364,
+        "bytes_per_frame": 1217,
+        "bytes_per_second": 8234.129151616597,
+        "stages": {
+          "physics": {
+            "mean_ticks": 35633.58823529412,
+            "mean_ms": 30.931934232026144,
+            "min_ms": 28.578125,
+            "max_ms": 31.56684027777778,
+            "equivalent_fps": 32.329048435795045
+          },
+          "collision": {
+            "mean_ticks": 35317.41176470588,
+            "mean_ms": 30.657475490196077,
+            "min_ms": 28.36371527777778,
+            "max_ms": 31.291666666666668,
+            "equivalent_fps": 32.61847180860632
+          },
+          "draw": {
+            "mean_ticks": 22889.529411764706,
+            "mean_ms": 19.86938316993464,
+            "min_ms": 19.46701388888889,
+            "max_ms": 20.140625,
+            "equivalent_fps": 50.32868868889449
+          },
+          "checksum": {
+            "mean_ticks": 78910.64705882352,
+            "mean_ms": 68.49882557189542,
+            "min_ms": 68.40190972222223,
+            "max_ms": 68.61371527777777,
+            "equivalent_fps": 14.598790441310761
+          },
+          "build": {
+            "mean_ticks": 32079.41176470588,
+            "mean_ms": 27.846711601307188,
+            "min_ms": 18.6484375,
+            "max_ms": 29.155381944444443,
+            "equivalent_fps": 35.91088291922619
+          },
+          "submit": {
+            "mean_ticks": 148.47058823529412,
+            "mean_ms": 0.12888071895424835,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.13368055555555555,
+            "equivalent_fps": 7759.112519809826
+          },
+          "release": {
+            "mean_ticks": 167425.76470588235,
+            "mean_ms": 145.33486519607843,
+            "min_ms": 50.182291666666664,
+            "max_ms": 152.65451388888889,
+            "equivalent_fps": 6.880661420443406
+          },
+          "confirm": {
+            "mean_ticks": 169205.17647058822,
+            "mean_ms": 146.87949346405227,
+            "min_ms": 75.29600694444444,
+            "max_ms": 152.72482638888889,
+            "equivalent_fps": 6.808302346472504
+          }
+        },
+        "mean_frame_pre_submit_ms": 150.02262050653596
+      },
+      {
+        "balls": 32,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          5
+        ],
+        "observed_frames": 32,
+        "retained_measured_frames": 31,
+        "confirmed_fps": 6.22367185113899,
+        "bytes_per_frame": 1277,
+        "bytes_per_second": 7947.62895390449,
+        "stages": {
+          "physics": {
+            "mean_ticks": 46116.290322580644,
+            "mean_ms": 40.03150201612903,
+            "min_ms": 37.63194444444444,
+            "max_ms": 41.02430555555556,
+            "equivalent_fps": 24.980326733608234
+          },
+          "collision": {
+            "mean_ticks": 45769.16129032258,
+            "mean_ms": 39.7301747311828,
+            "min_ms": 37.39496527777778,
+            "max_ms": 40.72569444444444,
+            "equivalent_fps": 25.16978610756362
+          },
+          "draw": {
+            "mean_ticks": 25056.483870967742,
+            "mean_ms": 21.75042002688172,
+            "min_ms": 21.66059027777778,
+            "max_ms": 22.07378472222222,
+            "equivalent_fps": 45.9761236226281
+          },
+          "checksum": {
+            "mean_ticks": 78888.2258064516,
+            "mean_ms": 68.47936267921146,
+            "min_ms": 68.35069444444444,
+            "max_ms": 68.50694444444444,
+            "equivalent_fps": 14.602939643063788
+          },
+          "build": {
+            "mean_ticks": 32926.83870967742,
+            "mean_ms": 28.5823252688172,
+            "min_ms": 18.95659722222222,
+            "max_ms": 29.383680555555557,
+            "equivalent_fps": 34.98665663465043
+          },
+          "submit": {
+            "mean_ticks": 148.3548387096774,
+            "mean_ms": 0.12878024193548387,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1345486111111111,
+            "equivalent_fps": 7765.166340508807
+          },
+          "release": {
+            "mean_ticks": 183252.38709677418,
+            "mean_ms": 159.07325268817203,
+            "min_ms": 43.395833333333336,
+            "max_ms": 164.19965277777777,
+            "equivalent_fps": 6.286411971221077
+          },
+          "confirm": {
+            "mean_ticks": 184123.4193548387,
+            "mean_ms": 159.82935707885304,
+            "min_ms": 64.59635416666667,
+            "max_ms": 164.26996527777777,
+            "equivalent_fps": 6.256672855829874
+          }
+        },
+        "mean_frame_pre_submit_ms": 162.06434811827958
+      },
+      {
+        "balls": 36,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          6
+        ],
+        "observed_frames": 34,
+        "retained_measured_frames": 33,
+        "confirmed_fps": 5.755352552813603,
+        "bytes_per_frame": 1337,
+        "bytes_per_second": 7694.906363111787,
+        "stages": {
+          "physics": {
+            "mean_ticks": 57680.09090909091,
+            "mean_ms": 50.06952335858586,
+            "min_ms": 47.03559027777778,
+            "max_ms": 50.95225694444444,
+            "equivalent_fps": 19.972229270852868
+          },
+          "collision": {
+            "mean_ticks": 57304.030303030304,
+            "mean_ms": 49.74308186026936,
+            "min_ms": 46.776041666666664,
+            "max_ms": 50.631076388888886,
+            "equivalent_fps": 20.103298038691022
+          },
+          "draw": {
+            "mean_ticks": 27729.030303030304,
+            "mean_ms": 24.070338804713806,
+            "min_ms": 23.984375,
+            "max_ms": 24.25954861111111,
+            "equivalent_fps": 41.544907535915755
+          },
+          "checksum": {
+            "mean_ticks": 78854.09090909091,
+            "mean_ms": 68.4497316919192,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.50607638888889,
+            "equivalent_fps": 14.609261063298728
+          },
+          "build": {
+            "mean_ticks": 33383.78787878788,
+            "mean_ms": 28.978982533670035,
+            "min_ms": 19.25,
+            "max_ms": 29.690104166666668,
+            "equivalent_fps": 34.507767787848394
+          },
+          "submit": {
+            "mean_ticks": 151.42424242424244,
+            "mean_ms": 0.1314446548821549,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7607.764658795277
+          },
+          "release": {
+            "mean_ticks": 198179.39393939395,
+            "mean_ms": 172.0307239057239,
+            "min_ms": 46.86024305555556,
+            "max_ms": 177.06597222222223,
+            "equivalent_fps": 5.8129151426928765
+          },
+          "confirm": {
+            "mean_ticks": 199204.66666666666,
+            "mean_ms": 172.92071759259258,
+            "min_ms": 73.94965277777777,
+            "max_ms": 177.13715277777777,
+            "equivalent_fps": 5.782997051608564
+          }
+        },
+        "mean_frame_pre_submit_ms": 175.07667824074073
+      },
+      {
+        "balls": 40,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          7
+        ],
+        "observed_frames": 32,
+        "retained_measured_frames": 31,
+        "confirmed_fps": 5.3421709989365125,
+        "bytes_per_frame": 1397,
+        "bytes_per_second": 7463.0128855143075,
+        "stages": {
+          "physics": {
+            "mean_ticks": 70439.87096774194,
+            "mean_ms": 61.145721326164875,
+            "min_ms": 58.032986111111114,
+            "max_ms": 61.83680555555556,
+            "equivalent_fps": 16.354374080661795
+          },
+          "collision": {
+            "mean_ticks": 70041.7741935484,
+            "mean_ms": 60.80015120967742,
+            "min_ms": 57.75086805555556,
+            "max_ms": 61.4921875,
+            "equivalent_fps": 16.447327516528155
+          },
+          "draw": {
+            "mean_ticks": 30444.8064516129,
+            "mean_ms": 26.427783378136198,
+            "min_ms": 26.359375,
+            "max_ms": 26.4765625,
+            "equivalent_fps": 37.83896612484359
+          },
+          "checksum": {
+            "mean_ticks": 78835.16129032258,
+            "mean_ms": 68.43329973118279,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.45486111111111,
+            "equivalent_fps": 14.61276898714754
+          },
+          "build": {
+            "mean_ticks": 33661.903225806454,
+            "mean_ms": 29.22040210573477,
+            "min_ms": 19.485243055555557,
+            "max_ms": 30.03732638888889,
+            "equivalent_fps": 34.22266389016395
+          },
+          "submit": {
+            "mean_ticks": 151.83870967741936,
+            "mean_ms": 0.13180443548387097,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7586.998087954111
+          },
+          "release": {
+            "mean_ticks": 213644.16129032258,
+            "mean_ms": 185.45500112007167,
+            "min_ms": 51.34461805555556,
+            "max_ms": 190.79774305555554,
+            "equivalent_fps": 5.3921436141404255
+          },
+          "confirm": {
+            "mean_ticks": 214672.12903225806,
+            "mean_ms": 186.34733422939067,
+            "min_ms": 76.86631944444444,
+            "max_ms": 190.86892361111111,
+            "equivalent_fps": 5.366323076932324
+          }
+        },
+        "mean_frame_pre_submit_ms": 189.0316420250896
+      },
+      {
+        "balls": 44,
+        "collisions": 0,
+        "output": "bitmap",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          18
+        ],
+        "observed_frames": 78,
+        "retained_measured_frames": 77,
+        "confirmed_fps": 4.007681389329548,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 80217.75068882023,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3052.5324675324673,
+            "mean_ms": 2.6497677669552666,
+            "min_ms": 2.0746527777777777,
+            "max_ms": 2.7803819444444446,
+            "equivalent_fps": 377.3915633176626
+          },
+          "collision": {
+            "mean_ticks": 2568.090909090909,
+            "mean_ms": 2.229245580808081,
+            "min_ms": 1.7682291666666667,
+            "max_ms": 2.3628472222222223,
+            "equivalent_fps": 448.5822506991398
+          },
+          "draw": {
+            "mean_ticks": 44343.246753246756,
+            "mean_ms": 38.492401695526695,
+            "min_ms": 28.77777777777778,
+            "max_ms": 38.806423611111114,
+            "equivalent_fps": 25.979153182229535
+          },
+          "checksum": {
+            "mean_ticks": 104982.11688311688,
+            "mean_ms": 91.1303097943723,
+            "min_ms": 68.45225694444444,
+            "max_ms": 91.57378472222223,
+            "equivalent_fps": 10.973297492968191
+          },
+          "build": {
+            "mean_ticks": 41695.38961038961,
+            "mean_ms": 36.193914592352094,
+            "min_ms": 16.993055555555557,
+            "max_ms": 36.829861111111114,
+            "equivalent_fps": 27.62895396264497
+          },
+          "submit": {
+            "mean_ticks": 152.54545454545453,
+            "mean_ms": 0.13241792929292928,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7551.847437425507
+          },
+          "release": {
+            "mean_ticks": 262495.5974025974,
+            "mean_ms": 227.86076163419915,
+            "min_ms": 221.4765625,
+            "max_ms": 235.15017361111111,
+            "equivalent_fps": 4.388645034046582
+          },
+          "confirm": {
+            "mean_ticks": 286661.1038961039,
+            "mean_ms": 248.8377637987013,
+            "min_ms": 245.46701388888889,
+            "max_ms": 248.9765625,
+            "equivalent_fps": 4.018682633753917
+          }
+        },
+        "mean_frame_pre_submit_ms": 246.66314935064935
+      },
+      {
+        "balls": 44,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          19
+        ],
+        "observed_frames": 68,
+        "retained_measured_frames": 67,
+        "confirmed_fps": 7.293623604818212,
+        "bytes_per_frame": 1457,
+        "bytes_per_second": 10626.809592220134,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3057.0746268656717,
+            "mean_ms": 2.6537106135986734,
+            "min_ms": 1.9748263888888888,
+            "max_ms": 2.779513888888889,
+            "equivalent_fps": 376.83084013592156
+          },
+          "collision": {
+            "mean_ticks": 2570.820895522388,
+            "mean_ms": 2.2316153606965177,
+            "min_ms": 1.6692708333333333,
+            "max_ms": 2.3628472222222223,
+            "equivalent_fps": 448.10589567186275
+          },
+          "draw": {
+            "mean_ticks": 35672.31343283582,
+            "mean_ms": 30.965549854892206,
+            "min_ms": 28.86545138888889,
+            "max_ms": 31.413194444444443,
+            "equivalent_fps": 32.293952624322976
+          },
+          "checksum": {
+            "mean_ticks": 79616.58208955223,
+            "mean_ms": 69.11161639718075,
+            "min_ms": 68.46006944444444,
+            "max_ms": 69.46614583333333,
+            "equivalent_fps": 14.469347587720327
+          },
+          "build": {
+            "mean_ticks": 34253.65671641791,
+            "mean_ms": 29.734077010779433,
+            "min_ms": 19.407118055555557,
+            "max_ms": 30.18576388888889,
+            "equivalent_fps": 33.631445820143405
+          },
+          "submit": {
+            "mean_ticks": 151.8507462686567,
+            "mean_ms": 0.1318148839137645,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7586.396697464124
+          },
+          "release": {
+            "mean_ticks": 56846.59701492537,
+            "mean_ms": 49.34600435323383,
+            "min_ms": 42.87934027777778,
+            "max_ms": 55.393229166666664,
+            "equivalent_fps": 20.26506528961683
+          },
+          "confirm": {
+            "mean_ticks": 157049.53731343284,
+            "mean_ms": 136.3277233623549,
+            "min_ms": 74.04427083333333,
+            "max_ms": 137.63541666666666,
+            "equivalent_fps": 7.335265163506257
+          }
+        },
+        "mean_frame_pre_submit_ms": 136.54613650497512
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          13,
+          15
+        ],
+        "observed_frames": 60,
+        "retained_measured_frames": 58,
+        "confirmed_fps": 2.4498083960620787,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 49035.36485557857,
+        "stages": {
+          "physics": {
+            "mean_ticks": 80582.89655172414,
+            "mean_ms": 69.95043103448276,
+            "min_ms": 69.61631944444444,
+            "max_ms": 70.83420138888889,
+            "equivalent_fps": 14.295837569707611
+          },
+          "collision": {
+            "mean_ticks": 80226.37931034483,
+            "mean_ms": 69.64095426245211,
+            "min_ms": 69.24305555555556,
+            "max_ms": 70.52864583333333,
+            "equivalent_fps": 14.35936670585176
+          },
+          "draw": {
+            "mean_ticks": 33252.18965517241,
+            "mean_ms": 28.864747964559385,
+            "min_ms": 28.76996527777778,
+            "max_ms": 28.87934027777778,
+            "equivalent_fps": 34.6443350632341
+          },
+          "checksum": {
+            "mean_ticks": 78842.72413793103,
+            "mean_ms": 68.43986470306513,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.51475694444444,
+            "equivalent_fps": 14.611367283360721
+          },
+          "build": {
+            "mean_ticks": 31036.08620689655,
+            "mean_ms": 26.9410470545977,
+            "min_ms": 17.135416666666668,
+            "max_ms": 27.796875,
+            "equivalent_fps": 37.11808223241799
+          },
+          "submit": {
+            "mean_ticks": 247520.2931034483,
+            "mean_ms": 214.86136554118775,
+            "min_ms": 208.02083333333334,
+            "max_ms": 221.6484375,
+            "equivalent_fps": 4.654163848773946
+          },
+          "release": {
+            "mean_ticks": 247496.6724137931,
+            "mean_ms": 214.84086147030652,
+            "min_ms": 208.0,
+            "max_ms": 221.62760416666666,
+            "equivalent_fps": 4.654608034785839
+          },
+          "confirm": {
+            "mean_ticks": 469246,
+            "mean_ms": 407.33159722222223,
+            "min_ms": 231.88888888888889,
+            "max_ms": 420.3697916666667,
+            "equivalent_fps": 2.4550022802538543
+          }
+        },
+        "mean_frame_pre_submit_ms": 198.19227430555554
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          14,
+          16
+        ],
+        "observed_frames": 71,
+        "retained_measured_frames": 69,
+        "confirmed_fps": 3.9997114636008844,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 80058.2246554353,
+        "stages": {
+          "physics": {
+            "mean_ticks": 107046.47826086957,
+            "mean_ms": 92.92229015700484,
+            "min_ms": 69.61631944444444,
+            "max_ms": 94.50347222222223,
+            "equivalent_fps": 10.76168052154509
+          },
+          "collision": {
+            "mean_ticks": 106555.04347826086,
+            "mean_ms": 92.49569746376811,
+            "min_ms": 69.31076388888889,
+            "max_ms": 94.09635416666667,
+            "equivalent_fps": 10.81131368723085
+          },
+          "draw": {
+            "mean_ticks": 44114.782608695656,
+            "mean_ms": 38.294082125603865,
+            "min_ms": 28.866319444444443,
+            "max_ms": 38.65625,
+            "equivalent_fps": 26.113695497910587
+          },
+          "checksum": {
+            "mean_ticks": 95862.7536231884,
+            "mean_ms": 83.21419585346216,
+            "min_ms": 68.35590277777777,
+            "max_ms": 84.00694444444444,
+            "equivalent_fps": 12.01718035899754
+          },
+          "build": {
+            "mean_ticks": 31327.304347826088,
+            "mean_ms": 27.193840579710145,
+            "min_ms": 17.15017361111111,
+            "max_ms": 28.078993055555557,
+            "equivalent_fps": 36.77303310905336
+          },
+          "submit": {
+            "mean_ticks": 149.81159420289856,
+            "mean_ms": 0.13004478663446056,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7689.658508271258
+          },
+          "release": {
+            "mean_ticks": 285318.4202898551,
+            "mean_ms": 247.67223983494367,
+            "min_ms": 233.07378472222223,
+            "max_ms": 249.05555555555554,
+            "equivalent_fps": 4.037594203801082
+          },
+          "confirm": {
+            "mean_ticks": 287658.59420289856,
+            "mean_ms": 249.70364080112722,
+            "min_ms": 248.5390625,
+            "max_ms": 265.55034722222223,
+            "equivalent_fps": 4.004747374894847
+          }
+        },
+        "mean_frame_pre_submit_ms": 246.96537842190017
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          17
+        ],
+        "observed_frames": 33,
+        "retained_measured_frames": 32,
+        "confirmed_fps": 4.007692183384237,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 80217.9667426189,
+        "stages": {
+          "physics": {
+            "mean_ticks": 106747.84375,
+            "mean_ms": 92.66305881076389,
+            "min_ms": 69.61892361111111,
+            "max_ms": 93.90538194444444,
+            "equivalent_fps": 10.791787070640478
+          },
+          "collision": {
+            "mean_ticks": 106260.59375,
+            "mean_ms": 92.24009874131944,
+            "min_ms": 69.3125,
+            "max_ms": 93.48784722222223,
+            "equivalent_fps": 10.841272002585624
+          },
+          "draw": {
+            "mean_ticks": 44083.78125,
+            "mean_ms": 38.267171223958336,
+            "min_ms": 28.87326388888889,
+            "max_ms": 38.6015625,
+            "equivalent_fps": 26.132059622267544
+          },
+          "checksum": {
+            "mean_ticks": 95825,
+            "mean_ms": 83.18142361111111,
+            "min_ms": 68.45225694444444,
+            "max_ms": 84.05555555555556,
+            "equivalent_fps": 12.02191494912601
+          },
+          "build": {
+            "mean_ticks": 31439.5,
+            "mean_ms": 27.29123263888889,
+            "min_ms": 17.2421875,
+            "max_ms": 28.24565972222222,
+            "equivalent_fps": 36.64180409993798
+          },
+          "submit": {
+            "mean_ticks": 148.25,
+            "mean_ms": 0.1286892361111111,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7770.657672849916
+          },
+          "release": {
+            "mean_ticks": 262783.5625,
+            "mean_ms": 228.11073133680554,
+            "min_ms": 221.15885416666666,
+            "max_ms": 235.3515625,
+            "equivalent_fps": 4.383835842091531
+          },
+          "confirm": {
+            "mean_ticks": 287148.28125,
+            "mean_ms": 249.26066080729166,
+            "min_ms": 248.78732638888889,
+            "max_ms": 260.8454861111111,
+            "equivalent_fps": 4.011864514686173
+          }
+        },
+        "mean_frame_pre_submit_ms": 246.85902235243054
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          9,
+          12
+        ],
+        "observed_frames": 105,
+        "retained_measured_frames": 103,
+        "confirmed_fps": 4.039968578022171,
+        "bytes_per_frame": 1457,
+        "bytes_per_second": 5886.234218178302,
+        "stages": {
+          "physics": {
+            "mean_ticks": 80727.38834951456,
+            "mean_ms": 70.07585794228694,
+            "min_ms": 69.64496527777777,
+            "max_ms": 70.84114583333333,
+            "equivalent_fps": 14.270249831597921
+          },
+          "collision": {
+            "mean_ticks": 80369.39805825242,
+            "mean_ms": 69.7651024811219,
+            "min_ms": 69.33940972222223,
+            "max_ms": 70.43923611111111,
+            "equivalent_fps": 14.333813961938853
+          },
+          "draw": {
+            "mean_ticks": 33250.88349514563,
+            "mean_ms": 28.86361414509169,
+            "min_ms": 28.76909722222222,
+            "max_ms": 28.87934027777778,
+            "equivalent_fps": 34.64569596077599
+          },
+          "checksum": {
+            "mean_ticks": 78833.46601941748,
+            "mean_ms": 68.43182814185545,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.52170138888889,
+            "equivalent_fps": 14.613083226814494
+          },
+          "build": {
+            "mean_ticks": 34169.28155339806,
+            "mean_ms": 29.66083468176915,
+            "min_ms": 19.70920138888889,
+            "max_ms": 30.140625,
+            "equivalent_fps": 33.71449289033811
+          },
+          "submit": {
+            "mean_ticks": 56020.76699029126,
+            "mean_ms": 48.629138012405605,
+            "min_ms": 42.068576388888886,
+            "max_ms": 55.908854166666664,
+            "equivalent_fps": 20.563802709085518
+          },
+          "release": {
+            "mean_ticks": 55997.1067961165,
+            "mean_ms": 48.608599649406685,
+            "min_ms": 42.04774305555556,
+            "max_ms": 55.888020833333336,
+            "equivalent_fps": 20.572491435930637
+          },
+          "confirm": {
+            "mean_ticks": 284134.4466019418,
+            "mean_ms": 246.6444848975189,
+            "min_ms": 76.72048611111111,
+            "max_ms": 257.37065972222223,
+            "equivalent_fps": 4.054418652075278
+          }
+        },
+        "mean_frame_pre_submit_ms": 201.0504062162891
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          8,
+          10
+        ],
+        "observed_frames": 83,
+        "retained_measured_frames": 81,
+        "confirmed_fps": 4.9240358395013635,
+        "bytes_per_frame": 1457,
+        "bytes_per_second": 7174.320218153486,
+        "stages": {
+          "physics": {
+            "mean_ticks": 84620.58024691358,
+            "mean_ms": 73.45536479766804,
+            "min_ms": 70.22222222222223,
+            "max_ms": 74.26388888888889,
+            "equivalent_fps": 13.613709533054372
+          },
+          "collision": {
+            "mean_ticks": 84141.29629629629,
+            "mean_ms": 73.0393197016461,
+            "min_ms": 69.91666666666667,
+            "max_ms": 73.84635416666667,
+            "equivalent_fps": 13.69125567002595
+          },
+          "draw": {
+            "mean_ticks": 33281.11111111111,
+            "mean_ms": 28.889853395061728,
+            "min_ms": 28.77517361111111,
+            "max_ms": 28.9375,
+            "equivalent_fps": 34.614228958701965
+          },
+          "checksum": {
+            "mean_ticks": 78835,
+            "mean_ms": 68.43315972222223,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.55381944444444,
+            "equivalent_fps": 14.61279888374453
+          },
+          "build": {
+            "mean_ticks": 34125.28395061728,
+            "mean_ms": 29.622642318244168,
+            "min_ms": 19.719618055555557,
+            "max_ms": 30.249131944444443,
+            "equivalent_fps": 33.75796086171942
+          },
+          "submit": {
+            "mean_ticks": 148.33333333333334,
+            "mean_ms": 0.12876157407407407,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1345486111111111,
+            "equivalent_fps": 7766.29213483146
+          },
+          "release": {
+            "mean_ticks": 232053.7037037037,
+            "mean_ms": 201.4355066872428,
+            "min_ms": 47.0625,
+            "max_ms": 206.31857638888889,
+            "equivalent_fps": 4.964368082101046
+          },
+          "confirm": {
+            "mean_ticks": 233029.25925925927,
+            "mean_ms": 202.28234310699588,
+            "min_ms": 78.99826388888889,
+            "max_ms": 206.38888888888889,
+            "equivalent_fps": 4.943585211839555
+          }
+        },
+        "mean_frame_pre_submit_ms": 204.50720164609052
+      },
+      {
+        "balls": 44,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          11
+        ],
+        "observed_frames": 80,
+        "retained_measured_frames": 79,
+        "confirmed_fps": 4.890588751645871,
+        "bytes_per_frame": 1457,
+        "bytes_per_second": 7125.587811148034,
+        "stages": {
+          "physics": {
+            "mean_ticks": 84683.67088607595,
+            "mean_ms": 73.51013097749649,
+            "min_ms": 70.05295138888889,
+            "max_ms": 74.44878472222223,
+            "equivalent_fps": 13.603567109765157
+          },
+          "collision": {
+            "mean_ticks": 84202.03797468354,
+            "mean_ms": 73.0920468530239,
+            "min_ms": 69.74652777777777,
+            "max_ms": 74.03211805555556,
+            "equivalent_fps": 13.681379070021608
+          },
+          "draw": {
+            "mean_ticks": 33281.759493670885,
+            "mean_ms": 28.890416227144865,
+            "min_ms": 28.77517361111111,
+            "max_ms": 28.93142361111111,
+            "equivalent_fps": 34.61355461747968
+          },
+          "checksum": {
+            "mean_ticks": 78836.53164556962,
+            "mean_ms": 68.43448927566807,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.55642361111111,
+            "equivalent_fps": 14.612514984539393
+          },
+          "build": {
+            "mean_ticks": 34422.037974683546,
+            "mean_ms": 29.880241297468356,
+            "min_ms": 19.725694444444443,
+            "max_ms": 30.252604166666668,
+            "equivalent_fps": 33.46693187798073
+          },
+          "submit": {
+            "mean_ticks": 149.70886075949366,
+            "mean_ms": 0.12995560829817157,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7694.935317493871
+          },
+          "release": {
+            "mean_ticks": 56137.962025316454,
+            "mean_ms": 48.730869813642755,
+            "min_ms": 41.26475694444444,
+            "max_ms": 56.478298611111114,
+            "equivalent_fps": 20.5208731923771
+          },
+          "confirm": {
+            "mean_ticks": 234698.40506329114,
+            "mean_ms": 203.731254395218,
+            "min_ms": 66.7265625,
+            "max_ms": 206.48697916666666,
+            "equivalent_fps": 4.908427049980761
+          }
+        },
+        "mean_frame_pre_submit_ms": 204.79446861814347
+      },
+      {
+        "balls": 48,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          20
+        ],
+        "observed_frames": 14,
+        "retained_measured_frames": 13,
+        "confirmed_fps": 7.389541745779238,
+        "bytes_per_frame": 1517,
+        "bytes_per_second": 11209.934828347104,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3296.6153846153848,
+            "mean_ms": 2.8616452991452994,
+            "min_ms": 2.146701388888889,
+            "max_ms": 3.0,
+            "equivalent_fps": 349.4493186484973
+          },
+          "collision": {
+            "mean_ticks": 2770,
+            "mean_ms": 2.404513888888889,
+            "min_ms": 1.8177083333333333,
+            "max_ms": 2.560763888888889,
+            "equivalent_fps": 415.884476534296
+          },
+          "draw": {
+            "mean_ticks": 38102.230769230766,
+            "mean_ms": 33.074853098290596,
+            "min_ms": 30.971354166666668,
+            "max_ms": 33.471354166666664,
+            "equivalent_fps": 30.234450234086843
+          },
+          "checksum": {
+            "mean_ticks": 79437,
+            "mean_ms": 68.95572916666667,
+            "min_ms": 68.44618055555556,
+            "max_ms": 69.31423611111111,
+            "equivalent_fps": 14.502058234827599
+          },
+          "build": {
+            "mean_ticks": 32938.07692307692,
+            "mean_ms": 28.592080662393162,
+            "min_ms": 19.803819444444443,
+            "max_ms": 30.325520833333332,
+            "equivalent_fps": 34.97471946192739
+          },
+          "submit": {
+            "mean_ticks": 148.23076923076923,
+            "mean_ms": 0.12867254273504272,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7771.665801764401
+          },
+          "release": {
+            "mean_ticks": 56359.92307692308,
+            "mean_ms": 48.92354433760684,
+            "min_ms": 42.03472222222222,
+            "max_ms": 56.185763888888886,
+            "equivalent_fps": 20.44005628658662
+          },
+          "confirm": {
+            "mean_ticks": 154756.53846153847,
+            "mean_ms": 134.33727297008548,
+            "min_ms": 73.65451388888889,
+            "max_ms": 140.39930555555554,
+            "equivalent_fps": 7.443950423369709
+          }
+        },
+        "mean_frame_pre_submit_ms": 137.8147702991453
+      },
+      {
+        "balls": 52,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          21
+        ],
+        "observed_frames": 17,
+        "retained_measured_frames": 16,
+        "confirmed_fps": 7.14162908494571,
+        "bytes_per_frame": 1577,
+        "bytes_per_second": 11262.349066959385,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3542.875,
+            "mean_ms": 3.075412326388889,
+            "min_ms": 2.4149305555555554,
+            "max_ms": 3.2109375,
+            "equivalent_fps": 325.1596514130473
+          },
+          "collision": {
+            "mean_ticks": 3013,
+            "mean_ms": 2.615451388888889,
+            "min_ms": 2.0625,
+            "max_ms": 2.7430555555555554,
+            "equivalent_fps": 382.3431795552605
+          },
+          "draw": {
+            "mean_ticks": 40897.9375,
+            "mean_ms": 35.501681857638886,
+            "min_ms": 33.18663194444444,
+            "max_ms": 35.85243055555556,
+            "equivalent_fps": 28.16767960487005
+          },
+          "checksum": {
+            "mean_ticks": 79431.5625,
+            "mean_ms": 68.95100911458333,
+            "min_ms": 68.44618055555556,
+            "max_ms": 69.28298611111111,
+            "equivalent_fps": 14.503050975485973
+          },
+          "build": {
+            "mean_ticks": 33541.5,
+            "mean_ms": 29.115885416666668,
+            "min_ms": 20.03732638888889,
+            "max_ms": 30.489583333333332,
+            "equivalent_fps": 34.34551227583739
+          },
+          "submit": {
+            "mean_ticks": 148.125,
+            "mean_ms": 0.12858072916666666,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7777.215189873417
+          },
+          "release": {
+            "mean_ticks": 58585.0625,
+            "mean_ms": 50.85508897569444,
+            "min_ms": 45.525173611111114,
+            "max_ms": 57.50347222222222,
+            "equivalent_fps": 19.663715473547544
+          },
+          "confirm": {
+            "mean_ticks": 160136.1875,
+            "mean_ms": 139.00710720486111,
+            "min_ms": 83.87847222222223,
+            "max_ms": 143.51649305555554,
+            "equivalent_fps": 7.1938767744174
+          }
+        },
+        "mean_frame_pre_submit_ms": 141.26274956597223
+      },
+      {
+        "balls": 56,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          22
+        ],
+        "observed_frames": 17,
+        "retained_measured_frames": 16,
+        "confirmed_fps": 6.996042053986124,
+        "bytes_per_frame": 1637,
+        "bytes_per_second": 11452.520842375285,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3797.1875,
+            "mean_ms": 3.296169704861111,
+            "min_ms": 2.4991319444444446,
+            "max_ms": 3.4461805555555554,
+            "equivalent_fps": 303.3824376594519
+          },
+          "collision": {
+            "mean_ticks": 3219.0625,
+            "mean_ms": 2.7943250868055554,
+            "min_ms": 2.125,
+            "max_ms": 2.9539930555555554,
+            "equivalent_fps": 357.8681681390156
+          },
+          "draw": {
+            "mean_ticks": 43699.8125,
+            "mean_ms": 37.933865017361114,
+            "min_ms": 35.59809027777778,
+            "max_ms": 38.25868055555556,
+            "equivalent_fps": 26.361669171921505
+          },
+          "checksum": {
+            "mean_ticks": 79441.8125,
+            "mean_ms": 68.95990668402777,
+            "min_ms": 68.34982638888889,
+            "max_ms": 69.21961805555556,
+            "equivalent_fps": 14.501179715656663
+          },
+          "build": {
+            "mean_ticks": 33882.5,
+            "mean_ms": 29.41189236111111,
+            "min_ms": 20.27170138888889,
+            "max_ms": 30.895833333333332,
+            "equivalent_fps": 33.99985243119605
+          },
+          "submit": {
+            "mean_ticks": 148,
+            "mean_ms": 0.1284722222222222,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1284722222222222,
+            "equivalent_fps": 7783.783783783784
+          },
+          "release": {
+            "mean_ticks": 60673.875,
+            "mean_ms": 52.668294270833336,
+            "min_ms": 46.806423611111114,
+            "max_ms": 59.126736111111114,
+            "equivalent_fps": 18.986755007818438
+          },
+          "confirm": {
+            "mean_ticks": 163506.625,
+            "mean_ms": 141.93283420138889,
+            "min_ms": 81.69270833333333,
+            "max_ms": 146.99826388888889,
+            "equivalent_fps": 7.045586073347181
+          }
+        },
+        "mean_frame_pre_submit_ms": 144.53477647569443
+      },
+      {
+        "balls": 60,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          23
+        ],
+        "observed_frames": 20,
+        "retained_measured_frames": 19,
+        "confirmed_fps": 6.826226192482724,
+        "bytes_per_frame": 1697,
+        "bytes_per_second": 11584.105848643183,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4055.7894736842104,
+            "mean_ms": 3.5206505847953213,
+            "min_ms": 2.662326388888889,
+            "max_ms": 3.6875,
+            "equivalent_fps": 284.0384116273034
+          },
+          "collision": {
+            "mean_ticks": 3458.5263157894738,
+            "mean_ms": 3.0021929824561404,
+            "min_ms": 2.263888888888889,
+            "max_ms": 3.1527777777777777,
+            "equivalent_fps": 333.0898466033601
+          },
+          "draw": {
+            "mean_ticks": 46787.21052631579,
+            "mean_ms": 40.61389802631579,
+            "min_ms": 38.04340277777778,
+            "max_ms": 41.0078125,
+            "equivalent_fps": 24.622113330566048
+          },
+          "checksum": {
+            "mean_ticks": 79369.47368421052,
+            "mean_ms": 68.8971125730994,
+            "min_ms": 68.45399305555556,
+            "max_ms": 69.15451388888889,
+            "equivalent_fps": 14.514396360790972
+          },
+          "build": {
+            "mean_ticks": 34295.68421052631,
+            "mean_ms": 29.770559210526315,
+            "min_ms": 20.377604166666668,
+            "max_ms": 30.958333333333332,
+            "equivalent_fps": 33.590232314024476
+          },
+          "submit": {
+            "mean_ticks": 148.31578947368422,
+            "mean_ms": 0.12874634502923976,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7767.21078779276
+          },
+          "release": {
+            "mean_ticks": 62935.36842105263,
+            "mean_ms": 54.63139619883041,
+            "min_ms": 47.4765625,
+            "max_ms": 60.853298611111114,
+            "equivalent_fps": 18.304492829736773
+          },
+          "confirm": {
+            "mean_ticks": 167639.26315789475,
+            "mean_ms": 145.5201937134503,
+            "min_ms": 77.44184027777777,
+            "max_ms": 150.00086805555554,
+            "equivalent_fps": 6.871898493821005
+          }
+        },
+        "mean_frame_pre_submit_ms": 148.03056469298247
+      },
+      {
+        "balls": 64,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          24
+        ],
+        "observed_frames": 16,
+        "retained_measured_frames": 15,
+        "confirmed_fps": 6.724124129466072,
+        "bytes_per_frame": 1757,
+        "bytes_per_second": 11814.286095471889,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4296.466666666666,
+            "mean_ms": 3.729571759259259,
+            "min_ms": 2.9505208333333335,
+            "max_ms": 3.8741319444444446,
+            "equivalent_fps": 268.1272984002359
+          },
+          "collision": {
+            "mean_ticks": 3607.2,
+            "mean_ms": 3.1312499999999996,
+            "min_ms": 2.5208333333333335,
+            "max_ms": 3.2699652777777777,
+            "equivalent_fps": 319.3612774451098
+          },
+          "draw": {
+            "mean_ticks": 49221.13333333333,
+            "mean_ms": 42.72667824074074,
+            "min_ms": 40.01128472222222,
+            "max_ms": 43.18836805555556,
+            "equivalent_fps": 23.404580959127312
+          },
+          "checksum": {
+            "mean_ticks": 79245.13333333333,
+            "mean_ms": 68.78917824074074,
+            "min_ms": 68.44704861111111,
+            "max_ms": 69.09461805555556,
+            "equivalent_fps": 14.537170316242344
+          },
+          "build": {
+            "mean_ticks": 34288.8,
+            "mean_ms": 29.764583333333334,
+            "min_ms": 20.74045138888889,
+            "max_ms": 31.34548611111111,
+            "equivalent_fps": 33.59697627213551
+          },
+          "submit": {
+            "mean_ticks": 148.13333333333333,
+            "mean_ms": 0.12858796296296296,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7776.777677767777
+          },
+          "release": {
+            "mean_ticks": 61181,
+            "mean_ms": 53.10850694444444,
+            "min_ms": 47.71440972222222,
+            "max_ms": 58.26128472222222,
+            "equivalent_fps": 18.829375132802667
+          },
+          "confirm": {
+            "mean_ticks": 170172.73333333334,
+            "mean_ms": 147.71938657407406,
+            "min_ms": 87.80208333333333,
+            "max_ms": 152.91927083333334,
+            "equivalent_fps": 6.769592151660802
+          }
+        },
+        "mean_frame_pre_submit_ms": 150.50943287037038
+      },
+      {
+        "balls": 68,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          25
+        ],
+        "observed_frames": 14,
+        "retained_measured_frames": 13,
+        "confirmed_fps": 6.632786230827103,
+        "bytes_per_frame": 1817,
+        "bytes_per_second": 12051.772581412846,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4448.461538461538,
+            "mean_ms": 3.8615117521367517,
+            "min_ms": 3.006076388888889,
+            "max_ms": 4.026909722222222,
+            "equivalent_fps": 258.9659346360021
+          },
+          "collision": {
+            "mean_ticks": 3760.230769230769,
+            "mean_ms": 3.264089209401709,
+            "min_ms": 2.5625,
+            "max_ms": 3.415798611111111,
+            "equivalent_fps": 306.3641756847984
+          },
+          "draw": {
+            "mean_ticks": 52491.07692307692,
+            "mean_ms": 45.56517094017094,
+            "min_ms": 42.6015625,
+            "max_ms": 45.95659722222222,
+            "equivalent_fps": 21.946587258786842
+          },
+          "checksum": {
+            "mean_ticks": 79130.30769230769,
+            "mean_ms": 68.6895032051282,
+            "min_ms": 68.44704861111111,
+            "max_ms": 69.02951388888889,
+            "equivalent_fps": 14.558265140070809
+          },
+          "build": {
+            "mean_ticks": 34287.769230769234,
+            "mean_ms": 29.76368856837607,
+            "min_ms": 20.97309027777778,
+            "max_ms": 31.485243055555557,
+            "equivalent_fps": 33.597986274540595
+          },
+          "submit": {
+            "mean_ticks": 148.23076923076923,
+            "mean_ms": 0.12867254273504272,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7771.665801764401
+          },
+          "release": {
+            "mean_ticks": 64451.53846153846,
+            "mean_ms": 55.94751602564102,
+            "min_ms": 48.86284722222222,
+            "max_ms": 60.669270833333336,
+            "equivalent_fps": 17.873894518242686
+          },
+          "confirm": {
+            "mean_ticks": 172584.38461538462,
+            "mean_ms": 149.81283386752136,
+            "min_ms": 83.42881944444444,
+            "max_ms": 156.40798611111111,
+            "equivalent_fps": 6.674995554014379
+          }
+        },
+        "mean_frame_pre_submit_ms": 153.69571314102564
+      },
+      {
+        "balls": 72,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          26
+        ],
+        "observed_frames": 34,
+        "retained_measured_frames": 33,
+        "confirmed_fps": 6.340522377585813,
+        "bytes_per_frame": 1877,
+        "bytes_per_second": 11901.160502728571,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4774.30303030303,
+            "mean_ms": 4.144360269360269,
+            "min_ms": 3.282986111111111,
+            "max_ms": 4.325520833333333,
+            "equivalent_fps": 241.2917639890322
+          },
+          "collision": {
+            "mean_ticks": 3979.151515151515,
+            "mean_ms": 3.454124579124579,
+            "min_ms": 2.8159722222222223,
+            "max_ms": 3.638888888888889,
+            "equivalent_fps": 289.5089557694651
+          },
+          "draw": {
+            "mean_ticks": 55400.72727272727,
+            "mean_ms": 48.09090909090909,
+            "min_ms": 44.787326388888886,
+            "max_ms": 48.473958333333336,
+            "equivalent_fps": 20.793950850661627
+          },
+          "checksum": {
+            "mean_ticks": 79124.09090909091,
+            "mean_ms": 68.6841066919192,
+            "min_ms": 68.45225694444444,
+            "max_ms": 68.92708333333333,
+            "equivalent_fps": 14.559408983587344
+          },
+          "build": {
+            "mean_ticks": 35735.757575757576,
+            "mean_ms": 31.020622895622896,
+            "min_ms": 21.20746527777778,
+            "max_ms": 31.7265625,
+            "equivalent_fps": 32.236618953938
+          },
+          "submit": {
+            "mean_ticks": 148.1818181818182,
+            "mean_ms": 0.1286300505050505,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7774.233128834356
+          },
+          "release": {
+            "mean_ticks": 65535.90909090909,
+            "mean_ms": 56.888809974747474,
+            "min_ms": 50.776041666666664,
+            "max_ms": 63.915798611111114,
+            "equivalent_fps": 17.57814938375214
+          },
+          "confirm": {
+            "mean_ticks": 180678.81818181818,
+            "mean_ms": 156.83925189393938,
+            "min_ms": 87.79947916666667,
+            "max_ms": 159.48177083333334,
+            "equivalent_fps": 6.375954921515678
+          }
+        },
+        "mean_frame_pre_submit_ms": 158.01815025252526
+      },
+      {
+        "balls": 76,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          29
+        ],
+        "observed_frames": 88,
+        "retained_measured_frames": 87,
+        "confirmed_fps": 4.621743991807452,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 8952.318112131034,
+        "stages": {
+          "physics": {
+            "mean_ticks": 3895.8735632183907,
+            "mean_ms": 3.3818346902937417,
+            "min_ms": 3.3489583333333335,
+            "max_ms": 3.4635416666666665,
+            "equivalent_fps": 295.69748127255184
+          },
+          "collision": {
+            "mean_ticks": 3326.1609195402298,
+            "mean_ms": 2.8872924648786715,
+            "min_ms": 2.859375,
+            "max_ms": 2.9739583333333335,
+            "equivalent_fps": 346.34523941169965
+          },
+          "draw": {
+            "mean_ticks": 54106.70114942529,
+            "mean_ms": 46.96762252554279,
+            "min_ms": 46.884548611111114,
+            "max_ms": 46.994791666666664,
+            "equivalent_fps": 21.291262921732134
+          },
+          "checksum": {
+            "mean_ticks": 78832,
+            "mean_ms": 68.43055555555556,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.51475694444444,
+            "equivalent_fps": 14.613354982748122
+          },
+          "build": {
+            "mean_ticks": 36378.14942528736,
+            "mean_ms": 31.57825470945083,
+            "min_ms": 21.427083333333332,
+            "max_ms": 31.95486111111111,
+            "equivalent_fps": 31.667361264925038
+          },
+          "submit": {
+            "mean_ticks": 69416.81609195402,
+            "mean_ms": 60.25765285759898,
+            "min_ms": 53.525173611111114,
+            "max_ms": 66.90711805555556,
+            "equivalent_fps": 16.595402452252866
+          },
+          "release": {
+            "mean_ticks": 69393.11494252873,
+            "mean_ms": 60.2370789431673,
+            "min_ms": 53.505208333333336,
+            "max_ms": 66.88628472222223,
+            "equivalent_fps": 16.60107059546303
+          },
+          "confirm": {
+            "mean_ticks": 248442.37931034484,
+            "mean_ms": 215.66178759578546,
+            "min_ms": 77.94010416666667,
+            "max_ms": 224.03645833333334,
+            "equivalent_fps": 4.636890063594847
+          }
+        },
+        "mean_frame_pre_submit_ms": 156.73911438378033
+      },
+      {
+        "balls": 76,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          28
+        ],
+        "observed_frames": 28,
+        "retained_measured_frames": 27,
+        "confirmed_fps": 6.2508139080609455,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 12107.826539914051,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4951.259259259259,
+            "mean_ms": 4.297968106995885,
+            "min_ms": 3.349826388888889,
+            "max_ms": 4.578125,
+            "equivalent_fps": 232.6680829418629
+          },
+          "collision": {
+            "mean_ticks": 4190,
+            "mean_ms": 3.6371527777777777,
+            "min_ms": 2.859375,
+            "max_ms": 3.9166666666666665,
+            "equivalent_fps": 274.9403341288783
+          },
+          "draw": {
+            "mean_ticks": 57941.81481481482,
+            "mean_ms": 50.2967142489712,
+            "min_ms": 46.96527777777778,
+            "max_ms": 50.63368055555556,
+            "equivalent_fps": 19.88201446022798
+          },
+          "checksum": {
+            "mean_ticks": 79041.74074074074,
+            "mean_ms": 68.61262217078189,
+            "min_ms": 68.40277777777777,
+            "max_ms": 68.98871527777777,
+            "equivalent_fps": 14.574577801602247
+          },
+          "build": {
+            "mean_ticks": 35879.555555555555,
+            "mean_ms": 31.145447530864196,
+            "min_ms": 21.4375,
+            "max_ms": 32.05121527777778,
+            "equivalent_fps": 32.10742112499845
+          },
+          "submit": {
+            "mean_ticks": 148.22222222222223,
+            "mean_ms": 0.12866512345679013,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7772.113943028486
+          },
+          "release": {
+            "mean_ticks": 182332.59259259258,
+            "mean_ms": 158.27481995884773,
+            "min_ms": 65.97309027777777,
+            "max_ms": 162.38368055555554,
+            "equivalent_fps": 6.31812438807389
+          },
+          "confirm": {
+            "mean_ticks": 183251.7037037037,
+            "mean_ms": 159.0726594650206,
+            "min_ms": 85.66579861111111,
+            "max_ms": 162.46440972222223,
+            "equivalent_fps": 6.2864354148796755
+          }
+        },
+        "mean_frame_pre_submit_ms": 160.81455761316872
+      },
+      {
+        "balls": 76,
+        "collisions": 0,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          27
+        ],
+        "observed_frames": 84,
+        "retained_measured_frames": 83,
+        "confirmed_fps": 6.169130731445326,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 11949.606226809596,
+        "stages": {
+          "physics": {
+            "mean_ticks": 4971.0722891566265,
+            "mean_ms": 4.315166917670683,
+            "min_ms": 3.3550347222222223,
+            "max_ms": 4.572916666666667,
+            "equivalent_fps": 231.74074585735787
+          },
+          "collision": {
+            "mean_ticks": 4206.036144578313,
+            "mean_ms": 3.651073042168674,
+            "min_ms": 2.8645833333333335,
+            "max_ms": 3.915798611111111,
+            "equivalent_fps": 273.89208280698136
+          },
+          "draw": {
+            "mean_ticks": 58042.0843373494,
+            "mean_ms": 50.38375376506024,
+            "min_ms": 46.96527777777778,
+            "max_ms": 50.84288194444444,
+            "equivalent_fps": 19.84766765618549
+          },
+          "checksum": {
+            "mean_ticks": 79125.09638554217,
+            "mean_ms": 68.68497950133869,
+            "min_ms": 68.40277777777777,
+            "max_ms": 69.00694444444444,
+            "equivalent_fps": 14.55922397094855
+          },
+          "build": {
+            "mean_ticks": 36507.614457831325,
+            "mean_ms": 31.690637550200805,
+            "min_ms": 21.440104166666668,
+            "max_ms": 32.064236111111114,
+            "equivalent_fps": 31.555060967641015
+          },
+          "submit": {
+            "mean_ticks": 151.0843373493976,
+            "mean_ms": 0.13114959839357432,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.2248263888888889,
+            "equivalent_fps": 7624.880382775119
+          },
+          "release": {
+            "mean_ticks": 68740.43373493975,
+            "mean_ms": 59.67051539491298,
+            "min_ms": 53.35590277777778,
+            "max_ms": 66.23958333333333,
+            "equivalent_fps": 16.75869553634276
+          },
+          "confirm": {
+            "mean_ticks": 185876.73493975904,
+            "mean_ms": 161.35133241298527,
+            "min_ms": 89.97829861111111,
+            "max_ms": 162.58159722222223,
+            "equivalent_fps": 6.197655668813812
+          }
+        },
+        "mean_frame_pre_submit_ms": 161.5204986613119
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          35
+        ],
+        "observed_frames": 68,
+        "retained_measured_frames": 67,
+        "confirmed_fps": 1.7617624149195177,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 35263.43649702906,
+        "stages": {
+          "physics": {
+            "mean_ticks": 238705.776119403,
+            "mean_ms": 207.20987510364841,
+            "min_ms": 206.22569444444446,
+            "max_ms": 208.30902777777777,
+            "equivalent_fps": 4.826024819038138
+          },
+          "collision": {
+            "mean_ticks": 238134.37313432837,
+            "mean_ms": 206.71386556799337,
+            "min_ms": 205.73090277777777,
+            "max_ms": 207.81857638888889,
+            "equivalent_fps": 4.8376048566083
+          },
+          "draw": {
+            "mean_ticks": 54063.82089552239,
+            "mean_ms": 46.93040008291874,
+            "min_ms": 46.85590277777778,
+            "max_ms": 46.966145833333336,
+            "equivalent_fps": 21.30814990354131
+          },
+          "checksum": {
+            "mean_ticks": 78841.80597014926,
+            "mean_ms": 68.43906768242124,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.51649305555556,
+            "equivalent_fps": 14.611537442916582
+          },
+          "build": {
+            "mean_ticks": 31572.20895522388,
+            "mean_ms": 27.40643138474295,
+            "min_ms": 17.2109375,
+            "max_ms": 27.817708333333332,
+            "equivalent_fps": 36.487785876299675
+          },
+          "submit": {
+            "mean_ticks": 247882.73134328358,
+            "mean_ms": 215.17598206882255,
+            "min_ms": 207.61024305555554,
+            "max_ms": 221.93402777777777,
+            "equivalent_fps": 4.647358828738408
+          },
+          "release": {
+            "mean_ticks": 247857.32835820896,
+            "mean_ms": 215.15393086650084,
+            "min_ms": 207.58940972222223,
+            "max_ms": 221.91319444444446,
+            "equivalent_fps": 4.647835138185238
+          },
+          "confirm": {
+            "mean_ticks": 653168.0746268657,
+            "mean_ms": 566.9861758913764,
+            "min_ms": 247.20138888888889,
+            "max_ms": 578.7647569444445,
+            "equivalent_fps": 1.76371143163741
+          }
+        },
+        "mean_frame_pre_submit_ms": 356.3676409618574
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          34
+        ],
+        "observed_frames": 22,
+        "retained_measured_frames": 21,
+        "confirmed_fps": 2.5026025328423134,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 50092.092297371746,
+        "stages": {
+          "physics": {
+            "mean_ticks": 292480.14285714284,
+            "mean_ms": 253.8890128968254,
+            "min_ms": 207.05034722222223,
+            "max_ms": 257.14496527777777,
+            "equivalent_fps": 3.93872892958301
+          },
+          "collision": {
+            "mean_ticks": 291734.8095238095,
+            "mean_ms": 253.24202215608466,
+            "min_ms": 206.56076388888889,
+            "max_ms": 256.48871527777777,
+            "equivalent_fps": 3.948791719028583
+          },
+          "draw": {
+            "mean_ticks": 54093.23809523809,
+            "mean_ms": 46.95593584656084,
+            "min_ms": 46.85590277777778,
+            "max_ms": 47.072048611111114,
+            "equivalent_fps": 21.29656202077894
+          },
+          "checksum": {
+            "mean_ticks": 78826.80952380953,
+            "mean_ms": 68.42604993386243,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.46006944444444,
+            "equivalent_fps": 14.614317222264845
+          },
+          "build": {
+            "mean_ticks": 30782.619047619046,
+            "mean_ms": 26.721023478835978,
+            "min_ms": 17.2265625,
+            "max_ms": 27.911458333333332,
+            "equivalent_fps": 37.42371622823641
+          },
+          "submit": {
+            "mean_ticks": 148,
+            "mean_ms": 0.1284722222222222,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1284722222222222,
+            "equivalent_fps": 7783.783783783784
+          },
+          "release": {
+            "mean_ticks": 457947.5714285714,
+            "mean_ms": 397.523933531746,
+            "min_ms": 232.91059027777777,
+            "max_ms": 407.2986111111111,
+            "equivalent_fps": 2.5155718075026057
+          },
+          "confirm": {
+            "mean_ticks": 459407.4761904762,
+            "mean_ms": 398.7912119708995,
+            "min_ms": 258.09809027777777,
+            "max_ms": 407.3697916666667,
+            "equivalent_fps": 2.507577825142676
+          }
+        },
+        "mean_frame_pre_submit_ms": 402.4485367063492
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "bitmap",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          33
+        ],
+        "observed_frames": 22,
+        "retained_measured_frames": 21,
+        "confirmed_fps": 2.5030766984418347,
+        "bytes_per_frame": 20016,
+        "bytes_per_second": 50101.583196011765,
+        "stages": {
+          "physics": {
+            "mean_ticks": 292601.4285714286,
+            "mean_ms": 253.99429563492063,
+            "min_ms": 207.29513888888889,
+            "max_ms": 256.9609375,
+            "equivalent_fps": 3.9370962938370577
+          },
+          "collision": {
+            "mean_ticks": 291844.09523809527,
+            "mean_ms": 253.33688822751324,
+            "min_ms": 206.796875,
+            "max_ms": 256.30555555555554,
+            "equivalent_fps": 3.947313030473217
+          },
+          "draw": {
+            "mean_ticks": 54085.666666666664,
+            "mean_ms": 46.949363425925924,
+            "min_ms": 46.86371527777778,
+            "max_ms": 47.02430555555556,
+            "equivalent_fps": 21.299543317083394
+          },
+          "checksum": {
+            "mean_ticks": 78831.47619047618,
+            "mean_ms": 68.43010085978835,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.45399305555556,
+            "equivalent_fps": 14.613452083739817
+          },
+          "build": {
+            "mean_ticks": 30791.761904761905,
+            "mean_ms": 26.728959986772487,
+            "min_ms": 17.328125,
+            "max_ms": 27.864583333333332,
+            "equivalent_fps": 37.412604175204564
+          },
+          "submit": {
+            "mean_ticks": 148.0952380952381,
+            "mean_ms": 0.12855489417989419,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7778.778135048231
+          },
+          "release": {
+            "mean_ticks": 263555.14285714284,
+            "mean_ms": 228.78050595238093,
+            "min_ms": 219.83767361111111,
+            "max_ms": 234.7890625,
+            "equivalent_fps": 4.371001785476176
+          },
+          "confirm": {
+            "mean_ticks": 459390.85714285716,
+            "mean_ms": 398.7767857142857,
+            "min_ms": 256.98350694444446,
+            "max_ms": 406.9973958333333,
+            "equivalent_fps": 2.5076685399547722
+          }
+        },
+        "mean_frame_pre_submit_ms": 402.50979662698415
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 0,
+        "transport": "standard",
+        "cases": [
+          30
+        ],
+        "observed_frames": 32,
+        "retained_measured_frames": 31,
+        "confirmed_fps": 2.438113126191543,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 4722.625125433019,
+        "stages": {
+          "physics": {
+            "mean_ticks": 239339.1935483871,
+            "mean_ms": 207.7597166218638,
+            "min_ms": 206.66145833333334,
+            "max_ms": 209.78732638888889,
+            "equivalent_fps": 4.813252618264132
+          },
+          "collision": {
+            "mean_ticks": 238770.61290322582,
+            "mean_ms": 207.2661570340502,
+            "min_ms": 206.171875,
+            "max_ms": 209.296875,
+            "equivalent_fps": 4.824714339812445
+          },
+          "draw": {
+            "mean_ticks": 54083.67741935484,
+            "mean_ms": 46.94763664874552,
+            "min_ms": 46.861979166666664,
+            "max_ms": 46.966145833333336,
+            "equivalent_fps": 21.30032673384254
+          },
+          "checksum": {
+            "mean_ticks": 78842.35483870968,
+            "mean_ms": 68.43954413082437,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.45486111111111,
+            "equivalent_fps": 14.611435723307391
+          },
+          "build": {
+            "mean_ticks": 36194.58064516129,
+            "mean_ms": 31.41890681003584,
+            "min_ms": 21.750868055555557,
+            "max_ms": 32.185763888888886,
+            "equivalent_fps": 31.827969255778804
+          },
+          "submit": {
+            "mean_ticks": 68669.93548387097,
+            "mean_ms": 59.60931899641577,
+            "min_ms": 53.48784722222222,
+            "max_ms": 66.18663194444444,
+            "equivalent_fps": 16.775900426913594
+          },
+          "release": {
+            "mean_ticks": 68646.32258064517,
+            "mean_ms": 59.58882168458782,
+            "min_ms": 53.46788194444444,
+            "max_ms": 66.16579861111111,
+            "equivalent_fps": 16.78167098676902
+          },
+          "confirm": {
+            "mean_ticks": 472043.96774193546,
+            "mean_ms": 409.76038866487454,
+            "min_ms": 78.17795138888889,
+            "max_ms": 428.328125,
+            "equivalent_fps": 2.4404506332549807
+          }
+        },
+        "mean_frame_pre_submit_ms": 360.9081261200717
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 1,
+        "transport": "async-events",
+        "cases": [
+          31
+        ],
+        "observed_frames": 36,
+        "retained_measured_frames": 35,
+        "confirmed_fps": 2.786593389581237,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 5397.631395618856,
+        "stages": {
+          "physics": {
+            "mean_ticks": 244187.11428571428,
+            "mean_ms": 211.96798115079366,
+            "min_ms": 207.86892361111111,
+            "max_ms": 213.16059027777777,
+            "equivalent_fps": 4.717693656234815
+          },
+          "collision": {
+            "mean_ticks": 243428.9714285714,
+            "mean_ms": 211.309871031746,
+            "min_ms": 207.37847222222223,
+            "max_ms": 212.50347222222223,
+            "equivalent_fps": 4.732386589975087
+          },
+          "draw": {
+            "mean_ticks": 54067.171428571426,
+            "mean_ms": 46.93330853174603,
+            "min_ms": 46.861979166666664,
+            "max_ms": 46.966145833333336,
+            "equivalent_fps": 21.30682944126116
+          },
+          "checksum": {
+            "mean_ticks": 78827.4,
+            "mean_ms": 68.42656249999999,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.45486111111111,
+            "equivalent_fps": 14.614207750097048
+          },
+          "build": {
+            "mean_ticks": 36306.514285714286,
+            "mean_ms": 31.51607142857143,
+            "min_ms": 21.66840277777778,
+            "max_ms": 32.212673611111114,
+            "equivalent_fps": 31.72984305059777
+          },
+          "submit": {
+            "mean_ticks": 148.11428571428573,
+            "mean_ms": 0.1285714285714286,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7777.777777777777
+          },
+          "release": {
+            "mean_ticks": 411773.9142857143,
+            "mean_ms": 357.4426339285714,
+            "min_ms": 60.315104166666664,
+            "max_ms": 367.62413194444446,
+            "equivalent_fps": 2.797651721086613
+          },
+          "confirm": {
+            "mean_ticks": 412604.65714285715,
+            "mean_ms": 358.1637648809524,
+            "min_ms": 83.13628472222223,
+            "max_ms": 367.69444444444446,
+            "equivalent_fps": 2.7920188976469555
+          }
+        },
+        "mean_frame_pre_submit_ms": 365.3091765873016
+      },
+      {
+        "balls": 76,
+        "collisions": 1,
+        "output": "circles",
+        "mode": 2,
+        "transport": "async-callback",
+        "cases": [
+          32
+        ],
+        "observed_frames": 33,
+        "retained_measured_frames": 32,
+        "confirmed_fps": 2.791748332393161,
+        "bytes_per_frame": 1937,
+        "bytes_per_second": 5407.616519845553,
+        "stages": {
+          "physics": {
+            "mean_ticks": 244061.4375,
+            "mean_ms": 211.85888671875,
+            "min_ms": 207.08072916666666,
+            "max_ms": 212.82118055555554,
+            "equivalent_fps": 4.72012298132924
+          },
+          "collision": {
+            "mean_ticks": 243305.625,
+            "mean_ms": 211.20279947916666,
+            "min_ms": 206.59114583333334,
+            "max_ms": 212.16579861111111,
+            "equivalent_fps": 4.7347857247443415
+          },
+          "draw": {
+            "mean_ticks": 54066.59375,
+            "mean_ms": 46.93280707465278,
+            "min_ms": 46.861111111111114,
+            "max_ms": 46.96527777777778,
+            "equivalent_fps": 21.30705709567657
+          },
+          "checksum": {
+            "mean_ticks": 78843.125,
+            "mean_ms": 68.44021267361111,
+            "min_ms": 68.34982638888889,
+            "max_ms": 68.55381944444444,
+            "equivalent_fps": 14.611292994791873
+          },
+          "build": {
+            "mean_ticks": 36218.75,
+            "mean_ms": 31.43988715277778,
+            "min_ms": 21.672743055555557,
+            "max_ms": 32.209201388888886,
+            "equivalent_fps": 31.806729939603105
+          },
+          "submit": {
+            "mean_ticks": 148.21875,
+            "mean_ms": 0.128662109375,
+            "min_ms": 0.1284722222222222,
+            "max_ms": 0.1293402777777778,
+            "equivalent_fps": 7772.296015180265
+          },
+          "release": {
+            "mean_ticks": 68683.75,
+            "mean_ms": 59.621310763888886,
+            "min_ms": 53.920138888888886,
+            "max_ms": 66.83246527777777,
+            "equivalent_fps": 16.77252625257066
+          },
+          "confirm": {
+            "mean_ticks": 411867.25,
+            "mean_ms": 357.5236545138889,
+            "min_ms": 91.30034722222223,
+            "max_ms": 367.32118055555554,
+            "equivalent_fps": 2.797017728406422
+          }
+        },
+        "mean_frame_pre_submit_ms": 365.0957302517361
+      }
+    ],
+    "comparisons_are": "Interactive observations at matching ball counts/settings; moving scene states differ, not reset/matched randomized A/B.",
+    "limits": [
+      "First drain calibration frame and user-directed SD saves excluded from rates.",
+      "Stage statistics use retained raw records; rates use full scenario summaries.",
+      "Two older raw records were overwritten, not two transmitted frames lost.",
+      "Source release is not wire drain or presentation.",
+      "Local scene hashes and post-flip acknowledgements are checked, not hardware pixel-byte readback.",
+      "SD firmware files match deployment; installed firmware fingerprints are not recorded by this application."
+    ]
+  },
+  "report_sha256": "1fce4503a1f94fbb013f185dab253f29535f06d12adbc91c33c94824af517490",
+  "old_R0040_unchanged": true,
+  "emulator_reservation_cancelled": {
+    "owner": "agon-mos",
+    "task": "BD-LIVE",
+    "purpose": "Bounded continuous-play regression: cross26frames without control,140frames in one scenario with ring rollover, short taps and quit; then finite quick regression if pass; seven-minute arm limits",
+    "profile": "/home/smith/Agon/mystuff/agon-mos/.emulator/uart0-balls-ui-jit-bdlive008",
+    "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "db18783ba736",
+    "requested": "2026-11-02T20:44:42.897887+00:00",
+    "cancelled": "2026-11-02T21:11:45.208427+00:00",
+    "next_request": null
+  }
+}

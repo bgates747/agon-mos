@@ -1,0 +1,1101 @@
+{
+  "collection": {
+    "UUID": "8658-1C23",
+    "files": {
+      "vdp-2.16.0.bin": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f",
+      "flash.bin": "480b476703b798cf8d93294cac42d77cad93f7747003b061520b86685c75eb57",
+      "CREDITS.txt": "b8edb70f8f0bbde603f3a5dfb748a970b5c54d3af16dd08d349fed19f0dee1bc",
+      "ESP-IDF-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "mos-stock.bin": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae",
+      "DEMO-LICENSE.txt": "0db98d06c58378ac21408c94149b1b675c44a8ebff8a32cb8fb875c9ed033bf3",
+      "vdp-test.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "runs.log": "77b05dab3f8901f25a93d19574f089ee453a97ee95a78058357167b8b5ba6081",
+      "SHA256SUMS": "2065ba7b107952328d2b2f157b6a158a9a7bfd5ac689e04a906389b138d23ff8",
+      "readme.txt": "3468d4b81c8fc39065dd015a919c3317b07adb9c97ecc768507793a333ee9c3d",
+      "next.txt": "ddb5c6d217ea442d92dcdead04dade6263ea482787904ab5c50a86d142b3c07d",
+      "VDP-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "mos-candidate.bin": "cb1d0f4e066395533a2f07c7454246fa3a1ed46134bf155b883bb8c6e8353128",
+      "test.bin": "9677bd86a8feba29205214fd0168e9728d5d0b2a477cc8bd54957e243ee0e993",
+      "DIAGNOSTIC-VDP-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "FLASH-LICENSE.txt": "7f5a596f6c9f72cb9d38b53cdc33b84bfdc068baa705ff8b8f3faab41e9eff99",
+      "RX-FIX-CREDITS.txt": "b236bf837922ae619bcb7d124c5fce2b204e3f32c234887641bbd52169ca744d",
+      "mos-candidate.map": "66494f3dcd19fb1f71bf6bc62c8ab690316705ce2123037a8c1db051555f2370",
+      "MOS-LICENSE.txt": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25",
+      "R0040.log": "fc1c5354f9c3e9eae41de2b5b908775e0756dfd625b34ea72bab9ea169e456df"
+    },
+    "archive_sha256": "2b2002280c354f71de68f6fa67ac5068b27e27c17eb1272e1a79274072367c2c",
+    "deployed_static_files_match": {
+      "vdp-2.16.0.bin": true,
+      "flash.bin": true,
+      "CREDITS.txt": true,
+      "ESP-IDF-LICENSE": true,
+      "mos-stock.bin": true,
+      "DEMO-LICENSE.txt": true,
+      "vdp-test.bin": true,
+      "readme.txt": true,
+      "VDP-LICENSE.txt": true,
+      "mos-candidate.bin": true,
+      "test.bin": true,
+      "DIAGNOSTIC-VDP-LICENSE.txt": true,
+      "FLASH-LICENSE.txt": true,
+      "RX-FIX-CREDITS.txt": true,
+      "mos-candidate.map": true,
+      "MOS-LICENSE.txt": true
+    },
+    "SD_written": false
+  },
+  "analysis": {
+    "report": "0040",
+    "build": "b57893f6a9450c82",
+    "hardware_report": true,
+    "completed": true,
+    "frames": 511,
+    "blocks": 48,
+    "reference_frame_hashes_verified": 511,
+    "zero_reported_key_overruns": true,
+    "clock_ratio": 15.99986126526082,
+    "blocks_summary": [
+      {
+        "case": 0,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 230797,
+        "confirmed_fps": 3.1196246051725107
+      },
+      {
+        "case": 1,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 230339,
+        "confirmed_fps": 3.1258275845601484
+      },
+      {
+        "case": 2,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 25,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 230665,
+        "confirmed_fps": 3.1214098367762775
+      },
+      {
+        "case": 3,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 37,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 231407,
+        "confirmed_fps": 3.1114011244257953
+      },
+      {
+        "case": 4,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 49,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 230596,
+        "confirmed_fps": 3.1223438394421414
+      },
+      {
+        "case": 5,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 61,
+        "frames": 7,
+        "complete_block": false,
+        "intervals": 5,
+        "wall_ticks": 119795,
+        "confirmed_fps": 3.0051337701907426
+      },
+      {
+        "case": 6,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180851,
+        "confirmed_fps": 3.9811778757098386
+      },
+      {
+        "case": 7,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180851,
+        "confirmed_fps": 3.9811778757098386
+      },
+      {
+        "case": 8,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 25,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180852,
+        "confirmed_fps": 3.9811558622520073
+      },
+      {
+        "case": 9,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 37,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180855,
+        "confirmed_fps": 3.981089823339139
+      },
+      {
+        "case": 10,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 49,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180851,
+        "confirmed_fps": 3.9811778757098386
+      },
+      {
+        "case": 11,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 61,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180852,
+        "confirmed_fps": 3.9811558622520073
+      },
+      {
+        "case": 12,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 73,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180851,
+        "confirmed_fps": 3.9811778757098386
+      },
+      {
+        "case": 13,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 85,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180853,
+        "confirmed_fps": 3.981133849037616
+      },
+      {
+        "case": 14,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 97,
+        "frames": 8,
+        "complete_block": false,
+        "intervals": 6,
+        "wall_ticks": 107838,
+        "confirmed_fps": 4.006009013520281
+      },
+      {
+        "case": 15,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179657,
+        "confirmed_fps": 4.007636774520336
+      },
+      {
+        "case": 16,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 17,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 25,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179655,
+        "confirmed_fps": 4.007681389329548
+      },
+      {
+        "case": 18,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 37,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179658,
+        "confirmed_fps": 4.007614467488228
+      },
+      {
+        "case": 19,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 49,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 20,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 61,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179658,
+        "confirmed_fps": 4.007614467488228
+      },
+      {
+        "case": 21,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 73,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 22,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 85,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 23,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 97,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179657,
+        "confirmed_fps": 4.007636774520336
+      },
+      {
+        "case": 24,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 109,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179658,
+        "confirmed_fps": 4.007614467488228
+      },
+      {
+        "case": 25,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 121,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179658,
+        "confirmed_fps": 4.007614467488228
+      },
+      {
+        "case": 26,
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 133,
+        "frames": 1,
+        "complete_block": false,
+        "intervals": 0,
+        "wall_ticks": 0,
+        "confirmed_fps": null
+      },
+      {
+        "case": 27,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 28,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 29,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 25,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179655,
+        "confirmed_fps": 4.007681389329548
+      },
+      {
+        "case": 30,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 37,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179655,
+        "confirmed_fps": 4.007681389329548
+      },
+      {
+        "case": 31,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 49,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 32,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 61,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179655,
+        "confirmed_fps": 4.007681389329548
+      },
+      {
+        "case": 33,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 73,
+        "frames": 3,
+        "complete_block": false,
+        "intervals": 1,
+        "wall_ticks": 17987,
+        "confirmed_fps": 4.00289097681659
+      },
+      {
+        "case": 34,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 244114,
+        "confirmed_fps": 2.9494416543090525
+      },
+      {
+        "case": 35,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 244793,
+        "confirmed_fps": 2.9412605752615475
+      },
+      {
+        "case": 36,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 25,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 244088,
+        "confirmed_fps": 2.949755825767756
+      },
+      {
+        "case": 37,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 37,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 243439,
+        "confirmed_fps": 2.9576197733313068
+      },
+      {
+        "case": 38,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 49,
+        "frames": 4,
+        "complete_block": false,
+        "intervals": 2,
+        "wall_ticks": 50660,
+        "confirmed_fps": 2.84247927358863
+      },
+      {
+        "case": 39,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180851,
+        "confirmed_fps": 3.9811778757098386
+      },
+      {
+        "case": 40,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 180857,
+        "confirmed_fps": 3.981045798614375
+      },
+      {
+        "case": 41,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 1,
+        "first_scene_step": 25,
+        "frames": 6,
+        "complete_block": false,
+        "intervals": 4,
+        "wall_ticks": 71902,
+        "confirmed_fps": 4.005451865038524
+      },
+      {
+        "case": 42,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179660,
+        "confirmed_fps": 4.0075698541689855
+      },
+      {
+        "case": 43,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 179656,
+        "confirmed_fps": 4.0076590818007745
+      },
+      {
+        "case": 44,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 2,
+        "first_scene_step": 25,
+        "frames": 1,
+        "complete_block": false,
+        "intervals": 0,
+        "wall_ticks": 0,
+        "confirmed_fps": null
+      },
+      {
+        "case": 45,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 1,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 242875,
+        "confirmed_fps": 2.964487905301081
+      },
+      {
+        "case": 46,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 13,
+        "frames": 12,
+        "complete_block": true,
+        "intervals": 10,
+        "wall_ticks": 243591,
+        "confirmed_fps": 2.955774228111876
+      },
+      {
+        "case": 47,
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "mode": 0,
+        "first_scene_step": 25,
+        "frames": 1,
+        "complete_block": false,
+        "intervals": 0,
+        "wall_ticks": 0,
+        "confirmed_fps": null
+      }
+    ],
+    "matched": [
+      {
+        "balls": 24,
+        "collisions": 0,
+        "output": 0,
+        "scene_block_starts": [
+          1,
+          13,
+          25,
+          37,
+          49
+        ],
+        "modes": [
+          {
+            "mode": 0,
+            "blocks": 5,
+            "cases": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "matched_frames": 60,
+            "confirmed_fps": 3.1201139881643676,
+            "stages": {
+              "physics": {
+                "mean_ticks": 1290.8,
+                "mean_ms": 1.120486111111111,
+                "min_ticks": 1276,
+                "max_ticks": 1390
+              },
+              "collision": {
+                "mean_ticks": 1075.4545454545455,
+                "mean_ms": 0.9335542929292929,
+                "min_ticks": 1063,
+                "max_ticks": 1177
+              },
+              "draw": {
+                "mean_ticks": 19862.454545454544,
+                "mean_ms": 17.241714015151512,
+                "min_ticks": 19770,
+                "max_ticks": 19924
+              },
+              "checksum": {
+                "mean_ticks": 78849.96363636364,
+                "mean_ms": 68.44614898989899,
+                "min_ticks": 78737,
+                "max_ticks": 78890
+              },
+              "build": {
+                "mean_ticks": 25796.01818181818,
+                "mean_ms": 22.392376893939392,
+                "min_ticks": 16121,
+                "max_ticks": 28164
+              },
+              "submit": {
+                "mean_ticks": 248059.94545454546,
+                "mean_ms": 215.3298137626263,
+                "min_ticks": 239201,
+                "max_ticks": 256559
+              },
+              "release": {
+                "mean_ticks": 248036.12727272726,
+                "mean_ms": 215.30913825757574,
+                "min_ticks": 239177,
+                "max_ticks": 256535
+              },
+              "confirm": {
+                "mean_ticks": 368704.7272727273,
+                "mean_ms": 320.0561868686869,
+                "min_ticks": 270501,
+                "max_ticks": 387599
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 0.0
+          },
+          {
+            "mode": 1,
+            "blocks": 5,
+            "cases": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "matched_frames": 60,
+            "confirmed_fps": 3.9811558622520073,
+            "stages": {
+              "physics": {
+                "mean_ticks": 1685.4545454545455,
+                "mean_ms": 1.4630681818181819,
+                "min_ticks": 1277,
+                "max_ticks": 1846
+              },
+              "collision": {
+                "mean_ticks": 1433.7272727272727,
+                "mean_ms": 1.2445549242424243,
+                "min_ticks": 1063,
+                "max_ticks": 1597
+              },
+              "draw": {
+                "mean_ticks": 25982.618181818183,
+                "mean_ms": 22.55435606060606,
+                "min_ticks": 19779,
+                "max_ticks": 26783
+              },
+              "checksum": {
+                "mean_ticks": 102923.2,
+                "mean_ms": 89.34305555555555,
+                "min_ticks": 78736,
+                "max_ticks": 105500
+              },
+              "build": {
+                "mean_ticks": 34099.87272727273,
+                "mean_ms": 29.600583964646464,
+                "min_ticks": 16130,
+                "max_ticks": 37655
+              },
+              "submit": {
+                "mean_ticks": 146.8,
+                "mean_ms": 0.12743055555555555,
+                "min_ticks": 146,
+                "max_ticks": 147
+              },
+              "release": {
+                "mean_ticks": 264797.7272727273,
+                "mean_ms": 229.85913825757575,
+                "min_ticks": 254609,
+                "max_ticks": 276569
+              },
+              "confirm": {
+                "mean_ticks": 289973.7454545455,
+                "mean_ms": 251.71332070707075,
+                "min_ticks": 286715,
+                "max_ticks": 306054
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 27.59648773582819
+          },
+          {
+            "mode": 2,
+            "blocks": 5,
+            "cases": [
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "matched_frames": 60,
+            "confirmed_fps": 4.007650158858799,
+            "stages": {
+              "physics": {
+                "mean_ticks": 1683.7636363636364,
+                "mean_ms": 1.4616003787878786,
+                "min_ticks": 1276,
+                "max_ticks": 1847
+              },
+              "collision": {
+                "mean_ticks": 1430.6727272727273,
+                "mean_ms": 1.2419034090909091,
+                "min_ticks": 1063,
+                "max_ticks": 1598
+              },
+              "draw": {
+                "mean_ticks": 25961.090909090908,
+                "mean_ms": 22.53566919191919,
+                "min_ticks": 19771,
+                "max_ticks": 26774
+              },
+              "checksum": {
+                "mean_ticks": 102923.2,
+                "mean_ms": 89.34305555555555,
+                "min_ticks": 78736,
+                "max_ticks": 105467
+              },
+              "build": {
+                "mean_ticks": 34027.509090909094,
+                "mean_ms": 29.53776830808081,
+                "min_ticks": 16133,
+                "max_ticks": 37584
+              },
+              "submit": {
+                "mean_ticks": 150.8,
+                "mean_ms": 0.13090277777777778,
+                "min_ticks": 146,
+                "max_ticks": 258
+              },
+              "release": {
+                "mean_ticks": 262368.67272727273,
+                "mean_ms": 227.75058396464647,
+                "min_ticks": 253857,
+                "max_ticks": 270709
+              },
+              "confirm": {
+                "mean_ticks": 286838.2727272727,
+                "mean_ms": 248.99155618686865,
+                "min_ticks": 283245,
+                "max_ticks": 302419
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 28.445632885886596
+          }
+        ]
+      },
+      {
+        "balls": 24,
+        "collisions": 1,
+        "output": 0,
+        "scene_block_starts": [
+          1,
+          13
+        ],
+        "modes": [
+          {
+            "mode": 0,
+            "blocks": 2,
+            "cases": [
+              45,
+              46
+            ],
+            "matched_frames": 24,
+            "confirmed_fps": 2.9601246541382134,
+            "stages": {
+              "physics": {
+                "mean_ticks": 24387.590909090908,
+                "mean_ms": 21.169783775252522,
+                "min_ticks": 24211,
+                "max_ticks": 24764
+              },
+              "collision": {
+                "mean_ticks": 24174.090909090908,
+                "mean_ms": 20.98445391414141,
+                "min_ticks": 23997,
+                "max_ticks": 24551
+              },
+              "draw": {
+                "mean_ticks": 19880.454545454544,
+                "mean_ms": 17.257339015151512,
+                "min_ticks": 19771,
+                "max_ticks": 19925
+              },
+              "checksum": {
+                "mean_ticks": 78850.81818181818,
+                "mean_ms": 68.44689078282828,
+                "min_ticks": 78847,
+                "max_ticks": 78863
+              },
+              "build": {
+                "mean_ticks": 26078.272727272728,
+                "mean_ms": 22.63738952020202,
+                "min_ticks": 16298,
+                "max_ticks": 28417
+              },
+              "submit": {
+                "mean_ticks": 247390.04545454544,
+                "mean_ms": 214.74830334595958,
+                "min_ticks": 239504,
+                "max_ticks": 255526
+              },
+              "release": {
+                "mean_ticks": 247366.27272727274,
+                "mean_ms": 214.72766729797982,
+                "min_ticks": 239480,
+                "max_ticks": 255502
+              },
+              "confirm": {
+                "mean_ticks": 388892.6818181818,
+                "mean_ms": 337.5804529671717,
+                "min_ticks": 269244,
+                "max_ticks": 409983
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 0.0
+          },
+          {
+            "mode": 1,
+            "blocks": 2,
+            "cases": [
+              39,
+              40
+            ],
+            "matched_frames": 24,
+            "confirmed_fps": 3.9811118360666615,
+            "stages": {
+              "physics": {
+                "mean_ticks": 31884.81818181818,
+                "mean_ms": 27.67779356060606,
+                "min_ticks": 24211,
+                "max_ticks": 33081
+              },
+              "collision": {
+                "mean_ticks": 31632.090909090908,
+                "mean_ms": 27.458412247474744,
+                "min_ticks": 23997,
+                "max_ticks": 32831
+              },
+              "draw": {
+                "mean_ticks": 25942.727272727272,
+                "mean_ms": 22.519728535353536,
+                "min_ticks": 19882,
+                "max_ticks": 26643
+              },
+              "checksum": {
+                "mean_ticks": 102925.90909090909,
+                "mean_ms": 89.3454071969697,
+                "min_ticks": 78847,
+                "max_ticks": 105475
+              },
+              "build": {
+                "mean_ticks": 34331.5,
+                "mean_ms": 29.801649305555557,
+                "min_ticks": 16306,
+                "max_ticks": 37879
+              },
+              "submit": {
+                "mean_ticks": 147.27272727272728,
+                "mean_ms": 0.12784090909090912,
+                "min_ticks": 146,
+                "max_ticks": 156
+              },
+              "release": {
+                "mean_ticks": 263162.0909090909,
+                "mean_ms": 228.43931502525248,
+                "min_ticks": 253420,
+                "max_ticks": 273150
+              },
+              "confirm": {
+                "mean_ticks": 289602.13636363635,
+                "mean_ms": 251.39074337121212,
+                "min_ticks": 286720,
+                "max_ticks": 306024
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 34.49135766972253
+          },
+          {
+            "mode": 2,
+            "blocks": 2,
+            "cases": [
+              42,
+              43
+            ],
+            "matched_frames": 24,
+            "confirmed_fps": 4.007614467488228,
+            "stages": {
+              "physics": {
+                "mean_ticks": 31872,
+                "mean_ms": 27.666666666666668,
+                "min_ticks": 24220,
+                "max_ticks": 33248
+              },
+              "collision": {
+                "mean_ticks": 31623,
+                "mean_ms": 27.450520833333332,
+                "min_ticks": 24007,
+                "max_ticks": 32999
+              },
+              "draw": {
+                "mean_ticks": 25910.5,
+                "mean_ms": 22.49175347222222,
+                "min_ticks": 19881,
+                "max_ticks": 26610
+              },
+              "checksum": {
+                "mean_ticks": 102911.09090909091,
+                "mean_ms": 89.33254419191918,
+                "min_ticks": 78736,
+                "max_ticks": 105391
+              },
+              "build": {
+                "mean_ticks": 34345.045454545456,
+                "mean_ms": 29.813407512626263,
+                "min_ticks": 16310,
+                "max_ticks": 37912
+              },
+              "submit": {
+                "mean_ticks": 146.72727272727272,
+                "mean_ms": 0.12736742424242423,
+                "min_ticks": 146,
+                "max_ticks": 147
+              },
+              "release": {
+                "mean_ticks": 261158.36363636365,
+                "mean_ms": 226.69996843434345,
+                "min_ticks": 254614,
+                "max_ticks": 267175
+              },
+              "confirm": {
+                "mean_ticks": 287856.36363636365,
+                "mean_ms": 249.87531565656565,
+                "min_ticks": 286760,
+                "max_ticks": 298488
+              }
+            },
+            "bytes_per_frame": 20016,
+            "gain_vs_standard_percent": 35.38667913480056
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "Interactive run, not automated matrix or randomized repeated A/B.",
+      "Within-block rates exclude SD pauses, first calibration frame and partial blocks.",
+      "Local scene hashes verified; no physical UART-byte readback capture in this fixture.",
+      "Matching firmware files on SD do not identify the installed ROM or VDP image.",
+      "Direct callback posting cost alone is not total UART CPU cost."
+    ]
+  },
+  "analysis_sha256": "99c2cc12adda4ac94bfe5f2be19d3dbd5c7f579b9788e5972e5b660839dd57cf",
+  "report_sha256": "fc1c5354f9c3e9eae41de2b5b908775e0756dfd625b34ea72bab9ea169e456df"
+}
