@@ -7,7 +7,8 @@ handling. Software tests now check boot recovery even with deliberately broken
 experimental code present. This reduces the chance of a transport experiment
 preventing access to the CLI and updater after reset. Human functional review
 now passes, and the first Console8 hardware campaign also passes. The next task
-is to develop a fixture to test deliberate reset during active transmission.
+is the dedicated physical run of the deployed deliberate-reset fixture. The Author chose direct hardware testing because of emulator demand; this supersedes the planned GUI review before that
+hardware procedure.
 Performance qualification remains separate.
 This is an experimental candidate.
 
@@ -176,9 +177,9 @@ The fixture does not record the physical reset edge, a firmware readback or a
 wire capture; installed-MOS identity is gated by the fixture's ROM check before
 report creation. It does not test a deliberately crashed/partial-command reset,
 measure electrical CTS margin or establish a new throughput/CPU-saving result.
-The next task, BO-004, is to develop and qualify a fixture for deliberate reset
-during active transmission before requesting another hardware run. That fixture
-was not supplied for this round; the Author completed all requested tests.
+BO-004 now has an implemented, off-device-qualified deliberate-reset fixture;
+human review and its dedicated hardware run are next. It was not supplied for
+this completed round; the Author completed all requested tests.
 Broader performance/release gates remain separate.
 
 The Author deliberately left the experimental MOS and matched test VDP installed
@@ -291,3 +292,150 @@ raw emulator evidence and frozen runtime inputs on Pi and Oryx. The current
 lease guard was added afterward; executed harness sources remain separately
 preserved under `provenance/executed-harness`. Verification details are in
 `build/uart0-startup-safe/archive-verification.json`.
+
+## Deliberate-reset fixture — BO-004 implementation, 2026-11-01
+
+The completed normal hardware campaign remains passed. This next fixture is a
+new original AgonDev application in `experiments/uart0-reset`; it uses the exact
+already-tested ZDS II MOS and matched VDP. No firmware change or new flash is
+needed to exercise it. It extends the existing numbered suite while leaving
+Run all restricted to the ordinary tests.
+
+| Choice | Behavior |
+| --- | --- |
+| 5 | Sustain three queued immutable spans for a sixty-second reset window |
+| 6 | Disable interrupts and halt the application partway through a VDP buffer write |
+| 7 | After reboot, verify the pending run and fresh stock transport |
+
+Preparation first observes an ACTIVE descriptor with some, but not all, source
+bytes accepted. It saves a CRC-protected `reset.arm`/`Xnnnn.dat`, run number,
+build/ROM identity and observed state, appends PENDING to the sequential journal,
+and closes its report/metadata files. It finishes the preparation transfer before
+reusing its source storage. Only then does it publish a RESET NOW display and
+new traffic. During the reset window it performs no filesystem calls. No UART
+register, startup routine or firmware interrupt handler is modified by the app.
+
+Mode6 deliberately stops refills after the on-screen message and part of the
+first256-byte VDP payload. The incomplete command and borrowed descriptor are
+expected. A stationary screen is not PASS: the operator must power-cycle the
+whole board, reopen the appliance, choose7 and confirm Y. The verifier checks
+zero initialized/batch/ticket/synchronization state, the original UART vector,
+a closed session, the same ROM and a successful stock GP query/reply before
+committing RESET PASS. Automated tests label simulated resets separately from
+physical qualification.
+
+Mode5 cannot silently turn an unperformed reset into PASS. At expiry it drains
+and restores stock output, displays DO NOT RESET, and waits for E before saving
+EXPIRED. All fixture-owned writable files stay closed until that acknowledgment.
+A pending/corrupt/unreset/expired record is not sufficient for PASS. New reset
+runs are refused while one is pending; normal activation tests are also blocked
+in the interactive menu until the pending reset is verified. Numbering does
+not depend on the unreliable Agon RTC.
+
+Physical instructions will use whole-board OFF/ON, not an assumed eZ80-only
+reset: a VDP left expecting packet bytes may need its own reset. No SD writes
+or firmware/programmer operations have been performed for this new fixture.
+The new source remains uncommitted pending its separate human emulator review.
+
+### Reset qualification result and next procedure
+
+The new fixture is developed and passes automated qualification. Exact menu:
+`build/uart0-reset/run003/fixture/test.bin`, build `13839d236311480e`, SHA256
+`e1bc61d1f989bf3af457b8255b8b93a4caaccc6dee546bfcdbe7efce32ce27b3`.
+MOS remains SHA256 `89ea8694194e0488337bf1dcbfa91e2b084b3afc75a9c3916f4acc9ae12aa42b`;
+no new firmware installation is required.
+
+Both engines pass continuous-send and partial-packet reset/restart, with actual
+20 ms recovery-menu taps7/Y/Q and a working CLI afterward. The controlled-stop
+captures each end47bytes into a256-byte buffer payload. Both engines also pass
+the ordinary four tests. Missing, unreset, corrupt, wrong-ROM and expired controls
+all refuse reset success. Sixteen process phases/eleven outcomes completed in
+531.691seconds. The first capture checker matched preparation prose rather than
+the actual READY title; that failed attempt is retained and the matcher fixed.
+
+The new verifier labels simulated resets as software evidence; physical
+qualification remains pending. The nominal minute window uses MOS's frame-driven
+clock (7200ticks), not RTC timestamps; display refresh can affect its duration.
+If expiry is reached, do not reset during the subsequent acknowledgment/save.
+
+The stopped review profile is
+`/home/smith/Agon/mystuff/agon-mos/.emulator/uart0-reset-bo004-review`.
+It opens the menu without activation. Reserve/check out under the canonical FIFO
+when the Author is ready; the Author launches the generated wrapper. For each
+mode5then6: wait for RESET NOW, close/reopen the emulator, choose7thenY, require
+UART0 RESET RECOVERY PASS, thenQandDIR. Mode6 deliberately freezes; that is the
+expected trigger, not the test result. On physical Console8 the matching action
+is whole-board power OFF/ON, then reopen the appliance and go straight to7/Y.
+Do not run activation tests between reboot and verification. A generic stall
+before RESET NOW is not a valid reset trial. Runall does not include5/6.
+
+Reproduce from the repository on Pi with:
+
+```bash
+.venv/bin/python experiments/uart0-reset/prepare.py build/uart0-reset/runNEW
+```
+
+Transfer the fresh build and reset source to the matching Oryx project paths,
+then compile there using the retained SDK and ZDS child toolchain:
+
+```bash
+bash experiments/uart0-startup-safe/remote_fixture.sh build/uart0-reset/runNEW
+```
+
+For headless qualification reserve a finite600second tranche, export its returned
+`UART0_ORYX_LEASE` onOryx, then run `experiments/uart0-reset/qualify.py` with that
+build argument and a fresh `--attempt` name. It asserts ownership before every
+frontend launch and stops its owned processes after each phase. Prepare the
+stopped review with `--attempt bo004 --review --qualified-attempt q004` (or
+the chosen qualification attempt) only after its receipt matches the menu hash. No reservation is retained for offline analysis.
+
+Full source, failed attempts, raw phases and frozen runtime are retained on both
+hosts in `build/uart0-reset-q004-evidence.tar.gz`, SHA256
+`0f7866e5ee497e642271a691275b0e1b4bd29305ffeb7e3ae1f041069d513d4b`.
+All509ordinary files are verified onPi. New source remains uncommitted pending
+human review; the completed prior tranche was pushed before this work began.
+
+## Reset appliance hardware deployment, 2026-11-01
+
+LATEST 2026-11-01 — RESET APPLIANCE DEPLOYED TO CONSOLE8 CARD.
+Author selected direct hardware testing because the emulator is heavily demanded.
+AGONC8 UUID8658-1C23, same /test/mos-uart0; 22 package files verified,
+87 numbered evidence files plus runs.log retained. Next report R0037.
+Existing firmware was replaced for other projects: Author must flash BOTH
+mos-candidate.bin (file CRC29DCC1FC, ROM CRC0C5886FC) and vdp-test.bin
+(RX sync fixed). No physical flash or execution performed by this agent.
+New test.bin SHAe1bc61d1...ce27b3, build13839d236311480e.
+Protocol: menu5 -> RESET NOW -> whole-board OFF/ON -> reopen7/Y;
+then menu6 -> RESET NOW controlled freeze -> whole-board OFF/ON -> reopen7/Y.
+Require RESET RECOVERY PASS and working CLI after each. Go straight to7 after
+reboot. Expired mode5 is NOT PASS; E saves expiry before retry.
+Card left mounted. Root MOS.bin/autoexec and prior reports unchanged.
+Predeployment archive verified on Pi: build/uart0-reset/card-deploy001/before.tar.gz
+SHA256 3c2d9dd66f773977e823102f48496ea9d0a67cdea84522715709d418b415a37a.
+Deployment receipt/package scripts are in the same directory. Physical acceptance
+remains pending. No emulator reservation or launch. Earlier next-GUI-review and
+already-installed-pair statements are superseded for this hardware round.
+
+## Console8 reset results and scope
+
+2026-11-01 — Console8 deliberate-reset tests PASS; BO-004 complete.
+R0037 mode5 continuous sending and R0038 mode6 controlled mid-packet stop both
+have operator-Y power-cycle confirmation, valid CRC-protected VERIFIED records,
+matching build13839d236311480e and installed MOS CRC0C5886FC. Each verified fresh
+disabled transport state, original UART handler and successful stock-path VDP
+query/reply after reboot. This establishes whole-board power-cycle recovery;
+it does not establish CPU-only-reset parser recovery or precise reset timing.
+All previously deployed assets/reports unchanged, journal prefix preserved.
+117 returned files verified on Pi; archive build/uart0-reset/card-return001/before.tar.gz,
+SHA256 ce4cb28c70325aaaa941a8ba09b74b63bae6fae80012bf5d317a9e6c5c1865fe.
+Reproducible checks and results: card-return001/analyze.py and analysis.json.
+Card read only and left mounted; no emulator launch or firmware flashing.
+
+Scope decision: Author cautions against excessive recovery machinery for a hobby
+computer, particularly EMOS flash pressure. This fixture added ZERO MOS/VDP code:
+its pending records, CRC checks, reset menu and reports are standalone test-app
+code. Do not add production crash-recovery machinery on the strength of this
+edge-case test. Keep stock startup/explicit opt-in, ordinary correctness and
+measured CPU/throughput benefits central. Evaluate any proposed firmware growth
+against practical benefit and EMOS space cost; CPU-only reset recovery remains
+outside this completed task, not an automatic next work item.
