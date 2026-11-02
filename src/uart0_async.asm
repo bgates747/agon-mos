@@ -241,6 +241,14 @@ uart0_return_fence:
     ld a,(tx_opened)
     or a,a
     jr z,return_done
+    ld a,i
+    push af
+    di
+    call uart0_write_reset  ; Suppress app callbacks before return/drain.
+    pop af
+    jp po,return_write_reset
+    ei
+return_write_reset:
     call uart0_sync_begin
     ld a,i
     push af
@@ -268,7 +276,7 @@ uart0_async_getapi:
     xor a,a
     ret
 uart0_async_api:
-    DB "UTX1",1,2,uart0_async_api_end-uart0_async_api,15
+    DB "UTX1",1,3,uart0_async_api_end-uart0_async_api,31
     DB 3,16
     DB 255,255,0
     DW24 tx_open,tx_reserve,tx_publish,tx_status,tx_cancel,tx_reap
@@ -277,10 +285,13 @@ uart0_async_api:
     DW24 tx_diag_take
     DW24 tx_set_cts_batch,tx_get_cts_batch
     DW 0808bh
+    DW24 tx_write_config,tx_write_query,tx_write_last,tx_completion_take
+    DW24 tx_write_borrowed
 uart0_async_api_end:
     SECTION BSS
     XDEF uart0_sync_depth
 uart0_sync_depth: DS 1
 uart0_initialized: DS 1
 uart0_saved_vector: DS 3
+    INCLUDE "uart0_completion.inc"
     END

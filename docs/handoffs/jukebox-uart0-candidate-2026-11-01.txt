@@ -1,0 +1,93 @@
+To: Jukebox 2026-09-07 (mailbox jukebox)
+From: MOS UART0 project (agon-mos)
+Subject: Hardware-qualified experimental OTIRX candidate and explicit opt-in
+
+Information handoff requested by the Author. No Jukebox implementation, bench
+operation, scheduling, or firmware flashing is assigned by this message. The
+Author will assign your actual work. No reply is required.
+
+CANDIDATE AND MATCHED RECEIVER
+Pi project root: /Agon/mystuff/agon-mos
+MOS: build/uart0-startup-safe/run004/MOS.bin (111239 bytes)
+SHA256 89ea8694194e0488337bf1dcbfa91e2b084b3afc75a9c3916f4acc9ae12aa42b
+Updater FILE CRC32 29DCC1FC; installed erased-tail 128KiB ROM CRC32 0C5886FC.
+Banner: Arthur - UART0 startup-safe EXPERIMENTAL.
+Matched VDP: build/uart0-startup-safe/provenance/frozen-runtime/esp32-firmware.bin
+SHA256 201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a
+Subtitle: UART0 CTS diagnostic RX sync fixed.
+These exact files are also in build/uart0-reset/card-deploy001/package/ as
+mos-candidate.bin and vdp-test.bin, with stock rollback files and attribution.
+Same project-relative locations on Oryx under /home/smith/Agon/mystuff/agon-mos.
+Console8 active SD path /test/mos-uart0. Root /MOS.bin is NOT the candidate.
+Physical Console8 flashing/execution remain manual Author actions. Installed
+flash MOSlet supports flash mos mos-candidate.bin / flash vdp vdp-test.bin.
+Do not silently substitute stock or another VDP; qualify any different pair.
+This is a regular upstream-toolchain MOS candidate: ZDS II/Wine, NOT the older
+native AgonDev MOS experiment. Original test apps use AgonDev.
+
+OPT-IN CONTRACT
+Authoritative implementation contract: docs/uart0-async.md, Candidate API section;
+batching extension: docs/uart0-cts-batching-api.md. Some historical status prose
+in the latter still says not installed/receiver unresolved; that is superseded
+by the startup-safe README and hardware results below, not an ABI change.
+Startup and legacy output retain stock behavior until explicit tx_open. Merely
+finding the table does not activate the sender. No CLI enable switch is needed.
+
+Discover via MOS getfunction 50h: B=13h, C=0. Require A=0 and HL!=0, then call
+that discovery entry in ADL=1, MBASE=0; it returns HL=ROM table. Retain synchronous
+fallback if absent/incompatible. Validate UTX1, major1, minor>=2, length>=54,
+flags bit3, and size16 bit15 in the supported bitmap at offset52.
+Pointers are 24-bit little endian, NOT 16-bit words or C stack ABI functions.
+Table operations: open13, reserve16, publish19, status22, cancel25, reap28,
+poll_drain31, close34, kick37, diag_take43, set_cts_batch46, get_cts_batch49.
+Offsets are byte offsets from table base, each operation pointer is 3 bytes.
+
+Call open (no arguments), require A=0. A new session defaults to per-byte CTS
+(batch1). While idle/empty and UART TEMT, call set_cts_batch with B=16; require
+A=0, B=16. Setter may return BUSY until previous synchronous output drains.
+This explicitly selects up-to-16-byte OTIRX refills, CTS checked before each
+block; descriptor boundaries may cause shorter blocks. Discoverable capability
+is not a promise about arbitrary receiver firmware or physical CTS margin.
+
+Reserve returns HL=ticket. Publish takes DE=ticket, HL=source, BC=length.
+Publish borrows immutable application RAM; no payload copy. Keep source stable
+until status(DE=ticket) returns B=RELEASED(4); HL is accepted count. Reap a
+released/cancelled ticket using DE=ticket to free one of only three descriptors.
+Valid source range [040000h,0BC000h), positive lengths <=65535, no address wrap.
+On BUSY keep ownership/state and retry in foreground; do not discard audio.
+RELEASED permits source reuse but does not mean wire-empty or VDP execution.
+poll_drain A=0 means queue empty AND TEMT; A=1 means pending. Resolve/reap all
+reservations/tickets, then close, checking status. Close restores stock UART
+vector and resets policy. A general status: OK0, BUSY1, INVALID2, CLOSED3,
+CONTEXT4. AF/BC/DE/HL scratch; IX/IY, shadow banks, MBASE, ADL, incoming IFF
+preserved. Use an explicit register-ABI assembly shim from C/C++.
+
+SCHEDULER / OWNERSHIP CAUTIONS
+Async API is foreground-only. Do NOT call it from Jukebox's timer ISR or turn
+that ISR into another UART owner. Let a short ISR post due work, with an
+interruptible foreground producer preparing and publishing complete ordered
+packets. No direct UART writes from the application. An installed MOS keyboard
+callback excludes opening async; installing one drains/closes an open session.
+Use polling/MOS keyboard state for an async app, or explicitly handle exclusion.
+Do not hold DI across SD reads, packet preparation or long sends. Source
+lifetime, ordering of header+payload, EOF/track changes and graphics matter.
+See docs/uart0-jukebox-skins-audit.md for the pinned historical skins audit:
+60Hz feeding, not 44100 UART interrupts/s; at44.1kHz 8-bit mono, 735 payload
+bytes plus8-byte header per ordinary tick. Audit predates your latest source;
+reassess actual code rather than assuming its findings remain current.
+
+EVIDENCE AND LIMITS
+experiments/uart0-startup-safe/README.md and HANDOFF.md describe exact candidate.
+Console8 R0031..R0036 passed discovery/activation/close, full-duplex batch16
+integrity under receiver pauses, masked-IFF and queued application exit.
+R0037 continuous send and R0038 controlled mid-packet stop passed whole-board
+power-cycle recovery with original handler/fresh disabled state/VDP reply.
+Results: build/uart0-reset/card-return001/analysis.json. Reset fixture added no
+MOS/VDP code. No CPU-only-reset recovery or release approval is claimed.
+Earlier controlled Console8 batching comparison achieved about31% more other
+work in paced sending versus our experimental per-byte-CTS sender; bulk
+throughput did not improve over that sender. OTIRX gain over chunk-accounted
+scalar copying was small. Full performance A/B has not been rerun on this exact
+startup-preserving final pair; real Jukebox benefit remains to be measured.
+Author priority: best stable performance and useful CPU headroom, not expanding
+edge-case recovery machinery, particularly with EMOS flash constraints.

@@ -8,6 +8,6 @@
 // #define		VERSION_TYPE		"Beta "     // RC, Alpha, Beta, etc.
 
 #define		VERSION_VARIANT		"Platform"
-#define     VERSION_SUBTITLE    "Arthur - UART0 startup-safe EXPERIMENTAL"
+#define     VERSION_SUBTITLE    "Arthur - UART0 write-mode EXPERIMENTAL"
 
 #endif // VERSION_H

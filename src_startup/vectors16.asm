@@ -38,6 +38,7 @@
 			XREF	mos_api
 			XREF	UART0_serial_PUTCH 
 			XREF	tx_opened,uart0_sync_begin,uart0_sync_end
+			XREF	tx_write_mode,uart0_queue_rst
 			XREF	SET_AHL24
 
 NVECTORS 		EQU 48			; Number of interrupt vectors
@@ -133,7 +134,16 @@ _rst_18_handler:	PUSH	AF
 			JR	NZ,_rst_18_async
 			POP	AF
 			JP	_rst_18_stock
-_rst_18_async:		POP	AF
+_rst_18_async:		LD	A,(tx_write_mode)
+			OR	A,A
+			JR	Z,_rst_18_synchronous
+			LD	A,MB
+			OR	A,A
+			JR	NZ,_rst_18_synchronous
+			POP	AF
+			CALL	uart0_queue_rst
+			RET.L
+_rst_18_synchronous:	POP	AF
 			CALL	uart0_sync_begin
 			CALL.LIL	_rst_18_stock	; Match the release body's RET.L frame
 			CALL	uart0_sync_end

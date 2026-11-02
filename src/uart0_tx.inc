@@ -66,7 +66,7 @@ $$masked:
     ret
 ENDMACRO
     API tx_open,open_core
-    API tx_reserve,reserve_core
+    API tx_reserve,reserve_public_core
     API tx_publish,publish_core
     API tx_status,status_core
     API tx_cancel,cancel_core
@@ -148,6 +148,13 @@ open_core:
 
 ; All ticket values are monotonic across close/open. Zero is never issued.
 ; Exhaustion is sticky until the entire driver is reinitialized, avoiding ABA.
+reserve_public_core:
+    IF UART0_PRODUCTION
+    ld a,(tx_write_mode)
+    or a,a
+    jp nz,busy
+    ENDIF
+    jp reserve_core
 reserve_core:
     call check_open
     jp z,closed
@@ -405,6 +412,7 @@ close_scan:
     ld (tx_ier),a
     IF UART0_PRODUCTION
     call uart0_deactivate
+    call uart0_write_reset
     ENDIF
     xor a,a
     ld (tx_opened),a
@@ -587,6 +595,9 @@ service_next:
     ld (ix+0),a
     ld hl,(ix+16)
     ld (tx_head),hl
+    IF UART0_PRODUCTION
+    call uart0_write_release
+    ENDIF
     call hl_zero
     jr nz,service_more
     ld (tx_tail),hl
@@ -661,6 +672,9 @@ batch_copy:
     ld (ix+0),a
     ld hl,(ix+16)
     ld (tx_head),hl
+    IF UART0_PRODUCTION
+    call uart0_write_release
+    ENDIF
     call hl_zero
     jr nz,batch_more
     ld (tx_tail),hl

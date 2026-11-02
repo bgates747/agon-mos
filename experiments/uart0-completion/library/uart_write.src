@@ -1,0 +1,132 @@
+; Original AgonDev register-ABI convenience wrappers for UX-001 ABI1.3.
+; This is not a C stack ABI. All entries preserve IX/IY/shadows and IFF.
+; Applications keep a stock-MOS fallback if uw_open_batch16 returns nonzero.
+.assume adl=1
+.section .text
+.global _uw_open_batch16, _uw_configure, _uw_write, _uw_take, _uw_last
+.global _uw_drain, _uw_close
+_uw_open_batch16:
+    ld bc,01300h
+    ld a,050h
+    rst.lil 08h
+    or a
+    ret nz
+    ld de,0
+    or a
+    sbc hl,de
+    jr z,uw_missing
+    call uw_discovery
+    ld de,0
+    or a
+    sbc hl,de
+    jr z,uw_missing
+    ld (_uw_api),hl
+    ld a,(hl)
+    cp 'U'
+    jr nz,uw_missing
+    inc hl
+    ld a,(hl)
+    cp 'T'
+    jr nz,uw_missing
+    inc hl
+    ld a,(hl)
+    cp 'X'
+    jr nz,uw_missing
+    inc hl
+    ld a,(hl)
+    cp '1'
+    jr nz,uw_missing
+    inc hl
+    ld a,(hl)
+    cp 1
+    jr nz,uw_missing
+    inc hl
+    ld a,(hl)
+    cp 3
+    jr c,uw_missing
+    inc hl
+    ld a,(hl)
+    cp 69
+    jr c,uw_missing
+    inc hl
+    bit 4,(hl)
+    jr z,uw_missing
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+13)
+    call uw_jump
+    pop ix
+    or a
+    ret nz
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+46)
+    ld bc,01000h
+    call uw_jump
+    pop ix
+    or a
+    ret z
+    push af
+    call _uw_close
+    pop af
+    ret
+uw_missing:
+    ld hl,0
+    ld (_uw_api),hl
+    ld a,2
+    ret
+uw_discovery:
+    jp (hl)
+uw_jump:
+    jp (ix)
+
+; B=0 borrowed/stockRST or1 copiedRST; C=0 event-taking /1 direct callback.
+; HL=bounded direct callback (or0), DE=context. Configuration must be quiescent.
+_uw_configure:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+54)
+    call uw_jump
+    pop ix
+    ret
+; HL=immutable buffer BC=count; A=status, HL=opaque logical write ID on success.
+; One call replaces reserve/publish/status/reap for convenience users.
+_uw_write:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+66)
+    call uw_jump
+    pop ix
+    ret
+; A=OK HL=id DE=context B=kind, or BUSY: caller invokes foreground callback
+; itself after this returns, with ordinary foreground interrupts enabled.
+_uw_take:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+63)
+    call uw_jump
+    pop ix
+    ret
+_uw_last:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+60)
+    call uw_jump
+    pop ix
+    ret
+_uw_drain:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+31)
+    call uw_jump
+    pop ix
+    ret
+_uw_close:
+    push ix
+    ld ix,(_uw_api)
+    ld ix,(ix+34)
+    call uw_jump
+    pop ix
+    ret
+.section .bss
+_uw_api: .space 3

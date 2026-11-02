@@ -1,0 +1,200 @@
+To: Jukebox 2026-09-07 (mailbox jukebox)
+From: MOS UART0 project (agon-mos)
+Subject: Hardware-tested completion callbacks and explicit copied-RST18 mode
+
+READ ONLY — AUTHOR WILL ASSIGN YOUR WORK
+The Author requested this information handoff and explicitly limited your
+authorization to reading this message. Do not implement changes, build, test,
+reserve an emulator, deploy files, flash firmware, operate hardware or start an
+integration task because of this mail. Wait for the Author's assignment in your
+chat. No reply or investigation is requested. The examples below describe use
+of the interface; they are not instructions to execute now.
+
+WHAT IS NEW
+The interrupt-driven batch16 OTIRX sender now has an experimental convenience
+interface, optional source-consumed callbacks, foreground completion events,
+and an explicitly enabled copying RST18 mode. MOS still owns UART TX and RX.
+Applications do not poll or push each16-byte refill. Default/legacy RST18 stays
+synchronous; merely discovering or opening the async API does not enable the
+copying mode. This is not stock MOS or release approval.
+
+This is a NEW MOS image, not the ABI1.2 image in our2026-11-01 handoff or your
+earlier Jukebox trial. Keep those comparison baselines separate. The matched
+VDP is unchanged. No Jukebox application changes were made by this project.
+
+EXACT ARTIFACTS AND REFERENCES
+Pi root: /Agon/mystuff/agon-mos
+Oryx root: /home/smith/Agon/mystuff/agon-mos
+All following paths are relative to either root unless stated otherwise.
+
+MOS: build/uart0-completion/run005/MOS.bin (112777bytes)
+SHA256 cb1d0f4e066395533a2f07c7454246fa3a1ed46134bf155b883bb8c6e8353128
+Updater FILE CRC32 6E17923C; physical erased-tail ROM CRC32 FA47120E.
+Banner: Arthur - UART0 write-mode EXPERIMENTAL.
+ZDS II/Wine upstream-toolchain MOS; not the historical native AgonDev MOS port.
+
+Matched VDP:
+build/uart0-startup-safe/provenance/frozen-runtime/esp32-firmware.bin
+SHA256 201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a
+Subtitle: UART0 CTS diagnostic RX sync fixed.
+Do not silently substitute another VDP and transfer this pair's acceptance.
+
+Exact clean SD package: build/uart0-completion/card-deploy001/package/
+Firmware aliases there: mos-candidate.bin and vdp-test.bin. It also contains
+stock rollback files, attribution, checks.bin and the tested original app.
+test.bin SHA256 af07f6a0d7d808ce7d9b5a4486476554c3ccdc22d476527ae41aece1694ffe83
+Fixture build71715a9860ae7f56. Console8 SD directory remains /test/mos-uart0;
+root /MOS.bin is stock rollback, NOT this candidate. Flashing stays a manual
+Author action; this handoff grants none.
+
+Implemented contract and results: experiments/uart0-completion/README.md
+Assembly helper example: experiments/uart0-completion/library/uart_write.src
+Physical fixture C body: experiments/uart0-completion/src/main.c
+Generated C register shim/callback: experiments/uart0-completion/prepare_fixture.py
+Exact generated tested sources:
+build/uart0-completion/card-deploy001/qualified/fixture/src/
+MOS implementation: src/uart0_completion.inc
+Initial design/motivation: docs/uart0-completion-interface.md (proposal/history;
+use the experiment README and implementation for the implemented contract).
+Older underlying ABI: docs/uart0-async.md and docs/uart0-cts-batching-api.md;
+their historical status paragraphs do not supersede the new result below.
+
+DISCOVERY AND COMMON SETUP
+All calls below are eZ80 ADL=1, MBASE=0 register ABI, NOT C stack function
+pointers. Use an explicit assembly shim for C/C++. Operation pointers are
+24-bit little-endian entries at BYTE offsets in the ROM table.
+
+Discover via MOS getfunction50h, B=13h C=0. Require A=OK and HL!=0; call that
+discovery function to obtain HL=table. Validate UTX1, major1, minor>=3,
+length>=69, flags bit4, and batch16 capability (bitmap at52, bit15).
+Keep a synchronous stock-MOS fallback when unavailable; do not treat the older
+ABI1.2 image as supporting these appended functions.
+
+Open via pointer at offset13; require A=OK. New sessions default to CTS batch1.
+At quiescence/TEMT, select batch16 via offset46, B=16; require A=OK. BUSY means
+retry later from foreground with interrupts enabled, not discard pending audio.
+General status A: OK0, BUSY1, INVALID2, CLOSED3, CONTEXT4.
+
+APPENDED OPERATIONS
+54 tx_write_config: B=0 borrowed convenience/standard RST18, B=1 copied RST18;
+   C=0 foreground event-taking, C=1 direct callback/automatic retirement;
+   HL=callback pointer or0, DE=24-bit caller context. A=status.
+57 tx_write_query: A=status; B=mode bits0..3, direct-delivery bit4;
+   HL=callback, DE=context.
+60 tx_write_last: A=status; HL=last successfully accepted logical write ID.
+63 tx_completion_take: A=OK, HL=id, DE=context, B=kind(1borrowed/2copied);
+   BUSY if no completion. Taking frees the retained descriptor.
+66 tx_write_borrowed: HL=source, BC=positive length<=65535;
+   A=status, HL=opaque logical write ID on success. No manual ticket reaping.
+
+Configuration requires an open session, all descriptors free, no synchronous
+scope/barrier/active copied write, and UART TEMT. Only three descriptor slots
+exist. IX/IY, shadow banks and incoming foreground IFF are preserved. Treat
+other primary registers as scratch except documented results. Do not mix
+convenience logical IDs with the older reserve/publish ticket handles.
+
+BORROWED WRITE: NO PAYLOAD COPY
+Pseudocode, with explicit register shims behind these descriptive names:
+
+  discover_v1_3(); open(); select_batch(16);
+  configure(mode=BORROWED, delivery=DIRECT, callback=post_only, context=ctx);
+  status, id = write_borrowed(immutable_packet, packet_length);
+  if BUSY: keep the packet and retry from foreground later;
+  if OK: do other work; keep the packet unchanged until its release notification;
+  after notifications, poll_drain_until_OK(); close_until_OK();
+
+The source must lie wholly in [040000h,0BC000h), without wrapping. A successful
+write automates the original reserve/publish/status/reap mechanics. Completion
+allows source reuse. A direct callback can execute before submission returns,
+so prepare its state before calling and use its supplied ID; do not assume you
+can register the returned ID in an application map before any notification.
+Failed attempts can leave ID gaps. IDs are24-bit, session-local opaque values,
+not persistent report numbers; indefinite wraparound is not established here.
+
+For foreground event delivery instead, configure B=0 C=0 HL=0. Periodically
+take events at63, then dispatch your own callback AFTER take returns in ordinary
+foreground. This polls completion events, never individual16-byte refills.
+Untaken events retain the bounded descriptor slots and can cause BUSY; service
+them while producing, and consume them before closing. There is no automatic
+foreground callback scheduler hidden in MOS.
+
+COPIED RST18: FAMILIAR WRITE CALL, EXPLICIT OPT-IN
+  discover_v1_3(); open(); select_batch(16);
+  configure(mode=COPIED_RST18, delivery=DIRECT, callback=post_only_or_NULL,
+            context=ctx);
+  rst18_write(packet, length);   // existing fixed-length output calling form
+  reuse_packet_immediately();
+  optional_id = last_accepted_write_id();
+  do_other_work();
+  poll_drain_until_OK(); close_until_OK();
+
+The existing fixed-length and delimited RST18 forms are supported. There are
+three256-byte MOS-owned buffers (768bytes total), copied with LDIR before
+publication to the same OTIRX sender. A call larger than the queue waits for
+room and proceeds in chunks; source reuse is safe when the call returns, but
+the call is not guaranteed to return immediately. This is not an unbounded
+queue. Each nonempty logical write gets one ID/optional callback, independent
+of internal copied chunks and16-byte FIFO refills. Copied mode requires C=1;
+HL=0 selects no callback with automatic retirement. B=1 C=0 is INVALID because
+retained events could exhaust all slots before the producing call returns.
+
+The copied callback reports consumption of the MOS-owned copies, not the
+earlier point when the original application source becomes reusable at return.
+tx_write_last is for associating copied logical writes; a callback may already
+have fired before the application asks for that ID. Nonzero-MBASE output keeps
+the synchronous compatibility path and does not get a new callback/ID. Existing
+masked-IFF foreground compatibility pumping remains; this does not authorize
+calling the async API from an application ISR.
+
+CALLBACK, ORDERING AND LIFETIME RULES
+Direct callback input: A=RELEASED(4), HL=logical write ID, DE=registered context.
+It can run during masked foreground service OR the MOS UART ISR, always with
+interrupts disabled. It must preserve ADL/MBASE, leave interrupts disabled,
+return normally and only post bounded state. MOS saves primary/shadow register
+banks and indexes. API reentry returns CONTEXT. No SD access, rendering, MOS
+output, recursive sends, waiting or other substantial work in this callback.
+A normal compiled C function needs an appropriate assembly callback shim.
+
+Source consumed is NOT wire drained and is NOT VDP command execution complete.
+offset31 poll_drain returns OK only with queue empty AND UART TEMT; a command
+execution fence needs the relevant VDP reply. All accepted traffic stays ordered.
+Keep command headers and payloads ordered through the sole MOS UART owner.
+Jukebox's scheduling ISR should post due work, not send bytes or call these APIs.
+Opening still excludes installed MOS keyboard callbacks; use MOS keyboard state/
+polling, or explicitly handle exclusion. Completion callbacks do not remove it.
+
+Close at34 requires completion records resolved and wire drained, then clears
+configuration and restores stock dispatch. OSCLI/application return suppresses
+pending callback delivery before draining accepted sources and restoring stock;
+reset clears the mode. Do not promise a callback after teardown/reset. Keep
+callback code/context alive until delivered or explicitly retired. Default
+startup remains the proven stock transport path until explicit activation.
+
+EVIDENCE AND LIMITS
+Console8 R0039 passed all four cases: borrowed/direct, borrowed/event,
+32copied RST18 writes/direct, one8448byte copied write/no callback. Negative
+and positive receiver controls pass; all32768payloadbytes match. Notification
+counts1/1/32/0 match, with direct status/context/consecutive-ID checks. Copied
+source memory was overwritten immediately after each return. Frame ticks
+10/10/10/8 are NOT a fair CPU or throughput A/B or evidence of a new speed gain.
+Returned raw evidence and reproducible checks:
+build/uart0-completion/card-return001/{before/mos-uart0/R0039.log,analysis.json,analyze.py}
+Archive before.tar.gz SHA256
+7c43733b6228db3baaaa3ca6e80199db71949a958c4f318769dd0c49246b0c3b.
+The fixture passed its MOS/API guard; it does not independently log installed
+VDP hash or post-return CLI responsiveness. The card was collected read-only.
+
+Off-device actual-ROM and both-engine repaired-VDP tests also pass. Code growth
+vs the hardware-qualified ABI1.2 image is1538bytes ROM and837bytes RAM, of which
+768bytes are copy buffers. The register helper object is245text/3BSS; the actual
+fixture runs its C register shim. The helper source is an assembled/linked
+example, NOT a separately runtime-qualified released library.
+
+Borrowed/direct and copied modes trade source ownership, queueing and callback
+cost differently. Modeled useful-work losses vs the same-image older raw API
+were about0.14% borrowed/direct and1.90% copied/direct; these are not calibrated
+hardware cycles or Jukebox measurements. No new physical application gain or
+EMOS fit is claimed. Any later Author-assigned comparison should distinguish
+interface/copy/notification costs from OTIRX batching and scheduler changes.
+
+Again: read this information only and wait for the Author's chat assignment.
