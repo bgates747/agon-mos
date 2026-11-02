@@ -163,23 +163,13 @@ Review checkout is released and Rally was notified. The Author approved the
 completed-work commit/push checkpoint on2026-11-01 before BO-004 implementation.
 These gates precede N-006.
 
-BO-004 [ ] Develop a fixture to test deliberate reset during an active
-transmission. Give it a clear reset-ready indication, defined manual reset
-steps and persistent evidence for checking stock startup/CLI recovery afterward.
-Qualify the fixture off-device before asking the Author to run the next hardware
-test, including partial-command/whole-board recovery where needed. This fixture
-was not part of the completed hardware round; the Author completed all requested
-tests. The normal boot/activation,
-completed-session power cycles and cleanup campaign now passes on Console8:
-R0031..R0036, with two full suites R0035/R0036 verifying65536payloadbytes and
-256orderedreplies, no RX/order errors. These passes do not establish deliberate
-in-flight crash recovery. See experiments/uart0-startup-safe/README.md for the
-exact firmware, evidence and limits. No additional board action is authorized
-by this inspection; physical execution remains manual.
-The Author elected to retain experimental MOS/testVDP between tests on dedicated
-Console8; stock restoration is not a pending requirement for this campaign.
-Use the standard installed flash MOSlet in future instructions; its binary
-matches the bundled copy. Preserve verified stock/recovery assets.
+BO-004 [x] Deliberate-reset fixture developed, qualified and passed on Console8.
+R0037 continuous sending and R0038 controlled mid-packet stop passed whole-board
+power-cycle recovery. Valid records, operator confirmations, original handler,
+fresh disabled state and stock-path VDP reply verified. Evidence:
+build/uart0-reset/card-return001/analysis.json. No MOS/VDP code added.
+CPU-only reset recovery is outside scope, not an automatic next task. Author
+requests restraint on recovery machinery, especially given EMOS flash limits.
 
 N-001..N-004 are delivered: pinned dependencies, native stock reproduction,
 maintained OTIRX implementation, linked contracts and actual-ROM/both-engine
@@ -298,3 +288,50 @@ foreground packet production and MOS as sole UART owner. Compare stock app
 behavior with adapted scalar/OTIRX variants using matched scheduling; measure
 audio continuity, feed backlog and graphics/CPU headroom. Keep scheduling gains
 separate from transport gains; synthetic AB-004 alone does not close this task.
+
+## Application convenience and completion notification
+
+BD-001 [ ] Review the [bouncing-balls demo task](docs/tasks/BD-001/README.md),
+then verify the public-command flip/confirmation path and timer ownership.
+Author requested TASK DOCUMENT ONLY, THEN PAUSE; BD-002..006 are not started.
+
+BD-002 [ ] Implement the original C/AgonDev scene, deterministic wall/all-pairs
+physics, local RGBA2222 renderer and responsive controls/HUD under BD-001.
+
+BD-003 [ ] Implement bitmap-upload/VDP-circle output crossed with standard,
+async foreground-event and async direct-callback transport, preserving matched
+CPU work, source ownership and non-blocking flip.
+
+BD-004 [ ] Implement raw-PRT stage metrics/equivalent FPS, separate wall-time
+FPS and verified presentation confirmation; distinguish overlap, drain, source
+release and measurement overhead as specified by BD-001.
+
+BD-005 [ ] Qualify deterministic output, timing/accounting and interaction;
+prepare a finite matched sweep spanning transmit- and compute-bound workloads.
+Use the shared Oryx lease for emulator execution; no new recovery campaign.
+
+BD-006 [ ] Package the demo, source, identified firmware and concise operating
+instructions for explicit review/deployment; archive returned physical results
+and interpret measured gains/limits without implying upstream release approval.
+
+UX-001 [x] Develop the completion-callback and opt-in queued-RST18 experiment.
+Implemented tentative ABI1.3, borrowed convenience writes, source-consumed
+callbacks/events, fixed copied buffers/backpressure and scoped cleanup. Protected
+stock startup remains unchanged. Linked-ROM and real-VDP application qualification
+recorded in experiments/uart0-completion/README.md; original API/RST18 regressions
+pass. Hardware application performance/EMOS selection are explicitly UX-002,
+not claimed complete by off-device results. RX injection deferred for lack of
+concrete need. Specification: docs/uart0-completion-interface.md.
+
+UX-002 [ ] Qualify the completed UX-001 experiment on physical Console8.
+Physical fixture portion PASSED on2026-11-02: R0039/build71715a9860ae7f56,
+all four cases and32768receiver bytes, notification counts1/1/32/0. Exact
+separately branded ABI1.3 deployment assets verified; returned archive and
+reproducible analysis in build/uart0-completion/card-return001. Ordinary startup
+and explicit opt-in retained; this is correctness acceptance, not release or
+performance approval. Remaining application/size selection keeps this task open.
+Compare callback,
+foreground event and copied-RST18 convenience against the retained borrowed
+baseline in matched paced/bulk application work before choosing an interface
+for distribution. Review EMOS fit independently; no heap, new RX injection API
+or shared Extender binary ABI is implied.

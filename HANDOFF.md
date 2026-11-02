@@ -1,5 +1,198 @@
 # Interrupt-based UART0 transmission project — handoff
 
+LATEST 2026-11-02 — BD-001 DEMO TASK WRITTEN; STOP FOR AUTHOR REVIEW.
+docs/tasks/BD-001/README.md: original C/AgonDev bouncing-balls demo, mode136
+with unmagnified160x120scene, wall/all-pairs collisions and six output/transport
+combinations. Same local rendering in bitmap and VDP-circle paths; async pair
+uses identical borrowed writes with foreground events versus direct callback.
+Raw PRT timings/equivalent FPS, second timer actual FPS, non-blocking raw flip,
+verified post-flip confirmation and explicit measurement limits specified.
+BD-001..006 registered only in TODO.md. Author directed writing the task THEN
+PAUSING: no implementation, compilation, booking, deployment or bench action.
+
+LATEST 2026-11-02 — RX-004 COMPLETE: VDP PR354 SUBMITTED AS BGATES747.
+https://github.com/AgonPlatform/agon-vdp/pull/354; head1a0840e58f380e0c802981e4a95ebed025032691.
+Task silo docs/tasks/RX-004 contains pr.md, full reproduction ZIP, root operating
+README source, patch, assembler, checksum/verification and publication receipt.
+ZIP34661114bytes/5369files SHAe4babd18fa38620aa38900b4a60f298cea17479168ce4e3995180d820659ad79.
+Matched MOS/VDP/fixture sources and binaries plus raw physical evidence included.
+MOS and native fixture clean rebuilds match historical binaries. All VDP source
+manifests materialize exactly; unpacked ZIP hashes and paired decoder pass.
+Actual production VDP build passes, local patched driver linked, original SDK
+driver excluded. No new emulator/board run or SD writes. Public ZIP prerelease
+hosting explicitly approved by Author after auto-review initially required it;
+release on bgates747/agon-vdp, tag uart-rx-race-reproducer-2026-11-02. GitHub digest
+matches local ZIP. RX-004 removed from unfinished TODO; maintainer review pending.
+
+LATEST 2026-11-02 — CONSOLE8 CALLBACK / COPIED-RST18 HARDWARE RUN PASSES.
+R0039, fixture build71715a9860ae7f56, ends END CALLBACK SUITE PASS. The simpler
+write interface and optional notifications work on the physical board: all
+32768payloadbytes compare correctly, including copied writes whose application
+source was overwritten immediately after return. Direct borrowed notification,
+foreground event,32copied-write callbacks and copied no-callback mode all pass.
+Expected notification counts1/1/32/0; comparator bad/good controls pass.
+Frame-tick observations10/10/10/8 are NOT a matched performance A/B or CPU saving.
+
+Returned19files archived on Oryx and verified on Pi, archive
+build/uart0-completion/card-return001/before.tar.gz SHA256
+7c43733b6228db3baaaa3ca6e80199db71949a958c4f318769dd0c49246b0c3b.
+Reproduction: card-return001/analyze.py; results analysis.json. All14immutable
+deployment assets match, journal is exactly its seed plus R0039, next.txt=40.
+Root MOS.bin unchanged; autoexec now selects /test/mos-uart0 instead of Jukebox.
+No SD writes, firmware flashing or emulator launch; card LEFT MOUNTED.
+
+Firmware remains the separately branded run005 write-mode experiment, not stock
+MOS or release approval. Fixture entry passed its MOS/API identity guard; actual
+installed VDP identity and subsequent CLI DIR are not independently logged.
+UX-002's physical fixture portion is accepted; matched real-application benefit
+and EMOS size selection remain open. Next useful work is application integration
+and comparison, not additional adverse-reset tests. No new source changes beyond
+analysis/notes this turn; source remains uncommitted.
+
+Author-requested read-only Jukebox mailbox handoff sent and body verified:
+2026-11-02_11-35-29_agon-mos_uart0-completion-handoff-20261102-readonly.
+Local copy docs/handoffs/jukebox-uart0-completion-2026-11-02.txt. Includes exact
+artifacts/API/examples and explicitly authorizes READING ONLY. Jukebox must
+wait for the Author's chat assignment; no implementation/testing/bench grant.
+
+
+LATEST 2026-11-02 — CLEAN CALLBACK TEST DEPLOYED TO CONSOLE8 SD.
+Author explicitly authorized deployment and no prior-test cruft. AGONC8 UUID
+8658-1C23, same /test/mos-uart0/test.bin. Full117-file predeployment snapshot
+verified on Pi/Oryx before mutation; history stays in project workspace.
+Archive build/uart0-completion/card-deploy001/before.tar.gz SHA256
+c97d45b425c6c8e96c30803f9fdbbfe6ed51d1b960e8a76e12dbea58ab6dd6c9.
+
+Active directory now16 required files only: new fixture/checks, exact experiment
+MOS/matched VDP, explicit stock rollback pair, required attribution/licenses,
+short readme/firmware instructions and compact runs.log/next.txt. Old reports,
+reset.arm, old fixtures, maps/manifests/checksum files and duplicate updater
+removed after archive; no SD history directory. Root MOS.bin/autoexec and other
+projects untouched. Installed flash MOSlet hash matches official1.9, so no extra
+flash.bin copy supplied. Card synced/verified and LEFT MOUNTED; no agent flashing.
+
+MOS stays exactly run005 SHAcb1d0f4e...8353128, FILE CRC6E17923C, installed ROM
+CRCFA47120E; VDP stays SHA201ad8ab...707e2a, RX sync fixed. Fixture build
+71715a9860ae7f56 / SHAaf07f6a0d7d808ce7d9b5a4486476554c3ccdc22d476527ae41aece1694ffe83.
+The standalone fixture was rebuilt only for sequential report allocation:
+next.txt seeds39, logs continueR0039, old files no longer needed on-card.
+Actual allocator checked on temporary host filesystem for39/40, occupied-file
+avoidance and invalid/exhausted seed refusal. Same main transport test and ASM
+shim sources as the both-engine-qualified app; MOS unchanged. No full emulator
+rerun of this logging-only rebuild: optional FIFO request2f2148ac7821 cancelled
+because Oryx is occupied by another owner's long test. No emulator held/launched.
+
+Author protocol in on-card readme Q-001..004: flash mos mos-candidate.bin;
+flash vdp vdp-test.bin; LOAD test.bin / RUN .; four cases run automatically,
+expect END CALLBACK SUITE PASS within about2minutes, then working DIR.
+No reset/crash exercise or mandatory stock restoration; return SD for analysis.
+Manual physical acceptance remains UX-002. Source changes uncommitted.
+
+
+LATEST 2026-11-02 — UX-001 EXPERIMENT DEVELOPED, OFF-DEVICE QUALIFIED.
+Stock RST18 remains synchronous. New explicit session mode copies through three
+256-byte buffers; optional per-write callbacks run as bounded masked-context
+notifications. Borrowed convenience writes/event taking also implemented.
+No new VDP code or recovery machinery. Prototype ABI1.3 is NOT the existing
+Jukebox application-test candidate and is not an upstream/EMOS allocation.
+
+Final build: build/uart0-completion/run005, ZDS II/Wine MOS; image112777bytes,
+SHA256cb1d0f4e066395533a2f07c7454246fa3a1ed46134bf155b883bb8c6e8353128,
+fileCRC6E17923C / installedROMCRCFA47120E, write-mode EXPERIMENTAL banner.
+Growth1538bytes flash and837bytes RAM vs accepted ABI1.2;768bytes are copy slots.
+Linked original AgonDev wrapper object245text/3BSS; fixture uses its C shim.
+
+Actual-ROM startup/legacy/mixed-mode tests,27 production cases and538batch cases
+PASS, including new BCU/count and failed-ID regressions. Real compiled repaired
+VDP passes JIT36.819s/interpreter49.635s;65536payloadbytes compared total.
+Modeled paced useful-work cost ~0.2% for borrowed convenience/events, ~1.9% for
+copying vs same-image old API; these are model figures, NOT hardware performance.
+Direct callback is source-consumed, NOT wire drain or VDP execution completion.
+
+Workspace-only appliance build/uart0-completion/run005/appliance/ is prepared;
+no SD deployment/physical flash/app changes. Preserve active Jukebox trial and
+accepted ABI1.2 MOS89ea8694...12aa42b. UX-002 owns physical testing and matched
+application performance/EMOS fit. All new source remains UNCOMMITTED.
+Emulator generation94 RELEASED with fresh idle proof; no waiter/notification.
+Evidence005archive97fb941d7a102ad8b7bde6d8cbb248daad9f313e614cddebf5bb9d30051eb771
+verified on Pi (128files), build/uart0-completion-evidence005.tar.gz. Earlier
+builds/failures retained. See experiments/uart0-completion/README.md for contracts,
+limits, generator metadata correction and exact reproduction.
+
+Author-approved Extender coordination completed via mailbox; shared semantic
+contract ../agon-dev-env/cross-agent/parallel_uart_async/contract.md accepted,
+with live-session exactly-once and readiness-not-yet-in-UART clarifications.
+No shared binary ABI, ownership transfer, hardware permission or EMOS fit implied.
+
+
+LATEST 2026-11-01 — Console8 deliberate-reset tests PASS; BO-004 complete.
+R0037 mode5 continuous sending and R0038 mode6 controlled mid-packet stop both
+have operator-Y power-cycle confirmation, valid CRC-protected VERIFIED records,
+matching build13839d236311480e and installed MOS CRC0C5886FC. Each verified fresh
+disabled transport state, original UART handler and successful stock-path VDP
+query/reply after reboot. This establishes whole-board power-cycle recovery;
+it does not establish CPU-only-reset parser recovery or precise reset timing.
+All previously deployed assets/reports unchanged, journal prefix preserved.
+117 returned files verified on Pi; archive build/uart0-reset/card-return001/before.tar.gz,
+SHA256 ce4cb28c70325aaaa941a8ba09b74b63bae6fae80012bf5d317a9e6c5c1865fe.
+Reproducible checks and results: card-return001/analyze.py and analysis.json.
+Card read only and left mounted; no emulator launch or firmware flashing.
+
+Scope decision: Author cautions against excessive recovery machinery for a hobby
+computer, particularly EMOS flash pressure. This fixture added ZERO MOS/VDP code:
+its pending records, CRC checks, reset menu and reports are standalone test-app
+code. Do not add production crash-recovery machinery on the strength of this
+edge-case test. Keep stock startup/explicit opt-in, ordinary correctness and
+measured CPU/throughput benefits central. Evaluate any proposed firmware growth
+against practical benefit and EMOS space cost; CPU-only reset recovery remains
+outside this completed task, not an automatic next work item.
+
+
+LATEST 2026-11-01 — RESET APPLIANCE DEPLOYED TO CONSOLE8 CARD.
+Author selected direct hardware testing because the emulator is heavily demanded.
+AGONC8 UUID8658-1C23, same /test/mos-uart0; 22 package files verified,
+87 numbered evidence files plus runs.log retained. Next report R0037.
+Existing firmware was replaced for other projects: Author must flash BOTH
+mos-candidate.bin (file CRC29DCC1FC, ROM CRC0C5886FC) and vdp-test.bin
+(RX sync fixed). No physical flash or execution performed by this agent.
+New test.bin SHAe1bc61d1...ce27b3, build13839d236311480e.
+Protocol: menu5 -> RESET NOW -> whole-board OFF/ON -> reopen7/Y;
+then menu6 -> RESET NOW controlled freeze -> whole-board OFF/ON -> reopen7/Y.
+Require RESET RECOVERY PASS and working CLI after each. Go straight to7 after
+reboot. Expired mode5 is NOT PASS; E saves expiry before retry.
+Card left mounted. Root MOS.bin/autoexec and prior reports unchanged.
+Predeployment archive verified on Pi: build/uart0-reset/card-deploy001/before.tar.gz
+SHA256 3c2d9dd66f773977e823102f48496ea9d0a67cdea84522715709d418b415a37a.
+Deployment receipt/package scripts are in the same directory. Physical acceptance
+remains pending. No emulator reservation or launch. Earlier next-GUI-review and
+already-installed-pair statements are superseded for this hardware round.
+
+
+LATEST 2026-11-01 — BO-004 FIXTURE DEVELOPED; AUTOMATED QUALIFICATION PASSES.
+Prior work checkpoint9754da6/dfeb102/c959650 pushed; tree clean before BO-004.
+New originalAgonDev application, existingMOS/VDP UNCHANGED. Choices5continuous,
+6DI/HALTmidpacket,7fresh-resetverification. All reportfilesclosed beforeREADY;
+expiryneedsEbeforeSDsave andneverPASS. Persistentarm/XnnnnCRC/run/build identity.
+FreshBSS/vector/GPquery required afterreboot,7/Yconfirmsreadiness/resetprocedure.
+Two engines x two resetmodes, ordinarysuitebothengines, fivenegatives allPASS;
+16phases/11outcomes,531.691s. Bothcrashcaptures end47of256payloadbytes. SDimage
+unchangedafterREADY; actual20ms7/Y/Q taps andCLI DIR tested. This is SOFTWARE
+qualification; humanreview/physicalrecovery stillnext, not missed prior work.
+
+ReviewprofileSTAGED STOPPED (notreserved):
+/home/smith/Agon/mystuff/agon-mos/.emulator/uart0-reset-bo004-review
+ReservewhenAuthorready. NoGUIlaunch; noSDdeployment/firmwareflash/boardoperation.
+MenuSHAe1bc61d1...ce27b3/build13839d236311480e, binaryinbuild/uart0-reset/run003.
+New source UNCOMMITTED pending humanvalidation. Physicalpair staysinstalled by
+Authorchoice; no newfirmware flashneeded. Mode6 requireswholeboardOFF/ON; a
+stationaryscreenaloneisnotPASS. Afterboot goSTRAIGHT7/Y beforeanyactivation.
+
+Oryxgeneration63 RELEASED; nextWolf3Drequest4b840451e210 notified by steering.
+Finalarchive0f7866e5...d513d4b hashmatchesPi/Oryx,509files verified:
+build/uart0-reset-q004-evidence.tar.gz. q003falsecapturematcherfailure retained;
+noMOSbug inferred. Source/results/procedure in startup-safeREADME andtodaylog.
+Earlier pendingimplementation/heldlease claims below are historical.
+
 LATEST 2026-11-01 — Author approved logical commit/push checkpoint, then BO-004.
 MOS implementation9754da6; qualified suite/resultsdfeb102; policy/task/hardware
 notes form the final checkpoint group. Next develop the deliberate-reset fixture;
@@ -1781,3 +1974,19 @@ build/uart0-ab/human-stall-001.tar.gz. Counters report zero TX drops/RX overruns
 and no backend fault; those counters do not explain the stall. Do not deploy
 this fixture to hardware or commit it as qualified. Investigate separately;
 production MOS and the physical SD remain unchanged.
+
+2026-11-02 — Author requested a task to test Tom Morton's completion-callback
+idea and application conveniences. UX-001 in TODO.md and
+ docs/uart0-completion-interface.md define a matched comparison of status/reap,
+library foreground callbacks and minimal genuine notification/ISR callback
+prototypes where justified. Separate source-release and wire-drain semantics;
+retain stock RST18, startup and opt-in. Consider RX injection only if a real
+consumer needs it; existing combined handler already preserves MOS RX.
+Library simplicity/performance and EMOS size cost drive the decision. Planning
+only; no implementation, emulator session, app modification or board operation.
+
+2026-11-02 — UX-001 clarification: Author selects explicit opt-in/mode switch
+for any queued RST18 extension. Unaware apps retain stock synchronous behavior.
+Updated interface spec covers bounded copying, ordered calls/backpressure,
+optional per-write notification IDs and session/reset cleanup. Today's async
+candidate does not implement this mode; no firmware change made.
