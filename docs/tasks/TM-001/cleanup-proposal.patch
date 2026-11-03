@@ -1,0 +1,67 @@
+--- a/src/uart0_tx.inc
++++ b/src/uart0_tx.inc
+@@ -159,8 +159,6 @@
+     call check_open
+     jp z,closed
+     ld hl,(tx_next_ticket)
+-    ld a,h
+-    or a,l
+     ld (tx_tmp),hl
+     ld a,(tx_tmp+2)
+     or a,h
+@@ -275,8 +273,6 @@
+     ld a,QUEUED
+     ld (ix+0),a
+     ld hl,(tx_tail)
+-    ld a,h
+-    or a,l
+     ld (tx_tmp),hl
+     ld a,(tx_tmp+2)
+     or a,h
+--- a/src/uart0_completion.inc
++++ b/src/uart0_completion.inc
+@@ -336,7 +336,7 @@
+     push hl
+     ld (tx_write_ticket),hl
+     ex de,hl               ; HL=source DE=ticket
+-    call find
++    ; reserve_core already selected IX under the same DI scope.
+     call write_meta
+     ld (iy+0),1
+     ld (iy+1),0
+@@ -462,35 +462,14 @@
+ queue_copy_delimiter:
+     ld bc,0
+ queue_copy:
+-    ld a,(tx_write_delimited)
+-    or a,a
+-    jp z,queue_copy_fixed
+     ld a,(tx_write_delimiter)
+     cp a,(hl)
+     jp z,queue_copy_end
+-    jp queue_copy_byte
+-queue_copy_fixed:
+-    push hl
+-    ld hl,(tx_write_count)
+-    ld a,h
+-    or a,l
+-    pop hl
+-    jp z,queue_copy_end
+-queue_copy_byte:
+     ld a,(hl)
+     ld (de),a
+     inc hl
+     inc de
+     inc bc
+-    ld a,(tx_write_delimited)
+-    or a,a
+-    jp nz,queue_copy_counted
+-    push hl
+-    ld hl,(tx_write_count)
+-    dec hl
+-    ld (tx_write_count),hl
+-    pop hl
+-queue_copy_counted:
+     ld a,b
+     or a,a
+     jp z,queue_copy

@@ -1,0 +1,102 @@
+; Tom Morton candidate, transliterated to AgonDev assembler syntax.
+; Original attachment preserved ../original/async_vdu.asm.
+; Algorithm unchanged: one borrowed source, scalar FIFO fill, spinning ISR,
+; raw Port D CTS check, chain all other causes to the saved MOS UART handler.
+; C input bridge and vector syscall wrapper replace example-program glue only.
+.assume adl=1
+.section .text
+.global _tm_init,_tm_exit,_tm_send,_tm_callback
+.extern _tm_source,_tm_length,_tm_done
+_tm_init:
+ ld hl,tm_isr
+ ld e,018h
+ ld a,014h
+ rst.lil 08h
+ ld (tm_old+1),hl
+ ret
+_tm_exit:
+ ld hl,(tm_old+1)
+ ld e,018h
+ ld a,014h
+ rst.lil 08h
+ ret
+_tm_send:
+ ld hl,(_tm_source)
+ ld bc,(_tm_length)
+ ld de,_tm_callback
+ ld (tm_pos),hl
+ ld (tm_count),bc
+ ld (tm_callback),de
+ in0 a,(0c1h)
+ or 2
+ out0 (0c1h),a
+ ret
+_tm_callback:
+ ld a,1
+ ld (_tm_done),a
+ ret
+; Positive lengths, no concurrent sends: enforced by the benchmark caller.
+tm_old:
+ .db 0c3h
+ .ds 3
+tm_isr:
+ di
+ push af
+ in0 a,(0c2h)
+ and 0eh
+ cp 2
+ jp nz,tm_chain
+ call tm_fill
+ pop af
+ ei
+ reti.l
+tm_chain:
+ pop af
+ jp tm_old
+tm_fill:
+ push bc
+ push de
+ push hl
+tm_waitcts:
+ in0 a,(0a2h)
+ tst a,8
+ jr nz,tm_waitcts
+tm_waitempty:
+ in0 a,(0c5h)
+ and 060h
+ jr z,tm_waitempty
+ ld de,-1
+ ld b,16
+tm_loop:
+ ld hl,(tm_pos)
+ ld a,(hl)
+ out0 (0c0h),a
+ inc hl
+ ld (tm_pos),hl
+ ld hl,(tm_count)
+ or a
+ adc hl,de
+ ld (tm_count),hl
+ jr z,tm_eof
+ djnz tm_loop
+ jr tm_more
+tm_eof:
+ in0 a,(0c1h)
+ and 0fdh
+ out0 (0c1h),a
+ pop hl
+ pop de
+ pop bc
+ push hl
+ ld hl,(tm_callback)
+ ex (sp),hl
+ ret
+tm_more:
+ pop hl
+ pop de
+ pop bc
+ ret
+.section .bss
+tm_pos: .ds 3
+tm_count: .ds 3
+tm_callback: .ds 3
