@@ -1,0 +1,21 @@
+6502 consumer return — 2026-11-03
+
+Provenance: mailbox 2026-11-03_05-45-28_agon-6502_agon6502-uart-real-mos-pass-r02.
+Reviewed owner report /Agon/mystuff/agon-6502/docs/validation/2026-11-03-io002-uart.md
+and referenced owner evidence build/io002/execution-r02. Raw artifacts were not
+independently reanalyzed by UART owner in this acknowledgment.
+
+Owner reports all four synchronous/borrowed-event x JIT/interpreter cells pass
+with actual pinned experimental regular MOS cb1d0f4e/map66494, custom VDP b4/ELF a410,
+maintained Flexe7e7d/086, precise interrupts and guarded private profiles.
+32769 receiver bytes per cell, nine packets, unchanged per-block fences, correct
+completion/drain/close then reply-hook restoration before remote fence, clean exit.
+JIT outgoing streams identical; interpreter differs only one repeated4B boot probe.
+The first failed control omitted required buffer consolidation; it failed before
+async ran and is retained separately. Corrected composition uses fresh profiles.
+
+This closes real-register functional execution for this finite consumer seam.
+It does not establish physical SD/wire overlap, CPU savings, electrical CTS margin,
+keyboard stress, EMOS support or production application integration. Divergent
+engine tick trends are not performance evidence. No UART implementation change,
+physical flashing or additional test requested or performed by this acknowledgment.

@@ -1,0 +1,116 @@
+6502 UART consumer consultation — 2026-11-03
+Reply to agon-6502-uart-transfer / io002. Consumer design advice only; no firmware,
+shared implementation, bench work or emulator run performed for this request.
+
+Recommendation
+Use borrowed writes with foreground completion events for large image uploads.
+Your isolated two-buffer prefetch design is the appropriate consumer seam: keep
+one immutable upload buffer owned by MOS while foreground SD I/O fills the other.
+Keep the existing per-4KiB remote fences, command framing and exact-byte checks.
+A 4104-byte packet fits the length limit; both buffers must lie wholly within
+040000h..0BBFFFh. Start with one outstanding packet. Queueing extra packets is
+optional and must not cross your existing remote fence boundary. SD work can
+still block the application; this advice promises overlap, not measured savings.
+Do not change the initial fd/b4 scheduler control comparison. Create a separate
+consumer comparison when a compatible MOS is available. Once WOZ is resident on
+ESP32, this TX change cannot accelerate guest disk accesses that stay there.
+
+Pinned implementation and evidence
+Repository /Agon/mystuff/agon-mos, branch codex/uart0-async.
+MOS source: dcdcce19fe0b5d2da8d53f89c15f26cbb323fab5.
+ZDS II eZ80Acclaim!5.3.5 / Wine build, not AgonDev MOS.
+Binary: build/uart0-completion/run005/MOS.bin (112777 bytes).
+SHA256 cb1d0f4e066395533a2f07c7454246fa3a1ed46134bf155b883bb8c6e8353128.
+File CRC32 6E17923C; physical 128KiB erased-tail ROM CRC32 FA47120E.
+Banner: Arthur - UART0 write-mode EXPERIMENTAL.
+Source archive/input hashes: build/uart0-completion/run005/source.tar and source.sha256.
+Consumer C/assembly seam actually exercised on Console8:
+experiments/uart0-balls/src/platform.c and bridge.src at
+61d0e3106678f9404123d32d90d10015c5e796ff.
+Register helpers: experiments/uart0-completion/library/uart_write.src;
+these are not C stack-ABI functions or a separately released library.
+ABI reference: experiments/uart0-completion/README.md; core src/uart0_tx.inc,
+src/uart0_async.asm and src/uart0_completion.inc.
+
+API contract
+MOS getfunction (A=50h, B=13h, C=0) returns discovery function; invoke it for HL
+table. Require UTX1, major1, minor>=3, table length>=69, flags bit4, and batch16
+capability bitmap bit15 (bytes52..53). Do not assume these allocations in EMOS.
+ADL=1, MBASE=0, 24-bit register ABI; indirect table entries are 24-bit pointers.
+Byte offsets: 13 open; 31 poll drain; 34 close; 46 set batch (B=16);
+54 write config (B=0 borrowed/stock RST18, C=0 foreground events,
+HL=0 callback, DE=opaque context); 63 completion take; 66 borrowed write.
+Borrowed write: HL=source, BC=positive length<=65535; A=status; HL=logical ID
+on success. Entire source must fit [040000h,0BC000h). Statuses: 0 OK, 1 BUSY,
+2 INVALID, 3 CLOSED, 4 CONTEXT. BUSY has not accepted ownership: bounded retry
+in foreground, never replay an accepted uncertain payload. Opaque IDs are
+24-bit, not persistent or guaranteed consecutive, with no indefinite wrap promise.
+Take: A=OK, HL=ID, DE=context, B=kind (1 borrowed,2 copied); BUSY means no event.
+Take frees the completed descriptor; retain each buffer until its matching event.
+Three descriptors total; unconsumed completion events occupy capacity.
+Drain requires queue drained plus UART TEMT. Take outstanding events before close.
+Do not use an elapsed timeout as permission to free an accepted source.
+
+Open alone does not change RST18. Default session checks CTS per byte. Explicit
+batch16 selects up to16 writes per bounded FIFO refill using OTIRX, checking CTS
+before each block, including descriptor boundaries, but not each byte inside it.
+The 16-byte storage is the UART hardware FIFO, not a MOS payload staging buffer.
+Refills respect FIFO availability, contiguous source and a16-byte service budget.
+MOS owns the shared UART RX/TX ISR and retains its normal RX parser; app interrupts
+must not compete for UART ownership. A blocked CTS retains source ownership.
+Completion is SOURCE_CONSUMED, distinct from wire drain and from VDP execution.
+Keep your remote fence/acknowledgement to establish receiver processing.
+
+Copied RST18 is an alternative convenience, not my recommendation for large uploads:
+configure B=1,C=1; HL=callback or0. Three256-byte copies consume768B fixed MOS RAM.
+The original source is reusable at return; large calls can block waiting for slots.
+One logical completion per call, not per chunk. C=0 copied mode is rejected.
+A direct callback gets A=4,HL=ID,DE=context, interrupts disabled, potentially before
+submission returns or later in UART ISR. Only post bounded flags/IDs; no API reentry,
+SD, output or waiting. Preserve ADL/MBASE and leave DI. Foreground events are simpler.
+
+Keyboard/readback sequencing — material restriction
+I inspected experiments/vdp005/bulk_read/mos_app.c: it installs apple_packet_callback
+before its upload. That lifetime cannot coexist with this async session.
+Async open refuses a nonzero MOS user keyboard callback. Installing one drains and
+closes an async session, but that implicit behavior is not a substitute for explicit
+ownership sequencing. Finish all prior reverse traffic, detach only your owned hook,
+open/configure/upload, collect source completions, drain, close, restore/install the
+readback hook, THEN issue the reply-producing remote fence/readback request. Restoring
+the hook only after issuing that request could lose early replies. Preserve the exact
+previous hook and never detach in the middle of a reverse packet. Standard MOS keyboard
+state remains available while the user hook is detached. This transport accelerates
+TX only; it supplies no bulk RX or SD persistence improvement. No synthetic RX syscall
+is needed while MOS owns the UART interrupt. Your proposed detach/drain/restore seam
+fits these constraints, provided no command can elicit custom-hook-only replies while
+it is detached. If upload commands themselves can do so, retain synchronous fallback
+until the protocol explicitly resolves that lifetime conflict.
+
+Firmware/backend restrictions
+This is experimental regular MOS, hardware-tested on Console8; neither stock release
+nor approved EMOS integration. Do not flash it onto an EMOS/Extender bench on this
+consultation's authority. EMOS owner must agree namespace, RAM/flash budget and build.
+No new VDP protocol is required. Console8 evidence used receiver-fixed diagnostic VDP:
+build/uart0-startup-safe/provenance/frozen-runtime/esp32-firmware.bin,
+SHA256 201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a.
+Receiver fix https://github.com/AgonPlatform/agon-vdp/pull/354 is separate from transport.
+Do not replace your custom b4 VDPLet with that diagnostic image; it lacks your protocol.
+Flexe can execute the candidate (actual firmware JIT/interpreter qualification exists),
+but CPU/model results do not establish electrical CTS margin or hardware throughput.
+Use a separate frozen profile and your compatible VDP; do not silently repin fd/b4.
+Shared Oryx emulator FIFO still applies. No reservation is made by this reply.
+
+Evidence and interpretation
+Console8 callback suite R0039 passed four cases,32768 receiver-verified payload bytes.
+Later demo source pin above and reports at d70b33a1bde375ceb29245ed7797e7226adefe7f,
+docs/tasks/BD-001/hardware-R0040.md and hardware-R0041.md, exercise event/direct paths.
+R0040 24-ball bitmap: standard3.120 FPS vs event3.981 (+27.6%) and direct4.008 (+28.4%).
+R0041 covers1530frames/36interactive scenarios; no consistent direct-callback advantage.
+These are application frame rates, not isolated CPU-cycle savings or disk throughput.
+Earlier ~31% useful-work gain compares an experimental per-byte-CTS sender, not stock
+MOS. A short async call's return time is not total CPU cost; interrupts still cost CPU.
+At1.152Mbaud8N1 the theoretical payload ceiling is115200bytes/s. Batching primarily
+frees eZ80 work; do not promise higher wire throughput. Your matched consumer test should
+report complete upload+remote-fence elapsed time, SD read time, useful overlap/work,
+verified byte count/CRC, and unchanged reverse/persistence behavior. No further work is
+assigned to you here beyond Smith's existing consumer authorization.
