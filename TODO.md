@@ -1,5 +1,14 @@
 # MOS TODO
 
+## Eirene upstream async RFC qualification
+
+RFC-001 [ ] Await Smith's review of the refined syscall 25h qualification plan.
+Nurples, Fsim, Wolf, Jukebox, Extender, VDPlet, Rally and MechAgon returned
+source reviews; feedback is collated and the refined plan circulated. Jukebox
+alone is separately authorized to execute its migration task. Detailed plan:
+[RFC-001](../eirene-mos/docs/tasks/RFC-001/README.md). No suite implementation,
+hardware deployment or publication is authorized by the planning request.
+
 ## Recovery complete; remaining cleanup
 
 Stock MOS3.0.2 recovery passed target CRC checks and the Author confirmed MOS
