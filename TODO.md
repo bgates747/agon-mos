@@ -11,7 +11,10 @@ model engines: JIT passes; interpreter reports16 UART RX overruns despite
 byte/return checks passing. Actual hardware applicability is OPEN; see
 [the finding](../eirene-mos/docs/tasks/RFC-001/latency-findings.md). A private
 Console8 package is prepared in project space, not deployed. CPU/throughput
-continuation remains unimplemented pending this responsiveness disposition.
+caller source/oracle preparation is now implemented, with full/short compilation
+queued behind Extender under the overnight continuation. No performance target
+run is selected and responsiveness disposition remains OPEN. See
+[preparation](../eirene-mos/docs/tasks/RFC-001/performance-preparation.md).
 Jukebox continues its separately authorized migration task. Detailed plan:
 [RFC-001](../eirene-mos/docs/tasks/RFC-001/README.md). Later performance/app
 tranches, hardware deployment and release publication remain separate.
