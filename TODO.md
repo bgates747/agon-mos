@@ -2,12 +2,19 @@
 
 ## Eirene upstream async RFC qualification
 
-RFC-001 [ ] Await Smith's review of the refined syscall 25h qualification plan.
-Nurples, Fsim, Wolf, Jukebox, Extender, VDPlet, Rally and MechAgon returned
-source reviews; feedback is collated and the refined plan circulated. Jukebox
-alone is separately authorized to execute its migration task. Detailed plan:
-[RFC-001](../eirene-mos/docs/tasks/RFC-001/README.md). No suite implementation,
-hardware deployment or publication is authorized by the planning request.
+RFC-001 [ ] Continue the reviewed syscall 25h evaluation after the completed
+first transfer-validation tranche: both Flexe engines and wrong-ROM refusal
+passed, with 269508 payload bytes and 36 callbacks verified. Next planned work is
+finite normal CTS/input/timer latency, then performance and application cohorts.
+Jukebox continues its separately authorized migration task. Detailed plan:
+[RFC-001](../eirene-mos/docs/tasks/RFC-001/README.md). Later performance/app
+tranches, hardware deployment and release publication remain separate.
+
+The separate startup fix was published as upstream Eirene PR #3; completion is
+recorded in [IRQ-001](../eirene-mos/docs/tasks/IRQ-001/upstream-publication.json).
+Startup-fixed RC1.1/RC2.1 and RFC-based RC3 are published; Jukebox was directed
+to pin RC3. Completion/evidence: [RC-003](../eirene-mos/docs/tasks/RC-003/qualification.md).
+The RC3 ABI is25h; RC1.1/RC2.1 retain42h/43h and are separate candidates.
 
 ## Recovery complete; remaining cleanup
 
