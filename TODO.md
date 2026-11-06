@@ -6,6 +6,12 @@ RFC-001 [ ] Continue the reviewed syscall 25h evaluation after the completed
 first transfer-validation tranche: both Flexe engines and wrong-ROM refusal
 passed, with 269508 payload bytes and 36 callbacks verified. Next planned work is
 finite normal CTS/input/timer latency, then performance and application cohorts.
+The new RC3 latency fixture on `codex/rc3-latency-performance` completed both
+model engines: JIT passes; interpreter reports16 UART RX overruns despite
+byte/return checks passing. Actual hardware applicability is OPEN; see
+[the finding](../eirene-mos/docs/tasks/RFC-001/latency-findings.md). A private
+Console8 package is prepared in project space, not deployed. CPU/throughput
+continuation remains unimplemented pending this responsiveness disposition.
 Jukebox continues its separately authorized migration task. Detailed plan:
 [RFC-001](../eirene-mos/docs/tasks/RFC-001/README.md). Later performance/app
 tranches, hardware deployment and release publication remain separate.
