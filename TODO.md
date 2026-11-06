@@ -1,10 +1,11 @@
 # MOS TODO
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
-preserving EMOS admission, routing and RX. Independent core and OTIRX leaf pass
-host sanitizer/byte controls and native linking; owner attachment/IRQ/GPIO-CTS
-retry contract and operational adapter remain open. No live bench or firmware
-change selected. [Task](docs/tasks/U1-001/README.md).
+targeting vanilla MOS by Brandon's clarified direction. Independent core and
+OTIRX leaf pass host sanitizer/byte controls and native linking. Next: standalone
+vanilla adapter and TX/RX-only Console8 ESP8266 protocol/testing plan. Extender
+owns its separate EMOS adaptation; no longer a gate here. No hardware operation
+or firmware change selected in this scope update. [Task](docs/tasks/U1-001/README.md).
 
 ## Eirene upstream async RFC qualification
 

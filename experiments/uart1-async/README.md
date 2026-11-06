@@ -1,9 +1,10 @@
 # Application-space UART1 sender — U1-001 development
 
-The independent TX core and OTIRX leaf live in application RAM. This is not yet
-an installed UART1 driver: the EMOS admission/IRQ/retry adapter is under owner
-review. No vector is installed, no port initialized and no existing NM SUBMIT
-changed. Do not call the hardware leaf on a live EMOS port by itself.
+The independent TX core and OTIRX leaf live in application RAM. The default
+adapter under development targets vanilla MOS and an otherwise unused UART1.
+First hardware test: Console8/ESP8266 over TX/RX, without CTS/RTS. Extender owns
+its separate EMOS adaptation and hooks; that work does not gate this driver.
+No vector is installed or port initialized by the present core alone.
 
 One positive immutable span and a prearmed flag-only assembly callback follow
 the UART0 model. The callback releases source memory after the final FIFO write;
@@ -23,9 +24,11 @@ Burst size is 1..16 and may not exceed the explicitly supplied receiver reserve.
 Setting reserve=16 declares an external protocol contract; it does not prove
 that headroom exists. CTS may change during OTIRX. A TX FIFO alone does not make
 that safe. Without a confirmed receiver contract, do not enable large bursts.
-GPIO CTS requires an actual bounded owner retry opportunity; it is not assumed
-to generate a modem interrupt. TX-empty is masked while blocked and during the
-wire tail, so the retry opportunity also retires TEMT without an IRQ storm.
+GPIO CTS, when used, requires an actual bounded retry opportunity; it is not
+assumed to generate a modem interrupt. Without CTS, ignore its unconnected input
+and refill on TX-empty. Peer pacing belongs to the protocol, separately from
+local FIFO capacity. The foreground may observe the wire tail; no periodic CTS
+retry timer is needed in no-flow-control mode.
 
 `u1_emit.src` is a small C-compatible UART1 copy leaf. It performs only bounded
 OTIRX and returns, preserving IX/IY and not changing IFF. It has no validation or
