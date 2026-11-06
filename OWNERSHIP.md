@@ -1,5 +1,11 @@
 # Repository ownership
 
+On 2026-11-06 Brandon separately delegated the reusable application-space UART1
+async driver to this project (U1-001). Its original library, adapters and tests
+live under experiments/uart1-async. Extender retains EMOS admission/routing/RX
+and any minimal firmware integration; MechAgon retains its application consumer.
+This adds no resident UART1 async engine or upstream toolchain migration.
+
 The experimental native regular-MOS UART variant also belongs to this project,
 on codex/uart0-otirx-native in an isolated worktree. It consumes the explicitly
 pinned generic foundation, shared interface and reusable helpers; none of those
