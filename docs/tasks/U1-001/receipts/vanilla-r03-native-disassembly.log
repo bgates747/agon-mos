@@ -1,0 +1,908 @@
+
+/Agon/mystuff/agon-mos/build/u1-001/vanilla-r03/native/obj/u1_emit.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_u1_emit_uart1>:
+   0:	dd e5             	push ix
+   2:	dd 21 00 00 00    	ld ix,0x0000
+   7:	dd 39             	add ix,sp
+   9:	dd 27 06          	ld hl,(ix+6)
+   c:	01 00 00 00       	ld bc,0x0000
+  10:	dd 4e 09          	ld c,(ix+9)
+  13:	11 d0 00 00       	ld de,0x00d0
+  17:	ed c3             	otirx
+  19:	dd e1             	pop ix
+  1b:	3e 01             	ld a,0x01
+  1d:	c9                	ret
+
+/Agon/mystuff/agon-mos/build/u1-001/vanilla-r03/native/obj/u1_vanilla.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_u1_vanilla_open>:
+   0:	dd e5             	push ix
+   2:	dd 21 00 00 00    	ld ix,0x0000
+   7:	dd 39             	add ix,sp
+   9:	ed 22 f2          	lea hl,ix-14
+   c:	f9                	ld sp,hl
+   d:	dd 27 09          	ld hl,(ix+9)
+  10:	fd 21 00 00 00    	ld iy,0x0000
+  15:	3e 13             	ld a,0x13
+  17:	09                	add hl,bc
+  18:	b7                	or a,a
+  19:	ed 42             	sbc hl,bc
+  1b:	28 3f             	jr z,0x005c
+  1d:	dd 07 0c          	ld bc,(ix+12)
+  20:	40 11 ff ef       	ld.sis de,0xefff
+  24:	69                	ld l,c
+  25:	60                	ld h,b
+  26:	40 19             	add.sis hl,de
+  28:	40 11 01 f0       	ld.sis de,0xf001
+  2c:	b7                	or a,a
+  2d:	40 ed 52          	sbc.sis hl,de
+  30:	38 2a             	jr c,0x005c
+  32:	69                	ld l,c
+  33:	60                	ld h,b
+  34:	cd 00 00 00       	call 0x0000
+  38:	fe 02             	cp a,0x02
+  3a:	30 1e             	jr nc,0x005a
+  3c:	ed 13 00          	lea de,iy+0
+  3f:	59                	ld e,c
+  40:	50                	ld d,b
+  41:	ed 23 00          	lea hl,iy+0
+  44:	b7                	or a,a
+  45:	ed 52             	sbc hl,de
+  47:	e5                	push hl
+  48:	d1                	pop de
+  49:	dd 27 06          	ld hl,(ix+6)
+  4c:	01 ff 6b ee       	ld bc,0xee6bff
+  50:	09                	add hl,bc
+  51:	01 2b 6d ee       	ld bc,0xee6d2b
+  55:	b7                	or a,a
+  56:	ed 42             	sbc hl,bc
+  58:	30 07             	jr nc,0x0061
+  5a:	3e 13             	ld a,0x13
+  5c:	dd f9             	ld sp,ix
+  5e:	dd e1             	pop ix
+  60:	c9                	ret
+  61:	eb                	ex de,hl
+  62:	dd 17 09          	ld de,(ix+9)
+  65:	b7                	or a,a
+  66:	ed 52             	sbc hl,de
+  68:	3e 13             	ld a,0x13
+  6a:	38 f0             	jr c,0x015c
+  6c:	cd 00 00 00       	call 0x0000
+  70:	b7                	or a,a
+  71:	c2 39 01 00       	jp nz,0x0139
+  75:	cd 00 00 00       	call 0x0000
+  79:	6f                	ld l,a
+  7a:	3a 00 00 00       	ld a,(0x0000)
+  7e:	cb 47             	bit 0,a
+  80:	c2 3f 01 00       	jp nz,0x013f
+  84:	dd 2f f5          	ld (ix-11),hl
+  87:	cd 00 00 00       	call 0x0000
+  8b:	dd 27 f5          	ld hl,(ix-11)
+  8e:	b7                	or a,a
+  8f:	c2 3f 01 00       	jp nz,0x013f
+  93:	21 01 00 00       	ld hl,0x0001
+  97:	dd 17 0c          	ld de,(ix+12)
+  9a:	40 1b             	dec.sis de
+  9c:	dd 1f f2          	ld (ix-14),de
+  9f:	11 10 00 00       	ld de,0x0010
+  a3:	d5                	push de
+  a4:	d5                	push de
+  a5:	e5                	push hl
+  a6:	cd 00 00 00       	call 0x0000
+  aa:	21 09 00 00       	ld hl,0x0009
+  ae:	39                	add hl,sp
+  af:	f9                	ld sp,hl
+  b0:	dd 27 09          	ld hl,(ix+9)
+  b3:	22 0f 00 00       	ld (0x000f),hl
+  b7:	21 12 00 00       	ld hl,0x0012
+  bb:	dd 17 f2          	ld de,(ix-14)
+  be:	73                	ld (hl),e
+  bf:	23                	inc hl
+  c0:	72                	ld (hl),d
+  c1:	40 21 00 00       	ld.sis hl,0x0000
+  c5:	5d                	ld e,l
+  c6:	54                	ld d,h
+  c7:	21 14 00 00       	ld hl,0x0014
+  cb:	73                	ld (hl),e
+  cc:	23                	inc hl
+  cd:	72                	ld (hl),d
+  ce:	21 16 00 00       	ld hl,0x0016
+  d2:	73                	ld (hl),e
+  d3:	23                	inc hl
+  d4:	72                	ld (hl),d
+  d5:	b7                	or a,a
+  d6:	ed 62             	sbc hl,hl
+  d8:	22 18 00 00       	ld (0x0018),hl
+  dc:	22 1b 00 00       	ld (0x001b),hl
+  e0:	af                	xor a,a
+  e1:	32 1e 00 00       	ld (0x001e),a
+  e5:	21 00 00 00       	ld hl,0x0000
+  e9:	e5                	push hl
+  ea:	21 1a 00 00       	ld hl,0x001a
+  ee:	e5                	push hl
+  ef:	cd 00 00 00       	call 0x0000
+  f3:	fd 21 06 00 00    	ld iy,0x0006
+  f8:	fd 39             	add iy,sp
+  fa:	fd f9             	ld sp,iy
+  fc:	22 1f 00 00       	ld (0x001f),hl
+ 100:	dd 27 06          	ld hl,(ix+6)
+ 103:	dd 2f f8          	ld (ix-8),hl
+ 106:	dd 36 fb 08       	ld (ix-5),0x08
+ 10a:	dd 36 fc 01       	ld (ix-4),0x01
+ 10e:	dd 36 fd 00       	ld (ix-3),0x00
+ 112:	dd 36 fe 00       	ld (ix-2),0x00
+ 116:	dd 36 ff 05       	ld (ix-1),0x05
+ 11a:	ed 65 f8          	pea ix-8
+ 11d:	cd 00 00 00       	call 0x0000
+ 121:	e1                	pop hl
+ 122:	b7                	or a,a
+ 123:	20 26             	jr nz,0x014b
+ 125:	3e 01             	ld a,0x01
+ 127:	32 00 00 00       	ld (0x0000),a
+ 12b:	dd 27 f5          	ld hl,(ix-11)
+ 12e:	e5                	push hl
+ 12f:	cd 00 00 00       	call 0x0000
+ 133:	e1                	pop hl
+ 134:	af                	xor a,a
+ 135:	c3 5c 00 00       	jp 0x005c
+ 139:	3e 20             	ld a,0x20
+ 13b:	c3 5c 00 00       	jp 0x005c
+ 13f:	e5                	push hl
+ 140:	cd 00 00 00       	call 0x0000
+ 144:	3e 1f             	ld a,0x1f
+ 146:	e1                	pop hl
+ 147:	c3 5c 00 00       	jp 0x005c
+ 14b:	cd 00 00 00       	call 0x0000
+ 14f:	2a 1f 00 00       	ld hl,(0x001f)
+ 153:	e5                	push hl
+ 154:	21 1a 00 00       	ld hl,0x001a
+ 158:	e5                	push hl
+ 159:	cd 00 00 00       	call 0x0000
+ 15d:	21 06 00 00       	ld hl,0x0006
+ 161:	39                	add hl,sp
+ 162:	f9                	ld sp,hl
+ 163:	21 00 00 00       	ld hl,0x0000
+ 167:	22 0f 00 00       	ld (0x000f),hl
+ 16b:	dd 27 f5          	ld hl,(ix-11)
+ 16e:	e5                	push hl
+ 16f:	cd 00 00 00       	call 0x0000
+ 173:	3e 23             	ld a,0x23
+ 175:	e1                	pop hl
+ 176:	c3 5c 00 00       	jp 0x005c
+
+0000017a <_u1_vanilla_submit>:
+ 17a:	dd e5             	push ix
+ 17c:	dd 21 00 00 00    	ld ix,0x0000
+ 181:	dd 39             	add ix,sp
+ 183:	ed 22 f7          	lea hl,ix-9
+ 186:	f9                	ld sp,hl
+ 187:	cd 00 00 00       	call 0x0000
+ 18b:	b7                	or a,a
+ 18c:	c2 7b 02 00       	jp nz,0x027b
+ 190:	cd 00 00 00       	call 0x0000
+ 194:	6f                	ld l,a
+ 195:	3a 00 00 00       	ld a,(0x0000)
+ 199:	cb 47             	bit 0,a
+ 19b:	ca 7f 02 00       	jp z,0x027f
+ 19f:	dd 2f f8          	ld (ix-8),hl
+ 1a2:	cd 00 00 00       	call 0x0000
+ 1a6:	5f                	ld e,a
+ 1a7:	e6 9e             	and a,0x9e
+ 1a9:	6f                	ld l,a
+ 1aa:	b7                	or a,a
+ 1ab:	28 24             	jr z,0x01d1
+ 1ad:	3a 1e 00 00       	ld a,(0x001e)
+ 1b1:	b5                	or a,l
+ 1b2:	32 1e 00 00       	ld (0x001e),a
+ 1b6:	e5                	push hl
+ 1b7:	21 02 00 00       	ld hl,0x0002
+ 1bb:	e5                	push hl
+ 1bc:	21 01 00 00       	ld hl,0x0001
+ 1c0:	e5                	push hl
+ 1c1:	dd 73 f7          	ld (ix-9),e
+ 1c4:	cd 00 00 00       	call 0x0000
+ 1c8:	dd 5e f7          	ld e,(ix-9)
+ 1cb:	21 09 00 00       	ld hl,0x0009
+ 1cf:	39                	add hl,sp
+ 1d0:	f9                	ld sp,hl
+ 1d1:	3a 0a 00 00       	ld a,(0x000a)
+ 1d5:	fe 02             	cp a,0x02
+ 1d7:	20 52             	jr nz,0x022b
+ 1d9:	06 06             	ld b,0x06
+ 1db:	ed 22 fb          	lea hl,ix-5
+ 1de:	dd 36 fb 01       	ld (ix-5),0x01
+ 1e2:	dd 36 fc 00       	ld (ix-4),0x00
+ 1e6:	dd 36 fd 01       	ld (ix-3),0x01
+ 1ea:	7b                	ld a,e
+ 1eb:	cd 00 00 00       	call 0x0000
+ 1ef:	e6 01             	and a,0x01
+ 1f1:	dd 77 fe          	ld (ix-2),a
+ 1f4:	dd 36 ff 00       	ld (ix-1),0x00
+ 1f8:	fd 21 f7 ff ff    	ld iy,0xfffff7
+ 1fd:	fd 39             	add iy,sp
+ 1ff:	fd f9             	ld sp,iy
+ 201:	fd 21 00 00 00    	ld iy,0x0000
+ 206:	fd 39             	add iy,sp
+ 208:	01 05 00 00       	ld bc,0x0005
+ 20c:	ed 13 00          	lea de,iy+0
+ 20f:	ed b0             	ldir
+ 211:	21 00 00 00       	ld hl,0x0000
+ 215:	fd 2f 06          	ld (iy+6),hl
+ 218:	21 01 00 00       	ld hl,0x0001
+ 21c:	e5                	push hl
+ 21d:	cd 00 00 00       	call 0x0000
+ 221:	21 0c 00 00       	ld hl,0x000c
+ 225:	39                	add hl,sp
+ 226:	f9                	ld sp,hl
+ 227:	3a 0a 00 00       	ld a,(0x000a)
+ 22b:	dd 27 06          	ld hl,(ix+6)
+ 22e:	dd 17 09          	ld de,(ix+9)
+ 231:	dd 07 0c          	ld bc,(ix+12)
+ 234:	fe 03             	cp a,0x03
+ 236:	20 16             	jr nz,0x024e
+ 238:	cd 00 00 00       	call 0x0000
+ 23c:	e6 fd             	and a,0xfd
+ 23e:	6f                	ld l,a
+ 23f:	e5                	push hl
+ 240:	cd 00 00 00       	call 0x0000
+ 244:	dd 07 0c          	ld bc,(ix+12)
+ 247:	dd 17 09          	ld de,(ix+9)
+ 24a:	e1                	pop hl
+ 24b:	dd 27 06          	ld hl,(ix+6)
+ 24e:	c5                	push bc
+ 24f:	d5                	push de
+ 250:	e5                	push hl
+ 251:	21 01 00 00       	ld hl,0x0001
+ 255:	e5                	push hl
+ 256:	cd 00 00 00       	call 0x0000
+ 25a:	5f                	ld e,a
+ 25b:	21 0c 00 00       	ld hl,0x000c
+ 25f:	39                	add hl,sp
+ 260:	f9                	ld sp,hl
+ 261:	b7                	or a,a
+ 262:	dd 27 f8          	ld hl,(ix-8)
+ 265:	20 1a             	jr nz,0x0281
+ 267:	cd 00 00 00       	call 0x0000
+ 26b:	f6 02             	or a,0x02
+ 26d:	6f                	ld l,a
+ 26e:	e5                	push hl
+ 26f:	cd 00 00 00       	call 0x0000
+ 273:	e1                	pop hl
+ 274:	dd 27 f8          	ld hl,(ix-8)
+ 277:	1e 00             	ld e,0x00
+ 279:	18 06             	jr 0x0281
+ 27b:	3e 20             	ld a,0x20
+ 27d:	18 0e             	jr 0x028d
+ 27f:	1e 23             	ld e,0x23
+ 281:	dd 73 f8          	ld (ix-8),e
+ 284:	e5                	push hl
+ 285:	cd 00 00 00       	call 0x0000
+ 289:	dd 7e f8          	ld a,(ix-8)
+ 28c:	e1                	pop hl
+ 28d:	dd f9             	ld sp,ix
+ 28f:	dd e1             	pop ix
+ 291:	c9                	ret
+
+00000292 <_u1_vanilla_service>:
+ 292:	dd e5             	push ix
+ 294:	dd 21 00 00 00    	ld ix,0x0000
+ 299:	dd 39             	add ix,sp
+ 29b:	ed 22 f0          	lea hl,ix-16
+ 29e:	f9                	ld sp,hl
+ 29f:	3a 00 00 00       	ld a,(0x0000)
+ 2a3:	cb 47             	bit 0,a
+ 2a5:	ca 04 04 00       	jp z,0x0404
+ 2a9:	21 10 00 00       	ld hl,0x0010
+ 2ad:	dd 2f f7          	ld (ix-9),hl
+ 2b0:	ed 22 fb          	lea hl,ix-5
+ 2b3:	dd 2f f4          	ld (ix-12),hl
+ 2b6:	cd 00 00 00       	call 0x0000
+ 2ba:	5f                	ld e,a
+ 2bb:	e6 9e             	and a,0x9e
+ 2bd:	6f                	ld l,a
+ 2be:	b7                	or a,a
+ 2bf:	dd 73 fa          	ld (ix-6),e
+ 2c2:	28 21             	jr z,0x02e5
+ 2c4:	3a 1e 00 00       	ld a,(0x001e)
+ 2c8:	b5                	or a,l
+ 2c9:	32 1e 00 00       	ld (0x001e),a
+ 2cd:	e5                	push hl
+ 2ce:	21 02 00 00       	ld hl,0x0002
+ 2d2:	e5                	push hl
+ 2d3:	21 01 00 00       	ld hl,0x0001
+ 2d7:	e5                	push hl
+ 2d8:	cd 00 00 00       	call 0x0000
+ 2dc:	dd 5e fa          	ld e,(ix-6)
+ 2df:	21 09 00 00       	ld hl,0x0009
+ 2e3:	39                	add hl,sp
+ 2e4:	f9                	ld sp,hl
+ 2e5:	7b                	ld a,e
+ 2e6:	e6 01             	and a,0x01
+ 2e8:	cb 47             	bit 0,a
+ 2ea:	ca 98 03 00       	jp z,0x0398
+ 2ee:	cd 00 00 00       	call 0x0000
+ 2f2:	dd 77 f3          	ld (ix-13),a
+ 2f5:	21 16 00 00       	ld hl,0x0016
+ 2f9:	ed 27             	ld hl,(hl)
+ 2fb:	dd 2f f0          	ld (ix-16),hl
+ 2fe:	40 23             	inc.sis hl
+ 300:	fd 21 12 00 00    	ld iy,0x0012
+ 305:	fd 17 00          	ld de,(iy+0)
+ 308:	7d                	ld a,l
+ 309:	a3                	and a,e
+ 30a:	fd 6f             	ld iyl,a
+ 30c:	7c                	ld a,h
+ 30d:	a2                	and a,d
+ 30e:	fd 67             	ld iyh,a
+ 310:	ed 5b 1b 00 00    	ld de,(0x001b)
+ 315:	d5                	push de
+ 316:	e1                	pop hl
+ 317:	01 ff ff ff       	ld bc,0xffffff
+ 31b:	b7                	or a,a
+ 31c:	ed 42             	sbc hl,bc
+ 31e:	28 06             	jr z,0x0326
+ 320:	13                	inc de
+ 321:	ed 53 1b 00 00    	ld (0x001b),de
+ 326:	21 14 00 00       	ld hl,0x0014
+ 32a:	ed 17             	ld de,(hl)
+ 32c:	eb                	ex de,hl
+ 32d:	fd 5d             	ld e,iyl
+ 32f:	fd 54             	ld d,iyh
+ 331:	eb                	ex de,hl
+ 332:	b7                	or a,a
+ 333:	40 ed 52          	sbc.sis hl,de
+ 336:	20 30             	jr nz,0x0368
+ 338:	ed 5b 18 00 00    	ld de,(0x0018)
+ 33d:	d5                	push de
+ 33e:	e1                	pop hl
+ 33f:	01 ff ff ff       	ld bc,0xffffff
+ 343:	b7                	or a,a
+ 344:	ed 42             	sbc hl,bc
+ 346:	28 06             	jr z,0x034e
+ 348:	13                	inc de
+ 349:	ed 53 18 00 00    	ld (0x0018),de
+ 34e:	b7                	or a,a
+ 34f:	ed 62             	sbc hl,hl
+ 351:	e5                	push hl
+ 352:	21 04 00 00       	ld hl,0x0004
+ 356:	e5                	push hl
+ 357:	21 01 00 00       	ld hl,0x0001
+ 35b:	e5                	push hl
+ 35c:	cd 00 00 00       	call 0x0000
+ 360:	21 09 00 00       	ld hl,0x0009
+ 364:	39                	add hl,sp
+ 365:	f9                	ld sp,hl
+ 366:	18 1e             	jr 0x0386
+ 368:	2a 0f 00 00       	ld hl,(0x000f)
+ 36c:	11 00 00 00       	ld de,0x0000
+ 370:	dd 07 f0          	ld bc,(ix-16)
+ 373:	59                	ld e,c
+ 374:	50                	ld d,b
+ 375:	19                	add hl,de
+ 376:	dd 7e f3          	ld a,(ix-13)
+ 379:	77                	ld (hl),a
+ 37a:	21 16 00 00       	ld hl,0x0016
+ 37e:	d5                	push de
+ 37f:	ed 13 00          	lea de,iy+0
+ 382:	73                	ld (hl),e
+ 383:	23                	inc hl
+ 384:	72                	ld (hl),d
+ 385:	d1                	pop de
+ 386:	dd 5e fa          	ld e,(ix-6)
+ 389:	dd 27 f7          	ld hl,(ix-9)
+ 38c:	2b                	dec hl
+ 38d:	dd 2f f7          	ld (ix-9),hl
+ 390:	09                	add hl,bc
+ 391:	b7                	or a,a
+ 392:	ed 42             	sbc hl,bc
+ 394:	c2 b6 02 00       	jp nz,0x02b6
+ 398:	dd 36 fb 01       	ld (ix-5),0x01
+ 39c:	7b                	ld a,e
+ 39d:	06 05             	ld b,0x05
+ 39f:	cd 00 00 00       	call 0x0000
+ 3a3:	e6 01             	and a,0x01
+ 3a5:	dd 77 fc          	ld (ix-4),a
+ 3a8:	dd 36 fd 01       	ld (ix-3),0x01
+ 3ac:	7b                	ld a,e
+ 3ad:	04                	inc b
+ 3ae:	cd 00 00 00       	call 0x0000
+ 3b2:	e6 01             	and a,0x01
+ 3b4:	dd 77 fe          	ld (ix-2),a
+ 3b7:	dd 36 ff 00       	ld (ix-1),0x00
+ 3bb:	21 f7 ff ff       	ld hl,0xfffff7
+ 3bf:	39                	add hl,sp
+ 3c0:	f9                	ld sp,hl
+ 3c1:	fd 21 00 00 00    	ld iy,0x0000
+ 3c6:	fd 39             	add iy,sp
+ 3c8:	01 05 00 00       	ld bc,0x0005
+ 3cc:	ed 13 00          	lea de,iy+0
+ 3cf:	dd 27 f4          	ld hl,(ix-12)
+ 3d2:	ed b0             	ldir
+ 3d4:	21 00 00 00       	ld hl,0x0000
+ 3d8:	fd 2f 06          	ld (iy+6),hl
+ 3db:	21 01 00 00       	ld hl,0x0001
+ 3df:	e5                	push hl
+ 3e0:	cd 00 00 00       	call 0x0000
+ 3e4:	dd 77 fa          	ld (ix-6),a
+ 3e7:	21 0c 00 00       	ld hl,0x000c
+ 3eb:	39                	add hl,sp
+ 3ec:	f9                	ld sp,hl
+ 3ed:	cd 00 00 00       	call 0x0000
+ 3f1:	e6 fd             	and a,0xfd
+ 3f3:	6f                	ld l,a
+ 3f4:	dd 7e fa          	ld a,(ix-6)
+ 3f7:	87                	add a,a
+ 3f8:	e6 02             	and a,0x02
+ 3fa:	5f                	ld e,a
+ 3fb:	7d                	ld a,l
+ 3fc:	83                	add a,e
+ 3fd:	6f                	ld l,a
+ 3fe:	e5                	push hl
+ 3ff:	cd 00 00 00       	call 0x0000
+ 403:	e1                	pop hl
+ 404:	dd f9             	ld sp,ix
+ 406:	dd e1             	pop ix
+ 408:	c9                	ret
+
+00000409 <_u1_vanilla_finish>:
+ 409:	dd e5             	push ix
+ 40b:	dd 21 00 00 00    	ld ix,0x0000
+ 410:	dd 39             	add ix,sp
+ 412:	ed 22 f7          	lea hl,ix-9
+ 415:	f9                	ld sp,hl
+ 416:	cd 00 00 00       	call 0x0000
+ 41a:	6f                	ld l,a
+ 41b:	3a 00 00 00       	ld a,(0x0000)
+ 41f:	cb 47             	bit 0,a
+ 421:	ca c7 04 00       	jp z,0x04c7
+ 425:	dd 2f f8          	ld (ix-8),hl
+ 428:	cd 00 00 00       	call 0x0000
+ 42c:	5f                	ld e,a
+ 42d:	e6 9e             	and a,0x9e
+ 42f:	6f                	ld l,a
+ 430:	b7                	or a,a
+ 431:	dd 73 f7          	ld (ix-9),e
+ 434:	28 21             	jr z,0x0457
+ 436:	3a 1e 00 00       	ld a,(0x001e)
+ 43a:	b5                	or a,l
+ 43b:	32 1e 00 00       	ld (0x001e),a
+ 43f:	e5                	push hl
+ 440:	21 02 00 00       	ld hl,0x0002
+ 444:	e5                	push hl
+ 445:	21 01 00 00       	ld hl,0x0001
+ 449:	e5                	push hl
+ 44a:	cd 00 00 00       	call 0x0000
+ 44e:	dd 5e f7          	ld e,(ix-9)
+ 451:	21 09 00 00       	ld hl,0x0009
+ 455:	39                	add hl,sp
+ 456:	f9                	ld sp,hl
+ 457:	3a 0a 00 00       	ld a,(0x000a)
+ 45b:	6f                	ld l,a
+ 45c:	fe 02             	cp a,0x02
+ 45e:	20 56             	jr nz,0x04b6
+ 460:	06 06             	ld b,0x06
+ 462:	ed 22 fb          	lea hl,ix-5
+ 465:	dd 36 fb 01       	ld (ix-5),0x01
+ 469:	dd 36 fc 00       	ld (ix-4),0x00
+ 46d:	dd 36 fd 01       	ld (ix-3),0x01
+ 471:	7b                	ld a,e
+ 472:	cd 00 00 00       	call 0x0000
+ 476:	e6 01             	and a,0x01
+ 478:	dd 77 fe          	ld (ix-2),a
+ 47b:	dd 36 ff 00       	ld (ix-1),0x00
+ 47f:	fd 21 f7 ff ff    	ld iy,0xfffff7
+ 484:	fd 39             	add iy,sp
+ 486:	fd f9             	ld sp,iy
+ 488:	fd 21 00 00 00    	ld iy,0x0000
+ 48d:	fd 39             	add iy,sp
+ 48f:	01 05 00 00       	ld bc,0x0005
+ 493:	ed 13 00          	lea de,iy+0
+ 496:	ed b0             	ldir
+ 498:	21 00 00 00       	ld hl,0x0000
+ 49c:	fd 2f 06          	ld (iy+6),hl
+ 49f:	21 01 00 00       	ld hl,0x0001
+ 4a3:	e5                	push hl
+ 4a4:	cd 00 00 00       	call 0x0000
+ 4a8:	dd 5e f7          	ld e,(ix-9)
+ 4ab:	21 0c 00 00       	ld hl,0x000c
+ 4af:	39                	add hl,sp
+ 4b0:	f9                	ld sp,hl
+ 4b1:	3a 0a 00 00       	ld a,(0x000a)
+ 4b5:	6f                	ld l,a
+ 4b6:	0e 1f             	ld c,0x1f
+ 4b8:	7d                	ld a,l
+ 4b9:	b7                	or a,a
+ 4ba:	20 0f             	jr nz,0x04cb
+ 4bc:	cb 73             	bit 6,e
+ 4be:	28 02             	jr z,0x04c2
+ 4c0:	af                	xor a,a
+ 4c1:	4f                	ld c,a
+ 4c2:	dd 27 f8          	ld hl,(ix-8)
+ 4c5:	18 1f             	jr 0x04e6
+ 4c7:	0e 23             	ld c,0x23
+ 4c9:	18 1b             	jr 0x04e6
+ 4cb:	7d                	ld a,l
+ 4cc:	fe 03             	cp a,0x03
+ 4ce:	dd 27 f8          	ld hl,(ix-8)
+ 4d1:	20 13             	jr nz,0x04e6
+ 4d3:	cd 00 00 00       	call 0x0000
+ 4d7:	e6 fd             	and a,0xfd
+ 4d9:	6f                	ld l,a
+ 4da:	e5                	push hl
+ 4db:	cd 00 00 00       	call 0x0000
+ 4df:	e1                	pop hl
+ 4e0:	dd 27 f8          	ld hl,(ix-8)
+ 4e3:	3e 23             	ld a,0x23
+ 4e5:	4f                	ld c,a
+ 4e6:	dd 71 f8          	ld (ix-8),c
+ 4e9:	e5                	push hl
+ 4ea:	cd 00 00 00       	call 0x0000
+ 4ee:	e1                	pop hl
+ 4ef:	dd 7e f8          	ld a,(ix-8)
+ 4f2:	dd f9             	ld sp,ix
+ 4f4:	dd e1             	pop ix
+ 4f6:	c9                	ret
+
+000004f7 <_u1_vanilla_read>:
+ 4f7:	dd e5             	push ix
+ 4f9:	dd 21 00 00 00    	ld ix,0x0000
+ 4fe:	dd 39             	add ix,sp
+ 500:	e5                	push hl
+ 501:	37                	scf
+ 502:	ed 62             	sbc hl,hl
+ 504:	dd 2f fd          	ld (ix-3),hl
+ 507:	cd 00 00 00       	call 0x0000
+ 50b:	fd 6f             	ld iyl,a
+ 50d:	3a 00 00 00       	ld a,(0x0000)
+ 511:	cb 47             	bit 0,a
+ 513:	28 3e             	jr z,0x0553
+ 515:	21 14 00 00       	ld hl,0x0014
+ 519:	01 16 00 00       	ld bc,0x0016
+ 51d:	ed 17             	ld de,(hl)
+ 51f:	c5                	push bc
+ 520:	e1                	pop hl
+ 521:	ed 07             	ld bc,(hl)
+ 523:	6b                	ld l,e
+ 524:	62                	ld h,d
+ 525:	b7                	or a,a
+ 526:	40 ed 42          	sbc.sis hl,bc
+ 529:	28 28             	jr z,0x0553
+ 52b:	01 00 00 00       	ld bc,0x0000
+ 52f:	4b                	ld c,e
+ 530:	42                	ld b,d
+ 531:	2a 0f 00 00       	ld hl,(0x000f)
+ 535:	09                	add hl,bc
+ 536:	01 00 00 00       	ld bc,0x0000
+ 53a:	4e                	ld c,(hl)
+ 53b:	dd 0f fd          	ld (ix-3),bc
+ 53e:	40 13             	inc.sis de
+ 540:	21 12 00 00       	ld hl,0x0012
+ 544:	ed 27             	ld hl,(hl)
+ 546:	7d                	ld a,l
+ 547:	a3                	and a,e
+ 548:	4f                	ld c,a
+ 549:	7c                	ld a,h
+ 54a:	a2                	and a,d
+ 54b:	47                	ld b,a
+ 54c:	21 14 00 00       	ld hl,0x0014
+ 550:	71                	ld (hl),c
+ 551:	23                	inc hl
+ 552:	70                	ld (hl),b
+ 553:	fd e5             	push iy
+ 555:	cd 00 00 00       	call 0x0000
+ 559:	e1                	pop hl
+ 55a:	dd 27 fd          	ld hl,(ix-3)
+ 55d:	dd f9             	ld sp,ix
+ 55f:	dd e1             	pop ix
+ 561:	c9                	ret
+
+00000562 <_u1_vanilla_stop>:
+ 562:	dd e5             	push ix
+ 564:	dd 21 00 00 00    	ld ix,0x0000
+ 569:	dd 39             	add ix,sp
+ 56b:	e5                	push hl
+ 56c:	cd 00 00 00       	call 0x0000
+ 570:	6f                	ld l,a
+ 571:	3a 00 00 00       	ld a,(0x0000)
+ 575:	cb 47             	bit 0,a
+ 577:	28 10             	jr z,0x0589
+ 579:	dd 2f fd          	ld (ix-3),hl
+ 57c:	21 01 00 00       	ld hl,0x0001
+ 580:	e5                	push hl
+ 581:	cd 00 00 00       	call 0x0000
+ 585:	e1                	pop hl
+ 586:	dd 27 fd          	ld hl,(ix-3)
+ 589:	e5                	push hl
+ 58a:	cd 00 00 00       	call 0x0000
+ 58e:	e1                	pop hl
+ 58f:	dd f9             	ld sp,ix
+ 591:	dd e1             	pop ix
+ 593:	c9                	ret
+
+00000594 <_u1_vanilla_snapshot>:
+ 594:	dd e5             	push ix
+ 596:	dd 21 00 00 00    	ld ix,0x0000
+ 59b:	dd 39             	add ix,sp
+ 59d:	e5                	push hl
+ 59e:	cd 00 00 00       	call 0x0000
+ 5a2:	6f                	ld l,a
+ 5a3:	dd 2f fd          	ld (ix-3),hl
+ 5a6:	3a 0a 00 00       	ld a,(0x000a)
+ 5aa:	dd 31 06          	ld iy,(ix+6)
+ 5ad:	fd 77 08          	ld (iy+8),a
+ 5b0:	3a 0d 00 00       	ld a,(0x000d)
+ 5b4:	fd 77 09          	ld (iy+9),a
+ 5b7:	3a 0e 00 00       	ld a,(0x000e)
+ 5bb:	fd 77 0a          	ld (iy+10),a
+ 5be:	3a 1e 00 00       	ld a,(0x001e)
+ 5c2:	fd 77 0b          	ld (iy+11),a
+ 5c5:	2a 1b 00 00       	ld hl,(0x001b)
+ 5c9:	fd 2f 00          	ld (iy+0),hl
+ 5cc:	2a 18 00 00       	ld hl,(0x0018)
+ 5d0:	fd 2f 03          	ld (iy+3),hl
+ 5d3:	21 16 00 00       	ld hl,0x0016
+ 5d7:	ed 27             	ld hl,(hl)
+ 5d9:	fd 21 14 00 00    	ld iy,0x0014
+ 5de:	fd 07 00          	ld bc,(iy+0)
+ 5e1:	b7                	or a,a
+ 5e2:	40 ed 42          	sbc.sis hl,bc
+ 5e5:	fd 21 12 00 00    	ld iy,0x0012
+ 5ea:	fd 07 00          	ld bc,(iy+0)
+ 5ed:	7d                	ld a,l
+ 5ee:	a1                	and a,c
+ 5ef:	5f                	ld e,a
+ 5f0:	7c                	ld a,h
+ 5f1:	a0                	and a,b
+ 5f2:	57                	ld d,a
+ 5f3:	dd 31 06          	ld iy,(ix+6)
+ 5f6:	fd 73 06          	ld (iy+6),e
+ 5f9:	fd 72 07          	ld (iy+7),d
+ 5fc:	dd 27 fd          	ld hl,(ix-3)
+ 5ff:	e5                	push hl
+ 600:	cd 00 00 00       	call 0x0000
+ 604:	e1                	pop hl
+ 605:	dd f9             	ld sp,ix
+ 607:	dd e1             	pop ix
+ 609:	c9                	ret
+
+0000060a <_u1_vanilla_close>:
+ 60a:	dd e5             	push ix
+ 60c:	dd 21 00 00 00    	ld ix,0x0000
+ 611:	dd 39             	add ix,sp
+ 613:	ed 22 fc          	lea hl,ix-4
+ 616:	f9                	ld sp,hl
+ 617:	cd 00 00 00       	call 0x0000
+ 61b:	5f                	ld e,a
+ 61c:	3a 00 00 00       	ld a,(0x0000)
+ 620:	cb 47             	bit 0,a
+ 622:	28 1e             	jr z,0x0642
+ 624:	2a 01 00 00       	ld hl,(0x0001)
+ 628:	09                	add hl,bc
+ 629:	b7                	or a,a
+ 62a:	ed 42             	sbc hl,bc
+ 62c:	20 0a             	jr nz,0x0638
+ 62e:	2a 07 00 00       	ld hl,(0x0007)
+ 632:	09                	add hl,bc
+ 633:	b7                	or a,a
+ 634:	ed 42             	sbc hl,bc
+ 636:	28 16             	jr z,0x064e
+ 638:	d5                	push de
+ 639:	cd 00 00 00       	call 0x0000
+ 63d:	3e 1f             	ld a,0x1f
+ 63f:	e1                	pop hl
+ 640:	18 07             	jr 0x0649
+ 642:	d5                	push de
+ 643:	cd 00 00 00       	call 0x0000
+ 647:	e1                	pop hl
+ 648:	af                	xor a,a
+ 649:	dd f9             	ld sp,ix
+ 64b:	dd e1             	pop ix
+ 64d:	c9                	ret
+ 64e:	dd 1f fd          	ld (ix-3),de
+ 651:	21 00 00 00       	ld hl,0x0000
+ 655:	e5                	push hl
+ 656:	21 1a 00 00       	ld hl,0x001a
+ 65a:	e5                	push hl
+ 65b:	cd 00 00 00       	call 0x0000
+ 65f:	e5                	push hl
+ 660:	d1                	pop de
+ 661:	21 06 00 00       	ld hl,0x0006
+ 665:	39                	add hl,sp
+ 666:	f9                	ld sp,hl
+ 667:	d5                	push de
+ 668:	e1                	pop hl
+ 669:	01 00 00 00       	ld bc,0x0000
+ 66d:	b7                	or a,a
+ 66e:	ed 42             	sbc hl,bc
+ 670:	20 40             	jr nz,0x06b2
+ 672:	cd 00 00 00       	call 0x0000
+ 676:	5f                	ld e,a
+ 677:	e6 9e             	and a,0x9e
+ 679:	6f                	ld l,a
+ 67a:	b7                	or a,a
+ 67b:	28 24             	jr z,0x06a1
+ 67d:	dd 73 fc          	ld (ix-4),e
+ 680:	11 01 00 00       	ld de,0x0001
+ 684:	3a 1e 00 00       	ld a,(0x001e)
+ 688:	b5                	or a,l
+ 689:	32 1e 00 00       	ld (0x001e),a
+ 68d:	e5                	push hl
+ 68e:	21 02 00 00       	ld hl,0x0002
+ 692:	e5                	push hl
+ 693:	d5                	push de
+ 694:	cd 00 00 00       	call 0x0000
+ 698:	dd 5e fc          	ld e,(ix-4)
+ 69b:	21 09 00 00       	ld hl,0x0009
+ 69f:	39                	add hl,sp
+ 6a0:	f9                	ld sp,hl
+ 6a1:	cb 73             	bit 6,e
+ 6a3:	20 2c             	jr nz,0x06d1
+ 6a5:	dd 27 fd          	ld hl,(ix-3)
+ 6a8:	e5                	push hl
+ 6a9:	cd 00 00 00       	call 0x0000
+ 6ad:	e1                	pop hl
+ 6ae:	3e 1f             	ld a,0x1f
+ 6b0:	18 97             	jr 0x0749
+ 6b2:	d5                	push de
+ 6b3:	21 1a 00 00       	ld hl,0x001a
+ 6b7:	e5                	push hl
+ 6b8:	cd 00 00 00       	call 0x0000
+ 6bc:	21 06 00 00       	ld hl,0x0006
+ 6c0:	39                	add hl,sp
+ 6c1:	f9                	ld sp,hl
+ 6c2:	dd 27 fd          	ld hl,(ix-3)
+ 6c5:	e5                	push hl
+ 6c6:	cd 00 00 00       	call 0x0000
+ 6ca:	e1                	pop hl
+ 6cb:	3e 1f             	ld a,0x1f
+ 6cd:	c3 49 06 00       	jp 0x0649
+ 6d1:	cd 00 00 00       	call 0x0000
+ 6d5:	2a 1f 00 00       	ld hl,(0x001f)
+ 6d9:	e5                	push hl
+ 6da:	21 1a 00 00       	ld hl,0x001a
+ 6de:	e5                	push hl
+ 6df:	cd 00 00 00       	call 0x0000
+ 6e3:	21 06 00 00       	ld hl,0x0006
+ 6e7:	39                	add hl,sp
+ 6e8:	f9                	ld sp,hl
+ 6e9:	af                	xor a,a
+ 6ea:	32 00 00 00       	ld (0x0000),a
+ 6ee:	3e 04             	ld a,0x04
+ 6f0:	32 0a 00 00       	ld (0x000a),a
+ 6f4:	21 00 00 00       	ld hl,0x0000
+ 6f8:	22 0f 00 00       	ld (0x000f),hl
+ 6fc:	dd 27 fd          	ld hl,(ix-3)
+ 6ff:	e5                	push hl
+ 700:	cd 00 00 00       	call 0x0000
+ 704:	e1                	pop hl
+ 705:	c3 48 06 00       	jp 0x0648
+
+/Agon/mystuff/agon-mos/build/u1-001/vanilla-r03/native/obj/u1_vanilla_io.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_u1_context>:
+   0:	ed 6e             	ld a,mb
+   2:	b7                	or a,a
+   3:	c0                	ret nz
+   4:	ed 57             	ld a,i
+   6:	e2 0c 00 00       	jp po,0x000c
+   a:	af                	xor a,a
+   b:	c9                	ret
+
+0000000c <u1_bad_context>:
+   c:	3e 01             	ld a,0x01
+   e:	c9                	ret
+
+0000000f <_u1_lock>:
+   f:	ed 57             	ld a,i
+  11:	f3                	di
+  12:	e2 19 00 00       	jp po,0x0019
+  16:	3e 01             	ld a,0x01
+  18:	c9                	ret
+
+00000019 <u1_locked_off>:
+  19:	af                	xor a,a
+  1a:	c9                	ret
+
+0000001b <_u1_unlock>:
+  1b:	21 03 00 00       	ld hl,0x0003
+  1f:	39                	add hl,sp
+  20:	7e                	ld a,(hl)
+  21:	b7                	or a,a
+  22:	c8                	ret z
+  23:	fb                	ei
+  24:	c9                	ret
+
+00000025 <_u1_lsr>:
+  25:	ed 38 d5          	in0 a,(0xd5)
+  28:	c9                	ret
+
+00000029 <_u1_rbr>:
+  29:	ed 38 d0          	in0 a,(0xd0)
+  2c:	c9                	ret
+
+0000002d <_u1_ier>:
+  2d:	ed 38 d1          	in0 a,(0xd1)
+  30:	c9                	ret
+
+00000031 <_u1_set_ier>:
+  31:	21 03 00 00       	ld hl,0x0003
+  35:	39                	add hl,sp
+  36:	7e                	ld a,(hl)
+  37:	ed 39 d1          	out0 (0xd1),a
+  3a:	c9                	ret
+
+0000003b <u1_vanilla_submit_regs>:
+  3b:	dd e5             	push ix
+  3d:	fd e5             	push iy
+  3f:	c5                	push bc
+  40:	d5                	push de
+  41:	e5                	push hl
+  42:	08                	ex af,af'
+  43:	f5                	push af
+  44:	08                	ex af,af'
+  45:	d9                	exx
+  46:	c5                	push bc
+  47:	d5                	push de
+  48:	e5                	push hl
+  49:	d9                	exx
+  4a:	d5                	push de
+  4b:	c5                	push bc
+  4c:	e5                	push hl
+  4d:	cd 00 00 00       	call 0x0000
+  51:	e1                	pop hl
+  52:	c1                	pop bc
+  53:	d1                	pop de
+  54:	d9                	exx
+  55:	e1                	pop hl
+  56:	d1                	pop de
+  57:	c1                	pop bc
+  58:	d9                	exx
+  59:	08                	ex af,af'
+  5a:	f1                	pop af
+  5b:	08                	ex af,af'
+  5c:	e1                	pop hl
+  5d:	d1                	pop de
+  5e:	c1                	pop bc
+  5f:	fd e1             	pop iy
+  61:	dd e1             	pop ix
+  63:	c9                	ret
+
+00000064 <_u1_vanilla_irq>:
+  64:	f3                	di
+  65:	f5                	push af
+  66:	c5                	push bc
+  67:	d5                	push de
+  68:	e5                	push hl
+  69:	dd e5             	push ix
+  6b:	fd e5             	push iy
+  6d:	08                	ex af,af'
+  6e:	f5                	push af
+  6f:	d9                	exx
+  70:	c5                	push bc
+  71:	d5                	push de
+  72:	e5                	push hl
+  73:	cd 00 00 00       	call 0x0000
+  77:	e1                	pop hl
+  78:	d1                	pop de
+  79:	c1                	pop bc
+  7a:	d9                	exx
+  7b:	f1                	pop af
+  7c:	08                	ex af,af'
+  7d:	fd e1             	pop iy
+  7f:	dd e1             	pop ix
+  81:	e1                	pop hl
+  82:	d1                	pop de
+  83:	c1                	pop bc
+  84:	f1                	pop af
+  85:	fb                	ei
+  86:	5b ed 4d          	reti.lil

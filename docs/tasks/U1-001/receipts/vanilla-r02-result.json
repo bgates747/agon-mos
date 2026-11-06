@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "source": {
+    "LICENSE": "a07c0446133690f4a959d45d9c511741660b1f19cfa581fdd5ceb9e0c61cf05e",
+    "README.md": "b35ef2013cc27c34b5691c7e21b2c417825147932532820fd67a9fa8007e2dbc",
+    "build.py": "dac495249ce442f8a452954fe1953f806e583a6fb7c9389c0699875db64f1da8",
+    "fixture/at_callback.src": "d76bac7eb3c24a476afc14ba63bf4ff8c9a7e702f1148b807c6bdcda333f282e",
+    "fixture/at_main.c": "d660ebfedb39b913bc4895cdc3bc6f401e77d3206cd87c1f6d3193a434dcb95c",
+    "fixture/at_reply.c": "7500ac51a22636b3d41791f0f1d918b11b0f20dd5e68bbee7f7a3c0409ff4e72",
+    "fixture/at_reply.h": "0776a79ccdc16db232f1d985c5aa62659efa14163cd0b2316300c219983bba3a",
+    "fixture/main.c": "68ad6578f30d15b729404c2e59638f99d0fcfe1bb158e6598ad404d0cdcb1f49",
+    "fixture/run_counter.inc": "d7502d61ba19fc7f6dd7a02298a5b8a9409ef48ecfd0b918b89cbdb328845009",
+    "include/u1_tx.h": "b2dc25fcb4791e7a73b04e2aa3752676a20dc1f67bf0f07acc9106f667fcc393",
+    "include/u1_vanilla.h": "c6cac6e093914ad5ada130c10f8953bb7a504128614cd8fa245d1e90c7e0414e",
+    "src/u1_emit.src": "088468dd2974099c046c62ec363c036822276eb20da8d8fb59c8cb80347c893e",
+    "src/u1_tx.c": "5b9c75120a9fc1ab068211698f561e38fb49e3e8e62116ed4e8daf3e79e659e0",
+    "src/u1_vanilla.c": "a41e24f962a1dbba01f62408b5303771713986253de31cfe6876bf8313a94ae1",
+    "src/u1_vanilla_io.src": "7945cfe13c27dd46091f9ede042a098b8590d24138cfd5b506d84989f9630360",
+    "tests/at_reply.c": "9b06b985aa4153b69ca3300beb3a245617b067b7e4b5e839ca8b40278e43185c",
+    "tests/host/agon/mos.h": "5aabc7a05fca1c036e948f3073d9d979243f420f4aa6a68dfc4a4201bdfed4f2",
+    "tests/tx.c": "d1c80af62bb3a592239a435b8d12140496e7dca619d001d33711fc3e49424cee",
+    "tests/vanilla.c": "788c5c87e5fa9e6ec2d9fda904d9297468d8fc07c497fd87b050945df2ad1214"
+  },
+  "steps": [
+    {
+      "name": "host-build",
+      "exit": 0,
+      "seconds": 0.40212695600348525
+    },
+    {
+      "name": "host-test",
+      "exit": 0,
+      "seconds": 0.10183413900085725
+    },
+    {
+      "name": "host-adapter-build",
+      "exit": 0,
+      "seconds": 0.5024351549800485
+    },
+    {
+      "name": "host-adapter-test",
+      "exit": 0,
+      "seconds": 0.10089177099871449
+    },
+    {
+      "name": "host-at-build",
+      "exit": 0,
+      "seconds": 0.30155846299021505
+    },
+    {
+      "name": "host-at-test",
+      "exit": 0,
+      "seconds": 0.10099245599121787
+    },
+    {
+      "name": "native-build",
+      "exit": 0,
+      "seconds": 0.30172692600172013
+    },
+    {
+      "name": "at-native-build",
+      "exit": 0,
+      "seconds": 0.30190674000186846
+    },
+    {
+      "name": "native-library",
+      "exit": 0,
+      "seconds": 0.10197550902375951
+    },
+    {
+      "name": "native-disassembly",
+      "exit": 0,
+      "seconds": 0.10216439701616764
+    },
+    {
+      "name": "native-size",
+      "exit": 0,
+      "seconds": 0.10215484202490188
+    }
+  ],
+  "seconds": 3.2704590509820264,
+  "lease": "246753383b6449c8ad36480c44756e62",
+  "generation": 252,
+  "host_checks_only": true,
+  "native_guest_executed": false,
+  "hardware": false,
+  "firmware_changed": false,
+  "binary": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/native/bin/u1check.bin",
+    "bytes": 4462,
+    "sha256": "ea5501b358ebe4d6ed982e078ec8d5d621bf04f593bf0276afd9ed6f743022b7"
+  },
+  "at_binary": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/at-native/bin/u1test.bin",
+    "bytes": 15013,
+    "sha256": "3c4ac22f5b0f52f69dd301e7154ac556ac16cca128c2451e72ddda98b708d0b5"
+  },
+  "library_sha256": "c7545acb39fdc2ad165d266e39a4a7b491196a4b70e9d8a4da6840fde5b2b04e",
+  "libagon_sha256": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c"
+}

@@ -1,5 +1,9 @@
 # U1-001 initial source findings
 
+Historical first-tranche review. Brandon subsequently selected vanilla MOS as
+the default; EMOS adaptation is Extender's separate downstream work and no longer
+gates this driver. Current implementation/build evidence: vanilla-r03.md.
+
 Matched EMOS donor (read-only):
 `/Agon/mystuff/agon-extender/agents/net004/emos-uart-rfc25-source`, commit
 `2c79c6006d6bcb0c2b3f9d8d6aae3ef4b36c730a`.

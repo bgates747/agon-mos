@@ -51,7 +51,7 @@ service, source-release versus wire-drain state and positive detach. No queue,
 allocation, implicit retry of payload, timeout cancellation or indefinite CTS
 spin. A stop request refuses new work but does not revoke a borrowed source.
 
-D-002 [ ] Add the native OTIRX leaf, callable assembly entry and C adapter.
+D-002 [x] Add the native OTIRX leaf, callable assembly entry and C adapter.
 Prefer ordinary CALL with HL=source, BC=full count, DE=assembly callback; A is
 the documented result. A UART interrupt entry is distinct from an optional RST
 restart entry; no reset-vector change is required. Keep install/restore adapters
@@ -79,12 +79,16 @@ versus async throughput/useful-work/RX tests, after the no-handshake test protoc
 is identified. Hardware execution/deployment remains separately coordinated
 with Brandon. No MechAgon live bench, renderer or EMOS firmware change.
 
-P-003 [ ] Identify the installed Console8 ESP8266 firmware/protocol, configured
+P-003 [x] Identify the installed Console8 ESP8266 firmware/protocol, configured
 baud, buffering and available replies/credits/echo. TX/RX-only wiring remains
 unchanged. Do not assume ESP-AT, transparent forwarding, XON/XOFF or a receiver
 buffer capacity. Document what a reply proves before selecting the first run.
 
-D-003 [ ] Implement the standalone vanilla UART1 install/RX/TX/restore adapter.
+Extender returned observed AT 1.3.0.0/SDK 2.0.0, 115200 8N1/no handshake and
+the accepted small AT/CIPSEND/IPD/BBS exchange. No exact ESP binary/source or
+receiver capacity is retained. See console8-no-handshake.md for evidence limits.
+
+D-003 [x] Implement the standalone vanilla UART1 install/RX/TX/restore adapter.
 No-flow-control mode must ignore unconnected CTS and need no CTS retry timer;
 TX-empty interrupts drive bounded FIFO refills. Preserve normal UART0 MOS/VDP
 interrupts. Record RX overflow/errors so incoming ESP traffic cannot fail silently.
@@ -96,6 +100,24 @@ outstanding data window and baud only within the peer's supported protocol.
 Separate sender callback, physical drain and verified reception. Lower baud or
 fixed delays reduce offered load but do not prove losslessness under arbitrary
 receiver stalls. No invented acknowledgements or new peer firmware assumed.
+
+T-005 [ ] Have Brandon run the prepared functional fixture on Console8 and
+inspect returned reports: real RX/IRQ/callback/drain/restore and peer identity.
+The native binaries have only compiled; no guest/hardware execution or card
+deployment has occurred. T-001 still includes actual native interrupt/register
+qualification; host stubs do not establish those target invariants.
+
+T-006 [x] Prepare the initial functional-only AT/AT+GMR appliance, source,
+library, binaries, pinned SDK/notices and instructions in project space. Archive
+hashes are verified. This does not complete T-003's performance appliance/tests.
+
+## Latest implemented tranche
+
+Source commit `510ad1ab26ccd8f3b07b1135b690cf087a7443e0`; build identity
+`dac1a97aa944c49c`. Vanilla adapter, callable C/register entries, bounded RX/TX,
+caller RX storage, positive teardown and no-switch AT query fixture compile.
+Core/actual-C-adapter/AT-parser sanitizer and byte/event checks pass. Native ISR
+frames were inspected, not executed. See vanilla-r03.md for exact scope/artifacts.
 
 ## Initial design boundaries
 

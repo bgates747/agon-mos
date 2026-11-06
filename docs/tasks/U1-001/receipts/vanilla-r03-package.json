@@ -1,0 +1,23 @@
+{
+  "archive": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-prepared-r03.zip",
+  "bytes": 305323,
+  "sha256": "fd0902426f22ee3b90c21367525c41e7a53d4ac3a3c6c99aaa97b3d20384ff68",
+  "members_verified": 115,
+  "source_commit": "510ad1ab26ccd8f3b07b1135b690cf087a7443e0",
+  "build_id": "dac1a97aa944c49c",
+  "binary": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-r03/at-native/bin/u1test.bin",
+    "bytes": 15069,
+    "sha256": "42410864fec9e492899d937152a5954a8b301d1e845449b29bdc26515fc34e5d"
+  },
+  "library_sha256": "98ef7268b02cfa9d44a8f4f894025325710324a60a945ad932afa5cf4551a3aa",
+  "guest_executed": false,
+  "hardware": false,
+  "deployed": false,
+  "firmware_changed": false,
+  "prior_unpublished_package": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-prepared-r03-before-task-notes.zip",
+    "sha256": "e08f6d99af90570b7ef9903e9c8180e1c7096f4a19ad6a2642980fde9450a1d1",
+    "reason": "Before including task notes to resolve packaged source README links; code/binary unchanged"
+  }
+}

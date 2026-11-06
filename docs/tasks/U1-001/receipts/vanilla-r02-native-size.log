@@ -1,0 +1,5 @@
+   text	   data	    bss	    dec	    hex	filename
+    574	      0	      0	    574	    23e	/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/native/obj/u1_tx.o
+     30	      0	      0	     30	     1e	/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/native/obj/u1_emit.o
+   1801	      0	     34	   1835	    72b	/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/native/obj/u1_vanilla.o
+    137	      0	      0	    137	     89	/Agon/mystuff/agon-mos/build/u1-001/vanilla-r02/native/obj/u1_vanilla_io.o
