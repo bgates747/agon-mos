@@ -1,0 +1,118 @@
+; SPDX-License-Identifier: MIT
+; Vanilla application UART1 only; no private MOS addresses, GPIO, RST edits.
+.assume adl=1
+.text
+.global _u1_context,_u1_lock,_u1_unlock,_u1_lsr,_u1_rbr,_u1_ier,_u1_set_ier
+.global _u1_vanilla_irq,u1_vanilla_submit_regs
+.extern _u1_vanilla_service,_u1_vanilla_submit
+_u1_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,u1_bad_context
+ xor a
+ ret
+u1_bad_context:
+ ld a,1
+ ret
+_u1_lock:
+ ld a,i
+ di
+ jp po,u1_locked_off
+ ld a,1
+ ret
+u1_locked_off:
+ xor a
+ ret
+_u1_unlock:
+ ld hl,3
+ add hl,sp
+ ld a,(hl)
+ or a
+ ret z
+ ei
+ ret
+_u1_lsr:
+ in0 a,(0d5h)
+ ret
+_u1_rbr:
+ in0 a,(0d0h)
+ ret
+_u1_ier:
+ in0 a,(0d1h)
+ ret
+_u1_set_ier:
+ ld hl,3
+ add hl,sp
+ ld a,(hl)
+ out0 (0d1h),a
+ ret
+
+; Register CALL bridge. Save primary arguments/index/shadow registers while C
+; owns its normal scratch state. Result A survives argument and register pops.
+u1_vanilla_submit_regs:
+ push ix
+ push iy
+ push bc
+ push de
+ push hl
+ ex af,af'
+ push af
+ ex af,af'
+ exx
+ push bc
+ push de
+ push hl
+ exx
+ push de
+ push bc
+ push hl
+ call _u1_vanilla_submit
+ pop hl
+ pop bc
+ pop de
+ exx
+ pop hl
+ pop de
+ pop bc
+ exx
+ ex af,af'
+ pop af
+ ex af,af'
+ pop hl
+ pop de
+ pop bc
+ pop iy
+ pop ix
+ ret
+
+_u1_vanilla_irq:
+ di
+ push af
+ push bc
+ push de
+ push hl
+ push ix
+ push iy
+ ex af,af'
+ push af
+ exx
+ push bc
+ push de
+ push hl
+ call _u1_vanilla_service
+ pop hl
+ pop de
+ pop bc
+ exx
+ pop af
+ ex af,af'
+ pop iy
+ pop ix
+ pop hl
+ pop de
+ pop bc
+ pop af
+ ei
+ reti.l

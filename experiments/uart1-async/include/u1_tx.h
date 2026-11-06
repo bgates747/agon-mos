@@ -17,7 +17,7 @@ typedef uint8_t (*u1_emit)(const uint8_t *, uint8_t);
 
 enum { U1_OK=0, U1_INVALID=19, U1_BUSY=31, U1_UNSAFE=32, U1_UNAVAILABLE=35 };
 enum { U1_IDLE, U1_SOURCE, U1_TAIL, U1_FAULT, U1_DETACHED };
-enum { U1_NO_FAULT, U1_OWNER_LOST, U1_LINE_ERROR, U1_WRITE_UNCERTAIN };
+enum { U1_NO_FAULT, U1_OWNER_LOST, U1_LINE_ERROR, U1_WRITE_UNCERTAIN, U1_RX_OVERFLOW };
 /* These are APPLICATION effects, not IER bit values or a numeric MOS ABI.
  * TX: owner enables TX-empty. RETRY: TX-empty off; owner retry source required.
  * Neither: owner disables this TX demand, retaining RX and other enables.
@@ -33,9 +33,10 @@ typedef struct {
     uint8_t phase, burst, stopping, fault, fault_error;
 } u1_tx;
 
-/* New storage only, before installing an adapter. reserve is an explicit peer
- * headroom CONTRACT, not measured FIFO space. 1<=burst<=reserve<=16 required.
- * No-flow-control adapters must also provide an actual receiver contract.
+/* New storage only, before installing an adapter. reserve is the backend's
+ * authorized burst ceiling; 1<=burst<=reserve<=16. In CTS mode that ceiling
+ * must include peer headroom after CTS changes. In no-flow-control mode it
+ * bounds local FIFO writes only; remote pacing/reception remains the app's job.
  */
 uint8_t u1_init(u1_tx *, uint8_t burst, uint8_t reserve);
 /* Owner serializes every call against IRQ/tick service. Prearm caller flags
@@ -49,6 +50,8 @@ uint8_t u1_start(u1_tx *, const uint8_t *, u1_count, u1_callback);
  * Target callback: flag-only assembly RET, no MOS/output/EI/reentrancy.
  */
 uint8_t u1_step(u1_tx *, u1_sample, u1_emit);
+/* Adapter fault report, under the same exclusion. Retains any borrowed source. */
+void u1_report_fault(u1_tx *, uint8_t reason, uint8_t error);
 /* Stop refuses new sources; it continues the existing source, not cancellation. */
 void u1_stop(u1_tx *);
 /* Logical detach only. Actual hook/vector retirement is the owner's operation,

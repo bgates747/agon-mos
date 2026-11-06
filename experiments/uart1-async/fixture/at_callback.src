@@ -1,0 +1,9 @@
+; SPDX-License-Identifier: MIT -- flag only, called inside UART1 ISR.
+.assume adl=1
+.text
+.global _u1_at_callback
+.extern _u1_at_done
+_u1_at_callback:
+ ld a,1
+ ld (_u1_at_done),a
+ ret

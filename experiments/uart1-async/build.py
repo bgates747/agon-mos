@@ -10,11 +10,17 @@ lease=a.lease;start=time.monotonic();steps=[]
 h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 assertcmd=['/Agon/mystuff/agon-dev-env/.venv/bin/python','/Agon/mystuff/agon-dev-env/cross-agent/pi5-workloads/pi5_lease.py','assert-owner','--owner','agon-mos','--lease',lease]
 source={str(p.relative_to(src)):h(p) for p in sorted(src.rglob('*')) if p.is_file()}
+build_id=hashlib.sha256(json.dumps(source,sort_keys=True).encode()).hexdigest()[:16]
 shutil.copytree(src,out/'source');native=out/'native';(native/'src').mkdir(parents=True)
 shutil.copytree(src/'include',native/'include')
 for p in (src/'src').iterdir():shutil.copyfile(p,native/'src'/p.name)
 shutil.copyfile(src/'fixture/main.c',native/'src/main.c')
+atnative=out/'at-native';shutil.copytree(native,atnative)
+for name in ['at_reply.c','at_reply.h','at_callback.src','run_counter.inc']:shutil.copyfile(src/'fixture'/name,atnative/'src'/name)
+shutil.copyfile(src/'fixture/at_main.c',atnative/'src/main.c')
+(atnative/'src/u1_build_id.h').write_text('#define U1_BUILD_ID "'+build_id+'"\n')
 (native/'Makefile').write_text('NAME = u1check\nRAM_START = 0x40000\nRAM_SIZE = 0x70000\nLDHAS_ARG_PROCESSING = 0\nLDHAS_EXIT_HANDLER = 0\ninclude $(AGONDEV_TOOLCHAIN)/config/makefile.inc\nCFLAGS += -std=c11 -Wall -Wextra -Werror -O2\n')
+(atnative/'Makefile').write_text((native/'Makefile').read_text().replace('NAME = u1check','NAME = u1test'))
 def run(name,args,cwd=root):
  subprocess.run(assertcmd,check=True,stdout=subprocess.DEVNULL)
  t=time.monotonic();p=None;code=None
@@ -38,11 +44,17 @@ def run(name,args,cwd=root):
 try:
  run('host-build',['cc','-std=c11','-Wall','-Wextra','-Werror','-O1','-g','-fsanitize=address,undefined','-fno-omit-frame-pointer','-I'+str(src/'include'),str(src/'src/u1_tx.c'),str(src/'tests/tx.c'),'-o',str(out/'host-test')])
  run('host-test',[str(out/'host-test')])
+ run('host-adapter-build',['cc','-std=c11','-Wall','-Wextra','-Werror','-O1','-g','-fsanitize=address,undefined','-fno-omit-frame-pointer','-I'+str(src/'include'),'-I'+str(src/'tests/host'),str(src/'src/u1_tx.c'),str(src/'src/u1_vanilla.c'),str(src/'tests/vanilla.c'),'-o',str(out/'host-adapter-test')])
+ run('host-adapter-test',[str(out/'host-adapter-test')])
+ run('host-at-build',['cc','-std=c11','-Wall','-Wextra','-Werror','-O1','-g','-fsanitize=address,undefined','-fno-omit-frame-pointer',str(src/'fixture/at_reply.c'),str(src/'tests/at_reply.c'),'-o',str(out/'host-at-test')])
+ run('host-at-test',[str(out/'host-at-test')])
  run('native-build',['make','AGONDEV_TOOLCHAIN='+str(tool)],native)
- run('native-library',[str(tool/'bin/ez80-none-elf-ar'),'rcs',str(out/'libu1.a'),str(native/'obj/u1_tx.o'),str(native/'obj/u1_emit.o')])
- run('native-disassembly',[str(tool/'bin/ez80-none-elf-objdump'),'-d',str(native/'obj/u1_emit.o')])
- run('native-size',[str(tool/'bin/ez80-none-elf-size'),str(native/'obj/u1_tx.o'),str(native/'obj/u1_emit.o')])
- info=dict(passed=True,source=source,steps=steps,seconds=time.monotonic()-start,lease=lease,generation=a.generation,host_checks_only=True,native_guest_executed=False,hardware=False,firmware_changed=False,binary=dict(path=str(native/'bin/u1check.bin'),bytes=(native/'bin/u1check.bin').stat().st_size,sha256=h(native/'bin/u1check.bin')),library_sha256=h(out/'libu1.a'),libagon_sha256=h(tool/'lib/libagon.a'))
+ run('at-native-build',['make','AGONDEV_TOOLCHAIN='+str(tool)],atnative)
+ run('native-library',[str(tool/'bin/ez80-none-elf-ar'),'rcs',str(out/'libu1.a'),str(native/'obj/u1_tx.o'),str(native/'obj/u1_emit.o'),str(native/'obj/u1_vanilla.o'),str(native/'obj/u1_vanilla_io.o')])
+ run('native-disassembly',[str(tool/'bin/ez80-none-elf-objdump'),'-d',str(native/'obj/u1_emit.o'),str(native/'obj/u1_vanilla.o'),str(native/'obj/u1_vanilla_io.o')])
+ run('native-size',[str(tool/'bin/ez80-none-elf-size'),str(native/'obj/u1_tx.o'),str(native/'obj/u1_emit.o'),str(native/'obj/u1_vanilla.o'),str(native/'obj/u1_vanilla_io.o')])
+ info=dict(passed=True,source=source,steps=steps,seconds=time.monotonic()-start,lease=lease,generation=a.generation,host_checks_only=True,native_guest_executed=False,hardware=False,firmware_changed=False,binary=dict(path=str(native/'bin/u1check.bin'),bytes=(native/'bin/u1check.bin').stat().st_size,sha256=h(native/'bin/u1check.bin')),at_binary=dict(path=str(atnative/'bin/u1test.bin'),bytes=(atnative/'bin/u1test.bin').stat().st_size,sha256=h(atnative/'bin/u1test.bin')),library_sha256=h(out/'libu1.a'),libagon_sha256=h(tool/'lib/libagon.a'))
 except Exception as e:
  info=dict(passed=False,error=str(e),steps=steps,source=source,seconds=time.monotonic()-start,generation=a.generation,native_guest_executed=False,hardware=False)
+info['build_id']=build_id
 (out/'result.json').write_text(json.dumps(info,indent=2)+'\n');print(json.dumps(info,indent=2));sys.exit(0 if info['passed'] else 1)
