@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "source": {
+    "LICENSE": "a07c0446133690f4a959d45d9c511741660b1f19cfa581fdd5ceb9e0c61cf05e",
+    "README.md": "52802f5369aedd596dfd5fac8dae166a6f2e75d792d185ce5ce5a678a90ff46c",
+    "fixture/main.c": "68ad6578f30d15b729404c2e59638f99d0fcfe1bb158e6598ad404d0cdcb1f49",
+    "include/u1_tx.h": "7f6ede427a9a29e3b79e08c3d53d0fb36041d1dcd17958294aa70b503937fd97",
+    "src/u1_emit.src": "088468dd2974099c046c62ec363c036822276eb20da8d8fb59c8cb80347c893e",
+    "src/u1_tx.c": "2fd0e6e94b3f1e8f1e57088cb2bd1d0f84467259ac5ae8db31dbf26aa4600eec",
+    "tests/tx.c": "d1c80af62bb3a592239a435b8d12140496e7dca619d001d33711fc3e49424cee"
+  },
+  "steps": [
+    {
+      "name": "host-build",
+      "exit": 0,
+      "seconds": 0.4020062159979716
+    },
+    {
+      "name": "host-test",
+      "exit": 0,
+      "seconds": 0.10183172702090815
+    },
+    {
+      "name": "native-build",
+      "exit": 0,
+      "seconds": 0.40235191900865175
+    },
+    {
+      "name": "native-library",
+      "exit": 0,
+      "seconds": 0.10175935699953698
+    },
+    {
+      "name": "native-disassembly",
+      "exit": 0,
+      "seconds": 0.10206956000183709
+    },
+    {
+      "name": "native-size",
+      "exit": 0,
+      "seconds": 0.10178920900216326
+    }
+  ],
+  "seconds": 1.6621742899878882,
+  "lease": "5b4b622b83f943d1acea464752c3a1f4",
+  "generation": 247,
+  "host_checks_only": true,
+  "native_guest_executed": false,
+  "hardware": false,
+  "firmware_changed": false,
+  "binary": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/core-r01/native/bin/u1check.bin",
+    "bytes": 2396,
+    "sha256": "26c1b3a2a1c94dbd661e9c04343715cf7e2225acdc3987953a17fa9f3c3172c2"
+  },
+  "library_sha256": "c4c10fe10c2cce4c2519569ad49a395ef83e2fbf81e73cfda229d1a50237b17e",
+  "libagon_sha256": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c"
+}

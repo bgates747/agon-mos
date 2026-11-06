@@ -24,7 +24,7 @@ P-001 [x] Publish this task and branch before implementation; return its path
 to Extender and consult MechAgon directly. Preserve the live bench and existing
 UART0 work. No target, card, firmware, emulator or vector change is selected.
 
-P-002 [ ] Audit exact stock and matched EMOS UART1 TX/RX, GPIO CTS, vector,
+P-002 [x] Audit exact stock and matched EMOS UART1 TX/RX, GPIO CTS, vector,
 admission, packet-lifetime and teardown seams. Pin donors, distinguish supported
 public APIs from private symbols, and identify integration gaps explicitly.
 
@@ -35,12 +35,12 @@ when built. No guessed entry addresses, syscall numbers or silent vector swap.
 Current NM SUBMIT is synchronous and stays so until its owner integrates opt-in
 support. Preserve framing, RX arming and single-producer exclusion.
 
-I-002 [ ] Agree first-consumer requirements with MechAgon: opaque 128-byte NM
+I-002 [x] Agree first-consumer requirements with MechAgon: opaque 128-byte NM
 records and up to 146-byte wire frames, immutable source, separate callback and
 peer reply, independent UART0 graphics, stop/drain/uncertainty behavior, and a
 matched synchronous/async workload. No game/P4/schema/checksum code here.
 
-D-001 [ ] Implement the independent application-owned TX core and focused
+D-001 [x] Implement the independent application-owned TX core and focused
 host checks. One outstanding full 24-bit positive nonwrapping source and a
 prearmed callback. Explicit result codes, first-fault retention, bounded one-FIFO
 service, source-release versus wire-drain state and positive detach. No queue,
@@ -62,7 +62,7 @@ Flow control requires explicit receiver reserve; 16-byte FIFO capacity alone
 does not prove that CTS can safely be checked once per burst. GPIO CTS needs a
 separately agreed bounded wake source; do not invent modem interrupts.
 
-T-002 [ ] Under actual Pi compiler FIFO, build/link the original library and
+T-002 [x] Under actual Pi compiler FIFO, build/link the original library and
 worked fixture, retain source/map/disassembly/size and check ABI boundaries.
 Finite initial build limit: 180 seconds per child, 600 seconds total; one serial
 compiler, below 80 C and at least 512 MiB available RAM, owned cleanup/release.

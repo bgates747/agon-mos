@@ -1,0 +1,20 @@
+; SPDX-License-Identifier: MIT
+; APPLICATION code, NOT an ISR or public EMOS entry. No install side effects.
+; The admitted owner must establish THRE, peer reserve, error and exclusion
+; before this leaf is ever called. n=1..16 from actual u1_step; no CTS spin.
+; C byte result A=1. Stack arguments use three-byte slots in pinned AgonDev.
+.assume adl=1
+.text
+.global _u1_emit_uart1
+_u1_emit_uart1:
+ push ix
+ ld ix,0
+ add ix,sp
+ ld hl,(ix+6)
+ ld bc,0
+ ld c,(ix+9)
+ ld de,0d0h
+ otirx
+ pop ix
+ ld a,1
+ ret

@@ -1,0 +1,11 @@
+{
+  "commit": "2c79c6006d6bcb0c2b3f9d8d6aae3ef4b36c730a",
+  "root": "/Agon/mystuff/agon-extender/agents/net004/emos-uart-rfc25-source",
+  "files": {
+    "src/emos_net.c": "88882955e69709cf898bb35d4f9e31f3d8d93ae953ac1467ae790543a93935a7",
+    "src/emos_keyboard_io.asm": "96e8ea1778b05f8816b49b2e4107759c008f0d676f4ad828f1a3ab49d02bacf2",
+    "src/emos_keyboard.c": "4abf33f0f057ac89bd095fb3572b4694c568cf27af4c16f1ef473664611082d7",
+    "src/uart.c": "26b1eb8f8db1794dcc0df9ff2de11cbf629735770680a9905aa16706c6aea87f"
+  },
+  "hardware_readback": false
+}

@@ -1,0 +1,18 @@
+
+/Agon/mystuff/agon-mos/build/u1-001/core-r01/native/obj/u1_emit.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_u1_emit_uart1>:
+   0:	dd e5             	push ix
+   2:	dd 21 00 00 00    	ld ix,0x0000
+   7:	dd 39             	add ix,sp
+   9:	dd 27 06          	ld hl,(ix+6)
+   c:	01 00 00 00       	ld bc,0x0000
+  10:	dd 4e 09          	ld c,(ix+9)
+  13:	11 d0 00 00       	ld de,0x00d0
+  17:	ed c3             	otirx
+  19:	dd e1             	pop ix
+  1b:	3e 01             	ld a,0x01
+  1d:	c9                	ret
