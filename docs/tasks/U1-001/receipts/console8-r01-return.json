@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-06T19:30:38.934951+00:00",
+  "volume_uuid": "8658-1C23",
+  "files": {
+    "returned.tar": "344d64da862cde8976acaabab02d659dbabdf816ba7f46904a94d5c87356bf15",
+    "extender/network/wifi-start/progress.log": "c42275096f0edce71c516f7d2091e6c46ce2aac62ea247a52b2f72d2808cdd5e",
+    "extender/network/wifi-start/build-manifest.json": "6d3452d127e87718c36aa2606bffc46eb319b6657e51a57038846ee0e1328c7f",
+    "test/uart1/R0001.log": "ba6c4962b6aadf43c6e30e4568e1aaa7b03eab1d7b8960aac7459a831f9154aa",
+    "test/uart1/next.txt": "df4e26a04a444901b95afef44e4a96cfae34690fff2ad2c66389c70079cdff2b",
+    "test/uart1/u1test.bin": "42410864fec9e492899d937152a5954a8b301d1e845449b29bdc26515fc34e5d",
+    "test/uart1/deployment.json": "9e75656db85dd559158b6971b3f61e0f5dfaf613b8e435c62aa8353a1ebb6b76"
+  },
+  "private_config_copied": false,
+  "card_written": false
+}

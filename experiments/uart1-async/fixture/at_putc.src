@@ -1,0 +1,17 @@
+; SPDX-License-Identifier: MIT
+; Ordinary byte baseline through the public MOS syscall, not direct UART I/O.
+; MOS 18h returns carry SET on success. The pinned SDK C wrapper reverses it.
+.assume adl=1
+.include "agon/mos.inc"
+.text
+.global _u1_at_putc
+_u1_at_putc:
+ ld hl,3
+ add hl,sp
+ ld c,(hl)
+ ld a,mos_uputc
+ rst.lil 08h
+ ld a,1
+ ret c
+ xor a
+ ret

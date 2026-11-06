@@ -70,9 +70,17 @@ Unexpected +IPD, ERROR/busy, overflow, reply mismatch or timeout stops the suite
 uncertain live ownership retains the app until reset. Allow one minute; more
 than two minutes is wrong. The screen clears and prints case breadcrumbs.
 
-Only source/build work is complete. No card deployment, ESP query or physical
-pass is implied. Small AT queries are FUNCTIONAL evidence, not throughput/CPU
-capacity measurements. Full-stream tests need their own reception witness.
+The first Console8 run failed in the ordinary baseline: the pinned SDK C
+`mos_uputc` wrapper reverses MOS's carry-success result. The fixture now uses
+its own `u1_at_putc` shim around the unchanged public syscall. No SDK, firmware
+or async driver change is needed for this correction. A linked-instruction
+check covers both carry results; the returned failing binary is retained as a
+negative control. Report stages: 0 unstarted, 1 initial RX check, 2 submit/send,
+3 reply/drain wait, 4 complete; sent counts ordinary accepted bytes only.
+
+Hardware qualification remains pending. Small AT queries are FUNCTIONAL
+evidence, not throughput/CPU capacity measurements. Full-stream tests need
+their own reception witness.
 
 ## Rebuilding
 

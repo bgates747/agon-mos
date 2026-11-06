@@ -112,6 +112,18 @@ T-006 [x] Prepare the initial functional-only AT/AT+GMR appliance, source,
 library, binaries, pinned SDK/notices and instructions in project space. Archive
 hashes are verified. This does not complete T-003's performance appliance/tests.
 
+F-001 [ ] Correct the first Console8 run's ordinary-byte baseline. Retain
+R0001 and startup evidence: the selected SDK's `mos_uputc` C wrapper reverses
+MOS's documented carry-success result, so our checked baseline stops after the
+first byte. Use a fixture-local wrapper around the unchanged MOS syscall;
+do not modify the SDK, firmware or asynchronous driver to compensate.
+
+F-002 [ ] Check the actual linked byte wrapper's carry-set/clear returns,
+including the returned failing binary as a negative control; rebuild under the
+compiler FIFO, retain separate source/build pins and prepare the same four-case
+fixture for the same card path. Improve failure identification without changing
+the workload. Native hardware qualification remains pending until a rerun.
+
 ## Latest implemented tranche
 
 Source commit `510ad1ab26ccd8f3b07b1135b690cf087a7443e0`; build identity

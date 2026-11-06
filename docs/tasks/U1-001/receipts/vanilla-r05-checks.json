@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "build_id": "1bfe14ccd35b03aa",
+  "generation": 255,
+  "seconds": 3.4895981820009183,
+  "at_binary": {
+    "path": "/Agon/mystuff/agon-mos/build/u1-001/vanilla-r05/at-native/bin/u1test.bin",
+    "bytes": 15258,
+    "sha256": "6ac253927f4d8c1c96109be2829665ce8ffed003d8b824f5de81b90f6302f593"
+  },
+  "library_sha256": "b7870dff9c979b5051aec6bdd4e177dbfa29f7b6e42c1a52992fca9e4b246831",
+  "source": {
+    "LICENSE": "a07c0446133690f4a959d45d9c511741660b1f19cfa581fdd5ceb9e0c61cf05e",
+    "README.md": "93ec1ee42a8e4b7880bca274c0da012f2856e7b07a6f686ee254ba31bda413b1",
+    "build.py": "588457716af34071fb7637bbbe0b1cedc4d92718b4da76204c95e4f53e72de0b",
+    "fixture/at_callback.src": "d76bac7eb3c24a476afc14ba63bf4ff8c9a7e702f1148b807c6bdcda333f282e",
+    "fixture/at_main.c": "a05a55931ebb97544c147de53e88f7586f072683361cb893a98362ec72578a8a",
+    "fixture/at_putc.src": "2b4bb8860e3c6235394cc03354a3162bda53cac00a08de7219e6a80c46d65303",
+    "fixture/at_reply.c": "7500ac51a22636b3d41791f0f1d918b11b0f20dd5e68bbee7f7a3c0409ff4e72",
+    "fixture/at_reply.h": "0776a79ccdc16db232f1d985c5aa62659efa14163cd0b2316300c219983bba3a",
+    "fixture/main.c": "68ad6578f30d15b729404c2e59638f99d0fcfe1bb158e6598ad404d0cdcb1f49",
+    "fixture/run_counter.inc": "d7502d61ba19fc7f6dd7a02298a5b8a9409ef48ecfd0b918b89cbdb328845009",
+    "include/u1_tx.h": "b3ca44024cda3cf6e209050dc07387a78babdb82b9229d87ddde0eaad86e838f",
+    "include/u1_vanilla.h": "c6cac6e093914ad5ada130c10f8953bb7a504128614cd8fa245d1e90c7e0414e",
+    "src/u1_emit.src": "088468dd2974099c046c62ec363c036822276eb20da8d8fb59c8cb80347c893e",
+    "src/u1_tx.c": "5b9c75120a9fc1ab068211698f561e38fb49e3e8e62116ed4e8daf3e79e659e0",
+    "src/u1_vanilla.c": "a41e24f962a1dbba01f62408b5303771713986253de31cfe6876bf8313a94ae1",
+    "src/u1_vanilla_io.src": "7945cfe13c27dd46091f9ede042a098b8590d24138cfd5b506d84989f9630360",
+    "tests/at_reply.c": "9b06b985aa4153b69ca3300beb3a245617b067b7e4b5e839ca8b40278e43185c",
+    "tests/check_putc.py": "3410533292f0deefaf08253fa9f000ff6560520ded9a6aecabbc9c0ce010c399",
+    "tests/host/agon/mos.h": "5aabc7a05fca1c036e948f3073d9d979243f420f4aa6a68dfc4a4201bdfed4f2",
+    "tests/tx.c": "d1c80af62bb3a592239a435b8d12140496e7dca619d001d33711fc3e49424cee",
+    "tests/vanilla.c": "788c5c87e5fa9e6ec2d9fda904d9297468d8fc07c497fd87b050945df2ad1214"
+  },
+  "steps": [
+    {
+      "name": "host-build",
+      "exit": 0,
+      "seconds": 0.4021570030017756
+    },
+    {
+      "name": "host-test",
+      "exit": 0,
+      "seconds": 0.10100175402476452
+    },
+    {
+      "name": "host-adapter-build",
+      "exit": 0,
+      "seconds": 0.6028590509959031
+    },
+    {
+      "name": "host-adapter-test",
+      "exit": 0,
+      "seconds": 0.10118603199953213
+    },
+    {
+      "name": "host-at-build",
+      "exit": 0,
+      "seconds": 0.3018153209995944
+    },
+    {
+      "name": "host-at-test",
+      "exit": 0,
+      "seconds": 0.10101701397798024
+    },
+    {
+      "name": "native-build",
+      "exit": 0,
+      "seconds": 0.20149317698087543
+    },
+    {
+      "name": "at-native-build",
+      "exit": 0,
+      "seconds": 0.30165998797747307
+    },
+    {
+      "name": "linked-putc-check",
+      "exit": 0,
+      "seconds": 0.10102703201118857
+    },
+    {
+      "name": "native-library",
+      "exit": 0,
+      "seconds": 0.10165801300900057
+    },
+    {
+      "name": "native-disassembly",
+      "exit": 0,
+      "seconds": 0.10184536399901845
+    },
+    {
+      "name": "native-size",
+      "exit": 0,
+      "seconds": 0.102409565995913
+    }
+  ],
+  "native_guest_executed": false,
+  "hardware": false,
+  "negative_control": {
+    "symbol": "_mos_uputc",
+    "linked_address": "0x431e8",
+    "mos_carry_conversion": {
+      "success": 0,
+      "failure": 1
+    },
+    "classification": "inverted",
+    "guest_executed": false
+  },
+  "corrected_control": {
+    "symbol": "_u1_at_putc",
+    "linked_address": "0x4028f",
+    "mos_carry_conversion": {
+      "success": 1,
+      "failure": 0
+    },
+    "classification": "correct",
+    "guest_executed": false
+  }
+}

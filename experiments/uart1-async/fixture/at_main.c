@@ -12,13 +12,14 @@
 extern uint8_t u1_lock(void);
 extern void u1_unlock(uint8_t);
 extern void u1_at_callback(void);
+extern uint8_t u1_at_putc(uint8_t);
 volatile uint8_t u1_at_done;
 static uint8_t rx[512];
 static struct {
     at_reply reply;
     uint32_t total,call;
     u1_count work;
-    uint8_t mode,pass;
+    uint8_t mode,pass,stage,sent;
 } cases[4];
 static uint32_t now(void) {
     uint8_t irq=u1_lock();uint32_t stamp=sys_vars->time;u1_unlock(irq);return stamp;
@@ -26,14 +27,20 @@ static uint32_t now(void) {
 static int query(unsigned cell,const char *command,uint8_t async) {
     uint32_t start=now();unsigned fuse=0;int c;
     cases[cell].mode=async;at_reply_init(&cases[cell].reply);u1_at_done=0;
+    cases[cell].stage=1;
     if(u1_vanilla_read()!=-1)return 0; /* No outstanding prior reply accepted. */
+    cases[cell].stage=2;
     if(async) {
         if(u1_vanilla_submit((const uint8_t*)command,(u1_count)strlen(command),u1_at_callback))return 0;
     } else {
-        for(unsigned i=0;command[i];++i)if(!mos_uputc(command[i]))return 0;
+        for(unsigned i=0;command[i];++i) {
+            if(!u1_at_putc((uint8_t)command[i]))return 0;
+            ++cases[cell].sent;
+        }
         u1_at_done=1;
     }
     cases[cell].call=now()-start;
+    cases[cell].stage=3;
     for(;;) {
         while((c=u1_vanilla_read())>=0) {
             if(cases[cell].reply.result) {
@@ -46,7 +53,7 @@ static int query(unsigned cell,const char *command,uint8_t async) {
         if(now()-start>480UL || ++fuse>1000000u)return 0;
         if(cases[cell].work<0xffffffUL)++cases[cell].work;
     }
-    cases[cell].total=now()-start;cases[cell].pass=1;
+    cases[cell].total=now()-start;cases[cell].pass=1;cases[cell].stage=4;
     return 1;
 }
 int main(void) {
@@ -86,8 +93,8 @@ report:;
         result,closed,(unsigned long)info.received,(unsigned long)info.overflows,info.fault,info.line_errors);
     if(mos_fwrite(log,row,(unsigned)n)!=(unsigned)n)result=1;
     for(unsigned i=0;i<4;++i) {
-        n=snprintf(row,sizeof(row),"case=%u mode=%u pass=%u call_mos_counts=%lu total_mos_counts=%lu work=%lu reply_bytes=%u\r\n",
-            i+1,cases[i].mode,cases[i].pass,(unsigned long)cases[i].call,
+        n=snprintf(row,sizeof(row),"case=%u mode=%u pass=%u stage=%u sent=%u call_mos_counts=%lu total_mos_counts=%lu work=%lu reply_bytes=%u\r\n",
+            i+1,cases[i].mode,cases[i].pass,cases[i].stage,cases[i].sent,(unsigned long)cases[i].call,
             (unsigned long)cases[i].total,(unsigned long)cases[i].work,cases[i].reply.used);
         if(mos_fwrite(log,row,(unsigned)n)!=(unsigned)n)result=1;
         if(cases[i].reply.used && mos_fwrite(log,cases[i].reply.text,cases[i].reply.used)!=cases[i].reply.used)result=1;
