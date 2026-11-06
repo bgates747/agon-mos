@@ -1,0 +1,12 @@
+{
+  "mail": "2026-11-06_05-50-05_agon-mos_net004-existing-guarded-rfc25-source-return-one",
+  "in_reply_to": "2026-11-06_05-46-22_linux-extender_net004-independent-rfc25-existing-caller-source-one",
+  "delivery_id": "net004-existing-guarded-rfc25-source-return-one",
+  "recipient_thread": "01a13443-f921-72d1-9d3e-d05652c7a750",
+  "method": "turn/steer",
+  "accepted": true,
+  "read_confirmed": false,
+  "delivered_utc": "2026-11-06T10:50:20.135198+00:00",
+  "source_only": true,
+  "new_build_or_target_execution": false
+}
