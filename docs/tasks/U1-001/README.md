@@ -103,22 +103,22 @@ receiver stalls. No invented acknowledgements or new peer firmware assumed.
 
 T-005 [ ] Have Brandon run the prepared functional fixture on Console8 and
 inspect returned reports: real RX/IRQ/callback/drain/restore and peer identity.
-The native binaries have only compiled; the functional appliance was deployed
-to Console8's card on 2026-11-06, but no guest/hardware execution has occurred.
-See console8-r03-deployment.md. T-001 still includes actual native interrupt/register
+The first Console8 run failed in its ordinary baseline, before async submission;
+see console8-r01-failure.md. The corrected fixture is deployed to the same path
+and awaits its rerun. T-001 still includes actual native interrupt/register
 qualification; host stubs do not establish those target invariants.
 
 T-006 [x] Prepare the initial functional-only AT/AT+GMR appliance, source,
 library, binaries, pinned SDK/notices and instructions in project space. Archive
 hashes are verified. This does not complete T-003's performance appliance/tests.
 
-F-001 [ ] Correct the first Console8 run's ordinary-byte baseline. Retain
+F-001 [x] Correct the first Console8 run's ordinary-byte baseline. Retain
 R0001 and startup evidence: the selected SDK's `mos_uputc` C wrapper reverses
 MOS's documented carry-success result, so our checked baseline stops after the
 first byte. Use a fixture-local wrapper around the unchanged MOS syscall;
 do not modify the SDK, firmware or asynchronous driver to compensate.
 
-F-002 [ ] Check the actual linked byte wrapper's carry-set/clear returns,
+F-002 [x] Check the actual linked byte wrapper's carry-set/clear returns,
 including the returned failing binary as a negative control; rebuild under the
 compiler FIFO, retain separate source/build pins and prepare the same four-case
 fixture for the same card path. Improve failure identification without changing
@@ -126,11 +126,13 @@ the workload. Native hardware qualification remains pending until a rerun.
 
 ## Latest implemented tranche
 
-Source commit `510ad1ab26ccd8f3b07b1135b690cf087a7443e0`; build identity
-`dac1a97aa944c49c`. Vanilla adapter, callable C/register entries, bounded RX/TX,
-caller RX storage, positive teardown and no-switch AT query fixture compile.
-Core/actual-C-adapter/AT-parser sanitizer and byte/event checks pass. Native ISR
-frames were inspected, not executed. See vanilla-r03.md for exact scope/artifacts.
+Corrected fixture source commit `823bb91dd4c1af5a1488e3d3361648646b601445`;
+build identity `1bfe14ccd35b03aa`. The initial build `dac1a97aa944c49c` failed
+on Console8 because its ordinary-byte SDK wrapper reversed MOS carry-success.
+The local shim and linked-code controls correct that without driver/firmware
+changes. Core/adapter/parser host checks and native linking pass; the corrected
+app has not run on hardware. See console8-r01-failure.md and its deployment
+receipt. The same `/test/uart1` path retains R0001 and next.txt.
 
 ## Initial design boundaries
 

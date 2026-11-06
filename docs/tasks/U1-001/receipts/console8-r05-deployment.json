@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-06T19:38:47.025794+00:00",
+  "host": "oryx-linuxlite",
+  "volume_label": "AGONC8",
+  "volume_uuid": "8658-1C23",
+  "directory": "/test/uart1",
+  "exit_code": 0,
+  "verification": "deployment.json: OK\npackage.zip: OK\nreadme.txt: OK\nu1test.bin: OK\ndeployment.json: OK\npackage.zip: OK\nreadme.txt: OK\nu1test.bin: OK\ndeployment.json: OK\npackage.zip: OK\nreadme.txt: OK\nu1test.bin: OK\nCORRECTION VERIFIED: AGONC8 8658-1C23 /test/uart1\nR0001.log/next.txt and all other reports unchanged.\nWi-Fi startup/config/source/history unchanged.\nCard synced, remains mounted; no guest/device/firmware execution.\n",
+  "payload": {
+    "u1test.bin": "6ac253927f4d8c1c96109be2829665ce8ffed003d8b824f5de81b90f6302f593",
+    "deployment.json": "abec1de8d0e709d89a2a90c649f98a8b6254270553ec082025872df9c256c0e1",
+    "SHA256SUMS": "733b1b6a2c655086a92666f5781686005e9b9213691ccb592769e4e905ce45f4",
+    "package.zip": "53797bed1686fe1e7666ed31cbafd29235f3e07e6ed0dbe91b917a8efbc61fe1",
+    "readme.txt": "a8aa28da5833ade5f121b1c623d4f9ea05f7e8d4257d421f1d13376e6667bd85"
+  },
+  "hardware_rerun": false,
+  "firmware_changed": false
+}

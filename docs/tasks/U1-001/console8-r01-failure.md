@@ -71,3 +71,20 @@ Hardware rerun remains pending. Power-cycle Console8 and its ESP8266 before
 rerunning to clear the incomplete AT line and old app/IRQ state. The startup
 utility remains unchanged; test it first, then run `/test/uart1/u1test.bin` by
 typing `u1test` from that directory after startup finishes normally.
+
+## Replacement deployed
+
+The corrected app and complete source/build package replaced the five owned
+payload files in `/test/uart1` on the same identified card. All old payload
+hashes were checked before replacement; all new payload hashes passed after
+copy/sync. R0001, next.txt and other reports passed preservation checks, as did
+the entire Wi-Fi startup directory/private configuration. Card remains mounted.
+No firmware or device was executed or changed during deployment.
+
+Package source is pinned to commit823bb91dd4c1af5a1488e3d3361648646b601445.
+ZIP355785bytes, SHA256
+53797bed1686fe1e7666ed31cbafd29235f3e07e6ed0dbe91b917a8efbc61fe1;
+157 members verified against the included manifest. Package and deployment
+pins: receipts/vanilla-r05-package.json and console8-r05-deployment.json.
+No old native result or successful startup result is relabelled as a corrected
+UART1 hardware pass. That rerun remains the next manual task.
