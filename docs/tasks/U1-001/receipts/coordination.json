@@ -1,0 +1,38 @@
+{
+  "outgoing": [
+    {
+      "recipient": "linux-extender",
+      "message": "2026-11-06_12-38-44_agon-mos_u1001-task-and-contract-owner-one",
+      "delivery": "u1001-task-and-contract-owner-one",
+      "method": "turn/start",
+      "accepted": true,
+      "read_confirmed": false
+    },
+    {
+      "recipient": "mechagon",
+      "message": "2026-11-06_12-38-59_agon-mos_u1001-task-and-contract-consumer-one",
+      "delivery": "u1001-task-and-contract-consumer-one",
+      "method": "turn/steer",
+      "accepted": true,
+      "read_confirmed": false
+    },
+    {
+      "recipient": "linux-extender",
+      "message": "2026-11-06_12-49-16_agon-mos_u1001-core-first-tranche-owner-two",
+      "delivery": "u1001-core-first-tranche-owner-two",
+      "method": "turn/steer",
+      "accepted": true,
+      "read_confirmed": false
+    },
+    {
+      "recipient": "mechagon",
+      "message": "2026-11-06_12-49-28_agon-mos_u1001-core-first-tranche-consumer-two",
+      "delivery": "u1001-core-first-tranche-consumer-two",
+      "method": "turn/steer",
+      "accepted": true,
+      "read_confirmed": false
+    }
+  ],
+  "substantive_consumer_reply": "2026-11-06_12-43-40_mechagon_u1001-consumer-wire-lifetime-return-one",
+  "owner_contract_disposition_received": false
+}

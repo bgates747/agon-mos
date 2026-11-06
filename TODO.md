@@ -1,9 +1,10 @@
 # MOS TODO
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
-preserving EMOS admission, routing and RX. First publish/agree the ownership and
-wake contracts, then develop the generic core and native adapter here. No live
-bench or firmware change selected. [Task](docs/tasks/U1-001/README.md).
+preserving EMOS admission, routing and RX. Independent core and OTIRX leaf pass
+host sanitizer/byte controls and native linking; owner attachment/IRQ/GPIO-CTS
+retry contract and operational adapter remain open. No live bench or firmware
+change selected. [Task](docs/tasks/U1-001/README.md).
 
 ## Eirene upstream async RFC qualification
 
