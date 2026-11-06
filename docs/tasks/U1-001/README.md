@@ -103,8 +103,9 @@ receiver stalls. No invented acknowledgements or new peer firmware assumed.
 
 T-005 [ ] Have Brandon run the prepared functional fixture on Console8 and
 inspect returned reports: real RX/IRQ/callback/drain/restore and peer identity.
-The native binaries have only compiled; no guest/hardware execution or card
-deployment has occurred. T-001 still includes actual native interrupt/register
+The native binaries have only compiled; the functional appliance was deployed
+to Console8's card on 2026-11-06, but no guest/hardware execution has occurred.
+See console8-r03-deployment.md. T-001 still includes actual native interrupt/register
 qualification; host stubs do not establish those target invariants.
 
 T-006 [x] Prepare the initial functional-only AT/AT+GMR appliance, source,

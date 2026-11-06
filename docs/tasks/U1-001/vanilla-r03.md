@@ -57,8 +57,9 @@ bench, serial port, SD card, live app or firmware was touched.
 `build/u1-001/vanilla-prepared-r03.zip` contains the identified functional app,
 library, exact maintained/generated source, pinned target SDK/notices, compiler
 evidence, README.md and hardware-readable readme.txt. Archive/member hashes were
-verified; current pin is receipts/vanilla-r03-package.json. It is local only,
-not deployed or published as a release. No firmware flashing is required.
+verified; current pin is receipts/vanilla-r03-package.json. It was subsequently
+deployed to Console8's card as recorded in console8-r03-deployment.md, with no
+hardware run or release publication. No firmware flashing is required.
 
 The fixture compares ordinary/async AT and AT+GMR on unused vanilla UART1,
 115200 8N1/no handshake, with complete matched response text, latched UART

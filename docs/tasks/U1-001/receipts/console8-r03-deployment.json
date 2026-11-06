@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-06T19:15:24.561810+00:00",
+  "host": "oryx-linuxlite",
+  "volume_label": "AGONC8",
+  "volume_uuid": "8658-1C23",
+  "directory": "/test/uart1",
+  "exit_code": 0,
+  "verification": "deployment.json: OK\npackage.zip: OK\nreadme.txt: OK\nu1test.bin: OK\ndeployment.json: OK\npackage.zip: OK\nreadme.txt: OK\nu1test.bin: OK\nDEPLOYMENT VERIFIED: AGONC8 8658-1C23 /test/uart1\nWi-Fi startup/config/source/history unchanged.\nExisting UART0 firmware/fixtures/reports unchanged.\nCard synced and remains mounted. No firmware flash or device execution.\n",
+  "payload": {
+    "u1test.bin": "42410864fec9e492899d937152a5954a8b301d1e845449b29bdc26515fc34e5d",
+    "deployment.json": "9e75656db85dd559158b6971b3f61e0f5dfaf613b8e435c62aa8353a1ebb6b76",
+    "SHA256SUMS": "b7ba1e0396f4081591f8c9b3ddec4b4942b4fc1f85e5a7e3722f422fdd043b94",
+    "package.zip": "fd0902426f22ee3b90c21367525c41e7a53d4ac3a3c6c99aaa97b3d20384ff68",
+    "readme.txt": "597bd9e9732d2c38f3a9aaf263fcdf97def3a43536285af2dbb14b072e4abc6a"
+  },
+  "hardware_run": false,
+  "firmware_changed": false
+}
