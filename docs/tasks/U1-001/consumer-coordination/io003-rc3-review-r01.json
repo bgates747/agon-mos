@@ -1,0 +1,44 @@
+{
+  "scope": "UART source and retained artifact review only, no checks rerun and no target execution",
+  "mail": "2026-11-07_14-02-27_agon-6502_io003-rfc25-adapter-source-review-four",
+  "source_inputs_verified": {
+    "experiments/io003/rc3/README.md": "d0c6d4e05af6937e80182791d7e47102bf148c9a790568317b7829776d500484",
+    "experiments/io003/rc3/bridge.asm": "d92512c7fd0c045f5022729d9099f78611d032a673352d4271bb37eca7fbd792",
+    "experiments/io003/rc3/build.py": "972da8b3478a8faba191cd261d5883fd14eebf683539f806b046c14778a54059",
+    "experiments/io003/rc3/identity.c": "5f3b6726c2ba8e7dd8b069e748453272dc0d8c7bb097dda11d9d75d3848f9e59",
+    "experiments/io003/rc3/prepare.py": "e949e33ec6650592c500136eed83ab29e52a1cc00c58f2de38cbbfb89dc6188a",
+    "experiments/io003/rc3/test_transport.c": "52af46a889f057bc159e0c9f8f8a7b006ef457dbadea9ab94b7173e2146bbe35",
+    "experiments/io003/rc3/transport.c": "07b86646942b9ef9f1766fd3fa90536ea0a1f1f60733f76d766a5ae41ace2621",
+    "experiments/io003/rc3/transport.h": "8e87e5709f9adf520a43a9444ef747faec1beff991b00d095d4913d7d13c14bc"
+  },
+  "object_hashes_verified": {
+    "hires.o": "e47c8ed894152e4db8c9b439f5c0cc633bfefe85e56bd5c1734fc7d61dfdb6be",
+    "controller1.o": "6302a3a0fd236a83174ed372c6d324d8872bc3cc1522a662ea4dbde5ba688898",
+    "transport.o": "e3e1b8bc115901fa32f91ca1bebc77621d64a181cf2b9f21185cb55ef15d4de6",
+    "controller0.o": "6302a3a0fd236a83174ed372c6d324d8872bc3cc1522a662ea4dbde5ba688898",
+    "combined.o": "669c478b319a0f69dbccc217e87b3468786d8779cbbdbb6d8730b33131fd65db",
+    "identity.o": "c95f4784eaccd24ee130fe34fadb07b9223946bd0a541d117f5c6f03598f30ab",
+    "async-bridge0.o": "628142c5a60b8d7756dcf7101eb73d9266d85ecfc8de7c55d3a39bbf7cec2723",
+    "async-bridge1.o": "c286485a9293ff71ce6d83d8e33d2a3b1d762718eab40dd2ac13a0f290915192"
+  },
+  "pins": {
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/result.json": "1665ae38464224d63f28823b582631a122c5ea50deaddfb91ac9282e9c9a32c8",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/commands.json": "331c4b09529f67a7f40fa98a86573088cd93bb5fec5b3b60548ce839344eaa10",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/hires.asm": "ed2b209b9e58b2828f33dec0f13eba788c8a18d4abe37d86620e42e577ef69ff",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/controller.c": "a70632a53e2d07c97bc6cf00fe1227dd77aa2cdb4b05cf7a5714e6f83271514c",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/combined.disasm": "8b4e2d292fc7b0c981a15dc35ea8187d8825ae0d9df8d8e99c5b5985b92d8c20",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app0.map": "863dac7abb9cef2ababee8dd24779dde5f4440c0138bb9a4c3e91743358726ac",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app1.map": "60c76f8e0f4b52bcf9b88756cb3d09270ad6e99c59f325653181e82d7e8bb495",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app0.bin": "2091e6b0d4899e23db87728075e7d805af969c407d74e9475eda90a561249421",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app1.bin": "17403d82296748ae61e379b2dac3d1cd70e4d1204c500ff212847e61b5486071",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/original.bin": "f630c199ac365b8b3597764ebbe59d6adbc0b615b8654ec59606d7322523029e"
+  },
+  "source_frozen_and_working_match": true,
+  "pair_difference_offsets": [
+    28372
+  ],
+  "original_relink_matches_retained_baseline": true,
+  "owner_reported_checks_read_not_rerun": 71,
+  "native_linked_assembly_execution": false,
+  "verdict": "No blocking source defect found for the narrow admitted normal-entry bare-MOS RC3 shadow-copy overlap path; target qualification pending"
+}
