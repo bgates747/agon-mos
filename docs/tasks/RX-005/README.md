@@ -95,6 +95,11 @@ which stage it measures or changes.
    packets and unaware apps unchanged. Consider one outstanding receive buffer
    before queues/channels; select request IDs only if a real use needs them.
    FIFO size and16-byte TX refills do not impose a16-byte app-message limit.
+   During the design workup, consult the VDPlet owner about compatibility with
+   its operating model before settling the protocol/API and integration points.
+   Cover reply/output ownership, asynchronous module execution, completion versus
+   data-transfer lifetime, and the small registration hooks. Record its feedback
+   and disposition; consultation does not assign VDPlet implementation or runs.
 6. Implement the small extension with local changes and worked caller/receiver
    examples once the concrete design is established. Preserve toolchains and
    startup; record assembled code/RAM/stack costs. New bulk-return packets need

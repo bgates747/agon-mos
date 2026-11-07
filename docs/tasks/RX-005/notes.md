@@ -111,3 +111,14 @@ feature logic across the existing firmware. This is source organization and
 reviewability, not a256-byte size limit or a memory-alignment requirement.
 Retain the existing code/RAM cost measurement and minimal-feature goal. No
 firmware changes or registration-number selection occurred in this update.
+
+## 2026-11-07 — Consult VDPlet during design
+
+Brandon directs consultation with the VDPlet owner as the design workup begins,
+to make the transport work with that mode of operation. Obtain its source-based
+input before settling the protocol/API and integration points, particularly
+shared reply/output ownership, asynchronous module execution, completion and
+buffer lifetimes, and minimal registration hooks. Preserve the one-file-per-side
+organization and ordinary application compatibility requirements. Record the
+feedback and resulting decisions here. This entry schedules the consultation;
+no message, peer implementation assignment or test run was performed now.
