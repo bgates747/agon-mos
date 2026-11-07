@@ -25,6 +25,12 @@ Owner/source: `/Agon/mystuff/agon-mos/experiments/uart1-async/` on
 it does not change this upstream MOS fork's ZDS II toolchain or modify firmware.
 MechAgon owns its consumer and Extender owns any EMOS integration.
 
+On2026-11-07 Brandon selected the provisional hardware-smoked driver for
+Extender to integrate with EMOS and MechAgon to try for feedback. This proceeds
+through their existing ownership/bench workflow; the longer vanilla benchmark
+suite is not a prerequisite. Exact handoff and pins:
+consumer-coordination/provisional-emos-mechagon-handoff.md.
+
 ## Work
 
 P-001 [x] Publish this task and branch before implementation; return its path
