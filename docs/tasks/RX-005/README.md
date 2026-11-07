@@ -100,6 +100,17 @@ which stage it measures or changes.
    Cover reply/output ownership, asynchronous module execution, completion versus
    data-transfer lifetime, and the small registration hooks. Record its feedback
    and disposition; consultation does not assign VDPlet implementation or runs.
+   Consult FSIM, Wolf and MechAgon about their actual keyboard-channel return
+   integrations and concrete caller simplifications. Inspect those sources to
+   discover other consumers and broaden consultation where there is a confirmed
+   use, starting with VDPlet's existing integration. The6502 bulk-read client is
+   one confirmed additional consumer. Distinguish tagged keycode replies from
+   held-key map access and keyboard repeat/LED status; do not assume every
+   project uses the same path. In the inspected baseline 0x88 is KEYSTATE
+   repeat/LED status, not a key-map packet.
+   Record source identities, current versus historical paths, useful data sizes,
+   pacing/lifetimes and requested simplifications in
+   [consultation.md](consultation.md), with decisions in the running notes.
 6. Implement the small extension with local changes and worked caller/receiver
    examples once the concrete design is established. Preserve toolchains and
    startup; record assembled code/RAM/stack costs. New bulk-return packets need
@@ -138,8 +149,9 @@ claimed by opening this task.
 
 UART owns MOS source investigation and any separately selected diagnostic VDP
 work. Flexe owns emulator admission/FIFO/IRQ-model evidence; Extender owns EMOS
-adaptation and unattended-bench composition. MechAgon's paused GOAL remains
-paused. Existing cooperation is context, not authority to resume other work.
+adaptation and unattended-bench composition. Consultation does not resume or
+change any other project's goal. Existing cooperation is context, not authority
+to expand other work; owner-reported independent activity stays separate.
 
 Any future official MOS modifications retain ZDS II; original test applications
 may use AgonDev. Eirene comparisons retain that upstream project's toolchain
@@ -165,3 +177,20 @@ Brandon selected the minimal general bidirectional implementation goal and asked
 to add the Discord extraction and running notes to this existing task. Both are
 now recorded. No firmware implementation, format selection or new run occurred
 in this documentation tranche.
+
+## Current stop gate — consultation and further scoping
+
+Brandon intended the consumer-consultation direction as a task addition. UART
+started contacting VDPlet before that clarification; Brandon then authorized
+finishing this bounded source-review round and stopping for more task scoping
+and refinement. Complete and record that round only. Do not proceed from the
+consultations into protocol selection, firmware/application implementation,
+builds, runs or deployment before that review. MechAgon reports a separate
+human-authorized resumption of its goal; this review grants no goal work.
+Unreturned requests must stay explicitly pending, not become implied
+agreement or a reason to run an indefinite polling loop.
+
+The finite round has now returned all six source reviews: VDPlet, FSIM, Wolf,
+MechAgon, 6502 and Rally. Findings and current-versus-retained source distinctions
+are in [consultation.md](consultation.md). UART is stopped for Brandon's scoping
+review; no protocol/API selection, implementation or execution followed.

@@ -1,0 +1,17 @@
+{
+  "scope": "read-only requirements consultation",
+  "source_sha256": {
+    "include/vdplet_protocol.h": "512d8c3bba5a09d0e4f627fe886417319abac90d4587f21c8975835ca58bc9fc",
+    "src/vdplet_runtime.h": "0da9a802f3151a361c23c17f1279e2180120f66feab9ba4a57f694331b2103ca",
+    "docs/API-reference.md": "dcde0747fc52d8272e04c11c80c7ccaa24e32adc6abc545e75b6327347c6eec3",
+    "docs/readback-token-epochs.md": "b634eefda9f8865690ade7254a850e6c5e85c8aa41886c94458d4dfd36122e16",
+    "docs/tasks/VDPL-015/contract-v1.md": "0ca30109ea9c8c9b4d07992e22dddcf7a8f21e22d60a1c2baafdc6a5c2bbcb17",
+    "build/vdpl028-profile8-r02/firmware/firmware-src/video/vdu_stream_processor.h": "93b17e8c57bc0679226bf823967aa77c46e69d4972ce90d3bd6b6bc593ea1edd",
+    "build/vdpl028-profile8-r02/firmware/firmware-src/video/agon.h": "9cd4c9d11a7138f282e9e64122d652b98277894f1ae0e61c696f7732d92377e4",
+    "/Agon/mystuff/agon-fsim/utilities/pingo-vdplet-flight/async/client_backend.inc": "82329d9d862a29effbf9bb2222830a3e3159a2b6e32a3cf3faffe2cf05cead79",
+    "/Agon/mystuff/agon-fsim/utilities/pingo-vdplet-flight/build/p071-client-r4/source/callback.s": "b95b7d6deafb3070951e30d3fa968a5a9d9a5633b24c1eb8ac97958634169735"
+  },
+  "mos_tag": "v3.0.2",
+  "mos_vdp_protocol_sha256": "56ef61c794ba61d3d9e1ef4a454955343cde0564ef5bbc6059f84fd2dbb55e71",
+  "fsim_source_result": "5109418; owner qualified only, actual worker integration pending"
+}

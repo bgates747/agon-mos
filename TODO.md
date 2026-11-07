@@ -8,6 +8,9 @@ workaround. Conversation, Discord extraction and running notes are in the
 [task silo](docs/tasks/RX-005/README.md). No arbitrary16-byte message limit or
 broad framework. Upstream merge advocacy requires the community consensus
 Brandon specified; no new run/deployment is selected by this documentation step.
+The bounded VDPlet/consumer source-review round is complete: six substantive
+returns are collated. STOPPED for Brandon's further task scoping. See the task's
+current stop gate and consultation ledger; no implementation or run selected.
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
 targeting vanilla MOS by Brandon's clarified direction. Independent core and

@@ -1,0 +1,27 @@
+{
+  "rally_head": "d4e69d696cecedcf6f41a7e806f1f438de82ac7b",
+  "review_class": "Bounded retained/current own-source consultation only; no new code execution, checks, build, target or protocol selection.",
+  "files": {
+    "/Agon/mystuff/AgonArcade/README.md": "383300d2de7e8c01313ec17e939d46e2211dfe2353af84294e4bae3a52f35352",
+    "/Agon/mystuff/AgonArcade/rally/src/main.cpp": "2f8c084fc4be5eb11b6c785a47ba8cf654c20664b4c91c34d8fcf9c223c1bd49",
+    "/Agon/mystuff/AgonArcade/rally/include/pacing.hpp": "d64bd954bdc818c6d614f5860a47649e85d2c2eaa3d51e8ef713734765c3a58f",
+    "/Agon/mystuff/AgonArcade/rally-production/src/main.cpp": "c641e8925b2d1fd0e20565e7f1806a4363bfbd2889c70b2229ec67cd8e1ee62c",
+    "/Agon/mystuff/AgonArcade/rally-game/src/main.cpp": "ffff8d87d931091d86e542640efac2bddd42211215fa6d51814d0b4a7efb5b80",
+    "/Agon/mystuff/AgonArcade/rally-game/Makefile": "734b65cbe731afd605703467bba14bb06e6fa052f7d94b26b51db20a1963b226",
+    "/Agon/mystuff/AgonArcade/rally-game/include/timing_fixture.hpp": "fc8c36ebaaa1e901ad4261727803dee5410633b6dedac8e9f005bc44a34a6153",
+    "/Agon/mystuff/AgonArcade/rally-game/src/timing_callback.asm": "686fb1e58b3396282235389a1210651cf20f2fb1994f1ebe017a65b3588def3a",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/baseline/include/native.hpp": "e4d3ac71ed71144aa9c3ece16469797910c617586242f9a7bc5e01916ca8ac7f",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/baseline/include/bindings.hpp": "378033aa5b4dd707e7ff09b3170ae8ce2b488a792410d420ee92e1ed92092eac",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/baseline/include/telemetry.hpp": "6ade89bcd5746c810ebc9a988fb1adbe9d7953d1a99ee7bb1c13fa6a1be18f48",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/baseline/src/callback.asm": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/baseline/src/main.cpp": "c96b8ca6c7a78c993f316f8c9c1555dbd7e76a2585c463897977c473c2f1e66c",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/SCHEMA.md": "fac86c73f9edfbac220daf25b3ffcdff3eb0cf21d8c22eec0a02a87a366d2280",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/RESULTS.md": "1a7488e3f5214959b728fa0b28f88187b4fb8a6e39939e2bddb0b41d712aa0ed",
+    "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/olimex01/RESULTS.md": "9c84178fa8cb1c54bac567c06cefa70c7de316ea8683bb546a323a06275ecae4",
+    "/Agon/mystuff/agon-mos/docs/tasks/RX-005/README.md": "366132adf56aac64efe32912c6b606243a01c2602eb37df37ce04ae0ef7d68b6",
+    "/Agon/mystuff/agon-vdplet/build/vdpl018-wolf-rows-r01/firmware-src/video/vdplet_runtime.h": "bf760b5bc79977f49b6f5669c269d875692f9d9d5d41b3ca680e4fb906afeefa",
+    "/Agon/mystuff/agon-vdplet/build/vdpl018-wolf-rows-r01/firmware-src/video/vdu_stream_processor.h": "35f7d0d29f22462a9ccd7fad605aec5aa42fb7aadbe6c124e88ee54b29c8acc7",
+    "/Agon/mystuff/agon-vdplet/build/vdpl018-wolf-rows-r01/firmware-src/video/vdu_sys.h": "35fff838a0942826fd8b63a69bbde9bae17a0d428e6a9289dd03607b225817ef",
+    "/Agon/mystuff/agon-vdplet/build/vdpl018-wolf-rows-r01/firmware-src/video/agon.h": "9cd4c9d11a7138f282e9e64122d652b98277894f1ae0e61c696f7732d92377e4"
+  }
+}

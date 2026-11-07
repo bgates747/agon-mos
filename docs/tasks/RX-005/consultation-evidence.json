@@ -1,0 +1,249 @@
+{
+  "scope": "Source-only consultation, no build/run/deployment; stop for Brandon scoping.",
+  "source_observations": [
+    {
+      "owner": "vdplet",
+      "root": "/Agon/mystuff/agon-vdplet",
+      "observed_head": "ce2c9c19e55c3ebe455fb266c622cf781c7cbf79",
+      "files": [
+        {
+          "path": "/Agon/mystuff/agon-vdplet/docs/API-reference.md",
+          "sha256": "dcde0747fc52d8272e04c11c80c7ccaa24e32adc6abc545e75b6327347c6eec3"
+        },
+        {
+          "path": "/Agon/mystuff/agon-vdplet/src/vdplet_runtime.h",
+          "sha256": "0da9a802f3151a361c23c17f1279e2180120f66feab9ba4a57f694331b2103ca"
+        }
+      ]
+    },
+    {
+      "owner": "fsim-pingo",
+      "root": "/Agon/mystuff/agon-fsim",
+      "observed_head": "eb71ee7ac3b78a3ea6aa49226d462a2d91f868c6",
+      "files": [
+        {
+          "path": "/Agon/mystuff/agon-fsim/utilities/pingo-wireframe/hardware/src/packets.src",
+          "sha256": "ae93ce19e5feabb632cb0d60246db42308699cd2b1e6941f5d9d1b2b1302b098"
+        }
+      ]
+    },
+    {
+      "owner": "wolf3dorig",
+      "root": "/Agon/mystuff/Wolf3dOrig",
+      "observed_head": "7e83958c7c02878a3dfd40496ecc4ddc5fd72e92",
+      "files": [
+        {
+          "path": "/Agon/mystuff/Wolf3dOrig/src/asm/wolf3d/src/wolf3d_vdplet_client.inc",
+          "sha256": "0cff64d1ce86ef1aa5be0895e0c2c1b7130001cd1e330612d9b92c8ff539bcc2"
+        },
+        {
+          "path": "/Agon/mystuff/Wolf3dOrig/src/asm/wolf3d/src/wolf3d_render_async.inc",
+          "sha256": "777dc3673dcb9a99ffd9fa8450d971943bdcbdeccbc4e6c0922258c73023bb60"
+        },
+        {
+          "path": "/Agon/mystuff/Wolf3dOrig/src/asm/wolf3d/src/wolf3d_profile.inc",
+          "sha256": "8f3baa372dd5d8a87ffbe954bd4f550805a46de8c671753b588d5f4c913601d3"
+        }
+      ]
+    },
+    {
+      "owner": "mechagon",
+      "root": "/Agon/mystuff/MechAgon",
+      "observed_head": "53b1417d0bbd6a8248c98337a942e32a742e3717",
+      "files": [
+        {
+          "path": "/Agon/mystuff/MechAgon/native/readback/src/mos_transport.c",
+          "sha256": "b943b6d35e11ad44945e9ade00a1aa455e985c9e29813c6b389496d99a60275d"
+        },
+        {
+          "path": "/Agon/mystuff/MechAgon/native/readback/include/client.h",
+          "sha256": "dc87ce7df06dad799f2f2c5a70542b544e5f5a60a1b186c606546d8eca2a0456"
+        }
+      ]
+    },
+    {
+      "owner": "agon-6502",
+      "root": "/Agon/mystuff/agon-6502",
+      "observed_head": "46b5a8aeb5a3ce84f63190ce3045f5a79b525eb5",
+      "files": [
+        {
+          "path": "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/mos_transport.c",
+          "sha256": "b943b6d35e11ad44945e9ade00a1aa455e985c9e29813c6b389496d99a60275d"
+        },
+        {
+          "path": "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/client.c",
+          "sha256": "092b1a2a181d761dd26c0a746a952dc73282f212841a1bcc435b483c4e35f974"
+        }
+      ]
+    }
+  ],
+  "consumer_request_receipts": [
+    {
+      "owner": "fsim-pingo",
+      "recipient_thread": "01a11ddb-2f53-7700-b39f-eecc801e14b0",
+      "message_id": "2026-11-07_17-36-46_agon-mos_rx005-fsim-pingo-return-requirements-one",
+      "chat_exit": 0,
+      "phase": "accepted",
+      "method": "turn/steer",
+      "turn_id": "01a1b7d5-939c-7ba1-a891-b7df08587e86",
+      "read_confirmed": false
+    },
+    {
+      "owner": "wolf3dorig",
+      "recipient_thread": "01a1a67f-c3b5-76a2-9eef-66047be3dea3",
+      "message_id": "2026-11-07_17-36-46_agon-mos_rx005-wolf3dorig-return-requirements-one",
+      "chat_exit": 0,
+      "phase": "accepted",
+      "method": "turn/steer",
+      "turn_id": "01a1b80d-4242-7c02-ae09-668a1d82b2f6",
+      "read_confirmed": false
+    },
+    {
+      "owner": "mechagon",
+      "recipient_thread": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+      "message_id": "2026-11-07_17-36-47_agon-mos_rx005-mechagon-return-requirements-one",
+      "chat_exit": 0,
+      "phase": "accepted",
+      "method": "turn/steer",
+      "turn_id": "01a1b7c1-a092-7590-9d6e-0ab3cdd6b0fd",
+      "read_confirmed": false
+    },
+    {
+      "owner": "agon-6502",
+      "recipient_thread": "01a1147a-c6cf-7b42-b6cd-336c8b762c8e",
+      "message_id": "2026-11-07_17-36-47_agon-mos_rx005-agon-6502-return-requirements-one",
+      "chat_exit": 0,
+      "phase": "accepted",
+      "method": "turn/start",
+      "turn_id": "01a1b828-3fbe-7e20-b98c-653417fa0e72",
+      "read_confirmed": false
+    },
+    {
+      "owner": "rally",
+      "recipient_thread": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+      "message_id": "2026-11-07_17-39-43_agon-mos_rx005-rally-return-requirements-one",
+      "chat_exit": 0,
+      "phase": "accepted",
+      "method": "turn/start",
+      "turn_id": "01a1b82a-f13a-7552-9492-f27ee5af7228",
+      "read_confirmed": false
+    }
+  ],
+  "mail_archive": [
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-33-04_agon-mos_rx005-vdplet-existing-return-integration-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-33-04_agon-mos_rx005-vdplet-existing-return-integration-one.md",
+      "sha256": "6ce89b2047b548714ea522d8d2fb6619cf3b14f3c1129d6c74816130e5d85c90"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-36-46_agon-mos_rx005-fsim-pingo-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-36-46_agon-mos_rx005-fsim-pingo-return-requirements-one.md",
+      "sha256": "dfc3ade353b8a54e5bc8df0ac8d4491f2f71d9afac4580764b4f2230ba32f921"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-36-46_agon-mos_rx005-wolf3dorig-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-36-46_agon-mos_rx005-wolf3dorig-return-requirements-one.md",
+      "sha256": "d46762dbf10af107e1a1bbd2b39fad24615d02d6a3f019909439001c96008bbf"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-36-47_agon-mos_rx005-agon-6502-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-36-47_agon-mos_rx005-agon-6502-return-requirements-one.md",
+      "sha256": "0135918d2f1c085fc34c3ebe3990ae0a56e83e42444b124a5b32c3f846957561"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-36-47_agon-mos_rx005-mechagon-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-36-47_agon-mos_rx005-mechagon-return-requirements-one.md",
+      "sha256": "db318185e770c6e5136ac01dae9a1f3678c0a583db6e8cc8d8706b551e188e48"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-38-06_vdplet_rx005-vdplet-current-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-38-06_vdplet_rx005-vdplet-current-return-requirements-one.md",
+      "sha256": "a016e1933736f302454d252e021e0ed6a47ab6b72c25d7cc70aa0abc0d7324ba"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-38-18_fsim-pingo_rx005-fsim-current-return-findings-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-38-18_fsim-pingo_rx005-fsim-current-return-findings-one.md",
+      "sha256": "03e9ebdff603a618ef43d756cb333f6db5058f33c723b8a7db1ff2609ffcff36"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-38-24_wolf3dorig_rx005-wolf-source-return-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-38-24_wolf3dorig_rx005-wolf-source-return-one.md",
+      "sha256": "6e55dbd78d044228e4912e4dab52fa95b1de9e600d37d638dcabc1fa72aa0a1f"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-39-43_agon-mos_rx005-rally-return-requirements-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-39-43_agon-mos_rx005-rally-return-requirements-one.md",
+      "sha256": "edf2d8071ea2f5b011d646936b8184a485123bcb9e3d15ac833a887c2772c4e7"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-39-57_agon-6502_rx005-6502-return-source-findings-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-39-57_agon-6502_rx005-6502-return-source-findings-one.md",
+      "sha256": "82f320edfedd4d3ab1496dc917df4bb81699da6beb37e574ad5a59e329c96077"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-43-09_mechagon_rx005-mechagon-source-return-requirements.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-43-09_mechagon_rx005-mechagon-source-return-requirements.md",
+      "sha256": "3348779325445c9571fce56fd0c163676a1da597dab7c72580a4360eac824760"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-43-41_rally_rx005-rally-return-requirements-return-one.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-43-41_rally_rx005-rally-return-requirements-return-one.md",
+      "sha256": "99858e3d7aebe4db069207754dc6ae78f8af8ab82ae7c39bda0cc1ea0273d731"
+    }
+  ],
+  "vdplet_first_request": {
+    "message_id": "2026-11-07_17-33-04_agon-mos_rx005-vdplet-existing-return-integration-one",
+    "recipient_thread": "01a1a540-82f4-7970-a1e4-fefc8b8ff9fb",
+    "delivery_id": "uart-rx005-vdplet-first-20261107",
+    "phase": "accepted",
+    "method": "turn/steer",
+    "reading_evidence": "2026-11-07_17-38-06_vdplet_rx005-vdplet-current-return-requirements-one"
+  },
+  "observation_limit": "Source observations are read-only working-file hashes at the time inspected; observed HEAD is not a claim every working file is committed or every retained helper is the active product. Owner returns identify current versus historical usage. No performance or physical acceptance inferred.",
+  "completed_source_returns": [
+    "2026-11-07_17-38-06_vdplet_rx005-vdplet-current-return-requirements-one",
+    "2026-11-07_17-38-18_fsim-pingo_rx005-fsim-current-return-findings-one",
+    "2026-11-07_17-38-24_wolf3dorig_rx005-wolf-source-return-one",
+    "2026-11-07_17-39-57_agon-6502_rx005-6502-return-source-findings-one",
+    "2026-11-07_17-43-09_mechagon_rx005-mechagon-source-return-requirements",
+    "2026-11-07_17-43-41_rally_rx005-rally-return-requirements-return-one"
+  ],
+  "status": "Six source reviews returned; stopped for Brandon scoping. No implementation/build/run/deployment.",
+  "owner_report_archive": [
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/vdplet.md",
+      "canonical_path": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-035/RX005-RETURN-PATH-CONSULTATION.md",
+      "sha256": "d0c8c735df6b131b4ad446fd572cc1e4af8701be00a9f4c97adc2322d1bc7cc1"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/vdplet-pins.json",
+      "canonical_path": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-035/RX005-RETURN-PATH-PINS.json",
+      "sha256": "a865697c5fd53cebe0b3d76e8373a5175866921acaec79e6e0d925b81ca6d39e"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/6502.md",
+      "canonical_path": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-005-CONSULTATION-R01.md",
+      "sha256": "28cfb246bc5e06c0d39c2c68ca18ae89fa9867e55b146fc240385ee9d3f01ca9"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/6502-pins.json",
+      "canonical_path": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-005-CONSULTATION-R01.json",
+      "sha256": "60cc599ad42aafd80b22e33a815a2fb02304f7aee972d8b7fde4c3808c9b0859"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/mechagon.md",
+      "canonical_path": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/rx005-return-source-consultation.md",
+      "sha256": "9b515f7aacafb9c389dedf0d627e983038824ea95a16711956e83168f318c89f"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/rally.md",
+      "canonical_path": "/Agon/mystuff/AgonArcade/docs/consultations/rx005-return-requirements-20261107/REVIEW.md",
+      "sha256": "f097069e32d913e66e1dd98cc61daecb118acec8fcd8c894f129a7d4ab96d280"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-reviews/rally-pins.json",
+      "canonical_path": "/Agon/mystuff/AgonArcade/docs/consultations/rx005-return-requirements-20261107/SOURCE-PINS.json",
+      "sha256": "4421742b4d4bf3f35874948d14cf5a81bc2cbc48b5138759cc37d988a2bef197"
+    }
+  ]
+}

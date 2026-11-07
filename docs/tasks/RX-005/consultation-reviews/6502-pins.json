@@ -1,0 +1,25 @@
+{
+  "scope": "Source review only; no build/run/reservation/deployment or implementation",
+  "head": "46b5a8aeb5a3ce84f63190ce3045f5a79b525eb5",
+  "source_sha256": {
+    "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/client.c": "092b1a2a181d761dd26c0a746a952dc73282f212841a1bcc435b483c4e35f974",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/mos_transport.c": "b943b6d35e11ad44945e9ade00a1aa455e985c9e29813c6b389496d99a60275d",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/packets.src": "b4fae215ee22864d9f13e3ef91d3a606bea2ebdc2f06ced2056cc0fe97c1c10f",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/mos_app.c": "8401e734157be6c722d5f714ca1303d533c7c906c1db41daee97602905162487",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/bulk_read/build.py": "c115f8fca4a2535e26df55a5cba3b108bade88675e5d35b33f3c7a82db87e83d",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/playable/client.c": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/playable/mos_transport.c": "2850a5fe6425903da8c486fccf729ca58ec5f6a2eccedee490420c6f2b1fca9d",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/playable/packets.src": "b4fae215ee22864d9f13e3ef91d3a606bea2ebdc2f06ced2056cc0fe97c1c10f",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/playable/build.py": "3d685de1423e71eeae7b5e492a09eaa2aa874682d6895ab72375392d27485d1a",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/desktop/mos_app.c": "41a0f9dc2a6cfd3bc2e60abc21c92f2c2b3efd636b1201623d9529aaf9748caf",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.c": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.h": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist_mos.c": "4d94dea668b38f207dec68f3d291a01c3d86da74dff02162c7e1a112415baf91",
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/module.cpp": "0aeb532476e1919fe38291e4f13be58727745740222c8ff26aa452c76a38403c",
+    "/Agon/mystuff/agon-6502/experiments/cpu003/playable_build.py": "72d05a467cb0e47aa5fcf90ddcd5673b262d60f0e98beb64421cd5cede03f6ae",
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app/mos_app.c": "470d59f6f2b3d2f8a2b26bde8aac7746e61ee050c305572bf2b665ddd70118a7",
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/mos_transport.c": "0d7614ab0e97c107f80ee9d3d7ea0d9fe8e7902d0862655a51f523620dc94177",
+    "/Agon/mystuff/agon-6502/build/cpu003/olimex-playable-r02/app-sources/mos_transport.c": "0d7614ab0e97c107f80ee9d3d7ea0d9fe8e7902d0862655a51f523620dc94177",
+    "/Agon/mystuff/agon-vdplet/src/vdplet_runtime.h": "0da9a802f3151a361c23c17f1279e2180120f66feab9ba4a57f694331b2103ca"
+  }
+}

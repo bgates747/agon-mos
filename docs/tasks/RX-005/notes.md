@@ -10,7 +10,7 @@ Brandon shifted focus from sending to devices sending bytes to the eZ80, then
 asked about stock UART0 reception and whether safety might have been preferred
 over performance. The full exchange is in [conversation.md](conversation.md).
 
-Stock MOSv3.0.2 reads/parses one byte per UART0 IRQ and retains packet state;
+Stock MOS v3.0.2 reads/parses one byte per UART0 IRQ and retains packet state;
 it does not wait in the IRQ for the rest. Some request/reply callers separately
 spin on a completion flag. Receive IRQ cost and foreground waiting are distinct
 targets. No design intent, optimality or measured improvement was established.
@@ -122,3 +122,76 @@ buffer lifetimes, and minimal registration hooks. Preserve the one-file-per-side
 organization and ordinary application compatibility requirements. Record the
 feedback and resulting decisions here. This entry schedules the consultation;
 no message, peer implementation assignment or test run was performed now.
+
+## 2026-11-07 — Consumer consultation requirement and scope correction
+
+Brandon added the applications using the keyboard-channel return-data workaround
+to the design consultation: start with VDPlet, then FSIM, Wolf and MechAgon;
+inspect their code to find other actual consumers. Ask what would make their
+applications easier, rather than designing in isolation. Record concrete input
+and its disposition before settling the protocol.
+
+UART began contacting VDPlet immediately. Brandon clarified:
+
+> i meant for you to add that to the task, not to start doing. but as youre goiing down the road already, continue with that, then stop for more task scoping and refinemment.
+
+Finish this bounded source-review round and stop. No implementation, build,
+test run, deployment, protocol allocation or resumption of a paused goal is
+selected by this continuation. The task and TODO now carry that explicit gate.
+The earlier entry's “no message” status describes that earlier documentation
+update; the actual consultation requests are recorded in
+[consultation.md](consultation.md).
+
+Initial source inspection confirms a terminology distinction: VDPlet uses
+tagged **keycode packets0x81** delivered through MOS's keyboard callback; these
+are not held-key map transfers. Preserve the user's shorthand in historical
+discussion, but identify the actual mechanism in designs and measurements.
+VDPlet's private D8/D9 commands are existing experimental allocations, not a
+freshly assigned general transport bank.
+
+The6502 and MechAgon retained bulk-read helpers share an identical inspected
+`mos_transport.c`: they request up to8 useful bytes per exchange (or READ16
+fallback), wait for replies, and manage tokens/late-reply teardown. This confirms
+a concrete extra consumer and a potential simplification; it does not establish
+that these retained helpers are either application's current active renderer.
+Owner consultation must distinguish those paths.
+
+### Round completed: requirements to discuss, not a frozen design
+
+VDPlet, FSIM, Wolf, MechAgon, 6502 and code-confirmed Rally returned substantive
+source reviews. [The collation](consultation.md) links exact records; unchanged
+mail and source/hash evidence are preserved alongside it. Wireframe's inspected
+helper belongs to FSIM and is historical; Nurples/Jukebox generic API definitions
+alone do not prove use of this workaround. Golem's loader and runtime benchmark
+frontends remain possible later leads, not an expanded assignment now.
+
+Common input: one outstanding receive is enough initially; admit stable caller
+storage/capacity before requesting output and publish actual count/status after
+copying. Remove synthetic-key dispatch/mailbox glue and serialized tiny reads.
+Retain application correlation and define positive retirement before timeout/
+rearm/storage reuse; no consumer asks for a new queue/channel/retry framework.
+Keep ordinary traffic unchanged, bound IRQ work and establish real pacing.
+
+Concrete useful sizes differ: FSIM 128-byte status; 6502 a 40-byte descriptor plus
+512-byte block; Wolf 16+20 bytes per profiler frame; MechAgon bounded 256–1024-byte
+replay readback; Rally 256-byte export chunks/406-byte state. Larger data sets do
+not require giant buffers or IRQ callbacks. Source transaction/byte counts show
+where overhead could be removed; they are not measured speedups or FPS gains.
+Receive completion does not mean a render was presented or a disk write committed.
+VDPlet's OPEN-session D8/D9 admission gate needs explicit integration if we add
+a request selector. No allocation or approach has been chosen.
+
+Correction from MechAgon/Rally, checked against stock MOS v3.0.2
+`vdp_protocol_KEYSTATE` and the retained VDP `agon.h`: UART's initial requests
+incorrectly called 0x88 a literal key-map reply. It is KEYSTATE carrying five
+repeat-delay/rate/LED bytes. The confirmed private carrier is keycode 0x81;
+ordinary held-key map access is another mechanism. Preserve sent mail verbatim
+with this explicit correction. Do not propagate the erroneous0x88 label.
+
+MechAgon also reports its goal was independently resumed by Brandon; UART's
+request used stale paused-goal wording. This consultation grants no goal work,
+and this project does not alter the other owner's independently selected scope.
+
+**Stopped for Brandon's task scoping and refinement.** No ABI, wire values,
+firmware/application implementation, build, test, deployment or upstream action
+was selected or performed by this consultation round.
