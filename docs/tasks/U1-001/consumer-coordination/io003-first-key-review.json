@@ -1,0 +1,43 @@
+{
+  "scope": "saved source/wire review only; no emulator/model/target or binary execution",
+  "mail": "2026-11-07_15-22-03_agon-6502_io003-first-cell-key-delivery-source-review-uart",
+  "verified_report_evidence": {
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/archives.sha256": "f31070a475c687d3d476b6423816881f72409f3dbaa63fbef4b015ff327cad85",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/profiles/interp-async/profile.json": "f67ce9b7e62cfbca1e891d8dce3dffa7dc52a623b94462d348d28b8854262c6d",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/profiles/interp-sync/profile.json": "6ca8e1f071f12c942dcffb314a1d9c53c980811f105f610badfea91c34598ba1",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/profiles/jit-async/profile.json": "0b7d3ec8439b5d92614fa986ecd83ee22f79723611bf73cd7478bae7348a20c1",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/profiles/jit-sync/profile.json": "50c1c2d1ea8bbda21b190e4fee9a8f29c5cdc1c2808a29d4fe664235ae6d5ae4",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/remote-archives.sha256": "f31070a475c687d3d476b6423816881f72409f3dbaa63fbef4b015ff327cad85",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/runtime-contract-r01.json": "044ec254e344f5ab5953bd09365fcf143118d7cb66e766258f7226195975387b",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-execution-freeze-r01.json": "91f2061df426c73fe020e9ca21807c2b6a43b82a7a66d764fa31abf3220657f4",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/result.json": "c8bb73b52766897dc2542e97bbba62d102e27df8807d8d78cb77cd0693442433",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/run.log": "bf40f37a7d1a0a14ed48e5dd56b03a4899735ae1a84a920f9cb3475c0c86fd07",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/runtime/esp32-uart0.log": "8baad8cda173e6c5f41037cc3cb2f9d08c018ff87a855f5d333c6ea3a562b917",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/runtime/mos-to-vdp.bin": "4c95f5589c3d379407c8cc871e4fc9f427dd0cb5e4d4289d49ab95d56ced706a",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/runtime/vdp-to-mos-delivered.bin": "363d7ebd0ba87d1ff6ab5fdc85d723c8eb8e61f7d41b7f2288c5d2d14844825d",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/runtime/vdp-to-mos.bin": "363d7ebd0ba87d1ff6ab5fdc85d723c8eb8e61f7d41b7f2288c5d2d14844825d",
+    "/Agon/mystuff/agon-6502/build/io003/target-return-r01/target-run-r01/jit-sync/telemetry.jsonl": "fb22719e520a1c0d4450efc281fee9c24ff550aea14aa7e85b1c163f368b2ef8"
+  },
+  "source_and_link_inputs": {
+    "/Agon/agondev/src/lib/libkeyboard/keyboard.asm": "57015c2c9cd86c420ca10c5bedca19342880690494ed98e1245f98cbe405aff0",
+    "/Agon/agondev/src/lib/libmos/mos_setkbvector.src": "d16a70403987d060166e56f3d83c4f89f0b54268b058ffa39150a8fc3a52dbec",
+    "/Agon/mystuff/agon-6502/app/bridge.asm": "1a1c2d4e17d1f27423ec4c88ae353c697c2d94025912cba063a2cce70df01181",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/controller.c": "a70632a53e2d07c97bc6cf00fe1227dd77aa2cdb4b05cf7a5714e6f83271514c",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app0.map": "863dac7abb9cef2ababee8dd24779dde5f4440c0138bb9a4c3e91743358726ac",
+    "/Agon/mystuff/agon-6502/build/io003/rc3-source-r01/app0.bin": "2091e6b0d4899e23db87728075e7d805af969c407d74e9475eda90a561249421"
+  },
+  "wire_bytes": 8147,
+  "wire_packets": {
+    "128": 97,
+    "134": 47,
+    "129": 3,
+    "132": 1228
+  },
+  "return_offsets": [
+    8135,
+    8141
+  ],
+  "source_and_delivered_logs_equal": true,
+  "live_MOS_callback_parser_UART_acceptance_or_ring_state": "UNKNOWN",
+  "conditional_source_hazard": "RC3 non-TX ISR ignores UART0_serial_RX carry and can feed zero with DR clear; occurrence in this cell unproved"
+}
