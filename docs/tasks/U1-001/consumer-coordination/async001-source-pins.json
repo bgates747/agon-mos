@@ -1,0 +1,16 @@
+{
+  "scope": "source-only MechAgon ASYNC-001 consultation; current owner files, not installed image readback",
+  "uart_source_commit": "fadf4436588af0f611549f78a4e3ea3a1917876a",
+  "mechagon_head_at_read": "cb9c1dcf2c9bcf15786c6cb5125cbaf01f9b0a68",
+  "rfc25_source_commit": "97311c437093e416342a6c836cf9914f2ced027d",
+  "files": {
+    "/Agon/mystuff/MechAgon/docs/tasks/ASYNC-001.md": "5e66ff499ad3666bf7cacf9763518fd821b9fca5cd4225cb161bc3cbbe30e0f0",
+    "/Agon/mystuff/MechAgon/native/renderer/src/render_link.c": "4c86b8c869be34362cd7050d3937dc9fdae4086bbdc3d381cc49e08ea09eb809",
+    "/Agon/mystuff/MechAgon/native/renderer/src/transport_uart1.c": "ca4b1af03660114ca534a784bd9656d940185cbf8ce1771b0b2c37510f29a509",
+    "/Agon/mystuff/MechAgon/native/renderer/src/rfc.s": "e9c68f3d9b88b3ed9c35535e9bc3877f0d47cf3daffab072858bc1ef5b385ea4",
+    "/Agon/mystuff/MechAgon/native/renderer/src/batch.c": "463a4f4217fd5dcf18344b450fae1e066a031aaf171689d9b45d4874eb2731f2",
+    "/Agon/mystuff/agon-extender/docs/tasks/NET-004/UART1-APPLICATION-DRIVER-R01.md": "4cae49cc48a85db110743148afc4152dffc2f2b471e772f1fc2179f73f975860"
+  },
+  "build": false,
+  "target_run": false
+}
