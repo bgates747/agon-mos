@@ -8,6 +8,13 @@ locally; no guest/hardware run or card deployment. Next: manual functional
 qualification, then stronger peer integrity/performance tests. Extender owns its
 separate EMOS adaptation. [Task](docs/tasks/U1-001/README.md).
 
+U1-G01 [ ] Support MechAgon GOAL-001's delegated async reliability and CPU
+attribution work. Verify original human scope, return a bounded generic IRQ/
+timer contract, coordinate concrete RX-service exclusion with Extender, and fix
+generic code only when evidence requires it. Extender owns EMOS/P4/SDK and bench;
+MechAgon owns profiling/integration. Preserve protected Wolf queue and independent
+vanilla/Jukebox scope. [Owner support](docs/tasks/U1-001/goal001-owner-support.md).
+
 ## Eirene upstream async RFC qualification
 
 RFC-001 [ ] Continue the reviewed syscall 25h evaluation after the completed

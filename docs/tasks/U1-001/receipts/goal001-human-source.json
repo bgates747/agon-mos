@@ -1,0 +1,28 @@
+{
+  "source_thread": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+  "verified_via": "codex_app.read_thread",
+  "sources": [
+    {
+      "turn_id": "01a1b546-5b80-7442-8645-3d70e44757bb",
+      "type": "userMessage",
+      "id": "01a1b546-5bc4-7fb1-af6a-c42394c8d050",
+      "content": [
+        {
+          "type": "text",
+          "text": "ok i need you to go into goal task mode and marshal all the agents and resources at your disposal to get async working, measure how much headroom that leaves the ez80 for bot logic processing, and applying the results of your rules audit. you will delegate tasks to other agents where they have cleaer ownership or expertise on the cod you need. for the duration of this goal task, you will prioritize bench access so that you get what you need from other agents in the order that you need it. extender still fulfills its regular roles for bench scheduling, you are just alllowed to shuffle the ordering around of who gets to test what when. any agents still in the queue get to finish their runs as queued. do as much as you can on your clearly assigned tasks before stopping.\n"
+        }
+      ]
+    },
+    {
+      "turn_id": "01a1b546-5b80-7442-8645-3d70e44757bb",
+      "type": "userMessage",
+      "id": "01a1b547-e554-7e42-9919-5398d0c76796",
+      "content": [
+        {
+          "type": "text",
+          "text": "your secondary prioirty after getting async working is to maximize presentation rate. if we can run faster than 30 Hz i want to know about it. it's good to have headroom for additional features down the line.\n"
+        }
+      ]
+    }
+  ]
+}
