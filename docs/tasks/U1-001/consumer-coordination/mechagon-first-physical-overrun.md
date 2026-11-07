@@ -77,3 +77,32 @@ actual FIFO reads, including callbacks/foreground exclusion and any UART0 work.
 That describes the missing evidence, not a request to run another capture or
 change firmware. Keep retained callback/source storage and the failed evidence;
 do not replay, detach, or override Extender's stopped recovery handoff.
+
+## Recovery closure and owner source response
+
+Read Extender's
+`2026-11-07_02-53-49_linux-extender_u1-emos-actual76-failed-feedback-four`,
+published result b828ab1d and actual
+`agents/bench-scheduler/mechagon-async001-u1-r01/released76.json`.
+The previous stopped-recovery checkpoint above is now closed: Extender restored
+working ROM SHA256
+`a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca`
+and independently compared all 131072 bytes. Fresh CLI, neutral input, stopped
+actors, free ports and restoration checks passed. Actual clean release was
+2026-11-07 at 02:48:31 EST (07:48:31 UTC), with no next request at that instant.
+UART read the retained receipt; it performed no device operation. This closes
+recovery/custody only; the candidate trial remains failed and unrepeated.
+
+The owner confirms additional matched seams: `emos_net.c` takes the keyboard
+lock before provider/op/span checks and before RX-first STOP; completion clears
+STOP before the remaining interrupt register restore. Matched P4 d9bcb source
+queues replies through the sole ConsoleStream, uses `uart_tx_chars` with up to
+128 available FIFO bytes and nonblocking `uart_wait_tx_done`, with hardware
+CTS/RTS configured. These facts do not measure STOP response or prove queued
+bytes bypass CTS. Full source joins are retained by Extender in
+`source-review76/source-joins.json`. No excessive duration or root cause is
+established. No generic-core defect or register mismatch is identified.
+
+Original SD/post-reset RAM remain preserved. Do not treat the P4 host reset as
+the cause, weaken first-error/close/reciprocal guards, or infer a new run from
+release. No acknowledgement-only reply or additional workload was initiated.
