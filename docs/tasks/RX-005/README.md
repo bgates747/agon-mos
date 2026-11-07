@@ -7,6 +7,13 @@ rewriting large sections of MOS/VDP. Reuse existing TX where practical; do not
 build a new framework merely for symmetry. Stock receive/reply-wait mapping
 remains the first baseline step.
 
+Brandon's source-layout requirement: one dedicated implementation file per
+firmware side, with only small edits in one or two existing files to register
+the reserved function bank. Keep feature logic out of those registration hooks.
+“One page” in the discussion meant one file, not a memory page or256-byte limit.
+Ordinary VDU traffic must not acquire new packet bookends; the namespace is an
+additive extension, with exact allocation still to be checked.
+
 The original question asks whether the design prioritizes safety at a possible
 performance cost. That is a hypothesis to investigate, not an established reason
 for the code. Preserve correctness, ordinary application behavior and startup.

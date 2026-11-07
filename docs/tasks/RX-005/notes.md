@@ -90,3 +90,24 @@ This update extracts requirements and sets the implementation goal; it does not
 implement firmware, choose a wire ABI, start a test/deployment, resume paused
 MechAgon work or publish upstream. Existing owner, resource and toolchain rules
 remain. Later decisions/evidence should be appended here.
+
+## 2026-11-07 — Additive namespace and implementation-file organization
+
+Brandon agreed with the additive return-service direction: register destination
+storage/capacity/completion, request an operation through a VDU extension, and
+receive a typed counted reply into that storage. Ordinary VDU traffic must not
+be wrapped in new packet identifiers or bookends. A reserved function bank
+provides a local dispatch namespace; exact prefix/opcode allocation remains
+subject to checking existing uses. No wire values have been assigned.
+
+Brandon clarified that “one page” meant **one file, not a memory page**:
+
+> i meant one *file* with all our code in it. then we only need update one or two files which register our reserved bank of functions.
+
+Implementation requirement: keep enhancement code together in one dedicated
+implementation file per firmware side (MOS and VDP), with only the small edits
+needed in one or two existing registration/dispatch files. Avoid scattering
+feature logic across the existing firmware. This is source organization and
+reviewability, not a256-byte size limit or a memory-alignment requirement.
+Retain the existing code/RAM cost measurement and minimal-feature goal. No
+firmware changes or registration-number selection occurred in this update.
