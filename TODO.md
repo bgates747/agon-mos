@@ -1,5 +1,12 @@
 # MOS TODO
 
+RX-005 [ ] Investigate stock MOS UART0 reception from VDP and foreground reply
+waits: map one-byte IRQ/parser costs versus completion-flag polling, then plan
+matched CPU/latency/integrity measurements and assess minimal options without
+assuming safety/performance design intent. Preserve stock behavior and exact
+baseline identities. Opening discussion and initial v3.0.2 findings are retained
+in the [task silo](docs/tasks/RX-005/README.md) and its conversation record.
+
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
 targeting vanilla MOS by Brandon's clarified direction. Independent core and
 OTIRX core plus standalone vanilla adapter pass host sanitizer/byte controls and
