@@ -254,3 +254,19 @@ lifetime guard. Actual adapter/API and size remain pending; stopped MechAgon
 bench74 recovery takes priority. No provisional driver has been deployed and
 no generic core fault is reported. This does not alter the vanilla consultation
 or authorize new bench work; no acknowledgement-only reply was sent.
+
+Read subsequent owner introduction
+`2026-11-07_02-59-06_linux-extender_u1-jukebox-stream-owner-introduction-five`.
+Jukebox is included in common UART1/API/lifetime coordination; it owns the
+stream/player, UART the generic driver, Extender EMOS glue and MechAgon its
+caller. Extender's 115200/no-handshake ESP8266 notes agree with this retained
+baseline, but do not establish the actual baud/protocol of a future stream.
+The failed EMOS/P4 1152000 hardware-flow-control trial remains separate.
+
+Extender additionally clarifies that a positively drained source and coherent
+IDLE/no-FAULT state may skip redundant foreground EMOS op4 for TX scheduling
+only. This does not establish continued hook ownership: EMOS demand0 abort can
+remove a hook while the app still appears IDLE. Preconstruction SUBMIT admission
+and positive owner close remain mandatory. No new cached-ownership API or vanilla
+driver change is inferred; this is not an overrun correction. Existing Jukebox
+vanilla finish/source-release/close distinctions remain as documented above.
