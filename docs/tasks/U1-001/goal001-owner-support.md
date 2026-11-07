@@ -153,3 +153,30 @@ and TEMT, or quarantine/reset, are required before source storage reuse.
 Preserve the r03 package and original structural results as history; their
 deployment withdrawal is recorded in the review JSON. No new build, target
 action or acknowledgement-only message was performed for this correction.
+
+## Corrected atomic r04 source and package review
+
+Read owner mail
+`2026-11-07_05-06-09_linux-extender_u1-goal001-atomic-r04-artifacts-ten`.
+Replacement source954e3c54cd9a1b03191d1d2f04f03ae7dc295109/full ROM
+`8de66c3ac52a4f4c90ffaac30f7de740c7aa71218f4753c2f3950d6fb9a5a222`
+adds the16-byte atomic wrapper to the prior UART0 glue. Raw130497/free575;
+total delta +356ROM/+2BSS versus043a. Prior d43150/r03 remains withdrawn.
+
+Independently rehashed the1471698-byte r04 ZIP and every manifest input,
+read its nested exact source, matched its retained ELF, and checked the actual
+ROM wrapper and unchanged bounded defer/rearm bytes. Evidence is
+`retry-r01/emos-atomic-r04-source-review.json`. The wrapper saves BC, captures
+incoming IFF through LD A,I, disables interrupts before all ownership reads,
+and returns the result while restoring BC and the incoming interrupt state.
+The inner ownership leaf cannot enable interrupts; foreground observations
+therefore cannot be split by the previously identified maskable TX IRQ.
+The wrapper is the only UART0 glue source change from withdrawn r03.
+
+This is source/instruction inspection for normal maskable IRQ entry, not an
+executed CPU, interrupt-interleaving or hardware test. Owner compiler327 and
+its three linked negative controls were read, not rerun. No additional source
+objection was identified within this scope. Extender retains ownership of the
+single finite176-record isolation, installation, readback and rollback; it was
+PREPARING behind sole Wolf78 at the mail's timestamp. No UART build, target
+access, performance measurement or trial76 cause/cure claim is introduced.

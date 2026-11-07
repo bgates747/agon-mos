@@ -1,0 +1,27 @@
+{
+  "owner_source": "954e3c54cd9a1b03191d1d2f04f03ae7dc295109",
+  "package_SHA256": "44e7d6cbc1c44c621bba3a7864d28272b2a73af11ec19a3bd06ab0dacc6973bf",
+  "package_bytes": 1471698,
+  "ROM_SHA256": "8de66c3ac52a4f4c90ffaac30f7de740c7aa71218f4753c2f3950d6fb9a5a222",
+  "map_SHA256": "6c25fbc94d6fd36f7299b4a82a49c962221ba355124cd53d403de2d7d62fba71",
+  "source_io_SHA256": "0a127ffeaa5bb89fc999a60333def906d942339e1d447afe661919460bde6284",
+  "all_manifest_inputs_rehashed": true,
+  "wrapper_linked_bytes": "c5 ed 57 f3 f5 cd 6f af 01 4f f1 79 c1 e0 fb c9",
+  "wrapper_address": 110431,
+  "atomic_wrapper_only_source_change_from_withdrawn_r03": true,
+  "generic_defer_retry_linked_bytes_match": true,
+  "source_review": {
+    "scope": "Normal maskable IRQ exclusion by source/instruction inspection; no executed CPU or interrupt interleaving test.",
+    "IFF0": "Saved P/V is clear; POP AF restores it; LD A,C and POP BC preserve flags; RET PO returns without EI.",
+    "IFF1": "Saved P/V is set; RET PO falls through to EI/RET, restoring enabled state after the return.",
+    "result_and_BC": "Result copied through C while saved AF is restored; original full BC popped before return.",
+    "atomicity": "DI precedes the entire owned/pending/IER/TEMT observation and ownership clear; inner leaf contains no EI.",
+    "before_DI": "A maskable IRQ before DI completes before the locked reads; no ownership state is observed before DI."
+  },
+  "owner_free_ROM_bytes": 575,
+  "delta_ROM_from_withdrawn_r03": 16,
+  "deployment_disposition": "Uninstalled corrected replacement for owner-selected finite qualification; not hardware acceptance.",
+  "withdrawn_r03": "d43150 remains withdrawn; historical structural review retained.",
+  "validation_limits": "Only package/source/linked inspection performed here. Owner compiler327 checks read, not rerun. No build, guest, device, SD or bench access.",
+  "parent_mail": "2026-11-07_05-06-09_linux-extender_u1-goal001-atomic-r04-artifacts-ten"
+}
