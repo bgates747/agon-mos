@@ -128,3 +128,28 @@ The owner is preparing one finite four-session/176-record isolation runner,
 with no live graphics/SD overlap. It has not been declared READY or executed.
 Qualification/custody remains with Extender and MechAgon's dependency ordering;
 no duplicated UART fixture, target access or approval gate is introduced.
+
+## Foreground atomicity correction: d43150 withdrawn
+
+Read owner mail
+`2026-11-07_04-55-09_linux-extender_u1-goal001-foreground-ownership-atomic-correction-nine`.
+Do not deploy combined ROMd43150/source244030d. It was never installed; working
+ROMa25f remains unchanged. The previous review established generic leaf bytes
+and pending-before-IER/TEMT ordering, not atomicity of the EMOS foreground helper.
+
+Concrete interleave: `emos_request_mode` calls ownership with IRQ enabled;
+the helper reads pending0; TX IRQ defers, masks TX IER and sets pending1;
+the helper resumes, observes TX IERoff/TEMT1 and clears ownership despite the
+still-borrowed source. The entire observation and ownership retirement must
+be bounded and atomic while preserving incoming IFF on every return path.
+This is an EMOS foreground-composition defect, not an established generic
+retry-leaf defect or explanation of trial76. No duplicate patch is selected.
+
+Extender owns the correction, exact linked/native controls and replacement
+artifact. Its next review must include the interrupt interleave and both
+incoming IFF states, in addition to source ordering and linked bytes. General
+application-leave cancellation remains unsupported: positive source callback
+and TEMT, or quarantine/reset, are required before source storage reuse.
+Preserve the r03 package and original structural results as history; their
+deployment withdrawal is recorded in the review JSON. No new build, target
+action or acknowledgement-only message was performed for this correction.

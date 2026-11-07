@@ -8,5 +8,11 @@
   "defer_address": 110559,
   "retry_address": 110578,
   "owner_free_ROM_bytes": 591,
-  "scope": "Read-only archive/source/ELF/ROM comparison. Owner validators not rerun; no hardware/CPU execution."
+  "scope": "Read-only archive/source/ELF/ROM comparison. Owner validators not rerun; no hardware/CPU execution.",
+  "deployment_disposition": "WITHDRAWN: foreground ownership observation/retirement is not atomic; do not deploy this ROM.",
+  "correction_mail": "2026-11-07_04-55-09_linux-extender_u1-goal001-foreground-ownership-atomic-correction-nine",
+  "atomicity_established_by_original_review": false,
+  "reported_interleave": "Foreground reads pending=0; TX IRQ defers, masks TX IER and sets pending=1; foreground sees IER off/TEMT on and incorrectly clears ownership.",
+  "required_owner_correction": "Bounded caller-IFF-preserving atomic pending/IER/TEMT observation and ownership retirement; verify interrupted interleave and both incoming IFF states.",
+  "installation": "Owner reports this ROM was never installed; working a25f unchanged."
 }

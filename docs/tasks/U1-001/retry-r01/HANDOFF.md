@@ -46,6 +46,14 @@ Extender owns derivative splice, full-register/IFF/Legacy/admission/RX integrati
 and exact size/qualification within its931-byte budget. It MUST test pending in
 `_emos_uart0_async_owned` BEFORE IER/TEMT and retain BUSY while a source is
 deferred. TX-empty OFF and TEMT ON can coexist with a live borrowed source.
+Foreground callers must observe pending, IER and TEMT and retire ownership in
+one bounded atomic section that preserves the caller's incoming IFF. Ordering
+the reads alone is insufficient: TX IRQ may defer between the pending read and
+the IER/TEMT reads. This clarification follows the owner's pre-install correction
+`u1-goal001-foreground-ownership-atomic-correction-nine`; combined EMOS ROM
+`d43150`/source244030d is withdrawn from deployment selection. Its historical
+linked checks remain valid only within their recorded structural scope. This
+live handoff addendum does not change the immutable standalone r01 ZIP.
 Owner abort/reset/route teardown must atomically invalidate pending so no later
 VBlank rearms abandoned storage. Keep existing callback+TEMT/reciprocal NM gate,
 first-error retention, checked source storage and positive close. This is not a

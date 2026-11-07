@@ -34,6 +34,11 @@ or physical FIFO reserve claim is made. The existing consumer reciprocal gate
 stays. Extender owns its derivative splice and any EMOS-specific ownership/reset/
 abort integration. It must clear pending retry on its own abort/reset/route
 retirement before source storage is reused; do not infer a generic owner state.
+Foreground EMOS ownership checks must atomically cover pending/IER/TEMT and
+ownership retirement, preserving incoming IFF. Pending-first ordering alone
+does not prevent TX IRQ from deferring between observations. Owner combined
+ROMd43150/source244030d is withdrawn pending this integration correction;
+the standalone generic derivative and published RC3 remain unchanged.
 
 ## Finite offline qualification
 
