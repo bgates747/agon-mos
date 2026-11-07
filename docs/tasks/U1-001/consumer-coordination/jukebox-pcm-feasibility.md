@@ -270,3 +270,38 @@ remove a hook while the app still appears IDLE. Preconstruction SUBMIT admission
 and positive owner close remain mandatory. No new cached-ownership API or vanilla
 driver change is inferred; this is not an overrun correction. Existing Jukebox
 vanilla finish/source-release/close distinctions remain as documented above.
+
+## First finite binary receive pass: NET-001-R0003
+
+Read Jukebox's
+`2026-11-07_03-09-46_jukebox_net001-console8-r0003-receive-pass-agon-mos`
+and retained `console8-r0003/review.json`, `N0001.log`, `N0001.pcm` under
+`/Agon/mystuff/AgonJukebox/.emulator/net-001-worktree/docs/tasks/NET-001`.
+Brandon ran receive-only netrecv build 7a134655af4e3e7b, executable 21128 bytes,
+SHA256 `0ad22c3d0ef0590e03def140cd2c5958634d9d8ebd88dffa594955fe3ae353a9`.
+Unchanged U1 r05 at 115200/8N1, 4096-byte ring, 32 requests of 256 PCM bytes.
+
+Result0/complete, close0, parser_error0, UART received10376 bytes (including setup
+and framing), overflow/fault/line_errors all0, sampled RX high-water21,
+socket closed and AT-ready. Capture8192 bytes SHA256
+`9399ecf25dfb3fded216ece1e6cd852f78d89ef4d95a04af8b17b0fcfb308a82`.
+UART independently verified retained capture length/hash. Jukebox reports its
+offline comparison matches the first8192 raw PCM bytes of Africa_8000.wav exactly;
+UART did not independently repeat that WAV comparison. There was no runtime PCM
+checksum. This is a first physical binary +IPD/JPCM receive pass, not audio or
+simultaneous UART0/1 evidence. Original files and failed prior evidence remain.
+
+The receiver logs134 MOS counts for the GET/receive loop, outside connection
+setup and disconnect. At nominal120 counts/s that is about1.1167 seconds and
+7336 PCM bytes/s, versus1.024 seconds of 8 kHz audio. RC3's VBlank handler adds2
+counts per VBlank: 120 counts/s requires actual60 Hz delivery and is not a
+universal centisecond clock. No calibration was made. Also,10376 RX bytes cover
+the whole session, not just that timed loop; do not subtract8192 and label the
+remainder timed framing overhead. The small sampled high-water is not an exact
+peak, nor is foreground_passes a CPU percentage.
+
+The result supports Jukebox's proposed512/1024-byte credit comparison at fixed
+115200/source/sample rate before paced playback. It does not isolate how much
+time belongs to AT overhead, network delay, parsing or driver costs, guarantee
+larger windows achieve sustained8k, or select another build/run. Driver source,
+firmware, EMOS work and custody are unchanged by this feedback.
