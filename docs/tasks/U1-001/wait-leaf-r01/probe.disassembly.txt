@@ -1,0 +1,38 @@
+
+/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/probe.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_probe>:
+   0:	cd 00 00 00       	call 0x0000
+			1: r_imm24	__frameset0
+   4:	dd 27 06          	ld hl,(ix+6)
+   7:	e5                	push hl
+   8:	cd 00 00 00       	call 0x0000
+			9: r_imm24	_aw_begin
+   c:	e1                	pop hl
+   d:	fe 01             	cp a,0x01
+   f:	dd 27 06          	ld hl,(ix+6)
+  12:	e5                	push hl
+  13:	cc 00 00 00       	call z,0x0000
+			14: r_imm24	_aw_wait
+  17:	e1                	pop hl
+  18:	dd e1             	pop ix
+  1a:	c9                	ret
+
+0000001b <_bind_probe>:
+  1b:	21 09 00 00       	ld hl,0x0009
+			1c: r_imm24	.bss+0x9
+  1f:	11 00 00 00       	ld de,0x0000
+			20: r_imm24	.bss
+  23:	3e 01             	ld a,0x01
+  25:	22 06 00 00       	ld (0x0006),hl
+			26: r_imm24	.bss+0x6
+  29:	32 00 00 00       	ld (0x0000),a
+			2a: r_imm24	.bss
+  2d:	d5                	push de
+  2e:	cd 00 00 00       	call 0x0000
+			2f: r_imm24	.text
+  32:	e1                	pop hl
+  33:	c9                	ret

@@ -1,0 +1,113 @@
+[
+  {
+    "name": "assemble",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-as",
+      "-march=ez80+full",
+      "/Agon/mystuff/agon-mos/experiments/foreground-wait/src/aw_wait.s",
+      "-o",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.o"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.2699848010088317
+  },
+  {
+    "name": "C-ABI-probe",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-clang",
+      "-target",
+      "ez80-none-elf",
+      "-mllvm",
+      "-z80-gas-style",
+      "-mllvm",
+      "-z80-print-zero-offset",
+      "-Wa,-march=ez80+full",
+      "-Oz",
+      "-nostdinc",
+      "-I/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/include",
+      "-I/Agon/mystuff/agon-mos/experiments/foreground-wait/include",
+      "-c",
+      "/Agon/mystuff/agon-mos/experiments/foreground-wait/tests/probe.c",
+      "-o",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/probe.o"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.26905835804063827
+  },
+  {
+    "name": "archive",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-ar",
+      "rcs",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/libaw_wait.a",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.o"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.27190639002947137
+  },
+  {
+    "name": "probe-link",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-ld",
+      "-Ttext=0x040000",
+      "--entry=_bind_probe",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/probe.o",
+      "-L/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02",
+      "-law_wait",
+      "-L/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/lib",
+      "-lagon",
+      "-o",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/probe.elf"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.27099696605000645
+  },
+  {
+    "name": "link",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-ld",
+      "-Ttext=0x040000",
+      "--entry=_aw_begin",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.o",
+      "-Map=/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.map",
+      "-o",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.elf"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.2692251360276714
+  },
+  {
+    "name": "raw",
+    "argv": [
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-objcopy",
+      "-O",
+      "binary",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.elf",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.bin"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.2713221880258061
+  },
+  {
+    "name": "controls",
+    "argv": [
+      "/Agon/mystuff/agon-dev-env/.venv/bin/python",
+      "/Agon/mystuff/agon-mos/experiments/foreground-wait/tools/check.py",
+      "--source",
+      "/Agon/mystuff/agon-mos/experiments/foreground-wait",
+      "--build",
+      "/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02",
+      "--toolchain",
+      "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev"
+    ],
+    "returncode": 0,
+    "remaining_live": [],
+    "seconds": 0.2771685100160539
+  }
+]

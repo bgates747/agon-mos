@@ -1,0 +1,117 @@
+
+/Agon/mystuff/agon-mos/build/u1-wait-r01/native-r02/aw_wait.elf:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00040000 <_aw_begin>:
+   40000:	3e 01             	ld a,0x01
+   40002:	18 01             	jr 0x0005
+
+00040004 <_aw_wait>:
+   40004:	af                	xor a,a
+
+00040005 <entry>:
+   40005:	dd e5             	push ix
+   40007:	dd 21 00 00 00    	ld ix,0x0000
+   4000c:	dd 39             	add ix,sp
+   4000e:	c5                	push bc
+   4000f:	d5                	push de
+   40010:	e5                	push hl
+   40011:	47                	ld b,a
+   40012:	dd 37 06          	ld ix,(ix+6)
+   40015:	ed 57             	ld a,i
+   40017:	e2 9c 00 04       	jp po,0x4009c
+   4001b:	ed 6e             	ld a,mb
+   4001d:	b7                	or a,a
+   4001e:	20 7c             	jr nz,0x009c
+   40020:	ed 22 00          	lea hl,ix+0
+   40023:	11 00 00 00       	ld de,0x0000
+   40027:	b7                	or a,a
+   40028:	ed 52             	sbc hl,de
+   4002a:	28 70             	jr z,0x009c
+   4002c:	dd 27 06          	ld hl,(ix+6)
+   4002f:	b7                	or a,a
+   40030:	ed 52             	sbc hl,de
+   40032:	28 68             	jr z,0x009c
+   40034:	f3                	di
+   40035:	78                	ld a,b
+   40036:	b7                	or a,a
+   40037:	28 22             	jr z,0x005b
+
+00040039 <begin_pass>:
+   40039:	af                	xor a,a
+   4003a:	dd 77 01          	ld (ix+1),a
+   4003d:	dd 77 00          	ld (ix+0),a
+   40040:	7e                	ld a,(hl)
+   40041:	dd 77 02          	ld (ix+2),a
+   40044:	23                	inc hl
+   40045:	7e                	ld a,(hl)
+   40046:	dd 77 03          	ld (ix+3),a
+   40049:	23                	inc hl
+   4004a:	7e                	ld a,(hl)
+   4004b:	dd 77 04          	ld (ix+4),a
+   4004e:	23                	inc hl
+   4004f:	7e                	ld a,(hl)
+   40050:	dd 77 05          	ld (ix+5),a
+   40053:	dd 36 01 01       	ld (ix+1),0x01
+   40057:	3e 01             	ld a,0x01
+   40059:	18 3a             	jr 0x0095
+
+0004005b <wait_pass>:
+   4005b:	dd 7e 01          	ld a,(ix+1)
+   4005e:	b7                	or a,a
+   4005f:	28 33             	jr z,0x0094
+   40061:	af                	xor a,a
+   40062:	dd 77 01          	ld (ix+1),a
+   40065:	dd 7e 00          	ld a,(ix+0)
+   40068:	b7                	or a,a
+   40069:	20 25             	jr nz,0x0090
+   4006b:	7e                	ld a,(hl)
+   4006c:	dd be 02          	cp a,(ix+2)
+   4006f:	20 1f             	jr nz,0x0090
+   40071:	23                	inc hl
+   40072:	7e                	ld a,(hl)
+   40073:	dd be 03          	cp a,(ix+3)
+   40076:	20 18             	jr nz,0x0090
+   40078:	23                	inc hl
+   40079:	7e                	ld a,(hl)
+   4007a:	dd be 04          	cp a,(ix+4)
+   4007d:	20 11             	jr nz,0x0090
+   4007f:	23                	inc hl
+   40080:	7e                	ld a,(hl)
+   40081:	dd be 05          	cp a,(ix+5)
+   40084:	20 0a             	jr nz,0x0090
+
+00040086 <sleep_return>:
+   40086:	e1                	pop hl
+   40087:	d1                	pop de
+   40088:	c1                	pop bc
+   40089:	dd e1             	pop ix
+   4008b:	3e 03             	ld a,0x03
+   4008d:	fb                	ei
+   4008e:	76                	halt
+   4008f:	c9                	ret
+
+00040090 <work>:
+   40090:	3e 02             	ld a,0x02
+   40092:	18 01             	jr 0x0095
+
+00040094 <refused_enabled>:
+   40094:	af                	xor a,a
+
+00040095 <enabled_return>:
+   40095:	e1                	pop hl
+   40096:	d1                	pop de
+   40097:	c1                	pop bc
+   40098:	dd e1             	pop ix
+   4009a:	fb                	ei
+   4009b:	c9                	ret
+
+0004009c <refused>:
+   4009c:	af                	xor a,a
+   4009d:	e1                	pop hl
+   4009e:	d1                	pop de
+   4009f:	c1                	pop bc
+   400a0:	dd e1             	pop ix
+   400a2:	c9                	ret
