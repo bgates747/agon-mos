@@ -1,0 +1,36 @@
+{
+  "verified_utc": "2026-11-07T05:52:06.264133+00:00",
+  "card": {
+    "host": "oryx-linuxlite",
+    "label": "AGONC8",
+    "uuid": "8658-1C23",
+    "mount": "/run/media/smith/AGONC8"
+  },
+  "fixture": {
+    "path": "/test/uart1/u1test.bin",
+    "build": "1bfe14ccd35b03aa",
+    "bytes": 15258,
+    "sha256": "6ac253927f4d8c1c96109be2829665ce8ffed003d8b824f5de81b90f6302f593",
+    "matches_retained_pin": true
+  },
+  "package_sha256": "53797bed1686fe1e7666ed31cbafd29235f3e07e6ed0dbe91b917a8efbc61fe1",
+  "startup_binary_sha256": "557fb5787f880b9960910dd1a3267244021e8d5cc70483dadc3a7022756ac896",
+  "autoexec": {
+    "sha256": "7f8fc3a62b75925d5701c1d7dd5ce2266a9339fc69ff273c96e7e085d3a59e1b",
+    "active_commands": [
+      "SET KEYBOARD 1",
+      "cd /extender/network/wifi-start",
+      "wifi-start",
+      "cd /test/uart1",
+      "u1test"
+    ],
+    "higher_priority_boot_scripts": [],
+    "modified": false
+  },
+  "next_report": 2,
+  "reports_preserved": true,
+  "card_payload_modified": false,
+  "mount_action": "Attached card was unmounted. UDisks lacked noninteractive polkit authorization; documented sudo mounted only identified FAT volume with user ownership. Left mounted.",
+  "hardware_run": false,
+  "installed_firmware_readback": false
+}
