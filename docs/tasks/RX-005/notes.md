@@ -195,3 +195,24 @@ and this project does not alter the other owner's independently selected scope.
 **Stopped for Brandon's task scoping and refinement.** No ABI, wire values,
 firmware/application implementation, build, test, deployment or upstream action
 was selected or performed by this consultation round.
+
+## 2026-11-07 — Check current documents for stale terminology
+
+Brandon asked to ensure the correction was reflected in current canonical
+documents. The maintained task README, this notebook and consultation summary
+already use the correct packet meanings. A search of this project's maintained
+Markdown found no remaining assertion that0x88 is a key-map packet; matching
+mentions explain the correction. Historical mail/review directories now have
+explicit README notices identifying their status and the known wording error.
+Their original bytes and evidence hashes remain unchanged.
+
+The external6502 owner's maintained `RX-005-CONSULTATION-R01.md` paragraph2
+still used the misleading label. Sent concrete correction request
+`2026-11-07_17-52-09_agon-mos_rx005-canonical-keystate-terminology-correction-two`
+and an accepted immediate chat notice. The owner returned
+`2026-11-07_17-52-57_agon-6502_rx005-6502-terminology-corrected-two`; UART
+then verified the corrected Markdown paragraph, JSON annotation and current
+HANDOFF. Its existing human commit gate remains with that owner. Other named
+maintained owner reports inspected did not assert that0x88 is the held-key map.
+This is documentation accuracy cleanup only;
+the design/implementation scoping stop remains in effect.

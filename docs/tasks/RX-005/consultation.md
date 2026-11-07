@@ -52,8 +52,10 @@ body. It is not a held-key map transfer. UART's request incorrectly called 0x88
 a literal key-map reply; MechAgon and Rally corrected this. Stock MOS v3.0.2's
 `vdp_protocol_KEYSTATE` copies five bytes of repeat-delay/rate/LED state, matching
 the retained VDP `PACKET_KEYSTATE=8`. Thus 0x88 is that keyboard-status packet,
-not the held-key map. The archived original questions retain the mistake; this
-is the explicit correction. D8 requests and D9 discovery are
+not the held-key map. The historical mail and owner-report copies preserve the
+original wording; their directory READMEs flag this error. This maintained
+summary, the task README and running notes contain the corrected information.
+D8 requests and D9 discovery are
 private experimental allocations, not upstream general-transport assignments.
 Legacy replies have 10-byte bodies and two useful value bytes. Optional
 READ_BYTES supplies 1..8 useful bytes in a fixed 16-byte body. MOS's keyboard

@@ -189,6 +189,18 @@
       "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-43-41_rally_rx005-rally-return-requirements-return-one.md",
       "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-43-41_rally_rx005-rally-return-requirements-return-one.md",
       "sha256": "99858e3d7aebe4db069207754dc6ae78f8af8ab82ae7c39bda0cc1ea0273d731"
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-52-09_agon-mos_rx005-canonical-keystate-terminology-correction-two.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-52-09_agon-mos_rx005-canonical-keystate-terminology-correction-two.md",
+      "sha256": "352019df2a9fa5aa3f30e11f7c57711e133e04e47dfdc7623af9cf50603aee56",
+      "purpose": "Later canonical-document terminology cleanup, not a new consultation round."
+    },
+    {
+      "path": "docs/tasks/RX-005/consultation-mail/2026-11-07_17-52-57_agon-6502_rx005-6502-terminology-corrected-two.md",
+      "canonical_path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_17-52-57_agon-6502_rx005-6502-terminology-corrected-two.md",
+      "sha256": "14912ca79800a7cd4ef5926b2739e22e801b0752bdfce8b96331926428cae71a",
+      "purpose": "Later canonical-document terminology cleanup, not a new consultation round."
     }
   ],
   "vdplet_first_request": {
@@ -245,5 +257,33 @@
       "canonical_path": "/Agon/mystuff/AgonArcade/docs/consultations/rx005-return-requirements-20261107/SOURCE-PINS.json",
       "sha256": "4421742b4d4bf3f35874948d14cf5a81bc2cbc48b5138759cc37d988a2bef197"
     }
-  ]
+  ],
+  "canonical_terminology_audit": {
+    "date": "2026-11-07",
+    "meaning": {
+      "0x81": "Keycode packet; used by the private VDPlet return workaround.",
+      "0x88": "Five-byte repeat-delay/rate/LED KEYSTATE status; not held-key map."
+    },
+    "own_current_documents": [
+      "docs/tasks/RX-005/README.md",
+      "docs/tasks/RX-005/notes.md",
+      "docs/tasks/RX-005/consultation.md"
+    ],
+    "external_correction_disposition": "2026-11-07_17-52-57_agon-6502_rx005-6502-terminology-corrected-two",
+    "verified_corrected_working_files": [
+      {
+        "path": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-005-CONSULTATION-R01.md",
+        "sha256": "09add1b0d39ba40b79923a8493f5db7696762078a5fc14c12f5ba86c74203bec"
+      },
+      {
+        "path": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-005-CONSULTATION-R01.json",
+        "sha256": "c91c861f0cbe9b63dbdfe4b3c9e0831eae6af1c69874d8f5a6041d8e8d66d9a4"
+      },
+      {
+        "path": "/Agon/mystuff/agon-6502/HANDOFF.md",
+        "sha256": "24200b6cf19d24e2ff47fb440beeb050892d25ab3cc56849507b21bde413652d"
+      }
+    ],
+    "historical_copies": "Unchanged; directory README notices explicitly flag original terminology error."
+  }
 }
