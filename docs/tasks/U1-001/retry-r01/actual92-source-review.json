@@ -1,0 +1,56 @@
+{
+  "decode": {
+    "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r07/ram-decode-r01.json",
+    "sha256": "124ec7f68e752817f8deb5e6d5205cebf47f486d2fc64f36124080a4f6f12ce5"
+  },
+  "source_commit": "1727fa19fdfd4fdd9ea4ae9c28fa89f619e4b7c3",
+  "sources": {
+    "src/emos_keyboard_io.asm": {
+      "sha256": "eec3af80174b9549c4a771e6771320c68eb6ece96127415fe90af78ceb2001d5",
+      "matches_pinned_git_blob": true
+    },
+    "src/interrupts.asm": {
+      "sha256": "c580506990e6283133f815908f0c4e4f76745b4f4dc261f88dba9784cea4575c",
+      "matches_pinned_git_blob": true
+    },
+    "src/emos_neta_diag_io.asm": {
+      "sha256": "351f25798bbea02f752ac4fea04c98344dc1c230afd49a776ba743b10725079f",
+      "matches_pinned_git_blob": true
+    },
+    "src/emos_neta_diag.inc": {
+      "sha256": "4cef0fe6269283e1417f79f24fc469d23ea960026151411c33425a4a884b69b0",
+      "matches_pinned_git_blob": true
+    },
+    "src/emos_keyboard.c": {
+      "sha256": "7695dd8b69a64a8c21b772b5ebc6ac97a4bcee1ac5f1f266e36b578da6064d93",
+      "matches_pinned_git_blob": true
+    },
+    "src/uart.c": {
+      "sha256": "63c6ca0e1e0c4c9813608a2324be34382aef2a5f39e2d5b313a35bfb43c225e0",
+      "matches_pinned_git_blob": true
+    }
+  },
+  "capture": {
+    "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r07/owner-recovery/preserve/app-ram.bin",
+    "bytes": 65536,
+    "sha256": "1cd930b5ff8aca1716320edb0cd36434c8e226597690c696daf057f83a3bb5e7"
+  },
+  "raw_record_sha256": "3b2897740dd96572f5dde16247bcc5b07b84d061d8ff5a6cc2a1de4eeb2c9102",
+  "immutable_prefix_bytes_match": 46455,
+  "review_scope": "retained source and raw evidence only; no build/run/target or new decoder execution",
+  "attribution": "root explicit case join retained; generic decoder RAW_FORENSIC unchanged",
+  "raw_context": {
+    "LSR": 99,
+    "remaining": 16,
+    "PC_DR": 247,
+    "hold": 0,
+    "parser_prefix": [
+      2,
+      143,
+      106,
+      32,
+      74,
+      26
+    ]
+  }
+}
