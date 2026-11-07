@@ -64,3 +64,9 @@ independent UART0 source/TEMT versus VDP-DONE lifetimes. Report integration cost
 missing hook details, source/reply correctness and actual useful foreground work.
 Keep the working baseline for comparison and use normal finite checkout,
 cleanup and firmware recovery procedures for any selected physical trial.
+
+Consumer feedback identifies an SDK construction/lifetime seam: a new NM packet
+must not overwrite client.input before its still-live async borrow can reject
+admission. See mechagon-provisional-lifetime-feedback.md for the exact SDK path
+and early-reply/timeout regression requirements. No generic core change is
+identified by that finding.
