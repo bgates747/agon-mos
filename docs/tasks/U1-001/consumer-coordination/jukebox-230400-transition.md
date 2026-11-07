@@ -97,3 +97,50 @@ actual incoming block/AT overhead and gaps reduce PCM below that ceiling.
 Keep the initial115200 command/transition and restoration outside the timed
 GET loop, and preserve raw MOS counts with the existing actual-VBlank caveat.
 No source change to the generic driver is identified or requested.
+
+## R0005 returned failure: still a transition diagnosis
+
+Read owner mail
+`2026-11-07_04-21-09_jukebox_net001-r0005-baud-confirm-fault-one` and original
+`console8-r0005/N0003.log`. Frozen build12ad2c8022a92765 failed at baud-confirm:
+PCM0/blocks0, UART RX1, fault2/line_errors0x8a, transition_line_errors0, close0.
+The capture is empty. This does not establish the ESP's actual baud, a bulk
+rate failure or a generic driver bug. Jukebox's separately prepared1152000
+candidate was not deployed after this report; do not assume a changed test card.
+
+Matched RC3 `close_UART1` disables IER, then sets LCTL0/FCTL0. The receiver is
+therefore not an 8N1 FIFO receiver during the closed settling interval. Reopen
+programs the divisor, resets/enables FIFO with FCTL0x07, enables requested IER,
+then sets final8N1 LCTL while the app's lock still excludes ISR execution.
+The generic adapter resets software counters but does not explicitly read LSR
+before attaching/unmasking. This permits the proposed stale-status hypothesis;
+it does not prove it happened or that a missing LSR read is a defect.
+
+Relevant primary-source distinction: PS015317-0120 p116 says CLRRXF clears the
+RX data/error FIFOs; p121 describes FE/OE read-to-clear LSR bits. Thus new-open
+already has a documented RX/error-FIFO clear. A claim that the entire old error
+FIFO must survive that clear is unsupported. Read-to-clear status, in-flight
+receive state or new incoming bytes can still require discrimination. Bit0x80
+is FIFO error summary;0x08 is framing error;0x02 is overrun. Accumulated0x8a
+is not necessarily the first sampled LSR value.
+[Zilog eZ80F92/F93 product specification](https://www.zilog.com/docs/ez80acclaim/ps0153.pdf).
+The document's current URL redirected when opened; the indexed primary-source
+FCTL/LSR tables were available through targeted search. No silicon behavior
+beyond those statements is claimed.
+
+Concrete consumer observations available through existing APIs: log open result,
+an immediate snapshot BEFORE new-speed AT, first_error as well as accumulated
+line_errors, submit result and source callback occurrence, and separate final
+snapshot. A fault already present before AT cannot be attributed to that AT's
+response. A fault appearing afterward still needs byte/transaction evidence to
+separate stale status from baud mismatch; RX1 alone does not do that. Preserve
+the current failure and old/new transition phase. Do not clear LSR/faults outside
+the driver, silently retry payload, change request sizes, or describe230400 as
+accepted without a clean fresh response. A blind higher rate does not diagnose
+this seam. These are source-review findings, not a new run or patch request.
+
+UART's earlier reply correctly avoided promising response baud, but new-open
+FIFO reset alone was not proof of a clean protocol boundary. That remains an
+unqualified part of the proposed sequence. If later evidence establishes
+stale-only startup status, a narrowly scoped open-boundary correction needs a
+regression preserving real post-open errors; no such patch is inferred here.
