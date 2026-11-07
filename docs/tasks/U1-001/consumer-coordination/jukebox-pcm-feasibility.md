@@ -305,3 +305,34 @@ The result supports Jukebox's proposed512/1024-byte credit comparison at fixed
 time belongs to AT overhead, network delay, parsing or driver costs, guarantee
 larger windows achieve sustained8k, or select another build/run. Driver source,
 firmware, EMOS work and custody are unchanged by this feedback.
+
+### Longer receive-only confirmation: NET-001-R0004
+
+Read `2026-11-07_04-02-36_jukebox_net001-r0004-30second-pass-agon-mos` and
+`console8-r0004/review.json`, `N0002.log` and `N0002.pcm` in the same owner task.
+Brandon selected and ran the longer baseline. Build c6e2e9dab27b9f8f, executable
+21714 bytes, SHA256
+`cf6b61f022686b2b79963b9cbdc6a51a5a1ab7981eb56f657c1d763fa39c92e7`.
+Unchanged U1 r05/115200/8N1, no UART0 audio forwarding.
+
+835 requests of256 PCM bytes captured213760 bytes. UART independently checked
+capture length/SHA256
+`b2c55f38e3ec0ac8108458bef12e84a942d03f675822d6ff319ce13e21c723a8`;
+Jukebox's offline comparison reports an exact Africa_8000.wav PCM prefix match.
+Result0/complete, close0, parser_error0, overflow/fault/line_errors all0,
+socket closed/AT-ready. No runtime PCM checksum or SD writes during capture.
+Sampled high-water26 is an observation, not a guaranteed peak.
+
+3602 MOS counts at conditional120/s gives30.0167 seconds and7121.38 PCM B/s,
+89.02% of the8k target, delivering26.72 audio seconds. The longer clean run
+corroborates the256-byte-window rate shortfall but still has no independent
+clock calibration or audio-playback result. New schema2 separately snapshots
+267200 RX bytes over the GET loop versus267336 lifetime bytes. Its timed
+non-PCM RX difference53440 is64 bytes per request in this run. That aggregate
+does not separate AT, framing, network, CPU or latency costs, include outgoing
+request wire bytes, or guarantee the same overhead for another window size.
+
+The owner proposes fixed-baud512/1024-byte request comparisons before playback.
+No generic driver correction is requested or identified by this feedback. The
+card/evidence were left unchanged; UART performed only retained-file review and
+arithmetic, with no new build, service, baud change, device access or reply loop.
