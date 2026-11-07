@@ -1,0 +1,35 @@
+{
+  "scope": "Independent retained package/source/OFF byte comparison only; owner compiler362 controls read, not rerun. No guest/IRQ/PRT/device execution.",
+  "package_path": "/Agon/mystuff/agon-extender/agents/net004/uart1-rx-diag-r01/source-artifact-r01.zip",
+  "package_bytes": 184789,
+  "package_SHA256": "0a9e85ac6e004bc3a39994d9256ea889081115bf9172ffeccb38505d024b3ea9",
+  "all_manifest_file_hashes_match": true,
+  "schema": 2,
+  "owner_source": "1727fa19fdfd4fdd9ea4ae9c28fa89f619e4b7c3",
+  "ROM_SHA256": "80fe235938071f5910f6f127ceb14416fc9c4c9407843232adffa82d6c0761b6",
+  "OFF_matches_retained_baseline": true,
+  "OFF_bytes": 130497,
+  "OFF_SHA256": "368b00b2a54188578cf05e41ca0fbbc8e5fbc6c31d16d0adb555f094c5caa48e",
+  "source_contract_finding": {
+    "id": "D83-CURRENT-ENDPOINT",
+    "severity": "Diagnostic attribution gap; raw fault retained, no transport corruption or overrun cause established.",
+    "first_fault_path": "observer.s::first_fault/fault_raw/freeze_fault",
+    "normal_active_span_flags": "0x03 (PRESENT|START_CAPTURED)",
+    "after_first_fault_flags": "0x13 (plus ACTIVE_AT_FAULT); END_CAPTURED remains absent.",
+    "raw_fault_timestamp_offsets": [
+      92,
+      93,
+      94
+    ],
+    "current_endpoint_offsets_not_written": [
+      70,
+      71,
+      75
+    ],
+    "header_decoding_rule": "observer.h requires PRESENT|START_CAPTURED|END_CAPTURED, controls0x0d and nonzero descending same-epoch endpoints.",
+    "consequence": "Even with a valid armed timer, current active-to-fault span cannot be derived under the published endpoint rule.",
+    "owner_options": "Populate active current end/control and END_CAPTURED from the SAME existing fault sample, or explicitly define/test a stopped-decoder active-fault endpoint rule using the separate raw timestamp. Preserve raw flags and unknown expiry/disarmed cases.",
+    "controls_needed": "Active fault with ready timer gives a derivable current span; disarmed/expired/no-active fault remains unknown; first frozen record stays immutable."
+  },
+  "baseline_8de66": "Unchanged; diagnostic review does not alter separate uninstrumented R04 selection."
+}

@@ -198,3 +198,36 @@ That is a source-contract finding, not a fit, linked ABI or runtime pass. Exact
 wrapper saves/context injection, marker cost, NULL control and575-byte ROM fit
 remain the owner's build gates. No new hardware reservation or installation is
 selected, and no acknowledgement-only reply is needed.
+
+## Checked diagnostic r01 artifact: active-fault endpoint gap
+
+Read `2026-11-07_08-14-14_linux-extender_u1-diagnostic-r01-checked-source-artifact-agon-mos`.
+Independently rehashed184789-byte package0a9e85ac and every contained manifest
+file, and compared the retained identity-matched OFF binary against954e's raw
+baseline: exact130497 bytes/SHA368b00b2. Diagnostic ON is owner1727fa19,
+fullROM80fe2359, raw130896/free176, bridge delta399ROM/+3BSS. Standalone app
+1620text/166BSS is owner-linked evidence, not consumer incremental size or
+executed interrupt/register proof. Compiler362 controls were read, not rerun.
+Evidence: `retry-r01/diagnostic-r01-package-review.json`.
+
+D83-CURRENT-ENDPOINT: `observer.s::first_fault` marks the current span active
+at fault and stores raw fault count/control at92..94, but does not populate
+that span's end count/control at70/71/75 or set END_CAPTURED. A normal active
+span's flags therefore change0x03 to0x13, whereas `observer.h`'s documented
+decoder requires PRESENT|START_CAPTURED|END_CAPTURED (0x07) and valid endpoints.
+Even a valid running timer cannot yield the current masked span's elapsed time
+under that rule. This is a diagnostic attribution gap, not a transport fault;
+the raw fault timestamp is retained and an honest decoder returns unknown.
+
+Return this material mismatch to Extender and the consumer. Minimal options:
+copy the SAME already-captured fault count/control into the active span's end
+fields and set endpoint-captured, or explicitly specify/test how a stopped
+decoder substitutes the separate fault timestamp for an ACTIVE_AT_FAULT span.
+No extra timer/LSR read, runtime duration arithmetic or generic driver change
+is needed. Require source controls for active+ready, disarmed/expired/no-active
+fault and immutable first freeze; invalid timing must remain unknown.
+
+Schema2/raw parser/remaining context, absent RBR hooks, reserved query/gaps,
+register save/restore source and IRQ-enabled rearm remain bounded review facts.
+No new owner source edit, compilation or native/hardware execution was performed.
+Separate uninstrumented R04 admission and working8de66 are unaffected.
