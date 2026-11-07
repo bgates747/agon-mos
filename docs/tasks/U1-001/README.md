@@ -101,12 +101,12 @@ Separate sender callback, physical drain and verified reception. Lower baud or
 fixed delays reduce offered load but do not prove losslessness under arbitrary
 receiver stalls. No invented acknowledgements or new peer firmware assumed.
 
-T-005 [ ] Have Brandon run the prepared functional fixture on Console8 and
+T-005 [x] Have Brandon run the prepared functional fixture on Console8 and
 inspect returned reports: real RX/IRQ/callback/drain/restore and peer identity.
 The first Console8 run failed in its ordinary baseline, before async submission;
-see console8-r01-failure.md. The corrected fixture is deployed to the same path
-and awaits its rerun. T-001 still includes actual native interrupt/register
-qualification; host stubs do not establish those target invariants.
+see console8-r01-failure.md. Corrected R0002 passes all four ordinary/async AT/GMR
+cases on hardware; see console8-r02-pass.md. This closes the small-query fixture,
+not T-001's wider native boundary/interrupt qualification or T-003 performance.
 
 T-006 [x] Prepare the initial functional-only AT/AT+GMR appliance, source,
 library, binaries, pinned SDK/notices and instructions in project space. Archive
@@ -130,9 +130,10 @@ Corrected fixture source commit `823bb91dd4c1af5a1488e3d3361648646b601445`;
 build identity `1bfe14ccd35b03aa`. The initial build `dac1a97aa944c49c` failed
 on Console8 because its ordinary-byte SDK wrapper reversed MOS carry-success.
 The local shim and linked-code controls correct that without driver/firmware
-changes. Core/adapter/parser host checks and native linking pass; the corrected
-app has not run on hardware. See console8-r01-failure.md and its deployment
-receipt. The same `/test/uart1` path retains R0001 and next.txt.
+changes. Corrected R0002 now passes on Console8: matched ordinary/async AT/GMR,
+230 received bytes, no UART errors/overflows and positive close. See
+console8-r02-pass.md. Bulk/full-FIFO performance and EMOS adaptation remain
+separate. The same `/test/uart1` path retains R0001/R0002 and next.txt=3.
 
 ## Initial design boundaries
 

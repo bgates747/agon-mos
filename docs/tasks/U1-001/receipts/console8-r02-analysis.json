@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "scope": "Console8 standalone vanilla UART1 functional AT/AT+GMR run; no EMOS or bulk/performance claim",
+  "build_id": "1bfe14ccd35b03aa",
+  "binary_sha256": "6ac253927f4d8c1c96109be2829665ce8ffed003d8b824f5de81b90f6302f593",
+  "source_commit": "823bb91dd4c1af5a1488e3d3361648646b601445",
+  "result": 0,
+  "close": 0,
+  "received": 230,
+  "overflows": 0,
+  "fault": 0,
+  "errors": 0,
+  "cases": [
+    {
+      "case": 1,
+      "mode": 0,
+      "pass": 1,
+      "stage": 4,
+      "sent": 4,
+      "call_mos_counts": 0,
+      "total_mos_counts": 0,
+      "work": 11,
+      "reply_bytes": 6
+    },
+    {
+      "case": 2,
+      "mode": 1,
+      "pass": 1,
+      "stage": 4,
+      "sent": 0,
+      "call_mos_counts": 0,
+      "total_mos_counts": 0,
+      "work": 20,
+      "reply_bytes": 109
+    },
+    {
+      "case": 3,
+      "mode": 0,
+      "pass": 1,
+      "stage": 4,
+      "sent": 8,
+      "call_mos_counts": 2,
+      "total_mos_counts": 2,
+      "work": 11,
+      "reply_bytes": 109
+    },
+    {
+      "case": 4,
+      "mode": 1,
+      "pass": 1,
+      "stage": 4,
+      "sent": 0,
+      "call_mos_counts": 0,
+      "total_mos_counts": 0,
+      "work": 11,
+      "reply_bytes": 6
+    }
+  ],
+  "matched_reply_bytes": [
+    6,
+    109
+  ],
+  "next_report": 3,
+  "original_failure_preserved": true,
+  "card_payload_hashes_match": true,
+  "async_callback_and_temt_observed_by_query_pass_condition": true,
+  "callback_exact_count_instrumented": false
+}

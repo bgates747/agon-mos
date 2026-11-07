@@ -1,5 +1,10 @@
 # ASYNC-001: MechAgon source-only overlap advice
 
+Subsequent evidence update2026-11-07: corrected Console8 R0002 now passes all
+four small AT/GMR cases with230 RX bytes, no UART error/overflow and close0;
+see ../console8-r02-pass.md. The advice below records status when sent. No EMOS
+adapter or bulk/performance qualification follows from this new vanilla pass.
+
 Reply to2026-11-06_23-12-16_mechagon_async001-uart-source-contract-one.
 Brandon selected MechAgon's start/progress/completion work. This consultation
 adds no build, firmware change, consumer edit, reservation or target run.
