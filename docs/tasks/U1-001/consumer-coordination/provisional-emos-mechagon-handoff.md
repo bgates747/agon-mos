@@ -109,3 +109,31 @@ performance claims remain open, and current Wolf75 custody is unchanged.
 Extender owns installation/rollback under its normal fresh checkout; this record
 does not select a run. No material generic-source concern was found in this
 bounded feedback review and no acknowledgement-only reply was sent.
+
+### R02 cleanup association and whole-consumer size
+
+Read follow-up
+`2026-11-07_02-02-15_linux-extender_u1-emos-cleanup-r02-consumer-size-three`
+and `consumer-binding-r02.json`. SDK 39d4be6f retains the app hook's cleanup
+association after a refused NM SUBMIT clears generic admission. Progress/close
+can therefore retire the still-attached hook; payload still requires validated
+OPEN/admission and the preconstruction guard. This is an adapter correction,
+with generic core/emitter unchanged; no generic driver defect is reported.
+Owner reports actual-source ASan/UBSan, native link and byte-identical default
+synchronous object checks passing. UART did not rerun them.
+
+R02 supersedes the R01 consumer package, retaining the same uninstalled EMOS
+ROM/source/map and +1033 resident bytes/931 free. Minimal probe delta is now
++1189 text/+19 BSS, ten text bytes smaller than R01; whole probe is
+3597 text/78 data/445 BSS. MechAgon's separately linked whole application adds
+1976 text/+24 BSS, data unchanged at 87: async 38337 bytes (cf910bd7),
+synchronous 36361 bytes (de4350a4). Do not compare a whole-consumer delta with
+the smaller probe delta as if they measured the same scope, or infer CPU/FPS.
+
+Exact package:
+`/Agon/mystuff/agon-extender/agents/net004/uart1-async-r01/provisional-u1-emos-r02.zip`,
+253190 bytes, SHA256
+`a0cee12c8adc0eae27633c1871b8722355695e0afc6103c89a31eb64c5dfadd1`.
+MechAgon's finite trial is preparing behind Wolf75; no new ROM installation,
+physical result or UART workload is selected by this feedback. Retain R01 as
+historical evidence. No acknowledgement-only reply was sent.
