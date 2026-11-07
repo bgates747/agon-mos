@@ -78,7 +78,7 @@ D83-001 [x] Return the matched source findings and evidence limits. Preserve
 first-error status, source/drain separation and quarantine. No generic rewrite
 or new resident async engine is justified by this result.
 
-D83-002 [ ] Extender and MechAgon's existing timing helper select one private,
+D83-002 [x] Extender and MechAgon's existing timing helper select one private,
 small diagnostic composition. Use application-owned RAM and bounded assembly
 markers, not a second profiler. Tag UART0 RX/protocol callback, UART0 TX,
 UART1 drain/packet callback, VBlank and foreground critical sections. Retain
@@ -151,3 +151,50 @@ No extra IRQ ownership or timing API is implied. Extender chooses concrete
 hooks/association/fit and the existing helper supplies the record implementation.
 
 No runtime, compiler or bench action was performed for this source-only review.
+
+## Selected owner binding, before implementation
+
+Source of truth: Extender
+[`EMOS-ASYNC-RX-DIAGNOSTIC-R01.md`](../../../../agon-extender/docs/tasks/NET-004/EMOS-ASYNC-RX-DIAGNOSTIC-R01.md)
+and durable mail
+`2026-11-07_07-39-55_linux-extender_u1-owner-diagnostic-marker-binding-r01`.
+This closes D83-002's source-mechanism selection only; D83-003..005 still need
+implementation, exact source/linked checks and any separately selected execution.
+
+* Private diagnostic OPEN is seven bytes: operation0, service entry LE24,
+  independent marker entry LE24. Existing ordinal and seven-byte reply remain.
+  Four-byte OPEN supplies the NULL-marker control; baseline8de66 refuses seven.
+  Both code entries need app-range validation. Marker and service association
+  share lifetime; refused close retains both. Reset clears pointers without
+  erasing the retained app record. No generic U1 service-event ABI changes.
+* Marker code and128-byte MGIRQ001 record live in app RAM. Extender prepares
+  reusable observer code and small opt-in firmware bridges; the existing helper
+  and consumer integrate that binding. UART does not create a second recorder.
+  Marker entry is ordinary bounded assembly under DI/ADL, preserving all
+  primary/index/alternate registers and upper bytes plus incoming IFF. No EI,
+  RETI, C call, transport I/O, wait or logging. Only admitted PRT1 and its own
+  bounded record are accessed; parser context is copied immediately, not kept.
+* Inputs: A event; D sampled PC_DR; E RX-hold; HL owner six-byte parser prefix.
+  B drain-remaining/C sample are meaningful only at their defined RX points.
+  In particular C at first-read is DATA; only first-error interprets C as
+  acknowledging error LSR. Do not reinterpret the first-read value as status.
+* Events: outer begins0x01..05 and ends0x81..85 for UART0 RX/TX, UART1 drain,
+  VBlank and foreground owner; app critical0x06/86. Inner packet0x10/90 and
+  clean-empty service0x11/91 are context, not additive CPU spans. Point events:
+  first-RBR0x20, cap0x21, clean-empty0x22, first-error0x40. Unsampled last-RBR
+  validity remains clear. Missing OPEN/CLOSE edges, hooks and tails are unknown.
+* Rearm atomically disarms timer reads while raw first-error capture remains
+  active. Readiness loop stays IRQ-enabled, with bounded individual register
+  operations. Publish a ready epoch atomically only after source/drain/span and
+  frozen-state rechecks. Arrivals in the gap remain retained/unknown. Rearm
+  never clears a first-fault freeze. This addresses the readiness-loop concern
+  above at contract level; instruction-level evidence is still pending.
+* Stopped decoding derives durations/gaps only from valid same-epoch descending
+  raw endpoints. Uncomputed native zero fields must not look like measured
+  zero elapsed time. No exclusive CPU or physical STOP-tail claim follows.
+
+No material register/rearm conflict is identified in this selected interface.
+That is a source-contract finding, not a fit, linked ABI or runtime pass. Exact
+wrapper saves/context injection, marker cost, NULL control and575-byte ROM fit
+remain the owner's build gates. No new hardware reservation or installation is
+selected, and no acknowledgement-only reply is needed.
