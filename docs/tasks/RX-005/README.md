@@ -1,10 +1,11 @@
-# RX-005 — Investigate incoming UART0 traffic and VDP reply waits
+# RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
-Brandon opened this investigation on 2026-11-07. We have concentrated on freeing
-the eZ80 while it sends bytes. We now need to understand the receiving side:
-how stock MOS collects incoming VDP bytes, how much CPU that costs, and when a
-caller spins waiting for a reply instead of doing useful work. Establish the
-existing behavior and its limits before choosing an optimization.
+Brandon opened this investigation on2026-11-07, then expanded its goal to
+implementing the simplest efficient general bidirectional MOS/VDP transport.
+Add a proper return-data path without breaking existing applications or
+rewriting large sections of MOS/VDP. Reuse existing TX where practical; do not
+build a new framework merely for symmetry. Stock receive/reply-wait mapping
+remains the first baseline step.
 
 The original question asks whether the design prioritizes safety at a possible
 performance cost. That is a hypothesis to investigate, not an established reason
@@ -16,9 +17,17 @@ the full explanatory responses and the stock-source clarification. Technical
 claims in that transcript retain their original context; later corrections
 should be appended explicitly rather than rewriting the historical exchange.
 
+Maintain decisions and open questions in [notes.md](notes.md). The full Discord
+export is [discord-transcript.txt](discord-transcript.txt), with pertinent
+comments/provenance in [discord-extract.md](discord-extract.md). Tom Morton's
+minimal bulk-return registration/type proposal and Jeroen Venema's buffer-sync
+cautions are design input, not a finalized protocol or community acceptance.
+
 The sole actionable checklist is [TODO.md](../../../TODO.md). This silo records
-scope, questions and acceptance criteria; task creation does not select a
-firmware modification, benchmark run, deployment or publication.
+scope, questions and acceptance criteria. The goal includes design and
+implementation, but this documentation tranche does not choose an exact ABI,
+firmware edit, run or deployment. Brandon's community-consensus condition before
+advocating an upstream merge remains recorded.
 
 ## Initial stock-source findings
 
@@ -74,10 +83,20 @@ which stage it measures or changes.
    delay, IRQ duration and application complexity. No one option is selected.
    Keep stock blocking behavior available for unaware callers; do not silently
    change timing, callback contexts, protocol ownership or existing safeguards.
-5. Propose the smallest justified next tranche and its matched correctness and
-   performance controls. State uncertainty and tradeoffs in plain English.
-   A receive optimization must not merely move an unmeasured bottleneck or
-   trade lost replies for apparent CPU headroom.
+5. Specify the smallest general extension: packet type/framing, destination
+   pointer/capacity, completion/error/lifetime and necessary pacing. Keep legacy
+   packets and unaware apps unchanged. Consider one outstanding receive buffer
+   before queues/channels; select request IDs only if a real use needs them.
+   FIFO size and16-byte TX refills do not impose a16-byte app-message limit.
+6. Implement the small extension with local changes and worked caller/receiver
+   examples once the concrete design is established. Preserve toolchains and
+   startup; record assembled code/RAM/stack costs. New bulk-return packets need
+   matching MOS/VDP support and opt-in admission. Do not import BDPP wholesale
+   or add retries/echo/checksums/session machinery without demonstrated need.
+7. Compare a useful consumer against the keyboard-map workaround with matched
+   payload integrity, legacy keyboard/reply coexistence, buffer-boundary/rearm
+   and CPU/latency controls. State uncertainty plainly. Do not move an unmeasured
+   bottleneck or trade lost replies for apparent foreground headroom.
 
 ## Existing related evidence
 
@@ -116,14 +135,21 @@ and are labelled separately. Builds/emulator/bench work follow actual resource
 checkout and existing custody; manual Console8 flashing remains Brandon's job.
 This documentation step performs none of those actions.
 
-The investigation should finish with an exact-source receive/wait map, a
-measurement plan and, where subsequently executed, attributable raw results;
-then a recommendation identifying the best justified change or explaining why
-stock behavior should remain. Include useful CPU gains, latency/correctness
-limits and code/RAM costs. Source reasoning, compile checks, emulation and
-physical measurements remain distinct evidence classes.
+Deliver an exact-source receive/wait map, a minimal documented protocol/API,
+matching MOS/VDP changes and worked example, and attributable matched validation
+demonstrating a useful return path with preserved legacy behavior. Include CPU
+gains, latency/correctness limits and code/RAM costs; report if it fails to improve
+the workaround. Source reasoning, compile checks, emulation and hardware remain
+distinct evidence classes. Public submission is separate from local validation.
 
 ## Status at creation
 
 Discussion preserved and task registered. Initial stock-source findings are
 recorded above; the systematic investigation and new measurements are pending.
+
+## Scope update — 2026-11-07
+
+Brandon selected the minimal general bidirectional implementation goal and asked
+to add the Discord extraction and running notes to this existing task. Both are
+now recorded. No firmware implementation, format selection or new run occurred
+in this documentation tranche.

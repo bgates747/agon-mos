@@ -1,0 +1,159 @@
+    tomm8086
+     — 
+    Yesterday at 2:52 PM
+    I have rabbitted on about that keyboard API so much that it's tired at this point. but basically it resembles SDL_PollEvent but just for keyboard.
+    BeeGee747
+     — 
+    Yesterday at 2:53 PM
+    I'll have my MOS agent have a look at that keyboard stuff. When I actually coded, I found the keyboard stuff really awkward to work with.
+    While you're here and we're talking about UART comms to VDP, what about the reverse? I actually use the keyboard map area to get bytes back out, but that's a bloody hack that needs to die.
+    tomm8086
+     — 
+    Yesterday at 2:56 PM
+    I don't really understand why it's been difficult to achieve. the way I see it, you just need a new VDP-to-ez80 packet type that says "bulk transfer, X bytes", and ez80 side will have a pointer to where that crap goes and how large a space is available, and a callback. syscall to set that up
+    BeeGee747
+     — 
+    Yesterday at 2:56 PM
+    Well don't. Your solution to async ended up being more efficient and elegant than Codex's. Especially its initial 2 KiB monstrosity.
+    BeeGee747
+     — 
+    Yesterday at 2:57 PM
+    Yeah, so TurboVega's BDPP proposed something similar, but I think it was too ... robust.
+    tomm8086
+     — 
+    Yesterday at 2:58 PM
+    amusingly, management don't think knowing particular languages matters anymore (because of AI) so I recently out of the blue got moved to a Scala team. never coded scala, but actually interested in it so yay. might not have happened pre-llms
+    BeeGee747
+     — 
+    Yesterday at 2:58 PM
+    When haven't the suits been clueless.
+    tomm8086
+     — 
+    Yesterday at 3:00 PM
+    dunno what data I'd want to pull down from the VDP. maybe saving screenshots to sdcard...
+    I think @envenomator would have informed thoughts on bulk transfer from vdp to ez80. he's the only one who's done it (except BDPP)
+    BeeGee747
+     — 
+    Yesterday at 3:01 PM
+    I initially used to get "render complete" callbacks from Pingo3D since those take a long time, and not a predictable amount of time.
+    My 6502 emulator has a variant where the 6502 host is VDP, not the eZ80, so when want to write data back to a disk image on the SD card, it goes through the keyboard map. Just. Not. Fun. 
+    tomm8086
+     — 
+    Yesterday at 3:05 PM
+    you can burn through months of project in days
+    BeeGee747
+     — 
+    Yesterday at 3:05 PM
+    And years of tokens in weeks.
+    Especially since I've ennabled a whole agent communication system so they can work with each other with minimal supervision by me.
+    tomm8086
+     — 
+    Yesterday at 3:06 PM
+    I should be better at this stuff. I'm supposed to be doing it 9-5
+    BeeGee747
+     — 
+    Yesterday at 3:06 PM
+    It's an actual skillset I'm finding.
+    tomm8086
+     — 
+    Yesterday at 3:12 PM
+    I don't like the fuzziness. recently i found this amazing (apparently) atari ST disassembler called rg-dis. after a while I realised it was built by AI (a release every day, the whole thing done in the last few months, slop docs). it has so many features like annotating hardware accesses, syscalls, giving descriptive label names etc. but man, it made basic mistakes in recursive disassembly that made me wonder what the hell the algorithm was under the hood.
+    after a while trying to use it I just gave up [and returned to agon]
+    I wondered if it would be the same experience with Flexe. huge promise but inexplicable failures
+    but I guess if you have a claude subscription you can burn through all barriers 😉
+    BeeGee747
+     — 
+    Yesterday at 3:16 PM
+    Not impressed with claude. it always runs out of tokens before codex does, and with lower quality work. gtg fellas, I just realized my niece's 2nd birthday party is in 45 minutes. laters 
+    envenomator
+     — 
+    Yesterday at 3:17 PM
+    been a while since I did develop something for VDP->ez80. In both cases (ymodem and hexload), the hardest part was setting up sync checkpoints between both parties 
+    tomm8086
+     — 
+    Yesterday at 3:23 PM
+    ah. why can't vdp just spew bytes at the ez80?
+    BeeGee747
+     — 
+    Yesterday at 3:25 PM
+    That's whaat i'm saying. now i'm really out. cheers
+    envenomator
+     — 
+    Yesterday at 3:28 PM
+    sure it can, but it’s nice to make sure that they actually arrive and you’re not overrunning the receiver while the remote buffer is being processed
+    for a few bytes, ok, but for large volumes, say binary files ( 😎 ) …
+    tomm8086
+     — 
+    Yesterday at 3:30 PM
+    ah. why are the normal VDP->ez80 packets reliably transferred?
+    envenomator
+     — 
+    Yesterday at 3:31 PM
+    because the transaction size to the ez80 state machine is much smaller
+    tomm8086
+     — 
+    Yesterday at 3:31 PM
+    if you do something really simple with the data, wouldn't it be ok?
+    (sorry, I'm a naive software guy)
+    envenomator
+     — 
+    Yesterday at 3:32 PM
+    probably so
+    until you need to work with buffers, which need processing, and the sync between both parties dies
+    tomm8086
+     — 
+    Yesterday at 3:33 PM
+    ah right. so if you're transferring the literal data and it needs only to be put sequentially in ez80 ram, bob might be your uncle?
+    envenomator
+     — 
+    Yesterday at 3:33 PM
+    well, if you are a naive software guy, not sure what that makes me 🤭
+    i’m not even a dev
+    envenomator
+     — 
+    Yesterday at 3:34 PM
+    yeah, pretty much so
+    i’m sync lockstepping each buffer as a sort of transaction
+    tomm8086
+     — 
+    Yesterday at 3:36 PM
+    yeah I noticed hexload echoes the bytes back
+    BeeGee747
+     — 
+    Yesterday at 3:42 PM
+    Ride's not here yet so i have a few moments. Since OTIRX only transfers 16 bytes at a time, a 16 byte buffer for return traffic doesn't seem to prevent any obvious inherent throughput bottleneck or scheduling problem. We just need a non-kludgy way to handle it. But what do I know, I'm a financial analyst who became somewhat competent at writing SQL queries for enterprise-level databases.
+    tomm8086
+     — 
+    Yesterday at 3:44 PM
+    how does the 16-byte fifo come into it?
+    BeeGee747
+     — 
+    Yesterday at 3:44 PM
+    IDK really. My mind likes parity.
+    tomm8086
+     — 
+    Yesterday at 3:45 PM
+    well just to throw more strange ideas into the mix, the ez80 uart0 rx can be configured to only interrupt when up to 14 bytes are already received
+    BeeGee747
+     — 
+    Yesterday at 3:45 PM
+    But if we go there, we do need to introduce some sort of packet identifier.
+    that's what BDPP attempted to do. othewise MOS can't know what the bytes coming back out are for. my keyboard map hack uses this
+    tomm8086
+     — 
+    Yesterday at 3:48 PM
+    probably not worth messing with this stuff. that part of MOS works ok :/
+    BeeGee747
+     — 
+    Yesterday at 3:52 PM
+    i won't raise it again unless i can find a demonstrable use for it that performs better than my keyboard map hack
+    tomm8086
+     — 
+    Yesterday at 3:56 PM
+    I am always up for silly stuff that takes ages and is in the final analysis, pointless. gpio video
+    BeeGee747
+     — 
+    Yesterday at 3:59 PM
+    fair. i just won't push for a merge unless there's some community consensus for it first
+
+﻿
