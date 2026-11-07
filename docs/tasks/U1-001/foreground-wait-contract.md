@@ -162,3 +162,30 @@ This closes the SDK source-seam preparation, not combined application or
 hardware qualification. Silent-idle owner checks and tick-only TEMT/CTS
 fallback remain necessary. No generic core/emitter/resident changes, frozen
 R06/R07 edits, deployment or queue/custody changes were made by this review.
+
+## Actual94: finite combined application run passed
+
+MechAgon returned physical results in
+`2026-11-07_12-13-48_mechagon_goal001-actual94-wait-health-eightytwo`, published
+under its commit7c99188. The selected WAIT1 application68be778a and corrected
+owner RX-protection ROM47dadc29 completed one approximately9.3s mixed-async
+round:276 decisions,256 matching application/module frames,882 accepted NM
+replies, zero recorded UART1 fault/error, positive source release, wire idle,
+CLOSE/cleanup/END and normal CLI. Later owner receipts show incoming a25f
+rollback/readback and release16:57:00UTC. UART read the report and independently
+rehashed its32 retained evidence/artifact pins; see
+[review receipt](wait-leaf-r01/actual94-composition-review.json).
+
+This advances the status from off-device preparation to a successful finite
+physical *composition*. The wait glue, RX protection and other conditions
+changed together, so it is not an isolated wait-helper/register/IRQ test or
+causal proof of an overrun cure. It does not close the targeted arrival-window
+and final-consumer inspection obligations above by itself.
+
+Presentation still missed the requested30Hz: nominal completion cadence27.419Hz,
+21 native scene replacements and18 server skipped-turn notices. No eZ80 CPU
+headroom or maximum sustainable rate was measured. Useful-work dose controls
+can also change how soon pending TEMT is resampled, so later comparisons must
+separate extra computation from changed service cadence. MechAgon retains the
+application/liveness/headroom follow-up; this report assigns UART no new build,
+target run or generic driver edit. Existing custody and frozen arms remain.

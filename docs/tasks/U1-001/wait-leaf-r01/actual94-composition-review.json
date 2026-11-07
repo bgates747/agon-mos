@@ -1,0 +1,156 @@
+{
+  "scope": "UART saved-report and retained-file identity review, not new execution or independent full trace reconstruction",
+  "mail": "2026-11-07_12-13-48_mechagon_goal001-actual94-wait-health-eightytwo",
+  "result_path": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/consumer-r08-source/RESULT94.json",
+  "result_sha256": "74947fefb405660e742831ca53dc8512170d30cf6f669ae4e1230f465544c1fc",
+  "analysis_path": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/consumer-r08-source/ANALYSIS94.md",
+  "analysis_sha256": "b7f632d8170f32e2bd256eaf2cb3525fa5bca58a44ce3b318d067e2811960ead",
+  "retained_pins_independently_rehashed": [
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/kit.json",
+      "sha256": "cd6171d5a60953c9cee6677d89288b1f0398c14a419b22a9248d3562486a3877"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/analysis-r01.json",
+      "sha256": "c9230b413d058320722c05ec31f0b4143bc22bc6df19e1453dea88e28907f6c0"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/native-result.txt",
+      "sha256": "1d5355da93f14ccd2d09ae412499892494a1b097a1d180cb34a6c954151c3979"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/native-result-result.json",
+      "sha256": "6533102bd6a0287c4fdb164258f332605b18e851c98c256f528be378bd594dcd"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/serial.bin",
+      "sha256": "54a42a4985f569b98ec696505ecbf1e5e11876ccc255fd7c5df66ca77cf12b62"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/receipt.json",
+      "sha256": "1d932d78eb941cd504c158b0f3c974fda2fd837ad880c6e2a78d34be43605d18"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/collected.json",
+      "sha256": "98508bd3395e0e396002826b79d272087bcd287f4134d1d89659d01f9e312726"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/run-native-r01/renderer-run-issued.json",
+      "sha256": "32e0a004469e29e7c0e0ac1b89a558bdbad52ddd02c8e93ab9822968b48e9f18"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/host-match-r01/status.json",
+      "sha256": "a5489107226597ecc52f1e193762084f588e873a2b9d5bde528097e7d10ccadb"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/host-match-r01/native.jsonl",
+      "sha256": "7c9710d1476ff9693834c5171d1d4a9b3cdef03ce2a42fca2e82134f9fec9094"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/host-match-r01/observer.jsonl",
+      "sha256": "ce9cdc3e00311d7b2d5055e68166bb82f500e92603ec7478d86aad896dbd9969"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/host-match-r01/native-dispatch.json",
+      "sha256": "64a184cf949a5774fb1675b7e2af1cb72a403815a4a79b1c8e0632d26f23cf55"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/host-match-r01/resources.jsonl",
+      "sha256": "317978c9c39002dbac67d3935e853034b101fdda41c2acabcacd90bf13695f65"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/u1-closure.json",
+      "sha256": "e3b0bf42c8bbece5077e4a65700edff68dd2647f0ef497f632b7164c8a7fb904"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/consumer-stopped-handoff.json",
+      "sha256": "6ef33e01a5c2ce9a52e30add8fce8e5420bed4cbef2ab306f3734210028fcb9d"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/getter-pre/receipt.json",
+      "sha256": "8de8faed3e1d07940caf37d1996910ca67fea6ac7d0d8cb75f88270a20156e23"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/getter-post/receipt.json",
+      "sha256": "a32315238985095dae6f38310bd69f1328797b8fe9e07c4331eee40009826da2"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/retained-idle/receipt.json",
+      "sha256": "61aed9a05bd25d9f235305800dac30dfcdd094a1728da469194a7cdf3390b1e3"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/phase-stage.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/phase-pre.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/phase-live.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/phase-post.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/goal001/consumer-r08/phase-idle.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r08/released.json",
+      "sha256": "431eeb58d45f3cb3c4b8efd68ceff498c3a45f58950012526d3ed1bf2158fa29"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r08/release-observation.json",
+      "sha256": "730873e359b23150ef80d0c4ca76e36515a731f186322e10f8e0763c7b4d5ac0"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r08/final/fresh.json",
+      "sha256": "0f67c667aa6139b4498ac796e10257f0dde4188d174f4043d33f92f114372cac"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r08/owner-install/verify-rollback/receipt.json",
+      "sha256": "c3b70025b022485a74a5ee90a6b5524ea48ed0b4c1f00533ce664dca1e3ea500"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/goal001/atomic-wait-check-r02/source/native/renderer/bin/uart1_async_waitapp/mechrender.bin",
+      "sha256": "68be778a39f6f3678b9c75f11fad409be8242c9d6e4192482d72ccb4e0c7f44e"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r10/module-o1/mechagon.vdpl",
+      "sha256": "fa4a41578c604c12ce6ced42d9b39afdc34ba01c6d2e2575c3e2920b8f08e17a"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/render001/shoot001/build-r02/assets.bin",
+      "sha256": "3cdf68391925b7ecc29d93313ea8425eea5f070cfc3c10fe13e5e7eb66da46f0"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/native/readback/bin/vdpstate.bin",
+      "sha256": "5ab2dd6307d5abe6446f6ff6c75db374ac252b5f068f12ce888211a5c06642e5"
+    },
+    {
+      "path": "/Agon/mystuff/MechAgon/.runtime/goal001/atomic-wait-check-r02/source/native/renderer/bin/uart1_async_waitapp/mechrender.map",
+      "sha256": "fb918b01383f3813e4fcfaf57932a51a3a342f84279aa162cd97e812352c313e"
+    }
+  ],
+  "reported_disposition": {
+    "controlled_health": "PASS",
+    "required_30tps_one_frame_per_tick": "FAIL",
+    "server_deadline_skip_signal": "FAIL",
+    "sustainable_maximum_rate": "UNKNOWN",
+    "ez80_cpu_headroom": "UNKNOWN",
+    "optical_fps": "UNKNOWN",
+    "overrun_cure_or_general_reliability": "NOT_ESTABLISHED",
+    "physical_invocations": 1
+  },
+  "components": {
+    "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+    "emos_rom_sha256": "47dadc290433850c0aa500f6c165defd821ad992bc484abe5e047fbe4b800155",
+    "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07"
+  },
+  "wait_app": 1,
+  "isolated_wait_or_overrun_cure_proved": false,
+  "new_build_run_target_actions": false
+}
