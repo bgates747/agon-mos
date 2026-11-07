@@ -18,6 +18,8 @@ vanilla/Jukebox scope. [Owner support](docs/tasks/U1-001/goal001-owner-support.m
 Timing contract and standalone +52ROM/+1BSS bounded UART0 CTS derivative are
 delivered; Extender owns pending-state guarded splice and physical qualification.
 No current lease, installed change or confirmed trial76 fix is claimed.
+Selected next app support is the [reusable wait leaf](docs/tasks/U1-001/wait-leaf-r01-plan.md)
+under the concrete root delegation; app glue/SDK notify remain with their owners.
 
 ## Eirene upstream async RFC qualification
 
