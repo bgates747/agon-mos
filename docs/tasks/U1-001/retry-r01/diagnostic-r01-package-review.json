@@ -31,5 +31,16 @@
     "owner_options": "Populate active current end/control and END_CAPTURED from the SAME existing fault sample, or explicitly define/test a stopped-decoder active-fault endpoint rule using the separate raw timestamp. Preserve raw flags and unknown expiry/disarmed cases.",
     "controls_needed": "Active fault with ready timer gives a derivable current span; disarmed/expired/no-active fault remains unknown; first frozen record stays immutable."
   },
-  "baseline_8de66": "Unchanged; diagnostic review does not alter separate uninstrumented R04 selection."
+  "baseline_8de66": "Unchanged; diagnostic review does not alter separate uninstrumented R04 selection.",
+  "finding_disposition": {
+    "status": "NARROWED: owner header documentation alignment, not missing data in the paired root decoder.",
+    "reply_mail": "2026-11-07_08-18-40_mechagon_goal001-active-fault-decoder-rule-uart",
+    "decoder_path": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/irq-diagnostic-source/decode-irq.py",
+    "decoder_SHA256": "5022d623c4ec1c1cb5cd979c9f3ced38f2475949f7b0bf3f4d7de5205fa920a3",
+    "controls_SHA256": "35c7eb083eb7c0f6f69115b098b2b2fba18c46897869312cd6a2c4145c6e122d",
+    "owner_test_evidence": "/Agon/mystuff/MechAgon/.runtime/goal001/serialized-io-check-r02/irq-decoder.log: 9 tests PASS in 0.003s under owner compiler363; read, not rerun.",
+    "rule": "Closed current.timing remains UNKNOWN for flags0x13. Separate current_start_to_fault uses captured start plus global fault92..94 with matching nonzero span/current epoch, PRESENT|START_CAPTURED|ACTIVE_AT_FAULT, frozen valid raw-error event40, admitted running controls/nonzero descending counts, no overflow/owner/clock invalidity.",
+    "remaining_owner_action": "Document the distinct active-start-to-first-fault interpretation in owner schema/header; preserve closed-span endpoint semantics. No required recorder/ROM change.",
+    "scope": "Read-only decoder/source/control evidence review. No new build/tests/runtime or physical selection."
+  }
 }

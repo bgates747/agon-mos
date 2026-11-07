@@ -231,3 +231,27 @@ Schema2/raw parser/remaining context, absent RBR hooks, reserved query/gaps,
 register save/restore source and IRQ-enabled rearm remain bounded review facts.
 No new owner source edit, compilation or native/hardware execution was performed.
 Separate uninstrumented R04 admission and working8de66 are unaffected.
+
+### Disposition after inspecting the paired root decoder
+
+MechAgon's return
+`2026-11-07_08-18-40_mechagon_goal001-active-fault-decoder-rule-uart`
+identifies an already-implemented version of the second option above. Read
+`irq-diagnostic-source/decode-irq.py` SHA5022d623 and its independent controls
+SHA35c7eb08, plus retained compiler363 `irq-decoder.log`: nine tests passed in
+0.003s; UART did not rerun them. The focused active-fault control derives20
+counts from the separate fault sample, rejects a crossed epoch, and keeps
+ordinary `current.timing` unknown with the absent end fields.
+
+The decoder separately exposes `current_start_to_fault`, requiring captured
+start/active-at-fault, same nonzero span/current epoch, frozen raw-error/event40,
+admitted running controls and nonzero descending counts, without invalidity or
+overflow. Thus the earlier broad conclusion of unavailable current-to-fault
+timing does not apply to this paired decoder. Raw native span.end stays absent;
+no closed-span completion or runtime duration-valid bit is invented.
+
+Narrow D83-CURRENT-ENDPOINT to owner header/schema documentation alignment:
+document this separate permitted interpretation and retain its exact decoder
+controls. No additional recorder writes or ROM change is required for it.
+The original package review remains historical, with this disposition appended
+in its JSON. No new build, tests, target action or hardware selection follows.
