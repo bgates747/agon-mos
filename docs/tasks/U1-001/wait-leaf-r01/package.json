@@ -1,0 +1,9 @@
+{
+  "path": "/Agon/mystuff/agon-mos/build/u1-wait-r01/foreground-wait-r01.zip",
+  "bytes": 44537,
+  "sha256": "fd900f11ee9e6f57588489bd35a33b6b036a48dab9444635343dbfb9ae446438",
+  "source_commit": "be8c45bd52c1951c75db02dfb67007448d3d5688",
+  "entries": 41,
+  "independently_rehashed": true,
+  "status": "private source/native artifact; no target deployment"
+}

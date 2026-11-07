@@ -30,7 +30,12 @@ availability mandatory. Run only after actual checkout/assert. Join/stop only
 owned child groups, retain logs and release immediately; steer actual successor.
 No Oryx, target, hardware, service, SD or firmware operations.
 
-WLF-004 [ ] Return pinned header/assembly/object/archive/listing/control results
+WLF-004 [x] Return pinned header/assembly/object/archive/listing/control results
 and exact code/state/stack costs in a private source/artifact bundle. Explain
 missing executed-ISA/IRQ/hardware proof and incomplete app producer binding.
 No integration or physical acceptance follows from the reusable library build.
+
+Completed off-device source/native tranche at be8c45b. Exact package receipt,
+ABI/costs/limits and retained build/check evidence are in `wait-leaf-r01/`.
+Delivery to root and SDK owner is substantive handoff only; app integration and
+executed ISA/IRQ/hardware qualification remain their separate next steps.
