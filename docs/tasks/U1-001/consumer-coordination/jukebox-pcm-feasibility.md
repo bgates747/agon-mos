@@ -23,6 +23,35 @@ including AT headers/status. These are arithmetic ceilings, not measured rates.
 | 11025 Hz | 11025 | 95.70% |
 | 44100 Hz | 44100 | 382.81% |
 
+Jukebox's follow-up correctly adds a second limit when receive and upload windows
+are fully disjoint. At UART1=576000 and RC3 UART0=1152000 (8N1), the input and
+output ceilings are 57600 and 115200 bytes/s. For each second of 44100 Hz U8 mono:
+
+```
+receive wire time = 44100 / 57600  = 0.765625 seconds
+upload wire time  = 44100 / 115200 = 0.3828125 seconds
+sum                                  1.1484375 seconds
+disjoint ceiling  = 1 / (1/57600 + 1/115200) = 38400 PCM bytes/s
+```
+
+That excludes all AT/VDU headers, CTS pauses, request latency and software work.
+Thus 576000 makes 44.1 kHz plausible on the input link alone, but cannot sustain
+it with the fully separated windows proposed below. Those windows explicitly
+require UART0 TEMT before incoming data, so they contain no hidden wire overlap.
+VDP playback continuing during receive does not remove either transfer's cost.
+
+44.1 kHz therefore needs actual RX/TX overlap, a faster qualified UART1 rate,
+or another change. The mathematical minimum UART1 baud for disjoint 44.1 kHz is
+greater than about 714532 before overhead; that is not a recommended or directly
+representable baud setting. If both links actually ran at 1152000, the ideal
+disjoint ceiling would be 57600 PCM bytes/s, with 0.765625 seconds wire time per
+second of 44.1 kHz audio. That input rate is unqualified on this module and leaves
+only about 139 microseconds to fill an initially empty 16-byte RX FIFO. Neither
+larger prebuffering nor additional CPU alone can overcome an average wire-time
+deficit. The 8 kHz separated-window baseline remains useful. Keep higher-rate
+overlap and higher-baud trials as distinct possible follow-ons, not measured
+capabilities or implementation authorization.
+
 11025 leaves only 495 bytes/s before overhead and is unsuitable as the first
 live target. Live 44100 is impossible at this baud; downloading first and playing
 later is a different experiment. Stereo or 16-bit samples increase bandwidth.
