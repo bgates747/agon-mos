@@ -1,5 +1,11 @@
 # Repository ownership
 
+RX-005 trial boundary, clarified by Brandon on2026-11-07: UART coordinates the
+goal and owns MOS plus its original synthetic fixture. VDPlet owns all VDP/
+VDPlet modifications. Neither edits game code. Passing synthetic qualification
+ends at Brandon's review gate; no prototypes go to application owners first.
+This supersedes the older diagnostic-VDP delegation for RX-005 only.
+
 On 2026-11-06 Brandon separately delegated the reusable application-space UART1
 async driver to this project (U1-001). Its original library, adapters and tests
 live under experiments/uart1-async. Extender retains EMOS admission/routing/RX

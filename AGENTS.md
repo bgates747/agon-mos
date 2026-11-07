@@ -18,6 +18,14 @@ does not authorize changing an upstream firmware project's compiler.
 
 ## UART0 project ownership
 
+For RX-005, Brandon superseded the earlier diagnostic-VDP ownership on
+2026-11-07: this agent coordinates the goal and owns MOS changes and original
+synthetic test fixtures only. The VDPlet owner owns every VDP/VDPlet firmware
+change. Neither owner edits game code for this goal. Obtain a passing finite
+synthetic trial, then stop for Brandon's review before distributing prototypes
+to consumer project agents. Existing historical diagnostic ownership below is
+not authority to cross that new boundary.
+
 This agent owns MOS-side UART0 work and the diagnostic VDP firmware needed for
 its physical Console8 tests, including receiver instrumentation, controlled
 race triggers, test integration and interpretation. The Flexe agent owns the

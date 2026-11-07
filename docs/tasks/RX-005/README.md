@@ -1,5 +1,12 @@
 # RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
+Current authorization2026-11-07: Brandon selected a first synthetic trial and
+explicit goal. UART coordinates and owns MOS/test-fixture changes; VDPlet owns
+all VDP/VDPlet changes. No game-code changes or consumer prototype distribution.
+The prior consultation stop below is superseded by this instruction. Follow
+[trial-plan.md](trial-plan.md); stop again once the trial passes for Brandon's
+review before individual application experiments.
+
 Brandon opened this investigation on2026-11-07, then expanded its goal to
 implementing the simplest efficient general bidirectional MOS/VDP transport.
 Add a proper return-data path without breaking existing applications or
@@ -147,8 +154,9 @@ claimed by opening this task.
 
 ## Ownership, tools and completion criteria
 
-UART owns MOS source investigation and any separately selected diagnostic VDP
-work. Flexe owns emulator admission/FIFO/IRQ-model evidence; Extender owns EMOS
+UART coordinates RX-005 and owns MOS source and original synthetic fixtures.
+VDPlet owns all VDP/VDPlet changes for this goal. Neither edits game code.
+Flexe owns emulator admission/FIFO/IRQ-model evidence; Extender owns EMOS
 adaptation and unattended-bench composition. Consultation does not resume or
 change any other project's goal. Existing cooperation is context, not authority
 to expand other work; owner-reported independent activity stays separate.
@@ -178,7 +186,7 @@ to add the Discord extraction and running notes to this existing task. Both are
 now recorded. No firmware implementation, format selection or new run occurred
 in this documentation tranche.
 
-## Current stop gate — consultation and further scoping
+## Previous consultation stop — superseded by the selected trial
 
 Brandon intended the consumer-consultation direction as a task addition. UART
 started contacting VDPlet before that clarification; Brandon then authorized
@@ -193,4 +201,6 @@ agreement or a reason to run an indefinite polling loop.
 The finite round has now returned all six source reviews: VDPlet, FSIM, Wolf,
 MechAgon, 6502 and Rally. Findings and current-versus-retained source distinctions
 are in [consultation.md](consultation.md). UART is stopped for Brandon's scoping
-review; no protocol/API selection, implementation or execution followed.
+review; no protocol/API selection, implementation or execution followed in that
+round. Brandon's subsequent selected trial now authorizes the bounded work in
+trial-plan.md, ending at a new review gate after passing synthetic tests.
