@@ -114,3 +114,29 @@ no-progress spin. Include VBlank eligibility and explicitly tick-only TEMT/CTS.
 W83-004 [ ] Inspect final linked adjacent FB/76 (EI/HALT), bounded masked RAM
 loads, callback ABI and exact code size. Source/interleaving models alone do
 not establish executed eZ80 behavior or a physical latency improvement.
+
+## Selected future application SDK seam
+
+Extender returned the concrete contract in
+`2026-11-07_09-45-20_linux-extender_goal001-u1-optional-notify-source-agon-mos`
+and sent the same selection directly to MechAgon. No additional reply is needed
+without a material conflict. For a separately selected adapter revision,
+`AGON_NETA_NOTIFY(client_pointer)` is optional/default no-op and runs after:
+
+* `agon_neta_source_done` publishes `source_released=1`;
+* `agon_neta_service` actually changes phase, fault or fault_error from its entry
+  snapshot, after u1_start/u1_step/u1_report_fault state publication and before
+  returning the existing demand. No-change calls do not notify.
+
+Duplicate notifications coalesce in the one-byte app latch. Use the retained
+active client, publish-before-notify compiler ordering, and the existing IRQ/C
+ABI and positive-close storage lifetime. Notification must not allocate, wait,
+log, call MOS/gateway, enable IRQs, reenter or authorize source reuse/detach.
+Source notification may precede SUBMIT return; retain the pre-service clear.
+
+This macro is a FUTURE supported seam, not an existing header feature. The
+actual adapter splice/source/listing controls remain pending; W83-002 is still
+open. No generic core/emitter/resident change is needed. Other app producers,
+silent-idle owner checks and tick-only TEMT/CTS fallback remain as above.
+Frozen R06 and current queues/custody are unaffected. This update records a
+source contract only; UART performed no implementation, build or test.
