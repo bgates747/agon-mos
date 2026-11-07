@@ -106,3 +106,30 @@ established. No generic-core defect or register mismatch is identified.
 Original SD/post-reset RAM remain preserved. Do not treat the P4 host reset as
 the cause, weaken first-error/close/reciprocal guards, or infer a new run from
 release. No acknowledgement-only reply or additional workload was initiated.
+
+## Later consumer scheduling-only cache, not a hardware fix
+
+Read MechAgon's
+`2026-11-07_03-04-35_mechagon_async001-u1-idle-cache-uart-feedback-twenty-four`
+and `docs/tasks/ASYNC-001/U1-IDLE-R02-RESULT.md`. Consumer source 92f083f implements
+Extender's scheduling-only positive-drain cache, not a new UART API. Only a
+previous positive wire-idle plus source release and an IRQ-coherent core
+IDLE/no-FAULT observation skips redundant caller op4. Initial IDLE, SOURCE,
+TAIL, FAULT and unknown state do not. SUBMIT still prearms and checks the SDK's
+owner/preconstruction guard; CLOSE still probes actual owner admission.
+
+Consumer reports actual-C caller/SDK/core, sanitizer and native checks passing,
+including post-drain fault, silent idle abort, mutation refusal and retained
+association after refused close. UART read that evidence without rerunning it.
+Async application is 38398 bytes, SHA256
+`fdfd475f6107490d8cec6eb9b1f66f0ee6abac3099c3d916dafac2e56e2502f9`, +61 text
+and no RAM versus its prior async build; same-source synchronous de4350a4 is
+byte-identical. Generic UART core, SDK and firmware are unchanged.
+
+Fewer foreground probes also remove incidental RX servicing and immediate
+idle-loss detection; continued ownership, reply readiness and fault absence
+cannot be inferred from a historic drain. `tx_progress_calls` counts actual
+caller probes, not cache hits or every internal SDK probe. No hardware, CPU/FPS,
+or trial76 overrun correction is established. The changed consumer source needs
+its own future selection/binding; the original failed kit remains immutable and
+must not be replayed as this version. No new workload or reply was initiated.
