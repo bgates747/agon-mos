@@ -115,7 +115,7 @@ W83-004 [ ] Inspect final linked adjacent FB/76 (EI/HALT), bounded masked RAM
 loads, callback ABI and exact code size. Source/interleaving models alone do
 not establish executed eZ80 behavior or a physical latency improvement.
 
-## Selected future application SDK seam
+## Selected application SDK seam
 
 Extender returned the concrete contract in
 `2026-11-07_09-45-20_linux-extender_goal001-u1-optional-notify-source-agon-mos`
@@ -134,9 +134,31 @@ ABI and positive-close storage lifetime. Notification must not allocate, wait,
 log, call MOS/gateway, enable IRQs, reenter or authorize source reuse/detach.
 Source notification may precede SUBMIT return; retain the pre-service clear.
 
-This macro is a FUTURE supported seam, not an existing header feature. The
-actual adapter splice/source/listing controls remain pending; W83-002 is still
-open. No generic core/emitter/resident change is needed. Other app producers,
-silent-idle owner checks and tick-only TEMT/CTS fallback remain as above.
-Frozen R06 and current queues/custody are unaffected. This update records a
-source contract only; UART performed no implementation, build or test.
+At the initial consultation this was a future seam. Extender subsequently
+delivered an isolated checked implementation in
+`2026-11-07_10-15-21_linux-extender_goal001-app-notify-checked-source-r01-agon-mos`,
+source `a6a8a4b3a124a4285a2f0c91b8130693b2d88a97`. Its root SDK and frozen
+consumer packages remain unchanged; this does not mean the hook is already
+integrated into MechAgon.
+
+UART reviewed the actual header and retained notification tests against this
+contract. Source release is stored before the barrier/notification; the
+ordinary service wrapper compares phase/fault/error and notifies only after a
+change. The source callback may run before submission returns, and duplicate
+source/phase notifications coalesce. No material conflict with the wait helper
+was found. W83-002 remains open for the actual consumer binding and all other
+producers.
+
+UART independently verified the private ZIP's SHA256, all 43 payload members
+(44 entries including its manifest), matching source header, baseline/default
+objects and full link-only binary equality, and unchanged enabled core/emitter
+objects. See [review receipt](wait-leaf-r01/sdk-notify-review.json).
+Extender's compiler386 checks report +145 text bytes/+1 application wake byte
+for the enabled probe and a +12-byte service static frame; these are not whole
+consumer or nested interrupt stack costs. UART did not rerun those checks or
+execute the native probes, which are not runnable MOS appliances.
+
+This closes the SDK source-seam preparation, not combined application or
+hardware qualification. Silent-idle owner checks and tick-only TEMT/CTS
+fallback remain necessary. No generic core/emitter/resident changes, frozen
+R06/R07 edits, deployment or queue/custody changes were made by this review.

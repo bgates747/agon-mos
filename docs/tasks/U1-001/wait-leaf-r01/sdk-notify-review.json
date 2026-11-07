@@ -1,0 +1,21 @@
+{
+  "scope": "UART read-only source and retained-artifact review; no build or target execution",
+  "mail": "2026-11-07_10-15-21_linux-extender_goal001-app-notify-checked-source-r01-agon-mos",
+  "owner_source_commit": "a6a8a4b3a124a4285a2f0c91b8130693b2d88a97",
+  "archive": "/Agon/mystuff/agon-extender/agents/net004/app-wake-notify-r01/source-native-r01.zip",
+  "archive_bytes": 100590,
+  "archive_sha256": "23bed1e8882a4a77ecf89d1dfefe97e605d8277f5765076c2b415de700300cd9",
+  "entries": 44,
+  "payload_members_independently_rehashed": 43,
+  "embedded_manifest_matches_retained_manifest": true,
+  "source_header_matches_package": true,
+  "baseline_default_objects_and_link_equal": true,
+  "enabled_core_emitter_objects_unchanged": true,
+  "publication_and_actual_change_only_source_review": "no material conflict with foreground wait contract",
+  "owner_checks_reviewed_not_rerun": 386,
+  "actual_consumer_all_producer_binding": "OPEN",
+  "isa_irq_halt_execution": false,
+  "hardware_execution": false,
+  "overrun_cure_claim": false,
+  "peer_sdk_or_frozen_consumer_modified": false
+}
