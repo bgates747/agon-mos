@@ -1,0 +1,65 @@
+{
+  "scope": "Retained files only, no target access; selected actual83 frozen inputs rehashed, not all171 inputs. Live matching source read plus existing object disassembly; no compilation or new runtime.",
+  "files": {
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/native/renderer/bin/uart1_async/mechrender.bin": {
+      "bytes": 43122,
+      "sha256": "9be4582a07e2c284140b2c5c195059ecf80207a70cd163a37a70d1352a69c68d"
+    },
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/native/renderer/bin/uart1_async/mechrender.map": {
+      "bytes": 49610,
+      "sha256": "2886cb1c57c6af8edc2e653eaf07d6f64b8bd9f4d0fcb1b8c76d62dd9a44a6ea"
+    },
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/owner/sdk/agon/net.h": {
+      "bytes": 8404,
+      "sha256": "83c5e00f3c085496449f8d160505988ef62c1512cb1866b889e090a996bd2dcf"
+    },
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/owner/sdk/agon/net_async.h": {
+      "bytes": 4837,
+      "sha256": "fdf91ea9a0ee6fa9b343dfd001d439cce16c898cc35e67bd9e05a8606a508ab0"
+    },
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/owner/u1/src/u1_emit.src": {
+      "bytes": 503,
+      "sha256": "088468dd2974099c046c62ec363c036822276eb20da8d8fb59c8cb80347c893e"
+    },
+    "/Agon/mystuff/MechAgon/.runtime/goal001/integration/check-r07/owner/u1/src/u1_tx.c": {
+      "bytes": 2142,
+      "sha256": "5b9c75120a9fc1ab068211698f561e38fb49e3e8e62116ed4e8daf3e79e659e0"
+    },
+    "/Agon/mystuff/MechAgon/native/readback/src/packets.s": {
+      "bytes": 906,
+      "sha256": "b4fae215ee22864d9f13e3ef91d3a606bea2ebdc2f06ced2056cc0fe97c1c10f"
+    },
+    "/Agon/mystuff/MechAgon/native/renderer/src/net_callback.s": {
+      "bytes": 184,
+      "sha256": "a3ea7ef6bebde6e5df3e18a8380e4401ce1d439482e069ac1a251c44f1b8f589"
+    },
+    "/Agon/mystuff/MechAgon/native/renderer/src/packets.s": {
+      "bytes": 616,
+      "sha256": "cbbe5d7906ed9161e0a66f9f3ab5f1727d557acb30a4692ef1d62f0945065117"
+    },
+    "/Agon/mystuff/MechAgon/native/renderer/src/rfc.s": {
+      "bytes": 894,
+      "sha256": "6d1d194a7c14c7b81c00bc975256341ca1555f5c5f14e4be543cc23d302644fa"
+    },
+    "/Agon/mystuff/MechAgon/native/renderer/src/transport_uart1.c": {
+      "bytes": 12098,
+      "sha256": "bc69dd61b054cd9cf6c73959c3be267bf00ac6bef6a10c733f1dac072368b99a"
+    },
+    "/Agon/mystuff/MechAgon/native/renderer/tests/transport_uart1.c": {
+      "bytes": 9653,
+      "sha256": "913be62cc642d662bbd7185b83d320ab66e76d7261a90d60dc60a86bed6887c2"
+    },
+    "/Agon/mystuff/MechAgon/native/src/net_callback.s": {
+      "bytes": 198,
+      "sha256": "7f0bc254b8a906ac9e528e441364fa10dadcafe27343947087677c0bdbc87aa4"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r03/owner-recovery/preserve/native-result.bin": {
+      "bytes": 1799,
+      "sha256": "2ac3ac6484eeabd358c54abca81c74ef67f4e842b0814c45c99eaf5b9e480c1b"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-goal001-r03/owner-recovery/preserve/app-ram.bin": {
+      "bytes": 65536,
+      "sha256": "eca958f259d59db4aa28a7560c9487fe54b4f47d636256abfe009c855cfe0301"
+    }
+  }
+}

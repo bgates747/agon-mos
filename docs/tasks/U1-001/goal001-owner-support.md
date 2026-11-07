@@ -180,3 +180,21 @@ objection was identified within this scope. Extender retains ownership of the
 single finite176-record isolation, installation, readback and rollback; it was
 PREPARING behind sole Wolf78 at the mail's timestamp. No UART build, target
 access, performance measurement or trial76 cause/cure claim is introduced.
+
+## Actual83 consumer still overruns: source support
+
+MechAgon returned actual83 failure on the installed/read-back8de66 composition.
+The bounded CTS and atomic ownership corrections therefore do not close the
+consumer reliability goal. Read the original retained SD result and rehashed
+selected frozen source/SDK/core/native/map inputs. No new generic U1 defect is
+identified. The matched TX completion callbacks are flag-only; UART1 packet
+dispatch/application reply copying, UART0 RX callback work, VBlank and foreground
+critical sections remain concrete masked-time contributors.
+
+Assessment and minimum proposed discriminator:
+`actual83-irq-source-assessment.md`; exact retained evidence pins:
+`retry-r01/actual83-source-pins.json`. Return these to MechAgon/Extender for their
+existing timing-helper/owner coordination. The proposal records first saved LSR,
+STOP/drain context and recent masked spans with admitted timing/expiry and real
+linked cost; no blind replay or full duplicate CPU profiler. No build, device
+access, peer implementation or new physical case was performed by UART.
