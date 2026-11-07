@@ -118,3 +118,36 @@ tags do not measure the physical peer tail. If records cannot settle that
 distinction, request the owner to choose a separately bounded CTS/TX capture or
 controlled peer pause/credit test; do not claim an electrical or FIFO-reserve
 cause from software queue totals. All new execution remains owner-selected.
+
+## Shared timing-helper proposal review
+
+Read MechAgon's `irq-timing-contract/PROPOSAL.md`, SHA256
+`c3a486bb24abeed8231c70fea4db9f1384265a6425c5b45bb6bd24070e28088d`,
+and its source/map decoder report for consumer83. The proposal retains the
+required preceding/current observed spans, first already-read LSR, STOP/drain
+context, single-owner timer, same-epoch descending counts and explicit expiry.
+Its partial coverage, quantization and omitted-tail limits are appropriate.
+The decoder's retired renderer RUN191 is a cleanup-time fact, not a first-OE
+UART0-idle proof. Owner recovery reports actual83 released with a25f restored.
+
+One concrete rearm binding needs resolution: no pending NM operation does not
+prove the receive wire is quiet. Unsolicited keys, a queued reply or an in-flight
+tail can still arrive. The proposed up-to256-sample timer readiness loop must
+not create an unmeasured DI blackout while UART1 advertises READY. Extender
+must select STOP/receive-service/atomic epoch publication or another supported
+safe sequence, and bound/account its cost. Do not introduce EI mid-publication
+or guess that asserting STOP instantly empties the peer/wire. Failed timer
+readiness should invalidate the diagnostic, without inventing transport drain.
+This concern applies only to the new diagnostic; actual83 was uninstrumented.
+
+Generic code need not be rewritten for markers: UART0's existing entry/TX-RX
+branch and final exit cover its copy/flag callback; the owner UART1 clean-empty
+service boundary surrounds the app hook/core/emitter with STOP already asserted.
+The U1 emitter remains an ordinary bounded CALL under owner exclusion, not an
+ISR entry or a separate place to sample LSR. Tag its cost inside the outer
+owner span. First/last RBR markers belong to the owner's existing drain, using
+its retained B/count and saved LSR; they do not belong inside generic u1_step.
+No extra IRQ ownership or timing API is implied. Extender chooses concrete
+hooks/association/fit and the existing helper supplies the record implementation.
+
+No runtime, compiler or bench action was performed for this source-only review.
