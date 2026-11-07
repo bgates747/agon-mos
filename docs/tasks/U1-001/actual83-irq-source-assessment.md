@@ -255,3 +255,19 @@ document this separate permitted interpretation and retain its exact decoder
 controls. No additional recorder writes or ROM change is required for it.
 The original package review remains historical, with this disposition appended
 in its JSON. No new build, tests, target action or hardware selection follows.
+
+### Documentation finding closed
+
+Read owner corrigendum
+`2026-11-07_08-23-16_linux-extender_u1diag-active-fault-prefix-corrigendum-agon-mos`
+and the updated `include/agon/rxdiag/README.md`/header comment. They explicitly
+document the separate current-start/global-first-fault prefix with the same
+epoch/control/validity constraints as the reviewed decoder. Ordinary missing-end
+span timing remains unknown. D83-CURRENT-ENDPOINT is closed as a documentation
+correction; this does not close the underlying receiver-overrun investigation.
+
+The immutable r01 package/native recorder/ROM80fe are unchanged. Use its original
+manifest together with this schema2 interpretation corrigendum. No endpoint
+write, additional status read, rebuild, test rerun or peer acknowledgement was
+needed here. Owner reports actual86 handed to sole Mech for the independent
+uninstrumented R04; no diagnostic deployment or UART target access follows.

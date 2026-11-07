@@ -33,14 +33,19 @@
   },
   "baseline_8de66": "Unchanged; diagnostic review does not alter separate uninstrumented R04 selection.",
   "finding_disposition": {
-    "status": "NARROWED: owner header documentation alignment, not missing data in the paired root decoder.",
+    "status": "CLOSED: owner schema2/header now documents the existing tested separate active-first-fault prefix rule.",
     "reply_mail": "2026-11-07_08-18-40_mechagon_goal001-active-fault-decoder-rule-uart",
     "decoder_path": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/irq-diagnostic-source/decode-irq.py",
     "decoder_SHA256": "5022d623c4ec1c1cb5cd979c9f3ced38f2475949f7b0bf3f4d7de5205fa920a3",
     "controls_SHA256": "35c7eb083eb7c0f6f69115b098b2b2fba18c46897869312cd6a2c4145c6e122d",
     "owner_test_evidence": "/Agon/mystuff/MechAgon/.runtime/goal001/serialized-io-check-r02/irq-decoder.log: 9 tests PASS in 0.003s under owner compiler363; read, not rerun.",
     "rule": "Closed current.timing remains UNKNOWN for flags0x13. Separate current_start_to_fault uses captured start plus global fault92..94 with matching nonzero span/current epoch, PRESENT|START_CAPTURED|ACTIVE_AT_FAULT, frozen valid raw-error event40, admitted running controls/nonzero descending counts, no overflow/owner/clock invalidity.",
-    "remaining_owner_action": "Document the distinct active-start-to-first-fault interpretation in owner schema/header; preserve closed-span endpoint semantics. No required recorder/ROM change.",
-    "scope": "Read-only decoder/source/control evidence review. No new build/tests/runtime or physical selection."
+    "remaining_owner_action": "None for D83-CURRENT-ENDPOINT; preserve immutable r01 package and attach interpretation corrigendum when using it.",
+    "scope": "Read-only decoder/source/control evidence review. No new build/tests/runtime or physical selection.",
+    "owner_closure_mail": "2026-11-07_08-23-16_linux-extender_u1diag-active-fault-prefix-corrigendum-agon-mos",
+    "owner_corrigendum_files": {
+      "/Agon/mystuff/agon-extender/include/agon/rxdiag/README.md": "9a82593740aebe418114299c9c28216c4f3d15f58a21c76baaa1cc7fc19cdf88",
+      "/Agon/mystuff/agon-extender/include/agon/rxdiag/observer.h": "8c1a235a45cf3e49b8f9f670ee561095e465fce696d3d236d1e94c1a95beafe9"
+    }
   }
 }
