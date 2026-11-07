@@ -70,3 +70,42 @@ must not overwrite client.input before its still-live async borrow can reject
 admission. See mechagon-provisional-lifetime-feedback.md for the exact SDK path
 and early-reply/timeout regression requirements. No generic core change is
 identified by that finding.
+
+## Extender's checked provisional binding, 2026-11-07
+
+Read owner mail
+`2026-11-07_01-46-50_linux-extender_u1-emos-checked-size-binding-two`, its
+`docs/tasks/NET-004/EMOS-ASYNC-R01-RESULT.md` and
+`agents/net004/uart1-async-r01/consumer-binding.json`. Extender source a664123e,
+EMOS source 2c4705310a49c7d97fc606bf47344cc36f68ab2e. UART independently compared
+the three generic core/header/emitter SHA256 values against its own source:
+all match. The vanilla installer is not used. No generic core defect or change
+is reported.
+
+Owner-reported actual-source sanitizer and native linked checks pass, including
+early callback/reply, preconstruction refusal after TAKE, immutable 146-byte
+source, delayed CTS/RX-first, later TEMT and refused unsafe retirement. A malformed
+successful OPEN/cleanup association issue was reproduced and corrected in the
+adapter; it is not identified as the cause of the earlier physical Mech failure.
+The default synchronous object remains byte-identical to its control. UART read
+these results but did not rerun the owner validators or build.
+
+Measured owner ROM use rises 129108 to 130141 bytes (+1033), leaving 931 bytes.
+The app link-only submit/progress/take/close probe adds 1199 text and 19 BSS bytes
+(2356/391 versus 1157/372), including core/emitter but excluding common runtime
+and the consumer RX callback chain. These are not whole-MechAgon size or CPU
+figures. The async engine remains application-resident; resident hooks still
+have a material flash cost in tight EMOS.
+
+Exact provisional package:
+`/Agon/mystuff/agon-extender/agents/net004/uart1-async-r01/provisional-u1-emos-r01.zip`,
+252889 bytes, SHA256
+`3b1d69c27118da82ed1c0f2df9beeea19f46808fdeea2799eeba788745a69570`.
+Padded ROM SHA256
+`043a0989b08a7429a2c52aca6a037660f8c19c067376173d17af7c46f1238c0f`;
+map SHA256 `b87c12848dc5f33571bc60bab904a2b789f75082555ef4729ee4232b5e86a109`.
+MechAgon has the actual binding. ROM is uninstalled, hardware/CTS/full-FIFO and
+performance claims remain open, and current Wolf75 custody is unchanged.
+Extender owns installation/rollback under its normal fresh checkout; this record
+does not select a run. No material generic-source concern was found in this
+bounded feedback review and no acknowledgement-only reply was sent.
