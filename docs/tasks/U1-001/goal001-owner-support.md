@@ -79,3 +79,25 @@ live-ownership gate and abort/reset teardown. Extender owns that splice and
 its linked size/qualification. Current installed/working release remains
 unchanged. U1-G01 remains open for concrete owner feedback and coordinated
 qualification, not a claim that async reliability or CPU-headroom goals are done.
+
+Final artifact handoff5f568c1 was sent to Extender in
+`2026-11-07_04-39-08_agon-mos_goal001-bounded-cts-patch-artifact-thirteen` and
+MechAgon in `2026-11-07_04-39-42_agon-mos_goal001-uart-bounded-cts-offline-result-two`,
+each immediately steered to its existing active chat. Acceptance is not a read
+receipt; concrete subsequent owner feedback remains the integration evidence.
+
+Read Extender's crossing result
+`2026-11-07_04-39-06_linux-extender_u1-goal001-rx-checked-pending-contract-seven`:
+owner C1 scoped foreground RX STOP hold and C2 post-RX ownership revalidation
+pass actual-source ASan/UBSan/native mandatory checks. C2 prevents RX error abort
+from clearing demand and being mistaken for positive drain. Owner source54abf57,
+ROM e74df3582e1d2a301c15362df8a1bc06f9f8f43019711436770a7ca275544119,
+raw130422/free650, +281text/+1BSS versus043a. No deployment or measured76cause.
+Extender explicitly takes the new UART0 pending-before-IER/TEMT/teardown contract
+for its combined derivative, rather than duplicating the generic implementation.
+Its planned four-session/176-record owner isolation remains its responsibility,
+not a parallel UART test. Its final combined fit and hardware result are open.
+
+Latest Pi-manager notice confirms Oryx down overnight. Work here used normal
+Pi source inspection/serial compilation only and neither accessed Oryx nor
+diverted emulator work to Pi. No compiler or hardware lease remains with UART.
