@@ -1,0 +1,230 @@
+{
+  "scope": "Saved-source and wire review; offline conditional parser continuation, not ISA/UART/IRQ or target execution",
+  "mail": "2026-11-07_16-13-50_agon-6502_io003-keyseq-mos-boundary-nine",
+  "reported_id_correction": "notification said16-13-54; actual immutable mail is16-13-50",
+  "verified_evidence": {
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/run.log": "1e0dcfbafaf22653a9714701aaa13011da6e776a127eb5db5f64111e51f20b4d",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/returned-inputs.json": "a2f83287dd551f001d70a9a4a7da5db441a9f0f4fd32cfba3504e82b0beaafee",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/result.json": "3d6690dacea17aba71b9e65e6c64dcf074840fa596eacc6f799005b318788cb8",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/telemetry.jsonl": "e7eb378a52e086356b8d59d9dc251d20defe00abe74092837f72ab3d9501ba4f",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/vdp-to-mos.bin": "4b575105a72ec5e66d2bff77e075a6682c3e99ddd0d1d10016223951064399e8",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/final.ppm": "594197d6ea822963e4fb2c98b5ffee7e55971190b40ff9e6eafaeffafb1ac447",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/esp32-uart0.log": "33be510f73666d94f8125b108acfbbc517fbb820bac63f080627db1d0b27dbf9",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/vdp-to-mos-delivered.bin": "4b575105a72ec5e66d2bff77e075a6682c3e99ddd0d1d10016223951064399e8",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/mos-to-vdp.bin": "c1b0d6a81614c95de5c95e80435d69b1a665c9cd0f41e22275a1473fda0d3779",
+    "/Agon/mystuff/agon-6502/build/io003/keyseq-return-r02/keyseq-run-r02/runtime/stats.json": "8f6202ffea87dae144dbd6fa510eecb4182442e97e9e16696cb3e3c7ae243446"
+  },
+  "report_sha256": "52dd65c722d51369d27ec7719bf49f0d5fff083305cc9cf3a0f34f386cb32020",
+  "condition": "Start at READY fields; assume no other parser byte before the12 Return bytes, no inserted bytes, unchanged pointer/data coherence",
+  "parser_steps": [
+    {
+      "byte": "81",
+      "before": [
+        2,
+        6,
+        4,
+        4
+      ],
+      "after": [
+        2,
+        6,
+        3,
+        5
+      ]
+    },
+    {
+      "byte": "04",
+      "before": [
+        2,
+        6,
+        3,
+        5
+      ],
+      "after": [
+        2,
+        6,
+        2,
+        6
+      ]
+    },
+    {
+      "byte": "0d",
+      "before": [
+        2,
+        6,
+        2,
+        6
+      ],
+      "after": [
+        2,
+        6,
+        1,
+        7
+      ]
+    },
+    {
+      "byte": "00",
+      "before": [
+        2,
+        6,
+        1,
+        7
+      ],
+      "after": [
+        0,
+        6,
+        0,
+        8
+      ]
+    },
+    {
+      "byte": "8f",
+      "before": [
+        0,
+        6,
+        0,
+        8
+      ],
+      "after": [
+        1,
+        15,
+        0,
+        0
+      ]
+    },
+    {
+      "byte": "01",
+      "before": [
+        1,
+        15,
+        0,
+        0
+      ],
+      "after": [
+        2,
+        15,
+        1,
+        0
+      ]
+    },
+    {
+      "byte": "81",
+      "before": [
+        2,
+        15,
+        1,
+        0
+      ],
+      "after": [
+        0,
+        15,
+        0,
+        1
+      ]
+    },
+    {
+      "byte": "04",
+      "before": [
+        0,
+        15,
+        0,
+        1
+      ],
+      "after": [
+        0,
+        15,
+        0,
+        1
+      ]
+    },
+    {
+      "byte": "0d",
+      "before": [
+        0,
+        15,
+        0,
+        1
+      ],
+      "after": [
+        0,
+        15,
+        0,
+        1
+      ]
+    },
+    {
+      "byte": "00",
+      "before": [
+        0,
+        15,
+        0,
+        1
+      ],
+      "after": [
+        0,
+        15,
+        0,
+        1
+      ]
+    },
+    {
+      "byte": "8f",
+      "before": [
+        0,
+        15,
+        0,
+        1
+      ],
+      "after": [
+        1,
+        15,
+        0,
+        0
+      ]
+    },
+    {
+      "byte": "00",
+      "before": [
+        1,
+        15,
+        0,
+        0
+      ],
+      "after": [
+        0,
+        15,
+        0,
+        0
+      ]
+    }
+  ],
+  "dispatched_commands_under_condition": [
+    6,
+    15,
+    15
+  ],
+  "actual_result": {
+    "state": 0,
+    "cmd": 15,
+    "remaining": 0,
+    "pointer": 0,
+    "data": "8102800181040d000000000000000000"
+  },
+  "recorded_post": {
+    "state": 0,
+    "cmd": 15,
+    "remaining": 0,
+    "pointer": 0,
+    "data": "8102800181040d000000000000000000"
+  },
+  "exact_conditional_post_match": true,
+  "causal_acceptance_or_drop_history_proved": false,
+  "build_run_firmware_changes": false,
+  "source_pins": {
+    "/Agon/mystuff/agon-6502/build/io003/keydiag-build-r02/controller.c": "c68a01ef6554df93c785c8344febbf9bd90ab8f540ad96956472263189e3c303",
+    "/Agon/mystuff/agon-6502/build/io003/keydiag-build-r02/source/checkpoint.c": "8db5936251acd98163e91b6f31255c107cdf34210d33cd3717603c82749b6f7d",
+    "/Agon/mystuff/agon-6502/build/io003/keydiag-build-r02/app.map": "d597faf4ad1801c86b78c06740b5791958c0a65bb3ed54605073df8b8f03c1b5",
+    "/Agon/mystuff/agon-6502/build/io003/keydiag-build-r02/appledisk.bin": "c793a279042bec4c9259c53b065accdf357d483a26bae2b67f7b30c5ffdef289",
+    "/Agon/mystuff/eirene-mos/build/rc003/packages/3.1.0_uart0_rc_3/source/src/vdp_protocol.asm": "bb83bca19df4d0edefc48368875e133b3109ddfe480a52637942d9e9c081df92"
+  }
+}
