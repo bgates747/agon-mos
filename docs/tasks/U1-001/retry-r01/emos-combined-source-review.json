@@ -1,0 +1,12 @@
+{
+  "owner_source": "244030d2408808c09fc0e274a9409b718140d848",
+  "package_sha256": "2010bb83f633077e92038d4cb1ca48083dbbbf5bf954373134e9accdd738901a",
+  "ROM_sha256": "d43150a05293dabaecc2599922bc8cd8a6ee7453f0ff0a6577aaa84457eb90d7",
+  "generic_leaf_linked_bytes_match": true,
+  "pending_before_IER_TEMT_source": true,
+  "retry_flag_address": 774286,
+  "defer_address": 110559,
+  "retry_address": 110578,
+  "owner_free_ROM_bytes": 591,
+  "scope": "Read-only archive/source/ELF/ROM comparison. Owner validators not rerun; no hardware/CPU execution."
+}

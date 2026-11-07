@@ -101,3 +101,30 @@ not a parallel UART test. Its final combined fit and hardware result are open.
 Latest Pi-manager notice confirms Oryx down overnight. Work here used normal
 Pi source inspection/serial compilation only and neither accessed Oryx nor
 diverted emulator work to Pi. No compiler or hardware lease remains with UART.
+
+## Combined owner splice reviewed
+
+Read `2026-11-07_04-49-20_linux-extender_u1-goal001-combined-cts-splice-checked-eight`.
+Owner source244030d2408808c09fc0e274a9409b718140d848 combines C1/C2 with our
+C3 bounded retry. Compiler324 owner checks pass, raw130481/free591, total delta
++340ROM/+2BSS versus043a; C3 plus its ownership glue costs59ROM beyond C1/C2.
+The SDK C++ byte-mask cast preserves its actual-C probe's binary identity.
+Generic U1 remains unchanged. No installation or trial76 cure is reported.
+
+UART independently rehashed the immutable r03 ZIP, read its nested exact source
+archive, matched its ELF/ROM, compared final defer/rearm bytes against the generic
+leaf, and checked pending-before-IER/TEMT source ordering. All match. Evidence:
+`retry-r01/emos-combined-source-review.json`. This used the new uart1-rx-r01
+package, not the retained historical uart1-async-r01 worktree. Owner mandatory
+validators were read, not rerun. No new contract correction is identified by
+this bounded source/linked review.
+
+Exact combined ROM SHA256
+`d43150a05293dabaecc2599922bc8cd8a6ee7453f0ff0a6577aaa84457eb90d7`;
+package `/Agon/mystuff/agon-extender/agents/net004/uart1-rx-r01/provisional-u1-emos-r03.zip`,
+1471351 bytes, SHA256
+`2010bb83f633077e92038d4cb1ca48083dbbbf5bf954373134e9accdd738901a`.
+The owner is preparing one finite four-session/176-record isolation runner,
+with no live graphics/SD overlap. It has not been declared READY or executed.
+Qualification/custody remains with Extender and MechAgon's dependency ordering;
+no duplicated UART fixture, target access or approval gate is introduced.
