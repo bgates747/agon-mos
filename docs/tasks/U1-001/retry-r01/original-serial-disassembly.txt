@@ -1,0 +1,259 @@
+
+build/goal001-uart0-retry/pair-r01/original/obj/serial.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <UART0_wait_CTS>:
+   0:	ed 38 c6          	in0 a,(0xc6)
+   3:	cb 67             	bit 4,a
+   5:	28 f9             	jr z,0x0100
+   7:	c9                	ret
+
+00000008 <UART1_wait_CTS>:
+   8:	ed 38 9e          	in0 a,(0x9e)
+   b:	ed 64 08          	tst a,0x08
+   e:	20 f8             	jr nz,0x0108
+  10:	c9                	ret
+
+00000011 <UART0_serial_TX>:
+  11:	c5                	push bc
+  12:	f5                	push af
+  13:	01 00 40 00       	ld bc,0x4000
+
+00000017 <UART0_serial_TX1>:
+  17:	ed 38 c5          	in0 a,(0xc5)
+  1a:	e6 20             	and a,0x20
+  1c:	20 09             	jr nz,0x0027
+  1e:	0b                	dec bc
+  1f:	78                	ld a,b
+  20:	b1                	or a,c
+  21:	20 f4             	jr nz,0x0117
+  23:	f1                	pop af
+  24:	c1                	pop bc
+  25:	b7                	or a,a
+  26:	c9                	ret
+
+00000027 <UART0_serial_TX2>:
+  27:	f1                	pop af
+  28:	ed 39 c0          	out0 (0xc0),a
+  2b:	c1                	pop bc
+  2c:	37                	scf
+  2d:	c9                	ret
+
+0000002e <UART1_serial_TX>:
+  2e:	c5                	push bc
+  2f:	f5                	push af
+  30:	01 00 40 00       	ld bc,0x4000
+
+00000034 <UART1_serial_TX1>:
+  34:	ed 38 d5          	in0 a,(0xd5)
+  37:	e6 20             	and a,0x20
+  39:	20 09             	jr nz,0x0044
+  3b:	0b                	dec bc
+  3c:	78                	ld a,b
+  3d:	b1                	or a,c
+  3e:	20 f4             	jr nz,0x0134
+  40:	f1                	pop af
+  41:	c1                	pop bc
+  42:	b7                	or a,a
+  43:	c9                	ret
+
+00000044 <UART1_serial_TX2>:
+  44:	f1                	pop af
+  45:	ed 39 d0          	out0 (0xd0),a
+  48:	c1                	pop bc
+  49:	37                	scf
+  4a:	c9                	ret
+
+0000004b <UART0_serial_RX>:
+  4b:	ed 38 c5          	in0 a,(0xc5)
+  4e:	e6 01             	and a,0x01
+  50:	c8                	ret z
+  51:	ed 38 c0          	in0 a,(0xc0)
+  54:	37                	scf
+  55:	c9                	ret
+
+00000056 <UART1_serial_RX>:
+  56:	ed 38 d5          	in0 a,(0xd5)
+  59:	e6 01             	and a,0x01
+  5b:	c8                	ret z
+  5c:	ed 38 d0          	in0 a,(0xd0)
+  5f:	37                	scf
+  60:	c9                	ret
+
+00000061 <UART0_serial_GETCH>:
+  61:	f5                	push af
+  62:	3a 00 00 00       	ld a,(0x0000)
+			63: r_imm24	_serialFlags
+  66:	ed 64 01          	tst a,0x01
+  69:	28 4c             	jr z,0x00b7
+  6b:	f1                	pop af
+  6c:	cd 4b 00 00       	call 0x004b
+			6d: r_imm24	.text+0x4b
+  70:	30 fa             	jr nc,0x016c
+  72:	c9                	ret
+
+00000073 <UART1_serial_GETCH>:
+  73:	f5                	push af
+  74:	3a 00 00 00       	ld a,(0x0000)
+			75: r_imm24	_serialFlags
+  78:	ed 64 10          	tst a,0x10
+  7b:	28 3a             	jr z,0x00b7
+  7d:	f1                	pop af
+  7e:	cd 56 00 00       	call 0x0056
+			7f: r_imm24	.text+0x56
+  82:	30 fa             	jr nc,0x017e
+  84:	c9                	ret
+
+00000085 <UART0_serial_PUTCH>:
+  85:	f5                	push af
+  86:	3a 00 00 00       	ld a,(0x0000)
+			87: r_imm24	_serialFlags
+  8a:	ed 64 01          	tst a,0x01
+  8d:	28 28             	jr z,0x00b7
+  8f:	ed 64 02          	tst a,0x02
+  92:	c4 00 00 00       	call nz,0x0000
+			93: r_imm24	.text
+  96:	f1                	pop af
+  97:	cd 11 00 00       	call 0x0011
+			98: r_imm24	.text+0x11
+  9b:	30 fa             	jr nc,0x0197
+  9d:	c9                	ret
+
+0000009e <UART1_serial_PUTCH>:
+  9e:	f5                	push af
+  9f:	3a 00 00 00       	ld a,(0x0000)
+			a0: r_imm24	_serialFlags
+  a3:	ed 64 10          	tst a,0x10
+  a6:	28 0f             	jr z,0x00b7
+  a8:	ed 64 20          	tst a,0x20
+  ab:	c4 08 00 00       	call nz,0x0008
+			ac: r_imm24	.text+0x8
+  af:	f1                	pop af
+  b0:	cd 2e 00 00       	call 0x002e
+			b1: r_imm24	.text+0x2e
+  b4:	30 fa             	jr nc,0x01b0
+  b6:	c9                	ret
+
+000000b7 <UART_serial_NE>:
+  b7:	f1                	pop af
+  b8:	b7                	or a,a
+  b9:	c9                	ret
+
+000000ba <_putch>:
+  ba:	fd e5             	push iy
+  bc:	fd 21 00 00 00    	ld iy,0x0000
+  c1:	fd 39             	add iy,sp
+  c3:	fd 7e 06          	ld a,(iy+6)
+  c6:	21 00 00 00       	ld hl,0x0000
+  ca:	6f                	ld l,a
+  cb:	cd 85 00 00       	call 0x0085
+			cc: r_imm24	.text+0x85
+  cf:	fd f9             	ld sp,iy
+  d1:	fd e1             	pop iy
+  d3:	c9                	ret
+
+000000d4 <_getch>:
+  d4:	fd e5             	push iy
+  d6:	fd 21 00 00 00    	ld iy,0x0000
+  db:	fd 39             	add iy,sp
+  dd:	cd 61 00 00       	call 0x0061
+			de: r_imm24	.text+0x61
+  e1:	21 00 00 00       	ld hl,0x0000
+  e5:	6f                	ld l,a
+  e6:	fd f9             	ld sp,iy
+  e8:	fd e1             	pop iy
+  ea:	c9                	ret
+
+000000eb <uart0_async_send>:
+  eb:	22 00 00 00       	ld (0x0000),hl
+			ec: r_imm24	.bss
+  ef:	ed 43 03 00 00    	ld (0x0003),bc
+			f1: r_imm24	.bss+0x3
+  f4:	ed 6e             	ld a,mb
+  f6:	b7                	or a,a
+  f7:	20 12             	jr nz,0x010b
+  f9:	21 06 00 00       	ld hl,0x0006
+			fa: r_imm24	.bss+0x6
+  fd:	3e cd             	ld a,0xcd
+  ff:	77                	ld (hl),a
+ 100:	23                	inc hl
+ 101:	ed 1f             	ld (hl),de
+ 103:	23                	inc hl
+ 104:	23                	inc hl
+ 105:	23                	inc hl
+ 106:	3e c9             	ld a,0xc9
+ 108:	77                	ld (hl),a
+ 109:	18 13             	jr 0x011e
+
+0000010b <.setup_z80_uart0_callback>:
+ 10b:	21 06 00 00       	ld hl,0x0006
+			10c: r_imm24	.bss+0x6
+ 10f:	3e 40             	ld a,0x40
+ 111:	77                	ld (hl),a
+ 112:	23                	inc hl
+ 113:	3e cd             	ld a,0xcd
+ 115:	77                	ld (hl),a
+ 116:	23                	inc hl
+ 117:	73                	ld (hl),e
+ 118:	23                	inc hl
+ 119:	72                	ld (hl),d
+ 11a:	23                	inc hl
+ 11b:	3e c9             	ld a,0xc9
+ 11d:	77                	ld (hl),a
+ 11e:	ed 38 c1          	in0 a,(0xc1)
+ 121:	f6 02             	or a,0x02
+ 123:	ed 39 c1          	out0 (0xc1),a
+ 126:	c9                	ret
+
+00000127 <fill_uart0_tx_fifo>:
+ 127:	c5                	push bc
+ 128:	d5                	push de
+ 129:	e5                	push hl
+ 12a:	01 10 00 00       	ld bc,0x0010
+ 12e:	2a 03 00 00       	ld hl,(0x0003)
+			12f: r_imm24	.bss+0x3
+ 132:	b7                	or a,a
+ 133:	ed 42             	sbc hl,bc
+ 135:	28 24             	jr z,0x015b
+ 137:	38 22             	jr c,0x015b
+ 139:	22 03 00 00       	ld (0x0003),hl
+			13a: r_imm24	.bss+0x3
+ 13d:	2a 00 00 00       	ld hl,(0x0000)
+			13e: r_imm24	.bss
+ 141:	11 c0 00 00       	ld de,0x00c0
+ 145:	ed 38 a2          	in0 a,(0xa2)
+ 148:	ed 64 08          	tst a,0x08
+ 14b:	20 f8             	jr nz,0x0245
+ 14d:	ed c3             	otirx
+ 14f:	22 00 00 00       	ld (0x0000),hl
+			150: r_imm24	.bss
+ 153:	e1                	pop hl
+ 154:	d1                	pop de
+ 155:	c1                	pop bc
+ 156:	f1                	pop af
+ 157:	fb                	ei
+ 158:	5b ed 4d          	reti.lil
+
+0000015b <.last_fill>:
+ 15b:	ed 4b 03 00 00    	ld bc,(0x0003)
+			15d: r_imm24	.bss+0x3
+ 160:	2a 00 00 00       	ld hl,(0x0000)
+			161: r_imm24	.bss
+ 164:	11 c0 00 00       	ld de,0x00c0
+ 168:	ed 38 a2          	in0 a,(0xa2)
+ 16b:	ed 64 08          	tst a,0x08
+ 16e:	20 f8             	jr nz,0x0268
+ 170:	ed c3             	otirx
+ 172:	ed 38 c1          	in0 a,(0xc1)
+ 175:	e6 fd             	and a,0xfd
+ 177:	ed 39 c1          	out0 (0xc1),a
+ 17a:	cd 06 00 00       	call 0x0006
+			17b: r_imm24	.bss+0x6
+ 17e:	e1                	pop hl
+ 17f:	d1                	pop de
+ 180:	c1                	pop bc
+ 181:	f1                	pop af
+ 182:	fb                	ei
+ 183:	5b ed 4d          	reti.lil

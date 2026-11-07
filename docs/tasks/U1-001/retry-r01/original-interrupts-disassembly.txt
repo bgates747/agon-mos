@@ -1,0 +1,269 @@
+
+build/goal001-uart0-retry/pair-r01/original/obj/interrupts.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_vblank_handler>:
+   0:	f3                	di
+   1:	f5                	push af
+   2:	ed 38 9a          	in0 a,(0x9a)
+   5:	f6 02             	or a,0x02
+   7:	ed 39 9a          	out0 (0x9a),a
+   a:	c5                	push bc
+   b:	d5                	push de
+   c:	e5                	push hl
+   d:	2a 00 00 00       	ld hl,(0x0000)
+			e: r_imm24	_clock
+  11:	01 02 00 00       	ld bc,0x0002
+  15:	09                	add hl,bc
+  16:	22 00 00 00       	ld (0x0000),hl
+			17: r_imm24	_clock
+  1a:	3a 03 00 00       	ld a,(0x0003)
+			1b: r_imm24	_clock+0x3
+  1e:	ce 00             	adc a,0x00
+  20:	32 03 00 00       	ld (0x0003),a
+			21: r_imm24	_clock+0x3
+  24:	e1                	pop hl
+  25:	d1                	pop de
+  26:	c1                	pop bc
+  27:	f1                	pop af
+  28:	fb                	ei
+  29:	5b ed 4d          	reti.lil
+
+0000002c <_uart0_handler>:
+  2c:	f3                	di
+  2d:	f5                	push af
+  2e:	ed 38 c2          	in0 a,(0xc2)
+  31:	e6 0e             	and a,0x0e
+  33:	fe 02             	cp a,0x02
+  35:	ca 00 00 00       	jp z,0x0000
+			36: r_imm24	fill_uart0_tx_fifo
+  39:	c5                	push bc
+  3a:	d5                	push de
+  3b:	e5                	push hl
+  3c:	cd 00 00 00       	call 0x0000
+			3d: r_imm24	UART0_serial_RX
+  40:	4f                	ld c,a
+  41:	21 00 00 00       	ld hl,0x0000
+			42: r_imm24	_vdp_protocol_data
+  45:	cd 00 00 00       	call 0x0000
+			46: r_imm24	vdp_protocol
+  49:	e1                	pop hl
+  4a:	d1                	pop de
+  4b:	c1                	pop bc
+  4c:	f1                	pop af
+  4d:	fb                	ei
+  4e:	5b ed 4d          	reti.lil
+
+00000051 <_i2c_handler>:
+  51:	f3                	di
+  52:	f5                	push af
+  53:	e5                	push hl
+  54:	d5                	push de
+  55:	ed 38 cc          	in0 a,(0xcc)
+  58:	e6 f8             	and a,0xf8
+  5a:	1f                	rra
+  5b:	1f                	rra
+  5c:	1f                	rra
+  5d:	cd a1 00 00       	call 0x00a1
+			5e: r_imm24	.text+0xa1
+  61:	ae                	xor a,(hl)
+			61: r_imm16	.text+0xae
+  62:	00                	nop
+  63:	c6 00             	add a,0x00
+			63: r_imm16	.text+0xc6
+  65:	5c                	ld e,h
+			65: r_imm16	.text+0x15c
+  66:	01 d9 00 01       	ld bc,0x100d9
+			67: r_imm16	.text+0xd9
+			69: r_imm16	.text+0x101
+  6a:	01 d9 00 0b       	ld bc,0xb00d9
+			6b: r_imm16	.text+0xd9
+			6d: r_imm16	.text+0x10b
+  6e:	01 15 01 2f       	ld bc,0x2f0115
+			6f: r_imm16	.text+0x115
+			71: r_imm16	.text+0x12f
+  72:	01 01 01 1f       	ld bc,0x1f0101
+			73: r_imm16	.text+0x101
+			75: r_imm16	.text+0x11f
+  76:	01 50 01 5c       	ld bc,0x5c0150
+			77: r_imm16	.text+0x150
+			79: r_imm16	.text+0x15c
+  7a:	01 5c 01 5c       	ld bc,0x5c015c
+			7b: r_imm16	.text+0x15c
+			7d: r_imm16	.text+0x15c
+  7e:	01 5c 01 5c       	ld bc,0x5c015c
+			7f: r_imm16	.text+0x15c
+			81: r_imm16	.text+0x15c
+  82:	01 5c 01 5c       	ld bc,0x5c015c
+			83: r_imm16	.text+0x15c
+			85: r_imm16	.text+0x15c
+  86:	01 5c 01 5c       	ld bc,0x5c015c
+			87: r_imm16	.text+0x15c
+			89: r_imm16	.text+0x15c
+  8a:	01 5c 01 5c       	ld bc,0x5c015c
+			8b: r_imm16	.text+0x15c
+			8d: r_imm16	.text+0x15c
+  8e:	01 5c 01 5c       	ld bc,0x5c015c
+			8f: r_imm16	.text+0x15c
+			91: r_imm16	.text+0x15c
+  92:	01 5c 01 5c       	ld bc,0x5c015c
+			93: r_imm16	.text+0x15c
+			95: r_imm16	.text+0x15c
+  96:	01 5c 01 5c       	ld bc,0x5c015c
+			97: r_imm16	.text+0x15c
+			99: r_imm16	.text+0x15c
+  9a:	01 5c 01 5c       	ld bc,0x5c015c
+			9b: r_imm16	.text+0x15c
+			9d: r_imm16	.text+0x15c
+  9e:	Address 0x9f is out of bounds.
+
+
+000000a1 <i2c_handle_sr_vector>:
+  a1:	e3                	ex (sp),hl
+  a2:	87                	add a,a
+  a3:	85                	add a,l
+  a4:	6f                	ld l,a
+  a5:	8c                	adc a,h
+  a6:	95                	sub a,l
+  a7:	67                	ld h,a
+  a8:	7e                	ld a,(hl)
+  a9:	23                	inc hl
+  aa:	66                	ld h,(hl)
+  ab:	6f                	ld l,a
+  ac:	e3                	ex (sp),hl
+  ad:	c9                	ret
+
+000000ae <i2c_case_buserror>:
+  ae:	3e 08             	ld a,0x08
+  b0:	32 00 00 00       	ld (0x0000),a
+			b1: r_imm24	_i2c_error
+  b4:	af                	xor a,a
+  b5:	ed 39 cd          	out0 (0xcd),a
+  b8:	21 00 00 00       	ld hl,0x0000
+			b9: r_imm24	_i2c_role
+  bc:	3e 00             	ld a,0x00
+  be:	77                	ld (hl),a
+  bf:	d1                	pop de
+  c0:	e1                	pop hl
+  c1:	f1                	pop af
+  c2:	fb                	ei
+  c3:	5b ed 4d          	reti.lil
+
+000000c6 <i2c_case_master_repstart>:
+  c6:	3a 00 00 00       	ld a,(0x0000)
+			c7: r_imm24	_i2c_slave_rw
+  ca:	ed 39 ca          	out0 (0xca),a
+  cd:	3e c4             	ld a,0xc4
+  cf:	ed 39 cb          	out0 (0xcb),a
+  d2:	d1                	pop de
+  d3:	e1                	pop hl
+  d4:	f1                	pop af
+  d5:	fb                	ei
+  d6:	5b ed 4d          	reti.lil
+
+000000d9 <i2c_case_aw_acked>:
+  d9:	3a 00 00 00       	ld a,(0x0000)
+			da: r_imm24	_i2c_msg_size
+  dd:	b7                	or a,a
+  de:	28 7c             	jr z,0x015c
+  e0:	3d                	dec a
+  e1:	32 00 00 00       	ld (0x0000),a
+			e2: r_imm24	_i2c_msg_size
+  e5:	21 00 00 00       	ld hl,0x0000
+			e6: r_imm24	_i2c_msg_ptr
+  e9:	e5                	push hl
+  ea:	d1                	pop de
+  eb:	ed 27             	ld hl,(hl)
+  ed:	7e                	ld a,(hl)
+  ee:	ed 39 ca          	out0 (0xca),a
+  f1:	3e c4             	ld a,0xc4
+  f3:	ed 39 cb          	out0 (0xcb),a
+  f6:	23                	inc hl
+  f7:	eb                	ex de,hl
+  f8:	ed 1f             	ld (hl),de
+  fa:	d1                	pop de
+  fb:	e1                	pop hl
+  fc:	f1                	pop af
+  fd:	fb                	ei
+  fe:	5b ed 4d          	reti.lil
+
+00000101 <i2c_case_aw_nacked>:
+ 101:	3e 01             	ld a,0x01
+ 103:	32 00 00 00       	ld (0x0000),a
+			104: r_imm24	_i2c_error
+ 107:	c3 5c 01 00       	jp 0x015c
+			108: r_imm24	.text+0x15c
+
+0000010b <i2c_case_db_nacked>:
+ 10b:	3e 02             	ld a,0x02
+ 10d:	32 00 00 00       	ld (0x0000),a
+			10e: r_imm24	_i2c_error
+ 111:	c3 5c 01 00       	jp 0x015c
+			112: r_imm24	.text+0x15c
+
+00000115 <i2c_case_arblost>:
+ 115:	3e 04             	ld a,0x04
+ 117:	32 00 00 00       	ld (0x0000),a
+			118: r_imm24	_i2c_error
+ 11b:	c3 5c 01 00       	jp 0x015c
+			11c: r_imm24	.text+0x15c
+
+0000011f <i2c_case_mr_dbr_ack>:
+ 11f:	21 00 00 00       	ld hl,0x0000
+			120: r_imm24	_i2c_msg_ptr
+ 123:	e5                	push hl
+ 124:	d1                	pop de
+ 125:	ed 27             	ld hl,(hl)
+ 127:	ed 38 ca          	in0 a,(0xca)
+ 12a:	77                	ld (hl),a
+ 12b:	23                	inc hl
+ 12c:	eb                	ex de,hl
+ 12d:	ed 1f             	ld (hl),de
+
+0000012f <i2c_case_mr_ar_ack>:
+ 12f:	3a 00 00 00       	ld a,(0x0000)
+			130: r_imm24	_i2c_msg_size
+ 133:	fe 01             	cp a,0x01
+ 135:	28 04             	jr z,0x013b
+ 137:	3e c4             	ld a,0xc4
+ 139:	18 02             	jr 0x013d
+ 13b:	3e c0             	ld a,0xc0
+ 13d:	ed 39 cb          	out0 (0xcb),a
+ 140:	3a 00 00 00       	ld a,(0x0000)
+			141: r_imm24	_i2c_msg_size
+ 144:	3d                	dec a
+ 145:	32 00 00 00       	ld (0x0000),a
+			146: r_imm24	_i2c_msg_size
+ 149:	d1                	pop de
+ 14a:	e1                	pop hl
+ 14b:	f1                	pop af
+ 14c:	fb                	ei
+ 14d:	5b ed 4d          	reti.lil
+
+00000150 <i2c_case_mr_dbr_nack>:
+ 150:	21 00 00 00       	ld hl,0x0000
+			151: r_imm24	_i2c_msg_ptr
+ 154:	ed 27             	ld hl,(hl)
+ 156:	ed 38 ca          	in0 a,(0xca)
+ 159:	77                	ld (hl),a
+ 15a:	18 00             	jr 0x015c
+
+0000015c <i2c_case_invalid>:
+ 15c:	3e 50             	ld a,0x50
+ 15e:	ed 39 cb          	out0 (0xcb),a
+ 161:	ed 38 cb          	in0 a,(0xcb)
+ 164:	e6 10             	and a,0x10
+ 166:	20 f9             	jr nz,0x0261
+ 168:	af                	xor a,a
+ 169:	ed 39 cb          	out0 (0xcb),a
+ 16c:	21 00 00 00       	ld hl,0x0000
+			16d: r_imm24	_i2c_role
+ 170:	3e 00             	ld a,0x00
+ 172:	77                	ld (hl),a
+ 173:	d1                	pop de
+ 174:	e1                	pop hl
+ 175:	f1                	pop af
+ 176:	fb                	ei
+ 177:	5b ed 4d          	reti.lil

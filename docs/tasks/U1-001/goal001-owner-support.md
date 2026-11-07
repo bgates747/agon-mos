@@ -56,3 +56,26 @@ trial76 failed with reported RX OE after source release. Working ROMa25f was
 fully restored and the bench released; the error's timing cause is unknown.
 Consumer92f083f scheduling-only drain cache passed offline checks and is not a
 demonstrated OE correction. No generic register mismatch is identified.
+
+## Offline tranche result
+
+Task/verified source/timing contract published a6c47b4. MechAgon received the
+atomic all-IRQ/epoch/nesting/quantization contract and existing PRT donors;
+its profiling helper retains implementation ownership. Extender received the
+concrete pending-retry/IER/TEMT ownership caveat before integration.
+
+The isolated bounded-CTS derivative on `codex/rfc25-bounded-cts` has paired native
+ROM builds and source/linked/startup structural proof, +52 code/+1 BSS byte.
+Eight UART structural negative controls (original plus seven broken variants)
+and six startup mutations on each image are rejected. No ISR/guest/hardware
+execution is claimed. Compiler318 released with all children joined; actual
+Extender successor319 notified immediately. Source, patch, full private paired
+sources/binaries and evidence are under `experiments/uart0-rfc-retry` and
+`build/goal001-uart0-retry`; exact package receipt is `retry-r01/package.json`.
+
+This is a generic source-level correction for the unbounded WAIT_CTS path,
+not a demonstrated trial76 cure. EMOS integration must add pending-retry to its
+live-ownership gate and abort/reset teardown. Extender owns that splice and
+its linked size/qualification. Current installed/working release remains
+unchanged. U1-G01 remains open for concrete owner feedback and coordinated
+qualification, not a claim that async reliability or CPU-headroom goals are done.

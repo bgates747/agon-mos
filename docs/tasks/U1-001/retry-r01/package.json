@@ -1,0 +1,10 @@
+{
+  "path": "/Agon/mystuff/agon-mos/build/goal001-uart0-retry/bounded-cts-r01.zip",
+  "bytes": 1792287,
+  "sha256": "5877625525ea0c66d82d4da8218b4d36bd652ecffd83af9186efbf39a9059f1d",
+  "scope": "private source/binary/patch/structural evidence; no guest or hardware execution",
+  "compiler": 318,
+  "delta_text": 52,
+  "delta_BSS": 1,
+  "derivative_ROM_sha256": "6f6aad86f547cc3848d94b11cae8e972648c33d6918cf51fded26ec684ab48b7"
+}

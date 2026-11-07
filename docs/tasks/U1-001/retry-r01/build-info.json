@@ -1,0 +1,129 @@
+{
+  "donor": "97311c437093e416342a6c836cf9914f2ced027d",
+  "status": "private paired native build/structural checks; no guest/physical execution",
+  "branch": "codex/rfc25-bounded-cts",
+  "delta_text": 52,
+  "delta_BSS": 1,
+  "artifacts": {
+    "original/bin/mos.bin": {
+      "bytes": 100894,
+      "sha256": "b188b700727b8d88249042b4a680472938a41c7093f9517d79b772a053dcd994"
+    },
+    "original/bin/mos.map": {
+      "bytes": 74482,
+      "sha256": "1a76eafe66eea009f20d7a0cf7d3b805c99ab9de2c6f36766ab96c30a985da3b"
+    },
+    "original/obj/serial.o": {
+      "bytes": 7148,
+      "sha256": "a1f062b3b856fbbc872fa7086da4649ab1c16bb1aaaa78365703702747ea0327"
+    },
+    "original/obj/interrupts.o": {
+      "bytes": 7200,
+      "sha256": "7d43704b9391c11d3136a32935e0eff8b334f6509441011fdb907da406dcb06e"
+    },
+    "candidate/bin/mos.bin": {
+      "bytes": 100946,
+      "sha256": "6f6aad86f547cc3848d94b11cae8e972648c33d6918cf51fded26ec684ab48b7"
+    },
+    "candidate/bin/mos.map": {
+      "bytes": 74607,
+      "sha256": "8204ddd5d8b77e58447f77723f8a608d3f82f834e21fc1b3ad97285b340d5376"
+    },
+    "candidate/obj/serial.o": {
+      "bytes": 7360,
+      "sha256": "80aea06112a8c0cb9c4c355dcee013cf5434f1ef4d97d82b129c3ce1e67585a9"
+    },
+    "candidate/obj/interrupts.o": {
+      "bytes": 7248,
+      "sha256": "8f44a13336788a04ededaf635d0e3128dfb1fa232beb9340cd69b34fc001cb12"
+    },
+    "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/lib/libagon.a": {
+      "bytes": 1322790,
+      "sha256": "5de7878342ab6780593fbf8d54d8005960e2471bd0e34c0e307fbcfe42fef28a"
+    },
+    "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-as": {
+      "bytes": 1255816,
+      "sha256": "1ee23e5551998d5fe0d2e7dcdf0fa6916342fc2d2c973b467e174ba679509097"
+    },
+    "/Agon/mystuff/agon-extender/agents/pingo-callback/tools/agondev/bin/ez80-none-elf-ld": {
+      "bytes": 1451224,
+      "sha256": "8941596adea72c999d20c94938cc61c969731367367110a1c1f6cb9826ba0e23"
+    }
+  },
+  "compiler_release": {
+    "owner": "agon-mos",
+    "task": "GOAL001-UART0-RETRY",
+    "purpose": "paired Eirene RC3 original/bounded-CTS native assembly/link and finite structural negative controls; no guest or hardware",
+    "plan": "/Agon/mystuff/agon-mos/docs/tasks/U1-001/goal001-rfc25-retry-plan.md",
+    "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "workload": "build",
+    "resources": "serial native AgonDev compiler; at least512MiB available; thermal stop80C",
+    "duration": "expected under2min;180s perchild,600s total",
+    "cleanup": "stop and join owned child groups, retain exact source/object/size/check logs, release immediately and notify successor",
+    "request": "016d4c9af891",
+    "requested": "2026-11-07T09:29:05.731468+00:00",
+    "policy": {
+      "revision": "author-2026-11-05-oryx-compiler-fallback",
+      "instructions": "/Agon/mystuff/agon-dev-env/cross-agent/pi5-workloads/README.md",
+      "builds": "Automatically granted FIFO, one compile job at a time; no manager approval or 10% CPU gate.",
+      "baseload": "Robocode/Tank Royale server, including active matches, needs no reservation or routine start/end/informational notification to Pi5 manager and does not occupy or block the shared slot or compilation. Separate substantial workloads and physical bench/test permissions remain unchanged; paused work is not resumed.",
+      "routing": "Reserve Oryx for emulator runs and Pi5 for compiler work. When the required build is not possible on Pi5, compiler work may use the existing Oryx self-service FIFO without another routing approval; record the concrete architecture/toolchain limitation, not merely queue congestion. Extender schedules live-serial hardware qualification/benchmark/debug bench access; Console8/manual or semi-automated runs remain at Author discretion.",
+      "heavy": "Pi emulator exceptions need specific new Author approval; CFD/solvers and other heavy Pi work retain explicit Author authorization, manager admission, and start/end chat notices to pi5-manager. Native services are separately classified.",
+      "build_cleanup": "After owned children stop, release using --work-stopped --cleanup-complete; no manager handback or host-wide quiet test.",
+      "authorization_limit": "A supplied record documents authorization; this same-account helper cannot authenticate human authorship."
+    },
+    "author_authorization": null,
+    "manager_start_end_notice_required": false,
+    "lease": "874c54d60240494b8657806c8d2da265",
+    "generation": 318,
+    "granted": "2026-11-07T09:29:05.731468+00:00",
+    "boot_id": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+    "phase": "consumer",
+    "admission": "automatic-serial-build",
+    "entry_observation": null,
+    "released": "2026-11-07T09:31:35.460810+00:00",
+    "release_observation": {
+      "observer": "agon-mos",
+      "lease": "874c54d60240494b8657806c8d2da265",
+      "owned_work_stopped": true,
+      "cleanup_complete": true,
+      "disposition": "Owner confirms all owned build children stopped and cleanup complete; no global quiet claim"
+    },
+    "next_request": null,
+    "automatic_build_grant": {
+      "owner": "linux-extender",
+      "task": "NET004-U1RX-R01",
+      "purpose": "Actual EMOS scoped RX STOP hold and post-RX revoke regressions, mandatory native identified-ROM validators; no emulator or hardware",
+      "plan": "/Agon/mystuff/agon-extender/docs/tasks/NET-004/EMOS-ASYNC-RX-R01.md",
+      "notify_thread": "01a13443-f921-72d1-9d3e-d05652c7a750",
+      "notify_host": "remote-ssh-discovered:raspberrypi",
+      "workload": "build",
+      "resources": "serial compiler, bounded sanitizer checks, retained AgonDev toolchain, below 1GiB expected",
+      "duration": "expected under 3min, absolute 15min tranche watchdog",
+      "cleanup": "join/stop all owned children, preserve logs/failed negative control and release actual successor",
+      "request": "ff143c26364a",
+      "requested": "2026-11-07T09:29:24.018304+00:00",
+      "policy": {
+        "revision": "author-2026-11-05-oryx-compiler-fallback",
+        "instructions": "/Agon/mystuff/agon-dev-env/cross-agent/pi5-workloads/README.md",
+        "builds": "Automatically granted FIFO, one compile job at a time; no manager approval or 10% CPU gate.",
+        "baseload": "Robocode/Tank Royale server, including active matches, needs no reservation or routine start/end/informational notification to Pi5 manager and does not occupy or block the shared slot or compilation. Separate substantial workloads and physical bench/test permissions remain unchanged; paused work is not resumed.",
+        "routing": "Reserve Oryx for emulator runs and Pi5 for compiler work. When the required build is not possible on Pi5, compiler work may use the existing Oryx self-service FIFO without another routing approval; record the concrete architecture/toolchain limitation, not merely queue congestion. Extender schedules live-serial hardware qualification/benchmark/debug bench access; Console8/manual or semi-automated runs remain at Author discretion.",
+        "heavy": "Pi emulator exceptions need specific new Author approval; CFD/solvers and other heavy Pi work retain explicit Author authorization, manager admission, and start/end chat notices to pi5-manager. Native services are separately classified.",
+        "build_cleanup": "After owned children stop, release using --work-stopped --cleanup-complete; no manager handback or host-wide quiet test.",
+        "authorization_limit": "A supplied record documents authorization; this same-account helper cannot authenticate human authorship."
+      },
+      "author_authorization": null,
+      "manager_start_end_notice_required": false,
+      "lease": "6a78f6c66a8d45c3b25f24043efa4d9e",
+      "generation": 319,
+      "granted": "2026-11-07T09:31:35.460810+00:00",
+      "boot_id": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+      "phase": "consumer",
+      "admission": "automatic-serial-build",
+      "entry_observation": null
+    }
+  },
+  "published_RC3_unchanged": true
+}

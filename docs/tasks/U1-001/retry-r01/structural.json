@@ -1,0 +1,152 @@
+{
+  "source_contract": "PASS",
+  "IER_cases": 256,
+  "transfer_paths": "admitted donor source unchanged",
+  "execution": "none; exact source/control-shape and bit algebra only",
+  "negative_controls": [
+    {
+      "name": "original-spinning-CTS",
+      "rejected": true,
+      "reason": "Unbounded async CTS macro remains"
+    },
+    {
+      "name": "mutate-count-before-admission",
+      "rejected": true,
+      "reason": "CTS admission must precede all mutation/saves"
+    },
+    {
+      "name": "disable-RX-in-defer",
+      "rejected": true,
+      "reason": "Deferred path changed state, return frame or IER mask"
+    },
+    {
+      "name": "missing-rearm",
+      "rejected": true,
+      "reason": "Retry must be bounded/inactive without I/O, preserve IER and only rearm"
+    },
+    {
+      "name": "copy-in-retry",
+      "rejected": true,
+      "reason": "Retry must be bounded/inactive without I/O, preserve IER and only rearm"
+    },
+    {
+      "name": "keep-pending-at-callback",
+      "rejected": true,
+      "reason": "Final callback must see cleared retry"
+    },
+    {
+      "name": "inactive-retry-reads-port",
+      "rejected": true,
+      "reason": "Retry must be bounded/inactive without I/O, preserve IER and only rearm"
+    },
+    {
+      "name": "wrong-defer-frame",
+      "rejected": true,
+      "reason": "Deferred path changed state, return frame or IER mask"
+    }
+  ],
+  "artifacts": {
+    "original": {
+      "ROM_bytes": 100894,
+      "SHA256": "b188b700727b8d88249042b4a680472938a41c7093f9517d79b772a053dcd994",
+      "CRC32": "5658179C",
+      "startup": {
+        "table": 770953,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770833,
+        "BSS_bytes": 2106,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "startup_negative_controls": [
+        {
+          "name": "missing-call",
+          "rejected": true,
+          "reason": "Expected exactly one default initialization"
+        },
+        {
+          "name": "early-call",
+          "rejected": true,
+          "reason": "Defaults must follow final BSS clear"
+        },
+        {
+          "name": "duplicate-call",
+          "rejected": true,
+          "reason": "Expected exactly one default initialization"
+        },
+        {
+          "name": "malformed-clear",
+          "rejected": true,
+          "reason": "Expected exactly one final BSS clear"
+        },
+        {
+          "name": "short-default-fill",
+          "rejected": true,
+          "reason": "Expected all48 default JP slots to be seeded/filled"
+        },
+        {
+          "name": "table-overruns-BSS",
+          "rejected": true,
+          "reason": "Table/BSS range"
+        }
+      ]
+    },
+    "candidate": {
+      "ROM_bytes": 100946,
+      "SHA256": "6f6aad86f547cc3848d94b11cae8e972648c33d6918cf51fded26ec684ab48b7",
+      "CRC32": "4CC4D184",
+      "startup": {
+        "table": 770953,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770833,
+        "BSS_bytes": 2107,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "startup_negative_controls": [
+        {
+          "name": "missing-call",
+          "rejected": true,
+          "reason": "Expected exactly one default initialization"
+        },
+        {
+          "name": "early-call",
+          "rejected": true,
+          "reason": "Defaults must follow final BSS clear"
+        },
+        {
+          "name": "duplicate-call",
+          "rejected": true,
+          "reason": "Expected exactly one default initialization"
+        },
+        {
+          "name": "malformed-clear",
+          "rejected": true,
+          "reason": "Expected exactly one final BSS clear"
+        },
+        {
+          "name": "short-default-fill",
+          "rejected": true,
+          "reason": "Expected all48 default JP slots to be seeded/filled"
+        },
+        {
+          "name": "table-overruns-BSS",
+          "rejected": true,
+          "reason": "Table/BSS range"
+        }
+      ]
+    }
+  },
+  "linked_contract": "PASS",
+  "symbols": {
+    "retry": 7617,
+    "defer": 7598,
+    "pending": 771165
+  },
+  "size_output": "   text\t   data\t    bss\t    dec\t    hex\tfilename\n    390\t      0\t     11\t    401\t    191\tbuild/goal001-uart0-retry/pair-r01/original/obj/serial.o\n    378\t      0\t      0\t    378\t    17a\tbuild/goal001-uart0-retry/pair-r01/original/obj/interrupts.o\n    438\t      0\t     12\t    450\t    1c2\tbuild/goal001-uart0-retry/pair-r01/candidate/obj/serial.o\n    382\t      0\t      0\t    382\t    17e\tbuild/goal001-uart0-retry/pair-r01/candidate/obj/interrupts.o\n",
+  "ROM_delta": 52,
+  "BSS_delta": 1,
+  "limits": "Structural/source/linked/startup proof only. No ISR/CPU emulator, guest or physical execution."
+}
