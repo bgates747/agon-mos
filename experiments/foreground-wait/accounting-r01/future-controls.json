@@ -1,5 +1,5 @@
 {
-  "status": "Prepared controls only; none executed for this proposal",
+  "status": "Original prepared checklist; later compiler622 covers OFF/native structural controls, not runtime/stack/hardware proof. See docs/tasks/U1-001/wait-accounting-native-r02/result.json for exact executed coverage.",
   "required_positive_controls": [
     "Undefined and explicit-zero AW_CPU_ACCOUNTING each assemble/link to exact original checked leaf bytes and have no undefined recorder references",
     "Enabled native leaf links to exact pinned native A-event API with expected 24-byte leaf delta, no added state, inspected real call relocations and valid branch ranges (two ON-only JR-to-JP widenings)",

@@ -11,8 +11,9 @@ frozen fixture, reservation and blocked hardware dependency are unchanged.
 - [x] Prepare a separate default-OFF derivative and explicit proposed diff.
 - [x] Record native A-event placement, register/IFF contract, expected delta,
       unknown timing and prepared future qualification controls.
-- [ ] Native OFF byte equality and ON linked/listing qualification: NOT selected
-      by this source-only request. No checks, compilation or target run executed.
+- [x] Native OFF byte equality and ON linked/listing qualification completed
+      in the subsequently selected compiler622 tranche below. The original
+      source-only request did not select compilation; no target run occurred.
 
 ## Subsequent native selection
 
@@ -47,6 +48,40 @@ the selected first-failure instruction. Root received substantive mail
 `2026-11-08_02-12-48_agon-mos_goal001-wait-native-precompile-stop-two` and an
 immediate accepted steering notice. A corrected bounded tranche awaits root's
 selection; no further human bench action is needed for this host-only issue.
+
+### Corrected native622: PASS, released
+
+Root selected the corrected schema tranche in mail
+`2026-11-08_02-13-33_mechagon_goal001-wait-native-manifest-correction-three`,
+including routine harness/checker setup fixes without changing leaf semantics.
+Fresh requestc1ba19e6b2b6/compiler622 ran once and passed. Actual release was
+07:14:41UTC, all owned children joined, no next request. Original621 remains
+immutable; no source leaf/API change was needed.
+
+- Original/undefined/explicit-OFF leaf bytes match each other AND the retained
+  original checked native image exactly:163B.
+- Enabled leaf187B, actual delta24B,0 added data/BSS. The real linked owner
+  recorder/provider composition has3127B text/284B BSS; this is not the leaf's
+  own state size or a runnable firmware/app package.
+- The four real owner objects independently relink to byte-exact retained
+  qualified owner image before being used in the enabled composition. No
+  fake recorder or HALT implementation was linked.
+- Actual call relocations, both ON-only long refusal branches and final124B
+  JR displacement, marker6/7/86 placement, result/restore/refusal code shapes
+  and adjacent FB76 are checked. Real native foreground wrapper and recorder
+  all-register save/restore instructions are present. Existing C ABI probe links.
+- Eight broken enabled images are rejected (adjacency, work/halt event,
+  return IFF wrapper, AF save, result, register restore and refusal EI).
+  Reused original source/linked/abstract controls pass with their original
+  no-executed-ISA scope; no existing check was weakened.
+
+Full raw outputs/pins/logs/maps/objects/ELFs/listings:
+`build/u1-wait-accounting/native-r02`. Durable
+[result](wait-accounting-native-r02/result.json),
+[relocations](wait-accounting-native-r02/on-relocations.txt) and
+[release](wait-accounting-native-r02/release.json) retain the proof and limits.
+No runtime register/IFF/IRQ/HALT/timer behavior, physical latency/stack reserve,
+fitting firmware or app integration is qualified. Owner fit work remains separate.
 
 Source and patch: `experiments/foreground-wait/accounting-r01/`. Original checked
 `src/aw_wait.s`, header, old object/archive/evidence and frozen Mech588/617 are

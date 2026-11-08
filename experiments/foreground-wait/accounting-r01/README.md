@@ -1,5 +1,11 @@
 # Optional WAIT accounting — source only
 
+**Later qualification:** corrected native compiler622 passed the OFF equality
+and ON assembly/link/structural controls described in
+`docs/tasks/U1-001/wait-accounting-source-r01.md`. Actual leaf163B OFF/187B ON,
+delta24B; no runtime or physical qualification. The source-preparation history
+below remains descriptive of the original proposal, not the later test status.
+
 This isolated derivative proposes three calls into Extender's existing app-RAM
 MGCPU001 recorder. It does not replace the checked WAIT leaf or deliver a
 library. No compiler, test, model, emulator or hardware execution was performed

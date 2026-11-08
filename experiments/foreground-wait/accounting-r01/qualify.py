@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Finite native object/link inspection only; never executes the target ISA."""
-import argparse, hashlib, importlib.util, json, os, re, signal, subprocess, time
+import argparse, hashlib, importlib.util, json, os, re, signal, subprocess, time, traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -30,7 +30,10 @@ def inspect(raw, syms):
     assert bytes.fromhex('ed57e2')+syms['refused'].to_bytes(3,'little') in raw
     # Original MB and first NULL refusals must widen only in ON.
     assert bytes.fromhex('ed6eb7c2')+syms['refused'].to_bytes(3,'little') in raw
-    assert bytes.fromhex('ed5228') in raw  # final short branch retained
+    assert bytes.fromhex('ed52ca')+syms['refused'].to_bytes(3,'little') in raw
+    i=raw.index(bytes.fromhex('ed5228'))+2
+    assert base+i+2+int.from_bytes(raw[i+1:i+2],'little',signed=True)==syms['refused']
+    assert raw[syms['entry']-base:syms['entry']-base+16]==bytes.fromhex('dde5dd21000000dd39c5d5e547dd3706')
     begin=raw[syms['begin_pass']-base:syms['wait_pass']-base]
     assert begin[:1]==b'\xaf' and begin[-4:-2]==bytes.fromhex('3e01')
     assert b'\xcd' not in begin
@@ -80,7 +83,7 @@ def main():
         for pin in pins:
             src=Path(pin['path']);assert src.stat().st_size==pin['bytes'] and digest(src)==pin['sha256'],str(src)
         manifest= json.loads((OWNER/'manifest.json').read_text())
-        for pin in manifest['files']:
+        for pin in manifest['inputs']:
             if pin['path'].endswith('/qualification-r03/app.elf'):
                 assert digest(Path(pin['path']))==pin['sha256']
                 break
@@ -91,6 +94,10 @@ def main():
             dst.write_bytes(src.read_bytes());objects.append(dst)
             pins.append(dict(path=str(src),bytes=src.stat().st_size,sha256=digest(src)))
         save(out/'actual-inputs.json',pins)
+        run('owner-object-reproduction',[tool/'ez80-none-elf-ld','-Ttext=0x40000','--entry=_agon_cpu_entry',*objects,'-L'+str(TOOL/'lib'),'-lagon','-o',out/'owner-reproduced.elf'])
+        run('owner-reproduced-raw',[tool/'ez80-none-elf-objcopy','-O','binary',out/'owner-reproduced.elf',out/'owner-reproduced.bin'])
+        run('owner-retained-raw',[tool/'ez80-none-elf-objcopy','-O','binary',OWNER/'qualification-r03/app.elf',out/'owner-retained.bin'])
+        assert (out/'owner-reproduced.bin').read_bytes()==(out/'owner-retained.bin').read_bytes()
         for label,src,defs in [('original',baseline/'src/aw_wait.s',[]),('undefined',HERE/'aw_wait.s',[]),('off',HERE/'aw_wait.s',['--defsym','AW_CPU_ACCOUNTING=0']),('on',HERE/'aw_wait.s',['--defsym','AW_CPU_ACCOUNTING=1'])]:
             obj=out/(label+'.o');elf=out/(label+'.elf')
             run(label+'-assemble',[tool/'ez80-none-elf-as','-march=ez80+full',*defs,src,'-o',obj])
@@ -143,6 +150,9 @@ def main():
         run('on-size',[tool/'ez80-none-elf-size',out/'on.o',out/'on.elf'])
         artifacts={x.name:dict(bytes=x.stat().st_size,sha256=digest(x)) for x in out.iterdir() if x.is_file() and x.suffix in ('.o','.elf','.bin')}
         save(out/'result.json',dict(passed=True,baseline_bytes=len(original),on_leaf_bytes=extent,leaf_delta=extent-len(original),off_exact=True,linked_mutations_rejected=rejected,artifacts=artifacts,limits='Native assembly/link/source shape only; no executed ISA, register/IFF/IRQ/HALT/timer or hardware proof; no fitting firmware or app integration selected.'))
+    except BaseException:
+        save(out/'failure.json',dict(status='STOPPED',traceback=traceback.format_exc(),native_steps=len(steps),no_automatic_retry=True))
+        raise
     finally:
         if not any(x.get('remaining_live') for x in steps):
             (out/'release.json').write_text(ctl('release','--owner','agon-mos','--lease',a.lease,'--work-stopped','--cleanup-complete'))

@@ -1,0 +1,120 @@
+{
+  "source_contract": "PASS",
+  "source_mutations_rejected": [
+    "missing-DI",
+    "missing-IFF-refusal",
+    "clear-event-in-wait",
+    "EI-NOP-HALT",
+    "HALT-before-EI",
+    "refusal-enables-IRQ",
+    "incomplete-clock",
+    "lost-HL-restore"
+  ],
+  "linked_mutations_rejected": 3,
+  "linked_contract": "PASS",
+  "abstract_model": {
+    "interleavings": [
+      {
+        "producer": "callback",
+        "arrival": "before_clear",
+        "status": "HALTED"
+      },
+      {
+        "producer": "callback",
+        "arrival": "during_service",
+        "status": "WORK"
+      },
+      {
+        "producer": "callback",
+        "arrival": "after_poll",
+        "status": "WORK"
+      },
+      {
+        "producer": "callback",
+        "arrival": "under_DI",
+        "status": "HALTED"
+      },
+      {
+        "producer": "callback",
+        "arrival": "EI_shadow",
+        "status": "HALTED"
+      },
+      {
+        "producer": "callback",
+        "arrival": "after_HALT",
+        "status": "HALTED"
+      },
+      {
+        "producer": "clock",
+        "arrival": "before_clear",
+        "status": "HALTED"
+      },
+      {
+        "producer": "clock",
+        "arrival": "during_service",
+        "status": "WORK"
+      },
+      {
+        "producer": "clock",
+        "arrival": "after_poll",
+        "status": "WORK"
+      },
+      {
+        "producer": "clock",
+        "arrival": "under_DI",
+        "status": "HALTED"
+      },
+      {
+        "producer": "clock",
+        "arrival": "EI_shadow",
+        "status": "HALTED"
+      },
+      {
+        "producer": "clock",
+        "arrival": "after_HALT",
+        "status": "HALTED"
+      }
+    ],
+    "refusal_and_token_controls": "PASS",
+    "post_poll_clear_and_missing_producer_counterexamples": "EXPOSED",
+    "coalescing_and_no_progress_sleep": "PASS",
+    "scope": "Abstract API/interrupt publication transitions only; no executed eZ80 instruction, peripheral or HALT."
+  },
+  "artifacts": {
+    "aw_wait.elf": {
+      "bytes": 66328,
+      "sha256": "330f11ac8c36dbd3f4fea46a4df5ed59eb5c3569780b8d809d18b23d3623420e"
+    },
+    "aw_wait.bin": {
+      "bytes": 163,
+      "sha256": "6a9ed1bf628a261dba3f43327681aed40a5edd9b74852b324eb3b01b1bff6c33"
+    },
+    "probe.o": {
+      "bytes": 1028,
+      "sha256": "96ac15af252afe1af3fad382664ee68a3e6c37caa0eb6632ce8881fcdd1d44e7"
+    }
+  },
+  "leaf_text_bytes": 163,
+  "state_bytes": 9,
+  "leaf_stack_bytes_above_entry_SP": 12,
+  "static_decoded_instructions": 92,
+  "max_DI_through_EI_instructions": 34,
+  "symbols": {
+    "_aw_begin": 262144,
+    "_aw_wait": 262148,
+    "begin_pass": 262201,
+    "__bss_start": 262307,
+    "_edata": 262307,
+    "enabled_return": 262293,
+    "_end": 262307,
+    "entry": 262149,
+    "original.o": 0,
+    "refused": 262300,
+    "refused_enabled": 262292,
+    "sleep_return": 262278,
+    ".text": 262144,
+    "wait_pass": 262235,
+    "work": 262288
+  },
+  "limits": "Source/linked shape and abstract protocol model only; no executed ISA/IFF/register/IRQ/HALT/peripheral, cycle count or physical proof."
+}

@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "baseline_bytes": 163,
+  "on_leaf_bytes": 187,
+  "leaf_delta": 24,
+  "off_exact": true,
+  "linked_mutations_rejected": [
+    "broken-EI-HALT",
+    "wrong-work-event",
+    "wrong-halt-event",
+    "wrong-return-IFF-wrapper",
+    "lost-return-AF",
+    "wrong-work-result",
+    "lost-HL-restore",
+    "refusal-enables-IRQ"
+  ],
+  "artifacts": {
+    "original.elf": {
+      "bytes": 66328,
+      "sha256": "330f11ac8c36dbd3f4fea46a4df5ed59eb5c3569780b8d809d18b23d3623420e"
+    },
+    "probe-on.elf": {
+      "bytes": 73036,
+      "sha256": "ecfb234b4fee3f00910448f9ee1a61f8cd7223359089ba2679dfed5e0c408c38"
+    },
+    "off.bin": {
+      "bytes": 163,
+      "sha256": "6a9ed1bf628a261dba3f43327681aed40a5edd9b74852b324eb3b01b1bff6c33"
+    },
+    "provider-c.o": {
+      "bytes": 2536,
+      "sha256": "01607371b9103af5491b070d09ce533a381660b2a949086de9502d802be41c4e"
+    },
+    "accounting-c.o": {
+      "bytes": 2192,
+      "sha256": "bf39d19704f50d3fd8755cf64637e06e54183e03ff8c11a4cbb6f8d9421a5251"
+    },
+    "undefined.elf": {
+      "bytes": 66364,
+      "sha256": "4195c0d58114a542c39056459dfdabbd9a133711d31c40306c14ed38669a8762"
+    },
+    "off.o": {
+      "bytes": 964,
+      "sha256": "69ff294706e70472a8a87a7081fe335fdc8a827b0c103914b3f77280aadb7e5f"
+    },
+    "owner-reproduced.bin": {
+      "bytes": 2940,
+      "sha256": "0e37ee490e024b4f5d3bc342e747d7c640f307cf50a85b5b11da330dcd219235"
+    },
+    "off.elf": {
+      "bytes": 66360,
+      "sha256": "42d6e6a95660802fa961568a52801e248456d7dee496edb76a78431ac2449415"
+    },
+    "original.bin": {
+      "bytes": 163,
+      "sha256": "6a9ed1bf628a261dba3f43327681aed40a5edd9b74852b324eb3b01b1bff6c33"
+    },
+    "provider.o": {
+      "bytes": 5052,
+      "sha256": "e954f12e542a23692c95c70357a00458f51f12714087566397e94c5bd182e752"
+    },
+    "accounting.o": {
+      "bytes": 4336,
+      "sha256": "fefcf941c77c78771c08bf89ebfec0f7619d837b8003ed48263798c74964c92a"
+    },
+    "on.elf": {
+      "bytes": 72856,
+      "sha256": "9c6ce4fb984a8372fe2412e96f366bb62472bb647686d5c00d34a00097aaf6d1"
+    },
+    "owner-reproduced.elf": {
+      "bytes": 72356,
+      "sha256": "0e7c3aaa40a6b9d18c91e5e4e36a19a3960808e5b4af1eeec5826ec0aec15464"
+    },
+    "on.o": {
+      "bytes": 1112,
+      "sha256": "f6da7e8568e9bcfd8061f5c32cebf971a8f3262fcb545d9e604bde5d42d88a47"
+    },
+    "on.bin": {
+      "bytes": 3127,
+      "sha256": "66297f915671d69fba6ee151b88fa01613ec6a32e15cbde88a1072d3f7db7720"
+    },
+    "undefined.bin": {
+      "bytes": 163,
+      "sha256": "6a9ed1bf628a261dba3f43327681aed40a5edd9b74852b324eb3b01b1bff6c33"
+    },
+    "owner-retained.bin": {
+      "bytes": 2940,
+      "sha256": "0e37ee490e024b4f5d3bc342e747d7c640f307cf50a85b5b11da330dcd219235"
+    },
+    "undefined.o": {
+      "bytes": 964,
+      "sha256": "ad3281f24368553f895e2f3b6bf5d03032504a693e1cda8fd6e30a444462f8dd"
+    },
+    "original.o": {
+      "bytes": 928,
+      "sha256": "b5668a440099d6676b7fa8c304fdf7f0a6204ffae275b83604c64afa09207fd7"
+    }
+  },
+  "limits": "Native assembly/link/source shape only; no executed ISA, register/IFF/IRQ/HALT/timer or hardware proof; no fitting firmware or app integration selected."
+}

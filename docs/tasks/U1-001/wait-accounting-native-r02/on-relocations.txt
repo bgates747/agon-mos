@@ -1,0 +1,131 @@
+
+/Agon/mystuff/agon-mos/build/u1-wait-accounting/native-r02/on.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_aw_begin>:
+   0:	3e 01             	ld a,0x01
+   2:	18 01             	jr 0x0005
+
+00000004 <_aw_wait>:
+   4:	af                	xor a,a
+
+00000005 <entry>:
+   5:	dd e5             	push ix
+   7:	dd 21 00 00 00    	ld ix,0x0000
+   c:	dd 39             	add ix,sp
+   e:	c5                	push bc
+   f:	d5                	push de
+  10:	e5                	push hl
+  11:	47                	ld b,a
+  12:	dd 37 06          	ld ix,(ix+6)
+  15:	ed 57             	ld a,i
+  17:	e2 b4 00 00       	jp po,0x00b4
+			18: r_imm24	.text+0xb4
+  1b:	ed 6e             	ld a,mb
+  1d:	b7                	or a,a
+  1e:	c2 b4 00 00       	jp nz,0x00b4
+			1f: r_imm24	.text+0xb4
+  22:	ed 22 00          	lea hl,ix+0
+  25:	11 00 00 00       	ld de,0x0000
+  29:	b7                	or a,a
+  2a:	ed 52             	sbc hl,de
+  2c:	ca b4 00 00       	jp z,0x00b4
+			2d: r_imm24	.text+0xb4
+  30:	dd 27 06          	ld hl,(ix+6)
+  33:	b7                	or a,a
+  34:	ed 52             	sbc hl,de
+  36:	28 7c             	jr z,0x00b4
+  38:	f3                	di
+  39:	78                	ld a,b
+  3a:	b7                	or a,a
+  3b:	28 22             	jr z,0x005f
+
+0000003d <begin_pass>:
+  3d:	af                	xor a,a
+  3e:	dd 77 01          	ld (ix+1),a
+  41:	dd 77 00          	ld (ix+0),a
+  44:	7e                	ld a,(hl)
+  45:	dd 77 02          	ld (ix+2),a
+  48:	23                	inc hl
+  49:	7e                	ld a,(hl)
+  4a:	dd 77 03          	ld (ix+3),a
+  4d:	23                	inc hl
+  4e:	7e                	ld a,(hl)
+  4f:	dd 77 04          	ld (ix+4),a
+  52:	23                	inc hl
+  53:	7e                	ld a,(hl)
+  54:	dd 77 05          	ld (ix+5),a
+  57:	dd 36 01 01       	ld (ix+1),0x01
+  5b:	3e 01             	ld a,0x01
+  5d:	18 4e             	jr 0x00ad
+
+0000005f <wait_pass>:
+  5f:	dd 7e 01          	ld a,(ix+1)
+  62:	b7                	or a,a
+  63:	28 47             	jr z,0x00ac
+  65:	af                	xor a,a
+  66:	dd 77 01          	ld (ix+1),a
+  69:	dd 7e 00          	ld a,(ix+0)
+  6c:	b7                	or a,a
+  6d:	20 33             	jr nz,0x00a2
+  6f:	7e                	ld a,(hl)
+  70:	dd be 02          	cp a,(ix+2)
+  73:	20 2d             	jr nz,0x00a2
+  75:	23                	inc hl
+  76:	7e                	ld a,(hl)
+  77:	dd be 03          	cp a,(ix+3)
+  7a:	20 26             	jr nz,0x00a2
+  7c:	23                	inc hl
+  7d:	7e                	ld a,(hl)
+  7e:	dd be 04          	cp a,(ix+4)
+  81:	20 1f             	jr nz,0x00a2
+  83:	23                	inc hl
+  84:	7e                	ld a,(hl)
+  85:	dd be 05          	cp a,(ix+5)
+  88:	20 18             	jr nz,0x00a2
+
+0000008a <sleep_return>:
+  8a:	3e 06             	ld a,0x06
+  8c:	cd 00 00 00       	call 0x0000
+			8d: r_imm24	_agon_cpu_entry
+  90:	e1                	pop hl
+  91:	d1                	pop de
+  92:	c1                	pop bc
+  93:	dd e1             	pop ix
+  95:	3e 03             	ld a,0x03
+  97:	fb                	ei
+  98:	76                	halt
+  99:	f5                	push af
+  9a:	3e 86             	ld a,0x86
+  9c:	cd 00 00 00       	call 0x0000
+			9d: r_imm24	_agon_cpu_foreground
+  a0:	f1                	pop af
+  a1:	c9                	ret
+
+000000a2 <work>:
+  a2:	3e 07             	ld a,0x07
+  a4:	cd 00 00 00       	call 0x0000
+			a5: r_imm24	_agon_cpu_entry
+  a8:	3e 02             	ld a,0x02
+  aa:	18 01             	jr 0x00ad
+
+000000ac <refused_enabled>:
+  ac:	af                	xor a,a
+
+000000ad <enabled_return>:
+  ad:	e1                	pop hl
+  ae:	d1                	pop de
+  af:	c1                	pop bc
+  b0:	dd e1             	pop ix
+  b2:	fb                	ei
+  b3:	c9                	ret
+
+000000b4 <refused>:
+  b4:	af                	xor a,a
+  b5:	e1                	pop hl
+  b6:	d1                	pop de
+  b7:	c1                	pop bc
+  b8:	dd e1             	pop ix
+  ba:	c9                	ret
