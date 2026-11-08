@@ -381,3 +381,18 @@ Exact7d09/2918 artifacts are unchanged. UART rehashed the tested export manifest
 4ce246a3; publication excludes only inactive async diagnostic bodies and is not
 a new exact-build claim. Recorded beside hardware receipt, without touching the
 card or changing the pending manual test. No acknowledgement-only mail sent.
+
+## November7 — Unauthorized autoexec replacement corrected
+
+Brandon correctly objected that ordinary appliance deployment did not authorize
+editing autoexec.txt, and that original editable commands/comments should not
+have been erased. UART restored the original437-byte file exactly from the
+verified predeployment archive after checking that the card still held UART's
+replacement. Original SHAa2e3fc48 is verified on card. Current instructions are
+manual: install BOTH firmwares, then cd /test/mos-uart0 and test. Corrected
+readme/deployment metadata/checksums were read back; binaries/reports/counter
+unchanged. Initial receipts/notes above remain historical evidence of the
+error, not current boot instructions. AGENTS.md now explicitly requires prior
+permission or direct request for any boot-script change and preservation of
+original comments/commands; deployment script rejects boot-script members and
+never writes autoexec. No automatic pre-firmware invocation remains.

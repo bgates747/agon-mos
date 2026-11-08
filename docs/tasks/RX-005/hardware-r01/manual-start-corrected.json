@@ -1,0 +1,12 @@
+{
+  "action": "Manual start instructions and metadata correction",
+  "boot_preserved_exact": true,
+  "boot_sha256": "a2e3fc48788ea771fc114ccb230985873f3e61e81d55c448c7408169e4d6d8cb",
+  "updated_files": {
+    "readme.txt": "2ce64d90af55cf1ca4f4ad87e0c4fd9eaf5f685c13cad0cb4ace22f289e73438",
+    "deployment.json": "b856ea06967e145d5a1623370071af3809b10e995723c6f7bca4fbadcc45f5f9",
+    "SHA256SUMS": "354d5a7756205c797e39cd578c72c51e5f625af70838ed65a8d7fe97a9566470"
+  },
+  "firmware_or_test_binary_changed": false,
+  "reports_or_counter_changed": false
+}

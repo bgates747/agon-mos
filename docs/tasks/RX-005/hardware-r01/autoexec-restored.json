@@ -1,0 +1,11 @@
+{
+  "action": "Restore original autoexec after unauthorized replacement",
+  "volume": "AGONC8",
+  "uuid": "8658-1C23",
+  "restored_exact_original": true,
+  "bytes": 437,
+  "sha256": "a2e3fc48788ea771fc114ccb230985873f3e61e81d55c448c7408169e4d6d8cb",
+  "original_comments_and_commands_preserved": true,
+  "test_auto_start_removed": true,
+  "firmware_or_reports_changed": false
+}

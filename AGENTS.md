@@ -86,6 +86,15 @@ local queue or edit shared scheduling state by hand.
 
 ## Console8 firmware workflow
 
+Never create, replace, edit, disable or otherwise modify `autoexec.txt` (including
+case variants or other boot scripts) without asking first or receiving an explicit
+human instruction to modify that script. Permission to deploy firmware or a test
+appliance does not authorize a boot-script change. By default leave it untouched
+and give the Author manual commands. When a change is explicitly authorized,
+preserve existing comments and commands; comment out conflicting commands rather
+than erasing them unless the Author explicitly requests replacement. An archived
+copy does not substitute for permission or preserving the editable script.
+
 The Author prefers the installed `flash` MOSlet: from the appliance directory,
 use `flash mos <filename>` or `flash vdp <filename>`. The bundled `flash.bin` is
 a fallback for a self-contained appliance, not a mandatory invocation path.

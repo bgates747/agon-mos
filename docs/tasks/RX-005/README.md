@@ -2,7 +2,8 @@
 
 Current status2026-11-07: Brandon reviewed the passing synthetic trial and
 selected the next manual Console8 check. The exact tested MOS/VDP/fixture is
-deployed to AGONC8 at `/test/mos-uart0`; root `autoexec.txt` runs `test` at boot.
+deployed to AGONC8 at `/test/mos-uart0`. Original `autoexec.txt` is restored
+exactly; invoke `test` manually after both firmwares are installed.
 Read [hardware-r01.md](hardware-r01.md) for the flash order, key step and report
 pins. Emulator qualification remains in [REVIEW.md](REVIEW.md). Physical results
 are pending; consumer prototype distribution remains gated on Brandon's review.

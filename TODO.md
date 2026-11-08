@@ -3,8 +3,9 @@
 RX-005 [ ] **CONSOLE8 HARDWARE TEST STAGED; RESULTS PENDING.** Brandon reviewed
 both-engine synthetic PASS and selected manual hardware qualification. Exact
 MOS40dc3d17/VDP7d09dfea/test6f79d47e deployed to AGONC8 UUID8658-1C23,
-`/test/mos-uart0`; root autoexec runs `test`, next reportR0067. Flash VDP first,
-then MOS; one A press/release at the prompt. Old appliances/reports/boot script
+`/test/mos-uart0`; original autoexec preserved, next reportR0067. Flash VDP first,
+then MOS; invoke `test` manually afterward, one A press/release at the prompt.
+Old appliances/reports/boot script
 archived and verified off-card. MOS source8db14b2 and synthetic evidence72528f7
 pushed on isolated experimental branches. No hardware PASS, consumer prototypes,
 release or new protocol expansion claimed. Inspect the returned report before

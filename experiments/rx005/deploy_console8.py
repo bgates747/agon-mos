@@ -1,6 +1,7 @@
 """Install the prepared RX-005 appliance on the identity-checked Console8 card.
 Run on Oryx with the project deployment directory as the sole argument.
 Prior archive and every replaced file must still match before any card write.
+Boot scripts are never installed or modified by this appliance deployer.
 """
 import hashlib
 import json
@@ -14,6 +15,7 @@ import tarfile
 out = Path(sys.argv[1]).resolve()
 root = Path('/run/media/smith/AGONC8')
 sha = lambda data: hashlib.sha256(data).hexdigest()
+boot_before = (root / 'autoexec.txt').read_bytes()
 old = json.loads((out / 'predeployment.json').read_text())
 prepared = json.loads((out / 'prepared.json').read_text())
 volumes = json.loads(subprocess.check_output(
@@ -43,14 +45,13 @@ with tarfile.open(out / 'appliance.tar.gz') as archive:
     blobs = {}
     for member in archive.getmembers():
         assert member.isfile() and not member.issym() and not member.islnk()
-        assert member.name == 'autoexec.txt' or (
-            member.name.startswith('appliance/') and len(Path(member.name).parts) == 2)
+        assert member.name.startswith('appliance/') and len(Path(member.name).parts) == 2
+        assert Path(member.name).name.casefold() != 'autoexec.txt'
+        assert Path(member.name).name not in {'.', '..'}
         assert member.name not in blobs
         blobs[member.name] = archive.extractfile(member).read()
-assert sha(blobs['autoexec.txt']) == prepared['new_boot_script_sha256']
-assert blobs['autoexec.txt'] == b'CD /test/mos-uart0\r\ntest\r\n'
 sums = blobs['appliance/SHA256SUMS'].decode().splitlines()
-assert set(blobs) == {'autoexec.txt', 'appliance/SHA256SUMS'} | {
+assert set(blobs) == {'appliance/SHA256SUMS'} | {
     'appliance/' + line.split('  ', 1)[1] for line in sums}
 for line in sums:
     digest, name = line.split('  ', 1)
@@ -69,22 +70,17 @@ for name, data in blobs.items():
 for name in sorted(expected_dirs):
     shutil.rmtree(root / name)
 staging.rename(root / 'test/mos-uart0')
-boot_tmp = root / '.autoexec-rx005-new'
-assert not boot_tmp.exists()
-with boot_tmp.open('wb') as handle:
-    handle.write(blobs['autoexec.txt'])
-    handle.flush()
-    os.fsync(handle.fileno())
-boot_tmp.replace(root / 'autoexec.txt')
 os.sync()
 for name, data in blobs.items():
-    target = root / name if name == 'autoexec.txt' else root / 'test/mos-uart0' / Path(name).name
+    target = root / 'test/mos-uart0' / Path(name).name
     assert target.read_bytes() == data, str(target)
 assert {p.name for p in (root / 'test/mos-uart0').iterdir()} == {
     Path(name).name for name in blobs if name.startswith('appliance/')}
 assert not any(p.name.startswith('mos-uart0-') for p in (root / 'test').iterdir())
-receipt = dict(schema='RX005-console8-deployment-1', volume='AGONC8', uuid='8658-1C23',
-               target='/test/mos-uart0', boot='CD /test/mos-uart0; test',
+assert (root / 'autoexec.txt').read_bytes() == boot_before, 'Boot script changed'
+receipt = dict(schema='RX005-console8-deployment-2', volume='AGONC8', uuid='8658-1C23',
+               target='/test/mos-uart0', boot='unchanged; manual test invocation',
+               boot_preserved_exact=True,
                all_readback_exact=True, old_archive_sha256=old['archive_sha256'],
                next_report=old['next_report'], files={name: sha(data) for name, data in blobs.items()},
                physical_execution=False, firmware_flashing=False)
