@@ -1,0 +1,8 @@
+{
+  "epoch": 1794132209.4847054,
+  "passive_only": true,
+  "serial_bytes": 0,
+  "no_keys_or_reset_or_UART_probe": true,
+  "original_RAM_captured": false,
+  "reason": "No positive terminal listener or fresh CLI after one EXEC; mirror was disabled by setup. Passive bytes cannot authenticate fresh CLI. SAVE into possible resident HALT is not supported; live ZDI RAM access would require an unselected P4 replacement. Original pre-reset RAM is not safely reachable by the admitted path."
+}

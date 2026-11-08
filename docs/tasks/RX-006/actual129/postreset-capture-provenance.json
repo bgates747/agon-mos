@@ -1,0 +1,10 @@
+{
+  "epoch": 1794132543.3633893,
+  "capture": "POSTRESET after native restoration programmer shared reset and one verified Agon reset, BEFORE any later LOAD/getter",
+  "original_pre_reset_RAM": false,
+  "bytes": 131072,
+  "sha256": "36b74f5b10f1d87ed01292678994b775c81a9d13e56dfba73917fd58b2df7ce1",
+  "original_guest_result_repaired": false,
+  "reset_receipt": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/child-terminal.json",
+  "no_ordinary_LOAD": true
+}

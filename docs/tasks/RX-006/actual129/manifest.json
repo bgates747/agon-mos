@@ -1,5 +1,5 @@
 {
-  "scope": "Original129 installation succeeded; ONE consumer EXEC followed by180s listener wait failure; no target read after failure; restoration pending",
+  "scope": "Actual129 closed restored/released; durable SD log10sizes+36cells+SUITEPASS; absent witness/hosttimeout retained; explicit SAVE radix packaging error identified offline",
   "files": [
     {
       "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/owner-install/complete.json",
@@ -60,6 +60,90 @@
       "copy": "physical-r03-stopped.json",
       "bytes": 1500,
       "sha256": "1381529ee7b46352daf3e8cda24bf499899e2bd3398081f712242fb652a15a81"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/released.json",
+      "copy": "released.json",
+      "bytes": 10204,
+      "sha256": "4919bc73f1909c928fb20ca2ae0b1d9c799b0adb7d6f298fe95c69ee28fba9d0"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/release-observation.json",
+      "copy": "release-observation.json",
+      "bytes": 4612,
+      "sha256": "4f7dfa4c2c116853826a30f1dbda78cd1c29d521c8956071f2c2fe8409f0de1f"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/all-actors-terminal.json",
+      "copy": "all-actors-terminal.json",
+      "bytes": 6883,
+      "sha256": "964d58759c69940d331ea5bb40ca1d51081bee4eb199d9ed6b35a4030e1938c9"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/evidence/pre-reset/limit.json",
+      "copy": "pre-reset-limit.json",
+      "bytes": 488,
+      "sha256": "9806772658c9f82e33f5209249ae1767d27465c64d51b74cab621d6cc6c58835"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/evidence/native-restore/receipt.json",
+      "copy": "native-restoration.json",
+      "bytes": 255,
+      "sha256": "09ccf0c73581ae2f36dc06f292f675959ac424900239c268fd030aed65ea2075"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/verify-rollback/receipt.json",
+      "copy": "emos-restoration.json",
+      "bytes": 1544,
+      "sha256": "253ac05dd811b873ff9528770d20c43de222a83d238900d7668ade620e966d1d"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_05-09-47_linux-extender_rx006-actual129-restore-boundary-seventyfive.md",
+      "copy": "2026-11-08_05-09-47_linux-extender_rx006-actual129-restore-boundary-seventyfive.md",
+      "bytes": 1639,
+      "sha256": "becf8c09506f1a4f6eaaa5f1a715bdc34325c79bdf00c76192f4494002a8036e"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_05-11-08_linux-extender_rx006-actual129-clean-release-76.md",
+      "copy": "2026-11-08_05-11-08_linux-extender_rx006-actual129-clean-release-76.md",
+      "bytes": 2389,
+      "sha256": "803f13b1bd55a54e94e51a28fbbb4b4221c604440e8624e8dbd905778fc906cf"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_05-12-43_agon-mos_rx006-129-log-pass-save-radix-finding-twentytwo.md",
+      "copy": "2026-11-08_05-12-43_agon-mos_rx006-129-log-pass-save-radix-finding-twentytwo.md",
+      "bytes": 1666,
+      "sha256": "9a0108cb7a403f424cb044591b86214eda41ec1c88890ad58323ed2c59e6fc6e"
+    },
+    {
+      "source": "Owner-retrieved files/derived strict log analysis; see README",
+      "copy": "R0001.log",
+      "bytes": 7174,
+      "sha256": "eacbcd11c9e1969f289a5ad79260d71cc894129f4318cc3fafde9a6dbdab3a86"
+    },
+    {
+      "source": "Owner-retrieved files/derived strict log analysis; see README",
+      "copy": "next.txt",
+      "bytes": 3,
+      "sha256": "df4e26a04a444901b95afef44e4a96cfae34690fff2ad2c66389c70079cdff2b"
+    },
+    {
+      "source": "Owner-retrieved files/derived strict log analysis; see README",
+      "copy": "postreset-capture-provenance.json",
+      "bytes": 523,
+      "sha256": "ae037f44e62b4c17039c9e523d17b739fe53c0cae06501e7bc78098ebe8280da"
+    },
+    {
+      "source": "Owner-retrieved files/derived strict log analysis; see README",
+      "copy": "WITNESS.BIN-absence.json",
+      "bytes": 40,
+      "sha256": "d81f5d9ada689499c57847704f70cfd2e019502368d067c596447d4b84179c05"
+    },
+    {
+      "source": "Owner-retrieved files/derived strict log analysis; see README",
+      "copy": "analysis.json",
+      "bytes": 10344,
+      "sha256": "14e264da3e56db6389ff4b9a5f4ca1f29b458652835ca07708a742ec6a543609"
     }
   ]
 }

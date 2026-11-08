@@ -1,0 +1,90 @@
+{
+  "schema": "olimex-bench-observation-v1",
+  "bench": "olimex",
+  "epoch": 1794132621.7271445,
+  "observer": "agon-mos",
+  "lease": "3c3304c5c6be4b39a89e1cab11220edf",
+  "checks": {
+    "no_workload": true,
+    "no_transfer": true,
+    "no_serial_readers": true,
+    "no_reset_holders": true,
+    "cli_verified": true,
+    "input_ready_neutral": true,
+    "listener_offline": true,
+    "staged_job_idle": true,
+    "restoration_verified": true
+  },
+  "components": {
+    "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+    "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+    "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+    "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+    "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+  },
+  "state": {
+    "keyboard": {
+      "protocol": 1,
+      "boot": 1432046556,
+      "session": 1070304585,
+      "sequence": 24,
+      "emitted": 52,
+      "accepted": 52,
+      "discarded": 0,
+      "pending": 0,
+      "held": 0,
+      "locale": 1,
+      "ready": true,
+      "physical_neutral": true,
+      "caps": false,
+      "reason": 1
+    },
+    "sd": {
+      "protocol": 2,
+      "online": false,
+      "pending": false,
+      "boot": 389896109
+    },
+    "worker": {
+      "protocol": 1,
+      "boot": 2174150157,
+      "id": 0,
+      "phase": 0,
+      "bytes": 0,
+      "size": 0,
+      "records": 0,
+      "error": 0,
+      "remote_status": 0,
+      "filesystem": 0,
+      "stage_us": 0,
+      "mainboard_us": 0,
+      "parallel_prepare_us": 0,
+      "parallel_active_ms": 0,
+      "parallel_handover_ms": 0,
+      "parallel_phase": 0,
+      "parallel_outcome": 0,
+      "parallel_clock_count": -1,
+      "parallel_valid_count": -1
+    }
+  },
+  "evidence": [
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/final/fresh.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/verify-rollback/ROM.bin",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/verify-rollback/receipt.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/evidence/native-restore/receipt.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/all-actors-terminal.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/evidence/pre-reset/limit.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/postreset-before-LOAD/provenance.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/cleanup129/remaining/evidence/stage/provenance.json"
+  ],
+  "component_provenance": {
+    "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in129.",
+    "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+    "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+    "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+    "listener_sha256": "Fresh final complete24753B read compare unchanged."
+  },
+  "disposition": "Actual129 original consumer failed terminal-listener observation after ONE suite EXEC and four exact staged readbacks. Original guest state unknown, no performance verdict or replay. Passive pre-reset evidence retained; original RAM could not be authenticated through admitted CLI. Exact incoming85f9 native prefix restored FIRST/full readback; outer12288B suffix untouched/8519 lineage. Ordinary Agon admission failed; standing paired current P4-init/Agon recovery succeeded. Captured RAM is explicitly POSTRESET before later LOAD, not original pre-reset state. Exact a25f fullROM rollback/readback and fresh rootCLI/cursor/rawmode0/callback0/Legacy0/wholefiles/neutral/offlineworker/freeUSB/allactorsjoined. Original installer tool143 despite completed target phases0 retained; original consumer1, firstcleanup1, remainingcleanup0. SD remains mounted; all target access stopped.",
+  "physical_observer": "linux-extender",
+  "physical_observer_role": "Sole delegated restoration operator after original UART consumer stopped return"
+}

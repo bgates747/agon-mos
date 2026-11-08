@@ -1,0 +1,97 @@
+RX006 START build=0208015a8a94e345
+Methods0legacyREAD_BYTES8 1counted512; same immutable source; logical bytes
+Clock=public MOS counts for WHOLE batch, validation included; setup/logging excluded; no CPU percentage
+RX006 CHECK BEGIN bytes=4
+RX006 CHECK PASS bytes=4 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=8
+RX006 CHECK PASS bytes=8 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=16
+RX006 CHECK PASS bytes=16 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=32
+RX006 CHECK PASS bytes=32 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=64
+RX006 CHECK PASS bytes=64 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=128
+RX006 CHECK PASS bytes=128 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=256
+RX006 CHECK PASS bytes=256 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=1024
+RX006 CHECK PASS bytes=1024 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=4096
+RX006 CHECK PASS bytes=4096 tx_methods=2 rx_methods=2
+RX006 CHECK BEGIN bytes=8092
+RX006 CHECK PASS bytes=8092 tx_methods=2 rx_methods=2
+RX006 MODE entry=0 unchanged=1
+RX006 BEGIN method=1 useful=0 bytes=128 repeat=1 loops=64
+RX006 CELL method=1 useful=0 bytes=128 replies=1 repeat=1 loops=64 mos_counts=16 work=0 checksum=D3D23D4A
+RX006 BEGIN method=0 useful=0 bytes=128 repeat=1 loops=64
+RX006 CELL method=0 useful=0 bytes=128 replies=16 repeat=1 loops=64 mos_counts=98 work=0 checksum=D3D23D4A
+RX006 BEGIN method=0 useful=0 bytes=128 repeat=2 loops=64
+RX006 CELL method=0 useful=0 bytes=128 replies=16 repeat=2 loops=64 mos_counts=98 work=0 checksum=D3D23D4A
+RX006 BEGIN method=1 useful=0 bytes=128 repeat=2 loops=64
+RX006 CELL method=1 useful=0 bytes=128 replies=1 repeat=2 loops=64 mos_counts=18 work=0 checksum=D3D23D4A
+RX006 BEGIN method=1 useful=0 bytes=128 repeat=3 loops=64
+RX006 CELL method=1 useful=0 bytes=128 replies=1 repeat=3 loops=64 mos_counts=18 work=0 checksum=D3D23D4A
+RX006 BEGIN method=0 useful=0 bytes=128 repeat=3 loops=64
+RX006 CELL method=0 useful=0 bytes=128 replies=16 repeat=3 loops=64 mos_counts=98 work=0 checksum=D3D23D4A
+RX006 BEGIN method=1 useful=1 bytes=128 repeat=1 loops=64
+RX006 CELL method=1 useful=1 bytes=128 replies=1 repeat=1 loops=64 mos_counts=16 work=216 checksum=44ABCFF3
+RX006 BEGIN method=0 useful=1 bytes=128 repeat=1 loops=64
+RX006 CELL method=0 useful=1 bytes=128 replies=16 repeat=1 loops=64 mos_counts=102 work=4714 checksum=3F5D9CC5
+RX006 BEGIN method=0 useful=1 bytes=128 repeat=2 loops=64
+RX006 CELL method=0 useful=1 bytes=128 replies=16 repeat=2 loops=64 mos_counts=102 work=4716 checksum=FC329308
+RX006 BEGIN method=1 useful=1 bytes=128 repeat=2 loops=64
+RX006 CELL method=1 useful=1 bytes=128 replies=1 repeat=2 loops=64 mos_counts=18 work=240 checksum=03B5A7A3
+RX006 BEGIN method=1 useful=1 bytes=128 repeat=3 loops=64
+RX006 CELL method=1 useful=1 bytes=128 replies=1 repeat=3 loops=64 mos_counts=18 work=242 checksum=E887657B
+RX006 BEGIN method=0 useful=1 bytes=128 repeat=3 loops=64
+RX006 CELL method=0 useful=1 bytes=128 replies=16 repeat=3 loops=64 mos_counts=102 work=4725 checksum=D4E2BDA4
+RX006 BEGIN method=1 useful=0 bytes=256 repeat=1 loops=64
+RX006 CELL method=1 useful=0 bytes=256 replies=1 repeat=1 loops=64 mos_counts=30 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=0 useful=0 bytes=256 repeat=1 loops=64
+RX006 CELL method=0 useful=0 bytes=256 replies=32 repeat=1 loops=64 mos_counts=194 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=0 useful=0 bytes=256 repeat=2 loops=64
+RX006 CELL method=0 useful=0 bytes=256 replies=32 repeat=2 loops=64 mos_counts=196 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=1 useful=0 bytes=256 repeat=2 loops=64
+RX006 CELL method=1 useful=0 bytes=256 replies=1 repeat=2 loops=64 mos_counts=30 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=1 useful=0 bytes=256 repeat=3 loops=64
+RX006 CELL method=1 useful=0 bytes=256 replies=1 repeat=3 loops=64 mos_counts=30 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=0 useful=0 bytes=256 repeat=3 loops=64
+RX006 CELL method=0 useful=0 bytes=256 replies=32 repeat=3 loops=64 mos_counts=194 work=0 checksum=D4E2BDA4
+RX006 BEGIN method=1 useful=1 bytes=256 repeat=1 loops=64
+RX006 CELL method=1 useful=1 bytes=256 replies=1 repeat=1 loops=64 mos_counts=30 work=229 checksum=DE566E17
+RX006 BEGIN method=0 useful=1 bytes=256 repeat=1 loops=64
+RX006 CELL method=0 useful=1 bytes=256 replies=32 repeat=1 loops=64 mos_counts=204 work=9375 checksum=E1BA47A2
+RX006 BEGIN method=0 useful=1 bytes=256 repeat=2 loops=64
+RX006 CELL method=0 useful=1 bytes=256 replies=32 repeat=2 loops=64 mos_counts=202 work=9372 checksum=022486BE
+RX006 BEGIN method=1 useful=1 bytes=256 repeat=2 loops=64
+RX006 CELL method=1 useful=1 bytes=256 replies=1 repeat=2 loops=64 mos_counts=30 work=240 checksum=F3CDDAD6
+RX006 BEGIN method=1 useful=1 bytes=256 repeat=3 loops=64
+RX006 CELL method=1 useful=1 bytes=256 replies=1 repeat=3 loops=64 mos_counts=30 work=241 checksum=5AA50F6B
+RX006 BEGIN method=0 useful=1 bytes=256 repeat=3 loops=64
+RX006 CELL method=0 useful=1 bytes=256 replies=32 repeat=3 loops=64 mos_counts=204 work=9378 checksum=C1AA0645
+RX006 BEGIN method=1 useful=0 bytes=1024 repeat=1 loops=16
+RX006 CELL method=1 useful=0 bytes=1024 replies=2 repeat=1 loops=16 mos_counts=28 work=0 checksum=C1AA0645
+RX006 BEGIN method=0 useful=0 bytes=1024 repeat=1 loops=16
+RX006 CELL method=0 useful=0 bytes=1024 replies=128 repeat=1 loops=16 mos_counts=194 work=0 checksum=C1AA0645
+RX006 BEGIN method=0 useful=0 bytes=1024 repeat=2 loops=16
+RX006 CELL method=0 useful=0 bytes=1024 replies=128 repeat=2 loops=16 mos_counts=194 work=0 checksum=C1AA0645
+RX006 BEGIN method=1 useful=0 bytes=1024 repeat=2 loops=16
+RX006 CELL method=1 useful=0 bytes=1024 replies=2 repeat=2 loops=16 mos_counts=28 work=0 checksum=C1AA0645
+RX006 BEGIN method=1 useful=0 bytes=1024 repeat=3 loops=16
+RX006 CELL method=1 useful=0 bytes=1024 replies=2 repeat=3 loops=16 mos_counts=26 work=0 checksum=C1AA0645
+RX006 BEGIN method=0 useful=0 bytes=1024 repeat=3 loops=16
+RX006 CELL method=0 useful=0 bytes=1024 replies=128 repeat=3 loops=16 mos_counts=196 work=0 checksum=C1AA0645
+RX006 BEGIN method=1 useful=1 bytes=1024 repeat=1 loops=16
+RX006 CELL method=1 useful=1 bytes=1024 replies=2 repeat=1 loops=16 mos_counts=28 work=133 checksum=A1AAFEA7
+RX006 BEGIN method=0 useful=1 bytes=1024 repeat=1 loops=16
+RX006 CELL method=0 useful=1 bytes=1024 replies=128 repeat=1 loops=16 mos_counts=202 work=9335 checksum=03149EF4
+RX006 BEGIN method=0 useful=1 bytes=1024 repeat=2 loops=16
+RX006 CELL method=0 useful=1 bytes=1024 replies=128 repeat=2 loops=16 mos_counts=202 work=9342 checksum=F054075D
+RX006 BEGIN method=1 useful=1 bytes=1024 repeat=2 loops=16
+RX006 CELL method=1 useful=1 bytes=1024 replies=2 repeat=2 loops=16 mos_counts=28 work=129 checksum=C921C200
+RX006 BEGIN method=1 useful=1 bytes=1024 repeat=3 loops=16
+RX006 CELL method=1 useful=1 bytes=1024 replies=2 repeat=3 loops=16 mos_counts=28 work=153 checksum=073C9BC6
+RX006 BEGIN method=0 useful=1 bytes=1024 repeat=3 loops=16
+RX006 CELL method=0 useful=1 bytes=1024 replies=128 repeat=3 loops=16 mos_counts=204 work=9396 checksum=94C1C8A1
+RX006 SUITE PASS
