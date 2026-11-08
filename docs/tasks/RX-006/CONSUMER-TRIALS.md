@@ -156,3 +156,17 @@ finds no material incompatibility and requests no new code/build/case. Normal
 request dfcc5d90a252 follows its protected predecessors; physical trial and
 restoration remain pending. Neither unbound template nor source qualification
 claims actual grant, installed state or device result.
+
+Rally actual135 was entirely UNRUN. Installed observation expired during chat
+session recovery before accepted steering delivery; first consumer read was
+309s old against the unchanged120s limit. Zero runner launches, staged commands,
+EXECs, arms or target I/O; [no-launch record](consumer-dispatch/rally-actual135/ACTUAL135-UNRUN.md).
+Original remaining989s was below1020 entry floor, so Extender selected exact
+restoration only;6502's next turn stays protected. This is a handoff delivery
+failure, not an observed transport/app failure or consumer pass. UART selects
+correction of handoff readiness/session preparation before a new normal FIFO
+for the same uninvoked helper. Keep120s actual-evidence freshness and original
+budgets, never restamp/extend. Wake/confirm the consumer is ready before the
+final installed-state observation; owner should account for delivery time and
+obtain a genuine new observation only within the original admitted margin. No
+app/firmware change or extra case selected.

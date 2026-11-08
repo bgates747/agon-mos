@@ -1,0 +1,18 @@
+{
+  "schema": "RX6HLP-unstarted-custody-return1",
+  "epoch": 1794139541.7222261,
+  "request": "caeae97c57d6",
+  "generation": 135,
+  "lease": "d1fd0f63b469409eb3897daed96b72de",
+  "consumer_launch_attempts": 0,
+  "consumer_invocations": 0,
+  "original_tool_handle": null,
+  "consumer_pid": null,
+  "owned_consumer_children": [],
+  "target_operations": [],
+  "all_rally_target_access_stopped": true,
+  "output_directory_absent": true,
+  "original_remaining_seconds": 989.0511157512665,
+  "minimum_required_seconds": 1020,
+  "disposition": "UNRUN; owner cleanup only, no fresh launch/reinstall/replay by Rally"
+}
