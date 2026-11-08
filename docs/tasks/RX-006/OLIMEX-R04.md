@@ -75,3 +75,9 @@ and all49 inputs independently match; [bound review](completion-r04/bound-owner-
 No context, grant, runtime observation or consumer output was generated.
 Preparation is complete; normal actual admission after predecessor handbacks
 remains required. No new mailbox acknowledgement or duplicate reservation.
+
+Actual131 predecessor released10:53:47UTC November8 with full handback. UART
+e4d is now canonical next. All49 bound inputs were rehashed again and match;
+output/actor remain absent. [Readiness](completion-r04/readiness-after131.json)
+is host preparation only. Extender received actual-next readiness by durable
+mail/immediate steering; fresh admission and sole installation still pending.

@@ -1,0 +1,10 @@
+{
+  "epoch": 1794135339.5703192,
+  "actual_predecessor_release": "2026-11-08T10:53:47.416535+00:00",
+  "actual_next_request": "e4d3981a89ae",
+  "bound_manifest_sha256": "b72a1a4aa3d2939dd57f8b167e27e51305262cc95ebb29206c856aab2fe91cd8",
+  "all49_inputs_rehashed_match": true,
+  "output_and_actor_absent": true,
+  "no_target_access": true,
+  "no_grant_received": true
+}

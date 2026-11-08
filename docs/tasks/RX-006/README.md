@@ -17,7 +17,8 @@ No performance tuning or transport/firmware correction is needed by this finding
 EMOS171c/VDP7d09 with explicit `SAVE ... &447CF &20`, fresh targetr02 and host
 physical-r04. New kit6d467b51/all49 owner input hashes match; actual normal FIFO request
 `e4d3981a89ae` has completed request-local binding (b72a1a4a/all49 match)
-and awaits fresh admission behind existing owners.
+and is canonical next after actual131 release10:53:47UTC. Fresh admission
+and owner installation remain pending; no target access yet.
 Preserve populatedr01/old kit and all129 evidence. Confirm witness/return/normal
 listener chain before selected consumer-code trials; no prototype pilot yet.
 
