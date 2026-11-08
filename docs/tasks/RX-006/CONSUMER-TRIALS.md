@@ -93,3 +93,17 @@ Immediate Pi-native alerts were accepted (`turn/start` for Rally and
 `turn/steer` for6502); acceptance does not prove either owner read or agreed.
 Rally has returned the concrete584B outline above;6502 feedback remains pending.
 Own hardware pass remains prerequisite.
+
+## Own pass and selected execution dispatch
+
+Actual132 passes the full own synthetic suite and complete return/witness chain.
+The [tested handoff](CONSUMER-HANDOFF.md) now supplies exact artifacts/API and
+coarse measured findings. OnNovember8 UART sent substantive task/implementation
+requests to Rally11:11:53UTC and6502 11:12:10UTC, then immediate accepted
+`turn/start` notifications. [Dispatch records](consumer-dispatch/status.json)
+retain exact messages and limits. Earlier planning-only gates are superseded
+for these two small isolated helper tasks by Brandon's explicit RX006 direction.
+Unrelated paused goals, current games/persistence and normal source/commit gates
+remain unchanged. Source preparation may proceed, but physical trials require
+clean132 handback, their prepared contracts and normal fresh admission. Neither
+consumer has yet returned source/build/target results in this snapshot.
