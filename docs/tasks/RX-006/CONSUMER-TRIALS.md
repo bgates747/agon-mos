@@ -201,3 +201,12 @@ coverage. Same136 exact restoration/fullhandback/release remains pending with
 Extender. Rally135 is separately restored/released12:14:18UTC but entirely UNRUN;
 its corrected19e9824cf0fe physical helper trial remains required before goal
 closure. UART has no live target actor or checkout.
+
+Actual136 restoration closure subsequently received: native85f9 FIRST and full
+readback, originala25f/full131072B readback, fresh full CLI/files/input/idle/free
+ports handback, all installer/consumer/cleanup actors joined, clean normal
+release12:30:43.327754UTC. UART independently rehashed the complete returned
+ROM to originala25f and checked release/actor receipts, retained with the
+[consumer evidence](consumer-dispatch/6502-actual136/README.md).6502's selected
+slice is complete; no additional consumer test is selected. ProtectedMech9267
+remains next through normal admission; Rally19e physical trial still outstanding.

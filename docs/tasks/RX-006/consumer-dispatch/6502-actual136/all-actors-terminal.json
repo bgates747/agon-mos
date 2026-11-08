@@ -1,0 +1,192 @@
+{
+  "epoch": 1794141043.1327977,
+  "original_installer": {
+    "chunk_id": "d8668f",
+    "wall_time_seconds": 1.754262829,
+    "exit_code": 0,
+    "original_token_count": 25,
+    "output": "{\"label\": \"native\", \"pid\": 1940273, \"returncode\": 0, \"joined\": true, \"seconds\": 230.93502616882324}\n",
+    "session": 1719
+  },
+  "restoration_tool": {
+    "chunk_id": "3637e1",
+    "wall_time_seconds": 1.7056e-05,
+    "exit_code": 0,
+    "original_token_count": 18,
+    "output": "Same136 exact native-FIRST/a25f restoration and fresh handback complete\n",
+    "session": 38035
+  },
+  "consumer_stopped": {
+    "schema": "RX001-CONSUMER-STOPPED1",
+    "epoch": 1794140670.97998,
+    "generation": 136,
+    "request": "dfcc5d90a252",
+    "lease": "bbb70c81e9f349c1b4600eb63d436796",
+    "operator": "agon-6502",
+    "original_actor": {
+      "schema": "RX001-CONSUMER-ACTOR1",
+      "registered": "2026-11-08T12:23:27.239441+00:00",
+      "original_tool": "exec_command",
+      "session_id": 52480,
+      "boot_id": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+      "request": "dfcc5d90a252",
+      "generation": 136,
+      "lease": "bbb70c81e9f349c1b4600eb63d436796",
+      "pid": 1940752,
+      "ppid": 1750,
+      "pgid": 1940752,
+      "start_ticks": 39956128,
+      "proc_stat": "1940752 (python) S 1750 1940752 1940752 0 -1 4194304 1183 0 0 0 6 0 0 0 20 0 1 0 39956128 36913152 1223 18446744073709551615 93828320722944 93828339366608 140737276561456 0 0 0 0 16781316 16386 1 0 0 17 2 0 0 0 0 0 93828430102528 93828430161744 93828951506944 140737276572949 140737276573347 140737276573347 140737276575691 0\n",
+      "argv": [
+        "/Agon/mystuff/agon-extender/.venv/bin/python",
+        "/Agon/mystuff/agon-6502/experiments/rx001/supervise.py",
+        "--kit",
+        "/Agon/mystuff/agon-6502/build/rx006/operating-r01/kit.json",
+        "--handoff",
+        "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/consumer-handoff.json",
+        "--lease",
+        "bbb70c81e9f349c1b4600eb63d436796",
+        "--url",
+        "http://192.168.0.20",
+        "--out",
+        "/Agon/mystuff/agon-6502/build/rx006/physical-actual136"
+      ]
+    },
+    "original_tool_terminal": {
+      "tool": "exec_command/write_stdin",
+      "session_id": 52480,
+      "exit_code": 0,
+      "terminal_observed_utc": "2026-11-08T12:24:30.979762+00:00",
+      "pid": 1940752,
+      "single_launch": true
+    },
+    "supervisor": {
+      "started": 1794140591.4060805,
+      "command": [
+        "/Agon/mystuff/agon-extender/.venv/bin/python",
+        "/Agon/mystuff/agon-6502/experiments/rx001/run.py",
+        "--kit",
+        "/Agon/mystuff/agon-6502/build/rx006/operating-r01/kit.json",
+        "--handoff",
+        "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/consumer-handoff.json",
+        "--lease",
+        "bbb70c81e9f349c1b4600eb63d436796",
+        "--url",
+        "http://192.168.0.20",
+        "--out",
+        "/Agon/mystuff/agon-6502/build/rx006/physical-actual136"
+      ],
+      "parent_pid": 1940752,
+      "joined": true,
+      "resubmit": false,
+      "pid": 1940753,
+      "pgid": 1940753,
+      "status": 0,
+      "group_stopped": true,
+      "finished": 1794140612.3984811,
+      "remote_state": "See original pending controller/client journals; no cancellation/retry"
+    },
+    "summary": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/summary.json",
+    "oracle": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/017-saved-evidence-oracle.json",
+    "expected_groups": [
+      1940752,
+      1940753
+    ],
+    "live_owned_actors": [],
+    "all_owned_children_joined": true,
+    "all_client_journals_terminal": [
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/one-exec-keys.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/put-suite.txt-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/get-result.dat-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/verify-helper.bin-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/stage-listener-start-keys.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/verify-suite.txt-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/put-helper.bin-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/stage-exit-metadata.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/get-CALLBACK.BIN-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/get-VARS.BIN-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/get-WITNESS.BIN-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/get-ROUTE.BIN-transfer.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/terminal-exit-metadata.json",
+      "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/mkdir-metadata.json"
+    ],
+    "no_pending_commands": true,
+    "all_agon6502_target_access_stopped": true,
+    "listener_offline_evidence": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/019-terminal-listener-offline.json",
+    "restoration_required": "Extender same136 exact85f9 nativeFIRST/fullreadback thena25f/fullROM and freshfullhandback/normalrelease; not released by consumer"
+  },
+  "all_registered_children_joined": true,
+  "original_closure": {
+    "all_registered_children_joined": true,
+    "children": [
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/flash-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/flash-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/verify-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/verify-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/stage-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/stage-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/read/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/read/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/write/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/write/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/chip/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/owner-install/native-install/chip/child-terminal.json",
+        "closed": true
+      }
+    ]
+  },
+  "cleanup_closure": {
+    "all_registered_children_joined": true,
+    "children": [
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/native-restore/independent-read/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/native-restore/independent-read/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/native-restore/write/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/native-restore/write/child-terminal.json",
+        "closed": true
+      }
+    ]
+  },
+  "actual_char_ports": [
+    {
+      "port": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+      "resolved": "/dev/ttyUSB0",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "port": "/dev/serial/by-id/usb-Espressif_USB_JTAG_serial_debug_unit_E8:F6:0A:E2:E1:FE-if00",
+      "resolved": "/dev/ttyACM0",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "all_target_access_stopped": true,
+  "no_pending_commands": true
+}

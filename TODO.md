@@ -16,7 +16,8 @@ confirms existing 512B producer suffices. Prior C8 R0067 supplies physical
 integrity evidence. Own matched short/long checks and normal restoration are
 complete. Rally helper595f73c2 and6502 helper18f3c207 are source-reviewed/pins
 verified;6502 actual136 now passes exact bytes/counts/callback/normal return
-and gives an affirmative practical judgment, restoration pending. Rally135 was
+and gives an affirmative practical judgment; exact restoration/fullhandback and
+cleanrelease12:30:43UTC complete. Rally135 was
 UNRUN; corrected19e9824cf0fe trial remains queued. No further6502 case selected. No game ports, boot-script edits or performance optimization. Source
 review is not a substitute for these selected actual consumer-code trials.
 [Result and limits](docs/tasks/RX-006/RESULT.md),

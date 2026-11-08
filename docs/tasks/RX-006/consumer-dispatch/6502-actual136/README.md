@@ -16,6 +16,11 @@ required. The20.85s includes host staging/collection, not transfer kernel time.
 Coarse8 versus0 public ticks cannot produce a speed ratio or CPU/FPS claim.
 No game, persistence/ACK, new producer or production adoption was exercised.
 
-All6502 target access is stopped and Extender owns same136 exact restoration
-and fresh full handback/release. That closure is pending in this snapshot.
-Rally's corrected queued physical helper trial also remains outstanding.
+Extender completed same136 exact native-FIRST restoration/full independent
+readback, a25f/full131072B readback and fresh CLI/files/input/resources handback.
+UART independently rehashed the returned complete ROM to originala25f and checked
+all release checks and joined-actor receipts. Normal release12:30:43.327754UTC;
+all target access stopped, old token invalid. This completes6502's selected
+consumer slice; no additional case is required. Original stopped-return and
+owner-validation files retain their then-pending restoration descriptions as
+historical evidence. Rally's corrected queued physical trial remains outstanding.

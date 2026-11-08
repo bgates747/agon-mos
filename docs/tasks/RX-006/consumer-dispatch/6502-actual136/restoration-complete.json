@@ -1,0 +1,12 @@
+{
+  "epoch": 1794141032.6343493,
+  "original_consumer_pass": true,
+  "one_selected_helper_only": true,
+  "no_replay": true,
+  "native85f9_restored_FIRST": true,
+  "native_full_readback": true,
+  "exact_a25f_full_readback": true,
+  "actual136_helper_evidence_preserved": true,
+  "final": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/final/fresh.json",
+  "all_registered_children_joined": true
+}

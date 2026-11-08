@@ -1,0 +1,203 @@
+{
+  "owner": "agon-6502",
+  "task": "RX-001-physical-r01",
+  "purpose": "One authorized RX006 retained adapter trial: 69 tagged pulls versus two counted pulls, whole1800/install540/consumer420/cleanup600; Extender installs/restores exact temporary tuple",
+  "plan": "/Agon/mystuff/agon-6502/docs/tasks/RX-001/OPERATING-R01.md",
+  "notify_thread": "01a1147a-c6cf-7b42-b6cd-336c8b762c8e",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "dfcc5d90a252",
+  "requested": "2026-11-08T11:42:41.075033+00:00",
+  "lease": "bbb70c81e9f349c1b4600eb63d436796",
+  "generation": 136,
+  "granted": "2026-11-08T12:16:06.269187+00:00",
+  "phase": "consumer",
+  "entry_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794140166.1981437,
+    "observer": "linux-extender",
+    "lease": null,
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 654924717,
+        "session": 936072332,
+        "sequence": 57,
+        "emitted": 118,
+        "accepted": 118,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389881803
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 171837299,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/source-preparation-r02.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r01/released.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/exchange/vars.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/exchange/callback.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/exchange/backend.bin"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in135.",
+      "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+      "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+      "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+      "listener_sha256": "Fresh final complete24753B read compare unchanged."
+    },
+    "disposition": "Fresh RX001 helper admission after actual135 entirely UNRUN/no consumer target actions, exact85f9 nativeFIRST/readback/a25f/full freshhandback/release. Same retained171c/7d09 temporary tuple and original1800whole/540owner/420consumer/120app/600cleanup/min1020; one source60002 realBRClient/persist_decode legacy69 versus counted2 helper only. Extender owns all install/readbacks/exactnativeFIRST/a25f restoration; no game, tuning, P4/startup/listener/boot/table/OTA/app1 writes. SDmounted.",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Sole delegated restoration operator after actual Rally no-launch stopped custody return"
+  },
+  "released": "2026-11-08T12:30:43.327754+00:00",
+  "release_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794141032.6328225,
+    "observer": "agon-6502",
+    "lease": "bbb70c81e9f349c1b4600eb63d436796",
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 59118940,
+        "session": 218331738,
+        "sequence": 24,
+        "emitted": 52,
+        "accepted": 52,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389896133
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 3001742989,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/final/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/verify-rollback/ROM.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/verify-rollback/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/native-restore/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/all-actors-terminal.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/consumer-stopped-return.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/complete.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/restore136/evidence/stage/provenance.json"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in136.",
+      "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+      "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+      "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+      "listener_sha256": "Fresh final complete24753B read compare unchanged."
+    },
+    "disposition": "Actual136 selected real6502 RX001 helper ONE EXEC PASS: actual584B result/32B witnessstate3, announced+actual40/40/512/512, fullbytes/guards/callback2, legacy69 versuscounted2, rawcallback/mode/Legacy0 and normalterminal listenerEXIT/offline. Original52480 actual0/supervisor+controllergroups joined/clientjournals terminal. No game/diskpersistence/ACK/newexport/tuning/CPU/FPS/wireclaim. Exact incoming85f9 native1105920 prefix restored FIRST/full independent readback, outer12288 untouched/8519 lineage. One maintained currentmatchedbootstrap, incominga25f/full131072readback and freshrootCLI/cursor/rawmode0/callback0/Legacy0/wholefiles/neutralinput/offlineworker/freebothUSB/allactorsjoined. No replay/newcase/clockrenewal. P4/startup/listener unchanged, SDmounted/alltargetSTOPPED.",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Sole delegated restoration operator after original selected6502 helper stopped return"
+  },
+  "next_request": {
+    "owner": "mechagon",
+    "task": "GOAL-001-CPU-WINDOW-R03",
+    "purpose": "PREPARING one new first CPU window;668source/667local mapboundgetter/651native/646f05c;PRE20 dualgetter ENTRY3/exactrollback/no131or133replay",
+    "plan": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/CPU-WINDOW-NEXT-R03.md",
+    "notify_thread": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "9267eb67eb7c",
+    "requested": "2026-11-08T11:50:45.640408+00:00"
+  }
+}

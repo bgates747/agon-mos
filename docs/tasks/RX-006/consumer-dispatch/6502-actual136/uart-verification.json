@@ -27,5 +27,10 @@
   },
   "performance_ratio": null,
   "scope": "Retained BRClient/persist_decode seam only; no game/persist_apply/durable ACK/new exporter. No further6502 case selected.",
-  "restoration_pending": true
+  "restoration_pending": false,
+  "release_utc": "2026-11-08T12:30:43.327754+00:00",
+  "restored_ROM_independently_rehashed": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+  "native_restored_first_full_readback": "Owner exact85f9 prefix verified; untouched suffix retained",
+  "owner_actors_joined": true,
+  "owner_full_handback_checks_pass": true
 }

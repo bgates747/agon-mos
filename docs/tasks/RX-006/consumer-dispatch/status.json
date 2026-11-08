@@ -36,9 +36,12 @@
     "host_kit_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
     "host_review": "37 original+14 host+2 payload hashes match; original1800/540/420/600 bounds resolved; normal actual owner/FIFO/physical pending",
     "last_actual": 136,
-    "last_outcome": "Physical adapter PASS verified exact bytes/counts/callback/return; owner exact restoration/release pending.",
+    "last_outcome": "PASS plus exact restoration/full fresh handback/clean release12:30:43UTC.",
     "practical_judgment": "Suitable/simpler retained BRClient/persist_decode seam:69 tagged requests become2 counted; no further consumer case required.",
-    "performance_ratio": null
+    "performance_ratio": null,
+    "restoration_complete": true,
+    "released": "2026-11-08T12:30:43.327754+00:00",
+    "selected_consumer_slice_complete": true
   },
-  "target_custody": "6502 actual136 consumer stopped/pass; Extender sole exact restoration/fullhandback pending. UART no target access."
+  "target_custody": "Actual136 cleanreleased12:30:43UTC; all6502/Extender target actors stopped; nextMech9267 needs normalfreshadmission. UART no target access; Rally corrected19e queued."
 }

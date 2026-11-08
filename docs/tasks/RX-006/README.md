@@ -21,8 +21,8 @@ firmware claim. App/runtime/firmware are unchanged between129 and132.
 
 6502 actual136 passes its selected real adapter trial:69 tagged requests versus
 2 counted, exact40B+512B, counts/callback/normal return and usefulness judgment.
-[Evidence](consumer-dispatch/6502-actual136/README.md). Same136 owner restoration
-closure is pending; no further6502 case or performance ratio is selected.
+[Evidence](consumer-dispatch/6502-actual136/README.md). Same136 exact restoration/fullhandback/cleanrelease12:30:43UTC is complete;
+no further6502 case or performance ratio is selected.
 Rally135 was entirely UNRUN from delivery expiry and then restored/released.
 Its corrected19e9824cf0fe trial remains queued; goal completion is still pending.
 
