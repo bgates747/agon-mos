@@ -1,0 +1,27 @@
+{
+  "status": "SOURCE-REVIEW-COMPLETE",
+  "owner_controls_reported_pass": true,
+  "owner_controls": 11,
+  "control_names": [
+    "healthy",
+    "one_timeout",
+    "reset_stability",
+    "fault_resets_stability",
+    "unavailable_resets_stability",
+    "bounded_all_timeouts",
+    "wrong_signature",
+    "fatal_serial",
+    "non_timeout_http",
+    "connection_refusal",
+    "malformed_json"
+  ],
+  "uart_read_full_helper_and_test_source": true,
+  "uart_independent_input_rehashes": 8,
+  "mismatches": [],
+  "uart_reran_owner_controls": false,
+  "physical_corrected_path_run": false,
+  "own_fixture_or_sdk_changed": false,
+  "actual_new_request": "ccb5dab78a89",
+  "grant": false,
+  "owner_request_local_install_closure_pending": true
+}

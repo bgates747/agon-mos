@@ -27,3 +27,15 @@ tested fix. Ask the owner for its concrete supported disposition and new source
 pins/control evidence. After that is prepared and inputs match, enter normal
 FIFO with a new request/unique namespaces, not reuse92f/actual123. Own physical
 comparison and subsequent selected-consumer trials remain required for success.
+
+## Prepared owner correction received
+
+Owner mail `2026-11-08_02-55-07_linux-extender_rx006-bootstrap-source-controls-fiftyone`
+supplies the new maintained helper and11 passing fake-clock controls. UART read
+the full helper/control source and rehashed its8-pin manifest with no mismatch.
+The correction is narrower than the candidate above: only direct TimeoutError
+and URLError wrapping TimeoutError are missing samples; other connection
+failures still stop. Same deadline/stability/signature/single-reset gates remain.
+Physical setup remains unrun. [R02](OLIMEX-R02.md) is the new finite plan with
+exact unchanged consumer and corrected owner helper pins; normal fresh FIFO
+and request-local owner closure are still required.

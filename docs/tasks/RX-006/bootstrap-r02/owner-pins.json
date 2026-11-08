@@ -1,0 +1,54 @@
+{
+  "schema": "native-bootstrap-read-only-timeout-r01",
+  "source_commit": "e4929b469be9202c5d408337c16e63fd7105a0da",
+  "controls": 11,
+  "host_controls_pass": true,
+  "physical_corrected_path_unrun": true,
+  "old_case": 123,
+  "old_case_released": true,
+  "current_case": 124,
+  "current_sole_owner": "agon-6502",
+  "no_target_access": true,
+  "inputs": [
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/native_bootstrap.py",
+      "bytes": 6166,
+      "sha256": "b6d157b1dfd861d38dfe7a346ee3c3220df75a3917aa54ca18203e8ae90239a9"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/tests/network/native_bootstrap_test.py",
+      "bytes": 2638,
+      "sha256": "0979b51ee541e17792d5939929e45755a4896e233af249e4c456c752f3392a9f"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/docs/tasks/BENCH-010/BOOTSTRAP-HTTP-R01.md",
+      "bytes": 2337,
+      "sha256": "91d072b2eeaf952383f8ba00e826a5c7480231594cc49831c909bc21b9ef3f4f"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/reset_agon_usb.py",
+      "bytes": 3632,
+      "sha256": "19fd4577cdca0e1dc8000ba3a1904f21f544cc597becd96e2592671c7f72406f"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/p4_boot_guard.py",
+      "bytes": 891,
+      "sha256": "8c8efb4c825029adb64758b35f6424b04b952af46233cf888dab5cc2fe3e90a5"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/uart1-bootstrap-r01/bootstrap.py",
+      "bytes": 4773,
+      "sha256": "d04f18ee229b4eca6c7134f8ba1efaa91edc5aebccc6b183b6ab4656c526ea83"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-reset/usb-reset.local.json",
+      "bytes": 193,
+      "sha256": "9917c14b8ea439e5db10c747ea53017b3041afe14af582b042e040e25b8aa5ca"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/bootstrap-host-controls.json",
+      "bytes": 9927,
+      "sha256": "b1c85581d854fd82a92089892ffc46924b6b36f974192bbff3ac45880d87ebbc"
+    }
+  ]
+}

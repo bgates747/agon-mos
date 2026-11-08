@@ -5,8 +5,9 @@ the premature source-review-only closure. Final matched app0208015a/18376B and
 host runner are checked, exact temporary EMOS171c/VDP7d09 bound. Actual bench
 FIFO92f38ff2f224/actual123 closed UNRUN after bootstrap display-status timeout;
 exact firmware install/readbacks succeeded. Extender restored exact originals,
-verified handback and released. Corrected bootstrap/new normal FIFO needed;
-old token invalid, no test run or timing result.
+verified handback and released. Corrected bootstrap8pins/11hostcontrols reviewed;
+new actual FIFOccb5dab78a89 queued, request-local owner closure/fresh grant needed.
+Old token invalid, no test run or timing result.
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical
