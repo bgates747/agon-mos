@@ -8,7 +8,9 @@ need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical
 integrity evidence; 37 owner pins and count arithmetic rechecked. Complete the
 finite short/long hardware checks and normal restoration; no game ports,
-boot-script edits or performance optimization.
+boot-script edits or performance optimization. Benchmark identical legacy
+keycode-carrier/new bulk pulls (especially128/256/1024B), then coordinate small
+actual consumer-code trials after the own-suite pass; source review is not enough.
 [Result and limits](docs/tasks/RX-006/RESULT.md),
 [task and exact human scope](docs/tasks/RX-006/README.md).
 

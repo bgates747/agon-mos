@@ -8,6 +8,15 @@ or run merely because an earlier report used the word complete. Preserve that
 
 ## Reopening after Brandon's correction
 
+Brandon further clarified the required sequence: verify the method on hardware
+and benchmark identical pulls through the existing keyboard-reply workaround
+and the new counted path; then work with selected owners to test it in their
+own code. In particular 128, 256 and about 1024 bytes are useful comparative
+sizes, while individual four-byte operations are too short for a convincing
+timing result. This is actual hardware and consumer testing, not just source
+acceptance. Keep consumer trials conditional on the own-suite pass and useful
+measurements; do not optimize performance or expand into full-game rewrites.
+
 Brandon responded to the unrun-sweep statement:
 
 > You mean that the olimex sweep is still in the queue and will be run when your slot frees up.
@@ -135,7 +144,15 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [x] Dispose of the proposed sweep honestly: initial source draft archived
       uncompiled/unrun; no passing fixture, new timing or Olimex claim.
 - [ ] Prepare/check the finite synthetic fixture against the actual owner tuple.
+- [ ] Include matched legacy keycode-carried READ_BYTES (8 bytes per reply) and
+      new counted reads of the same immutable source, verifying identical bytes.
+      Aggregate complete logical pulls; report tiny cases as unresolved if the
+      clock lacks resolution. Include 128/256/1024-byte comparisons. Explain
+      that the legacy carrier is packet 81h, not held-key-map packet 88h.
 - [ ] Reserve the prepared Olimex run in the real FIFO and notify Extender.
 - [ ] Obtain actual fresh grant, perform finite short/long send/receive checks,
       resolve correctness failures, preserve results and restore/hand back.
+- [ ] After the own hardware pass, guide selected consumer owners through small
+      actual in-code trials using measured findings; preserve each owner lane
+      and normal bench scheduling. Source reviews alone do not complete this.
 - [ ] Report attributable hardware evidence and limits, then stop without tuning.
