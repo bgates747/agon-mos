@@ -164,4 +164,5 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [ ] After the own hardware pass, guide selected consumer owners through small
       actual in-code trials using measured findings; preserve each owner lane
       and normal bench scheduling. Source reviews alone do not complete this.
+      [Conditional trial scope](CONSUMER-TRIALS.md) keeps those checks bounded.
 - [ ] Report attributable hardware evidence and limits, then stop without tuning.
