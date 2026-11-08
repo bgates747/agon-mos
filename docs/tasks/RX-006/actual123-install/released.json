@@ -1,0 +1,222 @@
+{
+  "owner": "agon-mos",
+  "task": "RX006-matched-physical-r01",
+  "purpose": "ONE finite actual matched legacy8 versus counted512 receive sweep with all ten short/long correctness sizes; owner installs/restores exact temporary components; no tuning",
+  "plan": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/OLIMEX-R01.md",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "92f38ff2f224",
+  "requested": "2026-11-08T05:13:13.184675+00:00",
+  "lease": "7dba0cfb1b234715a3b318079c58b7e1",
+  "generation": 123,
+  "granted": "2026-11-08T07:27:47.134785+00:00",
+  "phase": "consumer",
+  "entry_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794122867.0568762,
+    "observer": "linux-extender",
+    "lease": null,
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 3719378619,
+        "session": 3410098955,
+        "sequence": 3,
+        "emitted": 18,
+        "accepted": 18,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389894499
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 2562542373,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      },
+      "display": {
+        "available": true,
+        "mode": 0,
+        "width": 640,
+        "height": 480,
+        "colors": 16,
+        "refresh_hz": 60,
+        "double_buffered": false,
+        "output": "hdmi",
+        "output_width": 1280,
+        "output_height": 720,
+        "output_nominal_refresh_hz": 60,
+        "frame_clock": "dma-frame-complete"
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/source-preparation.json",
+      "/Agon/mystuff/agon-fsim/utilities/pingo-vdplet-flight/build/p071-physical27-actual122/release.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/exchange/vars.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/exchange/callback.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/exchange/backend.bin"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
+      "emos_rom_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
+      "native_vdp_sha256": "Independent complete incoming application/touched-tail restoration readback",
+      "startup_sha256": "Fresh whole-file comparison with incoming grant",
+      "listener_sha256": "Fresh whole-file comparison with incoming grant"
+    },
+    "disposition": "Fresh RX006 admission after actual122 exact8519 full restoration/readback/release; source kit e220 rehashed. Owner Extender installs only selected171c EMOS and7d09 native app0 with full independent readbacks then current matched bootstrap/fresh raw mode/callback/Legacy/wholefiles/rootCLI/inputneutral/offline/freeUSB and stopped sole UART handoff. Whole1800/consumer420/cleanup600/min1020 before consumer. No owner fixture invocation/PRT/P4/startup/listener or unrelated flash; no replay. Native suffix outside1105920 unchanged. Exact incoming85f9 prefix and a25f restore/fullreadbacks/fresh handback/normalrelease required. SDmounted."
+  },
+  "released": "2026-11-08T07:41:35.846180+00:00",
+  "release_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794123647.7825015,
+    "observer": "agon-mos",
+    "lease": "7dba0cfb1b234715a3b318079c58b7e1",
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "component_provenance": {
+      "p4_app_sha256": "Retained exactd9b; no P4 firmware write. Original bootstrap P4 reset logged once; no second P4 reset required.",
+      "emos_rom_sha256": "Fresh independent full131072B exacta25f rollback readback.",
+      "native_vdp_sha256": "Fresh independent1105920B exact85f9 prefix restoration, native1104176B prefix5d657; known8519 outer12288B suffix never written.",
+      "startup_sha256": "Fresh whole setup-only startup download exact originaled403; unchanged.",
+      "listener_sha256": "Fresh whole canonical listener download exact0566; unchanged."
+    },
+    "state": {
+      "epoch": 1794123647.6755066,
+      "keyboard": {
+        "protocol": 1,
+        "boot": 491613306,
+        "session": 2745675990,
+        "sequence": 24,
+        "emitted": 52,
+        "accepted": 52,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389896019
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 1275156069,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      },
+      "ports": {
+        "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0": {
+          "ownerless": true
+        },
+        "/dev/serial/by-id/usb-Espressif_USB_JTAG_serial_debug_unit_E8:F6:0A:E2:E1:FE-if00": {
+          "ownerless": true
+        }
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/all-actors-terminal.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/complete.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/original-tool-terminal.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/native-restore/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/verify-rollback/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/final/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/final/startup.txt",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/final/listener.bin"
+    ],
+    "disposition": "Actual123 owner installation FAILED after171c/7d09 positive readbacks, P4bootstrap GETdisplay HTTPtimeout BEFORE Agon reset. UART consumer entirelyUNRUN, no guestRAM invented, original logs retained. Exact incoming85f9 native prefix restored FIRST/full independent readback; ONE standing Agon reset/currentinitializedP4 then normalCLI, ONEa25f rollback/full independent readback/fullfreshhandback. No replay or extra workload/P4 firmware/startup/listener/OTA/table/app1 change. All owned installer/cleanup actors/readers stopped; SDmounted; oldtokeninvalid after release."
+  },
+  "next_request": {
+    "owner": "agon-6502",
+    "task": "DSK-001-014-normal-app-r03",
+    "purpose": "New finite2400 whole normal9652 empty/DOS/BASIC/F-key cohort, original1180 admission floor retained; original120 both invocations unrun. SameF6 exactincoming restore; sourcekit preparation before admission.",
+    "plan": "/Agon/mystuff/agon-6502/docs/tasks/DSK-001/NORMAL-APP-PHYSICAL-R03.md",
+    "notify_thread": "01a1147a-c6cf-7b42-b6cd-336c8b762c8e",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "a8e01ba53c4e",
+    "requested": "2026-11-08T05:32:47.877814+00:00"
+  }
+}

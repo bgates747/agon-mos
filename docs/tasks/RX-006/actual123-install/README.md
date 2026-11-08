@@ -20,3 +20,20 @@ with immediate accepted steering. Extender alone reconciles actual state and
 performs required restoration. UART remains target-stopped until fresh actual
 joined/stopped handoff and at least1020s remain in the original1800s grant.
 No app, test, throughput measurement, reset or flash replay by UART occurred.
+
+## Closed unrun after necessary restoration
+
+Extender's substantive `rx006-actual123-clean-release-fortyfive` and retained
+[cleanup completion](cleanup-complete.json), [release](released.json), and
+[actor closure](all-actors-terminal.json) establish exact85f9 native-prefix
+restoration FIRST with independent readback, known12288B suffix untouched,
+one standing Agon-only recovery, then a25f full131072B ROM restoration/readback.
+Fresh root CLI/cursor/rawmode0/callback0/Legacy0/whole startup/listener/input
+neutral/offline worker/free USB checks passed. Actual123 released07:41:35UTC
+November8; all target actors stopped. Neither test namespace nor fixture was
+invoked. These are restoration results, not test or performance results.
+
+The prior paragraph's pending reconciliation is historical. There is no live
+consumer handoff or reservation to resume. Completing RX006 requires a separately
+frozen corrected owner-bootstrap binding and fresh FIFO admission; no replay of
+the old installer or reuse of its token is authorized by its release.

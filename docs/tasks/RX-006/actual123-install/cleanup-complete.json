@@ -1,0 +1,17 @@
+{
+  "epoch": 1794123647.7838838,
+  "cleanup_only": true,
+  "consumer_unrun": true,
+  "native_restored_sha256": "85f9cf31219d679cffef48029d736331a3a3dfc78511d19d48a04cd2bd6a74de",
+  "emos_restored_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+  "results": [
+    {
+      "label": "agon-recovery",
+      "pid": 1872900,
+      "returncode": 0,
+      "joined": true
+    }
+  ],
+  "all_synchronous_children_readers_joined": true,
+  "final": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/cleanup123/evidence/final/fresh.json"
+}

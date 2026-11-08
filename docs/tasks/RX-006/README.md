@@ -1,9 +1,10 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**PENDING CONSUMER HANDOFF: actual123 request `92f38ff2f224` is in Extender's
-sole installation phase.** The firmware readbacks match, but the subsequent
-bootstrap display-status observation timed out. Installer actors are joined;
-Extender owns reconciliation. No consumer handoff or test pass is claimed.
+**ACTUAL123 CLOSED UNRUN: installation readbacks matched, then bootstrap
+display-status observation timed out before Agon reset.** Extender restored
+both original images, verified handback and released at07:41:35UTC November8.
+No consumer handoff or test pass is claimed. Corrected bootstrap preparation
+and a new normal FIFO request are needed; the old token/request cannot be reused.
 See [the retained installation boundary](actual123-install/README.md).
 The matched app and finite host runner are built/checked.
 Brandon corrected the premature source-review-only closure. Existing consumer
