@@ -1,0 +1,55 @@
+{
+  "scope": "Read-only source consultation; no build/tests/target",
+  "files": [
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/manifest.json",
+      "bytes": 16832,
+      "sha256": "6833b60c5ff5be01383b29c721fcfe28a0d4b65634f64a882262c34c4f779272"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/RESULT.md",
+      "bytes": 3285,
+      "sha256": "74c966c0b20b5368a519ea94c61f1b5fedffab3f69d4de4082ee208faa5093e1"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/FIRST-WINDOW-CONTRACT.md",
+      "bytes": 3942,
+      "sha256": "177d36e9a3322e3e98bf9ec04166167dd0366d75e1629884b813df167f0713fe"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/emos_cpu.asm",
+      "bytes": 698,
+      "sha256": "54706c02f61b25a207fd632534579eb79f00704b0c8392ce38ce5f5586467996"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/emos_cpu.inc",
+      "bytes": 426,
+      "sha256": "47168c207ab711702c62ef24e08ab58040391b0e7f29f433aa59c9a26e7adb95"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/emos_uart0_rfc25_io.asm",
+      "bytes": 4861,
+      "sha256": "e2eaab65bec685f1d3cedc7743e71275398a35ba1e2bafe7cb3b52b35777c96a"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/emos_net.c",
+      "bytes": 6336,
+      "sha256": "2b911859abbdb555f71c499133ea54f51cdda8440437d6de738f2e9a78a3bc3a"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/emos_neta.c",
+      "bytes": 5224,
+      "sha256": "55b58af134d31a1ef6f7fbbe178f0fe3776aee89be736f1367d9bce5a0b44980"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/interrupts.asm",
+      "bytes": 8558,
+      "sha256": "836644809c404eade7db7ed23861641862c9c9003d1bf724f9694fe14a831bf0"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-fit-r02/source/src/handlers.asm",
+      "bytes": 1445,
+      "sha256": "20d2363e929fc03bccb376ec021c6035985df0189eaba060ac624d212801a8ca"
+    }
+  ]
+}
