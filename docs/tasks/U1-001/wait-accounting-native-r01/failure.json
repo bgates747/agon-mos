@@ -1,0 +1,9 @@
+{
+  "status": "STOPPED-PRECOMPILE",
+  "cause": "Qualification harness assumes owner manifest[files]; actual exact manifest schema uses inputs. KeyError files before object copy or compiler/test child launch.",
+  "native_children_launched": 0,
+  "tests_run": 0,
+  "leaf_or_owner_code_failure_established": false,
+  "release": "/Agon/mystuff/agon-mos/build/u1-wait-accounting/native-r01/release.json",
+  "retry": false
+}
