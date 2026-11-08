@@ -1,0 +1,20 @@
+{
+  "scope": "source-only-no-execution",
+  "sources": {
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/main.c": "8a81ec27eb8d18f351818ec74a0651f8b0ebee3f44d0da20b6c28816a8c67075",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/transport_uart1.c": "3a120ec99c67ca3c79062ecaa0483c5f5089c018883817257c89ec3b0aabe124",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/render_link.c": "44e0b97ed39f70a56b320ba28c5645967efbb9a6d34e4b8adb4a75cb70fec32c",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/rfc.s": "2ce59061e8f2b3e5ee6d3249635b8f8f74034f39e1072b60be20359e3892cf21",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/wake_app.c": "b132fbf57bd640d2d23873ee4fec86030a72fa682b4e4acf36117d2bb0bfb4fd",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/source/native/renderer/src/profile_app.c": "d4c9b000c7b6c378fc6bc7b1791881313ba4a53a740d92eed76c211b16c2898b",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/owner/sdk/agon/net_async.h": "e98cc8de6532ecf53c5244b16d050f3bbcf0088236211f9d927da3fa1bdeedb5",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/owner/u1/src/u1_tx.c": "5b9c75120a9fc1ab068211698f561e38fb49e3e8e62116ed4e8daf3e79e659e0",
+    "/Agon/mystuff/MechAgon/.runtime/goal001/first-poison-check-r02/owner/helper/src/aw_wait.s": "088dd252db727c684b16ed154ad612608ae2f622fb3a31e9a1012e7eec151fe2",
+    "/Agon/mystuff/agon-extender/agents/net004/uart0-rx-reserve-r01/source/src/interrupts.asm": "c635d6901381e2c221b62ead0e273580d6f14534469e32d629f5657e5f413ab7",
+    "/Agon/mystuff/agon-extender/agents/net004/uart0-rx-reserve-r01/source/src/emos_neta.c": "dd9b955323fe59410088dbe5b361ff24ecf3f6ee737f7333a053cf8dfe094b03",
+    "/Agon/mystuff/agon-extender/agents/net004/uart0-rx-reserve-r01/source/src/emos_keyboard.c": "7695dd8b69a64a8c21b772b5ebc6ac97a4bcee1ac5f1f266e36b578da6064d93",
+    "/Agon/mystuff/agon-extender/agents/net004/uart0-rx-reserve-r01/source/src/emos_keyboard_io.asm": "fb44ad8ab7641b2bd1723cf8a2f23cb684fd65d0acdaa6fc1b616763277c4415",
+    "/Agon/mystuff/agon-extender/agents/net004/uart0-rx-reserve-r01/source/src/emos_uart0_rfc25_io.asm": "8feafa7897742590b9e9871795b25840205103e8ce29829580f0757327638839"
+  },
+  "counter_vs_service_cadence": "two public clock counts per VBlank, not two service calls"
+}

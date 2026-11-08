@@ -1,0 +1,11 @@
+{
+  "mode": "source-only",
+  "source_pins": {
+    "/Agon/mystuff/trs-80/projects/lsdos-sd/apps/local-sd-bridge/read.asm": "ff4628a545e98e455e3669d53d9492b014386787903dda1524a220bc5df73bd6",
+    "/Agon/mystuff/trs-80/projects/lsdos-sd/apps/local-sd-bridge/context-hooks.inc": "1d18e021487f253fc55fc880e61a23bf6a7e77f4a4e83d9cab6aca2bca9ae200",
+    "/Agon/mystuff/trs-80/projects/lsdos-sd/apps/trsdos7-source/TRSDOS_7/SYSRES/interrupts/interrupt_handler.s": "e1ba146c37819720de6a5f5acb218a8bb30800bf58ca0897578e9bc76215cb39",
+    "/Agon/mystuff/trs-80/projects/lsdos-sd/docs/tasks/CHAR01/src/main.c": "8ef6183b7b2ef1a4606d5c842cf5074fd40bc2f8efa1d7f800475163247fd3d8"
+  },
+  "eirene_reference": "97311c437093e416342a6c836cf9914f2ced027d",
+  "not_loaded_binary_proof": true
+}
