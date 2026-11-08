@@ -1,11 +1,26 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**Outcome: practical feasibility established; stopping under Brandon's explicit
-criterion.** Both selected consumer owners give affirmative source-grounded
-adoption judgments, supported by the existing Console8 synthetic integrity pass.
-[Result, evidence and unrun-work disposition](RESULT.md). No new Olimex run,
-large-size sweep, consumer implementation or performance measurement is claimed.
-The original plan below is retained; its sweep was conditional on need/admission.
+**ACTIVE again: finite Olimex sweep still required.** Brandon corrected the
+premature source-review-only closure. Existing consumer judgments remain valid;
+they do not replace the requested short/long hardware checks. Nothing is queued
+or run merely because an earlier report used the word complete. Preserve that
+[earlier result](RESULT.md) as source-feasibility evidence, not hardware acceptance.
+
+## Reopening after Brandon's correction
+
+Brandon responded to the unrun-sweep statement:
+
+> You mean that the olimex sweep is still in the queue and will be run when your slot frees up.
+
+UART clarified that no reservation had been made and acknowledged closing too
+early. Finish a finite own fixture and coordinate a supported receiving
+MOS/EMOS/VDP/input/recovery tuple with Extender. Enter the actual bench FIFO
+when prepared, obtain actual admission and complete the size sweep below.
+Source review is already affirmative; do not repeat consultations or port games.
+The existing no-optimization, finite-run and normal-restoration limits remain.
+Use the current 512-byte wire replies for long logical reads; no new larger-frame
+feature is needed. If integration blocks progress, report that exact preparation
+dependency rather than claiming the test is already queued or passed.
 
 Brandon selected this goal on November7 after Console8 RX-005 R0067 passed.
 Prove practical adoption feasibility, not a maximum-performance result. UART
@@ -109,7 +124,7 @@ Extender test-appliances/test-execution/bench constraints, fresh checkout/assert
 finite monitoring, exact restoration and prompt/neutral input handback. Resource
 permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 
-## Final disposition
+## Completed source review and remaining hardware work
 
 - [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
       no new VDP build or large-reply feature is needed. Extender consulted;
@@ -119,6 +134,8 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.
 - [x] Dispose of the proposed sweep honestly: initial source draft archived
       uncompiled/unrun; no passing fixture, new timing or Olimex claim.
-- [x] Follow the explicit stop rule once selected owners accept feasibility.
-      Further app integration and short/long hardware measurements remain
-      deferred; they are not needed for this bounded adoption judgment.
+- [ ] Prepare/check the finite synthetic fixture against the actual owner tuple.
+- [ ] Reserve the prepared Olimex run in the real FIFO and notify Extender.
+- [ ] Obtain actual fresh grant, perform finite short/long send/receive checks,
+      resolve correctness failures, preserve results and restore/hand back.
+- [ ] Report attributable hardware evidence and limits, then stop without tuning.

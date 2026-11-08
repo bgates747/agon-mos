@@ -1,5 +1,11 @@
 # RX-006 — Practical feasibility established
 
+**Superseded completion status:** Brandon subsequently clarified that the
+requested Olimex size sweep is still expected. RX-006 is active again;
+[the task](README.md) records the correction. The source reviews and existing
+Console8 evidence below remain valid, but this report does not close the
+remaining hardware work. No sweep was actually queued at this report's closure.
+
 The selected consumer owners are comfortable that the existing counted-return
 method would work if adopted and simplify their code. The prior Console8
 synthetic pass supplies physical correctness evidence for the underlying
