@@ -12,8 +12,9 @@ Actual123 likewise closed UNRUN, fully restored and released; its separate
 Request `ccb5dab78a89` obtained actual128 admission; it is not still queued.
 The executed [r02 plan](OLIMEX-R02.md) retains its original360-second limit.
 The new [r03 preparation](OLIMEX-R03.md) selects540s setup without changing
-this closed attempt or reducing consumer/cleanup allowances. Extender is preparing
-its request-local source binding; no new reservation or target access yet.
+this closed attempt or reducing consumer/cleanup allowances. All49 owner source pins match; actual new FIFO request`8ff7f0739f0e` exists.
+Extender binds the fresh runtime and reconciles actual admission; no target
+access or consumer handoff follows from the reservation.
 
 The matched app `0208015a8a94e345`, receiving EMOS `171c7880` and producer
 `7d09dfea` remain unchanged. Brandon corrected the premature source-review-only

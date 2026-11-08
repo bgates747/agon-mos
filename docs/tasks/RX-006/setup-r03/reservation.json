@@ -1,0 +1,9 @@
+{
+  "owner": "agon-mos",
+  "task": "RX006-matched-physical-r03",
+  "request": "8ff7f0739f0e",
+  "requested": "2026-11-08T09:42:01.838281+00:00",
+  "plan": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/OLIMEX-R03.md",
+  "grant": false,
+  "target_access": false
+}

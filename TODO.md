@@ -8,7 +8,7 @@ installation UNRUN: both firmware readbacks and corrected bootstrap passed,
 then the original360s setup cap interrupted final listener-file verification.
 Extender resolved that read, restored exact originals and released09:34:48UTC;
 no consumer token, app run or timing result. [R03 setup preparation](docs/tasks/RX-006/OLIMEX-R03.md) selects540s; owner source
-binding pending before new FIFO. No replay or cleanup/test reduction.
+all49pins match; new FIFO8ff7f0739f0e awaits fresh owner binding/admission. No replay or cleanup/test reduction.
 [Actual128 evidence](docs/tasks/RX-006/actual128-install/README.md).
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet

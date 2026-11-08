@@ -1,0 +1,232 @@
+{
+  "schema": "RX006-OWNER-SOURCE3",
+  "epoch": 1794130829.2361546,
+  "request": null,
+  "task": "RX006-matched-physical-r03",
+  "central_owner": "agon-mos",
+  "hardware_operator_install_restore": "linux-extender",
+  "source_template_only": true,
+  "no_target_access": true,
+  "no_grant": true,
+  "consumer_kit": {
+    "path": "/Agon/mystuff/agon-mos/build/rx006/kit-r01/kit.json",
+    "bytes": 2577,
+    "sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518"
+  },
+  "owner_install_seconds": 540,
+  "whole_seconds": 1800,
+  "consumer_seconds": 420,
+  "app_seconds": 180,
+  "cleanup_seconds": 600,
+  "minimum_consumer_remaining_seconds": 1020,
+  "inputs_rehashed": {
+    "/Agon/mystuff/agon-mos/experiments/rx006/run.py": {
+      "bytes": 7452,
+      "sha256": "9cc5e8922ab1a1295a935081754bad7e6890f60b2f5de330a165ce87ede1577c"
+    },
+    "/Agon/mystuff/agon-mos/experiments/rx006/analyze.py": {
+      "bytes": 3351,
+      "sha256": "1d89f2c2182f6485b47ee84aabc11369ea56acfc76013d4b6a968d01718904e7"
+    },
+    "/Agon/mystuff/agon-extender/scripts/sdcard_staged.py": {
+      "bytes": 12231,
+      "sha256": "f7aa43bd05d62cc1bdc051d8ae569128766cb9ec95076bd1bb951063997683ef"
+    },
+    "/Agon/mystuff/agon-extender/scripts/sdcard.py": {
+      "bytes": 19583,
+      "sha256": "f1cbf3e07be4b1218691a99d06df7bcf5d512d44eff2c62dc24473bb072050fa"
+    },
+    "/Agon/mystuff/agon-extender/scripts/keyboard.py": {
+      "bytes": 8822,
+      "sha256": "2bd907921d80315f9d83761213e8125527a07f849ff488e128188b0f114c6525"
+    },
+    "/Agon/mystuff/agon-extender/scripts/hardware_validation.py": {
+      "bytes": 7660,
+      "sha256": "6f83df613214f7e63b9b7f136cf5da14ad9872c5cd7a4603ea71d8234679f971"
+    },
+    "/Agon/mystuff/agon-mos/build/rx006/kit-r01/package/next.txt": {
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    "/Agon/mystuff/agon-mos/build/rx006/kit-r01/package/readme.txt": {
+      "bytes": 571,
+      "sha256": "a6cb5bda11cf0e52ddab1a0dd28a77bcb7782e99d5593557b63f3a1ddc02ef6c"
+    },
+    "/Agon/mystuff/agon-mos/build/rx006/kit-r01/package/suite.txt": {
+      "bytes": 112,
+      "sha256": "d747c254d77dd670155ce97392877a1fac92ad84b68fcd0965b8933a23b9851a"
+    },
+    "/Agon/mystuff/agon-mos/build/rx006/kit-r01/package/test.bin": {
+      "bytes": 18376,
+      "sha256": "2a0d9312e9147972d674745487d8fcb34b365d3de53ac235f22776d7f548f2c6"
+    },
+    "/Agon/mystuff/agon-extender/scripts/passive_serial.py": {
+      "bytes": 2069,
+      "sha256": "b665826da471b786582bb4dd24214f7c4bc925fe7018d07106e661fc5e4a3543"
+    },
+    "/Agon/mystuff/agon-extender/docs/tasks/NET-004/scripts/image_span.py": {
+      "bytes": 1911,
+      "sha256": "bb251fa726094889f5229b5bb56dc282ce0de727d7bf8d83bde8fd1211fda838"
+    },
+    "/Agon/mystuff/agon-extender/scripts/native_bootstrap.py": {
+      "bytes": 6166,
+      "sha256": "b6d157b1dfd861d38dfe7a346ee3c3220df75a3917aa54ca18203e8ae90239a9"
+    },
+    "/Agon/mystuff/agon-extender/scripts/reset_agon_usb.py": {
+      "bytes": 3632,
+      "sha256": "19fd4577cdca0e1dc8000ba3a1904f21f544cc597becd96e2592671c7f72406f"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-reset/usb-reset.local.json": {
+      "bytes": 193,
+      "sha256": "9917c14b8ea439e5db10c747ea53017b3041afe14af582b042e040e25b8aa5ca"
+    },
+    "/Agon/mystuff/agon-extender/scripts/reset_agon.py": {
+      "bytes": 2825,
+      "sha256": "a34a104a8f0cc06f381b243c57f70715631ab2edb63f879b6f5da0faa5685a77"
+    },
+    "/Agon/mystuff/agon-extender/scripts/p4_boot_guard.py": {
+      "bytes": 891,
+      "sha256": "8c8efb4c825029adb64758b35f6424b04b952af46233cf888dab5cc2fe3e90a5"
+    },
+    "/Agon/mystuff/agon-extender/scripts/agentcoms.py": {
+      "bytes": 5798,
+      "sha256": "36f125bac6175b1121a90fd76384c1ebd6c0abb3ef6e104562d4641e6a75f325"
+    },
+    "/Agon/mystuff/agon-mos/build/rx006/kit-r01/kit.json": {
+      "bytes": 2577,
+      "sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/install.py": {
+      "bytes": 15095,
+      "sha256": "171b629a363be6b100723212168846ea6ce9cd156e12fd38e06821ba6ef3cc8a"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/OWNER-PLAN.md": {
+      "bytes": 7281,
+      "sha256": "8382cf12e98f2fcc8b4b7267a6be58a6724d2b56f90d71f80a186ee7354fc299"
+    },
+    "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/manifest.json": {
+      "bytes": 2481,
+      "sha256": "324f52967bd402fc7fe87eed93630626f98094d682fa53abb04a25e69bde84eb"
+    },
+    "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/mos.map": {
+      "bytes": 91928,
+      "sha256": "ccbda4bc18bb16ef247d291338037ebdee4c3185c28b9ea25f9c32c44fe3b71f"
+    },
+    "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/ROM.bin": {
+      "bytes": 131072,
+      "sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914"
+    },
+    "/Agon/mystuff/agon-extender/agents/net004/emos-uart-rfc25-r02/manifest.json": {
+      "bytes": 1121,
+      "sha256": "d5d8d3b96f9cd5ba42a0dad8bd63e1272c06d3605c5f34576f13e79469a399d4"
+    },
+    "/Agon/mystuff/agon-extender/agents/net004/emos-uart-rfc25-r02/ROM.bin": {
+      "bytes": 131072,
+      "sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin": {
+      "bytes": 1100320,
+      "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/native.py": {
+      "bytes": 5262,
+      "sha256": "36caadacfac806f182b4b1880f7b7e44bef4d1c562a94a8f3314d9dd840f9f42"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/owner-selection.json": {
+      "bytes": 2037,
+      "sha256": "deb24bd34e3187ba8fa97218aad33e33a36ee6399eb7d195707e52c8b8d0db2f"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/candidate-sectors.bin": {
+      "bytes": 1101824,
+      "sha256": "70cde274e3c5107e719d7ccb085fd8a42553a4755f8616c904334bd3a36df8ec"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/expected-installed.bin": {
+      "bytes": 1105920,
+      "sha256": "9d005680f7ca47dc429d37db9e314c9f58016896de1b1db979ebdd8575481bc4"
+    },
+    "/Agon/mystuff/Wolf3dOrig/agonport/doc/tasks/WOLF-PROFILE-001/build/hardware02/restore.bin": {
+      "bytes": 1105920,
+      "sha256": "85f9cf31219d679cffef48029d736331a3a3dfc78511d19d48a04cd2bd6a74de"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/install_once.py": {
+      "bytes": 3150,
+      "sha256": "fcab589181c7ac0b6e1714e671a09576291b464799f8115572d3f990ff24aad1"
+    },
+    "/Agon/mystuff/agon-extender/tests/network/native_bootstrap_test.py": {
+      "bytes": 2638,
+      "sha256": "0979b51ee541e17792d5939929e45755a4896e233af249e4c456c752f3392a9f"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/bootstrap-correction-pins.json": {
+      "bytes": 1975,
+      "sha256": "7614d6b60809d5f9e855ee8c09bed473a93b5f11becaabc0eb5e5ee72374df39"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/bootstrap-host-controls.json": {
+      "bytes": 9927,
+      "sha256": "b1c85581d854fd82a92089892ffc46924b6b36f974192bbff3ac45880d87ebbc"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/native-source.json": {
+      "bytes": 5781,
+      "sha256": "b4a958e8596375f198e0303eb1a1282271ce7c8ab972524da2b5c0d1c57922fe"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/child_control.py": {
+      "bytes": 3018,
+      "sha256": "09655f1b96db22a477b5720b498ae5ce519bb2157f0cff1d2cdc58d0b74fa6a2"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/host-controls.py": {
+      "bytes": 3419,
+      "sha256": "80f004885e0468e61486d7d85e5a5c6b084d7fe3d7714dc30bdec2120e992d50"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/check.py": {
+      "bytes": 1921,
+      "sha256": "c3ef3f5504955ed2cdd9f5f5436f4a93151771542a47b04bc99f6c08f20b0208"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/BUILD-PLAN.md": {
+      "bytes": 981,
+      "sha256": "e15acf3fcbac36bea99de4c3c9e323770470f37b6c90bc36c222eb8e39a5937b"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/host-qualification-r01/controls/result.json": {
+      "bytes": 1274,
+      "sha256": "a815bbeb7c6318d9517499bdf84240ba772c8ee139085f64ba4a70eacea3760b"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/host-qualification-r01/driver-terminal.json": {
+      "bytes": 89,
+      "sha256": "2c21e5af5d35fbbfbf7d3720f28bd11b2e0aa89384680018191a6863aa059f3f"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/host-qualification-r01/release.json": {
+      "bytes": 3087,
+      "sha256": "5fb42cca5ff5a6574f876e32a1c9d49ad5db8d20e86e01730a8a0197ae589ebc"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02/source-preparation.json": {
+      "bytes": 10254,
+      "sha256": "1ab08f6e6ed4bae8951acfa0e4708a637d7b843ddbb9b09b57d24143471e12a7"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/bind.py": {
+      "bytes": 2322,
+      "sha256": "2cc40107784769ef70d2c6c5b6df545924a5b0b7cbc53496d313f7505e0eba17"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/check_source.py": {
+      "bytes": 3070,
+      "sha256": "f012265361d4584b473daad9b8b24948ae189622a597ec9f503ffdeb20aa7007"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/source-checks.json": {
+      "bytes": 249,
+      "sha256": "9594cf202860ebc32aef40bf89ff5e75d5123306339b9c11777e8d817aa7eeed"
+    },
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03/CONTEXT-CONTRACT.md": {
+      "bytes": 1957,
+      "sha256": "755beb7890da582124dbdac9fec4a2d7b1ba4a0c028c3a709374ceccee68bc47"
+    }
+  },
+  "source2_preserved": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/source-preparation.json",
+  "runtime_binding": "bind.py requires actual new normal R03 reservation and creates sibling runtime source packet; no fake request/grant. Actual context names owner_install_output; original staging provenance validated for normal/failure cleanup before any rollback FLASH.",
+  "offline_controls": {
+    "bytes": 249,
+    "sha256": "9594cf202860ebc32aef40bf89ff5e75d5123306339b9c11777e8d817aa7eeed"
+  },
+  "bootstrap_unchanged": "b6d157b1dfd861d38dfe7a346ee3c3220df75a3917aa54ca18203e8ae90239a9",
+  "consumer_plan_reference_at_preparation": {
+    "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/OLIMEX-R03.md",
+    "bytes": 4533,
+    "sha256": "12cf10a1ee9cc817c06f2ea0e56c598f59b7feb4015af74c15798bd5bbc1aa08"
+  }
+}

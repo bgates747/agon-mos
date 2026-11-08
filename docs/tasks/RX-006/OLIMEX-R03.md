@@ -47,9 +47,11 @@ reappearance precedes retrieval; exact log/witness/next and analyzer required.
 
 ## Scheduling, custody and closure
 
-This document is preparation, not a reservation or grant. Reserve a new normal
-FIFO task `RX006-matched-physical-r03` after source closure; Extender obtains
-fresh component/state reconciliation. Do not preempt, inherit128 or treat its
+All49 SOURCE3 inputs independently match manifest0893a0fd;
+[review](setup-r03/uart-review.json). New normal FIFO request `8ff7f0739f0e`
+was created09:42:01.838281UTC November8 for `RX006-matched-physical-r03`.
+[Reservation](setup-r03/reservation.json) is not a grant. Extender binds its
+fresh runtime and obtains current component/state reconciliation. Do not preempt, inherit128 or treat its
 empty next-request result as access. Extender alone installs/verifies exact
 receiving EMOS/native app0, preserving startup/listener/P4/OTA/table/bootloader/
 app1/tail and using known rollback bytes rather than redundant backups.
