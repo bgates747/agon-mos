@@ -1,0 +1,122 @@
+
+build/io003/playable-hw-trace-r02/bridge.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_emu_reset_apple>:
+   0:	21 00 00 0a       	ld hl,0xa0000
+   4:	c3 3c 00 00       	jp 0x003c
+
+00000008 <_emu_run_apple>:
+   8:	21 04 00 07       	ld hl,0x70004
+   c:	c3 3c 00 00       	jp 0x003c
+
+00000010 <_emu_reset>:
+  10:	21 00 00 06       	ld hl,0x60000
+  14:	c3 3c 00 00       	jp 0x003c
+
+00000018 <_emu_run>:
+  18:	21 3e 00 06       	ld hl,0x6003e
+  1c:	c3 3c 00 00       	jp 0x003c
+
+00000020 <_emu_step>:
+  20:	21 33 00 06       	ld hl,0x60033
+  24:	c3 3c 00 00       	jp 0x003c
+
+00000028 <_emu_reset_cmos>:
+  28:	21 00 00 06       	ld hl,0x60000
+  2c:	c3 3c 00 00       	jp 0x003c
+
+00000030 <_emu_run_cmos>:
+  30:	21 3e 00 06       	ld hl,0x6003e
+  34:	c3 3c 00 00       	jp 0x003c
+
+00000038 <_emu_step_cmos>:
+  38:	21 33 00 06       	ld hl,0x60033
+
+0000003c <core_call>:
+  3c:	f5                	push af
+  3d:	ed 57             	ld a,i
+  3f:	f3                	di
+  40:	f5                	push af
+  41:	ed 6e             	ld a,mb
+  43:	f5                	push af
+  44:	3e 08             	ld a,0x08
+  46:	ed 6d             	ld mb,a
+  48:	c5                	push bc
+  49:	d5                	push de
+  4a:	e5                	push hl
+  4b:	dd e5             	push ix
+  4d:	fd e5             	push iy
+  4f:	e5                	push hl
+  50:	dd e1             	pop ix
+  52:	d9                	exx
+  53:	c5                	push bc
+  54:	d5                	push de
+  55:	e5                	push hl
+  56:	d9                	exx
+  57:	08                	ex af,af'
+  58:	f5                	push af
+  59:	08                	ex af,af'
+  5a:	cd 78 00 00       	call 0x0078
+  5e:	08                	ex af,af'
+  5f:	f1                	pop af
+  60:	08                	ex af,af'
+  61:	d9                	exx
+  62:	e1                	pop hl
+  63:	d1                	pop de
+  64:	c1                	pop bc
+  65:	d9                	exx
+  66:	fd e1             	pop iy
+  68:	dd e1             	pop ix
+  6a:	e1                	pop hl
+  6b:	d1                	pop de
+  6c:	c1                	pop bc
+  6d:	f1                	pop af
+  6e:	ed 6d             	ld mb,a
+  70:	f1                	pop af
+  71:	e2 76 00 00       	jp po,0x0076
+  75:	fb                	ei
+
+00000076 <was_disabled>:
+  76:	f1                	pop af
+  77:	c9                	ret
+
+00000078 <call_ix>:
+  78:	dd e9             	jp (ix)
+
+0000007a <_trace_char>:
+  7a:	dd e5             	push ix
+  7c:	dd 21 00 00 00    	ld ix,0x0000
+  81:	dd 39             	add ix,sp
+  83:	3e 02             	ld a,0x02
+  85:	5b d7             	rst.lil 0x10
+  87:	3e 01             	ld a,0x01
+  89:	5b d7             	rst.lil 0x10
+  8b:	dd 7e 06          	ld a,(ix+6)
+  8e:	5b d7             	rst.lil 0x10
+  90:	3e 03             	ld a,0x03
+  92:	5b d7             	rst.lil 0x10
+  94:	dd e1             	pop ix
+  96:	c9                	ret
+
+00000097 <_disk_cache_ready>:
+  97:	21 1a 16 0a       	ld hl,0xa161a
+  9b:	c3 3c 00 00       	jp 0x003c
+
+0000009f <_native_decode_track>:
+  9f:	f5                	push af
+  a0:	c5                	push bc
+  a1:	d5                	push de
+  a2:	e5                	push hl
+  a3:	dd e5             	push ix
+  a5:	fd e5             	push iy
+  a7:	cd 04 70 0a       	call 0xa7004
+  ab:	fd e1             	pop iy
+  ad:	dd e1             	pop ix
+  af:	e1                	pop hl
+  b0:	d1                	pop de
+  b1:	c1                	pop bc
+  b2:	f1                	pop af
+  b3:	c9                	ret

@@ -1,0 +1,69 @@
+{
+  "built": true,
+  "target_executed": false,
+  "scope": "Hardware-only VDU2/1/character/3 diagnostic link; NOT uninstrumented performance",
+  "app_controller_unchanged": true,
+  "guest_core_unchanged": true,
+  "transport_unchanged": true,
+  "symbols": {
+    "app": {
+      "_io3_packets": 323235,
+      "_io3_bytes": 323239,
+      "_io3_completed": 323243,
+      "_io3_state": 315502,
+      "_io3_enabled": 315503,
+      "_io3_last_error": 323234,
+      "_apple_hires_color": 293129
+    },
+    "probe": {
+      "_io3_packets": 295209,
+      "_io3_bytes": 295213,
+      "_io3_completed": 295217,
+      "_io3_state": 287476,
+      "_io3_enabled": 287477,
+      "_io3_last_error": 295208,
+      "_apple_hires_color": 273085
+    }
+  },
+  "artifacts": {
+    "/Agon/mystuff/agon-6502/build/io003/playable-hw-trace-r02/app0.bin": {
+      "bytes": 47799,
+      "sha256": "89b5218c5606499c5f3cdf92293f8dda0f049edff497ac28937488f1d406e5b7"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-hw-trace-r02/app1.bin": {
+      "bytes": 47799,
+      "sha256": "0ad5dd6250a9dd052a38012baad784ac0202ab88c9a5ef3fe8270e33892a40e2"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-hw-trace-r02/probe0.bin": {
+      "bytes": 23858,
+      "sha256": "c481696c8e101db088280a6fabed6d5f11d798f6d4138d63bca52f54d6047bd7"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-hw-trace-r02/probe1.bin": {
+      "bytes": 23858,
+      "sha256": "65012bf10a4b18c5a833105c097b4c60c1fc4e49216533f14184ff2a8902f237"
+    }
+  },
+  "inputs": {
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/hw_trace_build.py": "82ca62d2628422e22c6858fc5e76b510a2e029910f8e0c46fcc1b70b59b6faee",
+    "/Agon/mystuff/agon-6502/build/dsk001-write/app-r03/bridge.asm": "0758cc270e9dabbcd1ac44adcf5f1036e38cb77f1740a8e11946bb6d0c217198",
+    "/Agon/mystuff/agon-6502/build/perf020/display/vdp-apple/source/src/vdp/vdp-console8/video/vdu.h": "24923b53a83d77ebf729795d7ecb7343e6f2fed0e9d748d48fc83c8b75e805cb",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/result.json": "1002752c1542be7bbcc9bbd2952d835d30d271fa10f3dbe469c88d99aefe1399",
+    "/Agon/mystuff/agon-6502/build/io003/playable-probe-r05/result.json": "aac0a1892c1b050737d4ead8230e9fdbb87444d12b99eb59b8220326b43af907",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/controller.o": "f8ca7009c709d83a1b4a99274521483507fbbd8d45ca59ad9d75afb3332d9669",
+    "/Agon/mystuff/agon-6502/build/dsk001-write/app-r03/image.o": "6cecced89ae52673c1583b291edb5200e0e1cd90a4d9594b53b28d41f0bed6d4",
+    "/Agon/mystuff/agon-6502/build/dsk001-write/app-r03/cache.o": "575e37825307f460eff8c00d21236a0b2a6b16ed0202ce68e233706e77e97cd0",
+    "/Agon/mystuff/agon-6502/build/dsk001-write/app-r03/persist_mos.o": "1d2e56c4e9bcbebfbf17eb01d6331506bbaac0b68d3de51005494c2b0c0fc877",
+    "/Agon/mystuff/agon-6502/build/io003/playable-hw-trace-r02/bridge.o": "c9c1055328e0505bf43f199061eb06c110a647086c71cf1181330631da33a923",
+    "/Agon/mystuff/agon-6502/build/dsk001/drive_ui.o": "28d0d31e19311da12cc48d81621647be5f9ac3efc388baea40ff73db5030f40d",
+    "/Agon/mystuff/agon-6502/build/dsk001-write/app-r04/browser.o": "4f2667e60c342297d33e488f27365e02acdcd8bc6354453106c029b94e4ced2d",
+    "/Agon/mystuff/agon-6502/build/dsk001/dialog.o": "cb77cb1cbae60e4e21c8e10f539f48a8a90538258b7deabf102ec6b52f2ca034",
+    "/Agon/mystuff/agon-6502/build/dsk001/video.o": "6fd8f94c0f19f0b5da5134fc9fe25b06f4883cdce4a99a93e0ea6549ec37cbf4",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/hires.o": "e47c8ed894152e4db8c9b439f5c0cc633bfefe85e56bd5c1734fc7d61dfdb6be",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/transport.o": "7e25eef5ec0423612017437bdd506fcb6f811bcdd4487b202ecaf07f142c4011",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/identity.o": "26fe8797fe0aeafb5fd62c6f8f1c3116374ad604f85e29f887d124a6db0c694d",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/point.o": "d56df1b229dfbe8b141052674e19bc17d30babee87c23b41d4b91318ec3cc93a",
+    "/Agon/mystuff/agon-6502/build/io003/playable-probe-r05/probe.o": "42fe627dcdf51dcb46d76d56289f1cffc358bd3580877373ff1358f7965cc2b6",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/async0.o": "7747210924c7ddad06ac0b3bd0b966dd5ab0fb5abaf4b17f8d765299e49bfb49",
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/async1.o": "4bd5a83d0ac9889151cb033f8cbbc98ee03ad696bb0a782eda6300b476865226"
+  }
+}

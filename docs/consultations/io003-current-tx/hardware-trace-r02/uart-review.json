@@ -1,0 +1,19 @@
+{
+  "result_sha256": "1859c3fce3b817508307a86cd3e5c990fca50d6c098ab1abd01f05a1a82173a5",
+  "inputs_rehashed": 21,
+  "artifacts_rehashed": 4,
+  "all_match": true,
+  "app_sha256": "0ad5dd6250a9dd052a38012baad784ac0202ab88c9a5ef3fe8270e33892a40e2",
+  "probe_sha256": "65012bf10a4b18c5a833105c097b4c60c1fc4e49216533f14184ff2a8902f237",
+  "review": "No material MOS/VDP printer/async-boundary conflict found in the selected normal foreground paths. Actual source/disassembly sends public RST10 bytes2,1,argument,3 with IX saved and24bit C stack argument atIX+6. Pinned VDP24923b53 reads the VDU1 operand and emits it only on DBGSerial without drawing; outer03 disables printer. Existing renderer positive return/quarantine boundary prevents controller/probe progress messages during a borrowed async packet. No callbacks/guest core/transport changed.",
+  "conditions": [
+    "Commands enabled, consoleMode false, printer off and sole foreground writer/ordinary stream are actual owner admission/session requirements.",
+    "Last03 is queued; printer-off takes effect when consumed by VDP, not a fresh acknowledged fact at host RET. In-order parser processing keeps03 ahead of later F6/query bytes.",
+    "Trace adds4UART0 bytes per character and may cause ordinary-tail31 admission refusal; existing quarantine/no automatic fallback remains.",
+    "Actual DBGSerial capture/USB owner and observer acceptance remain hardware qualification, not source proof.",
+    "No uninstrumented CPU, FPS or transport timing inference from this diagnostic.",
+    "Original actual144 observer failure and unchanged bareC8 source/artifacts retain their identities."
+  ],
+  "new_build_run_requested": false,
+  "target_access": false
+}
