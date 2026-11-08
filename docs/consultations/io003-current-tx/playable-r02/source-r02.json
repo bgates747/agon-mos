@@ -1,0 +1,225 @@
+{
+  "stage": "Source/native/link qualified only; physical UNRUN/no reservation",
+  "at": "2026-11-08T18:58:36.951154+00:00",
+  "pins": {
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/result.json": {
+      "bytes": 5284,
+      "sha256": "2f0b675ceed8b10ec20f5fd3b9ea9bc8fc4e0f89e63babf7514fd754f436434c"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/composition.json": {
+      "bytes": 3814,
+      "sha256": "0e2582573b75f547f170165bded3dfb110d80db7b730e2dd3f2022e0020956fc"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/identity.c": {
+      "bytes": 834,
+      "sha256": "260f2f253556675949dc1958a517c9763c61b1cc7ee48050e6a6c9221fd07b52"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/controller.c": {
+      "bytes": 23061,
+      "sha256": "c7ddb51e7a58e58e381276858b4da4242c495e737b539351f4c606eecefe0fa6"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/test_transport.c": {
+      "bytes": 3893,
+      "sha256": "cf23f9321e878e4a1b85694aad14cae47edbf4d672bf147a3e8f75f68c5de464"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/probe.c": {
+      "bytes": 5706,
+      "sha256": "a37c2c221d1f8c249be717996287cc85b5b402705d109caea812457ec8eaa3dd"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/transport.c": {
+      "bytes": 1421,
+      "sha256": "b61e672ee6c282fbbe4fc6715bde57a7aee402639d3cb6a67923976e3afe9207"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/roms.h": {
+      "bytes": 151,
+      "sha256": "9b445eec7976bfbcffcaccf514fe7f45249f864798f679bb4f07f9456eef861c"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/transport.h": {
+      "bytes": 924,
+      "sha256": "4f4a109154f204bb530f3418249210d37c291cad4efe2e6db696c8b2a2b39b43"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/host_keys.h": {
+      "bytes": 454,
+      "sha256": "7f2317da26b7c741d38ff06f6d7b014a892b716927c774a9677434c255eb67e4"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/hires.asm": {
+      "bytes": 15902,
+      "sha256": "ed2b209b9e58b2828f33dec0f13eba788c8a18d4abe37d86620e42e577ef69ff"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/bridge.asm": {
+      "bytes": 1082,
+      "sha256": "d92512c7fd0c045f5022729d9099f78611d032a673352d4271bb37eca7fbd792"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/probe1.bin": {
+      "bytes": 23004,
+      "sha256": "2de193b168101485b8bfeef3b716f414d8aa8c718aa2a583829b93cc4921ffdd"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/app0.bin": {
+      "bytes": 47732,
+      "sha256": "90393a9f5542e108431f828ae4d975915879fdebf5e6c38390cf5c1cd97ca4ed"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/app1.bin": {
+      "bytes": 47732,
+      "sha256": "4debc19432ef0e800e8b8bb5d515dc18ed229f71fa6c6ca9c36a599a288cb358"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/original.bin": {
+      "bytes": 46117,
+      "sha256": "965277d92c4c38f502300b852c5856249f51a3cfb83171400114fd5d76db82b4"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/probe0.bin": {
+      "bytes": 23004,
+      "sha256": "102146b9d9de632f0d199d072c9acce53a7935b8cf5026eff4ed87cc538db961"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/app0.map": {
+      "bytes": 61006,
+      "sha256": "db0e54745c773d90d12cf2884eabffd625354715048fe6a9cc751cbb3894d0e0"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/probe0.map": {
+      "bytes": 44813,
+      "sha256": "5909b30aee08bee35dc63a83099a5cfa6cf6670d002d0c8934d7f0ecd7240f95"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/probe1.map": {
+      "bytes": 44813,
+      "sha256": "3cd6076a391707de7a8c7b839a6218329e2570ec39f862655d4cf51c716492be"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-c8-r02/app1.map": {
+      "bytes": 61006,
+      "sha256": "e65b1f45ce7b595450caf1848a263690b62261ae966a1b7b8b5ce89916c33bc3"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/result.json": {
+      "bytes": 5557,
+      "sha256": "1002752c1542be7bbcc9bbd2952d835d30d271fa10f3dbe469c88d99aefe1399"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/composition.json": {
+      "bytes": 3814,
+      "sha256": "13c36acedf5cb475b9f613e8869792d8662bbe6dbb89dd380046709a01cb3761"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/identity.c": {
+      "bytes": 834,
+      "sha256": "260f2f253556675949dc1958a517c9763c61b1cc7ee48050e6a6c9221fd07b52"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/controller.c": {
+      "bytes": 23061,
+      "sha256": "c7ddb51e7a58e58e381276858b4da4242c495e737b539351f4c606eecefe0fa6"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/test_transport.c": {
+      "bytes": 2828,
+      "sha256": "fb3e925dc057dc418cf20d61ab93208b0cb554137aeb76f0784ee75a5830f7d2"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/point.c": {
+      "bytes": 269,
+      "sha256": "38f5355ca9d31dc249ac14d73f264f692bee7218db0617a343dda65d45a234cf"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/probe.c": {
+      "bytes": 5721,
+      "sha256": "31602e244296d69b3bd07db23c757da8848d4e0b1f1d8d7d7cbb663a53b2e583"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/transport.c": {
+      "bytes": 1786,
+      "sha256": "43e0387dc8ae6f6ee3692cfa24e8852f2134c2bfc923cb15df303ed9d2261454"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/roms.h": {
+      "bytes": 151,
+      "sha256": "6a9079e2cdfbc0e008f811bd79d9d3f487b6aadeb9a02b0023a12adf25141c1b"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/transport.h": {
+      "bytes": 670,
+      "sha256": "ecde5fef05abcb8a99793085804390e95417152d40fbf8d4d7d82d8968ead3d4"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/host_keys.h": {
+      "bytes": 454,
+      "sha256": "7f2317da26b7c741d38ff06f6d7b014a892b716927c774a9677434c255eb67e4"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/hires.asm": {
+      "bytes": 15902,
+      "sha256": "ed2b209b9e58b2828f33dec0f13eba788c8a18d4abe37d86620e42e577ef69ff"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/bridge.asm": {
+      "bytes": 1040,
+      "sha256": "50e489b678c1b76493f8f8ff843e1eb1ece812facdc1a117e14470cf9e487780"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/probe1.bin": {
+      "bytes": 23095,
+      "sha256": "0b27b54390f5ab8f54fdd5cea8237f7da8d4aebeef06d8cd26e8a49aea5e8fbe"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/app0.bin": {
+      "bytes": 47799,
+      "sha256": "5582171937ca238ddade0aa64f8b81b7a588fad5966ce8553f266436d8918842"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/app1.bin": {
+      "bytes": 47799,
+      "sha256": "a2522d5a92817563e3d907baeffb6bfdad128d6f089cca946b2f8a13a6583731"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/original.bin": {
+      "bytes": 46117,
+      "sha256": "965277d92c4c38f502300b852c5856249f51a3cfb83171400114fd5d76db82b4"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/probe0.bin": {
+      "bytes": 23095,
+      "sha256": "114b42ab4583e84b1100f0cfe1ab30fa6c4cc2856dbc6ba38f3e69301fb65461"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/app0.map": {
+      "bytes": 62479,
+      "sha256": "523b520a8e8a8a4be732bd3ea180f0afcfb8631dce677a467c919e0d49477fb5"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/probe0.map": {
+      "bytes": 46238,
+      "sha256": "e0707a91ae01b9561cdc934e746be9f98bf5f06ce6601a6df88a7baaff1a16b7"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/probe1.map": {
+      "bytes": 46238,
+      "sha256": "3523ea8961ec5a8d611f0133aa8fb3a215e2ae10e3eda967bdeb376644e2e427"
+    },
+    "/Agon/mystuff/agon-6502/build/io003/playable-olimex-r02/app1.map": {
+      "bytes": 62479,
+      "sha256": "5b7771e5c219fe1631dfe3ad535603b6befab967e474836b76c744ba9878e39e"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/emos_transport.c": {
+      "bytes": 1786,
+      "sha256": "43e0387dc8ae6f6ee3692cfa24e8852f2134c2bfc923cb15df303ed9d2261454"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/identity.c": {
+      "bytes": 834,
+      "sha256": "260f2f253556675949dc1958a517c9763c61b1cc7ee48050e6a6c9221fd07b52"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/prepare.py": {
+      "bytes": 5814,
+      "sha256": "003c39fb919062e5257b331bd8a064127ef559595a78433873749f8e67ebbdfd"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/emos_transport.h": {
+      "bytes": 670,
+      "sha256": "ecde5fef05abcb8a99793085804390e95417152d40fbf8d4d7d82d8968ead3d4"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/test_host_keys.c": {
+      "bytes": 631,
+      "sha256": "46d051e6a2dbcc3dd326391e3d1b3ea63cb4a9ca800cd20e3713f70859eca9ba"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/emos_point.c": {
+      "bytes": 269,
+      "sha256": "38f5355ca9d31dc249ac14d73f264f692bee7218db0617a343dda65d45a234cf"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/host_keys.h": {
+      "bytes": 454,
+      "sha256": "7f2317da26b7c741d38ff06f6d7b014a892b716927c774a9677434c255eb67e4"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/test_emos.c": {
+      "bytes": 2828,
+      "sha256": "fb3e925dc057dc418cf20d61ab93208b0cb554137aeb76f0784ee75a5830f7d2"
+    },
+    "/Agon/mystuff/agon-6502/experiments/io003/playable/build.py": {
+      "bytes": 7309,
+      "sha256": "50e2ff4ce22e7780ea1b9b9ad746cbb1f2891401dc523421cf0250f3868076ba"
+    }
+  },
+  "platforms": [
+    "c8-rc3",
+    "olimex-a25f"
+  ],
+  "owner_policy": "2026-11-08_13-52-07_linux-extender_io003-ordered-fence-owner-onehundredfiftysix",
+  "no_emulator_or_target": true,
+  "compilers_released": [
+    681,
+    682
+  ],
+  "original9652_reproduced": true
+}

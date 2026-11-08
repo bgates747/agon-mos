@@ -1,0 +1,28 @@
+{
+  "manifest_sha256": "f079ee6a2344f5177d6717d6bf854e0c37ee870d2a3e67f58309cccd7e0b938a",
+  "files_checked": 52,
+  "all_match": true,
+  "c8": {
+    "bytes": 47732,
+    "app1_sha256": "4debc19432ef0e800e8b8bb5d515dc18ed229f71fa6c6ca9c36a599a288cb358",
+    "one_byte_pair_offset": 32582,
+    "contract": "Exact100879B RC3/B08C80B8 only; void25/prearm/source callback then bare TEMT."
+  },
+  "emos": {
+    "bytes": 47799,
+    "app1_sha256": "a2522d5a92817563e3d907baeffb6bfdad128d6f089cca946b2f8a13a6583731",
+    "one_byte_pair_offset": 32633,
+    "contract": "Exact131072B a25f/B24AF611 only; result25/7717B owned packet/public40-mask04/callback AND fresh POINT."
+  },
+  "review": "No blocking MOS-contract or source-lifetime defect found in selected foreground normal-entry paths. Actual generated headers/bridge/count/packet/footer/point/startup/hires shadow-drain and controller exits reviewed. Main guest/disk/output paths cannot resume from the async drawing call before positive completion; error path remains resident. C callback contains one flag store and no index/shadow/MB mutation. Separate guard/semantics retained. No source edits or extra code/build/case requested.",
+  "limits": [
+    "Host67/77 and quit2302 counts are retained mock/native checks, not UART IRQ/ISA/hardware qualification.",
+    "Prior in-flight/foreign POINT exclusion and sole producer/flag consumer remain external source/session preconditions.",
+    "Ordinary synchronous output can leave a physical tail; later EMOS31 refusal still quarantines instead of implying idle/fallback permission.",
+    "Static address gaps4370/4445B are not runtime stack/heap or nested IRQ proof.",
+    "Receiver F6 semantic/pixel validity, disk save/reload, key/quit/return and hardware fit still require the already-selected finite consumer qualification.",
+    "RX006 remains complete."
+  ],
+  "owner_build_run_requested": false,
+  "target_access": false
+}
