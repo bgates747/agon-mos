@@ -1,10 +1,14 @@
 # MOS TODO
 
-RX-006 [ ] **ACTIVE BOUNDED FEASIBILITY GOAL.** Brandon authorizes finite own
-short/long send/receive checks and coordinated Olimex work with selected owners.
-Resolve correctness errors; stop as soon as owners judge adoption useful/easier
-or modestly beneficial. No performance tuning/full-game ports/millisecond chase.
-[Task and exact human scope](docs/tasks/RX-006/README.md).
+RX-006 [x] **PRACTICAL FEASIBILITY ESTABLISHED; STOP UNDER HUMAN CRITERION.**
+Rally and 6502 explicitly accept source-grounded usefulness: retained exports
+need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
+confirms existing 512B producer suffices. Prior C8 R0067 supplies physical
+integrity evidence; 37 owner pins and count arithmetic rechecked. New long-size
+sweep/EMOS integration/Olimex run/app ports/performance claims remain deferred.
+No new bench/compiler reservation, firmware/card/boot/game edits or tuning.
+[Result and limits](docs/tasks/RX-006/RESULT.md),
+[task and exact human scope](docs/tasks/RX-006/README.md).
 
 RX-005 [ ] **FIRST CONSOLE8 HARDWARE SUITE PASS; REVIEW BEFORE CONSUMER PILOT.**
 R0067/build9c72616d7f4a4ef7 passes every synthetic case0..512B, guards, discards,

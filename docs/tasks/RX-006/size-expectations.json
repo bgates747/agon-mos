@@ -1,0 +1,98 @@
+{
+  "kind": "Source-derived expectations only; no RX006 size sweep run",
+  "single_reply_cap": 512,
+  "sizes": [
+    {
+      "logical_bytes": 4,
+      "replies": 1,
+      "last_chunk": 4,
+      "request_bytes": 19,
+      "reply_wire_bytes": 7,
+      "duplex_bytes": 26,
+      "measured": false
+    },
+    {
+      "logical_bytes": 8,
+      "replies": 1,
+      "last_chunk": 8,
+      "request_bytes": 19,
+      "reply_wire_bytes": 11,
+      "duplex_bytes": 30,
+      "measured": false
+    },
+    {
+      "logical_bytes": 16,
+      "replies": 1,
+      "last_chunk": 16,
+      "request_bytes": 19,
+      "reply_wire_bytes": 19,
+      "duplex_bytes": 38,
+      "measured": false
+    },
+    {
+      "logical_bytes": 32,
+      "replies": 1,
+      "last_chunk": 32,
+      "request_bytes": 19,
+      "reply_wire_bytes": 35,
+      "duplex_bytes": 54,
+      "measured": false
+    },
+    {
+      "logical_bytes": 64,
+      "replies": 1,
+      "last_chunk": 64,
+      "request_bytes": 19,
+      "reply_wire_bytes": 67,
+      "duplex_bytes": 86,
+      "measured": false
+    },
+    {
+      "logical_bytes": 128,
+      "replies": 1,
+      "last_chunk": 128,
+      "request_bytes": 19,
+      "reply_wire_bytes": 131,
+      "duplex_bytes": 150,
+      "measured": false
+    },
+    {
+      "logical_bytes": 256,
+      "replies": 1,
+      "last_chunk": 256,
+      "request_bytes": 19,
+      "reply_wire_bytes": 259,
+      "duplex_bytes": 278,
+      "measured": false
+    },
+    {
+      "logical_bytes": 1024,
+      "replies": 2,
+      "last_chunk": 512,
+      "request_bytes": 38,
+      "reply_wire_bytes": 1030,
+      "duplex_bytes": 1068,
+      "measured": false
+    },
+    {
+      "logical_bytes": 4096,
+      "replies": 8,
+      "last_chunk": 512,
+      "request_bytes": 152,
+      "reply_wire_bytes": 4120,
+      "duplex_bytes": 4272,
+      "measured": false
+    },
+    {
+      "logical_bytes": 8092,
+      "replies": 16,
+      "last_chunk": 412,
+      "request_bytes": 304,
+      "reply_wire_bytes": 8140,
+      "duplex_bytes": 8444,
+      "measured": false
+    }
+  ],
+  "excludes": "upload/setup/discovery/errors/keyboard/other traffic",
+  "arithmetic_checks": "PASS"
+}

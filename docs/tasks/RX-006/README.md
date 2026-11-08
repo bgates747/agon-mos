@@ -1,5 +1,12 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
+**Outcome: practical feasibility established; stopping under Brandon's explicit
+criterion.** Both selected consumer owners give affirmative source-grounded
+adoption judgments, supported by the existing Console8 synthetic integrity pass.
+[Result, evidence and unrun-work disposition](RESULT.md). No new Olimex run,
+large-size sweep, consumer implementation or performance measurement is claimed.
+The original plan below is retained; its sweep was conditional on need/admission.
+
 Brandon selected this goal on November7 after Console8 RX-005 R0067 passed.
 Prove practical adoption feasibility, not a maximum-performance result. UART
 coordinates and owns MOS plus original synthetic test code; VDPlet owns VDP,
@@ -102,12 +109,16 @@ Extender test-appliances/test-execution/bench constraints, fresh checkout/assert
 finite monitoring, exact restoration and prompt/neutral input handback. Resource
 permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 
-## Checklist
+## Final disposition
 
-- [ ] Obtain component/bench feasibility binding without unneeded new features.
-- [ ] Prepare and check the smallest justified own synthetic sweep.
-- [ ] Run one attributable finite Olimex sweep if admitted/needed; preserve errors,
-      resolve required correctness issues and hand back the bench normally.
-- [ ] Collate selected consumers' exact seams, simplifications, risks and confidence.
-- [ ] Stop when practical adoption criterion is met; state what was measured,
-      what is source reasoning, and what remains outside this feasibility goal.
+- [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
+      no new VDP build or large-reply feature is needed. Extender consulted;
+      no supported Olimex composition was selected or installed for this goal.
+- [x] Collate Rally and 6502 affirmative source reviews, source/artifact hashes,
+      simplifications, caller requirements and evidence limits.
+- [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.
+- [x] Dispose of the proposed sweep honestly: initial source draft archived
+      uncompiled/unrun; no passing fixture, new timing or Olimex claim.
+- [x] Follow the explicit stop rule once selected owners accept feasibility.
+      Further app integration and short/long hardware measurements remain
+      deferred; they are not needed for this bounded adoption judgment.

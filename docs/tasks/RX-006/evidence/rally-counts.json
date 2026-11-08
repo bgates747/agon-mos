@@ -1,0 +1,55 @@
+{
+  "payload_bytes": 65448,
+  "old_read16": {
+    "requests": 32724,
+    "request_bytes": 556308,
+    "reply_bytes": 392688,
+    "total_wire_bytes": 948996
+  },
+  "counted": {
+    "256": {
+      "requests": 257,
+      "per_buffer_requests": [
+        254,
+        3
+      ],
+      "last_chunk_sizes": [
+        96,
+        72
+      ],
+      "request_bytes": 4883,
+      "reply_bytes": 66219,
+      "request_reduction_factor": 127.3307392996109,
+      "total_wire_bytes": 71102
+    },
+    "512": {
+      "requests": 129,
+      "per_buffer_requests": [
+        127,
+        2
+      ],
+      "last_chunk_sizes": [
+        352,
+        72
+      ],
+      "request_bytes": 2451,
+      "reply_bytes": 65835,
+      "request_reduction_factor": 253.67441860465115,
+      "total_wire_bytes": 68286
+    }
+  },
+  "six_buffer_state": {
+    "payload": 406,
+    "old_read16": 203,
+    "counted_reads": 6,
+    "bytes_per_buffer": [
+      310,
+      12,
+      24,
+      24,
+      24,
+      12
+    ]
+  },
+  "limits": "Source arithmetic, no latency/throughput/CPU/FPS claim; excludes capability/discovery/error/other commands and any future optional envelope."
+}

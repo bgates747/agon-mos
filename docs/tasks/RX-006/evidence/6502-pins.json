@@ -1,0 +1,97 @@
+{
+  "review": "RX-006 source-only adoption feasibility",
+  "mos_commit": "8db14b221137a6d2a3bc6f0cdeac5c8ee9361db0",
+  "source_pins": {
+    "/Agon/mystuff/agon-6502/build/io003/rx006-review-r01/uart0_receive.asm": {
+      "bytes": 4446,
+      "sha256": "bdef499b4894342d441157b358411fcf7ca48b3746efa80525c241951c818316"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app/mos_app.c": {
+      "bytes": 29298,
+      "sha256": "470d59f6f2b3d2f8a2b26bde8aac7746e61ee050c305572bf2b665ddd70118a7"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/mos_transport.c": {
+      "bytes": 5984,
+      "sha256": "0d7614ab0e97c107f80ee9d3d7ea0d9fe8e7902d0862655a51f523620dc94177"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.c": {
+      "bytes": 4113,
+      "sha256": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.h": {
+      "bytes": 2075,
+      "sha256": "94141f9eefeb74e1b2674820e80e975f9360d1ecb21d69890916ad3bf2f34e0b"
+    },
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.c": {
+      "bytes": 2563,
+      "sha256": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44"
+    },
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.h": {
+      "bytes": 2170,
+      "sha256": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf"
+    },
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/PERSISTENCE.md": {
+      "bytes": 9520,
+      "sha256": "813564d6d60f04d4b9e1c4b26cb38618921465a6a6ebbf9c7362c898af477f7e"
+    },
+    "/Agon/mystuff/agon-6502/experiments/dsk001/writeback/session.inc": {
+      "bytes": 2405,
+      "sha256": "1c003b3d1365dac7976790197efca15be3a2540f98055630a2505ffd9c1404e7"
+    },
+    "/Agon/mystuff/agon-6502/experiments/dsk001/writeback/cache.c": {
+      "bytes": 3464,
+      "sha256": "57c9a939944a4dc3b365115fbc20a9c1d56893f4d6a2e611d63a5ba503d242e2"
+    },
+    "/Agon/mystuff/agon-mos/docs/tasks/RX-005/wire-contract.md": {
+      "bytes": 5242,
+      "sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902"
+    },
+    "/Agon/mystuff/agon-mos/docs/tasks/RX-005/hardware-r01/RESULT.md": {
+      "bytes": 3647,
+      "sha256": "f951c04ab6778eece7f126396e7247a3200ff9ee36353839c5171201435e7f36"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/src/vdplet_counted_return.h": {
+      "bytes": 2210,
+      "sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/src/vdplet_runtime.h": {
+      "bytes": 44321,
+      "sha256": "0f8bb349ba8eab57d1e5e8abfe4d29863bb331c4b9c88520b3c3048b1d130a00"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/include/vdplet_protocol.h": {
+      "bytes": 2410,
+      "sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b"
+    }
+  },
+  "confidence": "Would work and simplify bulk returns under matching opt-in firmware and stated single-producer lifetime boundaries; no new consumer execution needed for this feasibility judgment.",
+  "scope": "Preserved ESP32-machine export40B descriptor +512B payload; current eZ80-local DSK-001 writeback needs no receive service.",
+  "source_derived_counts": {
+    "read16": {
+      "requests": 276,
+      "request_bytes": 4692,
+      "reply_bytes": 3312,
+      "total_wire_bytes": 8004
+    },
+    "read8": {
+      "requests": 69,
+      "request_bytes": 1311,
+      "reply_bytes": 1242,
+      "total_wire_bytes": 2553
+    },
+    "counted": {
+      "requests": 2,
+      "request_bytes": 38,
+      "reply_bytes": 558,
+      "total_wire_bytes": 596
+    }
+  },
+  "counts_exclude": "EXPORT/RUN/ACK/discovery/fences/keys/TXsource release and durable file IO",
+  "required_local_adapter": "Dedicated counted operation8 arm/result/error-lifetime branch; existing br_begin does not admit8. Keep legacy management/error callback. A tagged source ERROR does not retire MOS arm and must not be treated as ordinary F7-safe storage error.",
+  "maximum_frame": 512,
+  "no_552_byte_feature_requested": true,
+  "performance_measured": false,
+  "incremental_comparison": "Unavailable: source-only call/byte analysis",
+  "cumulative_388ef52": "Unavailable: no matching-work timing",
+  "implementation_build_test_reservation_deployment": false,
+  "active_disk_candidate_changed": false
+}

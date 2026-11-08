@@ -1,0 +1,125 @@
+{
+  "schema": "VDPL_RX006_SOURCE_FEASIBILITY1",
+  "status": "EXACT_EXISTING_PRODUCER_SOURCE_COMPATIBLE_NO_BUILD",
+  "authority": {
+    "thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+    "turn": "01a1b959-0dff-7982-baa9-04147581e35b",
+    "human_messages": [
+      "01a1b959-0e46-7053-85e3-63885b5df76c",
+      "01a1b95b-772a-7563-bac1-5c3cc459bd71"
+    ],
+    "verified": "Read original human items using app read_thread; bounded practicality/correctness, no performance optimization."
+  },
+  "configuration": {
+    "features": "pixels",
+    "borrow_rows": true,
+    "read_bytes": true,
+    "text_profile": "text96",
+    "async_worker": false,
+    "counted_return": true
+  },
+  "pins": {
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-source.json": {
+      "bytes": 5052,
+      "sha256": "4ce246a3da8d74fe54dca561c28573cb249ec43a11f50bc690977a16245f7af2"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin": {
+      "bytes": 1100320,
+      "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf": {
+      "bytes": 25049816,
+      "sha256": "2918727ad256389e3ac0d9074e736acdbbde3a9ce6f95a280fd7fa3673d6fd92"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_counted_return.h": {
+      "bytes": 2210,
+      "sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_runtime.h": {
+      "bytes": 44310,
+      "sha256": "3ac1c601e1fcbc8cf183c7b84b9485db00a7dcd2192e4bdcedc922060cfc50f2"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_protocol.h": {
+      "bytes": 2410,
+      "sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdu_buffered.h": {
+      "bytes": 100535,
+      "sha256": "b9d9d93295ddc5fb05c802071057e32ed9755837f029ce381340072352c262f0"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/buffer_stream.h": {
+      "bytes": 3583,
+      "sha256": "6b57aedf9e7fee1b8fdb84660e4eaade788c185ec540f94b00f965f2024c418d"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdu_stream_processor.h": {
+      "bytes": 26590,
+      "sha256": "0a0eef0bb6d8dc6f6fb834a609afd6383840ce549aad91082db270f514780228"
+    },
+    "/home/smith/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.cpp": {
+      "bytes": 19891,
+      "sha256": "955d29440034bde2b9f4d003faf7a292dfc9ec8ad8355edd92c2b979621b5ba0"
+    },
+    "/home/smith/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.c": {
+      "bytes": 22147,
+      "sha256": "b4337b0cf3b5093aebae6b75187587e527de7c040fe3313ceeeef36b7af33045"
+    }
+  },
+  "logical_chunks": {
+    "4": {
+      "chunks": 1,
+      "last_bytes": 4
+    },
+    "8": {
+      "chunks": 1,
+      "last_bytes": 8
+    },
+    "16": {
+      "chunks": 1,
+      "last_bytes": 16
+    },
+    "32": {
+      "chunks": 1,
+      "last_bytes": 32
+    },
+    "64": {
+      "chunks": 1,
+      "last_bytes": 64
+    },
+    "128": {
+      "chunks": 1,
+      "last_bytes": 128
+    },
+    "256": {
+      "chunks": 1,
+      "last_bytes": 256
+    },
+    "1024": {
+      "chunks": 2,
+      "last_bytes": 512
+    },
+    "4096": {
+      "chunks": 8,
+      "last_bytes": 512
+    },
+    "8092": {
+      "chunks": 16,
+      "last_bytes": 412
+    }
+  },
+  "source_constraints": [
+    "Clear exclusive buffer ID then use ONE ordinary BUFFERED_WRITE with full logical u16 length; multiple commands append blocks and op8 refuses multi-block sources. Host transport may split bytes of one command without creating multiple blocks.",
+    "Keep source immutable for entire logical transfer; per-request snapshot is not cross-chunk snapshot isolation.",
+    "Arm receiver before each op8; one outstanding counted reply, wait actual completion/error disposition before next chunk.",
+    "Success raw90/u16/payload contains no token; tagged ERROR retains the receive arm. No automatic replay or freeing live storage after timeout.",
+    "Source owner and copied frame retire on synchronous writer return, separately from TX drain/receiver/callback completion.",
+    "Normal FE0/current command context, no global callbackBuffers/redirect/echo/suppression, no runtime busy/live async session; capability INFO27 alone does not admit current context.",
+    "Ordinary upload allocation/timing/current PSRAM availability remain finite-case qualification; source support does not guarantee allocation."
+  ],
+  "bench_constraints": [
+    "Exact producer is classicESP32 mainboard VDP, not P4 firmware; no generic default installation request.",
+    "26h receiver and90h parser must be in selected MOS/EMOS; retained a25f10B tagged gate alone does not supply them. UART/Extender own receiver/fixture/bench tuple admission.",
+    "No Console8 MOS substitution over current EMOS/P4 setup; preserve startup/route/rollback and normal FIFO.",
+    "Do not combine this async-disabled producer with VDPL035 worker images or infer consumer adoption."
+  ],
+  "scope": "Source answer only; no root build/test/bench/Oryx/card/target action, feature change, paused-goal resumption or new agent."
+}

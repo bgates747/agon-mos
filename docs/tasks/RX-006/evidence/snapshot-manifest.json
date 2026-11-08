@@ -1,0 +1,442 @@
+{
+  "captured_utc": "2026-11-08T04:26:26.751683+00:00",
+  "files": [
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/task-initial.md",
+      "source": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/README.md",
+      "bytes": 7646,
+      "sha256": "1903bfc158145de28f6edebde522cd357a8bba7b5472599901d00bc215183667"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/vdplet-review.md",
+      "source": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-036/RX006-PRODUCER-FEASIBILITY.md",
+      "bytes": 5605,
+      "sha256": "d74c41529307029f7ed10b46e7dd59708d23afe59c6c9f3d02465e37d383fcae"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/vdplet-pins.json",
+      "source": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-036/RX006-PRODUCER-FEASIBILITY.json",
+      "bytes": 5562,
+      "sha256": "55cc7b77b325dbf68e59f4bb4e62949d641321b9c0086f03de0c8540ee301f6d"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/rally-review.md",
+      "source": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/REVIEW.md",
+      "bytes": 6286,
+      "sha256": "4ea15a2547f331f5f3577f3a913990764c0b6fe4fcc2f9146ab3f1580cd9533a"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/rally-pins.json",
+      "source": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/SOURCE-PINS.json",
+      "bytes": 2536,
+      "sha256": "cf58fede9f979e37ab9bedacf0e7f63415075d043e2cd7296bf7ed0dad829d74"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/rally-counts.json",
+      "source": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/COUNTS.json",
+      "bytes": 1143,
+      "sha256": "036756e6d2c79b80de4a63ab23961af44b03cf9072ddeaad8a4162b134f02006"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/6502-review.md",
+      "source": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-006-ADOPTION-R01.md",
+      "bytes": 6300,
+      "sha256": "26c1f86d95f9fd16ea052d39a7ce911e551081cc7d2330826e39a1d0f16bc60a"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/6502-pins.json",
+      "source": "/Agon/mystuff/agon-6502/docs/tasks/IO-003/RX-006-ADOPTION-R01.json",
+      "bytes": 4454,
+      "sha256": "fe0f5b751ae0b0615660356d5b902546e7614d6085ee4e6700365c1ae74a5761"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-15-38_agon-mos_rx006-bench-minimal-binding-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-15-38_agon-mos_rx006-bench-minimal-binding-one.md",
+      "bytes": 2348,
+      "sha256": "67a95a987b75527c89fad823754bb1517f05f8bdbf1a78808bd93ec306a30c55"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-15-38_agon-mos_rx006-producer-feasibility-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-15-38_agon-mos_rx006-producer-feasibility-one.md",
+      "bytes": 1947,
+      "sha256": "4958ed727744abd9539ad66a33caeae966a22985fef5ca5e78e831972c1dad3f"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-15-39_agon-mos_rx006-6502-adoption-review-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-15-39_agon-mos_rx006-6502-adoption-review-one.md",
+      "bytes": 2061,
+      "sha256": "fa6f06763460f51ba9313de8910d975b9c53362eedfd880f80e92bfedf25ba08"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-15-39_agon-mos_rx006-rally-adoption-review-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-15-39_agon-mos_rx006-rally-adoption-review-one.md",
+      "bytes": 2116,
+      "sha256": "3310e30d268fb19ee0a4ab7b6132715fec5afc9b07f49125f3683f125d6afb35"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-19-00_vdplet_rx006-exact-producer-feasibility-two.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-19-00_vdplet_rx006-exact-producer-feasibility-two.md",
+      "bytes": 3717,
+      "sha256": "2156a3e2ec77740716c2da7b6f3fb44801191fe4ba712f6574b0d85ab46cbcb0"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-19-02_rally_rx006-rally-feasible-postrace-return-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-19-02_rally_rx006-rally-feasible-postrace-return-one.md",
+      "bytes": 2927,
+      "sha256": "cb71031213965165afdf461d0046210a31a37938cfdd9cba71f3138273b76f74"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-19-17_vdplet_rx006-producer-source-tuple-advice-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-19-17_vdplet_rx006-producer-source-tuple-advice-one.md",
+      "bytes": 3814,
+      "sha256": "4d013977b9b953512418d0214cd3fc431f204abe7649acc62fe81f4ca38f252d"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-20-49_agon-6502_rx006-6502-practical-source-return-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-20-49_agon-6502_rx006-6502-practical-source-return-one.md",
+      "bytes": 3284,
+      "sha256": "f36de52d80f394e0e926f96f82ecbbc12965fb92b215d58233622dc53353f955"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-25-26_agon-mos_rx006-consumer-stop-rule-update-two.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-25-26_agon-mos_rx006-consumer-stop-rule-update-two.md",
+      "bytes": 1716,
+      "sha256": "4da6dd68b00a49a1b8eed448706e01c60ea7da6c5094b523e93bb91a7592ce09"
+    }
+  ],
+  "owner_pin_rechecks": [
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/README.md",
+      "expected_sha256": "1903bfc158145de28f6edebde522cd357a8bba7b5472599901d00bc215183667",
+      "actual_sha256": "1903bfc158145de28f6edebde522cd357a8bba7b5472599901d00bc215183667",
+      "expected_bytes": 7646,
+      "actual_bytes": 7646,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/wire-contract.md",
+      "expected_sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902",
+      "actual_sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902",
+      "expected_bytes": 5242,
+      "actual_bytes": 5242,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/implementation.md",
+      "expected_sha256": "7b0b998032a8d441e54ef39f88f627d34964845fc4b9402bfffc06986417cbc7",
+      "actual_sha256": "7b0b998032a8d441e54ef39f88f627d34964845fc4b9402bfffc06986417cbc7",
+      "expected_bytes": 3618,
+      "actual_bytes": 3618,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/hardware-r01/returned/R0067.log",
+      "expected_sha256": "56f9a23a6c7f858f44d2d6d6bd91d18b068105b1e766c6df451b50e45e84f12c",
+      "actual_sha256": "56f9a23a6c7f858f44d2d6d6bd91d18b068105b1e766c6df451b50e45e84f12c",
+      "expected_bytes": 887,
+      "actual_bytes": 887,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/telemetry.hpp",
+      "expected_sha256": "6ade89bcd5746c810ebc9a988fb1adbe9d7953d1a99ee7bb1c13fa6a1be18f48",
+      "actual_sha256": "6ade89bcd5746c810ebc9a988fb1adbe9d7953d1a99ee7bb1c13fa6a1be18f48",
+      "expected_bytes": 3845,
+      "actual_bytes": 3845,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/include/native.hpp",
+      "expected_sha256": "178a445230aecb20925f46d3f45e1c46ee22250296c9e191ef15ec4f34d31495",
+      "actual_sha256": "178a445230aecb20925f46d3f45e1c46ee22250296c9e191ef15ec4f34d31495",
+      "expected_bytes": 7860,
+      "actual_bytes": 7860,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/include/bindings.hpp",
+      "expected_sha256": "5367e3740c7f72fc6ab34bce5d5ce91f631cbcd024f9b086ea8fa9a2cc8b7e20",
+      "actual_sha256": "5367e3740c7f72fc6ab34bce5d5ce91f631cbcd024f9b086ea8fa9a2cc8b7e20",
+      "expected_bytes": 1363,
+      "actual_bytes": 1363,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/src/main.cpp",
+      "expected_sha256": "c96b8ca6c7a78c993f316f8c9c1555dbd7e76a2585c463897977c473c2f1e66c",
+      "actual_sha256": "c96b8ca6c7a78c993f316f8c9c1555dbd7e76a2585c463897977c473c2f1e66c",
+      "expected_bytes": 15328,
+      "actual_bytes": 15328,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/src/callback.asm",
+      "expected_sha256": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e",
+      "actual_sha256": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e",
+      "expected_bytes": 759,
+      "actual_bytes": 759,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/rx005-return-requirements-20261107/REVIEW.md",
+      "expected_sha256": "f097069e32d913e66e1dd98cc61daecb118acec8fcd8c894f129a7d4ab96d280",
+      "actual_sha256": "f097069e32d913e66e1dd98cc61daecb118acec8fcd8c894f129a7d4ab96d280",
+      "expected_bytes": 11469,
+      "actual_bytes": 11469,
+      "match": true
+    },
+    {
+      "owner": "rally",
+      "path": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-036/IMPLEMENTATION-01.md",
+      "expected_sha256": "35df5f90b2ac10cfeff2e65787326e4652722321586b8239450539a9827b7aed",
+      "actual_sha256": "35df5f90b2ac10cfeff2e65787326e4652722321586b8239450539a9827b7aed",
+      "expected_bytes": 5664,
+      "actual_bytes": 5664,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/build/io003/rx006-review-r01/uart0_receive.asm",
+      "expected_sha256": "bdef499b4894342d441157b358411fcf7ca48b3746efa80525c241951c818316",
+      "actual_sha256": "bdef499b4894342d441157b358411fcf7ca48b3746efa80525c241951c818316",
+      "expected_bytes": 4446,
+      "actual_bytes": 4446,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app/mos_app.c",
+      "expected_sha256": "470d59f6f2b3d2f8a2b26bde8aac7746e61ee050c305572bf2b665ddd70118a7",
+      "actual_sha256": "470d59f6f2b3d2f8a2b26bde8aac7746e61ee050c305572bf2b665ddd70118a7",
+      "expected_bytes": 29298,
+      "actual_bytes": 29298,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/mos_transport.c",
+      "expected_sha256": "0d7614ab0e97c107f80ee9d3d7ea0d9fe8e7902d0862655a51f523620dc94177",
+      "actual_sha256": "0d7614ab0e97c107f80ee9d3d7ea0d9fe8e7902d0862655a51f523620dc94177",
+      "expected_bytes": 5984,
+      "actual_bytes": 5984,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.c",
+      "expected_sha256": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8",
+      "actual_sha256": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8",
+      "expected_bytes": 4113,
+      "actual_bytes": 4113,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.h",
+      "expected_sha256": "94141f9eefeb74e1b2674820e80e975f9360d1ecb21d69890916ad3bf2f34e0b",
+      "actual_sha256": "94141f9eefeb74e1b2674820e80e975f9360d1ecb21d69890916ad3bf2f34e0b",
+      "expected_bytes": 2075,
+      "actual_bytes": 2075,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.c",
+      "expected_sha256": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44",
+      "actual_sha256": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44",
+      "expected_bytes": 2563,
+      "actual_bytes": 2563,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.h",
+      "expected_sha256": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf",
+      "actual_sha256": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf",
+      "expected_bytes": 2170,
+      "actual_bytes": 2170,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/experiments/vdp005/write/PERSISTENCE.md",
+      "expected_sha256": "813564d6d60f04d4b9e1c4b26cb38618921465a6a6ebbf9c7362c898af477f7e",
+      "actual_sha256": "813564d6d60f04d4b9e1c4b26cb38618921465a6a6ebbf9c7362c898af477f7e",
+      "expected_bytes": 9520,
+      "actual_bytes": 9520,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/experiments/dsk001/writeback/session.inc",
+      "expected_sha256": "1c003b3d1365dac7976790197efca15be3a2540f98055630a2505ffd9c1404e7",
+      "actual_sha256": "1c003b3d1365dac7976790197efca15be3a2540f98055630a2505ffd9c1404e7",
+      "expected_bytes": 2405,
+      "actual_bytes": 2405,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-6502/experiments/dsk001/writeback/cache.c",
+      "expected_sha256": "57c9a939944a4dc3b365115fbc20a9c1d56893f4d6a2e611d63a5ba503d242e2",
+      "actual_sha256": "57c9a939944a4dc3b365115fbc20a9c1d56893f4d6a2e611d63a5ba503d242e2",
+      "expected_bytes": 3464,
+      "actual_bytes": 3464,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/wire-contract.md",
+      "expected_sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902",
+      "actual_sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902",
+      "expected_bytes": 5242,
+      "actual_bytes": 5242,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/hardware-r01/RESULT.md",
+      "expected_sha256": "f951c04ab6778eece7f126396e7247a3200ff9ee36353839c5171201435e7f36",
+      "actual_sha256": "f951c04ab6778eece7f126396e7247a3200ff9ee36353839c5171201435e7f36",
+      "expected_bytes": 3647,
+      "actual_bytes": 3647,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/src/vdplet_counted_return.h",
+      "expected_sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655",
+      "actual_sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655",
+      "expected_bytes": 2210,
+      "actual_bytes": 2210,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/src/vdplet_runtime.h",
+      "expected_sha256": "0f8bb349ba8eab57d1e5e8abfe4d29863bb331c4b9c88520b3c3048b1d130a00",
+      "actual_sha256": "0f8bb349ba8eab57d1e5e8abfe4d29863bb331c4b9c88520b3c3048b1d130a00",
+      "expected_bytes": 44321,
+      "actual_bytes": 44321,
+      "match": true
+    },
+    {
+      "owner": "6502",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/source/include/vdplet_protocol.h",
+      "expected_sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b",
+      "actual_sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b",
+      "expected_bytes": 2410,
+      "actual_bytes": 2410,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-source.json",
+      "expected_sha256": "4ce246a3da8d74fe54dca561c28573cb249ec43a11f50bc690977a16245f7af2",
+      "actual_sha256": "4ce246a3da8d74fe54dca561c28573cb249ec43a11f50bc690977a16245f7af2",
+      "expected_bytes": 5052,
+      "actual_bytes": 5052,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin",
+      "expected_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+      "actual_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+      "expected_bytes": 1100320,
+      "actual_bytes": 1100320,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf",
+      "expected_sha256": "2918727ad256389e3ac0d9074e736acdbbde3a9ce6f95a280fd7fa3673d6fd92",
+      "actual_sha256": "2918727ad256389e3ac0d9074e736acdbbde3a9ce6f95a280fd7fa3673d6fd92",
+      "expected_bytes": 25049816,
+      "actual_bytes": 25049816,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_counted_return.h",
+      "expected_sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655",
+      "actual_sha256": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655",
+      "expected_bytes": 2210,
+      "actual_bytes": 2210,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_runtime.h",
+      "expected_sha256": "3ac1c601e1fcbc8cf183c7b84b9485db00a7dcd2192e4bdcedc922060cfc50f2",
+      "actual_sha256": "3ac1c601e1fcbc8cf183c7b84b9485db00a7dcd2192e4bdcedc922060cfc50f2",
+      "expected_bytes": 44310,
+      "actual_bytes": 44310,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdplet_protocol.h",
+      "expected_sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b",
+      "actual_sha256": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b",
+      "expected_bytes": 2410,
+      "actual_bytes": 2410,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdu_buffered.h",
+      "expected_sha256": "b9d9d93295ddc5fb05c802071057e32ed9755837f029ce381340072352c262f0",
+      "actual_sha256": "b9d9d93295ddc5fb05c802071057e32ed9755837f029ce381340072352c262f0",
+      "expected_bytes": 100535,
+      "actual_bytes": 100535,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/buffer_stream.h",
+      "expected_sha256": "6b57aedf9e7fee1b8fdb84660e4eaade788c185ec540f94b00f965f2024c418d",
+      "actual_sha256": "6b57aedf9e7fee1b8fdb84660e4eaade788c185ec540f94b00f965f2024c418d",
+      "expected_bytes": 3583,
+      "actual_bytes": 3583,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/video/vdu_stream_processor.h",
+      "expected_sha256": "0a0eef0bb6d8dc6f6fb834a609afd6383840ce549aad91082db270f514780228",
+      "actual_sha256": "0a0eef0bb6d8dc6f6fb834a609afd6383840ce549aad91082db270f514780228",
+      "expected_bytes": 26590,
+      "actual_bytes": 26590,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/home/smith/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.cpp",
+      "expected_sha256": "955d29440034bde2b9f4d003faf7a292dfc9ec8ad8355edd92c2b979621b5ba0",
+      "actual_sha256": "955d29440034bde2b9f4d003faf7a292dfc9ec8ad8355edd92c2b979621b5ba0",
+      "expected_bytes": 19891,
+      "actual_bytes": 19891,
+      "match": true
+    },
+    {
+      "owner": "vdplet",
+      "path": "/home/smith/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.c",
+      "expected_sha256": "b4337b0cf3b5093aebae6b75187587e527de7c040fe3313ceeeef36b7af33045",
+      "actual_sha256": "b4337b0cf3b5093aebae6b75187587e527de7c040fe3313ceeeef36b7af33045",
+      "expected_bytes": 22147,
+      "actual_bytes": 22147,
+      "match": true
+    }
+  ]
+}

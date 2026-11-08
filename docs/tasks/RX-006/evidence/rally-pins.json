@@ -1,0 +1,61 @@
+{
+  "rally_head": "9bedbaf1843f8d92de569b2f8b1cabd767cfbd77",
+  "kind": "Source/evidence reading only; no code execution/build/target",
+  "files": [
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/README.md",
+      "bytes": 7646,
+      "sha256": "1903bfc158145de28f6edebde522cd357a8bba7b5472599901d00bc215183667"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/wire-contract.md",
+      "bytes": 5242,
+      "sha256": "d5a42da41a9a240b6308196458c21a4f3af1bd9095b341351b1ee4e567ce7902"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/implementation.md",
+      "bytes": 3618,
+      "sha256": "7b0b998032a8d441e54ef39f88f627d34964845fc4b9402bfffc06986417cbc7"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-005/hardware-r01/returned/R0067.log",
+      "bytes": 887,
+      "sha256": "56f9a23a6c7f858f44d2d6d6bd91d18b068105b1e766c6df451b50e45e84f12c"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/telemetry.hpp",
+      "bytes": 3845,
+      "sha256": "6ade89bcd5746c810ebc9a988fb1adbe9d7953d1a99ee7bb1c13fa6a1be18f48"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/include/native.hpp",
+      "bytes": 7860,
+      "sha256": "178a445230aecb20925f46d3f45e1c46ee22250296c9e191ef15ec4f34d31495"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/include/bindings.hpp",
+      "bytes": 1363,
+      "sha256": "5367e3740c7f72fc6ab34bce5d5ce91f631cbcd024f9b086ea8fa9a2cc8b7e20"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/src/main.cpp",
+      "bytes": 15328,
+      "sha256": "c96b8ca6c7a78c993f316f8c9c1555dbd7e76a2585c463897977c473c2f1e66c"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/src/callback.asm",
+      "bytes": 759,
+      "sha256": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/rx005-return-requirements-20261107/REVIEW.md",
+      "bytes": 11469,
+      "sha256": "f097069e32d913e66e1dd98cc61daecb118acec8fcd8c894f129a7d4ab96d280"
+    },
+    {
+      "path": "/Agon/mystuff/agon-vdplet/docs/tasks/VDPL-036/IMPLEMENTATION-01.md",
+      "bytes": 5664,
+      "sha256": "35df5f90b2ac10cfeff2e65787326e4652722321586b8239450539a9827b7aed"
+    }
+  ]
+}
