@@ -8,6 +8,9 @@ consumer-code checks. No reservation existed at the earlier closure. Preserve th
 [earlier result](RESULT.md) as source-feasibility evidence, not hardware acceptance.
 Current prepared run: [OLIMEX-R01](OLIMEX-R01.md), source `7f94ea2`, final app
 `0208015a8a94e345`, matched qualified temporary EMOS `171c7880` and producer `7d09dfea`.
+Extender's whole-fixture source review is complete with no changes requested;
+all27 pinned inputs match. Fresh physical installation and handoff remain pending.
+See [the owner review record](PREPARATION-R02.md#owner-source-review-completed).
 
 ## Reopening after Brandon's correction
 
@@ -121,8 +124,9 @@ repeat failed operations. Retain partial/failed evidence.
 
 Finish source/build and acquire exact tuple before declaring READY. Reserve
 through the shared Olimex FIFO; Extender grants only after actual fresh custody.
-Current source-only status reading shows MechAgon118 active, with FSIM and6502
-queued; no preemption or live queries are selected by that snapshot.
+At reservation,6502/120 was active; it has since released. The dated05:25UTC
+November8 snapshot has MechAgon and FSIM ahead of our request, with no active
+lease. Obtain fresh actual admission rather than treating this snapshot as custody.
 Extender chooses the smallest admitted bench composition/launch/retrieval path:
 the Olimex mainboard keyboard is unavailable, so a plain-MOS replacement must not
 break its only setup/recovery interface. No casual installation of Console8 MOS
@@ -139,8 +143,9 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 ## Completed source review and remaining hardware work
 
 - [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
-      no new VDP build or large-reply feature is needed. Extender consulted;
-      no supported Olimex composition was selected or installed for this goal.
+      no new VDP build or large-reply feature is needed. Extender has qualified
+      the temporary receiving composition and reviewed the whole fixture;
+      actual installation and fresh physical admission remain pending.
 - [x] Collate Rally and 6502 affirmative source reviews, source/artifact hashes,
       simplifications, caller requirements and evidence limits.
 - [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.
