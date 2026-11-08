@@ -1,0 +1,23 @@
+{
+  "kit_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
+  "base_inputs": 37,
+  "host_inputs": 14,
+  "payload_files": 2,
+  "all_match": true,
+  "retained_checks": {
+    "fake_io": 8,
+    "native_lifecycle": 2,
+    "passed": true
+  },
+  "request": "dfcc5d90a252",
+  "review": "Read complete controller/run/supervisor, payload batch and operating contract. No material one-invocation/evidence/lifetime incompatibility. Maintained-client two-file full staging verification, original grant floors, one EXEC, fresh terminal-listener boot, five file oracles and EXIT only after positive results. Failure preserves remote uncertainty; host-only supervisor joins original controller and reports surviving group as failure. Actual original tool/actor registration and stopped child-group observation remain owner binding. No additional code/build/case requested.",
+  "budgets": {
+    "whole": 1800,
+    "install": 540,
+    "consumer": 420,
+    "cleanup": 600,
+    "entry_floor": 1020,
+    "exec_floor": 780
+  },
+  "target_executed": false
+}

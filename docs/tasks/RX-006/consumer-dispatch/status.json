@@ -22,12 +22,15 @@
     "target_executed": false,
     "app_sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
     "manifest_sha256": "1586f6fd176d1a12b41d9cfac8da3cf875fa0bac279d6e1982e8ffee7d92aa01",
-    "bench_request": null,
+    "bench_request": "dfcc5d90a252",
     "review": "No material source objection; host controller/owner budget binding, normal FIFO and physical trial remain.",
     "review_mail": "2026-11-08_06-31-40_agon-mos_rx006-6502-prepared-source-review-return-ten",
     "owner_mail": "2026-11-08_06-31-56_agon-mos_rx006-6502-helper-source-reviewed-owner-coordinate-twentyeight",
     "review_notification": "turn/start accepted11:31:53UTC; not proof of reading",
-    "owner_notification": "turn/steer accepted11:32:09UTC; not proof of reading"
+    "owner_notification": "turn/steer accepted11:32:09UTC; not proof of reading",
+    "host_controller_prepared": true,
+    "host_kit_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
+    "host_review": "37 original+14 host+2 payload hashes match; original1800/540/420/600 bounds resolved; normal actual owner/FIFO/physical pending"
   },
   "target_custody": "Actual132 restored/released11:13:34UTC; all target access stopped; Mech596 canonicalnext requiresfreshgrant, no consumertrial grant"
 }

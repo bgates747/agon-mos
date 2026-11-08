@@ -145,3 +145,14 @@ incompatibility or additional code/build/case requested. Extender still binds
 actual fresh installation evidence, original actor registration/exit/join and
 restoration budget at Rally's normal FIFO turn. Fake controls are not hardware
 results; the consumer physical trial remains pending.
+
+6502's final controller kit e0c2516e closes the requested execution preparation.
+All37 original,14 host and2 payload files rehash exactly; UART read the actual
+controller, live SDK adapter, supervisor, batch and operating contract. Retained
+eight fake-IO and two native lifecycle checks pass. Extender selected original
+1800/540/420/600 bounds with1020 entry/780 EXEC floors before freeze, superseding
+the historical proposal above. [Review](consumer-dispatch/6502-controller/uart-review.json)
+finds no material incompatibility and requests no new code/build/case. Normal
+request dfcc5d90a252 follows its protected predecessors; physical trial and
+restoration remain pending. Neither unbound template nor source qualification
+claims actual grant, installed state or device result.
