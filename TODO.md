@@ -1,27 +1,14 @@
 # MOS TODO
 
-RX-006 [ ] **OWN SYNTHETIC PASS; FINISH SELECTED CONSUMER TRIALS.** Actual132
-passes all10sizes/36cells/WITNESS32Bstate3/next2/normallistenerEXIT; original
-consumer72988 exits0/alljoined,58s. [Evidence](docs/tasks/RX-006/actual132/README.md).
-Same app0208/EMOS171c/VDP7d09; batch-only radix fix confirms129's data pass and
-completion failure separately. Exact originals restored/readbackverified/fullhandback132, released11:13:34UTC;
-all targetaccess stopped. No further own synthetic sweep/tuning selected.
-[Consumer handoff](docs/tasks/RX-006/CONSUMER-HANDOFF.md) gives actual tested
-pins/API and5.65x/6.49x/6.98x coarse completion ratios (not CPU or pure wire rate).
-Begin only the scoped Rally584B exporter and6502 descriptor/block helper trials
-in their own lanes; normal separate FIFO/owner admission for target action.
-Rally and 6502 explicitly accept source-grounded usefulness: retained exports
-need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
-confirms existing 512B producer suffices. Prior C8 R0067 supplies physical
-integrity evidence. Own matched short/long checks and normal restoration are
-complete. Rally helper595f73c2 and6502 helper18f3c207 are source-reviewed/pins
-verified;6502 actual136 now passes exact bytes/counts/callback/normal return
-and gives an affirmative practical judgment; exact restoration/fullhandback and
-cleanrelease12:30:43UTC complete. Rally135 was
-UNRUN; corrected19e9824cf0fe trial remains queued. No further6502 case selected. No game ports, boot-script edits or performance optimization. Source
-review is not a substitute for these selected actual consumer-code trials.
-[Result and limits](docs/tasks/RX-006/RESULT.md),
-[task and exact human scope](docs/tasks/RX-006/README.md).
+RX-006 [ ] **ALL TESTS PASS; FINAL139 RESTORATION PENDING.** Own actual132
+passes10sizes/36cells/witness/normal return and is restored/released.6502 actual136
+passes exact40+512B/69->2 requests/callbacks/normal return, usefulnessYES and
+exact restoration/release. Rally actual139 passes exact584B exports/292->3
+requests/30->6 coarse MOS counts/normal return and usefulnessYES. All selected
+testing is satisfied; no further run/build/tuning/game port. Extender alone
+completes139 exact restoration/fullhandback/release, then close goal and report.
+[Current result](docs/tasks/RX-006/RESULT.md),
+[Rally evidence](docs/tasks/RX-006/consumer-dispatch/rally-actual139/RESULTS.md).
 
 RX-005 [ ] **FIRST CONSOLE8 HARDWARE SUITE PASS; REVIEW BEFORE CONSUMER PILOT.**
 R0067/build9c72616d7f4a4ef7 passes every synthetic case0..512B, guards, discards,

@@ -1,0 +1,27 @@
+{
+  "files_rehashed": 55,
+  "all_match": true,
+  "both584B_equal_retained_input": true,
+  "witness_state": 3,
+  "phase": 5,
+  "receive_state": 2,
+  "callbacks": 3,
+  "mode": 0,
+  "counts": {
+    "legacy_requests": 292,
+    "counted_requests": 3,
+    "legacy_mos_counts": 30,
+    "counted_mos_counts": 6
+  },
+  "one_ordered_export_ratio": 5.0,
+  "measurement_scope": "One fixed-order complete file export including fopen/transfer/checks/fwrite/fclose; not stable throughput, CPU/FPS or wire rate.",
+  "steps_complete": 17,
+  "original_session": 4514,
+  "original_exit": 0,
+  "native_pid_absent": true,
+  "group_empty": true,
+  "children_joined": true,
+  "practical_judgment": true,
+  "restoration_pending": true,
+  "additional_tests_selected": false
+}

@@ -1,0 +1,9 @@
+RX6HLP START build=17f8fefe93befe8e
+INPUT sha256=648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732
+Clock=public MOS counts; complete fopen/read-transfer/fwrite/fclose; no calibrated CPU/wire/FPS
+BEGIN READ16 original-helper bytes=584 chunk=256
+BEGIN COUNTED copied-helper bytes=584 chunks=256,256,72
+MEASURE READ16 requests=292 bytes=584 mos_counts=30 COUNTED requests=3 bytes=584 mos_counts=6
+COUNTS actual=256,256,72 announced=256,256,72 callbacks=3 guards=PASS
+FILES exact_input=PASS header=PASS retained_field_cdcd=PASS reopen=PASS eof=PASS
+RX6HLP PASS rx_terminal=2 callback_retired=1 source_cleared=1 mode_unchanged=1

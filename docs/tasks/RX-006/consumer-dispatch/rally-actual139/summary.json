@@ -1,0 +1,100 @@
+{
+  "actor": {
+    "pid": 1947147,
+    "pgrp": 1947147,
+    "proc_start": "40252709",
+    "argv": [
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+      "--kit",
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+      "--handoff",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/consumer-handoff.json",
+      "--request",
+      "19e9824cf0fe",
+      "--lease",
+      "69f508ffcf8245d0aa332f81e1a5329c",
+      "--url",
+      "http://192.168.0.20",
+      "--out",
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139"
+    ]
+  },
+  "schema": "RX6HLP-CONSUMER1",
+  "state": "consumer-stopped-pass",
+  "invocation_attempted": true,
+  "kit_sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e",
+  "handoff_sha256": "ec143382acebf29974493857cb9b834793942bb15217fca9e67a800ef055525a",
+  "steps": [
+    {
+      "sequence": 1,
+      "label": "start-stage-listener"
+    },
+    {
+      "sequence": 2,
+      "label": "stage-listener-online"
+    },
+    {
+      "sequence": 3,
+      "label": "fresh-directory"
+    },
+    {
+      "sequence": 4,
+      "label": "put-rx6hlp.bin"
+    },
+    {
+      "sequence": 5,
+      "label": "verify-rx6hlp.bin"
+    },
+    {
+      "sequence": 6,
+      "label": "put-suite.txt"
+    },
+    {
+      "sequence": 7,
+      "label": "verify-suite.txt"
+    },
+    {
+      "sequence": 8,
+      "label": "exit-stage-listener"
+    },
+    {
+      "sequence": 9,
+      "label": "stage-listener-offline"
+    },
+    {
+      "sequence": 10,
+      "label": "one-exec"
+    },
+    {
+      "sequence": 11,
+      "label": "terminal-listener-online"
+    },
+    {
+      "sequence": 12,
+      "label": "get-RX6HLP.TXT"
+    },
+    {
+      "sequence": 13,
+      "label": "get-CONTROL.BIN"
+    },
+    {
+      "sequence": 14,
+      "label": "get-COUNTED.BIN"
+    },
+    {
+      "sequence": 15,
+      "label": "get-WITNESS.BIN"
+    },
+    {
+      "sequence": 16,
+      "label": "exit-terminal-listener"
+    },
+    {
+      "sequence": 17,
+      "label": "terminal-listener-offline"
+    }
+  ],
+  "pending": null,
+  "elapsed_seconds": 22.172231353993993,
+  "restoration": "Owner exact firmware/file/state restoration and real CLI handback still required; lease not released"
+}

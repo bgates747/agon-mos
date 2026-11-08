@@ -1,0 +1,330 @@
+{
+  "schema": "RX6HLP-actual-consumer-result1",
+  "consumer_passed": true,
+  "consumer_stopped": true,
+  "case_count": 1,
+  "actual_generation": 139,
+  "actual_request": "19e9824cf0fe",
+  "original135": "Entirely unrun, restored and released separately",
+  "app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
+  "hostkit_sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e",
+  "input_sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732",
+  "installed_components": {
+    "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+    "emos_rom_sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914",
+    "native_vdp_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+    "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+    "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+  },
+  "analysis": {
+    "data_passed": true,
+    "files": {
+      "RX6HLP.TXT": {
+        "bytes": 648,
+        "sha256": "cf0ecde2cfadefb0bdbfdb3fbb6f821308246d96fe069bf6ff571f29eb6615b8"
+      },
+      "CONTROL.BIN": {
+        "bytes": 584,
+        "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+      },
+      "COUNTED.BIN": {
+        "bytes": 584,
+        "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+      },
+      "WITNESS.BIN": {
+        "bytes": 32,
+        "sha256": "3c217d1d965845c855dc7617a39caf8c3701bbabbc231648d8b4fe3554e74e71"
+      }
+    },
+    "control_mos_counts": 30,
+    "counted_mos_counts": 6,
+    "control_requests": 292,
+    "counted_requests": 3,
+    "entry_mode": 0,
+    "complete_export_ratio": 5.0,
+    "ratio_limit": "One ordered complete file-export pair, coarse public counts; no CPU/wire/FPS claim",
+    "handback": "Requires separate actual owner listener/EXIT/CLI/input/resource evidence; file analysis alone does not establish it"
+  },
+  "host_seconds": 22.172231353993993,
+  "practical_judgment": "Counted replies work in actual retained exporter and simplify per-word reconstruction; 292 to3 requests and one coarse30to6 complete-export pair suffice; no further consumer run or tuning needed",
+  "clock_limit": "Coarse public MOS counts; one fixed-order complete file-export pair including file I/O and adapter checks; not CPU, pure-wire, renderer/FPS or stable throughput",
+  "generation_limit": "Retained stats has no game generation field;4503 is originating-state provenance only",
+  "restoration": "Stopped custody returned to Extender; final exact native-first/EMOS restoration/fresh full handback/release pending",
+  "files": [
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/001-start-stage-listener.json",
+      "bytes": 259,
+      "sha256": "08c7461d3b5cfe1c751b57c0340b7fb9df3b2d22c6844d51bad1de5249c08e70"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/002-stage-listener-online.json",
+      "bytes": 79,
+      "sha256": "e60275f558ef2075b684199c5c0c1339662feaccad67ea5c1354fd8b2b60c48f"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/003-fresh-directory.json",
+      "bytes": 72,
+      "sha256": "e56aa54328f977f01fcdc0f521bb624e2ac4fb6ad56768abe2e377c3b53cb948"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/004-put-rx6hlp.bin.json",
+      "bytes": 503,
+      "sha256": "b64af8ce930296b87d1b167a5351939ec7a0212bf2e2ee4c9c60f5f65ffb5674"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/005-verify-rx6hlp.bin.json",
+      "bytes": 544,
+      "sha256": "f64f2a5122fc9cd02267752c20de0cc150a34f8ecd8b623f85a9150397894684"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/006-put-suite.txt.json",
+      "bytes": 495,
+      "sha256": "a1068dd270cec4341e44cb9aefc4f331678d465e1c5fffccdd0345648cb54d4f"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/007-verify-suite.txt.json",
+      "bytes": 541,
+      "sha256": "7ff60d124ad7c7ed6adc4365297273889b65d3460475e9ca4363ad6d19880092"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/008-exit-stage-listener.json",
+      "bytes": 21,
+      "sha256": "f70f08b3b6214aef34192374028122adf6a5ec6913937c91be54edc122d2094e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/009-stage-listener-offline.json",
+      "bytes": 80,
+      "sha256": "abb2388cd517e977aef7f4b5b374b1894de5f116743cc8e4e0fb3193b5d0552e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/010-one-exec.json",
+      "bytes": 259,
+      "sha256": "87a18b2c33075782b63cde60a8deab5553bea214836f6a1f8ececf797ab76fde"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/011-terminal-listener-online.json",
+      "bytes": 79,
+      "sha256": "960d9f9da35c66c14981d2e3714f10237bee38c9339a3a90f6a9598e7a177cd9"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/012-get-RX6HLP.TXT.json",
+      "bytes": 540,
+      "sha256": "32724c243f3efd72fee67f7a6ccdadd9f35d2b3dd93b34c6ce77d35100b5d21d"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/013-get-CONTROL.BIN.json",
+      "bytes": 539,
+      "sha256": "01af773182c49b7316f376e57d22d44b22f4e75e1da19f02462e21409d7bea77"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/014-get-COUNTED.BIN.json",
+      "bytes": 540,
+      "sha256": "25e85c90aa16e78cce444c326a7c5dbe2b4dae5bc17d1aaf175d01d29ffee3f6"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/015-get-WITNESS.BIN.json",
+      "bytes": 538,
+      "sha256": "da3bf576eac49c61d66177ba55dd3a910e6a74f3c03a5339bd593def79310c4f"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/016-exit-terminal-listener.json",
+      "bytes": 21,
+      "sha256": "f70f08b3b6214aef34192374028122adf6a5ec6913937c91be54edc122d2094e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/017-terminal-listener-offline.json",
+      "bytes": 80,
+      "sha256": "5be66c49a17b12ae6237846526b33fe8e8916c9a3802a6173f66d916e38c9f4d"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/CONTROL.BIN",
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/COUNTED.BIN",
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/RX6HLP.TXT",
+      "bytes": 648,
+      "sha256": "cf0ecde2cfadefb0bdbfdb3fbb6f821308246d96fe069bf6ff571f29eb6615b8"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/WITNESS.BIN",
+      "bytes": 32,
+      "sha256": "3c217d1d965845c855dc7617a39caf8c3701bbabbc231648d8b4fe3554e74e71"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/analysis.json",
+      "bytes": 959,
+      "sha256": "98a8b38e2d03fa2b2ae66630bb6bc62898054a4a435955170b322d9fca8f909b"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-CONTROL.BIN-transfer.json",
+      "bytes": 1156,
+      "sha256": "67e5736844aa3511a40cb02cfe67fe7eee13ab3d064849ca63e788ec33a23e3e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-CONTROL.BIN-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-COUNTED.BIN-transfer.json",
+      "bytes": 1157,
+      "sha256": "5accee422dbeea511d6af5bd444281a0bbd14bb98cddf7659e8868c93bc5f7a9"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-COUNTED.BIN-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-RX6HLP.TXT-transfer.json",
+      "bytes": 1156,
+      "sha256": "403d0d293f3d303c61c1052d386f2baabf616d34eee682f17e74f2aa355a7ea8"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-RX6HLP.TXT-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-WITNESS.BIN-transfer.json",
+      "bytes": 1156,
+      "sha256": "14d689c057f97b1cae0d5b83f195398e79a270e6cde9becf0ec33a689ae1897e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/get-WITNESS.BIN-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/mkdir-metadata.json",
+      "bytes": 134,
+      "sha256": "5a8ef1639a95c461d1b33faa91c6edd6492ab1ee6a363a3e7ec431fd61af6179"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/mkdir-metadata.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/one-exec-keys.json",
+      "bytes": 138,
+      "sha256": "a1ecc0ac7111730ba63ceab2965e762c23b77aa71d3421c01b988fc1b7c68107"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/one-exec-keys.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/put-rx6hlp.bin-transfer.json",
+      "bytes": 996,
+      "sha256": "7fc0a65ad137ef85ba152c6c1b96e8513493b0b367f734961ec75aafa5a4818a"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/put-rx6hlp.bin-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/put-suite.txt-transfer.json",
+      "bytes": 982,
+      "sha256": "e767e412dd778380140c2336689959634cce278298d3d8c8f54d4012422a45b2"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/put-suite.txt-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/readback-rx6hlp.bin",
+      "bytes": 16392,
+      "sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/readback-suite.txt",
+      "bytes": 118,
+      "sha256": "21b8d4a29a6cf19e2975f45636eb510f2d75c7df90d40c6e399c96fa6b3fb068"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/stage-exit-metadata.json",
+      "bytes": 133,
+      "sha256": "8a7c58d1192cb801324d4643d3a26035cdb8e4c3cb0575710f44a702fd804344"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/stage-exit-metadata.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/start-stage-listener-keys.json",
+      "bytes": 138,
+      "sha256": "7c23ac52ea3dd9e09d439ac35864c753539eaff8afe8e365908f426ba32edd40"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/start-stage-listener-keys.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/status-11.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/status-17.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/status-2.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/status-9.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/summary.json",
+      "bytes": 2356,
+      "sha256": "b81a4448d906dd837c38c887c79a7fbda1e7930d7c975c15c13eb16a930cf790"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/terminal-exit-metadata.json",
+      "bytes": 134,
+      "sha256": "bad598a43ec2dd79e22eaf253f3fc0ce1eef38b84d5f184ce65d243005924176"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/terminal-exit-metadata.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/verify-rx6hlp.bin-transfer.json",
+      "bytes": 1168,
+      "sha256": "0af066422c3d1f7949674ce195d2984f1852a21ccb54ff28b1e850f29006a012"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/verify-rx6hlp.bin-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/verify-suite.txt-transfer.json",
+      "bytes": 1164,
+      "sha256": "2c83bbd4d943cca1886175543dd6888cc585ff5772cffccdd222e4e72fee17cf"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/verify-suite.txt-transfer.json.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

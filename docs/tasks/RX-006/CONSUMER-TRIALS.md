@@ -210,3 +210,14 @@ ROM to originala25f and checked release/actor receipts, retained with the
 [consumer evidence](consumer-dispatch/6502-actual136/README.md).6502's selected
 slice is complete; no additional consumer test is selected. ProtectedMech9267
 remains next through normal admission; Rally19e physical trial still outstanding.
+
+Rally actual139 now meets the remaining consumer requirement: both584B files
+exactly match the retained input;292 READ16 requests become3 counted pulls,
+counts256/256/72/callbacks3/guards/state3 witness/normal return all pass. UART
+independently rehashed55 returned files and checked bytes/witness/17steps and
+original4514 exit0/native group absent/children joined. The owner explicitly
+judges useful/simpler; no more runs/tuning. One fixed-order export measured
+30 versus6 coarse MOS counts, including file I/O/adapter checks; no CPU/FPS/
+wire-rate/stable-throughput claim. [Retained evidence](consumer-dispatch/rally-actual139/RESULTS.md).
+All selected testing now passes; actual139 exact owner restoration/fullhandback/
+release is the sole remaining closure before completing the goal.

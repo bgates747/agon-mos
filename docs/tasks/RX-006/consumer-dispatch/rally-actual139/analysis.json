@@ -1,0 +1,29 @@
+{
+  "data_passed": true,
+  "files": {
+    "RX6HLP.TXT": {
+      "bytes": 648,
+      "sha256": "cf0ecde2cfadefb0bdbfdb3fbb6f821308246d96fe069bf6ff571f29eb6615b8"
+    },
+    "CONTROL.BIN": {
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    "COUNTED.BIN": {
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    "WITNESS.BIN": {
+      "bytes": 32,
+      "sha256": "3c217d1d965845c855dc7617a39caf8c3701bbabbc231648d8b4fe3554e74e71"
+    }
+  },
+  "control_mos_counts": 30,
+  "counted_mos_counts": 6,
+  "control_requests": 292,
+  "counted_requests": 3,
+  "entry_mode": 0,
+  "complete_export_ratio": 5.0,
+  "ratio_limit": "One ordered complete file-export pair, coarse public counts; no CPU/wire/FPS claim",
+  "handback": "Requires separate actual owner listener/EXIT/CLI/input/resource evidence; file analysis alone does not establish it"
+}

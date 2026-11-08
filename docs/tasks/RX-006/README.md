@@ -24,14 +24,30 @@ firmware claim. App/runtime/firmware are unchanged between129 and132.
 [Evidence](consumer-dispatch/6502-actual136/README.md). Same136 exact restoration/fullhandback/cleanrelease12:30:43UTC is complete;
 no further6502 case or performance ratio is selected.
 Rally135 was entirely UNRUN from delivery expiry and then restored/released.
-Its corrected19e9824cf0fe trial remains queued; goal completion is still pending.
+Its corrected19e9824cf0fe trial now passes as actual139; final owner handback
+is the only remaining closure.
 
-The remaining task is the selected Rally physical trial and exact handbacks.
+The remaining task is final actual139 exact restoration and handback only.
 [Exact tested handoff](CONSUMER-HANDOFF.md) supplies pins/API/results and their
 already scoped helper seams. Source preparation can proceed after this own
 pass; any target action still needs clean predecessor handback, separate normal
 FIFO and Extender component ownership. UART edits no game code. Stop once
 these finite trials and concrete usefulness judgments suffice, without tuning.
+
+## All selected testing now passes; final handback pending
+
+Rally actual139 passes the real retained exporter: both584B outputs exactly
+match input,292 old READ16 requests versus3 counted pulls256/256/72, three
+callbacks, exact counts/guards/state3 witness and normal listener return/EXIT.
+The owner explicitly judges adoption useful and simpler; no further test or
+tuning is selected. Its one ordered complete-export observation is30 versus6
+coarse MOS counts, not calibrated CPU, wire rate or game FPS.
+[Evidence](consumer-dispatch/rally-actual139/RESULTS.md).
+
+Own132 and6502 actual136 are already restored/released. Actual139 consumer is
+stopped and Extender alone completes exact restoration/fresh full handback and
+normal release. Once that receipt is verified, mark the goal complete and stop.
+No additional builds, cases, consumer ports or optimization are required.
 
 ## Reopening after Brandon's correction
 

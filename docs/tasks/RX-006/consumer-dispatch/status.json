@@ -5,7 +5,7 @@
     "notification": "turn/start accepted 11:12:07UTC; not proof of reading",
     "scope": "One retained584B actual exporter helper control/counted trial; source prepare now, actual normal checkout later",
     "source_prepared": true,
-    "target_executed": false,
+    "target_executed": true,
     "build": "17f8fefe93befe8e",
     "app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
     "bench_request": "19e9824cf0fe",
@@ -13,10 +13,13 @@
     "host_controller_prepared": true,
     "host_kit_sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e",
     "host_review": "Explicit request binding implemented;13 prepared+host execution hashes exact, no new source/check/build gate.",
-    "last_actual": 135,
-    "last_outcome": "Entirely UNRUN: handoff expired during session recovery/delivery before launch; zero target operations. Owner cleanup pending, protected6502 next.",
+    "last_actual": 139,
+    "last_outcome": "Physical helper PASS, exact584B files/counts/witness/return verified; owner restoration/release pending.",
     "future_requirement": "Corrected host ready; NEWnormalFIFO19e9824cf0fe, actualREADY before owner final genuine observation/handoff, same one uninvoked case. Physical pending.",
-    "actual135_restoration": "Extender normalrelease12:14:18UTC, exact native-FIRST/a25f independent readbacks/fullhandback; all stopped."
+    "actual135_restoration": "Extender normalrelease12:14:18UTC, exact native-FIRST/a25f independent readbacks/fullhandback; all stopped.",
+    "practical_judgment": "Works/useful/simpler actual retained exporter:292 READ16 requests become3 counted chunks; no further run/tuning.",
+    "selected_consumer_tests_complete": true,
+    "restoration_complete": false
   },
   "agon6502": {
     "mail": "2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine",
@@ -43,5 +46,5 @@
     "released": "2026-11-08T12:30:43.327754+00:00",
     "selected_consumer_slice_complete": true
   },
-  "target_custody": "Actual136 cleanreleased12:30:43UTC; all6502/Extender target actors stopped; nextMech9267 needs normalfreshadmission. UART no target access; Rally corrected19e queued."
+  "target_custody": "Actual139 Rally consumer stopped/pass; Extender alone owns exact restoration/fullhandback/release. All UART/Rally target actors stopped. All selected tests pass; closure waits only for139 release."
 }

@@ -1,0 +1,186 @@
+{
+  "schema": "RX6HLP-actual139-stopped-return1",
+  "epoch": 1794143639.8813803,
+  "request": "19e9824cf0fe",
+  "generation": 139,
+  "lease": "69f508ffcf8245d0aa332f81e1a5329c",
+  "original_tool_handle": {
+    "tool": "exec_command",
+    "session_id": 4514
+  },
+  "original_terminal_tool": {
+    "tool": "write_stdin",
+    "chunk_id": "73c097",
+    "exit_code": 0,
+    "output": ""
+  },
+  "actor": {
+    "epoch": 1794143561.6796875,
+    "pid": 1947147,
+    "ppid": 1750,
+    "pgid": 1947147,
+    "start": "40252709",
+    "boot": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+    "argv": [
+      "/Agon/mystuff/agon-dev-env/.venv/bin/python",
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+      "--kit",
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+      "--handoff",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/consumer-handoff.json",
+      "--request",
+      "19e9824cf0fe",
+      "--lease",
+      "69f508ffcf8245d0aa332f81e1a5329c",
+      "--url",
+      "http://192.168.0.20",
+      "--out",
+      "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139"
+    ],
+    "tool_handle": {
+      "tool": "exec_command",
+      "session_id": 4514
+    },
+    "registration": "Immediately AFTER original launch; actual native live process and self-summary inspected",
+    "request": "19e9824cf0fe",
+    "generation": 139,
+    "lease": "69f508ffcf8245d0aa332f81e1a5329c"
+  },
+  "original_pid_absent": true,
+  "original_pgid_members": [],
+  "owned_children_joined": true,
+  "source_of_child_join": "All runner subprocess.run calls awaited; direct original tool terminal exit0; native original group independently absent",
+  "all_rally_target_access_stopped": true,
+  "summary": {
+    "actor": {
+      "pid": 1947147,
+      "pgrp": 1947147,
+      "proc_start": "40252709",
+      "argv": [
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+        "--kit",
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+        "--handoff",
+        "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/consumer-handoff.json",
+        "--request",
+        "19e9824cf0fe",
+        "--lease",
+        "69f508ffcf8245d0aa332f81e1a5329c",
+        "--url",
+        "http://192.168.0.20",
+        "--out",
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139"
+      ]
+    },
+    "schema": "RX6HLP-CONSUMER1",
+    "state": "consumer-stopped-pass",
+    "invocation_attempted": true,
+    "kit_sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e",
+    "handoff_sha256": "ec143382acebf29974493857cb9b834793942bb15217fca9e67a800ef055525a",
+    "steps": [
+      {
+        "sequence": 1,
+        "label": "start-stage-listener"
+      },
+      {
+        "sequence": 2,
+        "label": "stage-listener-online"
+      },
+      {
+        "sequence": 3,
+        "label": "fresh-directory"
+      },
+      {
+        "sequence": 4,
+        "label": "put-rx6hlp.bin"
+      },
+      {
+        "sequence": 5,
+        "label": "verify-rx6hlp.bin"
+      },
+      {
+        "sequence": 6,
+        "label": "put-suite.txt"
+      },
+      {
+        "sequence": 7,
+        "label": "verify-suite.txt"
+      },
+      {
+        "sequence": 8,
+        "label": "exit-stage-listener"
+      },
+      {
+        "sequence": 9,
+        "label": "stage-listener-offline"
+      },
+      {
+        "sequence": 10,
+        "label": "one-exec"
+      },
+      {
+        "sequence": 11,
+        "label": "terminal-listener-online"
+      },
+      {
+        "sequence": 12,
+        "label": "get-RX6HLP.TXT"
+      },
+      {
+        "sequence": 13,
+        "label": "get-CONTROL.BIN"
+      },
+      {
+        "sequence": 14,
+        "label": "get-COUNTED.BIN"
+      },
+      {
+        "sequence": 15,
+        "label": "get-WITNESS.BIN"
+      },
+      {
+        "sequence": 16,
+        "label": "exit-terminal-listener"
+      },
+      {
+        "sequence": 17,
+        "label": "terminal-listener-offline"
+      }
+    ],
+    "pending": null,
+    "elapsed_seconds": 22.172231353993993,
+    "restoration": "Owner exact firmware/file/state restoration and real CLI handback still required; lease not released"
+  },
+  "files": [
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/RX6HLP.TXT",
+      "bytes": 648,
+      "sha256": "cf0ecde2cfadefb0bdbfdb3fbb6f821308246d96fe069bf6ff571f29eb6615b8"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/CONTROL.BIN",
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/COUNTED.BIN",
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/WITNESS.BIN",
+      "bytes": 32,
+      "sha256": "3c217d1d965845c855dc7617a39caf8c3701bbabbc231648d8b4fe3554e74e71"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/analysis.json",
+      "bytes": 959,
+      "sha256": "98a8b38e2d03fa2b2ae66630bb6bc62898054a4a435955170b322d9fca8f909b"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/summary.json",
+      "bytes": 2356,
+      "sha256": "b81a4448d906dd837c38c887c79a7fbda1e7930d7c975c15c13eb16a930cf790"
+    }
+  ]
+}
