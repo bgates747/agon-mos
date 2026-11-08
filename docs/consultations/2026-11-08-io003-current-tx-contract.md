@@ -1,5 +1,10 @@
 # Current TX contract for the combined6502 playable package — November8 source-only return
 
+Current follow-up: [Extender accepted the narrow EMOS ordered-query completion
+policy](io003-current-tx/ACCEPTED-EMOS-COMPLETION-POLICY.md), avoiding a new generic
+drain API. The earlier owner-answer-pending wording below is chronological;
+this is not yet a consumer implementation or hardware pass.
+
 CURRENT PUBLICATION: live GitHub API today still shows upstream RFC2 OPEN/unmerged, unchanged ffab9c9c84a31535d1ec976b7e6f23b2579ecb80. Fork latest prerelease remains3.1.0_uart0_rc_3, source/tag97311c437093e416342a6c836cf9914f2ced027d. There is no newer upstream-accepted asyncABI to substitute. Release https://github.com/bgates747/eirene-mos/releases/tag/3.1.0_uart0_rc_3 ; RFC https://github.com/AgonPlatform/eirene-mos/pull/2 . Working eirene checkout is on another experimental branch; do not use its live42h source as RC3.
 
 C8 EXACT REFERENCE: /Agon/mystuff/eirene-mos/build/rc003/packages/3.1.0_uart0_rc_3/mos-rc3.bin,100879B, SHA d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50, CRC32 B08C80B8 over exactly100879B starting address0. Map same directory/mos-rc3.map,69433B SHA48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9. Downloaded ZIP /Agon/mystuff/eirene-mos/build/rc003/downloaded/3.1.0_uart0_rc_3.zip,1887937B SHA9c8a9a28b0f597e6a9294d806491ffca3902c16cf1876b092ae8944f65368061. Independently rehashed all three today. Includes startup fix; pinned rawRFC does not. Exact source/docs/uart0-async.md and example/src/{main.c,bridge.src} are canonical; fixture/src holds exact-image guard recipe. Nothing here selects or flashes firmware.

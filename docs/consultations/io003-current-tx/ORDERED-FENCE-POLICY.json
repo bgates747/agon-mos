@@ -1,0 +1,21 @@
+{
+  "epoch": 1794163927.6525037,
+  "scope": "Owner source policy for the exact EMOS-only single-producer UART0 packet/footer; not generic TEMT, target qualification or deployment.",
+  "policy": "Accepted subject to stated source/session conditions",
+  "official_docs_commit": "f9806bd3cbff6ed5d1c08bef1d51fed11764b86b",
+  "source_pins": {
+    "/Agon/agon-docs/docs/mos/API.md": "5f2e68201ee0e4799562583f8e81153482651695fe3f89e4900e193ebd3b8d25",
+    "/Agon/agon-docs/docs/vdp/System-Commands.md": "e08a2a13158a6b31310d037994db06ef261e3dd1140c933d3f9e072fecfcd206",
+    "/Agon/mystuff/agon-extender/docs/tasks/NET-004/CARRIER-RFC25-CYCLE-R01.md": "407b5e5ac6c9683e8ed797120e6bcd36b58fc4b953b03bb39cceba35e38d1379",
+    "/Agon/mystuff/agon-6502/experiments/vdp004/firmware.py": "0ff6939d806166c5840a3f1168fc0d82afcf49b312f11e11bcc7acb8f0c28799",
+    "/Agon/mystuff/agon-6502/experiments/vdp004/native_color.h": "570c4d2f3edcf8260ea6df96958f88005d57d85b4916a4b1177049acc163ce1d",
+    "/Agon/mystuff/agon-6502/build/perf020/display/vdp-apple/source/src/vdp/vdp-console8/video/vdu_sys.h": "c5ecd98b7dc005525375ad8f044949f8304251f20a8eeaeaf41020dca3013c4e",
+    "/Agon/mystuff/agon-6502/build/vdp004/firmware.json": "34f3b182811ab409d300c974e27c97716c79c98d4e6178a1331bbcb16faea305",
+    "2c79c6006d6bcb0c2b3f9d8d6aae3ef4b36c730a:src/vdp_protocol.asm": "d22f3cf12e27b8604bd2030b92a17c3a630f01339e7cad92731af71a07b5f7bb",
+    "2c79c6006d6bcb0c2b3f9d8d6aae3ef4b36c730a:src/mos_api.asm": "55072055a411265bf7cc211579f42762199ad798d531518215e9e95a73642389"
+  },
+  "reference_note": "Official documentation worktree contains an unrelated untracked ._.DS_Store; preserved untouched. Tagged MOSv3.0.2/VDPv2.16.0 are references only.",
+  "target_access": false,
+  "new_firmware": false,
+  "new_build": false
+}

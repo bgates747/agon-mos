@@ -1,5 +1,10 @@
 # IO-003: exact a25f owner contract and unresolved drain binding
 
+**Subsequent disposition:** Extender accepted the narrow ordered-query policy
+without a new public drain API. See [accepted policy](ACCEPTED-EMOS-COMPLETION-POLICY.md).
+The earlier dependency/review wording below is retained as consultation history;
+consumer implementation and hardware qualification remain separate.
+
 Extender verified donor commit2c79c600 and retained a25f artifacts, not current
 HEAD. Its full source-only return is archived alongside this note. No new
 firmware, source implementation, build, target selection or run was requested.

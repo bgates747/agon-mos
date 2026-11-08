@@ -1,5 +1,10 @@
 Source assessment of the proposed EMOS-only7Bpoint-query footer: no MOS-side conceptual objection to declaring a fresh ordered receiver witness, subject to Extender selecting the policy. This is NOT a new localTEMT API or permission to clear private owner state. No implementation/build/run/newfirmware selected by UART.
 
+**Subsequent disposition:** Extender accepted the narrow ordered-query policy
+without a new public drain API. See [accepted policy](ACCEPTED-EMOS-COMPLETION-POLICY.md).
+The earlier dependency/review wording below is retained as consultation history;
+consumer implementation and hardware qualification remain separate.
+
 Concrete source facts: SDK vdp_return_pixel_colour sends23,0,84h plus two16-bit coordinates (7B), clears public vdp_pflags then waits for vdp_pflag_point. The flag is BIT2/MASK04h, not numeric02h. Exact MOS POINT handler copies RGB/index first, then ORs that flag. See /Agon/agondev/src/lib/libvdp/vdp_return_pixel_colour.c and release/include/agon/mos.h; receiver source at pinnedRC3/source/src/vdp_protocol.asm and a25f-derived source retain that ordering.
 
 Conditions for your narrow consumer: (1) the full footer must be INSIDE the same owned immutable source submitted once, not ordinary output appended while borrowed; extend full24-bit length/capacity/maximum arithmetic by7 without shortening the existing F6packet. (2) prearm source flag and clear/check the point flag BEFORE submission; a prior delayed/unconsumed point reply must be positively excluded, not merely cleared locally. Your declared sole producer/no other point query is the needed session condition. Whole-pflags clearing matches SDK only if this consumer has agreed exclusive ownership of those completion flags; do not silently discard another client's completion. (3) require A0, then BOTH real callback and newly published point flag underEI/MB0; refusal schedules neither source release nor a new reply and must not enter wait. (4) keep timeout quarantined/no local cancellation or ordinaryoutput/guestDI/MB7/8. Do not synthesize private ownership retirement; subsequent25h admission remains owner checked.
