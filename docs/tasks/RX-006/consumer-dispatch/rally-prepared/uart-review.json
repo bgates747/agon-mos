@@ -1,0 +1,30 @@
+{
+  "prepared_sha256": "bdcd56f31b6c3f57550955d8aecfe2728011fae08fb6ecb0f64a03d2c144e35d",
+  "prepared_files": 23,
+  "immutable_source_files": 11,
+  "all_immutable_match": true,
+  "mutable_guidance": [
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/CONSUMER-HANDOFF.md",
+      "build_pin": "9c8d56053b073d84c85a4e38b925ccdd017775b8bb43b79cf3e19a1433b51592",
+      "current": {
+        "bytes": 6473,
+        "sha256": "9c8d56053b073d84c85a4e38b925ccdd017775b8bb43b79cf3e19a1433b51592"
+      }
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/actual132/README.md",
+      "build_pin": "988e8c4417b020fbd37fce9ab941fd62cada0e9fa4c450393cb455c845c102a1",
+      "current": {
+        "bytes": 3389,
+        "sha256": "b98804e27ad88adcf2d0f6f6db45ff0c76d89827da0e6cb0f023381c618cb3f1"
+      }
+    }
+  ],
+  "app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
+  "build": "17f8fefe93befe8e",
+  "request": "caeae97c57d6",
+  "review": "No material public26h/lifetime/frame/callback/ordinary-output/file-oracle objection. Actual empty application callback/no arm is a required owner admission, not inferred from app checks. Stats has no generation field;4503 is originating state provenance, not a new runtime-generation oracle. No extra target cases or code changes requested.",
+  "device_access": false,
+  "physical_execution": false
+}

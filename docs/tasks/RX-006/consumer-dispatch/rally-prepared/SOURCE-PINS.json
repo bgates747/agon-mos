@@ -1,0 +1,73 @@
+{
+  "files": [
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/telemetry.hpp",
+      "bytes": 3845,
+      "sha256": "6ade89bcd5746c810ebc9a988fb1adbe9d7953d1a99ee7bb1c13fa6a1be18f48"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/guest/coarse/src/callback.asm",
+      "bytes": 759,
+      "sha256": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/evidence/tim002r02/coarse-on900/native-stats.bin",
+      "bytes": 584,
+      "sha256": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/CONSUMER-HANDOFF.md",
+      "bytes": 6473,
+      "sha256": "9c8d56053b073d84c85a4e38b925ccdd017775b8bb43b79cf3e19a1433b51592",
+      "mutable_guidance": true,
+      "observed_check_sha256": "9c8d56053b073d84c85a4e38b925ccdd017775b8bb43b79cf3e19a1433b51592"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/actual132/README.md",
+      "bytes": 2504,
+      "sha256": "988e8c4417b020fbd37fce9ab941fd62cada0e9fa4c450393cb455c845c102a1",
+      "mutable_guidance": true,
+      "observed_check_sha256": "b98804e27ad88adcf2d0f6f6db45ff0c76d89827da0e6cb0f023381c618cb3f1"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/actual132/analysis.json",
+      "bytes": 10272,
+      "sha256": "2dea25780693c0b37fd21fc94bcef42916b8aaef2dccd9719cc501dccb1de529"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/rx006/fixture/src/bridge.src",
+      "bytes": 1765,
+      "sha256": "e313c3f40cfe2eab58e41e9d76b05825d2fe4d902d7f4da70fad2ba957b5ef08"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/rx006/fixture/src/rom_crc.h",
+      "bytes": 496,
+      "sha256": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61"
+    },
+    {
+      "path": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_06-11-53_agon-mos_rx006-rally-actual-helper-selected-after-pass-nine.md",
+      "bytes": 2809,
+      "sha256": "1ab1193fb798060ce35fff6e044568359c0d3f0586d097b6dd0cf1abf57128c1"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/ROM.bin",
+      "bytes": 131072,
+      "sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914"
+    },
+    {
+      "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin",
+      "bytes": 1100320,
+      "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/evidence/tim002r02/coarse-on900/state.bin",
+      "bytes": 406,
+      "sha256": "5a8095bbcda707b7377b3962b0e03c5cd7fdc104fbb6a14c4317d5c1a5f9780e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/tasks/RALLY-28/custom-vdp/timing-attribution/evidence/tim002r02/coarse-on900/verified.json",
+      "bytes": 5775,
+      "sha256": "d6020e9c951f7144b9edd56717835ae1da4128162bd800028263b9b426d3053f"
+    }
+  ]
+}

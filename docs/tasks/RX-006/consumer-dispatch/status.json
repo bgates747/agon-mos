@@ -4,8 +4,12 @@
     "mail": "2026-11-08_06-11-53_agon-mos_rx006-rally-actual-helper-selected-after-pass-nine",
     "notification": "turn/start accepted 11:12:07UTC; not proof of reading",
     "scope": "One retained584B actual exporter helper control/counted trial; source prepare now, actual normal checkout later",
-    "source_prepared": false,
-    "target_executed": false
+    "source_prepared": true,
+    "target_executed": false,
+    "build": "17f8fefe93befe8e",
+    "app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
+    "bench_request": "caeae97c57d6",
+    "review": "No material source objection; fresh Extender admission/physical trial pending; generation is provenance only"
   },
   "agon6502": {
     "mail": "2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine",

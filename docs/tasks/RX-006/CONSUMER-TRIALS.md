@@ -19,8 +19,10 @@ Use the retained TIM-002 `timingDumpBuffer` seam identified in Rally's
 actual export helper over running a race or changing the current game. Its
 ordinary single-block source buffer stays frozen across the complete export;
 the existing file bytes and legacy management/error callback remain the oracles.
-The helper itself does not validate telemetry header/generation; its isolated
-harness must check the known retained header/generation and exact file readback.
+The helper itself does not validate telemetry header/identity; its isolated
+harness checks the retained header and exact file readback. These stats contain
+no game-generation field:4503 belongs to the pinned originating state.bin,
+so generation is provenance, not an invented live stats oracle.
 One bounded retained export or representative slice suffices.
 Do not require the complete65448B export if a smaller exact helper trial proves
 the seam. The owner selects and reports the precise trial scope.
@@ -107,3 +109,14 @@ Unrelated paused goals, current games/persistence and normal source/commit gates
 remain unchanged. Source preparation may proceed, but physical trials require
 clean132 handback, their prepared contracts and normal fresh admission. Neither
 consumer has yet returned source/build/target results in this snapshot.
+
+Rally returned prepared RX6-HLP build17f8fefe/app16392B/595f73c2, requestcaeae97c57d6.
+UART read the complete helper/callback/26h adapter/result/batch contract and
+independently rehashed all23 prepared and11 immutable source/input/tuple files;
+[review](consumer-dispatch/rally-prepared/uart-review.json). No material ABI or
+lifetime objection or additional code/build/case requested. Stats have no game-
+generation field;4503 is originating state provenance and current notes now
+state that explicitly. Extender returned the concrete existing-client execution
+procedure and requested Rally pin its own foreground host controller before
+its normal turn. Current Mech133, then FSIMf7ba, precede Rally; no consumer
+physical result or grant is claimed.6502's prepared return remains pending.

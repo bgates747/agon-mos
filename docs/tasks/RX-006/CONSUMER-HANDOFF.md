@@ -87,7 +87,8 @@ An intact oversize frame is wholly discarded and terminal, with zero stored.
 
 Rally: retained584B TIM002 stats into ordinary single-block50307, actual
 timingDumpBuffer helper/control and isolated counted copy, file chunks256/256/72.
-Verify retained header/generation and exact original file hash. No race/module
+Verify the retained header/exact file hash and originating state provenance;
+the stats have no generation field (4503 belongs to their source state). No race/module
 or render/FPS test. Keep original helper untouched and preserve retained input.
 
 6502: an isolated actual BRClient/drain_disk adapter slice,40B descriptor then
