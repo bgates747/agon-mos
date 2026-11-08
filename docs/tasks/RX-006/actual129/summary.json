@@ -1,0 +1,72 @@
+{
+  "schema": "RX006-CONSUMER1",
+  "state": "failed-stopped-no-replay",
+  "invocation_attempted": true,
+  "kit_sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518",
+  "handoff_sha256": "7e9d88c9cafdb9df26178da82ed02568ac205b4feb0c2a5a39176948ed5cb2bb",
+  "steps": [
+    {
+      "sequence": 1,
+      "label": "start-stage-listener"
+    },
+    {
+      "sequence": 2,
+      "label": "stage-listener-online"
+    },
+    {
+      "sequence": 3,
+      "label": "fresh-directory"
+    },
+    {
+      "sequence": 4,
+      "label": "put-next.txt"
+    },
+    {
+      "sequence": 5,
+      "label": "verify-next.txt"
+    },
+    {
+      "sequence": 6,
+      "label": "put-readme.txt"
+    },
+    {
+      "sequence": 7,
+      "label": "verify-readme.txt"
+    },
+    {
+      "sequence": 8,
+      "label": "put-suite.txt"
+    },
+    {
+      "sequence": 9,
+      "label": "verify-suite.txt"
+    },
+    {
+      "sequence": 10,
+      "label": "put-test.bin"
+    },
+    {
+      "sequence": 11,
+      "label": "verify-test.bin"
+    },
+    {
+      "sequence": 12,
+      "label": "exit-stage-listener"
+    },
+    {
+      "sequence": 13,
+      "label": "stage-listener-offline"
+    },
+    {
+      "sequence": 14,
+      "label": "one-exec"
+    }
+  ],
+  "pending": {
+    "sequence": 15,
+    "label": "terminal-listener-online"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/Agon/mystuff/agon-mos/experiments/rx006/run.py\", line 150, in <module>\n    step(\"terminal-listener-online\", lambda: online(True, 180))\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Agon/mystuff/agon-mos/experiments/rx006/run.py\", line 80, in step\n    value = action()\n  File \"/Agon/mystuff/agon-mos/experiments/rx006/run.py\", line 150, in <lambda>\n    step(\"terminal-listener-online\", lambda: online(True, 180))\n                                             ~~~~~~^^^^^^^^^^^\n  File \"/Agon/mystuff/agon-mos/experiments/rx006/run.py\", line 102, in online\n    raise TimeoutError(\"Listener state not established; no dispatch/retry/reset\")\nTimeoutError: Listener state not established; no dispatch/retry/reset\n",
+  "elapsed_seconds": 194.9866969260038,
+  "restoration": "Pending state preserved; no reset/LOAD/SAVE/EXIT replay. Return actual stopped actor to owner for reconciliation/recovery."
+}

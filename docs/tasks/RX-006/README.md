@@ -1,26 +1,25 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTUAL128 CLOSED UNRUN, EXACT ORIGINALS RESTORED AND RELEASED.**
-The receiving EMOS and native VDP readbacks matched. The corrected bootstrap
-passed, including four retained display-observation timeouts. The original
-360-second setup deadline then stopped the final read-only listener-file check.
-No consumer handoff, fixture invocation or benchmark occurred. Extender resolved the pending read, restored the exact incoming firmware/state
-and released at09:34:48UTC November8; all actors stopped and old token invalid. See [actual128 evidence](actual128-install/README.md).
+**ACTUAL129: ONE FIXTURE INVOCATION,180s RETURN-LISTENER TIMEOUT.**
+Both firmware readbacks and startup/CLI admission passed. All four test files
+staged/read back exactly; UART sent one explicit suite EXEC. The terminal
+listener did not appear within180s. The original runner exited1 and all owned
+processes joined; Extender has sole preservation/restoration custody. Guest
+first-fault/witness and cause remain unconfirmed. No performance/suite pass is
+claimed. See [actual129 evidence](actual129/README.md).
 
-Actual123 likewise closed UNRUN, fully restored and released; its separate
-[bootstrap failure and closure](actual123-install/README.md) remain historical.
-Request `ccb5dab78a89` obtained actual128 admission; it is not still queued.
-The executed [r02 plan](OLIMEX-R02.md) retains its original360-second limit.
-The new [r03 preparation](OLIMEX-R03.md) selects540s setup without changing
-this closed attempt or reducing consumer/cleanup allowances. All49 owner source pins match; actual new FIFO request`8ff7f0739f0e` exists.
-Extender binds the fresh runtime and reconciles actual admission; no target
-access or consumer handoff follows from the reservation.
+Actual123 and128 are closed UNRUN, exact originals restored and released.
+Their [bootstrap](actual123-install/README.md) and
+[setup deadline](actual128-install/README.md) failures remain distinct from129.
+The [r03 plan](OLIMEX-R03.md), all49 bound inputs and unchanged app0208015a,
+EMOS171c and VDP7d09 were used for129. It is no longer queued or merely prepared.
+No consumer trials start before a passing own hardware comparison. The current
+populated target namespace must be preserved, not reused as empty or erased.
 
-The matched app `0208015a8a94e345`, receiving EMOS `171c7880` and producer
-`7d09dfea` remain unchanged. Brandon corrected the premature source-review-only
-closure: affirmative consumer reviews and earlier C8 results do not replace the
-own matched Olimex sweep and subsequent selected consumer-code trials.
-Preserve [the earlier source-feasibility result](RESULT.md) with that limit.
+Brandon corrected the premature source-review-only closure: affirmative owner
+reviews and earlier C8 results do not replace the requested own matched Olimex
+sweep and selected consumer-code trials. Preserve
+[the earlier source-feasibility result](RESULT.md) with that limit.
 
 ## Reopening after Brandon's correction
 

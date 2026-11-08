@@ -1,0 +1,65 @@
+{
+  "scope": "Original129 installation succeeded; ONE consumer EXEC followed by180s listener wait failure; no target read after failure; restoration pending",
+  "files": [
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/owner-install/complete.json",
+      "copy": "installation-complete.json",
+      "bytes": 682,
+      "sha256": "1618f8a2c457b1f7ed90c74cac423a03cd0d173a1ca8d969dbd805c204ef1533"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/owner-install/native-install/verified.json",
+      "copy": "native-readback.json",
+      "bytes": 321,
+      "sha256": "cfeb5af7277a30980742295101eceb3e077c70b116545f8e203510e53a890edd"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/owner-install/verify-candidate/receipt.json",
+      "copy": "emos-verification.json",
+      "bytes": 1544,
+      "sha256": "2fd2c7283dc93ffaab5251b8d30fb98cf9464458699b57895e14298fa20d87c6"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/consumer-handoff.json",
+      "copy": "consumer-handoff.json",
+      "bytes": 3381,
+      "sha256": "7e9d88c9cafdb9df26178da82ed02568ac205b4feb0c2a5a39176948ed5cb2bb"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/owner-actors-terminal.json",
+      "copy": "owner-actors-terminal.json",
+      "bytes": 4220,
+      "sha256": "80cbb852ac7cab0149bb6354f749bb56a5a31f2ca01d4e123ca4d76ea059fc6f"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r03/summary.json",
+      "copy": "summary.json",
+      "bytes": 2326,
+      "sha256": "0661bf7f9c64c08ec9f847d2f36db30d7cf3f87e3ebbd08e2144d3131b4ad5bf"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r03/one-exec-keys.json",
+      "copy": "one-exec-keys.json",
+      "bytes": 138,
+      "sha256": "86f48231839f38ee16f1f296bd41ce0b1d4b32eca88db46bd8845bdb411d1e7f"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r03-actor.json",
+      "copy": "physical-r03-actor.json",
+      "bytes": 889,
+      "sha256": "15deff241b6bbe9edb676c0322386c3aa1ec2e5c5b72cf4a9a8c9d53e1119074"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r03-tool.json",
+      "copy": "physical-r03-tool.json",
+      "bytes": 163,
+      "sha256": "624b3656fcf2767b2180d3fc98144aacd337b13e7fbef917c34622940847f438"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r03-stopped.json",
+      "copy": "physical-r03-stopped.json",
+      "bytes": 1500,
+      "sha256": "1381529ee7b46352daf3e8cda24bf499899e2bd3398081f712242fb652a15a81"
+    }
+  ]
+}

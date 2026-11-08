@@ -1,0 +1,35 @@
+{
+  "epoch": 1794131398.9323215,
+  "results": [
+    {
+      "label": "stage",
+      "pid": 1910292,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 56.25602436065674
+    },
+    {
+      "label": "flash",
+      "pid": 1910541,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 37.08453369140625
+    },
+    {
+      "label": "verify",
+      "pid": 1910730,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 26.31279993057251
+    },
+    {
+      "label": "native",
+      "pid": 1910842,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 231.49655508995056
+    }
+  ],
+  "no_consumer_invocation": true,
+  "all_owned_children_joined": true
+}

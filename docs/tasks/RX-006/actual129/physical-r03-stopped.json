@@ -1,0 +1,44 @@
+{
+  "epoch": 1794131869.9382896,
+  "original_tool_session": 51504,
+  "exit_code": 1,
+  "actor": {
+    "epoch": 1794131643.5972514,
+    "pid": 1912214,
+    "ppid": 1750,
+    "pgid": 1912214,
+    "start": "39061347",
+    "boot": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+    "argv": [
+      "/Agon/mystuff/agon-mos/.venv/bin/python",
+      "/Agon/mystuff/agon-mos/experiments/rx006/run.py",
+      "--kit",
+      "/Agon/mystuff/agon-mos/build/rx006/kit-r01/kit.json",
+      "--handoff",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r03-bound-8ff7f0739f0e/consumer-handoff.json",
+      "--lease",
+      "3c3304c5c6be4b39a89e1cab11220edf",
+      "--url",
+      "http://192.168.0.20",
+      "--out",
+      "/Agon/mystuff/agon-mos/build/rx006/physical-r03"
+    ],
+    "request": "8ff7f0739f0e",
+    "generation": 129,
+    "remaining_before_launch": 1184.4297308921814,
+    "foreground": true,
+    "original_tool_session": 51504,
+    "original_tool_record": "/Agon/mystuff/agon-mos/build/rx006/physical-r03-tool.json"
+  },
+  "all_owned_processes_joined": true,
+  "live_owned_processes": [],
+  "summary_state": "failed-stopped-no-replay",
+  "pending": {
+    "sequence": 15,
+    "label": "terminal-listener-online"
+  },
+  "invocation_attempted": true,
+  "target_state": "Unknown guest state after ONE EXEC; no reset/LOAD/SAVE/EXIT issued after wait failure. Source/callback/fixture storage remain installed.",
+  "return_operator": "linux-extender",
+  "consumer_target_stopped": true
+}

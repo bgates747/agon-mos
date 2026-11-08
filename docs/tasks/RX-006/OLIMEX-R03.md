@@ -73,3 +73,11 @@ Only after own hardware pass and attributable measurements guide selected Rally
 and6502 owners through the already bounded helper trials in their lanes. Their
 source confidence is not a substitute for those tests. Stop once this finite
 adoption evidence is sufficient; do not tune milliseconds or expand the matrix.
+
+## Actual129 installation underway
+
+Fresh grant09:43:48.024093UTC November8, request8ff7f0739f0e. Extender alone
+runs original foreground installer95435, PID1910290/start39001732. Bound
+manifestbef79b9987495913d5437c855718547a524d5dd3a0259e53b07a4c3a7adc66e2
+and all49 inputs independently match; [review](setup-r03/bound-owner-review.json).
+This dated observation is not a consumer handoff. UART remains target-stopped.
