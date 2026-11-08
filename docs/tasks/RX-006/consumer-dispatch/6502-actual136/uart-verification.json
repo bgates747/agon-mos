@@ -1,0 +1,31 @@
+{
+  "independently_checked_evidence_hashes": 7,
+  "all_match": true,
+  "independent_exact_descriptor_payload": true,
+  "actual_announced": [
+    40,
+    40,
+    512,
+    512
+  ],
+  "callbacks": 2,
+  "requests": {
+    "legacy": 69,
+    "counted": 2
+  },
+  "witness_state": 3,
+  "callback": 0,
+  "entry_mode": 0,
+  "route": 0,
+  "original_exit": 0,
+  "original_joined": true,
+  "group_stopped": true,
+  "consumer_seconds": 20.850949467974715,
+  "coarse_ticks": {
+    "legacy": 8,
+    "counted": 0
+  },
+  "performance_ratio": null,
+  "scope": "Retained BRClient/persist_decode seam only; no game/persist_apply/durable ACK/new exporter. No further6502 case selected.",
+  "restoration_pending": true
+}

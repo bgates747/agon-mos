@@ -19,7 +19,14 @@ complete application pulls including verification versus8B tagged replies.
 Public clock is coarse: no CPU-percentage, pure wire rate, game FPS or broader
 firmware claim. App/runtime/firmware are unchanged between129 and132.
 
-The remaining task is the selected small Rally/6502 consumer-code trials.
+6502 actual136 passes its selected real adapter trial:69 tagged requests versus
+2 counted, exact40B+512B, counts/callback/normal return and usefulness judgment.
+[Evidence](consumer-dispatch/6502-actual136/README.md). Same136 owner restoration
+closure is pending; no further6502 case or performance ratio is selected.
+Rally135 was entirely UNRUN from delivery expiry and then restored/released.
+Its corrected19e9824cf0fe trial remains queued; goal completion is still pending.
+
+The remaining task is the selected Rally physical trial and exact handbacks.
 [Exact tested handoff](CONSUMER-HANDOFF.md) supplies pins/API/results and their
 already scoped helper seams. Source preparation can proceed after this own
 pass; any target action still needs clean predecessor handback, separate normal

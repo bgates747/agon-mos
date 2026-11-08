@@ -1,0 +1,26 @@
+{
+  "started": 1794140591.4060805,
+  "command": [
+    "/Agon/mystuff/agon-extender/.venv/bin/python",
+    "/Agon/mystuff/agon-6502/experiments/rx001/run.py",
+    "--kit",
+    "/Agon/mystuff/agon-6502/build/rx006/operating-r01/kit.json",
+    "--handoff",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx001-6502-helper-r01/consumer-handoff.json",
+    "--lease",
+    "bbb70c81e9f349c1b4600eb63d436796",
+    "--url",
+    "http://192.168.0.20",
+    "--out",
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136"
+  ],
+  "parent_pid": 1940752,
+  "joined": true,
+  "resubmit": false,
+  "pid": 1940753,
+  "pgid": 1940753,
+  "status": 0,
+  "group_stopped": true,
+  "finished": 1794140612.3984811,
+  "remote_state": "See original pending controller/client journals; no cancellation/retry"
+}

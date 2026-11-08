@@ -1,0 +1,21 @@
+{
+  "oracle": {
+    "passed": true,
+    "actual_announced": [
+      40,
+      40,
+      512,
+      512
+    ],
+    "callbacks": 2,
+    "old_pulls": 69,
+    "counted_pulls": 2,
+    "legacy_ticks": 8,
+    "counted_ticks": 0,
+    "performance_limit": "Single coarse complete-pull observation, not CPU/FPS/wire speed or fixed388ef52 comparison",
+    "no_disk_persistence_or_ACK_exercised": true
+  },
+  "callback": 0,
+  "mode": 0,
+  "backend": 0
+}

@@ -188,3 +188,16 @@ controls passed and671 was released. The [readiness snapshot](consumer-dispatch/
 retains exact argv and actualREADY/final genuine observation sequence. Normal
 new FIFO is submitted; no further UART review gate or target result is implied.
 One real helper pass and exact owner handback remain required.
+
+6502 actual136 completes the selected real adapter trial with a physical PASS.
+UART independently verifies the retained584B report/exact descriptor+payload,
+40/40/512/512 counts, callbacks2, state3 witness, callback0/mode0/route0 and
+original0 exit/joined groups; [evidence](consumer-dispatch/6502-actual136/README.md).
+The owner judges69 tagged requests replaced by2 counted requests suitable and
+simpler for its actual BRClient/persist_decode seam. No further6502 case is
+selected. Coarse8 versus0 ticks do not resolve a speed ratio or CPU/FPS benefit;
+20.85s includes host staging and retrieval. No game/persistence/ACK/new exporter
+coverage. Same136 exact restoration/fullhandback/release remains pending with
+Extender. Rally135 is separately restored/released12:14:18UTC but entirely UNRUN;
+its corrected19e9824cf0fe physical helper trial remains required before goal
+closure. UART has no live target actor or checkout.

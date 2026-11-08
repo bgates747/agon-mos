@@ -1,0 +1,71 @@
+{
+  "task": "RX-001",
+  "generation": 136,
+  "request": "dfcc5d90a252",
+  "status": "Physical adapter PASS; consumer stopped and restoration custody returned; release pending",
+  "tested_at_utc": "2026-11-08T12:23:11.406080+00:00",
+  "original_granted": "2026-11-08T12:16:06.269187+00:00",
+  "one_invocation": true,
+  "helper_sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
+  "kit_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
+  "oracle": {
+    "oracle": {
+      "passed": true,
+      "actual_announced": [
+        40,
+        40,
+        512,
+        512
+      ],
+      "callbacks": 2,
+      "old_pulls": 69,
+      "counted_pulls": 2,
+      "legacy_ticks": 8,
+      "counted_ticks": 0,
+      "performance_limit": "Single coarse complete-pull observation, not CPU/FPS/wire speed or fixed388ef52 comparison",
+      "no_disk_persistence_or_ACK_exercised": true
+    },
+    "callback": 0,
+    "mode": 0,
+    "backend": 0
+  },
+  "consumer_elapsed_seconds": 20.850949467974715,
+  "practical_judgment": "Suitable for the retained adapter seam: replaces69 foreground tagged requests with2 counted requests while preserving exact descriptor binding/full data and callback lifetimes. No game migration or performance adoption selected.",
+  "limits": [
+    "No new guest exporter or persistence/ACK exercised",
+    "Coarse8vs0ticks cannot resolve throughput ratio or CPU saving",
+    "Incremental and fixed388ef52 cumulative timings unavailable",
+    "No native game-speed or FPS measurement",
+    "Current eZ80-local persistence unchanged"
+  ],
+  "evidence": {
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/result.dat": {
+      "bytes": 584,
+      "sha256": "27db137b8efd4c7f884fa49398759146dd70d918e25df81cfee99eede4b879e9"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/WITNESS.BIN": {
+      "bytes": 32,
+      "sha256": "ac9b80251f03f045b8ff9746a51047507e1958b1fe8fb0b56e6b01c06b34af6e"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/CALLBACK.BIN": {
+      "bytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/VARS.BIN": {
+      "bytes": 64,
+      "sha256": "9defe53c20dfbc9900b43e434e6037e49d0523d5bbbb28808ca39cc119c1391b"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/ROUTE.BIN": {
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/summary.json": {
+      "bytes": 2104,
+      "sha256": "d18edbde99a5e24135dd20b97ce072c62b1b3286785c4d15f1ba5e675d4b0e5b"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/stopped-return.json": {
+      "bytes": 4551,
+      "sha256": "f267757c44af55e0abf78ea7dd580a10e3343956fcd2cd04efea0c2bd48bb2a0"
+    }
+  }
+}

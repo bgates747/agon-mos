@@ -1,0 +1,93 @@
+{
+  "schema": "RX001-CONSUMER1",
+  "state": "consumer-stopped-pass",
+  "invocation_attempted": true,
+  "steps": [
+    {
+      "sequence": 1,
+      "label": "stage-listener-start"
+    },
+    {
+      "sequence": 2,
+      "label": "stage-listener-online"
+    },
+    {
+      "sequence": 3,
+      "label": "absent-private-directory"
+    },
+    {
+      "sequence": 4,
+      "label": "put-helper.bin"
+    },
+    {
+      "sequence": 5,
+      "label": "verify-helper.bin"
+    },
+    {
+      "sequence": 6,
+      "label": "put-suite.txt"
+    },
+    {
+      "sequence": 7,
+      "label": "verify-suite.txt"
+    },
+    {
+      "sequence": 8,
+      "label": "stage-listener-exit"
+    },
+    {
+      "sequence": 9,
+      "label": "stage-listener-offline"
+    },
+    {
+      "sequence": 10,
+      "label": "one-exec"
+    },
+    {
+      "sequence": 11,
+      "label": "terminal-listener-online"
+    },
+    {
+      "sequence": 12,
+      "label": "get-result.dat"
+    },
+    {
+      "sequence": 13,
+      "label": "get-WITNESS.BIN"
+    },
+    {
+      "sequence": 14,
+      "label": "get-CALLBACK.BIN"
+    },
+    {
+      "sequence": 15,
+      "label": "get-VARS.BIN"
+    },
+    {
+      "sequence": 16,
+      "label": "get-ROUTE.BIN"
+    },
+    {
+      "sequence": 17,
+      "label": "saved-evidence-oracle"
+    },
+    {
+      "sequence": 18,
+      "label": "terminal-listener-exit"
+    },
+    {
+      "sequence": 19,
+      "label": "terminal-listener-offline"
+    }
+  ],
+  "pending": null,
+  "actor": {
+    "pid": 1940753,
+    "parent_pid": 1940752,
+    "group": 1940753,
+    "proc_stat": "1940753 (python) R 1940752 1940753 1940753 0 -1 4194304 1090 0 0 0 8 0 0 0 20 0 1 0 39956134 40206336 1549 18446744073709551615 93827775135744 93827793779408 140737170738288 0 0 0 0 16781316 16386 0 0 0 17 2 0 0 0 0 0 93827884515328 93827884574544 93828703436800 140737170748699 140737170749091 140737170749091 140737170751435 0\n",
+    "started": 1794140591.500585
+  },
+  "elapsed_seconds": 20.850949467974715,
+  "restoration": "Extender exact restoration and fresh CLI/resource handback still REQUIRED; no release by controller"
+}

@@ -15,14 +15,15 @@
     "host_review": "Explicit request binding implemented;13 prepared+host execution hashes exact, no new source/check/build gate.",
     "last_actual": 135,
     "last_outcome": "Entirely UNRUN: handoff expired during session recovery/delivery before launch; zero target operations. Owner cleanup pending, protected6502 next.",
-    "future_requirement": "Corrected host ready; NEWnormalFIFO19e9824cf0fe, actualREADY before owner final genuine observation/handoff, same one uninvoked case. Physical pending."
+    "future_requirement": "Corrected host ready; NEWnormalFIFO19e9824cf0fe, actualREADY before owner final genuine observation/handoff, same one uninvoked case. Physical pending.",
+    "actual135_restoration": "Extender normalrelease12:14:18UTC, exact native-FIRST/a25f independent readbacks/fullhandback; all stopped."
   },
   "agon6502": {
     "mail": "2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine",
     "notification": "turn/start accepted 11:12:24UTC; not proof of reading",
     "scope": "One isolated real bulk-read adapter descriptor40+block512 trial; no current local persistence or machine port",
     "source_prepared": true,
-    "target_executed": false,
+    "target_executed": true,
     "app_sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
     "manifest_sha256": "1586f6fd176d1a12b41d9cfac8da3cf875fa0bac279d6e1982e8ffee7d92aa01",
     "bench_request": "dfcc5d90a252",
@@ -33,7 +34,11 @@
     "owner_notification": "turn/steer accepted11:32:09UTC; not proof of reading",
     "host_controller_prepared": true,
     "host_kit_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
-    "host_review": "37 original+14 host+2 payload hashes match; original1800/540/420/600 bounds resolved; normal actual owner/FIFO/physical pending"
+    "host_review": "37 original+14 host+2 payload hashes match; original1800/540/420/600 bounds resolved; normal actual owner/FIFO/physical pending",
+    "last_actual": 136,
+    "last_outcome": "Physical adapter PASS verified exact bytes/counts/callback/return; owner exact restoration/release pending.",
+    "practical_judgment": "Suitable/simpler retained BRClient/persist_decode seam:69 tagged requests become2 counted; no further consumer case required.",
+    "performance_ratio": null
   },
-  "target_custody": "Actual132 restored/released11:13:34UTC; all target access stopped; Mech596 canonicalnext requiresfreshgrant, no consumertrial grant"
+  "target_custody": "6502 actual136 consumer stopped/pass; Extender sole exact restoration/fullhandback pending. UART no target access."
 }
