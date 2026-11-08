@@ -50,7 +50,7 @@ static int logline(const char *s) {
     puts(s);
     unsigned n = strlen(s);
     return file && mos_fwrite(file, (char *)s, n) == n &&
-           mos_fwrite(file, "\r\n", 2) == 2;
+           mos_fwrite(file, "\r\n", 2) == 2 && ffs_fsync(mos_getfil(file)) == 0;
 }
 static int open_report(void) {
     unsigned first = first_report();
@@ -266,10 +266,16 @@ int main(void) {
         puts("RX006 REFUSED application keyboard callback owned");
         return 15;
     }
+    sv = (volatile uint8_t *)mos_sysvars();
+    uint8_t entry_mode = sv[sysvar_scrMode];
+    if (entry_mode & 128) {
+        puts("RX006 REFUSED double-buffered entry; owner preselects visible CLI mode");
+        return 15;
+    }
     putch(12);
     puts("RX006 SHORT/LONG UART0 CHECKS");
+    printf("Target: mainboard VDP, Legacy route, unchanged mode %u\n", (unsigned)entry_mode);
     puts("Allow two minutes. Last BEGIN identifies a stall; a stall is failure.");
-    sv = (volatile uint8_t *)mos_sysvars();
     suite_begin = getsysvar_time();
     bench_witness[0] = 1;
     const uint8_t normal[] = {23,0,254,0};
@@ -280,6 +286,9 @@ int main(void) {
              logline("Methods0legacyREAD_BYTES8 1counted512; same immutable source; logical bytes") &&
              logline("Clock=public MOS counts for WHOLE batch, validation included; setup/logging excluded; no CPU percentage") &&
              capabilities() && correctness();
+    char mode_line[64];
+    snprintf(mode_line, sizeof mode_line, "RX006 MODE entry=%u unchanged=1", (unsigned)entry_mode);
+    if (ok) ok = logline(mode_line);
     static const unsigned measured[] = {128,256,1024};
     for (unsigned k = 0; k < sizeof measured / sizeof measured[0] && ok; ++k) {
         unsigned n = measured[k];
@@ -294,12 +303,26 @@ int main(void) {
     if (ok) { clear_source(); ok = poll(0x64); }
     if (ok) {
         mos_setkbvector(0, 0);
+        const uint8_t cursor[] = {4,23,1,1,23,1,3};
+        send(cursor, sizeof cursor);
         ok = logline("RX006 SUITE PASS");
         mos_fclose(file);
         if (ok) { bench_witness[0] = 3; puts("RX006 RETURN PASS"); return 0; }
     }
-    /* Do not call MOS/VDU/SD after uncertain transfer failure. Static source,
-       destination and callbacks remain resident for owner capture/reset. */
+    /* Do not issue UART output/new transfers after uncertain failure. Static source,
+       destination and callbacks remain resident. Save only the first-fault
+       record to the already-open report; no UART output or new transfer. */
     bench_witness[0] = 2;
+    char failure[96];
+    int length = snprintf(failure, sizeof failure,
+                          "RX006 FAIL reason=%u phase=%u method=%u api=%u rxstate=%u\r\n",
+                          (unsigned)bench_witness[4], (unsigned)bench_witness[14],
+                          (unsigned)bench_witness[1], (unsigned)bench_witness[5],
+                          (unsigned)bench_witness[6]);
+    if (file && length > 0 && (unsigned)length < sizeof failure) {
+        mos_fwrite(file, failure, (unsigned)length);
+        ffs_fsync(mos_getfil(file));
+        mos_fclose(file);
+    }
     for (;;) __asm__ volatile("halt" ::: "memory");
 }
