@@ -375,3 +375,9 @@ press/release is the only fixture input; expected reportR0067. Full archive of
 history; other projects preserved. Deployment readback exact, no remount/eject
 required or attempted. Hardware results pending; no consumer prototypes yet.
 See hardware-r01.md and its receipts.
+
+VDPlet subsequently supplied published isolated sourcea83d912/evidencee8014c3.
+Exact7d09/2918 artifacts are unchanged. UART rehashed the tested export manifest
+4ce246a3; publication excludes only inactive async diagnostic bodies and is not
+a new exact-build claim. Recorded beside hardware receipt, without touching the
+card or changing the pending manual test. No acknowledgement-only mail sent.

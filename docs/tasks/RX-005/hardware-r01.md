@@ -71,3 +71,21 @@ for later restoration, rather than retained as card clutter.
   Root autoexec is preserved too. Other card projects remain untouched.
 
 The firmware and SD deployment remain experimental; physical results are pending.
+
+## Published VDP provenance received after deployment
+
+VDPlet published isolated counted implementation
+`a83d912ab0bd6ce60bd09a919cf1d6b11b2d84f0` and qualification evidence
+`e8014c3f459986e7a392a56e465a687da64a495e` on `origin/codex/initial-runtime`.
+The selected7d09dfea BIN and2918727a ELF remain unchanged. The exact tested
+export receipt is `agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-source.json`,
+SHA256 `4ce246a3da8d74fe54dca561c28573cb249ec43a11f50bc690977a16245f7af2`,
+independently rehashed by UART.
+
+The isolated source commit excludes unrelated async diagnostics from two files.
+Those bodies were inactive under the tested `async_worker=false` configuration.
+This is an implementation publication pin; the immutable export manifest remains
+the exact tested-build provenance. No fresh build or byte-identical rebuild from
+the isolated commit is claimed. [Owner identity comparison](hardware-r01/vdp-publication-source-identity.json).
+The already-written card/deployment receipt is unchanged; this provenance note
+adds no new firmware, card access, hardware claim or consumer distribution.

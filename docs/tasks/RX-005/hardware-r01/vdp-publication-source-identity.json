@@ -1,0 +1,34 @@
+{
+  "status": "PUBLICATION_SOURCE_ISOLATION",
+  "base_commit": "15df4ff95c7cbb5f4746296ed964048142e0f0d3",
+  "source_snapshot": "build/vdpl036-producer-r05/source",
+  "unchanged_selected_image": {
+    "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin",
+    "bytes": 1100320,
+    "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+  },
+  "unchanged_selected_elf": {
+    "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf",
+    "bytes": 25049816,
+    "sha256": "2918727ad256389e3ac0d9074e736acdbbde3a9ce6f95a280fd7fa3673d6fd92"
+  },
+  "exact_export_receipt": {
+    "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-source.json",
+    "sha256": "4ce246a3da8d74fe54dca561c28573cb249ec43a11f50bc690977a16245f7af2"
+  },
+  "source_difference_scope": {
+    "tools/build_firmware.py": {
+      "qualified_source_sha256": "38f27ac5251b641281e8eee54d9ba26e0e611d6c034c08d2ea5ffb42943d1ab8",
+      "publication_sha256": "f173197656f32191338b3d97c5532f19db5c278d09d20d78dbdd58f1e187207a",
+      "only_excluded_region": "def integrate_async(source):",
+      "selected_configuration_disables_region": true
+    },
+    "src/vdplet_runtime.h": {
+      "qualified_source_sha256": "0f8bb349ba8eab57d1e5e8abfe4d29863bb331c4b9c88520b3c3048b1d130a00",
+      "publication_sha256": "218c4cb5624b9cec94506c252b804fcb444190b32e111fd03dc77ed3d3c2d7fa",
+      "only_excluded_region": "bool VDUStreamProcessor::vdpletAsyncContext() {",
+      "selected_configuration_disables_region": true
+    }
+  },
+  "limits": "Counted implementation isolated from unrelated unaccepted async diagnostics. Excluded differences are inside integrate_async (not called) and #if VDPL_ASYNC_WORKER (compiled out) with selected async_worker=false. No new build or fresh-commit binary reproduction claim."
+}
