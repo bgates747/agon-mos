@@ -102,6 +102,13 @@
       "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-25-26_agon-mos_rx006-consumer-stop-rule-update-two.md",
       "bytes": 1716,
       "sha256": "4da6dd68b00a49a1b8eed448706e01c60ea7da6c5094b523e93bb91a7592ce09"
+    },
+    {
+      "snapshot": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-30-18_linux-extender_rx006-existing-emos-composition-limits-one.md",
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-07_23-30-18_linux-extender_rx006-existing-emos-composition-limits-one.md",
+      "bytes": 1771,
+      "sha256": "d57ff5e283c71cc268b07919ff4c6e34d9067a86be9bf0987ef364ec4f927f9e",
+      "captured_utc": "2026-11-08T04:30:54.319034+00:00"
     }
   ],
   "owner_pin_rechecks": [

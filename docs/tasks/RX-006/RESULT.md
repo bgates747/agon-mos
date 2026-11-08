@@ -103,3 +103,16 @@ comfortable this would work and make their code easier. The existing physical
 integrity result plus both concrete affirmative consumer reviews meet that
 criterion. Additional sweeps or ports are deferred, not recorded as passed.
 No performance optimization, prototype rollout or adoption is selected here.
+
+## Extender's closing source assessment
+
+The [final owner return](evidence/mail/2026-11-07_23-30-18_linux-extender_rx006-existing-emos-composition-limits-one.md)
+confirms no new correctness obstacle in the feasibility argument. Retained EMOS
+`a25f` and temporary `1e4e` implement neither syscall 26h nor raw 90h dispatch;
+the existing tagged keyboard route is not a substitute. Future integration needs
+the bounded receiver and registrations while preserving P4 input and route
+ownership. TX and RX admission must stay separate: arming RX must still permit
+the outgoing producer request. The temporary image has only 120 ROM bytes free;
+the standalone receiver's 378-byte code/22-byte BSS delta is not an EMOS fit
+result. No splice, build, reservation or physical run began for RX-006. The goal
+remains closed; current bench custody and independent work are unchanged.
