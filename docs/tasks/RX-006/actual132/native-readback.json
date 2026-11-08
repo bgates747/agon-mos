@@ -1,0 +1,8 @@
+{
+  "epoch": 1794135694.4741478,
+  "full_prefix_bytes": 1105920,
+  "full_prefix_sha256": "9d005680f7ca47dc429d37db9e314c9f58016896de1b1db979ebdd8575481bc4",
+  "candidate_bytes": 1100320,
+  "candidate_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+  "suffix_outside_prefix_untouched": true
+}

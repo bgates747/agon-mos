@@ -1,31 +1,30 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTUAL129 DATA PASS; BATCH COMPLETION BUG IDENTIFIED AND CORRECTED IN NEW KIT.**
-Recovered original SD log passes all ten sizes4..8092, all36 benchmark cells
-and SUITE PASS. The host timed out because UART's following SAVE batch command
-used invalid unprefixed hexadecimal/address and decimal length syntax. Exact
-receiving MOS source rejects that address and stops EXEC before the listener.
-The absent witness and unavailable pre-reset console/RAM limits remain.
-[Full evidence and diagnosis](actual129/README.md), [analysis](actual129/analysis.json).
+**ACTUAL132 COMPLETE SYNTHETIC HARDWARE PASS.** Corrected kit6d467b51 with
+unchanged app0208015a/EMOS171c/VDP7d09 passes all ten sizes, all36 benchmark
+cells, WITNESS32B/state3/next2 and normal terminal listener/EXIT. Original
+consumer72988 exits0, all owned actors joined,58s whole consumer.
+[Actual132 evidence](actual132/README.md), [raw data](actual132/analysis.json).
+UART has returned sole custody to Extender for exact restoration/full handback;
+clean release is still pending. No more synthetic sweep or tuning is selected.
 
-Extender restored exact originals/full readbacks and released129 at10:10:35UTC;
-all actors stopped, token invalid, FSIM8cc next requiring fresh grant. Original
-123/128 installation-only UNRUN failures remain separate historical records.
-No performance tuning or transport/firmware correction is needed by this finding.
+Actual129's original durable data also passed; the following batch SAVE used
+incorrect radix syntax and prevented terminal listener continuation. R04 fixes
+only that wrapper and uses a new target directory. Keep
+[129's original failure and diagnosis](actual129/README.md) separate. Earlier
+123/128 installation-only failures remain restored/released historical records.
 
-[Completion confirmation r04](OLIMEX-R04.md) uses unchanged app0208015a,
-EMOS171c/VDP7d09 with explicit `SAVE ... &447CF &20`, fresh targetr02 and host
-physical-r04. New kit6d467b51/all49 owner input hashes match; actual normal FIFO request
-`e4d3981a89ae` has completed request-local binding (b72a1a4a/all49 match)
-and is canonical next after actual131 release10:53:47UTC. Fresh admission
-and owner installation remain pending; no target access yet.
-Preserve populatedr01/old kit and all129 evidence. Confirm witness/return/normal
-listener chain before selected consumer-code trials; no prototype pilot yet.
+Own actual132 no-work matched batch ratios are5.65x/6.49x/6.98x at128/256/1024B,
+complete application pulls including verification versus8B tagged replies.
+Public clock is coarse: no CPU-percentage, pure wire rate, game FPS or broader
+firmware claim. App/runtime/firmware are unchanged between129 and132.
 
-Equal-payload no-work batches complete about5.65x/6.49x/7.12x faster using counted
-returns at128/256/1024B than tagged8B replies. This is original129's coarse public
-clock application latency, including verification, not CPU utilization or pure
-wire throughput. No consumer or firmware performance claim is inferred.
+The remaining task is the selected small Rally/6502 consumer-code trials.
+[Exact tested handoff](CONSUMER-HANDOFF.md) supplies pins/API/results and their
+already scoped helper seams. Source preparation can proceed after this own
+pass; any target action still needs clean predecessor handback, separate normal
+FIFO and Extender component ownership. UART edits no game code. Stop once
+these finite trials and concrete usefulness judgments suffice, without tuning.
 
 ## Reopening after Brandon's correction
 
@@ -174,8 +173,9 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
       that the legacy carrier is packet 81h, not held-key-map packet 88h.
 - [x] Reserve the prepared Olimex run in the real FIFO and notify Extender:
       actual request `92f38ff2f224`, no token or target access implied.
-- [ ] Obtain actual fresh grant, perform finite short/long send/receive checks,
-      resolve correctness failures, preserve results and restore/hand back.
+- [x] Obtain actual grant and pass finite short/long checks and matched benchmark
+      with full return/witness/listener (actual132); preserve129 wrapper failure.
+- [ ] Finish exact original firmware/state restoration and normal handback132.
 - [ ] After the own hardware pass, guide selected consumer owners through small
       actual in-code trials using measured findings; preserve each owner lane
       and normal bench scheduling. Source reviews alone do not complete this.

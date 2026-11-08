@@ -1,17 +1,15 @@
 # MOS TODO
 
-RX-006 [ ] **CONFIRM CORRECTED BATCH RETURN, THEN CONSUMER TRIALS.** Actual129's
-recovered original SD log passes all10sizes/36cells/SUITE PASS. Host completion
-failed: UART batch SAVE used invalid unprefixed hex address/decimal length;
-selected MOS source rejects it and stops EXEC. No transport correction needed.
-New kit6d467b51 uses &447CF &20/freshdirectory, unchanged app0208/EMOS171c/VDP7d09;
-[r04 preparation](docs/tasks/RX-006/OLIMEX-R04.md) has new normal FIFOe4d3981a89ae;
-all49 bound pins still matchb72a1a4a; canonical next after actual131 release,
-fresh admission/installation pending (no target access). Original129 restored/readbackverified/released10:10:35UTC, all targetstopped.
-[Actual129 evidence](docs/tasks/RX-006/actual129/README.md). No original RAM/PC
-claim; full return/witness/listener check remains before consumer-code pilots.
-129 no-work batch completion gains5.65x/6.49x/7.12x at128/256/1024B, coarse
-app latency not CPU percentages or pure wire rate. No speed optimization.
+RX-006 [ ] **OWN SYNTHETIC PASS; FINISH SELECTED CONSUMER TRIALS.** Actual132
+passes all10sizes/36cells/WITNESS32Bstate3/next2/normallistenerEXIT; original
+consumer72988 exits0/alljoined,58s. [Evidence](docs/tasks/RX-006/actual132/README.md).
+Same app0208/EMOS171c/VDP7d09; batch-only radix fix confirms129's data pass and
+completion failure separately. Extender owns exact restoration/fullhandback132,
+not yet certified here. No further own synthetic sweep/tuning selected.
+[Consumer handoff](docs/tasks/RX-006/CONSUMER-HANDOFF.md) gives actual tested
+pins/API and5.65x/6.49x/6.98x coarse completion ratios (not CPU or pure wire rate).
+Begin only the scoped Rally584B exporter and6502 descriptor/block helper trials
+in their own lanes; normal separate FIFO/owner admission for target action.
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical

@@ -1,0 +1,92 @@
+{
+  "schema": "RX006-CONSUMER1",
+  "state": "consumer-stopped-pass",
+  "invocation_attempted": true,
+  "kit_sha256": "6d467b5111c3d5379ad573fea4c86054017bb6b250cdcaee9897be89e57dba4c",
+  "handoff_sha256": "8a1f156bf1309b7c4ac9abd7c152c94c2483bfeb742434844a703cf5dab64a93",
+  "steps": [
+    {
+      "sequence": 1,
+      "label": "start-stage-listener"
+    },
+    {
+      "sequence": 2,
+      "label": "stage-listener-online"
+    },
+    {
+      "sequence": 3,
+      "label": "fresh-directory"
+    },
+    {
+      "sequence": 4,
+      "label": "put-next.txt"
+    },
+    {
+      "sequence": 5,
+      "label": "verify-next.txt"
+    },
+    {
+      "sequence": 6,
+      "label": "put-readme.txt"
+    },
+    {
+      "sequence": 7,
+      "label": "verify-readme.txt"
+    },
+    {
+      "sequence": 8,
+      "label": "put-suite.txt"
+    },
+    {
+      "sequence": 9,
+      "label": "verify-suite.txt"
+    },
+    {
+      "sequence": 10,
+      "label": "put-test.bin"
+    },
+    {
+      "sequence": 11,
+      "label": "verify-test.bin"
+    },
+    {
+      "sequence": 12,
+      "label": "exit-stage-listener"
+    },
+    {
+      "sequence": 13,
+      "label": "stage-listener-offline"
+    },
+    {
+      "sequence": 14,
+      "label": "one-exec"
+    },
+    {
+      "sequence": 15,
+      "label": "terminal-listener-online"
+    },
+    {
+      "sequence": 16,
+      "label": "get-R0001.log"
+    },
+    {
+      "sequence": 17,
+      "label": "get-WITNESS.BIN"
+    },
+    {
+      "sequence": 18,
+      "label": "get-next.txt"
+    },
+    {
+      "sequence": 19,
+      "label": "exit-terminal-listener"
+    },
+    {
+      "sequence": 20,
+      "label": "terminal-listener-offline"
+    }
+  ],
+  "pending": null,
+  "elapsed_seconds": 58.00963296095142,
+  "restoration": "Owner exact firmware/file/state restoration and real CLI handback still required; lease not released"
+}

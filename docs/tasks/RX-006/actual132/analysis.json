@@ -1,0 +1,536 @@
+{
+  "build": "0208015a8a94e345",
+  "correctness_sizes": [
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    1024,
+    4096,
+    8092
+  ],
+  "cells": [
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 128,
+      "replies": 1,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 16,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 128,
+      "replies": 16,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 98,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 128,
+      "replies": 16,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 98,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 128,
+      "replies": 1,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 18,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 128,
+      "replies": 1,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 18,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 128,
+      "replies": 16,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 98,
+      "work": 0,
+      "checksum": "D3D23D4A"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 128,
+      "replies": 1,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 16,
+      "work": 220,
+      "checksum": "B41C1781"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 128,
+      "replies": 16,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 102,
+      "work": 4716,
+      "checksum": "00846C62"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 128,
+      "replies": 16,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 102,
+      "work": 4725,
+      "checksum": "9966697F"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 128,
+      "replies": 1,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 18,
+      "work": 234,
+      "checksum": "98835009"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 128,
+      "replies": 1,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 18,
+      "work": 229,
+      "checksum": "95CCAF32"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 128,
+      "replies": 16,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 102,
+      "work": 4721,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 256,
+      "replies": 1,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 256,
+      "replies": 32,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 194,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 256,
+      "replies": 32,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 196,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 256,
+      "replies": 1,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 256,
+      "replies": 1,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 256,
+      "replies": 32,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 194,
+      "work": 0,
+      "checksum": "8156F8BC"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 256,
+      "replies": 1,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 241,
+      "checksum": "B56B75BB"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 256,
+      "replies": 32,
+      "repeat": 1,
+      "loops": 64,
+      "mos_counts": 204,
+      "work": 9358,
+      "checksum": "ECE9EDFD"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 256,
+      "replies": 32,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 204,
+      "work": 9431,
+      "checksum": "D0505AAA"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 256,
+      "replies": 1,
+      "repeat": 2,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 243,
+      "checksum": "E2009AC3"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 256,
+      "replies": 1,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 30,
+      "work": 260,
+      "checksum": "69BB3E4C"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 256,
+      "replies": 32,
+      "repeat": 3,
+      "loops": 64,
+      "mos_counts": 204,
+      "work": 9449,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 1,
+      "loops": 16,
+      "mos_counts": 28,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 1,
+      "loops": 16,
+      "mos_counts": 196,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 2,
+      "loops": 16,
+      "mos_counts": 194,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 2,
+      "loops": 16,
+      "mos_counts": 28,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 1,
+      "useful": 0,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 3,
+      "loops": 16,
+      "mos_counts": 28,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 0,
+      "useful": 0,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 3,
+      "loops": 16,
+      "mos_counts": 196,
+      "work": 0,
+      "checksum": "2834ECA3"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 1,
+      "loops": 16,
+      "mos_counts": 26,
+      "work": 136,
+      "checksum": "1C299CE8"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 1,
+      "loops": 16,
+      "mos_counts": 204,
+      "work": 9382,
+      "checksum": "D778F8B8"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 2,
+      "loops": 16,
+      "mos_counts": 202,
+      "work": 9356,
+      "checksum": "599C30F0"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 2,
+      "loops": 16,
+      "mos_counts": 28,
+      "work": 146,
+      "checksum": "9AF9C89B"
+    },
+    {
+      "method": 1,
+      "useful": 1,
+      "size": 1024,
+      "replies": 2,
+      "repeat": 3,
+      "loops": 16,
+      "mos_counts": 28,
+      "work": 154,
+      "checksum": "8D3D7564"
+    },
+    {
+      "method": 0,
+      "useful": 1,
+      "size": 1024,
+      "replies": 128,
+      "repeat": 3,
+      "loops": 16,
+      "mos_counts": 204,
+      "work": 9384,
+      "checksum": "78A4CAA0"
+    }
+  ],
+  "comparisons": [
+    {
+      "size": 128,
+      "useful": 0,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 24576,
+        "requests": 3072,
+        "mos_counts": 294,
+        "work": 0
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 24576,
+        "requests": 192,
+        "mos_counts": 52,
+        "work": 0
+      },
+      "coarse_completion_ratio": 5.653846153846154,
+      "low_resolution": false
+    },
+    {
+      "size": 128,
+      "useful": 1,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 24576,
+        "requests": 3072,
+        "mos_counts": 306,
+        "work": 14162
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 24576,
+        "requests": 192,
+        "mos_counts": 52,
+        "work": 683
+      },
+      "coarse_completion_ratio": 5.884615384615385,
+      "low_resolution": false
+    },
+    {
+      "size": 256,
+      "useful": 0,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 49152,
+        "requests": 6144,
+        "mos_counts": 584,
+        "work": 0
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 49152,
+        "requests": 192,
+        "mos_counts": 90,
+        "work": 0
+      },
+      "coarse_completion_ratio": 6.488888888888889,
+      "low_resolution": false
+    },
+    {
+      "size": 256,
+      "useful": 1,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 49152,
+        "requests": 6144,
+        "mos_counts": 612,
+        "work": 28238
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 49152,
+        "requests": 192,
+        "mos_counts": 90,
+        "work": 744
+      },
+      "coarse_completion_ratio": 6.8,
+      "low_resolution": false
+    },
+    {
+      "size": 1024,
+      "useful": 0,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 49152,
+        "requests": 6144,
+        "mos_counts": 586,
+        "work": 0
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 49152,
+        "requests": 96,
+        "mos_counts": 84,
+        "work": 0
+      },
+      "coarse_completion_ratio": 6.976190476190476,
+      "low_resolution": false
+    },
+    {
+      "size": 1024,
+      "useful": 1,
+      "legacy": {
+        "method": 0,
+        "batch_payload_bytes": 49152,
+        "requests": 6144,
+        "mos_counts": 610,
+        "work": 28122
+      },
+      "counted": {
+        "method": 1,
+        "batch_payload_bytes": 49152,
+        "requests": 96,
+        "mos_counts": 82,
+        "work": 436
+      },
+      "coarse_completion_ratio": 7.439024390243903,
+      "low_resolution": false
+    }
+  ],
+  "qualification": "Returned application byte-oracle/callback/count/guard pass; public MOS-count batches, not calibrated CPU or pure wire rate. Zero/short times are unresolved."
+}

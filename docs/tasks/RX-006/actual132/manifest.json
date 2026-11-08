@@ -1,0 +1,89 @@
+{
+  "scope": "Actual132 complete synthetic consumer PASS; Extender restoration pending",
+  "files": [
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/consumer-handoff.json",
+      "copy": "consumer-handoff.json",
+      "bytes": 3103,
+      "sha256": "8a1f156bf1309b7c4ac9abd7c152c94c2483bfeb742434844a703cf5dab64a93"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/owner-install/complete.json",
+      "copy": "installation-complete.json",
+      "bytes": 682,
+      "sha256": "3e45b177bd107a123568b2149f43d83294287fe7b2aa45a4b3894c75e9e53df3"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/owner-install/original-tool-terminal.json",
+      "copy": "installer-tool-terminal.json",
+      "bytes": 106,
+      "sha256": "3dd8dd1ed7174e927677d10f124145a94442625f6a6414298da74b274ed16588"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/owner-install/native-install/verified.json",
+      "copy": "native-readback.json",
+      "bytes": 321,
+      "sha256": "0376ece58600b5ef6dbb8b27f898adffaab2874f8c47abaf30aaac5f1529e338"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/owner-install/verify-candidate/receipt.json",
+      "copy": "emos-verification.json",
+      "bytes": 1542,
+      "sha256": "d2ee5009c8a74c9406978c08d7b9a9ba788add21a8d9843909586b47fe5944a1"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/owner-actors-terminal.json",
+      "copy": "owner-actors-terminal.json",
+      "bytes": 3716,
+      "sha256": "458237e4c396ae74762fe7ee68fc766887e55873eabd42f462d74bd1a584690d"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04/summary.json",
+      "copy": "summary.json",
+      "bytes": 1852,
+      "sha256": "29d0d83c9a3db33c10991ac2758b55e0043fd977243d243ce092fb85c27f70ee"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04/analysis.json",
+      "copy": "analysis.json",
+      "bytes": 10272,
+      "sha256": "2dea25780693c0b37fd21fc94bcef42916b8aaef2dccd9719cc501dccb1de529"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04/R0001.log",
+      "copy": "R0001.log",
+      "bytes": 7174,
+      "sha256": "3ed942e29000099bd208e0942040872e2325a8aa569fe2207053b50de6cbc370"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04/WITNESS.BIN",
+      "copy": "WITNESS.BIN",
+      "bytes": 32,
+      "sha256": "f30502971097da21d399d06753bb26ff8b2d14d086e02350f9f6450da9dc88f3"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04/next.txt",
+      "copy": "next.txt",
+      "bytes": 3,
+      "sha256": "df4e26a04a444901b95afef44e4a96cfae34690fff2ad2c66389c70079cdff2b"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04-actor.json",
+      "copy": "physical-r04-actor.json",
+      "bytes": 888,
+      "sha256": "1c70341e4d961c804366d376e99ab1a5ccd8d2493cb720001a7dcf9084e039b1"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04-tool.json",
+      "copy": "physical-r04-tool.json",
+      "bytes": 163,
+      "sha256": "51c3e251d736c9730778103d138f03fa4fb9e6ef9f60d89ac3019bd410c7f565"
+    },
+    {
+      "source": "/Agon/mystuff/agon-mos/build/rx006/physical-r04-stopped.json",
+      "copy": "physical-r04-stopped.json",
+      "bytes": 1516,
+      "sha256": "31f60b49864eb02d1f963c128314ebbe8ad35b606f59108a1381707385d68186"
+    }
+  ]
+}

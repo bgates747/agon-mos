@@ -1,5 +1,11 @@
 # RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
+Later scope update2026-11-08: Brandon explicitly selected RX-006's long-transfer
+hardware comparison and subsequent bounded real-helper trials with Rally/6502.
+Actual132 now passes the complete own suite. Follow [RX-006](../RX-006/README.md)
+for that limited selected continuation; the historical review stop below remains
+the boundary for broader prototype distribution, adoption or release.
+
 Current status2026-11-07: first Console8 hardware run **R0067 PASSES** the same
 finite synthetic suite as both Flexe engines. Read the [physical result and raw
 log](hardware-r01/RESULT.md). Exact app/staged firmware hashes match; no new
