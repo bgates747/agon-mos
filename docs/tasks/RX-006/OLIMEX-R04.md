@@ -57,3 +57,13 @@ After that completion gate, share actual measured tuple/findings with the
 selected Rally/6502 owners for their existing bounded helper trials. Keep game
 edits in their lanes and stop when adoption confidence is demonstrated; no
 further speed tuning. Earlier129 timings remain honestly original129 data.
+
+## Prepared reservation
+
+SOURCE4 bb3c8bae7022f8ff61ae6a151ded8a112cf6b6fe3a00bbe95fdc0c14283902e6
+and all49 inputs independently match; [review](completion-r04/owner-review.json).
+Actual new normal request `e4d3981a89ae`,10:18:56.016021UTC November8, is
+recorded in [reservation](completion-r04/reservation.json). At reservation
+FSIM130 owns the bench and Mech1282 precedes this request. No target access,
+grant or consumer handoff is implied. Extender has the actual request for its
+fresh runtime binding and subsequent normal admission.

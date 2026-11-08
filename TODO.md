@@ -5,8 +5,8 @@ recovered original SD log passes all10sizes/36cells/SUITE PASS. Host completion
 failed: UART batch SAVE used invalid unprefixed hex address/decimal length;
 selected MOS source rejects it and stops EXEC. No transport correction needed.
 New kit6d467b51 uses &447CF &20/freshdirectory, unchanged app0208/EMOS171c/VDP7d09;
-[r04 preparation](docs/tasks/RX-006/OLIMEX-R04.md) awaits owner binding/new normal
-FIFO. Original129 restored/readbackverified/released10:10:35UTC, all targetstopped.
+[r04 preparation](docs/tasks/RX-006/OLIMEX-R04.md) has new normal FIFOe4d3981a89ae;
+all49pins match, owner binding/fresh actual admission pending behindFSIM/Mech. Original129 restored/readbackverified/released10:10:35UTC, all targetstopped.
 [Actual129 evidence](docs/tasks/RX-006/actual129/README.md). No original RAM/PC
 claim; full return/witness/listener check remains before consumer-code pilots.
 129 no-work batch completion gains5.65x/6.49x/7.12x at128/256/1024B, coarse

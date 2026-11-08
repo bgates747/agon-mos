@@ -15,7 +15,8 @@ No performance tuning or transport/firmware correction is needed by this finding
 
 [Completion confirmation r04](OLIMEX-R04.md) uses unchanged app0208015a,
 EMOS171c/VDP7d09 with explicit `SAVE ... &447CF &20`, fresh targetr02 and host
-physical-r04. New kit6d467b51 is prepared; owner binding/new normal FIFO pending.
+physical-r04. New kit6d467b51/all49 owner input hashes match; actual normal FIFO request
+`e4d3981a89ae` awaits owner binding and fresh admission behind existing owners.
 Preserve populatedr01/old kit and all129 evidence. Confirm witness/return/normal
 listener chain before selected consumer-code trials; no prototype pilot yet.
 
