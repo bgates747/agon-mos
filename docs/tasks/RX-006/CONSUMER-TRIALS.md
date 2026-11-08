@@ -18,14 +18,34 @@ Use the retained TIM-002 `timingDumpBuffer` seam identified in Rally's
 `docs/consultations/mos-rx006/REVIEW.md`. Prefer an isolated invocation of its
 actual export helper over running a race or changing the current game. Its
 ordinary single-block source buffer stays frozen across the complete export;
-the existing file bytes, generation checks and legacy management/error callback
-remain the oracles. One bounded retained export or representative slice suffices.
+the existing file bytes and legacy management/error callback remain the oracles.
+The helper itself does not validate telemetry header/generation; its isolated
+harness must check the known retained header/generation and exact file readback.
+One bounded retained export or representative slice suffices.
 Do not require the complete65448B export if a smaller exact helper trial proves
 the seam. The owner selects and reports the precise trial scope.
 
 Keep the old path as a matched control where practical, with the same source
 bytes and file oracle. Compare complete-operation duration/request count only;
 this is a post-race export, so no rendered FPS or physics claim follows.
+
+Rally's substantive `rx006-rally-small-helper-conditional-outline-two` chooses
+the pinned584B native-stats.bin, replayed into ordinary single-block buffer50307.
+Invoke the actual helper in an isolated harness, keeping256B file chunking:
+three counted pulls256/256/72 replace292 READ16 calls. Keep the original helper
+untouched as control and use a separate trial copy with persistent guarded256B
+receive storage. No race/module setup/STOP/UNLOAD is needed to replay these
+retained bytes; do not label them fresh game state. Exact input SHA256:
+`648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732`.
+The owner's detailed scope and source pins are in AgonArcade's
+`docs/consultations/mos-rx006/CONDITIONAL-PLAN.md` and
+`CONDITIONAL-SOURCE-PINS.json`.
+
+UART source review confirms the exact selected producer export retains
+operation5 READ16 dispatch and the legacy reply path in video/vdplet_runtime.h
+alongside operation8 counted replies. This is source compatibility evidence;
+the consumer control still requires actual qualification after our own pass.
+Our own legacy8-byte benchmark is distinct from Rally's2-byte READ16 control.
 
 ## 6502: retained ESP32-hosted disk export seam
 
@@ -71,4 +91,5 @@ with no build/run/prototype request, in durable mails
 `2026-11-08_00-28-22_agon-mos_rx006-conditional-6502-code-trial-eight`.
 Immediate Pi-native alerts were accepted (`turn/start` for Rally and
 `turn/steer` for6502); acceptance does not prove either owner read or agreed.
-Concrete seam/blocker feedback is pending. Own hardware pass remains prerequisite.
+Rally has returned the concrete584B outline above;6502 feedback remains pending.
+Own hardware pass remains prerequisite.
