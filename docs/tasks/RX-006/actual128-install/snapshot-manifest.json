@@ -1,5 +1,5 @@
 {
-  "scope": "Installation evidence only; consumer UNRUN; cleanup not yet certified by this snapshot",
+  "scope": "Actual128 closed restored/released; consumer UNRUN; installation failure retained",
   "files": [
     {
       "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/owner-stopped.json",
@@ -72,6 +72,42 @@
       "copy": "2026-11-08_04-29-26_agon-mos_rx006-actual128-final-cli-deadline-observed-fifteen.md",
       "bytes": 2112,
       "sha256": "d09d9e1ee0b41e0348cee9743cb94f3950fa31d7cc8a07a66076e9763d0cd910"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/released.json",
+      "copy": "released.json",
+      "bytes": 9403,
+      "sha256": "68cd44a85eeba00aeb999ea1384825e11345cb2dd6ca721039efa6dbc97f11ce"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/release-observation.json",
+      "copy": "release-observation.json",
+      "bytes": 4487,
+      "sha256": "9c58bfc9fb6b93aac082ae94283143b2b532a76f6f1e00c8e8a2d21f2192f718"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/all-actors-terminal.json",
+      "copy": "all-actors-terminal.json",
+      "bytes": 7468,
+      "sha256": "da1b414fd74d532db3f7acf1c5c5a9954cbfef7321294d51c8efd6b4ff209008"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/evidence/native-restore/receipt.json",
+      "copy": "native-restoration.json",
+      "bytes": 237,
+      "sha256": "a6318f8c2d18d1ad56d627140dec6a96d23528922d8e7b477a5e3d0c56a97c0b"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/emos-final/verify-rollback/receipt.json",
+      "copy": "emos-restoration.json",
+      "bytes": 1544,
+      "sha256": "5b4e9451cebe705b6e7709bd0a097dae98b86529b773c51e5fe3c7545d848592"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_04-35-33_linux-extender_rx006-actual128-clean-release-sixtynine.md",
+      "copy": "2026-11-08_04-35-33_linux-extender_rx006-actual128-clean-release-sixtynine.md",
+      "bytes": 2665,
+      "sha256": "9e2f8f73e49db6427b214152f375515b84143af002eaada908c17af87ed20006"
     }
   ]
 }

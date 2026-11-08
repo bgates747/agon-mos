@@ -1,0 +1,194 @@
+{
+  "owner": "agon-mos",
+  "task": "RX006-matched-physical-r02",
+  "purpose": "New finite unchanged ten-size RX006 sweep and matched legacy8/counted512 benchmark with corrected bounded bootstrap; preserve123; owner install restore only",
+  "plan": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/OLIMEX-R02.md",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "ccb5dab78a89",
+  "requested": "2026-11-08T07:56:44.999033+00:00",
+  "lease": "c77d683691114e44956ed829c3122f4e",
+  "generation": 128,
+  "granted": "2026-11-08T09:21:54.240532+00:00",
+  "phase": "consumer",
+  "entry_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794129714.1519046,
+    "observer": "linux-extender",
+    "lease": null,
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 3528816906,
+        "session": 1801087822,
+        "sequence": 50,
+        "emitted": 104,
+        "accepted": 104,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389913905
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 697949315,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/source-preparation.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/mechagon-tail-service-r01/released.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/exchange/vars.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/exchange/callback.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/exchange/backend.bin"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
+      "emos_rom_sha256": "New independent full131072B rollback readback equals retained incominga25f",
+      "native_vdp_sha256": "Independent complete incoming application/touched-tail restoration readback",
+      "startup_sha256": "Fresh final wholefile compare",
+      "listener_sha256": "Fresh final canonical listener compare"
+    },
+    "disposition": "Fresh RX006 admission after actual127 exacta25f restoration/readback/release and126 known8519 native readback unchanged through127; source kit e220 rehashed. Owner Extender installs only selected171c EMOS and7d09 native app0 with full independent readbacks then current matched bootstrap/fresh raw mode/callback/Legacy/wholefiles/rootCLI/inputneutral/offline/freeUSB and stopped sole UART handoff. Whole1800/consumer420/cleanup600/min1020 before consumer. No owner fixture invocation/PRT/P4/startup/listener or unrelated flash; no replay. Native suffix outside1105920 unchanged. Exact incoming85f9 prefix and a25f restore/fullreadbacks/fresh handback/normalrelease required. SDmounted.",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Delegated sole owner-restore operator under matching stopped return"
+  },
+  "released": "2026-11-08T09:34:48.523926+00:00",
+  "release_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794130466.632479,
+    "observer": "agon-mos",
+    "lease": "c77d683691114e44956ed829c3122f4e",
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 2035305932,
+        "session": 3596257498,
+        "sequence": 24,
+        "emitted": 52,
+        "accepted": 52,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389896177
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 2883421921,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/emos-final/final/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/emos-final/verify-rollback/ROM.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/emos-final/verify-rollback/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/evidence/native-restore/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/all-actors-terminal.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/resolved-original-read.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/original-listener-exit.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/cleanup128/emos-final/stage/provenance.json"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in128.",
+      "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+      "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+      "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+      "listener_sha256": "Fresh final complete24753B read compare unchanged."
+    },
+    "disposition": "Actual128 consumer entirely UNRUN: original owner360s boundary expired during final readonly listener-fileREAD after both candidate independent readbacks and correctedbootstrap positive. Originalfailure/partialRPC preserved; same exactREAD resolved and knownlistenerEXIT acknowledged, no workload replay. Exactincoming1105920B85f9nativeprefix restoredFIRST/fullindependentreadback, untouched12288Bsuffix retains8519lineage. One ordinaryAgonreset after safeunchangedstartup/currentP4init and actualCLI; exacta25ffullROMrollback/full131072readback/freshrootCLI/cursor/rawmode0/callback0/Legacy0/wholefiles/neutral/offlineworker0/freebothUSB/allactorsjoined. Initialcleanup missingstage-receipt failure occurredbeforeFLASH; separate remainingEMOS-onlycontinuation used actualoriginalstageprovenance, no repeatednativewrite/reset. No RXresult/firmwarefailurecause/performanceclaim. SDmounted, all targetaccessSTOPPED.",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Sole delegated installation/restoration operator; consumer never admitted"
+  },
+  "next_request": null
+}

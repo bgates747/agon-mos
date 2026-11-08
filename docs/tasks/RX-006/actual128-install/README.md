@@ -49,3 +49,21 @@ Source records remain under
 [Snapshot manifest](snapshot-manifest.json) records exact copied provenance.
 The retained owner failure mail and UART deadline assessment distinguish setup
 results from the still-required physical comparison.
+
+## Restoration and release complete
+
+Extender released actual128 at09:34:48.523926UTC November8, next request null.
+The [release observation](release-observation.json), [all-actor closure](all-actors-terminal.json)
+and independent [retained-readback file check](restoration-file-check.json)
+establish exact85f9 native-prefix restoration FIRST, then exacta25f full MOS,
+normal CLI/rawmode0/callback0/Legacy0, unchanged startup/listener, neutral input,
+offline listener/worker and free USB. All target access stopped; old token invalid.
+
+Initial cleanup stopped before any MOS FLASH because the original stage receipt
+was not supplied. Extender completed the remaining MOS-only restoration with
+that original verified provenance; no repeated native write/reset. The pending
+read was resolved and the known listener exited normally. These restoration
+results do not change the original setup failure or the wholly UNRUN RX suite.
+
+A later attempt needs separate source freeze, new reservation and fresh actual
+grant/consumer handoff. The empty queue is not permission to touch hardware.

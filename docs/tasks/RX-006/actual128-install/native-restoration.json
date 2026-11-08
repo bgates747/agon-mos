@@ -1,0 +1,8 @@
+{
+  "epoch": 1794130316.725347,
+  "independent_full_prefix_readback": true,
+  "bytes": 1105920,
+  "sha256": "85f9cf31219d679cffef48029d736331a3a3dfc78511d19d48a04cd2bd6a74de",
+  "untouched_suffix_bytes": 12288,
+  "no_new_backup": true
+}
