@@ -13,6 +13,16 @@ Extender received exact source/kit/namespace/closure details in substantive mail
 `2026-11-08_02-57-19_agon-mos_rx006-corrected-fifo-ccb5-ready-twelve` and an
 immediate accepted steering notice. Owner new request-local closure is pending.
 
+Owner packet1ab08f6e/37inputs subsequently reviewed and independently rehashed:
+all match, corrected helper import and unique namespaces agree. The retained
+[source review](bootstrap-r02/owner37-review.json) flags one host-stop caveat:
+native.py starts esptool in a separate process group, so outer native-PGID
+termination alone cannot certify the leaf joined. Extender must close actual
+descendant cancellation/join at the existing actor/cleanup binding before run;
+this does not establish an orphan in123 or require a firmware/fixture change.
+Substantive review returned in
+`2026-11-08_03-03-28_agon-mos_rx006-r02-37pin-review-native-child-closure-thirteen`.
+
 ## Exact unchanged consumer
 
 Own kit `/Agon/mystuff/agon-mos/build/rx006/kit-r01/kit.json`, SHA256

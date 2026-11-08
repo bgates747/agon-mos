@@ -1,0 +1,10 @@
+{
+  "owner_packet": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02/source-preparation.json",
+  "sha256": "1ab08f6e6ed4bae8951acfa0e4708a637d7b843ddbb9b09b57d24143471e12a7",
+  "rehashed_inputs": 37,
+  "mismatches": [],
+  "consumer_change_required": false,
+  "physical_run": false,
+  "cleanup_source_caveat": "Nested native/esptool separate process groups require actual owned-descendant cancellation/join; killing native PGID alone is insufficient. No orphan observed in123. Owner closure pending.",
+  "request": "ccb5dab78a89"
+}
