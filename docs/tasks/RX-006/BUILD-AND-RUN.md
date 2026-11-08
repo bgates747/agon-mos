@@ -61,7 +61,8 @@ Current EMOS images do not implement26h/90h; no fit or installation is assumed.
 The owner must supply receiving-ROM and map, retained rollback and exact producer
 pins, active input/route constraints, legacy16-byte callback support and allowed
 application keyboard callback state. The app must not silently replace another
-callback. Initial builds require the pinned application callback slot to be NULL;
+callback. Its narrow legacy adapter consumes only tagged VDPL bodies and leaves
+ordinary keys to MOS; initial builds require the pinned application callback slot to be NULL;
 any necessary forwarding must be explicitly integrated with its owner.
 
 Only after source/build checks and the tuple are READY, reserve the finite own

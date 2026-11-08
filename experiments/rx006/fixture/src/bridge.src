@@ -1,0 +1,104 @@
+; Original RX006 application bridges, foreground ADL1/MBASE0 only.
+.assume adl=1
+.text
+.global _rx_arm,_rx_context,_rom_byte0,_tx_submit,_legacy_keyboard
+.extern _rx_destination,_rx_capacity,_rx_result,_rx_api_code
+.extern _rx_callbacks,_rx_cb_status,_rx_cb_count
+.extern _tx_source,_tx_length,_tx_done
+.extern _legacy_data,_legacy_ready
+_rx_arm:
+ ld hl,(_rx_destination)
+ ld bc,(_rx_capacity)
+ ld de,rx_complete
+ ld a,026h
+ rst.lil 08h
+ ld (_rx_api_code),a
+ ld (_rx_result),hl
+ ret
+rx_complete:
+ ld (_rx_cb_status),a
+ ld (_rx_cb_count),bc
+ ld a,(_rx_callbacks)
+ inc a
+ ld (_rx_callbacks),a
+ ret
+_rx_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,rx_context_invalid
+ xor a
+ ret
+rx_context_invalid:
+ ld a,1
+ ret
+_rom_byte0:
+ ld a,(0)
+ ret
+_tx_submit:
+ ld hl,(_tx_source)
+ ld bc,(_tx_length)
+ ld de,tx_complete
+ ld a,025h
+ rst.lil 08h
+ ret
+tx_complete:
+ ld a,1
+ ld (_tx_done),a
+ ret
+
+; Admitted application keyboard slot only. Consume tagged private bodies;
+; genuine keys remain in the ordinary MOS keyboard state machine.
+_legacy_keyboard:
+ push af
+ push bc
+ push de
+ push hl
+ push de
+ pop hl
+ ld a,(hl)
+ cp 'V'
+ jr nz,legacy_return
+ inc hl
+ ld a,(hl)
+ cp 'D'
+ jr nz,legacy_return
+ inc hl
+ ld a,(hl)
+ cp 'P'
+ jr nz,legacy_return
+ inc hl
+ ld a,(hl)
+ cp 'L'
+ jr nz,legacy_return
+ inc hl
+ inc hl                  ; kind at body offset5
+ ld a,(hl)
+ ld bc,10                ; INFO/error body
+ cp 6
+ jr nz,legacy_copy
+ ld bc,16                ; READ_BYTES body, fixed8-byte data region
+legacy_copy:
+ push de
+ push de
+ pop hl
+ ld de,_legacy_data
+ ldir
+ pop hl
+ xor a
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ ld a,1
+ ld (_legacy_ready),a     ; Publish only after full private copy/consumption
+legacy_return:
+ pop hl
+ pop de
+ pop bc
+ pop af
+ ret
