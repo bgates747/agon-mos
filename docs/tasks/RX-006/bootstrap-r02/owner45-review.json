@@ -1,0 +1,14 @@
+{
+  "owner_packet": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/source-preparation.json",
+  "sha256": "2cd4604ad1d16ceb1cc30050e6e8047cd4d6091e6eb6d8c7f20fbc77dd3aac18",
+  "inputs_rehashed": 45,
+  "mismatches": [],
+  "source_review": "Read complete child_control/native/install_once; TERM/HUP unwind reaches registered separate esptool PGID, waits/reaps and checks actual remaining group. Closure certificate refuses missing/unclosed registered leaves.",
+  "owner_reported_actual_host_controls": 4,
+  "uart_reran_host_controls": false,
+  "physical_test_run": false,
+  "fixture_changed": false,
+  "request": "ccb5dab78a89",
+  "exact_task": "RX006-matched-physical-r02",
+  "remaining": "Fresh normal grant/current tuple/programmer actor/handoff and actual physical run, no extra abstract approval round"
+}

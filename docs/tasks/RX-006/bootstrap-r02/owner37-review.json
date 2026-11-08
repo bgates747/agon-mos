@@ -6,5 +6,6 @@
   "consumer_change_required": false,
   "physical_run": false,
   "cleanup_source_caveat": "Nested native/esptool separate process groups require actual owned-descendant cancellation/join; killing native PGID alone is insufficient. No orphan observed in123. Owner closure pending.",
+  "subsequent_disposition": "The preceding field retains the original finding. Separately frozen source2 closes this source caveat; see owner45-review.json. Physical qualification remains pending.",
   "request": "ccb5dab78a89"
 }

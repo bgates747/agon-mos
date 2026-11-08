@@ -23,6 +23,18 @@ this does not establish an orphan in123 or require a firmware/fixture change.
 Substantive review returned in
 `2026-11-08_03-03-28_agon-mos_rx006-r02-37pin-review-native-child-closure-thirteen`.
 
+That source caveat is subsequently closed in the separate source2 packet
+`agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/source-preparation.json`,
+SHA256`2cd4604ad1d16ceb1cc30050e6e8047cd4d6091e6eb6d8c7f20fbc77dd3aac18`.
+UART read the complete child-control/native/outer actors and rehashed all45
+pins with no mismatch; [review](bootstrap-r02/owner45-review.json). TERM/HUP
+unwinds to the registered separate esptool group, with bounded TERM/KILL/wait,
+direct reaping/current-group verification and refusal of false stopped receipts.
+Owner reports four actual harmless host-leaf controls passing compiler642;
+these invoke no device or reset. Exact task is RX006-matched-physical-r02.
+The old37 packet/123 are retained. No new fixture/source objection remains;
+normal fresh physical admission/actor/current-state gates still apply.
+
 ## Exact unchanged consumer
 
 Own kit `/Agon/mystuff/agon-mos/build/rx006/kit-r01/kit.json`, SHA256
