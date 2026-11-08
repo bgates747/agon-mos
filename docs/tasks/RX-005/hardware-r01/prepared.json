@@ -1,0 +1,50 @@
+{
+  "old_archive_all_members_verified": true,
+  "old_archive": "d47273597698d6341c4433d8c47b2c9a9e5bad1a73d37eaddbdb2c461415ba8c",
+  "old_boot_script_sha256": "a2e3fc48788ea771fc114ccb230985873f3e61e81d55c448c7408169e4d6d8cb",
+  "new_boot_script_sha256": "fdb5617bbdc0f294207d76271b9e873feff4bb69b64cb5117c27023b4a286a5a",
+  "next_report": 67,
+  "archive_sha256": "0bee834551ce080582d1b0108207f8b3cbc550f6d01696755cecc2ce0d01c9f7",
+  "appliance": {
+    "task": "RX-005",
+    "status": "Console8 hardware pending",
+    "mos_source_commit": "8db14b2",
+    "fixture_evidence_commit": "72528f7",
+    "fixture_build": "9c72616d7f4a4ef7",
+    "mos_crc32": "3933C3ED",
+    "vdp_source": "VDPL-036 exact component export / enabled7d09dfea ELF2918727a; source owner retains provenance",
+    "next_report": 67,
+    "volume": "AGONC8",
+    "uuid": "8658-1C23",
+    "files": {
+      "mos-rx.bin": {
+        "bytes": 101257,
+        "sha256": "40dc3d17a4f856c329e118b0376ff26f33085ef00410a26cda5739d4396589ea"
+      },
+      "test.bin": {
+        "bytes": 16036,
+        "sha256": "6f79d47e615f2b4afca146a6c4ccf62677bf5c33b53b67c2f10b6ca3a729b949"
+      },
+      "vdp-rx.bin": {
+        "bytes": 1100320,
+        "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+      },
+      "next.txt": {
+        "bytes": 4,
+        "sha256": "cfb492d64a4192ca7080f7a3988cbc4931613edfef7df50ea54db10312476391"
+      },
+      "mos-stock.bin": {
+        "bytes": 108490,
+        "sha256": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae"
+      },
+      "vdp-stock.bin": {
+        "bytes": 1077840,
+        "sha256": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f"
+      },
+      "readme.txt": {
+        "bytes": 1826,
+        "sha256": "3184e3fc27d6553c21cc2da41a1beb75bb1998950a824e539d1fa81ffcf0ab9e"
+      }
+    }
+  }
+}

@@ -1,12 +1,14 @@
-# RX-005 — Counted return trial ready for review
+# RX-005 — Emulator-qualified counted return trial
 
 Applications can now ask the VDP for a block of data and receive it directly
 into their own RAM while doing other work. The first trial passes with actual
 MOS and VDP firmware running in Flexe. Existing keyboard events still arrive;
 bulk data does not have to masquerade as key events. No games were changed.
 
-Work is stopped for Brandon's review. No prototype has been distributed to
-application owners; no physical firmware, SD card, default or release changed.
+Brandon reviewed this result and selected manual Console8 qualification on
+November7. The exact test package is now [staged on the card](hardware-r01.md).
+No consumer prototype has been distributed, hardware run performed or release
+created. The results below remain emulator evidence.
 
 ## What passed
 
@@ -91,8 +93,9 @@ source manifest is retained there. The exact MOS [patch](proposed-mos.patch),
 [passing receipts/raw traces/reports](trial-evidence/pass-r05/) and
 [artifact hashes](trial-evidence/review-artifacts.json) make the trial reviewable.
 The full raw archive is build/rx005/qualification-r05-results.tar.gz; the matched
-loss diagnostic is qualification-r04-results.tar.gz. Source remains a private
-review candidate, with coupled implementation uncommitted/unpublished.
+loss diagnostic is qualification-r04-results.tar.gz. The MOS source is now committed/pushed on the isolated fork branch at
+8db14b2; fixture and qualification evidence are committed/pushed in this project
+at72528f7. This is an experimental branch, not an upstream allocation or release.
 
 ## Limits and stop
 
@@ -106,5 +109,6 @@ cancellation or automatic resynchronization is claimed. Discovery/error control
 still uses the old small management adapter, while counted bulk data is separate.
 The first producer uses the ordinary VDP route with its async worker disabled.
 
-All leases are released and no target process is held. Stop here for Brandon's
-review before hardware selection, protocol expansion or consumer prototypes.
+All leases are released and no target process is held. Brandon has selected the
+manual Console8 test; see hardware-r01.md. Protocol expansion and consumer
+prototypes still require the next review after physical results.

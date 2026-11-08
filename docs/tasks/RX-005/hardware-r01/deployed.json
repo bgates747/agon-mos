@@ -1,0 +1,24 @@
+{
+  "schema": "RX005-console8-deployment-1",
+  "volume": "AGONC8",
+  "uuid": "8658-1C23",
+  "target": "/test/mos-uart0",
+  "boot": "CD /test/mos-uart0; test",
+  "all_readback_exact": true,
+  "old_archive_sha256": "d47273597698d6341c4433d8c47b2c9a9e5bad1a73d37eaddbdb2c461415ba8c",
+  "next_report": 67,
+  "files": {
+    "appliance/SHA256SUMS": "b58c805d3686703f6a38d77a56e0cf1184aba8414051e70d36928ddf1d102dfd",
+    "appliance/deployment.json": "f8891715ea9541d35f03e7775d2b7ce384bfca6350669161167cea307bc0f69e",
+    "appliance/mos-rx.bin": "40dc3d17a4f856c329e118b0376ff26f33085ef00410a26cda5739d4396589ea",
+    "appliance/mos-stock.bin": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae",
+    "appliance/next.txt": "cfb492d64a4192ca7080f7a3988cbc4931613edfef7df50ea54db10312476391",
+    "appliance/readme.txt": "3184e3fc27d6553c21cc2da41a1beb75bb1998950a824e539d1fa81ffcf0ab9e",
+    "appliance/test.bin": "6f79d47e615f2b4afca146a6c4ccf62677bf5c33b53b67c2f10b6ca3a729b949",
+    "appliance/vdp-rx.bin": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+    "appliance/vdp-stock.bin": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f",
+    "autoexec.txt": "fdb5617bbdc0f294207d76271b9e873feff4bb69b64cb5117c27023b4a286a5a"
+  },
+  "physical_execution": false,
+  "firmware_flashing": false
+}

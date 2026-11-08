@@ -1,15 +1,16 @@
 # MOS TODO
 
-RX-005 [ ] **STOPPED FOR BRANDON'S REVIEW.** First trial passes native/component
-checks and both firmware-running Flexe engines (Oryx373):32 frames/2397 exact
-bytes/30 callbacks/genuine keys/guards/clean return, zero final model drops.
-Actual372 reproduced nine FIFO drops at127B; bounded counted-frame-only16-byte
-drain fixes the same fixture in both engines. MOS+378 code/+22 RAM, VDP+608 image/
-no static DRAM. UART owns MOS/fixture, VDPlet owns VDP; no games edited. Do not
-distribute consumer prototypes or select hardware/default/release work before
-review. Broader consumer comparisons and upstream advocacy remain separately
-gated; community consensus is required before advocating merge.
-[Review and patch](docs/tasks/RX-005/REVIEW.md), [task](docs/tasks/RX-005/README.md).
+RX-005 [ ] **CONSOLE8 HARDWARE TEST STAGED; RESULTS PENDING.** Brandon reviewed
+both-engine synthetic PASS and selected manual hardware qualification. Exact
+MOS40dc3d17/VDP7d09dfea/test6f79d47e deployed to AGONC8 UUID8658-1C23,
+`/test/mos-uart0`; root autoexec runs `test`, next reportR0067. Flash VDP first,
+then MOS; one A press/release at the prompt. Old appliances/reports/boot script
+archived and verified off-card. MOS source8db14b2 and synthetic evidence72528f7
+pushed on isolated experimental branches. No hardware PASS, consumer prototypes,
+release or new protocol expansion claimed. Inspect the returned report before
+choosing the proposed first consumer pilot.
+[Hardware protocol](docs/tasks/RX-005/hardware-r01.md),
+[review and patch](docs/tasks/RX-005/REVIEW.md).
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
 targeting vanilla MOS by Brandon's clarified direction. Independent core and

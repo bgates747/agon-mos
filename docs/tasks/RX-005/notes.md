@@ -361,3 +361,17 @@ nextnull; all Pi compiler checkouts released. STOP FOR BRANDON'S REVIEW: no game
 edits, consumer prototypes, physical tests/card writes/default/release/upstream
 publication selected or performed. This closes the bounded trial goal, not the
 later hardware/application/benchmark or broader protocol investigation.
+
+## November7 — Reviewed trial selected for Console8
+
+Brandon accepted the recommended sequence: commit/push passing prototype, run
+the same synthetic suite on Console8, then review hardware before any consumer
+pilot. MOS source8db14b2 and fixture/evidence72528f7 are pushed on isolated
+experimental branches. The exact tested images/app are deployed unchanged to
+AGONC8 UUID8658-1C23, /test/mos-uart0; root autoexec runs test at boot. VDP-first
+flashing avoids invoking the new receive service against an old producer. One A
+press/release is the only fixture input; expected reportR0067. Full archive of
+119 old UART appliance/report/boot files verified on Pi/Oryx before cleaning card
+history; other projects preserved. Deployment readback exact, no remount/eject
+required or attempted. Hardware results pending; no consumer prototypes yet.
+See hardware-r01.md and its receipts.

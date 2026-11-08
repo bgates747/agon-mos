@@ -1,9 +1,11 @@
 # RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
-Current status: the first synthetic trial passes both Flexe engines and is
-**stopped for Brandon's review**. Read [REVIEW.md](REVIEW.md) for the result,
-exact source/firmware pins, patch, costs and limits. No consumer prototypes,
-physical test, default or release change follows automatically.
+Current status2026-11-07: Brandon reviewed the passing synthetic trial and
+selected the next manual Console8 check. The exact tested MOS/VDP/fixture is
+deployed to AGONC8 at `/test/mos-uart0`; root `autoexec.txt` runs `test` at boot.
+Read [hardware-r01.md](hardware-r01.md) for the flash order, key step and report
+pins. Emulator qualification remains in [REVIEW.md](REVIEW.md). Physical results
+are pending; consumer prototype distribution remains gated on Brandon's review.
 
 Current authorization2026-11-07: Brandon selected a first synthetic trial and
 explicit goal. UART coordinates and owns MOS/test-fixture changes; VDPlet owns
