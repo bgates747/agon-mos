@@ -1,0 +1,2 @@
+{"path": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r02/jit", "engine": "jit", "stopped": true, "initial_card_sha256": "bb776ae707b5ffcc01ee2ea0e9f41a057ac3e83ffb4a652578fa02e3b22ab21c", "passed": false, "error": "AssertionError('guest failure/refusal; see raw wire')", "elapsed_seconds": 50.28590409699973, "injected": false, "mapped_SDL_verified": true, "physical": false}
+Stopped at first failure; preserve evidence

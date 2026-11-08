@@ -1,0 +1,26 @@
+{
+  "schema": "RX005-baseline-1",
+  "commit": "97311c437093e416342a6c836cf9914f2ced027d",
+  "source_tar_sha256": "10186ead3543d315fe526c0c7352e7b38ed43b6eb9b5be5993043fe0c7670561",
+  "bytes": 100879,
+  "sha256": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+  "map_sha256": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+  "startup": {
+    "table": 770950,
+    "bytes": 192,
+    "slots": 48,
+    "BSS_start": 770830,
+    "BSS_bytes": 2098,
+    "clear_address": 1786,
+    "init_call": 1804
+  },
+  "elapsed_seconds": 1.8490079949842766,
+  "sdk": "/Agon/mystuff/eirene-mos/build/rc003/toolchain",
+  "libagon_sha256": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c",
+  "toolchain": {
+    "ez80-none-elf-clang": "b26b8b361834c7af13d272408efafd350cf8d6493c89e50cecd73f9d9e70a220",
+    "ez80-none-elf-as": "1ee23e5551998d5fe0d2e7dcdf0fa6916342fc2d2c973b467e174ba679509097",
+    "ez80-none-elf-ld": "8941596adea72c999d20c94938cc61c969731367367110a1c1f6cb9826ba0e23"
+  },
+  "startup_checker_sha256": "ea1bd9afd319c66111154732fe0ef88c388f87de3489114397f0a9e951d82dc3"
+}

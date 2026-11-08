@@ -1,0 +1,12 @@
+{
+  "path": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r05/interp",
+  "engine": "interp",
+  "stopped": true,
+  "initial_card_sha256": "7306ef4fcb6bde932fa06c567d4134cc9fa0424f43df374493761d039a138e48",
+  "passed": true,
+  "error": null,
+  "elapsed_seconds": 9.44911738799783,
+  "injected": true,
+  "mapped_SDL_verified": true,
+  "physical": false
+}

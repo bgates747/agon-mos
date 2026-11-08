@@ -1,17 +1,15 @@
 # MOS TODO
 
-RX-005 [ ] Develop the simplest efficient general bidirectional MOS/VDP transport,
-preserving existing apps and startup through small local changes. Start with
-stock receive/reply-wait mapping; specify/implement a minimal return-buffer/type/
-completion/pacing contract and compare a useful consumer to the keyboard-map
-workaround. Conversation, Discord extraction and running notes are in the
-[task silo](docs/tasks/RX-005/README.md). No arbitrary16-byte message limit or
-broad framework. Upstream merge advocacy requires the community consensus
-Brandon specified; no new run/deployment is selected by this documentation step.
-Six source consultations are complete. Brandon now authorizes the first
-synthetic trial as a goal: UART coordinates and owns MOS/fixture; VDPlet owns
-VDP/VDPlet; no game edits. Implement and qualify the bounded trial, then STOP
-for Brandon before consumer prototype distribution. [Plan](docs/tasks/RX-005/trial-plan.md).
+RX-005 [ ] **STOPPED FOR BRANDON'S REVIEW.** First trial passes native/component
+checks and both firmware-running Flexe engines (Oryx373):32 frames/2397 exact
+bytes/30 callbacks/genuine keys/guards/clean return, zero final model drops.
+Actual372 reproduced nine FIFO drops at127B; bounded counted-frame-only16-byte
+drain fixes the same fixture in both engines. MOS+378 code/+22 RAM, VDP+608 image/
+no static DRAM. UART owns MOS/fixture, VDPlet owns VDP; no games edited. Do not
+distribute consumer prototypes or select hardware/default/release work before
+review. Broader consumer comparisons and upstream advocacy remain separately
+gated; community consensus is required before advocating merge.
+[Review and patch](docs/tasks/RX-005/REVIEW.md), [task](docs/tasks/RX-005/README.md).
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,
 targeting vanilla MOS by Brandon's clarified direction. Independent core and

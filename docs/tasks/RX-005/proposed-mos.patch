@@ -1,0 +1,260 @@
+diff --git a/src/interrupts.asm b/src/interrupts.asm
+index e27d517..17fb64b 100644
+--- a/src/interrupts.asm
++++ b/src/interrupts.asm
+@@ -28,7 +28,7 @@
+ 			XREF	UART0_serial_TX
+ 			XREF	fill_uart0_tx_fifo
+ 			XREF	mos_api
+-			XREF	vdp_protocol			
++			XREF	rx005_dispatch			
+ 			
+ 			XREF	_i2c_slave_rw
+ 			XREF	_i2c_error
+@@ -77,7 +77,7 @@ _uart0_handler:		DI
+ 			CALL		UART0_serial_RX
+ 			LD		C, A		
+ 			LD		HL, _vdp_protocol_data
+-			CALL		vdp_protocol
++			CALL		C, rx005_dispatch
+ 			POP		HL
+ 			POP		DE
+ 			POP		BC
+diff --git a/src/mos_api.asm b/src/mos_api.asm
+index 8ed8ab4..0997c48 100644
+--- a/src/mos_api.asm
++++ b/src/mos_api.asm
+@@ -30,6 +30,7 @@
+ 
+ 			.text
+ 			XDEF	mos_api
++			XREF	rx005_arm
+ 
+ 			XREF	SWITCH_A		; In misc.asm
+ 			XREF	SET_AHL24
+@@ -197,7 +198,7 @@ mos_api_block1_start:	DW	mos_api_getkey		; 0x00
+ 			DW	mos_api_flseek_p	; 0x24
+ 			DW	mos_api_uart0_async_send; 0x25
+ 
+-			DW	mos_api_not_implemented	; 0x26
++			DW	rx005_arm		; 0x26 RX-005 private trial
+ 			DW	mos_api_not_implemented	; 0x27
+ 
+ 			DW	mos_api_pmatch		; 0x28
+diff --git a/src/uart0_receive.asm b/src/uart0_receive.asm
+new file mode 100644
+--- /dev/null
++++ b/src/uart0_receive.asm
+@@ -0,0 +1,212 @@
++; RX-005 private counted receive trial. No startup or TX policy changes.
++; Contract: agon-mos/docs/tasks/RX-005/wire-contract.md (experimental26h/90h).
++.assume adl=1
++.text
++.global rx005_arm,rx005_dispatch,rx005_result
++.extern vdp_protocol,_vdp_protocol_state,UART0_serial_RX,_vdp_protocol_data
++
++; ADL1/MBASE0 foreground: HL=owned destination, BC=capacity<=65535,
++; DE=optional bounded IRQ callback. Return A=0 admitted/1busy/2invalid,
++; HL=read-only result. Preserve BC/DE/indexes/shadows/MB and incoming IFF.
++rx005_arm:
++ ld a,i
++ push af
++ di
++ push bc
++ push de
++ ld a,(rx005_phase)
++ or a
++ jr nz,rx005_busy
++ ld a,(rx005_result)
++ cp 1
++ jr z,rx005_busy
++ ; Reject capacity beyond the u16 wire count, without losing destination.
++ push hl
++ push bc
++ pop hl
++ ld de,65536
++ or a
++ sbc hl,de
++ pop hl
++ jr nc,rx005_invalid
++ ld de,0
++ or a
++ sbc hl,de
++ jr z,rx005_invalid
++ push hl
++ add hl,bc
++ pop hl
++ jr c,rx005_invalid
++ ; Restore the caller's callback after the checks used DE as scratch.
++ pop de
++ push de
++ ld (rx005_destination),hl
++ ld (rx005_capacity),bc
++ ld (rx005_callback),de
++ ld hl,0
++ ld (rx005_actual),hl
++ ld (rx005_announced),hl
++ ld a,1
++ ld (rx005_result),a       ; Publish pending after all destination state.
++ xor a
++ jr rx005_arm_return
++rx005_busy:
++ ld a,1
++ jr rx005_arm_return
++rx005_invalid:
++ ld a,2
++rx005_arm_return:
++ pop de
++ pop bc
++ ld l,a                  ; Temporary return code survives the saved-IFF pop.
++ pop af
++ jp po,rx005_arm_disabled
++ ei
++rx005_arm_disabled:
++ ld a,l
++ ld hl,rx005_result
++ ret
++
++; Called ONLY after UART0_serial_RX returned carry set. C=actual byte,
++; HL=legacy scratch. The existing IRQ boundary saves all primary registers.
++rx005_dispatch:
++ ld a,16
++ ld (rx005_budget),a
++rx005_drain:
++ call rx005_byte
++ ; Preserve the old one-byte boundary for legacy packets. Only a counted
++ ; frame uses this bounded drain; finish/empty/budget all return to the IRQ.
++ ld a,(rx005_phase)
++ or a
++ ret z
++ ld hl,rx005_budget
++ dec (hl)
++ ret z
++ call UART0_serial_RX
++ ret nc
++ ld c,a
++ ld hl,_vdp_protocol_data
++ jr rx005_drain
++rx005_byte:
++ ld a,(rx005_phase)
++ or a
++ jr nz,rx005_active
++ ld a,(_vdp_protocol_state)
++ or a
++ jp nz,vdp_protocol      ; A90 inside an old packet remains an old body byte.
++ ld a,c
++ cp 090h
++ jp nz,vdp_protocol
++ ld hl,0
++ ld (rx005_remaining),hl
++ ld a,1
++ ld (rx005_phase),a
++ ret
++rx005_active:
++ cp 1
++ jr z,rx005_length_low
++ cp 2
++ jr z,rx005_length_high
++ cp 3
++ jr z,rx005_copy
++ ;4=unarmed discard;5=armed oversize discard. Never parse their body bytes.
++ call rx005_count_down
++ ret nz
++ ld a,(rx005_phase)
++ cp 5
++ jp z,rx005_overflow
++ xor a
++ ld (rx005_phase),a
++ ret
++rx005_length_low:
++ ld a,c
++ ld (rx005_remaining),a
++ ld a,2
++ ld (rx005_phase),a
++ ret
++rx005_length_high:
++ ld a,c
++ ld (rx005_remaining+1),a
++ ld a,(rx005_result)
++ cp 1
++ jr nz,rx005_unarmed
++ ld hl,(rx005_remaining)
++ ld (rx005_announced),hl
++ ld de,(rx005_capacity)
++ or a
++ sbc hl,de
++ jr c,rx005_admitted
++ jr z,rx005_admitted
++ ld a,5
++ ld (rx005_phase),a
++ ret                       ; Positive oversize has at least one body byte.
++rx005_admitted:
++ ld hl,(rx005_remaining)
++ ld a,h
++ or l
++ jr z,rx005_complete
++ ld a,3
++ ld (rx005_phase),a
++ ret
++rx005_unarmed:
++ ld hl,(rx005_remaining)
++ ld a,h
++ or l
++ jr z,rx005_empty_discard
++ ld a,4
++ ld (rx005_phase),a
++ ret
++rx005_empty_discard:
++ xor a
++ ld (rx005_phase),a
++ ret
++rx005_copy:
++ ld hl,(rx005_destination)
++ ld (hl),c
++ inc hl
++ ld (rx005_destination),hl
++ ld hl,(rx005_actual)
++ inc hl
++ ld (rx005_actual),hl
++ call rx005_count_down
++ ret nz
++rx005_complete:
++ xor a
++ ld (rx005_phase),a
++ ld a,2
++ ld (rx005_result),a        ; Terminal publication follows all payload writes.
++ xor a                    ; Callback A0 = success.
++ jr rx005_notify
++rx005_overflow:
++ xor a
++ ld (rx005_phase),a
++ ld a,3
++ ld (rx005_result),a        ; No payload writes occurred; count stays zero.
++rx005_notify:
++ ld hl,(rx005_callback)
++ ld de,0
++ or a
++ sbc hl,de
++ ret z
++ ld bc,(rx005_actual)
++ jp (hl)                  ; Callback RET goes directly to the existing IRQ.
++rx005_count_down:
++ ld hl,(rx005_remaining)
++ dec hl
++ ld (rx005_remaining),hl
++ ld a,h
++ or l                     ; Remaining is a zero-extended u16.
++ ret
++
++.bss
++; Public read-only record: state,reserved,actual:u24,announced:u24.
++rx005_result:       ds 2
++rx005_actual:       ds 3
++rx005_announced:    ds 3
++; Private state: phase,destination,capacity,callback,remaining.
++rx005_phase:        ds 1
++rx005_destination:  ds 3
++rx005_capacity:     ds 3
++rx005_callback:     ds 3
++rx005_remaining:    ds 3
++rx005_budget:       ds 1

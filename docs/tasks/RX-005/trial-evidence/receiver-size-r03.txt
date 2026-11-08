@@ -1,0 +1,8 @@
+build/rx005/trial-r03/mos/obj/uart0_receive.o  :
+section   size   addr
+.text    344      0
+.data      0      0
+.bss      21      0
+Total    365
+
+

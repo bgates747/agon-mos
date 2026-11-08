@@ -1,11 +1,20 @@
 # RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
+Current status: the first synthetic trial passes both Flexe engines and is
+**stopped for Brandon's review**. Read [REVIEW.md](REVIEW.md) for the result,
+exact source/firmware pins, patch, costs and limits. No consumer prototypes,
+physical test, default or release change follows automatically.
+
 Current authorization2026-11-07: Brandon selected a first synthetic trial and
 explicit goal. UART coordinates and owns MOS/test-fixture changes; VDPlet owns
 all VDP/VDPlet changes. No game-code changes or consumer prototype distribution.
 The prior consultation stop below is superseded by this instruction. Follow
 [trial-plan.md](trial-plan.md); stop again once the trial passes for Brandon's
-review before individual application experiments.
+review before individual application experiments. The selected private API/wire
+is in [wire-contract.md](wire-contract.md), with finite execution/cleanup in
+[trial-run-plan.md](trial-run-plan.md). The initial investigation and earlier
+documentation-only limitations below are historical context; they do not
+override this explicit trial authorization.
 
 Brandon opened this investigation on2026-11-07, then expanded its goal to
 implementing the simplest efficient general bidirectional MOS/VDP transport.

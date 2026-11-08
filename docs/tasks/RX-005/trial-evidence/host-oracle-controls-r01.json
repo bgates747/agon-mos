@@ -1,0 +1,20 @@
+{
+  "schema": "RX005-host-oracle-controls-1",
+  "positive": {
+    "counted_frames": 32,
+    "counted_payload_bytes": 2397,
+    "callbacks": 30,
+    "genuine_key_packets": 2,
+    "foreground_work": 42
+  },
+  "negative_rejected": [
+    "payload corruption",
+    "truncated body",
+    "unframed prefix",
+    "duplicate frame",
+    "missing genuine key",
+    "wrong callback total",
+    "register failure"
+  ],
+  "target_execution": false
+}

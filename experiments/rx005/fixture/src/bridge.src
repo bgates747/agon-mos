@@ -1,0 +1,170 @@
+; Original RX-005 synthetic C ABI bridge. No user pointer in an IRQ callback.
+.assume adl=1
+.text
+.global _rx_arm,_rx_callback,_rx_keyboard,_rx_context,_rx_invalid_di
+.extern _rx_destination,_rx_capacity,_rx_use_callback,_rx_result,_rx_api_code
+.extern _rx_callbacks,_rx_cb_status,_rx_cb_count,_rx_register_fail,_rx_iff_fail
+.extern _rx_expected_callback,_rx_legacy,_rx_legacy_ready,_rx_key_down,_rx_key_up
+_rx_arm:
+ ld hl,(_rx_destination)
+ ld bc,(_rx_capacity)
+ ld de,0
+ ld a,(_rx_use_callback)
+ or a
+ jr z,rx_arm_ready
+ ld de,_rx_callback
+rx_arm_ready:
+ ld (_rx_expected_callback),de
+ ld a,026h
+ rst.lil 08h
+ ld (_rx_api_code),a
+ ld (_rx_result),hl
+ ; Check BC/DE preservation against the exact values passed to the syscall.
+ push de
+ push bc
+ pop hl
+ ld de,(_rx_capacity)
+ or a
+ sbc hl,de
+ jr nz,rx_bad_bc
+ pop hl
+ ld de,(_rx_expected_callback)
+ or a
+ sbc hl,de
+ ret z
+ jr rx_bad_register
+rx_bad_bc:
+ pop de
+rx_bad_register:
+ ld a,1
+ ld (_rx_register_fail),a
+ ret
+_rx_invalid_di:
+ di
+ call _rx_arm
+ ld a,i
+ ld a,0
+ jp po,rx_still_disabled
+ inc a
+rx_still_disabled:
+ ld (_rx_iff_fail),a
+ ei
+ ret
+_rx_callback:
+ ld (_rx_cb_status),a
+ ld (_rx_cb_count),bc
+ ld a,(_rx_callbacks)
+ inc a
+ ld (_rx_callbacks),a
+ ret
+_rx_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,rx_bad_context
+ xor a
+ ret
+rx_bad_context:
+ ld a,1
+ ret
+_rx_keyboard:
+ push af
+ push bc
+ push de
+ push hl
+ ; The controlled donor supplies known10-byte VDPL management/error bodies.
+ push de
+ pop hl
+ ld a,(hl)
+ cp 'V'
+ jr nz,rx_real_key
+ inc hl
+ ld a,(hl)
+ cp 'D'
+ jr nz,rx_real_key
+ inc hl
+ ld a,(hl)
+ cp 'P'
+ jr nz,rx_real_key
+ inc hl
+ ld a,(hl)
+ cp 'L'
+ jr nz,rx_real_key
+ push de                  ; Keep borrowed body pointer across LDIR.
+ push de
+ pop hl
+ ld de,_rx_legacy
+ ld bc,10
+ ldir
+ pop hl
+ xor a
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ inc hl
+ ld (hl),a
+ ld a,1
+ ld (_rx_legacy_ready),a
+ jr rx_keyboard_return
+rx_real_key:
+ push de
+ pop hl
+ inc hl
+ inc hl
+ inc hl
+ ld a,(hl)
+ or a
+ jr z,rx_key_released
+ ld hl,_rx_key_down
+ inc (hl)
+ jr rx_keyboard_return
+rx_key_released:
+ ld hl,_rx_key_up
+ inc (hl)
+rx_keyboard_return:
+ pop hl
+ pop de
+ pop bc
+ pop af
+ ret
+
+.global _rom_byte0
+_rom_byte0:
+ ld a,(0)
+ ret
+
+.global _rx_uart_snapshot
+.extern _rx_uart_lctl,_rx_uart_ier,_rx_uart_issued
+_rx_uart_snapshot:
+ push af
+ ld a,i
+ push af
+ di
+ xor a
+ ld (_rx_uart_issued),a
+ ld a,0ffh
+ ld (_rx_uart_ier),a
+ in0 a,(0c3h)
+ ld (_rx_uart_lctl),a
+ and 080h
+ jr nz,rx_uart_snapshot_restore
+ in0 a,(0c1h)
+ ld (_rx_uart_ier),a
+ and 00ah
+ jr nz,rx_uart_snapshot_restore
+ ld a,(_rx_uart_ier)
+ out0 (0c1h),a
+ ld a,1
+ ld (_rx_uart_issued),a
+rx_uart_snapshot_restore:
+ pop af
+ jp po,rx_uart_snapshot_disabled
+ pop af
+ ei
+ ret
+rx_uart_snapshot_disabled:
+ pop af
+ ret

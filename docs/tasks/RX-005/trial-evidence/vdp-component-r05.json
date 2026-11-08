@@ -1,0 +1,258 @@
+{
+  "status": "PASS",
+  "started": 1794095628.579154,
+  "source_sha256": {
+    "include/vdp_audio_queue.h": "4f7363364712301529d5c7bbc9ebd1496a7103aaae717880e4ddb3375520b85e",
+    "include/vdp_pcm_sink_wire.h": "5555235b73a68c7ee5648c7fe67f1e99014c707c1fe024b2dec5225edd9feb4e",
+    "include/vdplet.h": "92a6bbc403ecc51e165c103cfd16fd071f3d644ad52f83a4a7cb4fe088a5a2d6",
+    "include/vdplet_async.h": "d0a55624106b4644a958bfc52219ede0bbc68dfa0b62b1189ce9ca07cec181d9",
+    "include/vdplet_async_host.h": "195ca1f94d71f108921f25bedc3e6339d5d360a55392d2b91cd17c3c5a7dde69",
+    "include/vdplet_async_wire.h": "a15a452c28d5991bdef45f503dba07bd4b24729fad4c49312783faff18af173c",
+    "include/vdplet_pcm_sink.h": "e3bf5d900105ddd87e82f5cd38301fab02ffb7a7e38f81012db0bb2e13ba963c",
+    "include/vdplet_protocol.h": "28a29134cf2710e9dacaf377b602b77deefb06eeeb171191e6100028ae429e2b",
+    "include/vdplet_services.h": "00844d5220bf05d329c4f66f6fb3653d8bcca3f60eafc51c820820f1203f394f",
+    "src/vdp_audio_queue.h": "4825dc29fac1c6f047686faaa153e30fc12aa5e40c72d4c246d7b86fbe5f5b22",
+    "src/vdp_audio_queue_core.h": "f002faab8e2976fb31ed2ebad5132d502675f47cc534cd24951f5642b9fc8f62",
+    "src/vdp_audio_queue_vdu.h": "70d46e2b1aa224c22fa065a80d573bb7433464b804514fdf2e6f42f5d08817f5",
+    "src/vdp_audio_queue_wire.h": "66ce29dd63ada42364f87b35be469782caf709f6efa37618d81039bcf22378a8",
+    "src/vdplet_async_core.h": "88be957255643b4e5025819e86b9a87fb71c9f3523408e53bc06d4fb9b569cd2",
+    "src/vdplet_async_runtime.h": "1624fec1aa09b7478d703161194323b8d9f87085299d1f8b308c85edbd719204",
+    "src/vdplet_async_validate.h": "5218966ad26ddbde38341257472c87c3c14175802fe39bb7c65ff7f328960591",
+    "src/vdplet_async_wire.h": "f44bab29be75cc1860d455a6ddc142f750a63c7a7fc6b95d729f8d531c25f344",
+    "src/vdplet_audio.h": "2fbe8f8e8cd3aa034f98bd9b15c447c16b3473d083df083262ad65f9f84f7b72",
+    "src/vdplet_buffer_validate.h": "e67fdb2f48e68bae6790242dbf18b7b73602b3ada1234cc6f2ee4270eaeb5e9b",
+    "src/vdplet_color.h": "2a04d1597769acc7be8c0aa19819c168de3ce4c3f95e9ae58750166b0493a7ea",
+    "src/vdplet_color_rows.h": "dcc42474e6d3029ad0a8680ea1c98313309c58edc6839159044208a6f53db19f",
+    "src/vdplet_counted_return.h": "6aba4eba1c39286c4db108d49d0726916fb1fe2efbb0e4b692a0a4d766466655",
+    "src/vdplet_font_validate.h": "ffa6718dd28d373ed1c0a463afe2fae2cd3acf933d6bcf313ee169d5aa93a6a1",
+    "src/vdplet_image.h": "e01bc410b31e2b1354852c2ff0a51813465c5b0d4cd4de9e5f37bc5bb46f6aab",
+    "src/vdplet_lines_validate.h": "2dd5d6168eb98b0adcae6070eb55f1fdcc4136ceb065f8274ba15b53fa09c4a3",
+    "src/vdplet_pcm.h": "52a318297fd9a0c9c935aae592e7d5b077051c910c50a7cb2096286cf6fad6a2",
+    "src/vdplet_pcm_sink.h": "bb976714113e448ff11a900960b422ff378925484e2b8247266b0a9bae3f058b",
+    "src/vdplet_pcm_sink_core.h": "15820a5711ebfa7accaabdae89ad556b7d642bee9def8855123a461f79ba5a9c",
+    "src/vdplet_pcm_sink_vdu.h": "aba601094da641a1e5a711ba17d855e44ab375830b183777b15af292a079904e",
+    "src/vdplet_pcm_sink_wire.h": "5ded0d86f8e162f04085d72449935f7d05e130f473267a68a9b39bdb2128310d",
+    "src/vdplet_pixels.h": "58ee90c0867dea2b6f040a4b568d6fbbbf863c4baf689e1baf89af3688ff013c",
+    "src/vdplet_policy.h": "752c3be7f5aa1227ddef3821ebab8e571a8d0cf605355bc642d6a69a5016692c",
+    "src/vdplet_readback.h": "d759b286d0eb621bd84c8d1fb8332d0e01f647823be5d05ffc87b61f9ad1fb66",
+    "src/vdplet_runtime.h": "0f8bb349ba8eab57d1e5e8abfe4d29863bb331c4b9c88520b3c3048b1d130a00",
+    "src/vdplet_sprite_validate.h": "bb8ee5ffa9e707a64e1f7a529f374bc719fb2de04629f91d7ac675844ffb92bf",
+    "src/vdplet_vdu_validate.h": "15ce5627627bad81bbbd7a7c2407eaa22f6ea4c87ab590ccd1b055d86d58f0ce",
+    "tools/build_firmware.py": "38f27ac5251b641281e8eee54d9ba26e0e611d6c034c08d2ea5ffb42943d1ab8",
+    "tools/build_module.py": "99820b7ac036e08374067bd2e24d72b224f34552082d21e04eca4e5e7da2a300",
+    "tests/test_counted_return.cpp": "4dd633a50d4b5208b624e900156ffc686ef3882f34790d99a2699a2d7e541d4b",
+    "tests/test_counted_return.py": "6a90fdfb477ea9fc42c77f225c1f13a7da3e6dbeeb03e63bf5804aaf82e43305",
+    "tests/test_readback.cpp": "02ab30fdfe40a2c18d3fb8119dfde76940744dbc0fcdcc88bc59aa4b3bb65f1f",
+    "tests/test_readback.py": "00b5c7bb6b9b6b2eff63e9e71bc5cfe62b48a6c2f8b3f07526fdbb708718b9ec",
+    "tests/qualify_counted_return.py": "e9c07b4a81b91e0fac70c8ead6cf99bb330f2d0fb13d4b9c531c42fab505f2d3",
+    "VERSION": "4585d07ac6b89d625e1776ad4866332545687f9fbf4dfc44b1a72f826e5e2c17",
+    "docs/tasks/VDPL-036/IMPLEMENTATION-01.md": "c91ba34118e05152ab890ee154d1f835c32b6d6d20c1a3199e31f72e95bf57f2"
+  },
+  "commands": [
+    {
+      "name": "actual-producer",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "tests/test_counted_return.py",
+        "--output",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/host"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 22.517705651989672
+    },
+    {
+      "name": "legacy-readback",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "tests/test_readback.py"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 9.007591633009724
+    },
+    {
+      "name": "legacy-module",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "tools/build_module.py",
+        "examples/numeric/numeric.c",
+        "--name",
+        "numeric",
+        "--build-id",
+        "123",
+        "--output",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/numeric"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5008088920149021
+    },
+    {
+      "name": "control-image-valid",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "/home/smith/.platformio/packages/tool-esptoolpy/esptool.py",
+        "--chip",
+        "esp32",
+        "image_info",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/control/firmware-src/.pio/build/esp32dev/firmware.bin"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5008056139922701
+    },
+    {
+      "name": "control-sections",
+      "argv": [
+        "/home/smith/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-size",
+        "-A",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/control/firmware-src/.pio/build/esp32dev/firmware.elf"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5006810949998908
+    },
+    {
+      "name": "control-symbols",
+      "argv": [
+        "/home/smith/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-nm",
+        "-SC",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/control/firmware-src/.pio/build/esp32dev/firmware.elf"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5012389099574648
+    },
+    {
+      "name": "enabled-prepare",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "tools/build_firmware.py",
+        "--features",
+        "pixels",
+        "--borrow-rows",
+        "--read-bytes",
+        "--text-profile",
+        "text96",
+        "--repository",
+        "/Agon/mystuff/agon-vdplet/build/firmware/upstream.git",
+        "--output",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled",
+        "--jobs",
+        "1",
+        "--counted-return",
+        "--prepare-only"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5007617800147273
+    },
+    {
+      "name": "enabled-build",
+      "argv": [
+        "/Agon/mystuff/agon-vdplet/.venv/bin/python",
+        "tools/build_firmware.py",
+        "--features",
+        "pixels",
+        "--borrow-rows",
+        "--read-bytes",
+        "--text-profile",
+        "text96",
+        "--repository",
+        "/Agon/mystuff/agon-vdplet/build/firmware/upstream.git",
+        "--output",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled",
+        "--jobs",
+        "1",
+        "--counted-return"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 115.59136141894851
+    },
+    {
+      "name": "enabled-sections",
+      "argv": [
+        "/home/smith/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-size",
+        "-A",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5006360620027408
+    },
+    {
+      "name": "enabled-symbols",
+      "argv": [
+        "/home/smith/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-nm",
+        "-SC",
+        "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf"
+      ],
+      "returncode": 0,
+      "reason": null,
+      "seconds": 0.5013095250469632
+    }
+  ],
+  "reused_disabled_companion": {
+    "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/receipt.json",
+    "sha256": "72fa6af63b16d3379344c21bd9698c0599f4b7d71b7e4e137e56b7eac31bc7ad"
+  },
+  "seconds": 152.8732623620308,
+  "artifacts": {
+    "control": {
+      "firmware.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/control/firmware-src/.pio/build/esp32dev/firmware.bin",
+        "bytes": 1099712,
+        "sha256": "6c2dc5617da7808e5f844482f82483e2f2712ff0205d74f12def19e93bbd4ebc"
+      },
+      "firmware.elf": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/control/firmware-src/.pio/build/esp32dev/firmware.elf",
+        "bytes": 25038164,
+        "sha256": "7ad7e2db14e00a83ff8a5d9f8eee28da3e28c22b532408e18ae50889691340c6"
+      },
+      "firmware.map": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/control/firmware-src/.pio/build/esp32dev/firmware.map",
+        "bytes": 17990023,
+        "sha256": "7bd4351c8464352e2f29d535ccee252404a3b3908a626881ce55a18e2d1d838e"
+      },
+      "bootloader.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/control/firmware-src/.pio/build/esp32dev/bootloader.bin",
+        "bytes": 18992,
+        "sha256": "f2dfacdea6ae72d0aeeb7c30e525c4c6fc768a041849feac694cbb2ee2224448"
+      },
+      "partitions.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r03/control/firmware-src/.pio/build/esp32dev/partitions.bin",
+        "bytes": 3072,
+        "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1"
+      }
+    },
+    "enabled": {
+      "firmware.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin",
+        "bytes": 1100320,
+        "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+      },
+      "firmware.elf": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.elf",
+        "bytes": 25049816,
+        "sha256": "2918727ad256389e3ac0d9074e736acdbbde3a9ce6f95a280fd7fa3673d6fd92"
+      },
+      "firmware.map": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.map",
+        "bytes": 17991029,
+        "sha256": "c185a461573799a11b32fe28dba1fefbd715ca6d712b57e5e1ceef4c92877e1c"
+      },
+      "bootloader.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/bootloader.bin",
+        "bytes": 18992,
+        "sha256": "f2dfacdea6ae72d0aeeb7c30e525c4c6fc768a041849feac694cbb2ee2224448"
+      },
+      "partitions.bin": {
+        "path": "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/partitions.bin",
+        "bytes": 3072,
+        "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1"
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+{"path": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r01/jit", "engine": "jit", "stopped": true, "initial_card_sha256": "bc27fbe6850edbe62dd9cbee32bd53d57605c4d1c72b71114a78f0dbc491f691", "passed": false, "error": "TimeoutError('45s without UART progress')", "elapsed_seconds": 50.28888697000002, "injected": false, "mapped_SDL_verified": true, "physical": false}
+Stopped at first failure; preserve evidence

@@ -1,0 +1,25 @@
+{
+  "owner": "agon-mos",
+  "task": "RX005-SYNTHETIC-R01",
+  "purpose": "Finite first synthetic counted-return trial, JIT/interp180s each, first-failure stop, SDL real-key and byte oracles, owned cleanup",
+  "profile": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r01",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "a535b0b93563",
+  "requested": "2026-11-07T23:57:35.805369+00:00",
+  "lease": "0715c4739ef34e8da0acfe27d7df5004",
+  "generation": 367,
+  "checked_out": "2026-11-07T23:58:28.766126+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794095908.6925743,
+    "emulators": []
+  },
+  "released": "2026-11-08T00:00:03.182229+00:00",
+  "release_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794096003.0939715,
+    "emulators": []
+  },
+  "next_request": null
+}

@@ -1,0 +1,25 @@
+{
+  "owner": "agon-mos",
+  "task": "RX005-SYNTHETIC-R05-DRAIN",
+  "purpose": "Matched before/after receiver correction: max16 available counted bytes, same VDP/fixture source, full0..512/key/guard/counter suite both engines180s first-failure",
+  "profile": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r05",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "13e707263577",
+  "requested": "2026-11-08T00:31:26.539152+00:00",
+  "lease": "df0a226565a94a8f962f948071468b7d",
+  "generation": 373,
+  "checked_out": "2026-11-08T00:31:36.637497+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794097896.5774534,
+    "emulators": []
+  },
+  "released": "2026-11-08T00:32:14.297711+00:00",
+  "release_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794097934.2376995,
+    "emulators": []
+  },
+  "next_request": null
+}

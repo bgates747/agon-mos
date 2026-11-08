@@ -1,0 +1,21 @@
+{
+  "schema": "RX005-review-artifacts-1",
+  "files": {
+    "build/rx005/qualification-r04-results.tar.gz": {
+      "bytes": 26110,
+      "sha256": "e8203b65241b56bd34ab0c273c253d611bfc194b3d0dc5318d3b8412a2d32cd5"
+    },
+    "build/rx005/qualification-r05-results.tar.gz": {
+      "bytes": 57982,
+      "sha256": "fcc3a4065209ebf4ea2d6c59c52194385635ae09afb65f767795b902649b6a76"
+    },
+    "build/rx005/trial-r07/mos-source.json": {
+      "bytes": 24765,
+      "sha256": "bd9faca477c0e112ad84226ef4e4b1d2c53752ece87936948d082df5f9fa1385"
+    },
+    "docs/tasks/RX-005/proposed-mos.patch": {
+      "bytes": 5881,
+      "sha256": "a1b6d2d655e41cc5bd7c62eb814fb50659a214710ac48c99edd2e4b83f101dab"
+    }
+  }
+}

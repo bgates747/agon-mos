@@ -1,0 +1,34 @@
+{
+  "owner": "agon-mos",
+  "task": "RX005-SYNTHETIC-R02",
+  "purpose": "Corrected FAT-image invocation; exact unchanged MOS/VDP/app; JIT/interp180s finite, first-failure stop, SDL keys, full byte oracle, owned cleanup",
+  "profile": "/home/smith/Agon/mystuff/agon-mos/build/rx005/qualification-r02",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "49cc584078c9",
+  "requested": "2026-11-08T00:01:08.643141+00:00",
+  "lease": "c058043fdc6b4dab81fc0dfb171d872e",
+  "generation": 368,
+  "checked_out": "2026-11-08T00:01:26.141317+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794096086.079333,
+    "emulators": []
+  },
+  "released": "2026-11-08T00:02:39.744006+00:00",
+  "release_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1794096159.6583593,
+    "emulators": []
+  },
+  "next_request": {
+    "owner": "fsim-pingo",
+    "task": "PINGO-071-image09",
+    "purpose": "Frozen consumer09 one JIT90tick closed-image exact final picture; existing single profile restored; 600s80C512MiB64MiB boost0 first-failure",
+    "profile": "/home/smith/Agon/mystuff/fsim/.emulator/pingo-vdplet-flight",
+    "notify_thread": "01a11ddb-2f53-7700-b39f-eecc801e14b0",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "11246641378e",
+    "requested": "2026-11-08T00:01:35.467998+00:00"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "all_sections_different": {
+    ".debug_info": [
+      {
+        "flags": 0,
+        "addr": 0,
+        "bytes": 11864654,
+        "type": 1,
+        "sha256": "392861de69384e65965ba4757c891de65e56dacf767410200acbb0f25acc9210"
+      },
+      {
+        "flags": 0,
+        "addr": 0,
+        "bytes": 11864654,
+        "type": 1,
+        "sha256": "c382c5d06705ee9684baac7f50610476fd06d56be0a0053d272ead6ab6526d96"
+      }
+    ],
+    ".debug_line": [
+      {
+        "flags": 0,
+        "addr": 0,
+        "bytes": 3843767,
+        "type": 1,
+        "sha256": "0803d7f80dfaff19236ed008ce81555137027316e4f61dbf12102fa647f1f159"
+      },
+      {
+        "flags": 0,
+        "addr": 0,
+        "bytes": 3843764,
+        "type": 1,
+        "sha256": "2752baf9d319e69232175f77be3429c72915271728fc10ea5be9f4652889c4f4"
+      }
+    ],
+    ".debug_str": [
+      {
+        "flags": 48,
+        "addr": 0,
+        "bytes": 2439399,
+        "type": 1,
+        "sha256": "5cf8e556c519d5fc151ac18a54952e198da700c374523e09176765004dbed0b7"
+      },
+      {
+        "flags": 48,
+        "addr": 0,
+        "bytes": 2439390,
+        "type": 1,
+        "sha256": "50ee7c796c16034215b0e761412d3e0a5be29546c3616a3d1e91e2d12abe675d"
+      }
+    ]
+  },
+  "all_allocated_equal": true
+}

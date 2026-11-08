@@ -1,0 +1,7 @@
+[  2115][E][esp32-hal-misc.c:143] disableCore1WDT(): Failed to remove Core 1 IDLE task from WDT
+Agon Eirene UART0 MOS Version 3.1.0 RC 3 RFC25 + startup fix
+
+RX005 COUNTED RETURN TRIAL
+Allow less than two minutes. A stall is FAIL; report the last case.
+VDPL ERROR op=8 status=3
+

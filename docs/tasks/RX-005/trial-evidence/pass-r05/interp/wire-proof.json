@@ -1,0 +1,10 @@
+{
+  "counted_frames": 32,
+  "counted_payload_bytes": 2397,
+  "callbacks": 30,
+  "genuine_key_packets": 2,
+  "foreground_work": 14027,
+  "wire_bytes_through_end": 2882,
+  "uart_counter_scope": "Lifetime through fixture final same-IER write; startup included",
+  "wire_scope": "Through ordered GP34 cleanup; later CLI tail retained but not qualified"
+}
