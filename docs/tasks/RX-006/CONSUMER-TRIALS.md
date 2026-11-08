@@ -170,3 +170,13 @@ budgets, never restamp/extend. Wake/confirm the consumer is ready before the
 final installed-state observation; owner should account for delivery time and
 obtain a genuine new observation only within the original admitted margin. No
 app/firmware change or extra case selected.
+
+The old Rally host runner hardcodes requestcaeae, so a new real FIFO ID cannot
+pass it. UART selected only the necessary isolated host admission change: required
+explicit expected-request binding checked against the actual handoff, with new
+runner/kit identity and stopped argv bound to the new reservation. Old runner,
+kit and135 evidence remain unchanged. Focused wrong/old request refusal controls
+are sufficient; no app/SD-file/firmware/physical-case change. The agreed
+PREPARE-DISPATCH/actualREADY sequence precedes the owner's final genuine fresh
+observation. Rally may finish this concrete preparation and requeue normally
+without another UART signoff unless a material conflict appears.
