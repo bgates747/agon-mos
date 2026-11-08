@@ -1,19 +1,19 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTUAL128 CLOSED INSTALLATION UNRUN; EXTENDER RESTORATION IN PROGRESS.**
+**ACTUAL128 CLOSED UNRUN, EXACT ORIGINALS RESTORED AND RELEASED.**
 The receiving EMOS and native VDP readbacks matched. The corrected bootstrap
 passed, including four retained display-observation timeouts. The original
 360-second setup deadline then stopped the final read-only listener-file check.
-No consumer handoff, fixture invocation or benchmark occurred. Extender alone
-resolves the pending read and restores the exact incoming firmware/state before
-release. See [actual128 evidence](actual128-install/README.md).
+No consumer handoff, fixture invocation or benchmark occurred. Extender resolved the pending read, restored the exact incoming firmware/state
+and released at09:34:48UTC November8; all actors stopped and old token invalid. See [actual128 evidence](actual128-install/README.md).
 
 Actual123 likewise closed UNRUN, fully restored and released; its separate
 [bootstrap failure and closure](actual123-install/README.md) remain historical.
 Request `ccb5dab78a89` obtained actual128 admission; it is not still queued.
 The executed [r02 plan](OLIMEX-R02.md) retains its original360-second limit.
-A separately frozen future setup-budget correction is proposed, without changing
-this stopped attempt or reducing the consumer/cleanup allowances.
+The new [r03 preparation](OLIMEX-R03.md) selects540s setup without changing
+this closed attempt or reducing consumer/cleanup allowances. Extender is preparing
+its request-local source binding; no new reservation or target access yet.
 
 The matched app `0208015a8a94e345`, receiving EMOS `171c7880` and producer
 `7d09dfea` remain unchanged. Brandon corrected the premature source-review-only
