@@ -1,0 +1,143 @@
+{
+  "epoch": 1794144032.320276,
+  "original_installer": {
+    "chunk_id": "a11081",
+    "wall_time_seconds": 3.672255793,
+    "exit_code": 0,
+    "original_token_count": 25,
+    "output": "{\"label\": \"native\", \"pid\": 1946544, \"returncode\": 0, \"joined\": true, \"seconds\": 232.09420084953308}\n",
+    "session": 18235
+  },
+  "restoration_tool": {
+    "chunk_id": "d6266c",
+    "wall_time_seconds": 2.4185e-05,
+    "exit_code": 0,
+    "original_token_count": 18,
+    "output": "Same139 exact native-FIRST/a25f restoration and fresh handback complete\n",
+    "session": 69100
+  },
+  "consumer_stopped": {
+    "epoch": 1794143723.5458758,
+    "owner": "rally",
+    "request": "19e9824cf0fe",
+    "generation": 139,
+    "lease": "69f508ffcf8245d0aa332f81e1a5329c",
+    "all_target_access_stopped": true,
+    "all_owned_children_joined": true,
+    "no_pending_commands": true,
+    "original_tool_exit_code": 0,
+    "original_tool": {
+      "tool": "exec_command",
+      "session_id": 4514
+    },
+    "actor": {
+      "epoch": 1794143561.6796875,
+      "pid": 1947147,
+      "ppid": 1750,
+      "pgid": 1947147,
+      "start": "40252709",
+      "boot": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+      "argv": [
+        "/Agon/mystuff/agon-dev-env/.venv/bin/python",
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+        "--kit",
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+        "--handoff",
+        "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/consumer-handoff.json",
+        "--request",
+        "19e9824cf0fe",
+        "--lease",
+        "69f508ffcf8245d0aa332f81e1a5329c",
+        "--url",
+        "http://192.168.0.20",
+        "--out",
+        "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139"
+      ],
+      "tool_handle": {
+        "tool": "exec_command",
+        "session_id": 4514
+      },
+      "registration": "Immediately AFTER original launch; actual native live process and self-summary inspected",
+      "request": "19e9824cf0fe",
+      "generation": 139,
+      "lease": "69f508ffcf8245d0aa332f81e1a5329c"
+    },
+    "summary": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/summary.json",
+    "original_stopped_record": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/consumer-stopped.json",
+    "no_new_consumer_result_claim": true
+  },
+  "all_registered_children_joined": true,
+  "original_closure": {
+    "all_registered_children_joined": true,
+    "children": [
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/flash-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/flash-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/verify-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/verify-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/stage-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/stage-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/read/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/read/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/write/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/write/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/chip/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/owner-install/native-install/chip/child-terminal.json",
+        "closed": true
+      }
+    ]
+  },
+  "cleanup_closure": {
+    "all_registered_children_joined": true,
+    "children": [
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/native-restore/independent-read/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/native-restore/independent-read/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/native-restore/write/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/native-restore/write/child-terminal.json",
+        "closed": true
+      }
+    ]
+  },
+  "actual_char_ports": [
+    {
+      "port": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+      "resolved": "/dev/ttyUSB0",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "port": "/dev/serial/by-id/usb-Espressif_USB_JTAG_serial_debug_unit_E8:F6:0A:E2:E1:FE-if00",
+      "resolved": "/dev/ttyACM0",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "all_target_access_stopped": true,
+  "no_pending_commands": true
+}

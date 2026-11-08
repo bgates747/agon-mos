@@ -1,14 +1,10 @@
 # MOS TODO
 
-RX-006 [ ] **ALL TESTS PASS; FINAL139 RESTORATION PENDING.** Own actual132
-passes10sizes/36cells/witness/normal return and is restored/released.6502 actual136
-passes exact40+512B/69->2 requests/callbacks/normal return, usefulnessYES and
-exact restoration/release. Rally actual139 passes exact584B exports/292->3
-requests/30->6 coarse MOS counts/normal return and usefulnessYES. All selected
-testing is satisfied; no further run/build/tuning/game port. Extender alone
-completes139 exact restoration/fullhandback/release, then close goal and report.
-[Current result](docs/tasks/RX-006/RESULT.md),
-[Rally evidence](docs/tasks/RX-006/consumer-dispatch/rally-actual139/RESULTS.md).
+RX-006 [x] **COMPLETE.** Own ten-size synthetic suite and selected6502/Rally
+real-code trials pass; both owners judge the method useful/simpler. All exact
+restorations/full handbacks/releases complete, final139 at13:20:32UTC. All actors
+stopped, no token retained. No further test/tuning selected.
+[Final result](docs/tasks/RX-006/RESULT.md).
 
 RX-005 [ ] **FIRST CONSOLE8 HARDWARE SUITE PASS; REVIEW BEFORE CONSUMER PILOT.**
 R0067/build9c72616d7f4a4ef7 passes every synthetic case0..512B, guards, discards,

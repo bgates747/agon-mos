@@ -221,3 +221,11 @@ judges useful/simpler; no more runs/tuning. One fixed-order export measured
 wire-rate/stable-throughput claim. [Retained evidence](consumer-dispatch/rally-actual139/RESULTS.md).
 All selected testing now passes; actual139 exact owner restoration/fullhandback/
 release is the sole remaining closure before completing the goal.
+
+Final closure: Extender restored actual139 native85f9 FIRST/full independent
+readback, original a25f/full ROM, fresh complete handback and joined all actors;
+normal release13:20:32.519644UTC. UART independently rehashed the ROM and checked
+release/native/actor receipts. [Closure](consumer-dispatch/rally-actual139/CLOSURE.md).
+Both selected consumers and the own synthetic suite are complete. Stop this
+goal; no further cases, tuning or migration. No access/token retained, next
+Mech94cf remains subject to normal fresh admission.

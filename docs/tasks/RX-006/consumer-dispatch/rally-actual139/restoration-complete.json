@@ -1,0 +1,12 @@
+{
+  "epoch": 1794143997.6257439,
+  "original_consumer_pass": true,
+  "one_selected_helper_only": true,
+  "no_replay": true,
+  "native85f9_restored_FIRST": true,
+  "native_full_readback": true,
+  "exact_a25f_full_readback": true,
+  "actual139_helper_evidence_preserved": true,
+  "final": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/final/fresh.json",
+  "all_registered_children_joined": true
+}

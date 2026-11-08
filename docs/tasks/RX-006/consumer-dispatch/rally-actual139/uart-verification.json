@@ -22,6 +22,11 @@
   "group_empty": true,
   "children_joined": true,
   "practical_judgment": true,
-  "restoration_pending": true,
-  "additional_tests_selected": false
+  "restoration_pending": false,
+  "additional_tests_selected": false,
+  "release_utc": "2026-11-08T13:20:32.519644+00:00",
+  "restored_ROM_independently_rehashed": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+  "native_full_prefix_owner_verified": "85f9cf31219d679cffef48029d736331a3a3dfc78511d19d48a04cd2bd6a74de",
+  "owner_all_actors_joined": true,
+  "owner_handback_checks_pass": true
 }

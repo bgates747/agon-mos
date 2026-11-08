@@ -1,4 +1,15 @@
-# RX-006 — Bounded bidirectional transport feasibility goal
+# RX-006 — Completed bounded bidirectional transport goal
+
+**COMPLETE, November 8, 2026.** Own actual132 and both selected real consumer
+trials (6502 actual136, Rally actual139) pass, with affirmative usefulness
+judgments. All exact restorations, fresh handbacks and normal releases are
+complete. Final139 release13:20:32 UTC; all actors stopped, no access retained.
+No further testing, tuning or game migration is selected.
+[Final result](RESULT.md), [Rally closure](consumer-dispatch/rally-actual139/CLOSURE.md).
+
+The chronological task and amendments below preserve prior scope and then-current
+status; the completion summary above supersedes their pending descriptions.
+
 
 **ACTUAL132 COMPLETE SYNTHETIC HARDWARE PASS.** Corrected kit6d467b51 with
 unchanged app0208015a/EMOS171c/VDP7d09 passes all ten sizes, all36 benchmark
@@ -34,7 +45,7 @@ pass; any target action still needs clean predecessor handback, separate normal
 FIFO and Extender component ownership. UART edits no game code. Stop once
 these finite trials and concrete usefulness judgments suffice, without tuning.
 
-## All selected testing now passes; final handback pending
+## Final selected testing and handback complete
 
 Rally actual139 passes the real retained exporter: both584B outputs exactly
 match input,292 old READ16 requests versus3 counted pulls256/256/72, three
@@ -44,9 +55,9 @@ tuning is selected. Its one ordered complete-export observation is30 versus6
 coarse MOS counts, not calibrated CPU, wire rate or game FPS.
 [Evidence](consumer-dispatch/rally-actual139/RESULTS.md).
 
-Own132 and6502 actual136 are already restored/released. Actual139 consumer is
-stopped and Extender alone completes exact restoration/fresh full handback and
-normal release. Once that receipt is verified, mark the goal complete and stop.
+Own132,6502 actual136 andRally actual139 are restored/released. UART verified
+the final owner receipt, exact ROM readback and joined-actor/fullhandback records.
+The goal is complete and stopped.
 No additional builds, cases, consumer ports or optimization are required.
 
 ## Reopening after Brandon's correction
@@ -177,12 +188,12 @@ Extender test-appliances/test-execution/bench constraints, fresh checkout/assert
 finite monitoring, exact restoration and prompt/neutral input handback. Resource
 permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 
-## Completed source review and remaining hardware work
+## Completion checklist
 
 - [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
       no new VDP build or large-reply feature is needed. Extender has qualified
       the temporary receiving composition and reviewed the whole fixture;
-      actual installation readbacks passed, but no consumer handoff or test occurred.
+      subsequent actual132/136/139 installation, handoff and tests all passed.
 - [x] Collate Rally and 6502 affirmative source reviews, source/artifact hashes,
       simplifications, caller requirements and evidence limits.
 - [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.
@@ -200,8 +211,8 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
       with full return/witness/listener (actual132); preserve129 wrapper failure.
 - [x] Finish exact original firmware/state restoration and normal handback132;
       released11:13:34UTC, both retained readbacks independently rehashed.
-- [ ] After the own hardware pass, guide selected consumer owners through small
+- [x] After the own hardware pass, guide selected consumer owners through small
       actual in-code trials using measured findings; preserve each owner lane
       and normal bench scheduling. Source reviews alone do not complete this.
       [Conditional trial scope](CONSUMER-TRIALS.md) keeps those checks bounded.
-- [ ] Report attributable hardware evidence and limits, then stop without tuning.
+- [x] Report attributable hardware evidence and limits, then stop without tuning.

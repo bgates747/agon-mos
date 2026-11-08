@@ -1,0 +1,203 @@
+{
+  "owner": "rally",
+  "task": "RX6-HLP-physical02",
+  "purpose": "Same entirely uninvoked584B actual Rally exporter; corrected sessionREADY-before-observation and explicit newrequest host binding; one control/count case, unchanged app, no135replay, normalFIFO behind protected successors",
+  "plan": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/OPERATING-R02.md",
+  "notify_thread": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "19e9824cf0fe",
+  "requested": "2026-11-08T12:13:42.841144+00:00",
+  "lease": "69f508ffcf8245d0aa332f81e1a5329c",
+  "generation": 139,
+  "granted": "2026-11-08T13:05:23.351223+00:00",
+  "phase": "consumer",
+  "entry_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794143123.2854211,
+    "observer": "linux-extender",
+    "lease": null,
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 59118944,
+        "session": 2501897380,
+        "sequence": 58,
+        "emitted": 120,
+        "accepted": 120,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389846019
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 3001742989,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/source-preparation.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/fsim-p071-stop37-r01/released.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/exchange/vars.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/exchange/callback.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/exchange/backend.bin"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Retained unchangedd9b; no P4 firmwarewrite in137.",
+      "emos_rom_sha256": "Retained137 fulla25f readback; no firmware write in138.",
+      "native_vdp_sha256": "Native unchanged137, exact5d657 from136full85f9prefixrestoration/readback with outer12288untouched/8519lineage.",
+      "startup_sha256": "Fresh whole45B setup-only read/compare unchanged in138 reconciliation.",
+      "listener_sha256": "Fresh whole24753B canonical listener read/compare unchanged in138 reconciliation."
+    },
+    "disposition": "Fresh Rally physical02 admission after actual138 refused original dispatch BEFOREtargetIO and cleanlyreleased;134full8519 then13685f9prefixFIRST/readback/untouchedsuffix and137/138nativeunchanged provenance retained. Pinned app595f73c2/hostkit and exacttemporary171c+7d09 source closure verified. Extender alone installs exactEMOS/fullROM and nativeapp0/preservedprefix/fullreadbacks then maintainedmatchedbootstrap and freshactualCLI/rawmode0/callback0/Legacy0/wholefiles/neutral/offlineidle/freeUSB/joinedhandoff. No helper/game/timer/P4/boot/table/OTA/app1/startup/listenerwrite or replay. Original1800whole/540owner/420consumer/120app/600cleanup/min1020handoff, exactnative85f9prefixFIRST/a25f/fullreadbacks/fullhandback/release. Outer12288 untouched/knownfull8519 retained, no redundantbackup. One retained584B originalREAD16/counted helper pair only after actualstoppedhandoff, no newrace/FPS/CPUclaim. SDmounted.",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Sole stopped no-I/O return reconciliation requested by FSIM"
+  },
+  "released": "2026-11-08T13:20:32.519644+00:00",
+  "release_observation": {
+    "schema": "olimex-bench-observation-v1",
+    "bench": "olimex",
+    "epoch": 1794143997.623977,
+    "observer": "rally",
+    "lease": "69f508ffcf8245d0aa332f81e1a5329c",
+    "checks": {
+      "no_workload": true,
+      "no_transfer": true,
+      "no_serial_readers": true,
+      "no_reset_holders": true,
+      "cli_verified": true,
+      "input_ready_neutral": true,
+      "listener_offline": true,
+      "staged_job_idle": true,
+      "restoration_verified": true
+    },
+    "components": {
+      "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+      "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+      "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+      "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+      "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+    },
+    "state": {
+      "keyboard": {
+        "protocol": 1,
+        "boot": 3280026020,
+        "session": 3654999212,
+        "sequence": 24,
+        "emitted": 52,
+        "accepted": 52,
+        "discarded": 0,
+        "pending": 0,
+        "held": 0,
+        "locale": 1,
+        "ready": true,
+        "physical_neutral": true,
+        "caps": false,
+        "reason": 1
+      },
+      "sd": {
+        "protocol": 2,
+        "online": false,
+        "pending": false,
+        "boot": 389896185
+      },
+      "worker": {
+        "protocol": 1,
+        "boot": 3011725081,
+        "id": 0,
+        "phase": 0,
+        "bytes": 0,
+        "size": 0,
+        "records": 0,
+        "error": 0,
+        "remote_status": 0,
+        "filesystem": 0,
+        "stage_us": 0,
+        "mainboard_us": 0,
+        "parallel_prepare_us": 0,
+        "parallel_active_ms": 0,
+        "parallel_handover_ms": 0,
+        "parallel_phase": 0,
+        "parallel_outcome": 0,
+        "parallel_clock_count": -1,
+        "parallel_valid_count": -1
+      }
+    },
+    "evidence": [
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/final/fresh.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/verify-rollback/ROM.bin",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/verify-rollback/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/native-restore/receipt.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/all-actors-terminal.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/consumer-stopped-return.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/complete.json",
+      "/Agon/mystuff/agon-extender/agents/bench-scheduler/rally-rx006-helper-r02/restore139/evidence/stage/provenance.json"
+    ],
+    "component_provenance": {
+      "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in139.",
+      "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+      "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+      "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+      "listener_sha256": "Fresh final complete24753B read compare unchanged."
+    },
+    "disposition": "Actual139 ONE correctedhost/unchangedRally RX006helper PASS22.1722hostseconds; both584B exactretainedbytes/witness32Bstate3phase5/RX2/callback3/chunks256+256+72/oracles/reopen/EOF/sourcecleared/mode0/normalterminalEXIT-offline. Original4514actual0/nativePID+group1947147absent/allchildrenjoined/ALLRallytargetSTOPPED. READ16 292versuscounted3 requests and coarseMOS30versus6 completeexportintervals are one orderedpair, not CPU/wire/FPS/game/robustthroughput. Same139 exactincoming85f9 native1105920prefix FIRST/full independentreadback, outer12288untouched/8519lineage; currentmatchedbootstrap,a25f/full131072readback,freshrootCLI/cursor/rawmode0/callback0/Legacy0/wholefiles/inputneutral/offlineworker/freebothUSB/allactorsjoined. No replay/newcase/tuning/clockextension/P4/startup/listenerchange; SDmounted/alltargetSTOPPED",
+    "physical_observer": "linux-extender",
+    "physical_observer_role": "Sole delegated restoration operator after original selectedRally helper stopped return"
+  },
+  "next_request": {
+    "owner": "mechagon",
+    "task": "GOAL-001-CPU-WINDOW-R04",
+    "purpose": "PREPARING one CPU window after137 UNRUN;672 complete projection16/667 dualgetter/651native/646f05c;PRE20 ENTRY3 original2400 rollback; no131/133/137 replay",
+    "plan": "/Agon/mystuff/MechAgon/docs/tasks/GOAL-001/CPU-WINDOW-NEXT-R04.md",
+    "notify_thread": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "94cf5139e671",
+    "requested": "2026-11-08T12:55:33.443963+00:00"
+  }
+}

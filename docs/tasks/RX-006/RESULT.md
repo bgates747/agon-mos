@@ -1,8 +1,9 @@
-# RX-006 — Hardware and practical consumer tests pass
+# RX-006 — Goal complete
 
-All selected tests and owner usefulness judgments pass. Only actual139 final
-exact restoration/full handback/release remains pending. No further run, build,
-game port or optimization is selected.
+All selected hardware tests and practical consumer checks pass. Each run has
+completed exact firmware restoration, fresh handback and normal release. Final
+Rally release was November 8 at 13:20:32 UTC. The goal is complete; no further
+runs, builds, game ports or optimization are selected.
 
 - **Own synthetic suite, actual132:** all ten logical sizes4,8,16,32,64,128,256,
   1024,4096,8092B and36 matched benchmark cells pass.32B state3 witness and
@@ -17,8 +18,8 @@ game port or optimization is selected.
 - **Rally retained exporter, actual139:** both584B files exactly match retained
   input;292 READ16 requests become3 counted pulls256/256/72. Counts, three
   callbacks, guards, file reopen/EOF, witness and normal return/EXIT pass.
-  Owner judges this useful and easier; no further run needed. Exact restoration
-  and release pending with Extender. [Evidence](consumer-dispatch/rally-actual139/RESULTS.md).
+  Owner judges this useful and easier; exact restoration and release complete.
+  [Restoration closure](consumer-dispatch/rally-actual139/CLOSURE.md). [Evidence](consumer-dispatch/rally-actual139/RESULTS.md).
 
 Own actual132 no-work batch observations give5.65x/6.49x/6.98x completion ratios
 at128/256/1024B versus8-byte tagged replies. Rally's single fixed-order complete
