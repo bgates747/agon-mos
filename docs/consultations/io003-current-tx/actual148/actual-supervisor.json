@@ -1,0 +1,27 @@
+{
+  "started": 1794176005.1271737,
+  "command": [
+    "/Agon/mystuff/agon-extender/.venv/bin/python",
+    "-m",
+    "experiments.io003.playable.quit_run",
+    "--kit",
+    "/Agon/mystuff/agon-6502/build/io003/playable-quit-physical-r01/kit.json",
+    "--handoff",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/io003-playable-r03/consumer-handoff.json",
+    "--lease",
+    "8d2390528cdf4a57a52f50a22b1a37a8",
+    "--url",
+    "http://192.168.0.20",
+    "--out",
+    "/Agon/mystuff/agon-6502/build/io003/playable-quit-physical-r01/actual"
+  ],
+  "parent_pid": 2051479,
+  "joined": true,
+  "resubmit": false,
+  "pid": 2051480,
+  "pgid": 2051480,
+  "status": 0,
+  "group_stopped": true,
+  "finished": 1794176358.9422612,
+  "remote_state": "See original pending controller/client journals; no cancellation/retry"
+}

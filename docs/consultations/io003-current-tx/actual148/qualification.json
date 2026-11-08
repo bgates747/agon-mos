@@ -1,0 +1,92 @@
+{
+  "scope": "IO003 combined playable physical qualification",
+  "passed": true,
+  "exact_restoration_verified": false,
+  "normal_release_verified": false,
+  "consumer_passed": true,
+  "platform": "Olimex EMOS a25f/F6",
+  "generation": 148,
+  "lease": "8d2390528cdf4a57a52f50a22b1a37a8",
+  "kit_sha256": "d3c7feaf1872b2acba48d1085df1dbae455104846bb46d7b5684c07cd510aa7e",
+  "elapsed_seconds": 353.38869327300927,
+  "oracles": {
+    "probe0": {
+      "passed": true,
+      "phase": "probe0",
+      "counters": {
+        "packets": 0,
+        "bytes": 0,
+        "completed": 0
+      },
+      "mode": 0,
+      "callback": 0,
+      "route": 0,
+      "optical_or_peak_stack_proof": false,
+      "performance_comparisons": "Unavailable, including fixed388ef52"
+    },
+    "probe1": {
+      "passed": true,
+      "phase": "probe1",
+      "counters": {
+        "packets": 1,
+        "bytes": 423,
+        "completed": 1
+      },
+      "mode": 0,
+      "callback": 0,
+      "route": 0,
+      "optical_or_peak_stack_proof": false,
+      "performance_comparisons": "Unavailable, including fixed388ef52"
+    },
+    "save": {
+      "passed": true,
+      "phase": "save",
+      "counters": {
+        "packets": 20,
+        "bytes": 9237,
+        "completed": 20
+      },
+      "mode": 1,
+      "callback": 0,
+      "route": 0,
+      "optical_or_peak_stack_proof": false,
+      "performance_comparisons": "Unavailable, including fixed388ef52",
+      "image": {
+        "listing": "10 PRINT 8675309\n20 HGR\n30 HCOLOR= 3\n40 HPLOT 10,0 TO 10,191\n50 PRINT 7123456\n",
+        "guest_file_bytes_equal": true,
+        "program_bytes": 58,
+        "changed_bytes": 166,
+        "metadata_preserved": true,
+        "all_tracks_decode": true,
+        "returned_sha256": "0487a55dc144914b9a03ddb6572341d6ef1af56ecbd7f3b60c5dd168ee49a2cc"
+      }
+    },
+    "reload": {
+      "passed": true,
+      "phase": "reload",
+      "counters": {
+        "packets": 20,
+        "bytes": 16058,
+        "completed": 20
+      },
+      "mode": 1,
+      "callback": 0,
+      "route": 0,
+      "optical_or_peak_stack_proof": false,
+      "performance_comparisons": "Unavailable, including fixed388ef52",
+      "image": {
+        "listing": "10 PRINT 8675309\n20 HGR\n30 HCOLOR= 3\n40 HPLOT 10,0 TO 10,191\n50 PRINT 7123456\n",
+        "guest_file_bytes_equal": true,
+        "program_bytes": 58,
+        "changed_bytes": 166,
+        "metadata_preserved": true,
+        "all_tracks_decode": true,
+        "returned_sha256": "0487a55dc144914b9a03ddb6572341d6ef1af56ecbd7f3b60c5dd168ee49a2cc"
+      }
+    }
+  },
+  "process_authority": "/Agon/mystuff/agon-6502/build/io003/playable-quit-physical-r01/actual-supervisor.json",
+  "all_owned_groups_absent": true,
+  "awaiting": "Extender exact restoration and normal release; C8 deployment forbidden until both verified",
+  "performance": "Functional only; incremental/fixed388ef52/native speed unavailable"
+}
