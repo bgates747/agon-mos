@@ -67,3 +67,11 @@ recorded in [reservation](completion-r04/reservation.json). At reservation
 FSIM130 owns the bench and Mech1282 precedes this request. No target access,
 grant or consumer handoff is implied. Extender has the actual request for its
 fresh runtime binding and subsequent normal admission.
+
+Request-local source binding completed file-only in
+`agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae`.
+Its11627B manifestb72a1a4aa3d2939dd57f8b167e27e51305262cc95ebb29206c856aab2fe91cd8
+and all49 inputs independently match; [bound review](completion-r04/bound-owner-review.json).
+No context, grant, runtime observation or consumer output was generated.
+Preparation is complete; normal actual admission after predecessor handbacks
+remains required. No new mailbox acknowledgement or duplicate reservation.
