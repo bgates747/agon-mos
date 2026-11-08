@@ -1,0 +1,62 @@
+{
+  "schema": "rally-rx006-host-runner-preparation-v1",
+  "status": "prepared-unrun",
+  "original_prepared_sha256": "bdcd56f31b6c3f57550955d8aecfe2728011fae08fb6ecb0f64a03d2c144e35d",
+  "files": [
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical.py",
+      "bytes": 8090,
+      "sha256": "4ff065f744aff2e7c8da0c326003570d452007c0ffa849a615fd400e50038ffb"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/check_runner.py",
+      "bytes": 6970,
+      "sha256": "81fe2dbeb659731d870cef28444ce02ccb6cd33fbf78cd0684e7c38ef5cf3340"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT.json",
+      "bytes": 5963,
+      "sha256": "3c0503dfcf4b34bbd9079d000a9c165e1c67397c7a010f1219937778e2d25956"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-PLAN.md",
+      "bytes": 1776,
+      "sha256": "1d81aaa1f38b07d77c02d38c699c167e4e1161c1624c2b277d162a29bc425401"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-PINS.json",
+      "bytes": 1137,
+      "sha256": "a097bfee529fcc854f194073e9a5f7d8c6606ef03eacae65560b9228f825861f"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-READINESS.md",
+      "bytes": 4321,
+      "sha256": "eea04c6b889f0f90dcabbdc13dd19cf61347c96521610aa40bc3c0eebe1c009a"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/runner-check01/result.json",
+      "bytes": 6890,
+      "sha256": "3392917abd35ce59557361dd90c5f0b9b9bf24770ab9486b647537ecac80905c"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/runner-release.json",
+      "bytes": 3210,
+      "sha256": "e6d184b1ce65673f21842a361a30c50528c562bcbea34ec801000c2342dea0fe"
+    }
+  ],
+  "argv_template": [
+    "/Agon/mystuff/agon-dev-env/.venv/bin/python",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical.py",
+    "--kit",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT.json",
+    "--handoff",
+    "ACTUAL_OWNER_HANDOFF",
+    "--lease",
+    "ACTUAL_CURRENT_TOKEN",
+    "--url",
+    "ACTUAL_CONTEXT_ORIGIN",
+    "--out",
+    "FRESH_PHYSICAL_RECEIPT_DIRECTORY"
+  ],
+  "actor_closure": "One foreground Python, in-process SDK clients, synchronous bounded assert-owner and analyzer children; actual launcher joins original and all owned children before custody return"
+}

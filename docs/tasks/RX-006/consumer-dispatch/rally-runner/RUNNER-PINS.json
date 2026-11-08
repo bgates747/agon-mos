@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/rx006/run.py",
+      "bytes": 7452,
+      "sha256": "9cc5e8922ab1a1295a935081754bad7e6890f60b2f5de330a165ce87ede1577c"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/rx006/check_runner.py",
+      "bytes": 5886,
+      "sha256": "15a9332881acb45c57c62739728a5960724498ac7d598104ce5d6923cd7b59aa"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/sdcard.py",
+      "bytes": 19583,
+      "sha256": "f1cbf3e07be4b1218691a99d06df7bcf5d512d44eff2c62dc24473bb072050fa"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/sdcard_staged.py",
+      "bytes": 12231,
+      "sha256": "f7aa43bd05d62cc1bdc051d8ae569128766cb9ec95076bd1bb951063997683ef"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/hardware_validation.py",
+      "bytes": 7660,
+      "sha256": "6f83df613214f7e63b9b7f136cf5da14ad9872c5cd7a4603ea71d8234679f971"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/scripts/keyboard.py",
+      "bytes": 8822,
+      "sha256": "2bd907921d80315f9d83761213e8125527a07f849ff488e128188b0f114c6525"
+    }
+  ]
+}

@@ -135,3 +135,13 @@ owner installation/restoration budget binding and normal FIFO remain before its
 one physical trial. Proposed1200 whole/350 cleanup must be reconciled with the
 proven1800 whole/540 install/600 cleanup before freezing; never extend an active
 run or weaken restoration. No reservation, target access or physical result yet.
+
+Rally subsequently returned its concrete foreground host runner: host kit3c0503df,
+33 execution/input pins plus8 preparation files independently rehashed exactly,
+with nine retained fake-SDK controls matching expected outcomes. UART read its
+actual handoff/stage/one-EXEC/120s-wait/four-file/analyzer/EXIT/exception flow;
+[review](consumer-dispatch/rally-runner/uart-review.json). No material source
+incompatibility or additional code/build/case requested. Extender still binds
+actual fresh installation evidence, original actor registration/exit/join and
+restoration budget at Rally's normal FIFO turn. Fake controls are not hardware
+results; the consumer physical trial remains pending.

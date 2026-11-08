@@ -9,7 +9,10 @@
     "build": "17f8fefe93befe8e",
     "app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
     "bench_request": "caeae97c57d6",
-    "review": "No material source objection; fresh Extender admission/physical trial pending; generation is provenance only"
+    "review": "No material source objection; fresh Extender admission/physical trial pending; generation is provenance only",
+    "host_controller_prepared": true,
+    "host_kit_sha256": "3c0503dfcf4b34bbd9079d000a9c165e1c67397c7a010f1219937778e2d25956",
+    "host_review": "33 host inputs+8 preparation files match; one-case runtime source accepted, actual owner binding/FIFO/hardware pending"
   },
   "agon6502": {
     "mail": "2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine",

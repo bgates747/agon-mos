@@ -1,0 +1,11 @@
+{
+  "host_kit_sha256": "3c0503dfcf4b34bbd9079d000a9c165e1c67397c7a010f1219937778e2d25956",
+  "host_inputs_checked": 33,
+  "prepared_files_checked": 8,
+  "all_match": true,
+  "retained_fake_sdk_cases": 9,
+  "all_expected": true,
+  "review": "Read complete runner and handoff schema. Fresh owner evidence is checked before client import; assert-owner before each action, same two staged files/full readbacks, one EXEC,120s terminal-listener observation, four GETs/exact analyzer and EXIT only after positive oracles. No reset/replay/firmware/boot edits. Failed pending state remains for owner reconciliation. No material source incompatibility found; actual owner actor registration/original exit/join and sufficient original installation/cleanup budget remain owner bindings, not inferred by this review. No additional code/build/case requested.",
+  "target_access": false,
+  "runtime_result": null
+}
