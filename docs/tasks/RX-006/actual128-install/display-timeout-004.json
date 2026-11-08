@@ -1,0 +1,6 @@
+{
+  "epoch": 1794130024.778764,
+  "missing_read_only_sample": true,
+  "error": "URLError(TimeoutError('timed out'))",
+  "deadline_extended": false
+}

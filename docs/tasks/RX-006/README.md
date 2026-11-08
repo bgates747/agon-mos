@@ -1,23 +1,25 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTUAL123 CLOSED UNRUN: installation readbacks matched, then bootstrap
-display-status observation timed out before Agon reset.** Extender restored
-both original images, verified handback and released at07:41:35UTC November8.
-No consumer handoff or test pass is claimed. Corrected bootstrap source/controls
-are reviewed; new actual FIFO request`ccb5dab78a89` is queued under
-[r02](OLIMEX-R02.md). It still needs owner request-local closure and fresh actual
-admission; the old token/request cannot be reused.
-See [the retained installation boundary](actual123-install/README.md).
-The matched app and finite host runner are built/checked.
-Brandon corrected the premature source-review-only closure. Existing consumer
-judgments remain valid; they do not replace the requested hardware and subsequent
-consumer-code checks. No reservation existed at the earlier closure. Preserve that
-[earlier result](RESULT.md) as source-feasibility evidence, not hardware acceptance.
-Current prepared run: [OLIMEX-R01](OLIMEX-R01.md), source `7f94ea2`, final app
-`0208015a8a94e345`, matched qualified temporary EMOS `171c7880` and producer `7d09dfea`.
-Extender's whole-fixture source review is complete with no changes requested;
-all27 pinned inputs match. Fresh physical installation and handoff remain pending.
-See [the owner review record](PREPARATION-R02.md#owner-source-review-completed).
+**ACTUAL128 CLOSED INSTALLATION UNRUN; EXTENDER RESTORATION IN PROGRESS.**
+The receiving EMOS and native VDP readbacks matched. The corrected bootstrap
+passed, including four retained display-observation timeouts. The original
+360-second setup deadline then stopped the final read-only listener-file check.
+No consumer handoff, fixture invocation or benchmark occurred. Extender alone
+resolves the pending read and restores the exact incoming firmware/state before
+release. See [actual128 evidence](actual128-install/README.md).
+
+Actual123 likewise closed UNRUN, fully restored and released; its separate
+[bootstrap failure and closure](actual123-install/README.md) remain historical.
+Request `ccb5dab78a89` obtained actual128 admission; it is not still queued.
+The executed [r02 plan](OLIMEX-R02.md) retains its original360-second limit.
+A separately frozen future setup-budget correction is proposed, without changing
+this stopped attempt or reducing the consumer/cleanup allowances.
+
+The matched app `0208015a8a94e345`, receiving EMOS `171c7880` and producer
+`7d09dfea` remain unchanged. Brandon corrected the premature source-review-only
+closure: affirmative consumer reviews and earlier C8 results do not replace the
+own matched Olimex sweep and subsequent selected consumer-code trials.
+Preserve [the earlier source-feasibility result](RESULT.md) with that limit.
 
 ## Reopening after Brandon's correction
 
@@ -152,7 +154,7 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
       no new VDP build or large-reply feature is needed. Extender has qualified
       the temporary receiving composition and reviewed the whole fixture;
-      actual installation and fresh physical admission remain pending.
+      actual installation readbacks passed, but no consumer handoff or test occurred.
 - [x] Collate Rally and 6502 affirmative source reviews, source/artifact hashes,
       simplifications, caller requirements and evidence limits.
 - [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.

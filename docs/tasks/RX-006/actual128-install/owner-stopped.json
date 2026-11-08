@@ -1,0 +1,79 @@
+{
+  "epoch": 1794130074.4660132,
+  "actor": {
+    "epoch": 1794129725.7944593,
+    "pid": 1905261,
+    "ppid": 1905260,
+    "pgid": 1905260,
+    "start": "38869570",
+    "boot": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+    "argv": [
+      "agents/bench-scheduler/rx006-matched-r02-source2/install_once.py"
+    ]
+  },
+  "results": [
+    {
+      "label": "stage",
+      "pid": 1905263,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 56.81224775314331
+    },
+    {
+      "label": "flash",
+      "pid": 1905642,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 36.831048250198364
+    },
+    {
+      "label": "verify",
+      "pid": 1905861,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 27.163524627685547
+    }
+  ],
+  "no_pending_commands": true,
+  "all_children_joined": true,
+  "child_closure": {
+    "all_registered_children_joined": true,
+    "children": [
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/flash-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/flash-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/verify-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/verify-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/stage-child/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/stage-child/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/read/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/read/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/write/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/write/child-terminal.json",
+        "closed": true
+      },
+      {
+        "started": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/chip/child-started.json",
+        "terminal": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/chip/child-terminal.json",
+        "closed": true
+      }
+    ]
+  }
+}

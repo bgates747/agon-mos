@@ -1,5 +1,12 @@
 # RX006 finite matched Olimex run — corrected bootstrap r02
 
+**Executed-plan status:** actual128 stopped UNRUN at its original360s setup
+deadline after successful firmware readbacks and corrected bootstrap. Extender
+owns required restoration; no consumer handoff occurred. See
+[actual128](actual128-install/README.md). The preparation/future-tense wording
+below is retained as the executed freeze, not a current queued/admitted claim.
+Any later budget correction belongs to a separately frozen attempt.
+
 Same direct human short/long hardware-comparison goal as [r01](OLIMEX-R01.md).
 Actual123 closed UNRUN and fully restored; its token/request and namespace
 history are not reused. This is a new prepared finite attempt, not an automatic

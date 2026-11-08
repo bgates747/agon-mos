@@ -1,13 +1,15 @@
 # MOS TODO
 
-RX-006 [ ] **ACTIVE: FINISH THE REQUESTED OLIMEX SIZE SWEEP.** Brandon corrected
-the premature source-review-only closure. Final matched app0208015a/18376B and
-host runner are checked, exact temporary EMOS171c/VDP7d09 bound. Actual bench
-FIFO92f38ff2f224/actual123 closed UNRUN after bootstrap display-status timeout;
-exact firmware install/readbacks succeeded. Extender restored exact originals,
-verified handback and released. Corrected bootstrap8pins/11hostcontrols reviewed;
-new actual FIFOccb5dab78a89 queued, request-local owner closure/fresh grant needed.
-Old token invalid, no test run or timing result.
+RX-006 [ ] **FINISH THE REQUESTED OLIMEX SIZE SWEEP.** Brandon corrected
+the premature source-review-only closure. Matched app0208015a/18376B and host
+runner are checked, temporary EMOS171c/VDP7d09 bound. Actual123 closed UNRUN
+and fully restored after bootstrap timeout. Actual128/requestccb5 also closed
+installation UNRUN: both firmware readbacks and corrected bootstrap passed,
+then the original360s setup cap interrupted final listener-file verification.
+Extender alone resolves that pending read and restores/validates incoming state;
+no consumer token, app run or timing result. Separate future setup-budget
+correction proposed; no replay, live deadline extension or cleanup/test reduction.
+[Actual128 evidence](docs/tasks/RX-006/actual128-install/README.md).
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical

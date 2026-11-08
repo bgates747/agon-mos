@@ -1,0 +1,77 @@
+{
+  "scope": "Installation evidence only; consumer UNRUN; cleanup not yet certified by this snapshot",
+  "files": [
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/owner-stopped.json",
+      "copy": "owner-stopped.json",
+      "bytes": 3274,
+      "sha256": "47315695b7a1a2ede3617294e445a6f352387e77b37c82056fa3646f1eee6120"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/original-tool-terminal.json",
+      "copy": "original-tool-terminal.json",
+      "bytes": 3102,
+      "sha256": "c9a8b9b48669e973a5a12d72b91fb0cc7b1a548f26daf848096452d880854a02"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/verified.json",
+      "copy": "native-readback.json",
+      "bytes": 321,
+      "sha256": "2464e4a31fb3296c03053494e9013d5e39ea6183caae9d005e6ef23eabec9928"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/clean-bootstrap/receipt.json",
+      "copy": "bootstrap-receipt.json",
+      "bytes": 748,
+      "sha256": "0c0968f4c669a0b92780a0790895ac325fec63c10b571a92261bee756e858a50"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/verify-candidate/receipt.json",
+      "copy": "emos-verification.json",
+      "bytes": 1543,
+      "sha256": "ede91c71522a2e8c751d0e0e3f55b7d04e9808fafcdbb2c220a745e8cadfdba5"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-child/child-terminal.json",
+      "copy": "native-child-terminal.json",
+      "bytes": 125,
+      "sha256": "5171db09b9736ba61a4bc6ccbf395499998fb8417ee4b53a66ace5adeb2f364e"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/clean-bootstrap/display-timeout-001.json",
+      "copy": "display-timeout-001.json",
+      "bytes": 150,
+      "sha256": "62b9776f0dede8435d8c8a47ec62e4fffa9c92db56cecdee8e030504bef684a4"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/clean-bootstrap/display-timeout-002.json",
+      "copy": "display-timeout-002.json",
+      "bytes": 149,
+      "sha256": "a473c2e9bf1848ae9e5aaf02d282007ff9e6c99d51162dd1f29cc6d80d496860"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/clean-bootstrap/display-timeout-003.json",
+      "copy": "display-timeout-003.json",
+      "bytes": 150,
+      "sha256": "c7947b8d32e9b0405f4833d64124b54916ad7d7f7703c2bb42462301bef0354c"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/owner-install/native-install/clean-bootstrap/display-timeout-004.json",
+      "copy": "display-timeout-004.json",
+      "bytes": 149,
+      "sha256": "52e8ae02f9d491a84115a4a5263a8f055396a64d850e73ba182b5d9c0f20db77"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_04-29-12_linux-extender_rx006-actual128-owner-bound-unrun-cleanup-sixtyseven.md",
+      "copy": "2026-11-08_04-29-12_linux-extender_rx006-actual128-owner-bound-unrun-cleanup-sixtyseven.md",
+      "bytes": 1864,
+      "sha256": "d36c2f108a459d9820dc81a5883a4b2ff415f6f60486e53b8a0f3a7ac8b6c13f"
+    },
+    {
+      "source": "/Agon/mystuff/agon-dev-env/cross-agent/agentcoms/messages/2026-11-08_04-29-26_agon-mos_rx006-actual128-final-cli-deadline-observed-fifteen.md",
+      "copy": "2026-11-08_04-29-26_agon-mos_rx006-actual128-final-cli-deadline-observed-fifteen.md",
+      "bytes": 2112,
+      "sha256": "d09d9e1ee0b41e0348cee9743cb94f3950fa31d7cc8a07a66076e9763d0cd910"
+    }
+  ]
+}
