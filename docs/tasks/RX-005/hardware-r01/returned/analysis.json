@@ -1,0 +1,49 @@
+{
+  "schema": "RX005-console8-analysis-1",
+  "status": "PHYSICAL_SYNTHETIC_SUITE_PASS",
+  "report": "R0067.log",
+  "build": "9c72616d7f4a4ef7",
+  "callbacks": 30,
+  "foreground_work_iterations": 3477,
+  "keys_down_up": [
+    1,
+    1
+  ],
+  "register_failure": 0,
+  "iff_failure": 0,
+  "sizes_passed": [
+    0,
+    1,
+    2,
+    8,
+    16,
+    17,
+    127,
+    255,
+    256,
+    512
+  ],
+  "same_frozen_test_and_staged_firmware": true,
+  "metadata_matches_manual_start_correction": true,
+  "next_report": 68,
+  "source_derived_counted_frames": 32,
+  "source_derived_wire_payload_bytes": 2397,
+  "source_derived_exact_copied_payload_bytes": 1868,
+  "source_derived_deliberate_discard_payload_bytes": 529,
+  "hardware_wire_trace_captured": false,
+  "hardware_uart_error_counter_captured": false,
+  "installed_mos_crc_guard": "3933C3ED/101257-byte prefix passed before START",
+  "installed_vdp_fingerprint": null,
+  "current_autoexec_sha256": "1538b7a7343891db07dabf101465e6c11083a1bf7772e38bdf029edf4ea1077a",
+  "current_autoexec_modified_by_inspection": false,
+  "card_written": false,
+  "archive_sha256": "81375b25777bede32478b384f11bab5813d1024e2484b05394eef23c18ba0aa6",
+  "limits": [
+    "One finite manual Console8 integrity run, not sustained throughput/CPU/interrupt latency qualification.",
+    "32 frames and byte totals derive from exact passing fixture control flow; no physical wire trace.",
+    "Passing exact payload/guards and callback checks does not prove zero hardware UART errors from dedicated error counters.",
+    "VDP capability/response exercised, staged image exact; no installed VDP cryptographic readback.",
+    "SUITE PASS is durable; subsequent printed RETURN PASS/CLI return is not stored by this fixture.",
+    "Current autoexec differs from restored original; preserved without overwrite or diagnosis."
+  ]
+}

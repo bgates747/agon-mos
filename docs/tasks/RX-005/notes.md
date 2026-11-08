@@ -396,3 +396,17 @@ error, not current boot instructions. AGENTS.md now explicitly requires prior
 permission or direct request for any boot-script change and preservation of
 original comments/commands; deployment script rejects boot-script members and
 never writes autoexec. No automatic pre-firmware invocation remains.
+
+## November7 — First Console8 hardware pass
+
+Brandon returned the card after an apparent pass. UART archived the complete
+current appliance plus current autoexec read-only to both projects, verified
+archive81375b25 and every file hash, and checked full R0067 control-flow log.
+Build9c72616d7f4a4ef7 SUITE PASS, ten sizes0..512, edge cases/rearms/keys pass;
+callbacks30/work3477/keys1:1/regfail0/ifffail0. Source-derived32countedframes and
+2397payloadB include529 deliberately discarded and1868 compared after copies,
+not a hardware wire capture. Installed MOS prefix guard passed; staged VDP exact
+but installed VDP not read back. No hardware counter/CPU/throughput claim.
+Current autoexec1538b7a7 differs from restored a2e3fc48 and was preserved untouched.
+Next counter68. No new build/run/flash/deployment/game/prototype. Record physical
+PASS and stop for Brandon review before choosing the proposed Rally pilot.

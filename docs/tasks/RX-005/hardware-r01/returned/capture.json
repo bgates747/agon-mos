@@ -1,0 +1,54 @@
+{
+  "schema": "RX005-console8-return-1",
+  "volume": "AGONC8",
+  "uuid": "8658-1C23",
+  "archive_sha256": "81375b25777bede32478b384f11bab5813d1024e2484b05394eef23c18ba0aa6",
+  "archive_bytes": 1223482,
+  "card_read_only": true,
+  "files": {
+    "test/mos-uart0/R0067.log": {
+      "bytes": 887,
+      "sha256": "56f9a23a6c7f858f44d2d6d6bd91d18b068105b1e766c6df451b50e45e84f12c"
+    },
+    "test/mos-uart0/SHA256SUMS": {
+      "bytes": 623,
+      "sha256": "354d5a7756205c797e39cd578c72c51e5f625af70838ed65a8d7fe97a9566470"
+    },
+    "test/mos-uart0/deployment.json": {
+      "bytes": 1734,
+      "sha256": "b856ea06967e145d5a1623370071af3809b10e995723c6f7bca4fbadcc45f5f9"
+    },
+    "test/mos-uart0/mos-rx.bin": {
+      "bytes": 101257,
+      "sha256": "40dc3d17a4f856c329e118b0376ff26f33085ef00410a26cda5739d4396589ea"
+    },
+    "test/mos-uart0/mos-stock.bin": {
+      "bytes": 108490,
+      "sha256": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae"
+    },
+    "test/mos-uart0/next.txt": {
+      "bytes": 4,
+      "sha256": "02e04f4b3b2d87db09e591281d198db8823038d64c314fb6591dc26a6f872309"
+    },
+    "test/mos-uart0/readme.txt": {
+      "bytes": 1696,
+      "sha256": "2ce64d90af55cf1ca4f4ad87e0c4fd9eaf5f685c13cad0cb4ace22f289e73438"
+    },
+    "test/mos-uart0/test.bin": {
+      "bytes": 16036,
+      "sha256": "6f79d47e615f2b4afca146a6c4ccf62677bf5c33b53b67c2f10b6ca3a729b949"
+    },
+    "test/mos-uart0/vdp-rx.bin": {
+      "bytes": 1100320,
+      "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+    },
+    "test/mos-uart0/vdp-stock.bin": {
+      "bytes": 1077840,
+      "sha256": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f"
+    },
+    "autoexec.txt": {
+      "bytes": 441,
+      "sha256": "1538b7a7343891db07dabf101465e6c11083a1bf7772e38bdf029edf4ea1077a"
+    }
+  }
+}

@@ -2,7 +2,8 @@
 
 Brandon reviewed the both-engine synthetic PASS and on November7 authorized
 commit/push followed by deployment to the Console8 card mounted on Oryx.
-This selects one manual hardware integrity run. No consumer prototype, game
+The selected manual hardware run has now **passed as R0067**; see
+[results and raw log](hardware-r01/RESULT.md). No consumer prototype, game
 change, performance claim, release or automatic hardware flashing is selected.
 
 ## Deployed appliance and protocol
@@ -43,7 +44,8 @@ minutes including this interaction. Expected end is `RX005 SUITE PASS`, then
 this round; return the SD to Oryx afterward. A stall/FAIL is failure: retain the
 last progress line and logs, and do not rerun an uncertain live transfer.
 
-The next report is `R0067.log`; repeats allocate higher sequential numbers using
+The completed first report is `R0067.log`; next.txt is now68. Repeats allocate
+higher sequential numbers using
 `next.txt`. No unreliable wall-clock dates are used. The same tested binary is
 used unchanged; its IER snapshot is a same-value write and no hardware/model
 counter is inferred from its on-hardware report. Callback/work/key/register
@@ -80,7 +82,8 @@ is restored on the card and also preserved in the off-card archive.
   `/test/mos-uart0` appliance and its four `mos-uart0-*` history directories.
   Root autoexec is preserved too. Other card projects remain untouched.
 
-The firmware and SD deployment remain experimental; physical results are pending.
+The firmware and SD deployment remain experimental. R0067 hardware integrity
+passes; application benefit and consumer prototypes remain separately reviewed.
 
 ## Published VDP provenance received after deployment
 

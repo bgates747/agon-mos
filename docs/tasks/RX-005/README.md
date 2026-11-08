@@ -1,12 +1,12 @@
 # RX-005 — Minimal compatible bidirectional MOS/VDP transport
 
-Current status2026-11-07: Brandon reviewed the passing synthetic trial and
-selected the next manual Console8 check. The exact tested MOS/VDP/fixture is
-deployed to AGONC8 at `/test/mos-uart0`. Original `autoexec.txt` is restored
-exactly; invoke `test` manually after both firmwares are installed.
-Read [hardware-r01.md](hardware-r01.md) for the flash order, key step and report
-pins. Emulator qualification remains in [REVIEW.md](REVIEW.md). Physical results
-are pending; consumer prototype distribution remains gated on Brandon's review.
+Current status2026-11-07: first Console8 hardware run **R0067 PASSES** the same
+finite synthetic suite as both Flexe engines. Read the [physical result and raw
+log](hardware-r01/RESULT.md). Exact app/staged firmware hashes match; no new
+firmware, boot-script or card change was performed during inspection. Stop for
+Brandon's review before consumer prototype distribution or an application pilot.
+The [manual protocol](hardware-r01.md) and [emulator review](REVIEW.md) retain
+separate evidence and limitations; no calibrated performance result is claimed.
 
 Current authorization2026-11-07: Brandon selected a first synthetic trial and
 explicit goal. UART coordinates and owns MOS/test-fixture changes; VDPlet owns

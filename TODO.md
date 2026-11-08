@@ -1,16 +1,14 @@
 # MOS TODO
 
-RX-005 [ ] **CONSOLE8 HARDWARE TEST STAGED; RESULTS PENDING.** Brandon reviewed
-both-engine synthetic PASS and selected manual hardware qualification. Exact
-MOS40dc3d17/VDP7d09dfea/test6f79d47e deployed to AGONC8 UUID8658-1C23,
-`/test/mos-uart0`; original autoexec preserved, next reportR0067. Flash VDP first,
-then MOS; invoke `test` manually afterward, one A press/release at the prompt.
-Old appliances/reports/boot script
-archived and verified off-card. MOS source8db14b2 and synthetic evidence72528f7
-pushed on isolated experimental branches. No hardware PASS, consumer prototypes,
-release or new protocol expansion claimed. Inspect the returned report before
-choosing the proposed first consumer pilot.
-[Hardware protocol](docs/tasks/RX-005/hardware-r01.md),
+RX-005 [ ] **FIRST CONSOLE8 HARDWARE SUITE PASS; REVIEW BEFORE CONSUMER PILOT.**
+R0067/build9c72616d7f4a4ef7 passes every synthetic case0..512B, guards, discards,
+BUSY/invalid/source-error/rearm and real keys. Callbacks30/keys1:1/regfail0/ifffail0,
+foreground progress3477. Source-derived32frames/2397payloadB include529B deliberate
+discard and1868 exact copied-byte comparisons. Exact app/staged firmwares retained;
+no hardware UART error-counter/throughput/CPU claim. Reports archived/verified on
+Pi/Oryx; next68. Card and current autoexec read only. No consumer prototype or game
+change; proposed Rally export pilot awaits Brandon review.
+[Hardware result](docs/tasks/RX-005/hardware-r01/RESULT.md),
 [review and patch](docs/tasks/RX-005/REVIEW.md).
 
 U1-001 [ ] Develop the delegated application-space UART1 async/OTIRX driver,

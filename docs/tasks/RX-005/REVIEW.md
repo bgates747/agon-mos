@@ -1,14 +1,15 @@
-# RX-005 — Emulator-qualified counted return trial
+# RX-005 — Counted return trial with first hardware pass
 
 Applications can now ask the VDP for a block of data and receive it directly
 into their own RAM while doing other work. The first trial passes with actual
 MOS and VDP firmware running in Flexe. Existing keyboard events still arrive;
 bulk data does not have to masquerade as key events. No games were changed.
 
-Brandon reviewed this result and selected manual Console8 qualification on
-November7. The exact test package is now [staged on the card](hardware-r01.md).
-No consumer prototype has been distributed, hardware run performed or release
-created. The results below remain emulator evidence.
+Brandon reviewed the emulator result and completed the selected manual Console8
+run. [R0067 hardware PASS](hardware-r01/RESULT.md) confirms all synthetic cases
+with the same binaries. The detailed results below remain emulator evidence;
+the linked hardware report records its own limits. No consumer prototype,
+application change or release follows automatically.
 
 ## What passed
 
@@ -110,5 +111,5 @@ still uses the old small management adapter, while counted bulk data is separate
 The first producer uses the ordinary VDP route with its async worker disabled.
 
 All leases are released and no target process is held. Brandon has selected the
-manual Console8 test; see hardware-r01.md. Protocol expansion and consumer
-prototypes still require the next review after physical results.
+manual Console8 test, now passed as R0067; see hardware-r01/RESULT.md. Protocol
+expansion and consumer prototypes still require the next review.
