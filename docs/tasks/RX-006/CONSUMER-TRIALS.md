@@ -93,8 +93,8 @@ with no build/run/prototype request, in durable mails
 `2026-11-08_00-28-22_agon-mos_rx006-conditional-6502-code-trial-eight`.
 Immediate Pi-native alerts were accepted (`turn/start` for Rally and
 `turn/steer` for6502); acceptance does not prove either owner read or agreed.
-Rally has returned the concrete584B outline above;6502 feedback remains pending.
-Own hardware pass remains prerequisite.
+Rally returned the concrete584B outline above; the later selected-execution
+section records subsequent own-pass and consumer preparation results.
 
 ## Own pass and selected execution dispatch
 
@@ -107,8 +107,9 @@ retain exact messages and limits. Earlier planning-only gates are superseded
 for these two small isolated helper tasks by Brandon's explicit RX006 direction.
 Unrelated paused goals, current games/persistence and normal source/commit gates
 remain unchanged. Source preparation may proceed, but physical trials require
-clean132 handback, their prepared contracts and normal fresh admission. Neither
-consumer has yet returned source/build/target results in this snapshot.
+clean132 handback, their prepared contracts and normal fresh admission. Both
+consumers have now returned source/build preparation below; neither
+physical consumer trial has completed in this snapshot.
 
 Rally returned prepared RX6-HLP build17f8fefe/app16392B/595f73c2, requestcaeae97c57d6.
 UART read the complete helper/callback/26h adapter/result/batch contract and
@@ -119,4 +120,18 @@ generation field;4503 is originating state provenance and current notes now
 state that explicitly. Extender returned the concrete existing-client execution
 procedure and requested Rally pin its own foreground host controller before
 its normal turn. Current Mech133, then FSIMf7ba, precede Rally; no consumer
-physical result or grant is claimed.6502's prepared return remains pending.
+physical result or grant is claimed.
+
+6502 returned RX-001 helper18f3c207/20518B and manifest1586f6fd. UART read
+the complete client/counting branch, main/callback/assembly/descriptor decoder
+and offline oracle, then independently rehashed all37 pins;
+[review](consumer-dispatch/6502-prepared/uart-review.json). No material ABI,
+count or lifetime objection and no additional build/case requested. Historical
+40B descriptor+512B payload use real BRClient/persist_decode ordering,69 old
+pulls versus2 counted pulls, without game/persistence/ACK changes. Legacy ERROR
+or timeout leaves counted_live and owned storage/code intact; only positive MOS
+terminal state permits local retirement. Fresh consumer-specific host controller,
+owner installation/restoration budget binding and normal FIFO remain before its
+one physical trial. Proposed1200 whole/350 cleanup must be reconciled with the
+proven1800 whole/540 install/600 cleanup before freezing; never extend an active
+run or weaken restoration. No reservation, target access or physical result yet.

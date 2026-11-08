@@ -15,8 +15,16 @@
     "mail": "2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine",
     "notification": "turn/start accepted 11:12:24UTC; not proof of reading",
     "scope": "One isolated real bulk-read adapter descriptor40+block512 trial; no current local persistence or machine port",
-    "source_prepared": false,
-    "target_executed": false
+    "source_prepared": true,
+    "target_executed": false,
+    "app_sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
+    "manifest_sha256": "1586f6fd176d1a12b41d9cfac8da3cf875fa0bac279d6e1982e8ffee7d92aa01",
+    "bench_request": null,
+    "review": "No material source objection; host controller/owner budget binding, normal FIFO and physical trial remain.",
+    "review_mail": "2026-11-08_06-31-40_agon-mos_rx006-6502-prepared-source-review-return-ten",
+    "owner_mail": "2026-11-08_06-31-56_agon-mos_rx006-6502-helper-source-reviewed-owner-coordinate-twentyeight",
+    "review_notification": "turn/start accepted11:31:53UTC; not proof of reading",
+    "owner_notification": "turn/steer accepted11:32:09UTC; not proof of reading"
   },
   "target_custody": "Actual132 restored/released11:13:34UTC; all target access stopped; Mech596 canonicalnext requiresfreshgrant, no consumertrial grant"
 }

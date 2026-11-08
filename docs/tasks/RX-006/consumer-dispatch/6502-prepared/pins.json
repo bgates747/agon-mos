@@ -1,0 +1,161 @@
+{
+  "task": "RX-001",
+  "stage": "Native/build qualified ONLY; physical UNRUN, no reservation or target grant",
+  "app": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
+  "app_bytes": 20518,
+  "witness_address": 282712,
+  "witness_bytes": 32,
+  "static_heap_to_stack_gap": 433295,
+  "pins": {
+    "/Agon/mystuff/agon-6502/experiments/rx001/Makefile": {
+      "bytes": 195,
+      "sha256": "513fca64607cb06692227d02fe9ee8e3239951682e9e6af55af7347fb8eb3c57"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/test_counted.c": {
+      "bytes": 2391,
+      "sha256": "584d1e66497c779d882463610ff69097f5a89c9375aaf7fcbe0871c58f67d75c"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/build.py": {
+      "bytes": 3607,
+      "sha256": "ac9460058b2e7f7aae05fb623fcf1c605829846e8f7e5aa6d01ed95bc443512f"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/test_client.control": {
+      "bytes": 8027,
+      "sha256": "f0866dff8d4ebd1df80c49fa5c69e26d65cd15ca4af4253c8a965ce0a82c310c"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/persist.h": {
+      "bytes": 2170,
+      "sha256": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/client.c": {
+      "bytes": 5288,
+      "sha256": "435eb9c36cfa42bc0fdc04f6fdfcdd7bf5201ec431b789854be41161e8b51b92"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/identity.h": {
+      "bytes": 90,
+      "sha256": "75b9854d4f102df6ebcfe714bc749f05281c073a24b6d29b2eb8ff2213f3bb62"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/main.c": {
+      "bytes": 7716,
+      "sha256": "2f9bda927acb349ef125deb77953f8448009a31965a9bad94fe94f8e67612129"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/packets.src": {
+      "bytes": 905,
+      "sha256": "b70fe8b39f83d7668c311a3617f8c1a753168c348bf0f499b87e65735f9c237d"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/input.h": {
+      "bytes": 8633,
+      "sha256": "9713d8bf5e16f56a6093053ed173a2585827b464d2a01c13dbe24e79794f23dc"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/receive.src": {
+      "bytes": 778,
+      "sha256": "e306a1f15fe7c06236c836079ee308e646205d1865f84dfad6e4b1e6c99f9b07"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/persist.c": {
+      "bytes": 2563,
+      "sha256": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/client.h": {
+      "bytes": 2621,
+      "sha256": "a767133e0f624c73c697759d91aca3e143d8aa2af0b1e043d4c81b6b6b8a8bb7"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/src/rom_crc.h": {
+      "bytes": 496,
+      "sha256": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/input-r01/source.bin": {
+      "bytes": 2560,
+      "sha256": "1ef887909c5cf88af8edda25f361a5ec29c7c2043c3ef868a1b6a32548fc8c37"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/input-r01/descriptor.bin": {
+      "bytes": 40,
+      "sha256": "350a865fb4aace33ca87bc222e34d38d4bad2dc7b0f2e9767f8fe9bd0a84c27e"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/input-r01/payload.bin": {
+      "bytes": 512,
+      "sha256": "ba1c02b1f7d42b0c55c8d648c71757979ef502c255430a04456cf37f7fa5bfc2"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/input-r01/provenance.json": {
+      "bytes": 12621,
+      "sha256": "c85da24f3e61f2ab158325d2c77a8a86401ede233ff199311c5d7bcc839866ba"
+    },
+    "/Agon/mystuff/agon-6502/docs/tasks/RX-001.md": {
+      "bytes": 4800,
+      "sha256": "e511284aef558bef3a86ed910dc98c3ccb91cf179077aeba6eed5b127ab97a64"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/authority/human-source.json": {
+      "bytes": 1239,
+      "sha256": "c3b0a03683c1116969c4cfb4e9f6e4a791165e567e2ce19bef42ad89283c1337"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app/mos_app.c": {
+      "bytes": 29298,
+      "sha256": "470d59f6f2b3d2f8a2b26bde8aac7746e61ee050c305572bf2b665ddd70118a7"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.c": {
+      "bytes": 4113,
+      "sha256": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8"
+    },
+    "/Agon/mystuff/agon-6502/build/cpu003/playable-r03/app-sources/client.h": {
+      "bytes": 2075,
+      "sha256": "94141f9eefeb74e1b2674820e80e975f9360d1ecb21d69890916ad3bf2f34e0b"
+    },
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.c": {
+      "bytes": 2563,
+      "sha256": "1db889c2e56c2ec3d959085edd5851eb80a35d2b8c2bf8ae9d084952a3500f44"
+    },
+    "/Agon/mystuff/agon-6502/experiments/vdp005/write/persist.h": {
+      "bytes": 2170,
+      "sha256": "239c74a8e42d5129d0de067d3fc95836a2a5f2d47bfc9d2f716c43b7dd032ddf"
+    },
+    "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/ROM.bin": {
+      "bytes": 131072,
+      "sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914"
+    },
+    "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/mos.elf.map": {
+      "bytes": 94310,
+      "sha256": "a8c4db045dcaa2280abe217d70e401f8b6a31d968c9b88ba4fb952d1496a7036"
+    },
+    "/Agon/mystuff/agon-vdplet/build/vdpl036-producer-r05/enabled/firmware-src/.pio/build/esp32dev/firmware.bin": {
+      "bytes": 1100320,
+      "sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087"
+    },
+    "/Agon/mystuff/eirene-mos/build/rc003/toolchain/lib/libagon.a": {
+      "bytes": 1306024,
+      "sha256": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c"
+    },
+    "/Agon/mystuff/agon-mos/experiments/rx006/fixture/src/bridge.src": {
+      "bytes": 1765,
+      "sha256": "e313c3f40cfe2eab58e41e9d76b05825d2fe4d902d7f4da70fad2ba957b5ef08"
+    },
+    "/Agon/mystuff/agon-6502/experiments/rx001/verify.py": {
+      "bytes": 1094,
+      "sha256": "b2165bc5f606c8c6a0c77acbfbc0f5f03e5b60ee05805cbc9c3f9dc8db1864b4"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/adapter-build-r04/app/bin/helper.bin": {
+      "bytes": 20518,
+      "sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/adapter-build-r04/helper.elf": {
+      "bytes": 125864,
+      "sha256": "bfe9b330a13d756cbc39af5d49ce5d0d1aa19a96d4ceea7089073e02eb9192e0"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/adapter-build-r04/helper.map": {
+      "bytes": 43192,
+      "sha256": "5078ef26d8c192729bacdea4c45b7c7a604721fcaa1ca5042dce06bf9d5ac446"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/adapter-build-r04/result.json": {
+      "bytes": 5602,
+      "sha256": "ca95c2888aa0fd1d8391f725f2bd32561d5ce421a6a0d5942b8bef942e259ea4"
+    },
+    "/Agon/mystuff/agon-6502/build/rx006/adapter-build-r04/symbols.txt": {
+      "bytes": 48722,
+      "sha256": "afe64a34f59a5a626443dc24d0ebe13e619a69139758de1fc96da4916a607650"
+    },
+    "/Agon/mystuff/agon-6502/docs/tasks/RX-001/RUN-R01.md": {
+      "bytes": 5359,
+      "sha256": "1320c849a7fac40c64b7b8626e55e4c8cd5936141adcae29476d8295a6192ea6"
+    }
+  },
+  "prior_prepared_r01": "Unpublished intermediate build; superseded by r04 actual-count reporting",
+  "current_dsk_cpu_io_frozen_inputs_unchanged": true
+}

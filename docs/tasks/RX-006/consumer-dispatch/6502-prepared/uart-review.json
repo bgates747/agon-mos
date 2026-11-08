@@ -1,0 +1,17 @@
+{
+  "manifest_sha256": "1586f6fd176d1a12b41d9cfac8da3cf875fa0bac279d6e1982e8ffee7d92aa01",
+  "immutable_pins_checked": 37,
+  "all_match": true,
+  "app_bytes": 20518,
+  "app_sha256": "18f3c20791a81b5aba6e55cb03db7b47a5837adceba1c164946991f3d0dddf3e",
+  "source_review": "No material public26h/count/callback/guard/descriptor/framing/lifetime objection for the selected one-case replay. Counted_live independently blocks teardown/reconcile/reuse after legacy ERROR or timeout. Main quarantines before transmitting again. Local pending retires only after terminal MOS result; oversize/count mismatch poison the trial. Old69 and counted2 use identical retained40B descriptor+512B payload and unchanged persist_decode. No persist_apply/ACK/game behavior exercised.",
+  "runtime_limits": [
+    "37 pins include an ELF map; mos.elf.map and canonical mos.map are distinct declared artifacts.",
+    "IRQ callback consumes no C or transport service; static storage/code remain resident on uncertainty.",
+    "Normal file/32B witness and supported CLI/listener observation required; no printerOn/VDU2.",
+    "Owner must bind consumer-specific host controller and choose realistic whole/install/cleanup budgets before freeze. Proposed1200/350 differs from proven1800/540/600; do not relax restoration or extend active runs."
+  ],
+  "additional_build_or_case_requested": false,
+  "device_access": false,
+  "target_executed": false
+}
