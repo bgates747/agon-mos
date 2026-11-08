@@ -1,8 +1,9 @@
 # MOS TODO
 
 RX-006 [ ] **ACTIVE: FINISH THE REQUESTED OLIMEX SIZE SWEEP.** Brandon corrected
-the premature source-review-only closure. Fixture/owner tuple preparation and
-actual bench FIFO reservation remain necessary; no run was queued at closure.
+the premature source-review-only closure. Final matched app0208015a/18376B and
+host runner are checked, exact temporary EMOS171c/VDP7d09 bound. Actual bench
+FIFO92f38ff2f224 is now queued and Extender notified; no grant or run yet.
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical

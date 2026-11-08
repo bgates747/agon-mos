@@ -1,10 +1,13 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTIVE again: finite Olimex sweep still required.** Brandon corrected the
-premature source-review-only closure. Existing consumer judgments remain valid;
-they do not replace the requested short/long hardware checks. Nothing is queued
-or run merely because an earlier report used the word complete. Preserve that
+**ACTIVE: actual Olimex FIFO request `92f38ff2f224` is queued.** The matched app
+and finite host runner are built/checked; no grant or hardware pass is claimed.
+Brandon corrected the premature source-review-only closure. Existing consumer
+judgments remain valid; they do not replace the requested hardware and subsequent
+consumer-code checks. No reservation existed at the earlier closure. Preserve that
 [earlier result](RESULT.md) as source-feasibility evidence, not hardware acceptance.
+Current prepared run: [OLIMEX-R01](OLIMEX-R01.md), source `7f94ea2`, final app
+`0208015a8a94e345`, matched qualified temporary EMOS `171c7880` and producer `7d09dfea`.
 
 ## Reopening after Brandon's correction
 
@@ -143,13 +146,14 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [x] Recheck all 37 supplied source/artifact pins and transfer-count arithmetic.
 - [x] Dispose of the proposed sweep honestly: initial source draft archived
       uncompiled/unrun; no passing fixture, new timing or Olimex claim.
-- [ ] Prepare/check the finite synthetic fixture against the actual owner tuple.
-- [ ] Include matched legacy keycode-carried READ_BYTES (8 bytes per reply) and
+- [x] Prepare/check the finite synthetic fixture against the actual owner tuple.
+- [x] Include matched legacy keycode-carried READ_BYTES (8 bytes per reply) and
       new counted reads of the same immutable source, verifying identical bytes.
       Aggregate complete logical pulls; report tiny cases as unresolved if the
       clock lacks resolution. Include 128/256/1024-byte comparisons. Explain
       that the legacy carrier is packet 81h, not held-key-map packet 88h.
-- [ ] Reserve the prepared Olimex run in the real FIFO and notify Extender.
+- [x] Reserve the prepared Olimex run in the real FIFO and notify Extender:
+      actual request `92f38ff2f224`, no token or target access implied.
 - [ ] Obtain actual fresh grant, perform finite short/long send/receive checks,
       resolve correctness failures, preserve results and restore/hand back.
 - [ ] After the own hardware pass, guide selected consumer owners through small
