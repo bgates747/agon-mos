@@ -180,3 +180,11 @@ are sufficient; no app/SD-file/firmware/physical-case change. The agreed
 PREPARE-DISPATCH/actualREADY sequence precedes the owner's final genuine fresh
 observation. Rally may finish this concrete preparation and requeue normally
 without another UART signoff unless a material conflict appears.
+
+Rally completed the narrow corrected host without changing app595f73c2 or either
+staged file. Host kitf2de4f3e binds new request19e9824cf0fe;13 preparation files
+and all host inputs independently rehash exactly. Twelve retained offline
+controls passed and671 was released. The [readiness snapshot](consumer-dispatch/rally-delivery-correction/r02/READINESS-R02.md)
+retains exact argv and actualREADY/final genuine observation sequence. Normal
+new FIFO is submitted; no further UART review gate or target result is implied.
+One real helper pass and exact owner handback remain required.

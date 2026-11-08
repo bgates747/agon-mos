@@ -1,0 +1,10 @@
+{
+  "owner": "rally",
+  "task": "RX6-HLP-physical02",
+  "purpose": "Same entirely uninvoked584B actual Rally exporter; corrected sessionREADY-before-observation and explicit newrequest host binding; one control/count case, unchanged app, no135replay, normalFIFO behind protected successors",
+  "plan": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/OPERATING-R02.md",
+  "notify_thread": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "19e9824cf0fe",
+  "requested": "2026-11-08T12:13:42.841144+00:00"
+}

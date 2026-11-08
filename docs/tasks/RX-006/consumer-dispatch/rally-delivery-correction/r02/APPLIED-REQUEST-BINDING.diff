@@ -1,0 +1,33 @@
+--- run_physical.py
++++ run_physical_r02.py
+@@ -18,6 +18,7 @@
+ p.add_argument("--kit", type=Path, required=True)
+ p.add_argument("--handoff", type=Path, required=True)
+ p.add_argument("--lease", required=True)
++p.add_argument("--request", required=True)
+ p.add_argument("--url", required=True)
+ p.add_argument("--out", type=Path, required=True)
+ a = p.parse_args()
+@@ -40,7 +41,7 @@
+     assert handoff[field] is True, field
+ assert handoff["callback"] == handoff["backend"] == 0
+ assert handoff["rx_pending"] is False
+-assert handoff["request"] == "caeae97c57d6"
++assert handoff["request"] == a.request
+ assert 0 <= handoff["entry_mode"] < 128
+ assert handoff["source_id_available"] == 50307
+ assert handoff["components"]["emos_rom_sha256"] == kit["emos_rom_sha256"]
+@@ -73,8 +74,11 @@
+ 
+ 
+ def own():
+-    subprocess.run([py, ctl, "assert-owner", "--owner", "rally", "--lease", a.lease],
+-                   check=True, stdout=subprocess.DEVNULL, timeout=10)
++    current = subprocess.run([py, ctl, "assert-owner", "--owner", "rally", "--lease", a.lease],
++                             check=True, stdout=subprocess.PIPE, text=True, timeout=10)
++    active = json.loads(current.stdout)
++    assert active["owner"] == "rally" and active["lease"] == a.lease
++    assert active["request"] == a.request
+     assert time.monotonic() - started < 420, "Whole consumer budget exceeded"
+     for path, checksum in kit["host_inputs"].items():
+         assert sha(path) == checksum, path

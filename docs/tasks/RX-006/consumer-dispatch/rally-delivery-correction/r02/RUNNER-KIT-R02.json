@@ -1,0 +1,58 @@
+{
+  "schema": "RX6HLP-HOST1",
+  "sd_directory": "/test/rally-rx006-hlp01",
+  "emos_rom_sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914",
+  "native_vdp_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+  "host_inputs": {
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/PREPARED.json": "bdcd56f31b6c3f57550955d8aecfe2728011fae08fb6ecb0f64a03d2c144e35d",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical.py": "4ff065f744aff2e7c8da0c326003570d452007c0ffa849a615fd400e50038ffb",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/check_runner.py": "81fe2dbeb659731d870cef28444ce02ccb6cd33fbf78cd0684e7c38ef5cf3340",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/analyze_result.py": "e66398ee71fb1e74e63e612a5611c470002b20c27e3809b43b876828a4cf6210",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-PLAN.md": "1d81aaa1f38b07d77c02d38c699c167e4e1161c1624c2b277d162a29bc425401",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-PINS.json": "a097bfee529fcc854f194073e9a5f7d8c6606ef03eacae65560b9228f825861f",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/PLAN.md": "305cde09424a26f7254aeab3dcef96132f88217e757343937853b21dd25e736e",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUN-CONTRACT.md": "33306ee26ee1fd93e4272ed4eb0e06ecdf484d03602db84f92b18c72e3c547a6",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/SELECTION.md": "1ab1193fb798060ce35fff6e044568359c0d3f0586d097b6dd0cf1abf57128c1",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/SOURCE-PINS.json": "128aafc8fd933822e9091d178e61702391156cbb06b53a2b8fbe356dde2c9539",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/check_prepared.py": "502bb59c6d141ecf9485f7f01e51eedce0135dc199f1f5e2b321701bacde48d5",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/checks.json": "dde913c9547a818dda0dc42634a954fe94c31c8f1228e6e13dc6a6002c7f9aa4",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/listing.txt": "08b0a5484df8aa62ecf099d79c62049b5090c0be6d5b5d2866470ef429166628",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/rx6hlp.elf": "45c6681977df9ccff09470736a9515f2c5e9e498dd6994c244d0bc71b44d97f3",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/rx6hlp.elf.map": "d9491b9c9f6f0eb78758ff5da9450ec9ed6ab1a5dcebb93444d4a97cfc2c7970",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/evidence/symbols.txt": "d8d50521fc902a1ad1680b7980e13dac66915d9b20519f1e1c1a5cadcb5333d2",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/Makefile": "859291771354346f245e2d6cc556ed155cf1b77c05235bad626a217117dc31c0",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/include/counted_helper.hpp": "2a9fc190d24ed960eeeafc64ab4861e7c39d29519b11599ad572c46607b0003b",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/include/identity.hpp": "6f432ecf0e3fb95f446c52be728a33d43a801ae5421cf57ebd2c340541a7739d",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/include/input.hpp": "8daa411fd7c1e98dcbfb1b43ef8bce63751961a49650ed4810b28394a0a97338",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/include/original_helper.hpp": "3d76335e557a6a0d7d7698b276fa311fe222608d713c15c41bca09851c180145",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/include/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/src/bridge.s": "ab198a8a41962b4a7c3031802e2531cc780eeae46cd5e5b068ae87df5d1a6805",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/src/callback.s": "1ca8c8c070f8e1b585a283ebfca0d3f5d21ae138d5e04b827281875a41dd4d1e",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/fixture/src/main.cpp": "9eb90fbf1d31d8507051e643980406c37014c36378d289b5e03e1671a3349554",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/kit/rx6hlp.bin": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/kit/suite.txt": "21b8d4a29a6cf19e2975f45636eb510f2d75c7df90d40c6e399c96fa6b3fb068",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/native-stats.bin": "648abfc3547bb878767f199710ef7a817f8cfc679f70edf716f30dc427e13732",
+    "/Agon/mystuff/agon-extender/scripts/sdcard.py": "f1cbf3e07be4b1218691a99d06df7bcf5d512d44eff2c62dc24473bb072050fa",
+    "/Agon/mystuff/agon-extender/scripts/sdcard_staged.py": "f7aa43bd05d62cc1bdc051d8ae569128766cb9ec95076bd1bb951063997683ef",
+    "/Agon/mystuff/agon-extender/scripts/hardware_validation.py": "6f83df613214f7e63b9b7f136cf5da14ad9872c5cd7a4603ea71d8234679f971",
+    "/Agon/mystuff/agon-extender/scripts/keyboard.py": "2bd907921d80315f9d83761213e8125527a07f849ff488e128188b0f114c6525",
+    "/Agon/mystuff/agon-dev-env/cross-agent/olimex-bench/bench_lease.py": "ee24b2b8fabd5fd325c2b54cf784bee60a754a80dea9f4183e1211c907890043",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py": "315b9ad4a488367d00012c592decb6107e8e0788838b6465be7f5a2dbcac6ecb",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/check_runner_r02.py": "35e7c03b9f3fc39e756a93056e47d7996f72898ce40abfe579688738c9752ea7",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/CHECK-PLAN.md": "24f72d3e92ea038953c61dcfe92f97ca4223d31d3cea77e10161f7f4c17be045",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/HANDSHAKE.md": "d88fb7ad10bfb53f22594549d43edddfb520225ed94f2b0da979e655b8988408",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/APPLIED-REQUEST-BINDING.diff": "d95225d08b86ffb4ce3f2c203491f1a539c4aa5035bc9161c98470d2ec675ca3"
+  },
+  "files": {
+    "rx6hlp.bin": {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/kit/rx6hlp.bin",
+      "bytes": 16392,
+      "sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd"
+    },
+    "suite.txt": {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/kit/suite.txt",
+      "bytes": 118,
+      "sha256": "21b8d4a29a6cf19e2975f45636eb510f2d75c7df90d40c6e399c96fa6b3fb068"
+    }
+  }
+}

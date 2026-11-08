@@ -1,0 +1,91 @@
+{
+  "schema": "rally-rx006-host-delivery-correction-r02",
+  "status": "prepared-unrun",
+  "actual_new_request": "19e9824cf0fe",
+  "unchanged_original_app_sha256": "595f73c2dd159981a5fd52f06ba3c849f73f2b2f1784fb15b5d07658587508cd",
+  "unchanged_original_hostkit_sha256": "3c0503dfcf4b34bbd9079d000a9c165e1c67397c7a010f1219937778e2d25956",
+  "corrected_hostkit_sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e",
+  "files": [
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+      "bytes": 8307,
+      "sha256": "315b9ad4a488367d00012c592decb6107e8e0788838b6465be7f5a2dbcac6ecb"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/check_runner_r02.py",
+      "bytes": 7427,
+      "sha256": "35e7c03b9f3fc39e756a93056e47d7996f72898ce40abfe579688738c9752ea7"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+      "bytes": 6834,
+      "sha256": "f2de4f3ec376d0e93c0dccaa5d8e0926ac60052211445a1f078d16cc59a8196e"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/PLAN.md",
+      "bytes": 2203,
+      "sha256": "f0883b671380006778070cf977e145340ef3dd0d2ccfa326ebddcb44fd6f2ef6"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/CHECK-PLAN.md",
+      "bytes": 1293,
+      "sha256": "24f72d3e92ea038953c61dcfe92f97ca4223d31d3cea77e10161f7f4c17be045"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/HANDSHAKE.md",
+      "bytes": 2475,
+      "sha256": "d88fb7ad10bfb53f22594549d43edddfb520225ed94f2b0da979e655b8988408"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/OPERATING-R02.md",
+      "bytes": 2788,
+      "sha256": "44924c6e1925fff33ba0dfa9745903f6dabddfa33e11f5780d1bfa5455a1f8c7"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/READINESS-R02.md",
+      "bytes": 2218,
+      "sha256": "e06e2af84b0913d14f85e16cc0e9d46fed55d2e7f0577afb44ffd7c01c069a03"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/APPLIED-REQUEST-BINDING.diff",
+      "bytes": 1479,
+      "sha256": "d95225d08b86ffb4ce3f2c203491f1a539c4aa5035bc9161c98470d2ec675ca3"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/BINDING-SELECTION.md",
+      "bytes": 2456,
+      "sha256": "79563a62dcce1a55e1206af1e2d474ec39d92560a81d93ea6b61ef850deeae63"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/PHYSICAL-RESERVATION-R02.json",
+      "bytes": 604,
+      "sha256": "03f5e26e47a39e83346c70cbbccd37da90bd80f635cf6161151b2992809f3b0b"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/check01/result.json",
+      "bytes": 7354,
+      "sha256": "f9dc1c0372ce8fee77be0c7d80aaf68eec53358c2d9aa362c7a8f237c02293a7"
+    },
+    {
+      "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/delivery-correction/CHECK-RELEASE.json",
+      "bytes": 3134,
+      "sha256": "d9a1b14776a1c4d6fb545217bb75024bcd4594a3cb040aad474b49e09cdee2fc"
+    }
+  ],
+  "argv_template": [
+    "/Agon/mystuff/agon-dev-env/.venv/bin/python",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/run_physical_r02.py",
+    "--kit",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/RUNNER-KIT-R02.json",
+    "--handoff",
+    "ACTUAL_NEW_OWNER_HANDOFF",
+    "--lease",
+    "ACTUAL_NEW_TOKEN",
+    "--request",
+    "19e9824cf0fe",
+    "--url",
+    "ACTUAL_CONTEXT_ORIGIN",
+    "--out",
+    "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-r02"
+  ]
+}
