@@ -1,14 +1,16 @@
 # MOS TODO
 
-RX-006 [ ] **FINISH THE REQUESTED OLIMEX SIZE SWEEP.** Actual129 installed
-and readback-verified exact EMOS171c/VDP7d09. One app0208015a suite EXEC after
-four exact file readbacks did not return a listener within180s. Original51504
-exited1/all owned processes joined; Extender owns evidence preservation and
-exact restoration. Guest fault/cause and benchmark data are unconfirmed.
-[Actual129](docs/tasks/RX-006/actual129/README.md). No suite/core/performance
-verdict or consumer pilot yet. Actual123/128 remain distinct restored/released
-installation-only UNRUN attempts. Preserve populated test namespace and all
-failures; no replay, boot-script change or performance optimization.
+RX-006 [ ] **CONFIRM CORRECTED BATCH RETURN, THEN CONSUMER TRIALS.** Actual129's
+recovered original SD log passes all10sizes/36cells/SUITE PASS. Host completion
+failed: UART batch SAVE used invalid unprefixed hex address/decimal length;
+selected MOS source rejects it and stops EXEC. No transport correction needed.
+New kit6d467b51 uses &447CF &20/freshdirectory, unchanged app0208/EMOS171c/VDP7d09;
+[r04 preparation](docs/tasks/RX-006/OLIMEX-R04.md) awaits owner binding/new normal
+FIFO. Original129 restored/readbackverified/released10:10:35UTC, all targetstopped.
+[Actual129 evidence](docs/tasks/RX-006/actual129/README.md). No original RAM/PC
+claim; full return/witness/listener check remains before consumer-code pilots.
+129 no-work batch completion gains5.65x/6.49x/7.12x at128/256/1024B, coarse
+app latency not CPU percentages or pure wire rate. No speed optimization.
 Rally and 6502 explicitly accept source-grounded usefulness: retained exports
 need 129 reads instead of 32,724, and two instead of 69, respectively. VDPlet
 confirms existing 512B producer suffices. Prior C8 R0067 supplies physical

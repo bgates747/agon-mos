@@ -1,0 +1,49 @@
+{
+  "schema": "RX006-KIT1",
+  "build": "0208015a8a94e345",
+  "fixture_sha256": "2a0d9312e9147972d674745487d8fcb34b365d3de53ac235f22776d7f548f2c6",
+  "fixture_bytes": 18376,
+  "witness_address": 280527,
+  "witness_bytes": 32,
+  "sd_directory": "/test/mos-rx006-r02",
+  "emos_rom_sha256": "171c7880c4c4e064293d67e41d4225d2112a13c690e49d803cf77899919f6914",
+  "emos_map_sha256": "ccbda4bc18bb16ef247d291338037ebdee4c3185c28b9ea25f9c32c44fe3b71f",
+  "native_vdp_sha256": "7d09dfeac4e7a1654dca486a8e86cd7b5d283f0d53bac0ab128cb8dd33e10087",
+  "files": {
+    "next.txt": {
+      "path": "/Agon/mystuff/agon-mos/build/rx006/kit-r02/package/next.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    "readme.txt": {
+      "path": "/Agon/mystuff/agon-mos/build/rx006/kit-r02/package/readme.txt",
+      "bytes": 571,
+      "sha256": "a6cb5bda11cf0e52ddab1a0dd28a77bcb7782e99d5593557b63f3a1ddc02ef6c"
+    },
+    "suite.txt": {
+      "path": "/Agon/mystuff/agon-mos/build/rx006/kit-r02/package/suite.txt",
+      "bytes": 108,
+      "sha256": "22897d575fff2de955c05e03b4c11271440a8f39bc978751c539f0f8626929be"
+    },
+    "test.bin": {
+      "path": "/Agon/mystuff/agon-mos/build/rx006/kit-r02/package/test.bin",
+      "bytes": 18376,
+      "sha256": "2a0d9312e9147972d674745487d8fcb34b365d3de53ac235f22776d7f548f2c6"
+    }
+  },
+  "host_inputs": {
+    "/Agon/mystuff/agon-mos/experiments/rx006/run.py": "9cc5e8922ab1a1295a935081754bad7e6890f60b2f5de330a165ce87ede1577c",
+    "/Agon/mystuff/agon-mos/experiments/rx006/analyze.py": "1d89f2c2182f6485b47ee84aabc11369ea56acfc76013d4b6a968d01718904e7",
+    "/Agon/mystuff/agon-extender/scripts/sdcard_staged.py": "f7aa43bd05d62cc1bdc051d8ae569128766cb9ec95076bd1bb951063997683ef",
+    "/Agon/mystuff/agon-extender/scripts/sdcard.py": "f1cbf3e07be4b1218691a99d06df7bcf5d512d44eff2c62dc24473bb072050fa",
+    "/Agon/mystuff/agon-extender/scripts/keyboard.py": "2bd907921d80315f9d83761213e8125527a07f849ff488e128188b0f114c6525",
+    "/Agon/mystuff/agon-extender/scripts/hardware_validation.py": "6f83df613214f7e63b9b7f136cf5da14ad9872c5cd7a4603ea71d8234679f971"
+  },
+  "source_result": "/Agon/mystuff/agon-mos/build/rx006/app-r04-emos-final/result.json",
+  "runner": "/Agon/mystuff/agon-mos/experiments/rx006/run.py",
+  "consumer_budget_seconds": 420,
+  "application_budget_seconds": 180,
+  "whole_owner_install_run_restore_budget_seconds": 1800,
+  "qualification": "Unchanged app/firmware; corrected explicit hex SAVE batch; completion confirmation pending",
+  "previous_kit_sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518"
+}

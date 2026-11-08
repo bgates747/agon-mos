@@ -1,25 +1,28 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTUAL129: ONE FIXTURE INVOCATION,180s RETURN-LISTENER TIMEOUT.**
-Both firmware readbacks and startup/CLI admission passed. All four test files
-staged/read back exactly; UART sent one explicit suite EXEC. The terminal
-listener did not appear within180s. The original runner exited1 and all owned
-processes joined; Extender has sole preservation/restoration custody. Guest
-first-fault/witness and cause remain unconfirmed. No performance/suite pass is
-claimed. See [actual129 evidence](actual129/README.md).
+**ACTUAL129 DATA PASS; BATCH COMPLETION BUG IDENTIFIED AND CORRECTED IN NEW KIT.**
+Recovered original SD log passes all ten sizes4..8092, all36 benchmark cells
+and SUITE PASS. The host timed out because UART's following SAVE batch command
+used invalid unprefixed hexadecimal/address and decimal length syntax. Exact
+receiving MOS source rejects that address and stops EXEC before the listener.
+The absent witness and unavailable pre-reset console/RAM limits remain.
+[Full evidence and diagnosis](actual129/README.md), [analysis](actual129/analysis.json).
 
-Actual123 and128 are closed UNRUN, exact originals restored and released.
-Their [bootstrap](actual123-install/README.md) and
-[setup deadline](actual128-install/README.md) failures remain distinct from129.
-The [r03 plan](OLIMEX-R03.md), all49 bound inputs and unchanged app0208015a,
-EMOS171c and VDP7d09 were used for129. It is no longer queued or merely prepared.
-No consumer trials start before a passing own hardware comparison. The current
-populated target namespace must be preserved, not reused as empty or erased.
+Extender restored exact originals/full readbacks and released129 at10:10:35UTC;
+all actors stopped, token invalid, FSIM8cc next requiring fresh grant. Original
+123/128 installation-only UNRUN failures remain separate historical records.
+No performance tuning or transport/firmware correction is needed by this finding.
 
-Brandon corrected the premature source-review-only closure: affirmative owner
-reviews and earlier C8 results do not replace the requested own matched Olimex
-sweep and selected consumer-code trials. Preserve
-[the earlier source-feasibility result](RESULT.md) with that limit.
+[Completion confirmation r04](OLIMEX-R04.md) uses unchanged app0208015a,
+EMOS171c/VDP7d09 with explicit `SAVE ... &447CF &20`, fresh targetr02 and host
+physical-r04. New kit6d467b51 is prepared; owner binding/new normal FIFO pending.
+Preserve populatedr01/old kit and all129 evidence. Confirm witness/return/normal
+listener chain before selected consumer-code trials; no prototype pilot yet.
+
+Equal-payload no-work batches complete about5.65x/6.49x/7.12x faster using counted
+returns at128/256/1024B than tagged8B replies. This is original129's coarse public
+clock application latency, including verification, not CPU utilization or pure
+wire throughput. No consumer or firmware performance claim is inferred.
 
 ## Reopening after Brandon's correction
 

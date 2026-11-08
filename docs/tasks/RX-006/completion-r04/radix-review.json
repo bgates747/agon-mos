@@ -1,0 +1,34 @@
+{
+  "scope": "Selected MOS source radix-branch review plus host libc strtol token interpretation, not a native/target MOS run",
+  "source_pins": {
+    "mos.c": "464e71815342ec0a815416ea03adac41743182d5abf2719512106ce56e9cf945",
+    "mos_sysvars.c": "712c6f62babb0f156a5ba400b4340e33b48173b55f0ba0e74db4afbef0b77df8"
+  },
+  "tokens": [
+    {
+      "token": "0447CF",
+      "radix": 10,
+      "value": 447,
+      "unconsumed": "CF"
+    },
+    {
+      "token": "+000020",
+      "radix": 10,
+      "value": 20,
+      "unconsumed": ""
+    },
+    {
+      "token": "447CF",
+      "radix": 16,
+      "value": 280527,
+      "unconsumed": ""
+    },
+    {
+      "token": "20",
+      "radix": 16,
+      "value": 32,
+      "unconsumed": ""
+    }
+  ],
+  "package_sha256": "6d467b5111c3d5379ad573fea4c86054017bb6b250cdcaee9897be89e57dba4c"
+}

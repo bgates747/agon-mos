@@ -1,0 +1,5 @@
+CD /test/mos-rx006-r02
+test
+SAVE /test/mos-rx006-r02/WITNESS.BIN &447CF &20
+CD /
+EMOS sdserve --fast /
