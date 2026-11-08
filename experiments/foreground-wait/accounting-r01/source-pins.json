@@ -1,0 +1,35 @@
+{
+  "status": "source preparation only; no controls/build/run executed",
+  "inputs": [
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/foreground-wait/src/aw_wait.s",
+      "bytes": 1608,
+      "sha256": "088dd252db727c684b16ed154ad612608ae2f622fb3a31e9a1012e7eec151fe2"
+    },
+    {
+      "path": "/Agon/mystuff/agon-mos/experiments/foreground-wait/include/aw_wait.h",
+      "bytes": 2317,
+      "sha256": "6085e1f809347858d8ce17bb7669985aa5cf66a089d954fb13a655fae735e563"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/agents/net004/cpu-accounting-r01/manifest.json",
+      "bytes": 8959,
+      "sha256": "0873c53b1684477c599489b657a6f0a49573d4c5c5f7baae24a6ca9a3070c7fa"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/include/agon/cpu_accounting/accounting.h",
+      "bytes": 2634,
+      "sha256": "ca298d61490c7ce763e1ecc0ee0d70f7649ae08286e6fb36d22e5e85f068c638"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/include/agon/cpu_accounting/accounting.s",
+      "bytes": 6529,
+      "sha256": "79dd364c8a1669b3bd62d53b4a01afb4d15c4367d4b5a6e3d4d4dc1508b20ae6"
+    },
+    {
+      "path": "/Agon/mystuff/agon-extender/include/agon/cpu_accounting/README.md",
+      "bytes": 4973,
+      "sha256": "629b44fc0f13e814ecfac52c350438666b462c6933c2b45a06f71da2a74e037e"
+    }
+  ]
+}

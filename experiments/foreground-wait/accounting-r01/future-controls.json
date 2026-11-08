@@ -1,0 +1,25 @@
+{
+  "status": "Prepared controls only; none executed for this proposal",
+  "required_positive_controls": [
+    "Undefined and explicit-zero AW_CPU_ACCOUNTING each assemble/link to exact original checked leaf bytes and have no undefined recorder references",
+    "Enabled native leaf links to exact pinned native A-event API with expected 24-byte leaf delta, no added state, inspected real call relocations and valid branch ranges (two ON-only JR-to-JP widenings)",
+    "Existing C ABI probe, all result paths, primary/index/shadow/ADL register preservation and refusal IFF controls remain valid",
+    "AW_WORK emits event7 only after predicate under existing DI and before ordinary A2",
+    "Taken HALT emits event6 under existing DI before restore epilogue; native FB76 EI/HALT remains adjacent",
+    "Only actual HALT return emits event86 through IFF-preserving foreground wrapper, saving/restoring ordinary AF",
+    "Exact owner recorder ends logical HALT on first IRQ and does not double-charge at return86; omitted boundaries remain partial/unknown",
+    "Complete app/IRQ stack and expanded exclusion costs are separately assessed before any qualified composition"
+  ],
+  "required_negative_controls": [
+    "Reject a marker inserted between EI and HALT",
+    "Reject recorder calls on IFF0 or invalid/refused entry",
+    "Reject raw entry-marker use after HALT instead of IFF-preserving foreground wrapper",
+    "Reject corrupted A result or a clobbered primary/alternate/index register",
+    "Reject mismatched owner API pins, unbalanced or missing IRQ coverage, and an oversize firmware presented as deployable"
+  ],
+  "not_selected": [
+    "No compiler/tests/resource reservation",
+    "No app or SDK integration, timer use, firmware build/install or physical case",
+    "No changes to RX006, original checked WAIT leaf or Mech588/617"
+  ]
+}
