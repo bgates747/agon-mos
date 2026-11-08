@@ -1,0 +1,46 @@
+{
+  "epoch": 1794123172.7107265,
+  "actor": {
+    "epoch": 1794122882.344283,
+    "pid": 1869991,
+    "ppid": 1750,
+    "pgid": 1869991,
+    "start": "38185224",
+    "boot": "b6519306-0d9f-48e3-98c4-c28ab10b75de",
+    "argv": [
+      "agents/bench-scheduler/rx006-matched-r01/install_once.py"
+    ]
+  },
+  "results": [
+    {
+      "label": "stage",
+      "pid": 1869993,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 54.59195351600647
+    },
+    {
+      "label": "flash",
+      "pid": 1870249,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 37.16753125190735
+    },
+    {
+      "label": "verify",
+      "pid": 1870440,
+      "returncode": 0,
+      "joined": true,
+      "seconds": 26.350884675979614
+    },
+    {
+      "label": "native",
+      "pid": 1870551,
+      "returncode": 1,
+      "joined": true,
+      "seconds": 171.92538905143738
+    }
+  ],
+  "no_pending_commands": true,
+  "all_children_joined": true
+}

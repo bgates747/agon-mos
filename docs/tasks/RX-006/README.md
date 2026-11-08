@@ -1,7 +1,11 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
-**ACTIVE: actual Olimex FIFO request `92f38ff2f224` is queued.** The matched app
-and finite host runner are built/checked; no grant or hardware pass is claimed.
+**PENDING CONSUMER HANDOFF: actual123 request `92f38ff2f224` is in Extender's
+sole installation phase.** The firmware readbacks match, but the subsequent
+bootstrap display-status observation timed out. Installer actors are joined;
+Extender owns reconciliation. No consumer handoff or test pass is claimed.
+See [the retained installation boundary](actual123-install/README.md).
+The matched app and finite host runner are built/checked.
 Brandon corrected the premature source-review-only closure. Existing consumer
 judgments remain valid; they do not replace the requested hardware and subsequent
 consumer-code checks. No reservation existed at the earlier closure. Preserve that
