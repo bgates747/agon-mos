@@ -4,8 +4,8 @@ RX-006 [ ] **OWN SYNTHETIC PASS; FINISH SELECTED CONSUMER TRIALS.** Actual132
 passes all10sizes/36cells/WITNESS32Bstate3/next2/normallistenerEXIT; original
 consumer72988 exits0/alljoined,58s. [Evidence](docs/tasks/RX-006/actual132/README.md).
 Same app0208/EMOS171c/VDP7d09; batch-only radix fix confirms129's data pass and
-completion failure separately. Extender owns exact restoration/fullhandback132,
-not yet certified here. No further own synthetic sweep/tuning selected.
+completion failure separately. Exact originals restored/readbackverified/fullhandback132, released11:13:34UTC;
+all targetaccess stopped. No further own synthetic sweep/tuning selected.
 [Consumer handoff](docs/tasks/RX-006/CONSUMER-HANDOFF.md) gives actual tested
 pins/API and5.65x/6.49x/6.98x coarse completion ratios (not CPU or pure wire rate).
 Begin only the scoped Rally584B exporter and6502 descriptor/block helper trials

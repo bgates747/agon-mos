@@ -38,3 +38,18 @@ Rally/6502 helper trials follow normal handback and their own preparation/FIFO.
 
 [Manifest](manifest.json) records copied evidence. No further synthetic sweep,
 fault matrix, extra feature or performance optimization is required.
+
+## Exact originals restored and lease released
+
+Extender released actual132 at11:13:34.330066UTC November8. Incoming85f9 native
+prefix restored FIRST/full readback, outer12288B suffix untouched; one matched
+bootstrap, then completea25f MOS/full readback. UART independently rehashed both
+retained readback files: [record](restoration-file-check.json). Fresh normal
+CLI/cursor/rawmode0/callback0/Legacy0, complete unchanged startup/listener,
+neutral input/offline worker/free USB and all-actor closure passed. P4 unchanged,
+SD mounted, all target access stopped and old token invalid.
+[Release](released.json), [restoration](restoration-complete.json).
+
+The earlier pending-restoration paragraph is historical. Mech596 is canonical
+next and needs normal fresh admission. RX006's own hardware obligation is
+complete; only the selected consumer-code trials remain. No further own sweep.

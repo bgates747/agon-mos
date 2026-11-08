@@ -5,8 +5,8 @@ unchanged app0208015a/EMOS171c/VDP7d09 passes all ten sizes, all36 benchmark
 cells, WITNESS32B/state3/next2 and normal terminal listener/EXIT. Original
 consumer72988 exits0, all owned actors joined,58s whole consumer.
 [Actual132 evidence](actual132/README.md), [raw data](actual132/analysis.json).
-UART has returned sole custody to Extender for exact restoration/full handback;
-clean release is still pending. No more synthetic sweep or tuning is selected.
+Extender restored exact originals/full handback and released132 at11:13:34UTC;
+UART independently rehashed both retained readbacks. All target access stopped. No more synthetic sweep or tuning is selected.
 
 Actual129's original durable data also passed; the following batch SAVE used
 incorrect radix syntax and prevented terminal listener continuation. R04 fixes
@@ -175,7 +175,8 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
       actual request `92f38ff2f224`, no token or target access implied.
 - [x] Obtain actual grant and pass finite short/long checks and matched benchmark
       with full return/witness/listener (actual132); preserve129 wrapper failure.
-- [ ] Finish exact original firmware/state restoration and normal handback132.
+- [x] Finish exact original firmware/state restoration and normal handback132;
+      released11:13:34UTC, both retained readbacks independently rehashed.
 - [ ] After the own hardware pass, guide selected consumer owners through small
       actual in-code trials using measured findings; preserve each owner lane
       and normal bench scheduling. Source reviews alone do not complete this.

@@ -1,0 +1,90 @@
+{
+  "schema": "olimex-bench-observation-v1",
+  "bench": "olimex",
+  "epoch": 1794136370.538236,
+  "observer": "agon-mos",
+  "lease": "18445d0579d6483f99c0f4b81bb3b32a",
+  "checks": {
+    "no_workload": true,
+    "no_transfer": true,
+    "no_serial_readers": true,
+    "no_reset_holders": true,
+    "cli_verified": true,
+    "input_ready_neutral": true,
+    "listener_offline": true,
+    "staged_job_idle": true,
+    "restoration_verified": true
+  },
+  "components": {
+    "p4_app_sha256": "d9bcb1a2b277e4dcec808d46a33d53879ea4ac4f3e35d69f80345d3c9ac4043e",
+    "emos_rom_sha256": "a25f1612f4aaa542c5488cf3266d968ad3d1d61e9df3b5ce2c680650f5d7a2ca",
+    "native_vdp_sha256": "5d65797e53a70db8716cc3bc31dc936e431aea975ffad8efb76d5d7e8c1e3d07",
+    "startup_sha256": "ed403e17f90a22c634afa0de3cad65451bc52da86bde6da084abe42fac3b7c64",
+    "listener_sha256": "0566e17f18747c2e625d2450ce5324a2b1097bce323a5e4d70fad6dcb41cdff2"
+  },
+  "state": {
+    "keyboard": {
+      "protocol": 1,
+      "boot": 3800215518,
+      "session": 872947733,
+      "sequence": 24,
+      "emitted": 52,
+      "accepted": 52,
+      "discarded": 0,
+      "pending": 0,
+      "held": 0,
+      "locale": 1,
+      "ready": true,
+      "physical_neutral": true,
+      "caps": false,
+      "reason": 1
+    },
+    "sd": {
+      "protocol": 2,
+      "online": false,
+      "pending": false,
+      "boot": 389896135
+    },
+    "worker": {
+      "protocol": 1,
+      "boot": 1308534127,
+      "id": 0,
+      "phase": 0,
+      "bytes": 0,
+      "size": 0,
+      "records": 0,
+      "error": 0,
+      "remote_status": 0,
+      "filesystem": 0,
+      "stage_us": 0,
+      "mainboard_us": 0,
+      "parallel_prepare_us": 0,
+      "parallel_active_ms": 0,
+      "parallel_handover_ms": 0,
+      "parallel_phase": 0,
+      "parallel_outcome": 0,
+      "parallel_clock_count": -1,
+      "parallel_valid_count": -1
+    }
+  },
+  "evidence": [
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/final/fresh.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/verify-rollback/ROM.bin",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/verify-rollback/receipt.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/native-restore/receipt.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/all-actors-terminal.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/consumer-stopped-return.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/complete.json",
+    "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/stage/provenance.json"
+  ],
+  "component_provenance": {
+    "p4_app_sha256": "Retained unchanged currentd9b; no P4 firmware write in132.",
+    "emos_rom_sha256": "Independent complete131072B rollback readback equals retaineda25f.",
+    "native_vdp_sha256": "Independent restored1105920B85f9 prefix readback; exact image5d657, retained outer12288Bsuffix untouched.",
+    "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
+    "listener_sha256": "Fresh final complete24753B read compare unchanged."
+  },
+  "disposition": "Actual132 corrected RX006 completed ONE suite EXEC: ten correctness sizes,36 comparison cells,32B success witness state3,next2 and normal terminal listener EXIT/offline. Original consumer72988 exit0/all actors joined. No replay/new case/tuning. Exact incoming85f9 native1105920 prefix restored FIRST/full independent readback; outer12288B untouched/8519 lineage. ONE maintained matched bootstrap then exacta25f full131072 ROM readback. Fresh rootCLI/cursor/rawmode0/callback0/Legacy0/wholefiles/neutral/offlineworker0/freebothUSB/all original and restoration actors joined. P4 application/startup/listener unchanged. Both129 and132 evidence retained. SD remains mounted; all target access stopped.",
+  "physical_observer": "linux-extender",
+  "physical_observer_role": "Sole delegated restoration operator after original UART consumer stopped return"
+}

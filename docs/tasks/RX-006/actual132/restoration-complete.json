@@ -1,0 +1,12 @@
+{
+  "epoch": 1794136370.5396388,
+  "original_consumer_pass": true,
+  "one_corrected_suite_only": true,
+  "no_replay": true,
+  "native85f9_restored_FIRST": true,
+  "native_full_readback": true,
+  "exact_a25f_full_readback": true,
+  "source_r01_r02_evidence_preserved": true,
+  "final": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/final/fresh.json",
+  "all_registered_children_joined": true
+}

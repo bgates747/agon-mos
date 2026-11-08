@@ -1,5 +1,5 @@
 {
-  "scope": "Actual132 complete synthetic consumer PASS; Extender restoration pending",
+  "scope": "Actual132 complete synthetic PASS and exact originals independently restored/readback/released; consumer project trials remain",
   "files": [
     {
       "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/consumer-handoff.json",
@@ -84,6 +84,42 @@
       "copy": "physical-r04-stopped.json",
       "bytes": 1516,
       "sha256": "31f60b49864eb02d1f963c128314ebbe8ad35b606f59108a1381707385d68186"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/released.json",
+      "copy": "released.json",
+      "bytes": 9939,
+      "sha256": "9a37f976259c811e2a00e7f7a3d3d6b9cd182124ca3a4aa0ea9be1b7523fc60a"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/release-observation.json",
+      "copy": "release-observation.json",
+      "bytes": 4343,
+      "sha256": "3eb88a60da52cade7b1f7eb40b3abe56082d8fea1ac353e552546fcf4c0bced6"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/all-actors-terminal.json",
+      "copy": "all-actors-terminal.json",
+      "bytes": 6189,
+      "sha256": "75b04de56a833fc613745317fbb43eac1618d64db870532db84544c10f241daa"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/complete.json",
+      "copy": "restoration-complete.json",
+      "bytes": 456,
+      "sha256": "76d2a8a9d15635e6821a625b22779cff44d0bf0ab34b2a7fce051a92dced86f4"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/native-restore/receipt.json",
+      "copy": "native-restoration.json",
+      "bytes": 293,
+      "sha256": "12a1a5b22ef32a1f4df74364b6e4ad9caac10e6a9d775f202220b370be155457"
+    },
+    {
+      "source": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/restore132/evidence/verify-rollback/receipt.json",
+      "copy": "emos-restoration.json",
+      "bytes": 1543,
+      "sha256": "ddcd3a3390e9391633f57ac95ded6d22213acba4666feec12d3f1bfcbcffc308"
     }
   ]
 }
