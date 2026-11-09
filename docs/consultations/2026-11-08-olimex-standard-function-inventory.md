@@ -82,9 +82,11 @@ reference. If it means all open Eirene proposals including61h and62h, neither
 image meets that description; integration is a real missing item, not another
 approval question or permission to relabel an older image.
 
-VDPlet owns whether v0.1.2-alpha has the exact raw90h producer/INFO/legacy
-reply support needed for counted receive. Do not substitute old7d09 qualification
-for that new version. Existing narrow25h source-callback plus fresh ordered
+VDPlet subsequently published the same-tag0.1.2-alpha async-r1 amendment,
+SHA dc43ecb8, with ordinary async enabled and the UART fix. Its owner explicitly
+excludes counted-return, so private26h/90h receive fixtures still need their
+declared service/version exception. See [amended future pins](vdplet-0.1.2-alpha-amendment/README.md).
+Do not substitute old7d09 qualification for the amended default. Existing narrow25h source-callback plus fresh ordered
 POINT policy is owner accepted and had actual148 instrumented a25f/F6 consumer
 qualification, separately from bare C8 or latest VDPlet behavior.
 
