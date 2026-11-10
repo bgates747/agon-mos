@@ -1,0 +1,16 @@
+diff --git a/src/vdp_protocol.asm b/src/vdp_protocol.asm
+index 4c4b31f..db8e4d2 100644
+--- a/src/vdp_protocol.asm
++++ b/src/vdp_protocol.asm
+@@ -242,6 +242,11 @@ vdp_protocol_KEY:
+             CP 4
+             JR Z, keyboard_mainboard_key
+             CP 10
++.if EMOS_RX006_COUNTED
++            JR Z, rx006_tagged_length_ok
++            CP 16 ; RX006 matched legacy op6 READ16, same P3DR/VDPL tag gate
++rx006_tagged_length_ok:
++.endif
+             RET NZ
+             ; This is a display completion, not a mainboard physical key.
+             ; Only the committed mainboard display owns UART0 completions.

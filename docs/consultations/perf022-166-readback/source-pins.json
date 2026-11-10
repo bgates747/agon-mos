@@ -1,0 +1,13 @@
+{
+  "a25f_source": "2c79c6006d6bcb0c2b3f9d8d6aae3ef4b36c730a",
+  "a25f_vdp_protocol_sha256": "d22f3cf12e27b8604bd2030b92a17c3a630f01339e7cad92731af71a07b5f7bb",
+  "receiver_compatibility_source": "b581ac848e3c6c66d0e8d0fceb42efddbdfe7755",
+  "frozen_client": {
+    "/Agon/mystuff/agon-6502/build/perf022/original-r04/source/client.c": "376079c67d8ccd14cadcc943a23c87967c77d588c35e4db9ac1c694cdd9697a8",
+    "/Agon/mystuff/agon-6502/build/perf022/original-r04/source/client.h": "94141f9eefeb74e1b2674820e80e975f9360d1ecb21d69890916ad3bf2f34e0b",
+    "/Agon/mystuff/agon-6502/build/perf022/original-r04/source/mos_transport.c": "1ef216ee3c1904bc8ddd597fefc949680c4f486eeb96deb85aa2b3ce5e25c2d4",
+    "/Agon/mystuff/agon-6502/build/perf022/original-r04/source/packets.asm": "b4fae215ee22864d9f13e3ef91d3a606bea2ebdc2f06ced2056cc0fe97c1c10f"
+  },
+  "target_access": false,
+  "new_build_run": false
+}
