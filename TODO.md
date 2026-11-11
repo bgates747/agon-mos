@@ -41,6 +41,9 @@ The163-byte app leaf/9-byte state passes native link, source/listing controls
 and abstract event models; no executed CPU/IRQ/hardware acceptance is claimed.
 
 ## Eirene upstream async RFC qualification
+RFC-002 [ ] **Deferred until November 15, 2026.** Review Tom Morton’s three
+Eirene syscall RFCs and run their scoped qualification after Brandon returns.
+[Review and test plan](docs/tasks/RFC-002/README.md). No execution started.
 
 RFC-001 [ ] Continue the reviewed syscall 25h evaluation after the completed
 first transfer-validation tranche: both Flexe engines and wrong-ROM refusal
