@@ -10,5 +10,11 @@
   "fixture_changed": false,
   "request": "ccb5dab78a89",
   "exact_task": "RX006-matched-physical-r02",
-  "remaining": "Fresh normal grant/current tuple/programmer actor/handoff and actual physical run, no extra abstract approval round"
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/remaining"
+    ]
+  }
 }

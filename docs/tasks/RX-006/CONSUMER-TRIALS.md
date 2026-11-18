@@ -1,5 +1,8 @@
 # RX006 — Small consumer trials after the own hardware pass
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Brandon's clarified scope requires actual selected-owner code trials, not just
 the already affirmative source reviews. UART first completes its own Olimex
 integrity and matched legacy/counting benchmark. Only after that pass and review
@@ -9,8 +12,7 @@ not a prototype handoff or permission to begin a target run now.
 
 The source reviews remain under their original limits. Owners keep all their
 current work, paused tasks and bench requests. UART edits no application code;
-VDPlet edits no application code. Extender owns any actual EMOS/native firmware
-installation, current keyboard/routing admission and exact restoration.
+VDPlet edits no application code.
 
 ## Rally: retained post-race exporter
 
@@ -122,19 +124,13 @@ procedure and requested Rally pin its own foreground host controller before
 its normal turn. Current Mech133, then FSIMf7ba, precede Rally; no consumer
 physical result or grant is claimed.
 
-6502 returned RX-001 helper18f3c207/20518B and manifest1586f6fd. UART read
-the complete client/counting branch, main/callback/assembly/descriptor decoder
-and offline oracle, then independently rehashed all37 pins;
-[review](consumer-dispatch/6502-prepared/uart-review.json). No material ABI,
-count or lifetime objection and no additional build/case requested. Historical
-40B descriptor+512B payload use real BRClient/persist_decode ordering,69 old
-pulls versus2 counted pulls, without game/persistence/ACK changes. Legacy ERROR
-or timeout leaves counted_live and owned storage/code intact; only positive MOS
-terminal state permits local retirement. Fresh consumer-specific host controller,
-owner installation/restoration budget binding and normal FIFO remain before its
-one physical trial. Proposed1200 whole/350 cleanup must be reconciled with the
-proven1800 whole/540 install/600 cleanup before freezing; never extend an active
-run or weaken restoration. No reservation, target access or physical result yet.
+6502 returned RX-001 helper18f3c207/20518B and manifest1586f6fd. UART
+reviewed the complete client/counting branch, callback/assembly and descriptor
+oracle, independently rehashing all37 pins. The source review found no material
+ABI, count or lifetime objection: the40B descriptor+512B payload requires69 old
+pulls versus2 counted pulls, with no game/persistence/ACK change. Legacy ERROR
+or timeout leaves counted_live and owned storage/code intact until positive MOS
+terminal state. [Source review](consumer-dispatch/6502-prepared/uart-review.json).
 
 Rally subsequently returned its concrete foreground host runner: host kit3c0503df,
 33 execution/input pins plus8 preparation files independently rehashed exactly,
@@ -149,37 +145,17 @@ results; the consumer physical trial remains pending.
 6502's final controller kit e0c2516e closes the requested execution preparation.
 All37 original,14 host and2 payload files rehash exactly; UART read the actual
 controller, live SDK adapter, supervisor, batch and operating contract. Retained
-eight fake-IO and two native lifecycle checks pass. Extender selected original
-1800/540/420/600 bounds with1020 entry/780 EXEC floors before freeze, superseding
-the historical proposal above. [Review](consumer-dispatch/6502-controller/uart-review.json)
-finds no material incompatibility and requests no new code/build/case. Normal
+eight fake-IO and two native lifecycle checks pass.  Normal
 request dfcc5d90a252 follows its protected predecessors; physical trial and
 restoration remain pending. Neither unbound template nor source qualification
 claims actual grant, installed state or device result.
 
-Rally actual135 was entirely UNRUN. Installed observation expired during chat
-session recovery before accepted steering delivery; first consumer read was
-309s old against the unchanged120s limit. Zero runner launches, staged commands,
-EXECs, arms or target I/O; [no-launch record](consumer-dispatch/rally-actual135/ACTUAL135-UNRUN.md).
-Original remaining989s was below1020 entry floor, so Extender selected exact
-restoration only;6502's next turn stays protected. This is a handoff delivery
-failure, not an observed transport/app failure or consumer pass. UART selects
-correction of handoff readiness/session preparation before a new normal FIFO
-for the same uninvoked helper. Keep120s actual-evidence freshness and original
-budgets, never restamp/extend. Wake/confirm the consumer is ready before the
-final installed-state observation; owner should account for delivery time and
-obtain a genuine new observation only within the original admitted margin. No
-app/firmware change or extra case selected.
-
-The old Rally host runner hardcodes requestcaeae, so a new real FIFO ID cannot
-pass it. UART selected only the necessary isolated host admission change: required
-explicit expected-request binding checked against the actual handoff, with new
-runner/kit identity and stopped argv bound to the new reservation. Old runner,
-kit and135 evidence remain unchanged. Focused wrong/old request refusal controls
-are sufficient; no app/SD-file/firmware/physical-case change. The agreed
-PREPARE-DISPATCH/actualREADY sequence precedes the owner's final genuine fresh
-observation. Rally may finish this concrete preparation and requeue normally
-without another UART signoff unless a material conflict appears.
+Actual135 was entirely UNRUN: zero runner launches, staged commands, EXECs,
+arms or target I/O. Its installed-state observation was309s old at consumer
+receipt; this was a handoff delivery failure, not an observed transport failure.
+[No-launch record](consumer-dispatch/rally-actual135/ACTUAL135-UNRUN.md). A
+separate host request-binding correction subsequently retained the unchanged
+application and staged files; the old evidence was not relabeled.
 
 Rally completed the narrow corrected host without changing app595f73c2 or either
 staged file. Host kitf2de4f3e binds new request19e9824cf0fe;13 preparation files

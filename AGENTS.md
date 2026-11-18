@@ -33,11 +33,18 @@ emulator and its model/regression work; do not delegate VDP firmware ownership
 to it. The Author clarified this boundary on 2026-10-14. Keep upstream VDP and
 SDK checkouts read-only and build diagnostic copies in this project's workspace.
 Physical Console8 firmware flashing and board execution remain manual Author
-actions. On2026-10-15 the Author separately authorized unattended UART hardware
-testing through Agon Extender, adapting the suites and integrating the sender
-into EMOS at least in Legacy mode. Follow Extender's test-appliance lifecycle,
-bench ownership, installation and recovery protocols for that target; this does
-not authorize interrupting another owner's test or changing wiring.
+actions.
+
+## Physical Olimex bench procedures
+
+The sole authoritative reference is the
+[Olimex bench guide](../agon-extender/docs/operations/olimex-bench/README.md),
+including the authoring guide it links. Read the current guide for every new
+or adapted job. This project maintains test-specific inputs, expected results
+and source ownership; it maintains no alternative scheduling, custody, setup,
+recovery, restoration or check-in procedure. Historical results do not authorize
+reusing an old operating procedure. Console8 manual actions and Oryx emulator
+scheduling are separate target workflows.
 
 ## Hardware instructions to the Author
 
@@ -57,7 +64,7 @@ from signal wires; added RED/BROWN probes are separate physical leads.
 
 ## Network access authority
 
-For access between development machines, read the [canonical network instructions](https://github.com/bgates747/agon-dev-env/blob/feature/standardized-deployment/codex/environment.md#ssh-between-development-machines) in `~/Agon/mystuff/agon-dev-env/codex/environment.md` and its machine-local `.local/ssh-001/CONNECTIONS.md` guide. They own current hostnames, discovery, SSH identities, sudo, and LAN shares. Do not duplicate access recipes or revive old aliases, addresses, or share mappings in this project. Project-specific device/protocol and bench-safety instructions remain local.
+For access between development machines, read the [canonical network instructions](https://github.com/bgates747/agon-dev-env/blob/feature/standardized-deployment/codex/environment.md#ssh-between-development-machines) in `~/Agon/mystuff/agon-dev-env/codex/environment.md` and its machine-local `.local/ssh-001/CONNECTIONS.md` guide. They own current hostnames, discovery, SSH identities, sudo, and LAN shares. Do not duplicate access recipes or revive old aliases, addresses, or share mappings in this project. Project-specific device and protocol contracts remain local. Physical Olimex bench procedures are defined only by the bench guide linked above.
 
 ## Emulator product names
 

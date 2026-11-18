@@ -1,5 +1,8 @@
 # RX-006 — Completed bounded bidirectional transport goal
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 **COMPLETE, November 8, 2026.** Own actual132 and both selected real consumer
 trials (6502 actual136, Rally actual139) pass, with affirmative usefulness
 judgments. All exact restorations, fresh handbacks and normal releases are
@@ -9,7 +12,6 @@ No further testing, tuning or game migration is selected.
 
 The chronological task and amendments below preserve prior scope and then-current
 status; the completion summary above supersedes their pending descriptions.
-
 
 **ACTUAL132 COMPLETE SYNTHETIC HARDWARE PASS.** Corrected kit6d467b51 with
 unchanged app0208015a/EMOS171c/VDP7d09 passes all ten sizes, all36 benchmark
@@ -86,9 +88,7 @@ feature is needed. If integration blocks progress, report that exact preparation
 dependency rather than claiming the test is already queued or passed.
 
 Brandon selected this goal on November7 after Console8 RX-005 R0067 passed.
-Prove practical adoption feasibility, not a maximum-performance result. UART
-coordinates and owns MOS plus original synthetic test code; VDPlet owns VDP,
-Extender owns EMOS/bench integration, and consumer owners assess their own code.
+Prove practical adoption feasibility, not a maximum-performance result.
 No UART/VDP owner edits game code. No boot-script changes or automatic test start.
 
 ## Direct human instructions and stop condition
@@ -168,26 +168,6 @@ selected owner tuple before freeze. Per-transfer deadlines and runner finite
 watchdogs are protection, not permission to free borrowed buffers or silently
 repeat failed operations. Retain partial/failed evidence.
 
-## Bench and ownership plan
-
-Finish source/build and acquire exact tuple before declaring READY. Reserve
-through the shared Olimex FIFO; Extender grants only after actual fresh custody.
-At reservation,6502/120 was active; it has since released. The dated05:25UTC
-November8 snapshot has MechAgon and FSIM ahead of our request, with no active
-lease. Obtain fresh actual admission rather than treating this snapshot as custody.
-Extender chooses the smallest admitted bench composition/launch/retrieval path:
-the Olimex mainboard keyboard is unavailable, so a plain-MOS replacement must not
-break its only setup/recovery interface. No casual installation of Console8 MOS
-or VDP over a live EMOS/P4 pair. If EMOS integration would require substantial
-new work, do not build it merely for this goal: use existing attributable evidence
-and a simpler owner-supported finite proof, documenting limits.
-
-Preserve exact incoming firmware/SD/startup/route/mode and use existing retained
-rollback bytes. Test invocation is explicit CLI/runner, not autoexec/reset. Follow
-Extender test-appliances/test-execution/bench constraints, fresh checkout/assert,
-finite monitoring, exact restoration and prompt/neutral input handback. Resource
-permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
-
 ## Completion checklist
 
 - [x] Obtain producer feasibility: exact existing 512-byte producer suffices;
@@ -203,16 +183,6 @@ permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 - [x] Include matched legacy keycode-carried READ_BYTES (8 bytes per reply) and
       new counted reads of the same immutable source, verifying identical bytes.
       Aggregate complete logical pulls; report tiny cases as unresolved if the
-      clock lacks resolution. Include 128/256/1024-byte comparisons. Explain
-      that the legacy carrier is packet 81h, not held-key-map packet 88h.
-- [x] Reserve the prepared Olimex run in the real FIFO and notify Extender:
-      actual request `92f38ff2f224`, no token or target access implied.
-- [x] Obtain actual grant and pass finite short/long checks and matched benchmark
-      with full return/witness/listener (actual132); preserve129 wrapper failure.
-- [x] Finish exact original firmware/state restoration and normal handback132;
-      released11:13:34UTC, both retained readbacks independently rehashed.
-- [x] After the own hardware pass, guide selected consumer owners through small
-      actual in-code trials using measured findings; preserve each owner lane
-      and normal bench scheduling. Source reviews alone do not complete this.
+      clock lacks resolution. Include 128/256/1024-byte comparisons.  Source reviews alone do not complete this.
       [Conditional trial scope](CONSUMER-TRIALS.md) keeps those checks bounded.
 - [x] Report attributable hardware evidence and limits, then stop without tuning.

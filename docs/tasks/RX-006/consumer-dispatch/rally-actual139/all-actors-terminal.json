@@ -13,7 +13,6 @@
     "wall_time_seconds": 2.4185e-05,
     "exit_code": 0,
     "original_token_count": 18,
-    "output": "Same139 exact native-FIRST/a25f restoration and fresh handback complete\n",
     "session": 69100
   },
   "consumer_stopped": {
@@ -139,5 +138,12 @@
     }
   ],
   "all_target_access_stopped": true,
-  "no_pending_commands": true
+  "no_pending_commands": true,
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/restoration_tool/output"
+    ]
+  }
 }

@@ -96,5 +96,8 @@ The finding is a real reported receive overrun with a useful first-check
 boundary, **not a demonstrated generic U1 defect or a proven UART0 cause**.
 Preserve the first LSR sample and refused drain/close state; do not mask OE,
 discard it through a second status read or weaken source lifetime rules.
-Extender retains recovery/firmware/custody and MechAgon the consumer. UART
+Extender retains firmware source ownership and MechAgon the consumer.
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
+ UART
 performed no build, decoder execution, target access, replay or installation.

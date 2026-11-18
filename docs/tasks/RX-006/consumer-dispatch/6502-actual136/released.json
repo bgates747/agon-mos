@@ -1,7 +1,6 @@
 {
   "owner": "agon-6502",
   "task": "RX-001-physical-r01",
-  "purpose": "One authorized RX006 retained adapter trial: 69 tagged pulls versus two counted pulls, whole1800/install540/consumer420/cleanup600; Extender installs/restores exact temporary tuple",
   "plan": "/Agon/mystuff/agon-6502/docs/tasks/RX-001/OPERATING-R01.md",
   "notify_thread": "01a1147a-c6cf-7b42-b6cd-336c8b762c8e",
   "notify_host": "remote-ssh-discovered:raspberrypi",
@@ -95,7 +94,6 @@
       "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
       "listener_sha256": "Fresh final complete24753B read compare unchanged."
     },
-    "disposition": "Fresh RX001 helper admission after actual135 entirely UNRUN/no consumer target actions, exact85f9 nativeFIRST/readback/a25f/full freshhandback/release. Same retained171c/7d09 temporary tuple and original1800whole/540owner/420consumer/120app/600cleanup/min1020; one source60002 realBRClient/persist_decode legacy69 versus counted2 helper only. Extender owns all install/readbacks/exactnativeFIRST/a25f restoration; no game, tuning, P4/startup/listener/boot/table/OTA/app1 writes. SDmounted.",
     "physical_observer": "linux-extender",
     "physical_observer_role": "Sole delegated restoration operator after actual Rally no-launch stopped custody return"
   },
@@ -199,5 +197,15 @@
     "notify_host": "remote-ssh-discovered:raspberrypi",
     "request": "9267eb67eb7c",
     "requested": "2026-11-08T11:50:45.640408+00:00"
-  }
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/entry_observation/disposition"
+    ]
+  },
+  "BENCH001_removed_procedural_fields": [
+    "/purpose"
+  ]
 }

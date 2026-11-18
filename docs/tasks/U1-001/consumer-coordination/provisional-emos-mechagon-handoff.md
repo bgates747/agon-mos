@@ -1,5 +1,8 @@
 # U1-001: provisional driver for Extender integration and MechAgon trial
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Brandon directly selected this on2026-11-07 in UART chat
 01a132e0-4787-7310-93e9-f5248ffb2ff8:
 
@@ -106,8 +109,7 @@ Padded ROM SHA256
 map SHA256 `b87c12848dc5f33571bc60bab904a2b789f75082555ef4729ee4232b5e86a109`.
 MechAgon has the actual binding. ROM is uninstalled, hardware/CTS/full-FIFO and
 performance claims remain open, and current Wolf75 custody is unchanged.
-Extender owns installation/rollback under its normal fresh checkout; this record
-does not select a run. No material generic-source concern was found in this
+ No material generic-source concern was found in this
 bounded feedback review and no acknowledgement-only reply was sent.
 
 ### R02 cleanup association and whole-consumer size

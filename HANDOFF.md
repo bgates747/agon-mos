@@ -1,5 +1,8 @@
 # Interrupt-based UART0 transmission project — handoff
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../agon-extender/docs/operations/olimex-bench/README.md).
+
 LATEST 2026-11-02 — BD-001 DEMO TASK WRITTEN; STOP FOR AUTHOR REVIEW.
 docs/tasks/BD-001/README.md: original C/AgonDev bouncing-balls demo, mode136
 with unmagnified160x120scene, wall/all-pairs collisions and six output/transport

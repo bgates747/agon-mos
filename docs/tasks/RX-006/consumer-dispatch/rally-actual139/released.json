@@ -95,7 +95,6 @@
       "startup_sha256": "Fresh whole45B setup-only read/compare unchanged in138 reconciliation.",
       "listener_sha256": "Fresh whole24753B canonical listener read/compare unchanged in138 reconciliation."
     },
-    "disposition": "Fresh Rally physical02 admission after actual138 refused original dispatch BEFOREtargetIO and cleanlyreleased;134full8519 then13685f9prefixFIRST/readback/untouchedsuffix and137/138nativeunchanged provenance retained. Pinned app595f73c2/hostkit and exacttemporary171c+7d09 source closure verified. Extender alone installs exactEMOS/fullROM and nativeapp0/preservedprefix/fullreadbacks then maintainedmatchedbootstrap and freshactualCLI/rawmode0/callback0/Legacy0/wholefiles/neutral/offlineidle/freeUSB/joinedhandoff. No helper/game/timer/P4/boot/table/OTA/app1/startup/listenerwrite or replay. Original1800whole/540owner/420consumer/120app/600cleanup/min1020handoff, exactnative85f9prefixFIRST/a25f/fullreadbacks/fullhandback/release. Outer12288 untouched/knownfull8519 retained, no redundantbackup. One retained584B originalREAD16/counted helper pair only after actualstoppedhandoff, no newrace/FPS/CPUclaim. SDmounted.",
     "physical_observer": "linux-extender",
     "physical_observer_role": "Sole stopped no-I/O return reconciliation requested by FSIM"
   },
@@ -199,5 +198,12 @@
     "notify_host": "remote-ssh-discovered:raspberrypi",
     "request": "94cf5139e671",
     "requested": "2026-11-08T12:55:33.443963+00:00"
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/entry_observation/disposition"
+    ]
   }
 }

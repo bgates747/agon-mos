@@ -96,5 +96,7 @@
   ],
   "pending": null,
   "elapsed_seconds": 22.172231353993993,
-  "restoration": "Owner exact firmware/file/state restoration and real CLI handback still required; lease not released"
+  "BENCH001_removed_procedural_fields": [
+    "/restoration"
+  ]
 }

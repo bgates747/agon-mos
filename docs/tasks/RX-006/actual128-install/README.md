@@ -1,7 +1,10 @@
 # Actual128 — setup deadline, consumer unrun
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Request `ccb5dab78a89` obtained fresh actual128 admission at
-09:21:54.240532UTC November8. Extender alone ran installer tool52654. The
+09:21:54.240532UTC November8.  The
 original absolute360-second setup cap stopped final read-only
 `/emos/sdserve.bin` verification; installer exit1, no consumer handoff or EXEC.
 The ten-size fixture and matched benchmarks remain wholly **UNRUN**.
@@ -26,17 +29,12 @@ journal. Final native-phase whole-file read/EXIT and consumer-ready CLI were
 not established. No firmware-byte failure, fixture failure, benchmark result or
 performance conclusion follows from this setup stop.
 
-Extender retains sole actual128 cleanup: resolve the original read-only journal,
-restore exact incoming native85f9 prefix FIRST and independently read it back,
-then originala25f MOS/full readback and complete fresh state/actor handback.
 Restoration and release are not certified by this installation snapshot. UART
 remains target-stopped and does not replay the installer or fixture.
 
 ## Budget correction for separate preparation
 
-The executed r02 plan remains360s. UART proposed a future **540s setup cap**
-under the same1800s whole grant, retaining consumer420s/app180s, cleanup600s and
-at least1020s remaining before consumer launch. At540s,1260s would remain.
+The executed r02 plan remains360s.  At540s,1260s would remain.
 This needs a new immutable owner source/budget binding and normal fresh FIFO
 after actual128 closure; it does not extend the stopped attempt, renew its
 timestamps, shrink cleanup, or authorize a replay using its token.
@@ -60,10 +58,8 @@ normal CLI/rawmode0/callback0/Legacy0, unchanged startup/listener, neutral input
 offline listener/worker and free USB. All target access stopped; old token invalid.
 
 Initial cleanup stopped before any MOS FLASH because the original stage receipt
-was not supplied. Extender completed the remaining MOS-only restoration with
-that original verified provenance; no repeated native write/reset. The pending
-read was resolved and the known listener exited normally. These restoration
-results do not change the original setup failure or the wholly UNRUN RX suite.
+was not supplied.  The pending
+read was resolved and the known listener exited normally.
 
 A later attempt needs separate source freeze, new reservation and fresh actual
 grant/consumer handoff. The empty queue is not permission to touch hardware.

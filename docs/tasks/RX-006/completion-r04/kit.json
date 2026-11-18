@@ -43,7 +43,7 @@
   "runner": "/Agon/mystuff/agon-mos/experiments/rx006/run.py",
   "consumer_budget_seconds": 420,
   "application_budget_seconds": 180,
-  "whole_owner_install_run_restore_budget_seconds": 1800,
   "qualification": "Unchanged app/firmware; corrected explicit hex SAVE batch; completion confirmation pending",
-  "previous_kit_sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518"
+  "previous_kit_sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518",
+  "bench_procedures": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md"
 }

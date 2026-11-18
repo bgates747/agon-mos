@@ -95,5 +95,11 @@
   "no_pending_commands": true,
   "all_agon6502_target_access_stopped": true,
   "listener_offline_evidence": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/019-terminal-listener-offline.json",
-  "restoration_required": "Extender same136 exact85f9 nativeFIRST/fullreadback thena25f/fullROM and freshfullhandback/normalrelease; not released by consumer"
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/restoration_required"
+    ]
+  }
 }

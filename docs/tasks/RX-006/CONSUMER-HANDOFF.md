@@ -1,12 +1,13 @@
 # RX006 tested receive path — bounded owner trials
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 This is the tested-tuple reference for Brandon's selected small Rally/6502
 consumer-code trials. Source preparation may start after the own pass; target
 execution follows actual132 clean handback and fresh admission. This does not
 grant a bench slot, authorize a full-game port, release a paused unrelated goal,
-or ask anyone to optimize performance. Each consumer owns only its own helper
-adapter/harness; UART owns MOS, VDPlet owns VDP, Extender owns installation,
-keyboard/routing admission and restoration.
+or ask anyone to optimize performance.
 
 ## Passing evidence
 
@@ -41,8 +42,7 @@ check and its practicality judgment suffice; no new timing matrix is required.
 
 Released RC3 and ordinary installed EMOS do **not** acquire26h/90h by assumption.
 This is the specifically tested temporary receiving composition, Legacy mode,
-mainboard VDP. Extender handles any future native-first/EMOS installation and
-exact rollback at an actual fresh grant. Do not flash from the consumer helper.
+mainboard VDP.  Do not flash from the consumer helper.
 Current tuple/layout/startup/P4 must be reconciled at that turn; retained image
 hashes alone do not establish current installation or service availability.
 

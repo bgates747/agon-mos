@@ -26,29 +26,10 @@ existing AB/BT tasks retain final MOS qualification, application and release
 requirements. New experimental tests do not promote firmware to production.
 Console8 remains a separate manual target with its own retained evidence.
 
-## Controlling research
+## Physical bench reference
 
-The newly accepted [test appliance and suite lifecycle](../../agon-extender/docs/procedures/test-appliances.md)
-was found/read and linked to the Author, who confirmed it is the intended file.
-It requires a Pi Python coordinator, explicitly invoked individual appliances,
-conditional mode changes, at least one second for monitors to settle, and
-restoration of entry modes/routes and a visible responsive CLI. Runners and
-deployment helpers must never change /autoexec.txt or use reset to launch tests.
-Interrupted runs stop dispatch and cannot automatically replay at the new CLI.
-
-The [operation index](../../agon-extender/docs/procedures/README.md),
-[test execution](../../agon-extender/docs/procedures/test-execution.md),
-[bench constraints](../../agon-extender/docs/qualification/bench-constraints.md),
-[existing installation guide](../../agon-extender/docs/using-extender.md),
-[keyboard guide](../../agon-extender/docs/remote-keyboard.md),
-[foreground SD guide](../../agon-extender/docs/mainboard-sd.md),
-[reset protocol](../../agon-extender/docs/bench-reset.md),
-[installation guide](../../agon-extender/docs/installing.md), and
-[MOS recovery](../../agon-extender/docs/mos-recovery.md) govern hardware work.
-Private bench identity, exact devices/reservation and endpoints remain in the
-Extender machine-local record, not in this document. Network access remains
-owned by agon-dev-env. Current production selection is not evidence of what
-is installed on a development bench.
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../agon-extender/docs/operations/olimex-bench/README.md).
 
 ## EMOS baseline and size gate
 
@@ -65,9 +46,7 @@ owned by EMOS utilities without auditing the memory contract.
 
 ZDS-oriented source remains owned by an isolated agon-emos checkout. Native
 ZDS II/Wine compilation runs on Oryx; no mos-agondev build is selected for this
-work. EMOS OWNERSHIP.md permits direct ZDS builds. Its older test-mode-autoexec
-instruction is superseded for these suites by the Author-confirmed Extender
-lifecycle. Preserve component-owner baud, UART1 isolation, keyboard, console,
+work. EMOS OWNERSHIP.md permits direct ZDS builds.  Preserve component-owner baud, UART1 isolation, keyboard, console,
 utility-region and route contracts when establishing native-build checks.
 Unexpected source changes in other checkouts must be preserved.
 
@@ -124,23 +103,12 @@ Report IDs use sequential numbering and the existing running journal, without
 depending on Agon wall-clock dates. Failed/inconclusive/aborted tests stop the
 dependent sequence and retain evidence; keyboard acceptance is not completion.
 
-Fixtures stay under the established /test/mos-uart0 application directory;
-Extender support/evidence follow its SD layout. Preserve unknown files and
-existing results. Firmware switches are explicit bounded host operations
-between appliances, never hidden inside a command file or startup. Each switch
-requires incoming backup, exact target, independent readback and verified boot.
-Restore the incoming compatible firmware and actual CLI/input/SD state at the
-end. Do not erase NVS/OTA metadata or reset after a guessed flash delay.
-
 ## Bench observation and stop boundary
 
 The latest Extender local entry records a stopped scrolling readiness attempt,
 unreviewed terminal state, and a setup-only143-byte mode8 startup. Historical
 handbacks do not prove the bench is idle now. No live bench query, keyboard,
 transfer, reset, flash or test was performed during this initial research.
-Establish positive ownership/CLI handback before operational use. Preserve
-inherited startup exactly; this test runner has no startup-repair authority.
-No installed EMOS/VDP/P4 image is changed merely to establish a build baseline.
 
 The Author subsequently confirmed idle CLI, inserted SD and bench availability.
 Three read-only HTTP snapshots showed admitted neutral input, an offline idle

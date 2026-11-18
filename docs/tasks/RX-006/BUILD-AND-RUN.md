@@ -3,11 +3,11 @@
 Brandon requires actual own hardware qualification and matched old/new pulls,
 then small selected-consumer trials. Source reviews alone do not close the goal.
 
-UART owns `experiments/rx006/fixture`, its build and result analysis. Extender
-owns the temporary EMOS receiver integration, P4 input/route and physical
-installation, explicit invocation, capture and exact restoration. VDPlet owns
-the existing exact counted producer. No game changes by UART or VDPlet, no boot
-script edits, no target access without fresh granted bench custody.
+UART owns the synthetic fixture and result analysis; component owners retain
+their source/API responsibilities.
+
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
 
 ## Selected finite checks
 
@@ -31,13 +31,11 @@ script edits, no target access without fresh granted bench custody.
    percentages. Include batch payload, request/reply counts and kernel work.
    A very short elapsed interval is unresolved, not instantaneous/infinite rate.
 4. On success, retire transfers, detach only the admitted application callback,
-   clear the owned source buffer and return normally. Owner collects exact log,
-   app RAM witness if needed, artifacts and restoration evidence. Any uncertain
+   clear the owned source buffer and return normally. The results include the exact log and app witness. Any uncertain
    transfer failure keeps source/destination/callback/code resident; no automatic
-   replay, false cancellation or MOS return. The host watchdog and owner recovery
-   supply a finite stopped boundary.
+   replay, false cancellation or MOS return. Bench failure handling is defined by the authoritative guide.
 
-The target is under two minutes, plus normal owner installation/restoration.
+The fixture runtime target is under two minutes; bench operation follows the canonical guide.
 One finite attempt at the prepared matrix; failures stop successors for analysis.
 Correctness repairs may be followed by a separately frozen necessary retry, not
 an optimization sweep. Later owner trials use the measured findings and normal
@@ -64,10 +62,3 @@ application keyboard callback state. The app must not silently replace another
 callback. Its narrow legacy adapter consumes only tagged VDPL bodies and leaves
 ordinary keys to MOS; initial builds require the pinned application callback slot to be NULL;
 any necessary forwarding must be explicitly integrated with its owner.
-
-Only after source/build checks and the tuple are READY, reserve the finite own
-run through canonical `bench_lease.py`. Notify Extender with actual request ID,
-plan and expected run/cleanup. A queue entry is not a grant. Extender obtains
-fresh physical readiness and grants; assert immediately before every allowed
-operation. Preserve other queued owners and any ongoing cleanup. No Oryx work
-or Pi emulator diversion is needed.

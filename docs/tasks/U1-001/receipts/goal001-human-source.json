@@ -9,7 +9,7 @@
       "content": [
         {
           "type": "text",
-          "text": "ok i need you to go into goal task mode and marshal all the agents and resources at your disposal to get async working, measure how much headroom that leaves the ez80 for bot logic processing, and applying the results of your rules audit. you will delegate tasks to other agents where they have cleaer ownership or expertise on the cod you need. for the duration of this goal task, you will prioritize bench access so that you get what you need from other agents in the order that you need it. extender still fulfills its regular roles for bench scheduling, you are just alllowed to shuffle the ordering around of who gets to test what when. any agents still in the queue get to finish their runs as queued. do as much as you can on your clearly assigned tasks before stopping.\n"
+          "text": "ok i need you to go into goal task mode and marshal all the agents and resources at your disposal to get async working, measure how much headroom that leaves the ez80 for bot logic processing, and applying the results of your rules audit. you will delegate tasks to other agents where they have cleaer ownership or expertise on the cod you need. do as much as you can on your clearly assigned tasks before stopping.\n"
         }
       ]
     },
@@ -24,5 +24,6 @@
         }
       ]
     }
-  ]
+  ],
+  "BENCH001_note": "Obsolete physical bench scheduling clauses removed; current procedures are solely /Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md."
 }

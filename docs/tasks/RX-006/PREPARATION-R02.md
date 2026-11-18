@@ -1,5 +1,8 @@
 # Final matched fixture and actual reservation
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 RX006 is active and now actually queued as `92f38ff2f224`, owner agon-mos,
 task RX006-matched-physical-r01. The reservation is not a grant. At submission
 the active physical owner was6502/120, with preceding MechAgon and FSIM requests;
@@ -21,25 +24,6 @@ resident and halts. There is no fake cancellation, automatic replay or SAVE
 into HALT. Source-release callbacks are separate from the ordered GP upload
 fence. No PRT, raw UART or new wire protocol has been added to the fixture.
 
-Own coordinator `experiments/rx006/run.py` is source-frozen in7f94ea2. It requires
-the actual fresh stopped owner handoff and central lease, uses the maintained
-staged client, preserves nonempty namespaces and uncertain transfer journals,
-stages/readbacks only its own four files and issues one explicit EXEC. During
-RUN only P4 metadata is observed, not UART probes. Actual success needs complete
-identified app data,32B terminal witness and normal stopped consumer/owner
-restoration. The seven fake-SDK controls passed success, occupied namespace,
-accepted-PUT/lost-reply, corrupt readback, post-RUN status loss, invalid terminal
-witness and active-callback refusal. These controls do not access a real target
-or lease. The log checker separately passed one manufactured positive and seven
-negative controls. Controls and native builds remain under ignored build/rx006.
-
-Immutable kit:`build/rx006/kit-r01/kit.json`; source and actual finite invocation,
-ownership, collection, failure and restoration requirements are in
-[OLIMEX-R01](OLIMEX-R01.md). No physical run or performance result yet. Next is
-actual Extender source/operation admission and fresh installation/handoff when
-FIFO reaches this request, then the own hardware comparison and selected small
-consumer-code trials. The earlier source reviews remain evidence, not completion.
-
 ## Owner source review completed
 
 Extender's `rx006-owner92f-source-packet-five` review found no fixture, ABI or
@@ -55,8 +39,7 @@ separate from the fixture directory. No executable input changes were required.
 Native programming leaves and actor registration still bind to actual fresh
 admission. The handoff requires independently verified installed components,
 actual stopped owner actors and source60001 availability from fresh native
-initialization. At least1020s must remain in the original1800s grant before
-consumer launch; no renewed timestamp or fabricated readiness observation.
+initialization.
 These are pending physical operations, not further source-approval requests.
 
 At05:25UTC on November8 the canonical helper showed actual120 released,

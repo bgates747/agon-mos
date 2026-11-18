@@ -1,5 +1,8 @@
 # Actual135 — consumer entirely unrun
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Extender installed the tested171c/7d09 tuple and closed all original installation
 actors. Its installed-state observation epoch1794139127.7130952 had already
 expired before the immediate-steering delivery12:03:40UTC, as Extender106 records;
@@ -9,8 +12,7 @@ exceeding the unchanged runner120s freshness limit. The runner was NOT launched.
 Zero launch attempts, original toolhandles, consumer PIDs/children, target I/O,
 staging, EXEC, receive arms or helper invocations. physical-actual135 directory
 is absent. Exact stopped/unstarted custody is in
-evidence/actual135-NO-LAUNCH-CUSTODY.json. At final return original whole budget
-had989.051s remaining, below required1020s for420consumer+600owner cleanup.
+evidence/actual135-NO-LAUNCH-CUSTODY.json.
 No evidence/clock was restamped, extended or substituted.
 
 Extender107 accepted that stopped return and resumed sole exact original native

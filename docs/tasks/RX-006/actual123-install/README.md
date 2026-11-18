@@ -1,7 +1,9 @@
 # Actual123 — installation boundary, no test executed
 
-Normal actual122 release put RX006 first. Extender independently joined its
-predecessor state and obtained fresh actual123 admission for sole installation.
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
+Normal actual122 release put RX006 first.
 The original installer PID1869991/start38185224 was observed live, then missing.
 Its retained [stopped record](owner-stopped.json) shows every child joined:
 stage/flash/MOS-verification0, native1. No UART runner or test was launched.
@@ -16,9 +18,7 @@ Source owner evidence remains at
 `/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/owner-install/`.
 Extender received concrete terminal/timeout facts in mail
 `2026-11-08_02-34-21_agon-mos_rx006-actual123-installer-terminal-observed-ten`
-with immediate accepted steering. Extender alone reconciles actual state and
-performs required restoration. UART remains target-stopped until fresh actual
-joined/stopped handoff and at least1020s remain in the original1800s grant.
+with immediate accepted steering.
 No app, test, throughput measurement, reset or flash replay by UART occurred.
 
 ## Closed unrun after necessary restoration

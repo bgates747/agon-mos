@@ -1,5 +1,8 @@
 # Actual148: consumer reports combined EMOS functional pass
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 6502's retained report and original controller/supervisor receipts record a
 complete four-phase hardware pass on exact a25f EMOS/F6: synchronous and async
 pixel probes, actual DOS save/load/playable controls/quit, and a fresh app
@@ -21,8 +24,7 @@ failure retain their identities. The hardware printer diagnostic adds traffic;
 353.39s host duration is not transport cost or a performance comparison. No
 peak heap/stack, every optical frame, audio or bare-C8/RC3 claim follows.
 
-All6502 target access is stopped. Extender alone still owns exact restoration,
-fresh full handback and release; those were pending at this report. The bare
+All6502 target access is stopped.  The bare
 C8 package remains separately guarded and not deployed by this consultation.
 No further owner review/build/run or acknowledgement-only communication was
 requested; RX-006 remains complete.

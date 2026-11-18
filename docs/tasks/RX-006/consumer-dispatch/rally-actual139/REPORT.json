@@ -49,7 +49,6 @@
   "practical_judgment": "Counted replies work in actual retained exporter and simplify per-word reconstruction; 292 to3 requests and one coarse30to6 complete-export pair suffice; no further consumer run or tuning needed",
   "clock_limit": "Coarse public MOS counts; one fixed-order complete file-export pair including file I/O and adapter checks; not CPU, pure-wire, renderer/FPS or stable throughput",
   "generation_limit": "Retained stats has no game generation field;4503 is originating-state provenance only",
-  "restoration": "Stopped custody returned to Extender; final exact native-first/EMOS restoration/fresh full handback/release pending",
   "files": [
     {
       "path": "/Agon/mystuff/AgonArcade/docs/consultations/mos-rx006/actual-helper/physical-actual139/001-start-stage-listener.json",
@@ -326,5 +325,12 @@
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
-  ]
+  ],
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/restoration"
+    ]
+  }
 }

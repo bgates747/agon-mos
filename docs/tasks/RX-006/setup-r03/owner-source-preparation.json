@@ -3,8 +3,6 @@
   "epoch": 1794130829.2361546,
   "request": null,
   "task": "RX006-matched-physical-r03",
-  "central_owner": "agon-mos",
-  "hardware_operator_install_restore": "linux-extender",
   "source_template_only": true,
   "no_target_access": true,
   "no_grant": true,
@@ -13,12 +11,6 @@
     "bytes": 2577,
     "sha256": "e220e0f65ef5af88b2fb48638dc14af24003cdf07e0339d65ea6511decbae518"
   },
-  "owner_install_seconds": 540,
-  "whole_seconds": 1800,
-  "consumer_seconds": 420,
-  "app_seconds": 180,
-  "cleanup_seconds": 600,
-  "minimum_consumer_remaining_seconds": 1020,
   "inputs_rehashed": {
     "/Agon/mystuff/agon-mos/experiments/rx006/run.py": {
       "bytes": 7452,
@@ -218,7 +210,6 @@
     }
   },
   "source2_preserved": "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r02-source2/source-preparation.json",
-  "runtime_binding": "bind.py requires actual new normal R03 reservation and creates sibling runtime source packet; no fake request/grant. Actual context names owner_install_output; original staging provenance validated for normal/failure cleanup before any rollback FLASH.",
   "offline_controls": {
     "bytes": 249,
     "sha256": "9594cf202860ebc32aef40bf89ff5e75d5123306339b9c11777e8d817aa7eeed"
@@ -228,5 +219,20 @@
     "path": "/Agon/mystuff/agon-mos/docs/tasks/RX-006/OLIMEX-R03.md",
     "bytes": 4533,
     "sha256": "12cf10a1ee9cc817c06f2ea0e56c598f59b7feb4015af74c15798bd5bbc1aa08"
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/central_owner",
+      "/hardware_operator_install_restore",
+      "/owner_install_seconds",
+      "/whole_seconds",
+      "/consumer_seconds",
+      "/app_seconds",
+      "/cleanup_seconds",
+      "/minimum_consumer_remaining_seconds",
+      "/runtime_binding"
+    ]
   }
 }

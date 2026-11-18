@@ -89,5 +89,7 @@
     "started": 1794140591.500585
   },
   "elapsed_seconds": 20.850949467974715,
-  "restoration": "Extender exact restoration and fresh CLI/resource handback still REQUIRED; no release by controller"
+  "BENCH001_removed_procedural_fields": [
+    "/restoration"
+  ]
 }

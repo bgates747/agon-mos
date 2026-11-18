@@ -1,7 +1,8 @@
-"""ONE RX006 consumer invocation after an actual owner-install/stopped handoff.
+"""Historical RX006 fixture driver, retained as tested program source.
 
-No flashing, reset, startup edit, replay, serial port or firmware-private address.
-Platform owner supplies exact fresh handoff; missing/uncertain state stops work.
+For new Olimex bench procedures use only:
+/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md
+This archived driver is not the current bench operating guide or job packet.
 """
 import argparse
 import hashlib

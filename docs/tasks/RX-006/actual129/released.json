@@ -95,7 +95,6 @@
       "startup_sha256": "Fresh final complete45B read compare unchanged setup-only.",
       "listener_sha256": "Fresh final complete24753B read compare unchanged."
     },
-    "disposition": "Fresh RX006 admission after actual128 exacta25f and85f9prefix restoration/readbacks/release with126 outer8519suffix unchanged; source kit e220 rehashed. Owner Extender installs only selected171c EMOS and7d09 native app0 with full independent readbacks then current matched bootstrap/fresh raw mode/callback/Legacy/wholefiles/rootCLI/inputneutral/offline/freeUSB and stopped sole UART handoff. Whole1800/owner540/consumer420/cleanup600/min1020 before consumer. No owner fixture invocation/PRT/P4/startup/listener or unrelated flash; no replay. Native suffix outside1105920 unchanged. Exact incoming85f9 prefix and a25f restore/fullreadbacks/fresh handback/normalrelease required. SDmounted.",
     "physical_observer": "linux-extender",
     "physical_observer_role": "Sole delegated installation/restoration operator; consumer never admitted"
   },
@@ -199,5 +198,12 @@
     "notify_host": "remote-ssh-discovered:raspberrypi",
     "request": "8ccbbd0302e6",
     "requested": "2026-11-08T09:45:35.300731+00:00"
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/entry_observation/disposition"
+    ]
   }
 }

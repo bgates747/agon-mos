@@ -1,9 +1,10 @@
 # RX-006 — Bounded bidirectional transport feasibility goal
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Brandon selected this goal on November7 after Console8 RX-005 R0067 passed.
-Prove practical adoption feasibility, not a maximum-performance result. UART
-coordinates and owns MOS plus original synthetic test code; VDPlet owns VDP,
-Extender owns EMOS/bench integration, and consumer owners assess their own code.
+Prove practical adoption feasibility, not a maximum-performance result.
 No UART/VDP owner edits game code. No boot-script changes or automatic test start.
 
 ## Direct human instructions and stop condition
@@ -82,25 +83,6 @@ cells and a whole-suite two-minute target. The exact prepared shape must fit the
 selected owner tuple before freeze. Per-transfer deadlines and runner finite
 watchdogs are protection, not permission to free borrowed buffers or silently
 repeat failed operations. Retain partial/failed evidence.
-
-## Bench and ownership plan
-
-Finish source/build and acquire exact tuple before declaring READY. Reserve
-through the shared Olimex FIFO; Extender grants only after actual fresh custody.
-Current source-only status reading shows MechAgon118 active, with FSIM and6502
-queued; no preemption or live queries are selected by that snapshot.
-Extender chooses the smallest admitted bench composition/launch/retrieval path:
-the Olimex mainboard keyboard is unavailable, so a plain-MOS replacement must not
-break its only setup/recovery interface. No casual installation of Console8 MOS
-or VDP over a live EMOS/P4 pair. If EMOS integration would require substantial
-new work, do not build it merely for this goal: use existing attributable evidence
-and a simpler owner-supported finite proof, documenting limits.
-
-Preserve exact incoming firmware/SD/startup/route/mode and use existing retained
-rollback bytes. Test invocation is explicit CLI/runner, not autoexec/reset. Follow
-Extender test-appliances/test-execution/bench constraints, fresh checkout/assert,
-finite monitoring, exact restoration and prompt/neutral input handback. Resource
-permission never authorizes changing P4/EMOS/VDP outside the agreed tuple.
 
 ## Checklist
 

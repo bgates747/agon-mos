@@ -1,6 +1,5 @@
 {
   "schema": "RX001-OPERATING1",
-  "status": "Frozen stopped preparation; actual fresh Extender grant/install/sole handoff REQUIRED",
   "base_manifest": "/Agon/mystuff/agon-6502/build/rx006/prepared-r02/pins.json",
   "base_manifest_sha256": "1586f6fd176d1a12b41d9cfac8da3cf875fa0bac279d6e1982e8ffee7d92aa01",
   "base_pins": {
@@ -170,16 +169,6 @@
     "/Agon/mystuff/agon-extender/agents/rx006-receiver-r01/build595/on/mos.map": "ccbda4bc18bb16ef247d291338037ebdee4c3185c28b9ea25f9c32c44fe3b71f"
   },
   "sd_directory": "/test/6502-rx001-r01",
-  "selected_budget_mail": "2026-11-08_06-41-00_linux-extender_rx001-6502-budget1800-owner-source-onehundredone",
-  "selected_seconds": {
-    "whole": 1800,
-    "install": 540,
-    "consumer": 420,
-    "app": 120,
-    "cleanup": 600,
-    "entry_floor": 1020,
-    "exec_floor": 780
-  },
   "files": {
     "helper.bin": {
       "path": "/Agon/mystuff/agon-6502/build/rx006/operating-r01/payload/helper.bin",
@@ -191,5 +180,14 @@
       "bytes": 270,
       "sha256": "52071170d08d63d6aff95e57a4a29e4574571617a85151a058c1c4cd534565fa"
     }
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/status",
+      "/selected_budget_mail",
+      "/selected_seconds"
+    ]
   }
 }

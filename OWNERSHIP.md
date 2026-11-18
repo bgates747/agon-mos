@@ -22,7 +22,8 @@ firmware preparation and physical receiver investigation in project-local build
 copies. The Author explicitly clarified this on2026-10-14. Flexe owns emulator
 code/models/regressions, not these VDP firmware tasks. Upstream VDP and ESP32 SDK
 checkouts remain read-only references; diagnostic changes and provenance belong
-here. The Author performs physical firmware flashing and board runs.
+here. The Author performs Console8 firmware flashing and board runs. Physical
+Olimex operation follows only the [bench guide](../agon-extender/docs/operations/olimex-bench/README.md).
 
 This repository is the upstream-oriented MOS source fork. It owns:
 

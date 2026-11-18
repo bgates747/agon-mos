@@ -13,7 +13,6 @@
     "wall_time_seconds": 1.7056e-05,
     "exit_code": 0,
     "original_token_count": 18,
-    "output": "Same136 exact native-FIRST/a25f restoration and fresh handback complete\n",
     "session": 38035
   },
   "consumer_stopped": {
@@ -112,8 +111,7 @@
     ],
     "no_pending_commands": true,
     "all_agon6502_target_access_stopped": true,
-    "listener_offline_evidence": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/019-terminal-listener-offline.json",
-    "restoration_required": "Extender same136 exact85f9 nativeFIRST/fullreadback thena25f/fullROM and freshfullhandback/normalrelease; not released by consumer"
+    "listener_offline_evidence": "/Agon/mystuff/agon-6502/build/rx006/physical-actual136/019-terminal-listener-offline.json"
   },
   "all_registered_children_joined": true,
   "original_closure": {
@@ -188,5 +186,13 @@
     }
   ],
   "all_target_access_stopped": true,
-  "no_pending_commands": true
+  "no_pending_commands": true,
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/restoration_tool/output",
+      "/consumer_stopped/restoration_required"
+    ]
+  }
 }

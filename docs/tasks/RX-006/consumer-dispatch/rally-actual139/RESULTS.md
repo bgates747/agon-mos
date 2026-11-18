@@ -59,11 +59,6 @@ fewer requests and this observed modest export benefit are sufficient; there
 is no selected full-game adoption or further performance program.
 
 Actual135 remains entirely UNRUN from expired delivery; it is never relabeled
-as this pass. Its exact incoming restoration and release were separately
-completed. Actual139 stopped consumer custody has been returned promptly to
-Extender with native actor/terminal/result hashes in
-delivery-correction/ACTUAL139-CONSUMER-STOPPED.json and the owner's matching
-consumer-stopped.json. Extender alone now owns exact incoming native-prefix
-FIRST/EMOS restoration, fresh CLI/input/resource handback and normal release;
-that final owner outcome is pending here. No Rally target actor or collector
-remains and no new consumer action is selected.
+as this pass. Actual139's final restoration and release are recorded separately
+in delivery-correction/ACTUAL139-FINAL-CUSTODY.json. No Rally target actor or
+collector remained after the consumer test.

@@ -8,8 +8,7 @@
   "runtime_limits": [
     "37 pins include an ELF map; mos.elf.map and canonical mos.map are distinct declared artifacts.",
     "IRQ callback consumes no C or transport service; static storage/code remain resident on uncertainty.",
-    "Normal file/32B witness and supported CLI/listener observation required; no printerOn/VDU2.",
-    "Owner must bind consumer-specific host controller and choose realistic whole/install/cleanup budgets before freeze. Proposed1200/350 differs from proven1800/540/600; do not relax restoration or extend active runs."
+    "Normal file/32B witness and supported CLI/listener observation required; no printerOn/VDU2."
   ],
   "additional_build_or_case_requested": false,
   "device_access": false,

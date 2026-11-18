@@ -89,13 +89,12 @@
       "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r04-bound-e4d3981a89ae/exchange/backend.bin"
     ],
     "component_provenance": {
-      "p4_app_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
       "emos_rom_sha256": "Independent complete131072B restoreda25f ROM comparison.",
       "native_vdp_sha256": "No native write during131; exact actual130 full1118208B8519 restoration/readback lineage retained.",
       "startup_sha256": "Fresh final complete preserved setup-only startup comparison.",
-      "listener_sha256": "Fresh final complete canonical listener comparison."
+      "listener_sha256": "Fresh final complete canonical listener comparison.",
+      "p4_app_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component"
     },
-    "disposition": "Fresh RX006R04 admission after actual131 exacta25f fullROM/PRE17/feature/directories/fullhandback/release; no native/P4write in131, actual130 full8519 restoration/readback lineage rehashed. SOURCE4 bound49/kit6d467b51 explicithex/freshr02/physicalr04 matched; same18376Bapp and171c/7d09 firmware. Extender alone installs exact171c EMOS/fullROM and native7d09 app0/full1105920 prefix readbacks then currentmatchedbootstrap/freshCLI/state/files/input/idle/joinedhandoff. Original1800/owner540/consumer420/app180/cleanup600/min1020 unchanged. No fixture invocation/timerprobe/P4/startup/listener/bootloader/table/OTA/app1write/replay. Outer12288B suffix untouched/8519 lineage; exactincoming85f9 nativePREFIX FIRST/a25f restore/readbacks/fullhandback/release. SDmounted.",
     "physical_observer": "linux-extender",
     "physical_observer_role": "Sole delegated same131 restoration after joined failed-stage return"
   },
@@ -199,5 +198,12 @@
     "notify_host": "remote-ssh-discovered:raspberrypi",
     "request": "596fc6eaf183",
     "requested": "2026-11-08T11:02:04.462818+00:00"
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/entry_observation/disposition"
+    ]
   }
 }

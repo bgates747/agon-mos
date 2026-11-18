@@ -5,7 +5,7 @@ the experimental counted receive service. It is not a game or a firmware image.
 Build it for the exact receiving MOS/EMOS and map before running. Invoke
 `test` from its staged directory; there are no command-line switches. Never add
 it to a boot script. Firmware installation, launch and rollback on the shared
-Olimex require the actual Extender-managed bench admission.
+Olimex follow only the [bench guide](../../../agon-extender/docs/operations/olimex-bench/README.md).
 
 It first checks logical sizes 4, 8, 16, 32, 64, 128, 256, 1024, 4096 and 8092
 with both synchronous and RFC25 asynchronous upload, then both read paths. A
@@ -35,16 +35,13 @@ Progress lines are synced outside timed intervals. A failure attempts one quiet
 first-fault SD record without sending more UART data or releasing borrowed RAM.
 Last `CHECK BEGIN`/`BEGIN` identifies a stopped case. Allow about two minutes;
 a stalled case is a failure. Any unknown transfer failure keeps buffers and
-callbacks resident, publishes `bench_witness[0]=2`, and halts for owner capture
-and reset. No blind retry or cancellation occurs. On success it clears its
+callbacks resident, publishes `bench_witness[0]=2`, and halts with its buffers resident. Physical bench disposition follows only
+the canonical guide linked above. No blind retry or cancellation occurs. On success it clears its
 buffer and callback, records `RX006 SUITE PASS`, prints `RX006 RETURN PASS` and
-returns. The host owner must separately verify real return and restoration;
-the log alone does not prove them.
+returns. The log alone does not prove actual program return.
 
 The app records its entry video mode and changes no mode. It requires a visible
-single-buffered CLI mode; a double-buffered entry is refused. If needed the
-owner preselects a suitable mode with the standard one-second settling pause,
-and owns restoration of its earlier state. Successful app cleanup restores
+single-buffered CLI mode; a double-buffered entry is refused.  Successful app cleanup restores
 ordinary text output and a visible flashing cursor before the return marker.
 
 Only an idle/NULL application keyboard callback is admitted by this fixture;

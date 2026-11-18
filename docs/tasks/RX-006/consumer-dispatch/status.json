@@ -16,7 +16,6 @@
     "last_actual": 139,
     "last_outcome": "PASS and practical judgment YES; exact restoration/fullhandback/clean release complete.",
     "future_requirement": "None. Selected slice complete; no further run/tuning.",
-    "actual135_restoration": "Extender normalrelease12:14:18UTC, exact native-FIRST/a25f independent readbacks/fullhandback; all stopped.",
     "practical_judgment": "Works/useful/simpler actual retained exporter:292 READ16 requests become3 counted chunks; no further run/tuning.",
     "selected_consumer_tests_complete": true,
     "restoration_complete": true,
@@ -49,5 +48,12 @@
     "selected_consumer_slice_complete": true
   },
   "target_custody": "All selected RX006 runs restored/released. Final139 release13:20:32UTC, all UART/consumer/owner target actors stopped; no token/access retained. NextMech94cf needs normalfreshadmission.",
-  "goal_requirements_complete": true
+  "goal_requirements_complete": true,
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/rally/actual135_restoration"
+    ]
+  }
 }

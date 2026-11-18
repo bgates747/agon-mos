@@ -103,13 +103,12 @@
       "/Agon/mystuff/agon-extender/agents/bench-scheduler/rx006-matched-r01/exchange/backend.bin"
     ],
     "component_provenance": {
+      "native_vdp_sha256": "Independent complete incoming application/touched-tail restoration readback",
       "p4_app_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
       "emos_rom_sha256": "Unchanged retained fresh-grant identity; this runner never writes the component",
-      "native_vdp_sha256": "Independent complete incoming application/touched-tail restoration readback",
       "startup_sha256": "Fresh whole-file comparison with incoming grant",
       "listener_sha256": "Fresh whole-file comparison with incoming grant"
-    },
-    "disposition": "Fresh RX006 admission after actual122 exact8519 full restoration/readback/release; source kit e220 rehashed. Owner Extender installs only selected171c EMOS and7d09 native app0 with full independent readbacks then current matched bootstrap/fresh raw mode/callback/Legacy/wholefiles/rootCLI/inputneutral/offline/freeUSB and stopped sole UART handoff. Whole1800/consumer420/cleanup600/min1020 before consumer. No owner fixture invocation/PRT/P4/startup/listener or unrelated flash; no replay. Native suffix outside1105920 unchanged. Exact incoming85f9 prefix and a25f restore/fullreadbacks/fresh handback/normalrelease required. SDmounted."
+    }
   },
   "released": "2026-11-08T07:41:35.846180+00:00",
   "release_observation": {
@@ -218,5 +217,12 @@
     "notify_host": "remote-ssh-discovered:raspberrypi",
     "request": "a8e01ba53c4e",
     "requested": "2026-11-08T05:32:47.877814+00:00"
+  },
+  "BENCH001_documentation_sanitation": {
+    "reason": "Obsolete procedural fields removed; observed run data and original artifact pins remain historical.",
+    "authority": "/Agon/mystuff/agon-extender/docs/operations/olimex-bench/README.md",
+    "removed_fields": [
+      "/entry_observation/disposition"
+    ]
   }
 }

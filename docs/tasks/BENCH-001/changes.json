@@ -1,0 +1,686 @@
+[
+  {
+    "path": "AGENTS.md",
+    "tracked": true,
+    "before_sha256": "847e2489d0fafbe09900d9f4316b634497f30ebdcd47762aec929278097647d3",
+    "after_sha256": "fc4fbf54f3bbba02589ce1a09c299ee282ca6cc12b4a9313ab8eebf2311428fc",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "HANDOFF.md",
+    "tracked": true,
+    "before_sha256": "380817a891dc2f660d1004bf41e2d476dd39b21c68cfe0fc76634421889eae43",
+    "after_sha256": "408352fd45fc463e7d892da0e7a788f3ac9c72c9fb22ebdf7caaab8d4b41407f",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "OWNERSHIP.md",
+    "tracked": true,
+    "before_sha256": "52953d26a05962e802022361f7fc39d229d24e4e892261d77b9c27d90ad9ec5a",
+    "after_sha256": "2cd35321a04fe420baa9196fd2f646c0d2375c9b28609645e815039f34c9b4b7",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "README.md",
+    "tracked": true,
+    "before_sha256": "3cd4862a57947dd13cc6b6aaebcebf3282c594a58f6a011e4e47628f76899f2c",
+    "after_sha256": "d87f33684e219726850fb61598c9fb56b3e9c25fed5bc6a15fb2bc2e4006f6f1",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "TODO.md",
+    "tracked": true,
+    "before_sha256": "da779a833da1f7ac777f172e46a16378e4f56e84baa089390feedec0fa416104",
+    "after_sha256": "664adc8fb759c11e3a7dbd84845e133f1488a79f2e6d2404adcf7fcc6746cb5a",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/consultations/io003-current-tx/actual148/UART-NOTE.md",
+    "tracked": true,
+    "before_sha256": "1990b4aa40096ac9ce238bb6d2dee518056ed7273eb4117fd8cb88a2c7a7e99f",
+    "after_sha256": "e787b46d21c8b8cb5715748e9ecea58486f6e6e785180a89d5a8266bf492ebf9",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/consultations/io003-current-tx/actual148/owner-report.md",
+    "tracked": true,
+    "before_sha256": "9c8496f7289c27d745c63be0621dc1ea02492c95142d2fc1af3c6fc881bf0a2c",
+    "after_sha256": "3df64469cd3d89f7d979445eceea05c3e7b1261a4ce9af65ceec4ed238597211",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/BOOTSTRAP-CORRECTION-R02.md",
+    "tracked": true,
+    "before_sha256": "00a081515fb6003828b2a643b0ee00edc45d5c2a3e0f7b477f8e3221eac22089",
+    "after_sha256": "172ccfeb682a3da8cd9bb6825d66c83b45f5b3c82c11659671c281848e2a0479",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/BUILD-AND-RUN.md",
+    "tracked": true,
+    "before_sha256": "3be76ea8bef23aad8882c6631cd18905f399b88d2d5b499faab114fceeec8759",
+    "after_sha256": "af4e49cb3e93e9308c5e3a56496d75fa6c80503457df575ecc4342630a38a80a",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/CONSUMER-HANDOFF.md",
+    "tracked": true,
+    "before_sha256": "4971c5de9292fab2d6694c03b34eb7bdb5fea3701309f233afe4ae1f9b461dce",
+    "after_sha256": "9075b0e3e7a774ae715879303190bd8435e117b17a7876c744728fc1321ca269",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/CONSUMER-TRIALS.md",
+    "tracked": true,
+    "before_sha256": "3d2bab5d3dcd76027d7e7926573be0e69ea4be7ea066b0b826a32661f7b53c6b",
+    "after_sha256": "8619138b1bb4680d41296fbb5ca69fb909aa0d9d91d1c3233869cf4f18632096",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/OLIMEX-R01.md",
+    "tracked": true,
+    "before_sha256": "59511da0f07f164e818f76b618bfd1ff95e4ed9fed4e3fb724d9b57a35295554",
+    "after_sha256": "330697000c31c30a649ca380f2967674904fbf6e151cda4c73d957634a5968ef",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/OLIMEX-R02.md",
+    "tracked": true,
+    "before_sha256": "540b9902f095d10632a2b1e89c9a54155bd0246937bdadd2d52f2ef3c2b476e6",
+    "after_sha256": "9553d7361908deb759512b6132f98f8482d68ffdc757cbf59b69371f56bcfb21",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/OLIMEX-R03.md",
+    "tracked": true,
+    "before_sha256": "e38755036f4f98747d7ecd3dcf4c0f56263d32dc70e6415839c25f18e1126f2d",
+    "after_sha256": "80619112d049bc18d6f5d366480a4ed256273e5efbcccc41d49afe0a3c4dacc7",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/OLIMEX-R04.md",
+    "tracked": true,
+    "before_sha256": "d094e6df4e24513110b58d099bfeffc69e4a7f5b154e1c320956d885e46476ba",
+    "after_sha256": "fead8dd053860f65926a3206aea44bbb1ed9cf97658c34332c6cb306bdd0801e",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/PREPARATION-R02.md",
+    "tracked": true,
+    "before_sha256": "46023842f40710eeafa487be21e4721d9d23f2ecf70e3497c70cbe26ffb17c04",
+    "after_sha256": "84487c3d3f51df123176a1ad09c8c5011353e50f5aa8ee7b21bede980c1d90f7",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/README.md",
+    "tracked": true,
+    "before_sha256": "5cf48fa77053347fc61c1b928a3e6d8a447aaa8f3325d31347ffecd13eb00d54",
+    "after_sha256": "afbd8b1144bdb9903f8a67c16282adcff51781b97a2ea550f2cef750ccc67ce0",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual123-install/README.md",
+    "tracked": true,
+    "before_sha256": "161ca0213720f17d3a2412ad01d405f5622d86abefb731ea8b69284cb3dddd32",
+    "after_sha256": "c25c532d45a0fe9c094aa6116907bd9f534dfcbbdb8fb8af92935e965ab2e475",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual123-install/released.json",
+    "tracked": true,
+    "before_sha256": "f116b04c8c0523ef0a8e403880541334b3b42c1769f7c82f39df9e1776a2a07d",
+    "after_sha256": "e4849c955feb600f5c9d870952de2ecda1b08b5af973509a346cc169df7e149b",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual128-install/2026-11-08_04-29-12_linux-extender_rx006-actual128-owner-bound-unrun-cleanup-sixtyseven.md",
+    "tracked": true,
+    "before_sha256": "d36c2f108a459d9820dc81a5883a4b2ff415f6f60486e53b8a0f3a7ac8b6c13f",
+    "after_sha256": "103c1f772b723e9694468f65dcbdfea5449961c388a4a19f503a150591b59c18",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual128-install/2026-11-08_04-29-26_agon-mos_rx006-actual128-final-cli-deadline-observed-fifteen.md",
+    "tracked": true,
+    "before_sha256": "d09d9e1ee0b41e0348cee9743cb94f3950fa31d7cc8a07a66076e9763d0cd910",
+    "after_sha256": "3bb0b73be8a99e478905689467b73d53cc18844c9bb7fde61f0e112713beb878",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual128-install/2026-11-08_04-35-33_linux-extender_rx006-actual128-clean-release-sixtynine.md",
+    "tracked": true,
+    "before_sha256": "9e2f8f73e49db6427b214152f375515b84143af002eaada908c17af87ed20006",
+    "after_sha256": "e80e4c70dbdb631c6659bc82f06db4f6d9e2650d3e5db42684d8c193348ab491",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual128-install/README.md",
+    "tracked": true,
+    "before_sha256": "5ace02dadaa1e12769aa9ec33f921a130166dfedb8223d858ceb6f2d7df1bb73",
+    "after_sha256": "f1dd61859cf6aa236b455afb0137f682088f2e5eae306a314c0ff6ea1eff2f5d",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual128-install/released.json",
+    "tracked": true,
+    "before_sha256": "68cd44a85eeba00aeb999ea1384825e11345cb2dd6ca721039efa6dbc97f11ce",
+    "after_sha256": "405c090764b7f7243777449245b248d0e498380906debdfcd124f37760dfc86d",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual129/2026-11-08_04-53-50_linux-extender_rx006-actual129-installed-stopped-handoff-seventyfour.md",
+    "tracked": true,
+    "before_sha256": "a0305987132ea6ddabd92d07f298fa097252b3e44e85aec7ad12fc89239631a9",
+    "after_sha256": "9a591bc4d8ba0d639d5c7f2c45bf8d62a129669bfc7e97047905a1a4661c862b",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual129/2026-11-08_04-57-50_agon-mos_rx006-actual129-timeout-stopped-return-twenty.md",
+    "tracked": true,
+    "before_sha256": "a8f8491d13681808689af28b932f0182145cc50d2c4df2cbbb8590a9c5cad792",
+    "after_sha256": "a60def3ba41566f2f8bd4ba32e1cd22a4a4596cf19a27c806fb3095a9999d888",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual129/2026-11-08_05-09-47_linux-extender_rx006-actual129-restore-boundary-seventyfive.md",
+    "tracked": true,
+    "before_sha256": "becf8c09506f1a4f6eaaa5f1a715bdc34325c79bdf00c76192f4494002a8036e",
+    "after_sha256": "6abf275d76b0c8d9465c9c48f6e0fa02a17171840df77effac0e0df2bf35d4a9",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual129/README.md",
+    "tracked": true,
+    "before_sha256": "2681d4cff1db5f38c76ff3cb6613656a44922b2c9cf8096601ab43d184bae81f",
+    "after_sha256": "1c4088d10a1a5f7e886e77fd1604f12d296bd32ea76e4fcbb405ba3f9c3f842a",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual129/released.json",
+    "tracked": true,
+    "before_sha256": "4919bc73f1909c928fb20ca2ae0b1d9c799b0adb7d6f298fe95c69ee28fba9d0",
+    "after_sha256": "07f79fbd30dbbaf6d620d4a9a52801cba2a03598f1b097ccae070a0c47e374fa",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual132/2026-11-08_05-57-15_linux-extender_rx006-r04-actual132-owner-install-eightyeight.md",
+    "tracked": true,
+    "before_sha256": "d116026bcec4f98352599dbf2667a5a935864be8b575778b69b2fc9309d4c124",
+    "after_sha256": "7002700357b1956f2ccba8620130cd7872bba4336d26632b38cd7269d9c71619",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual132/2026-11-08_06-03-42_linux-extender_rx006-r04-actual132-stopped-consumer-handoff-ninety.md",
+    "tracked": true,
+    "before_sha256": "cbd446061a61648f74790ea7f238a9e60dd59c2583f06f2c6f505acbabee963d",
+    "after_sha256": "0de42124360134ccbffff27e601ce972fa1b1cebf0d399919912f9795c1de9f3",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual132/2026-11-08_06-05-34_agon-mos_rx006-actual132-complete-pass-stopped-return-twentysix.md",
+    "tracked": true,
+    "before_sha256": "2f37bf0002ea360e7c0caef6de88256cd7aef04b4a9a8e33de91040d649018a5",
+    "after_sha256": "7ab840163e188cbec90e3c899f04c9e95866fdf6c9d4f172af364663cd0233a2",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual132/README.md",
+    "tracked": true,
+    "before_sha256": "b98804e27ad88adcf2d0f6f6db45ff0c76d89827da0e6cb0f023381c618cb3f1",
+    "after_sha256": "d8890e411489271c557294e102f07f79e4678ca4c8e27cc5a522f655eb7b0097",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/actual132/released.json",
+    "tracked": true,
+    "before_sha256": "9a37f976259c811e2a00e7f7a3d3d6b9cd182124ca3a4aa0ea9be1b7523fc60a",
+    "after_sha256": "8da014ccb1270e9ecd171afec67f5df3c6eb9aba090f75c62388e724da5f30c7",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/bootstrap-r02/owner45-review.json",
+    "tracked": true,
+    "before_sha256": "b353130d6ee0aeda2edcf915d647e930196a2d7da0e2409206200b20f4a984e2",
+    "after_sha256": "96da9ea4655a99297a0e0743d3d70c1ce85a9f70829c5ea6f2abd3ebd1b0a29c",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/completion-r04/2026-11-08_05-18-12_linux-extender_rx006-r04-source49-ready-eightyone.md",
+    "tracked": true,
+    "before_sha256": "9611e4042fb63e81d6b6bc1913b9434855d024c95c9cfb7f01541c09bcac97fa",
+    "after_sha256": "3ae0f5c2901c44320c52c32ae38b082c7a5cf2089e1c07fd7b477b1a6f06b727",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/completion-r04/2026-11-08_05-54-22_linux-extender_goal001-cpu131-clean-release-87.md",
+    "tracked": true,
+    "before_sha256": "18a23633c6d87769ad30dc0ba62ab82ba0cbfbc60dd3a514b8fd9af7e77ad242",
+    "after_sha256": "bbd2b8697b2aef8b1f5b2c7727fe4297e852e3a6478650ba2ca9d1bbf39ed32a",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/completion-r04/bound-owner-source.json",
+    "tracked": true,
+    "before_sha256": "b72a1a4aa3d2939dd57f8b167e27e51305262cc95ebb29206c856aab2fe91cd8",
+    "after_sha256": "5407c109598eb5e720c3a35289cfec9f04ca522a3cf87e16f341a8fb42c4d7dd",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/completion-r04/kit.json",
+    "tracked": true,
+    "before_sha256": "6d467b5111c3d5379ad573fea4c86054017bb6b250cdcaee9897be89e57dba4c",
+    "after_sha256": "d4e47daebdc92d95ffbae06406e02ab80eb0656757e9fe7bd7154c4d3842e0f6",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/completion-r04/owner-source-preparation.json",
+    "tracked": true,
+    "before_sha256": "bb3c8bae7022f8ff61ae6a151ded8a112cf6b6fe3a00bbe95fdc0c14283902e6",
+    "after_sha256": "ce956f160cc7cdf4f6c97186e742c1623f662565d88a3758319b3d6988df2b74",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/2026-11-08_06-11-53_agon-mos_rx006-rally-actual-helper-selected-after-pass-nine.md",
+    "tracked": true,
+    "before_sha256": "1ab1193fb798060ce35fff6e044568359c0d3f0586d097b6dd0cf1abf57128c1",
+    "after_sha256": "cb46eb9fdd9570567cdc77fb6a7869658ea0ad6ff8485612c689fb74e4a00e51",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/2026-11-08_06-12-10_agon-mos_rx006-6502-actual-adapter-selected-after-pass-nine.md",
+    "tracked": true,
+    "before_sha256": "c827ad03c7a14d61c93d8ba5476144876361a49a20b3324ffbafbcfb7c6535e8",
+    "after_sha256": "e15edcd1f4c9f8089e10cf516a2a5db7db3470fb5ee69dc1451045e69ddc343d",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-actual136/2026-11-08_07-25-48_agon-6502_rx001-136-adapter-pass-judgment-eight.md",
+    "tracked": true,
+    "before_sha256": "059db5238986d34ab627c9fd17ac41f9392ac4609a83576a94312cb8d80e58a7",
+    "after_sha256": "ea33918fd685e53457f30ec91784572645b24c5b989815d86e1b4be10b132b6e",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-actual136/all-actors-terminal.json",
+    "tracked": true,
+    "before_sha256": "f72a7eb398143499d449c0eec453b2b1d2ded86f6be104b719b8fffe99d99118",
+    "after_sha256": "d0323e097efb2265b3c320da263bcc9073eaf8b5f5220c2580f3ff389598d2d2",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-actual136/released.json",
+    "tracked": true,
+    "before_sha256": "7a36b8727335af5e6d787715ec40d3c41fe937a0ac203fe3cdf3f8afb594efb4",
+    "after_sha256": "e06ba276c43f665fd93edbbb16e5221d4cafd3935574ff805ac513b3de40d999",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-actual136/stopped-return.json",
+    "tracked": true,
+    "before_sha256": "f267757c44af55e0abf78ea7dd580a10e3343956fcd2cd04efea0c2bd48bb2a0",
+    "after_sha256": "1d0b6e7d5c9c4cf5ee37437cf023c7b195a70941239323c5a49609bdb3baae93",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-actual136/summary.json",
+    "tracked": true,
+    "before_sha256": "d18edbde99a5e24135dd20b97ce072c62b1b3286785c4d15f1ba5e675d4b0e5b",
+    "after_sha256": "9dbbf6050c808e919c9bc85105b9276f6be28890cf7c0df0c1abc3051624aac1",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-controller/2026-11-08_06-43-39_agon-6502_rx001-controller-frozen-uart-three.md",
+    "tracked": true,
+    "before_sha256": "e59671efc20a60764406c0690752799e732679b6c2b98eef68691a6221083d00",
+    "after_sha256": "2afc1b1aacafdc151882ef81b9c7eaada21817b3939d56be4a7a0923cc671c6b",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-controller/2026-11-08_06-44-43_agon-mos_rx006-6502-controller-source-review-return-eleven.md",
+    "tracked": true,
+    "before_sha256": "9f5d9e3c6ed326400f027fefafbe1e5ee45e4c960720c0311236009ecde11b85",
+    "after_sha256": "6d63482dd2c90ffa7deea8767cabfd79da058bf39cce667ec747b6b5ce6cdf39",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-controller/2026-11-08_06-44-58_agon-mos_rx006-6502-controller-reviewed-owner-bind-thirty.md",
+    "tracked": true,
+    "before_sha256": "9ddd6b9b0b6857a3b0e3f833835b619ce1e87cf06c6fbbe4d5f989110e891422",
+    "after_sha256": "2bee9f236365f658032491c6a6fcb4eacdc3735e49c9adafd84aa4dfeb03320a",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-controller/OPERATING-R01.md",
+    "tracked": true,
+    "before_sha256": "2cfdff891c31fa2cd3a456c05a8df9d121c2f6438f9dc62b9bf925c4a817295e",
+    "after_sha256": "30304b2301fcd92351e320908e5e0adf8a8cb6c94541d7ab35fec38ee4c43223",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-controller/kit.json",
+    "tracked": true,
+    "before_sha256": "e0c2516e2147e9805c381c49e731adbc17db1f7ab7c1503ba2520494f378dfe7",
+    "after_sha256": "72df14b4b65a688c9b10bd99e0ace2a2226435f5c05b54251c00d2b89a3db865",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-prepared/2026-11-08_06-31-40_agon-mos_rx006-6502-prepared-source-review-return-ten.md",
+    "tracked": true,
+    "before_sha256": "39d9cb2dd2555205bffecefbfd4031e8d089b40b4682530aaf8f5db0a616c449",
+    "after_sha256": "aa73ce1f0c6537c8868fb56dced016e832975b6cc07a9ac859afea44e9324f40",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-prepared/2026-11-08_06-31-56_agon-mos_rx006-6502-helper-source-reviewed-owner-coordinate-twentyeight.md",
+    "tracked": true,
+    "before_sha256": "4e226a7178a4432c7525930a44c4e4974d5883b655458d609f892d8de73123e9",
+    "after_sha256": "a8376b2b2a679214f6b6e3c11b47f98a308c59e7e09ae418d57f6c54bcc2139c",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-prepared/RUN-R01.md",
+    "tracked": true,
+    "before_sha256": "1320c849a7fac40c64b7b8626e55e4c8cd5936141adcae29476d8295a6192ea6",
+    "after_sha256": "ca1e86a590c2f1ae78e59d673901701aed1df8584a99e6c6a161debdd05bdff3",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-prepared/prepared-mail.md",
+    "tracked": true,
+    "before_sha256": "3229597b4606ff79b3e3f03c2a9c7e04d1b38030cba52ac587a0104d59666134",
+    "after_sha256": "767bf01bc8e093306f876374681669d513ad4bb2eb15a1f9e2c52e471c58a84f",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/6502-prepared/uart-review.json",
+    "tracked": true,
+    "before_sha256": "feb01db9b13d2c437512145f0a5b280ab90f7cd677995fd2da92138507a71c2d",
+    "after_sha256": "da8a8d6cf17d4d7ea5d207e01c3a17bfe6258800a6fa158adc0b2d6ddac9d8e2",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual135/2026-11-08_07-07-27_agon-mos_rx006-rally-unrun-delivery-correction-selected-twelve.md",
+    "tracked": true,
+    "before_sha256": "cb51bca89ab072a955aa61d4910960b6e0649171325ff7b5db5ae4e22a492b2d",
+    "after_sha256": "86ac870ff759c9aea46f721278439457b1121b48e9a40a04290bffb22cad28b9",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual135/2026-11-08_07-07-45_agon-mos_rx006-rally-unrun-delivery-correction-coordinate-thirtyone.md",
+    "tracked": true,
+    "before_sha256": "9950bdc60435582004fa127136583f77e3aafb495514ae5256549ff0152ba4e8",
+    "after_sha256": "63dda018979c48fd3771245d4d76f5542f86d5c1ab929d32507eb58c0ac6e23d",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual135/ACTUAL135-UNRUN.md",
+    "tracked": true,
+    "before_sha256": "120c6fe3db056d66278d3cca1083f19eed524f23c2ab058632b760a97afee117",
+    "after_sha256": "0a7d83fb7bc66d6c2e6081d534f735c5fa1c5d77e5f0787c40bb46ffd373a833",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/2026-11-08_08-17-36_rally_rx006-rally-actual139-pass-practical-return-fifteen.md",
+    "tracked": true,
+    "before_sha256": "0ebc7ce6bb9c1321b22f45b3bc3d1396d728618fdef4f184d8a1d97e026567fa",
+    "after_sha256": "edb75b828d02fc7b6294f89ed9d2267bdc05baacfea13caef888f1ba5ae7d088",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/CONSUMER-STOPPED.json",
+    "tracked": true,
+    "before_sha256": "fad45904e552fab995900e3fdaa757c6898b20dc410988df59f3c395de6af796",
+    "after_sha256": "8e69dc5456bc5ff5b5dc9531c8763248eadade5e784bdf7d5c5d9725751ce116",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/REPORT.json",
+    "tracked": true,
+    "before_sha256": "b6f35e8a4b8c6a7a2673e6453a3d07b4ec8cdca3219f35c2fa97729a8cc0f950",
+    "after_sha256": "8b3e76d9dccb2bf6a658212209649063364be09f85578a535f05dbcb0c806979",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/RESULTS.md",
+    "tracked": true,
+    "before_sha256": "cf591729e648315b5a2b409d45d5fce52acb13330a5265467b89c0a95d51ee49",
+    "after_sha256": "80d07861d98443eb3b04bb7da5242c5c79857583700011de23331d82ac63534f",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/all-actors-terminal.json",
+    "tracked": true,
+    "before_sha256": "3575d4998cdfb48f626d0b4e7605aec8e79a7921a3606636dfc1222769cbfbda",
+    "after_sha256": "abba53f114456d553c8731b13287923cc2e2b3a2c264b745dd0ce5ee85b3cfe2",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/released.json",
+    "tracked": true,
+    "before_sha256": "1b17d119276feb4d0afb99c6edd8372b5eb39b6b93d73b772518016ec67291d4",
+    "after_sha256": "c70f62565dfd181a459459fa0318be6393f9f255a323ea97fa1bfc59c885bd43",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-actual139/summary.json",
+    "tracked": true,
+    "before_sha256": "b81a4448d906dd837c38c887c79a7fbda1e7930d7c975c15c13eb16a930cf790",
+    "after_sha256": "5ed4be8e395f932a1e6d627777a6cc4f4ae9a66ec52e6d7eae22a4a71c8247ab",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/2026-11-08_07-10-00_rally_rx006-rally-delivery-old-request-blocker-seven.md",
+    "tracked": true,
+    "before_sha256": "acad6240d1eb68d9701fade386a57bf6768046d96068dac2d67625b05dc72ed0",
+    "after_sha256": "683d92574ec783bbde0a375f188807c0a30ca1bdd7fc4e178bddf7769106cfc2",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/2026-11-08_07-10-40_agon-mos_rx006-rally-host-request-binding-selected-thirteen.md",
+    "tracked": true,
+    "before_sha256": "79563a62dcce1a55e1206af1e2d474ec39d92560a81d93ea6b61ef850deeae63",
+    "after_sha256": "23db4379db4802f868186ba997b498bf4377875b7b2d0bda0b60aedda610a186",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/2026-11-08_07-10-54_agon-mos_rx006-rally-host-request-binding-coordinate-thirtytwo.md",
+    "tracked": true,
+    "before_sha256": "9372d4d5d28b09dfed4e65c96fbf348a0520c8b195e39ffc80a851492ec9a479",
+    "after_sha256": "466e49626cb050384e0bae5777552f33030cd194721b1a2409a1ccd6be7df860",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/HANDSHAKE.md",
+    "tracked": true,
+    "before_sha256": "d88fb7ad10bfb53f22594549d43edddfb520225ed94f2b0da979e655b8988408",
+    "after_sha256": "32881a1bba1362dd86f903ad644bb2b76a8b4d90cfa4c5089cbf9625fd1c8a78",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/PLAN.md",
+    "tracked": true,
+    "before_sha256": "afd65e8e4ea246c178a3ac205085ccbbc91f83303ee10027978ddcab562f6718",
+    "after_sha256": "fe3b1df33f093ac78b005f4b99295c04b62293345abb467c9757d2306bbe52b8",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/r02/READINESS-R02.md",
+    "tracked": true,
+    "before_sha256": "e06e2af84b0913d14f85e16cc0e9d46fed55d2e7f0577afb44ffd7c01c069a03",
+    "after_sha256": "37cda379f8df12ee674136a00efd80a4c05453f945be3a83faac320aa5de54ea",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-delivery-correction/uart-disposition.md",
+    "tracked": true,
+    "before_sha256": "132d6918b86146792ce8c1183f6dfc1eb3ecea867cd7dc94bf0614e3eb668861",
+    "after_sha256": "88038890d4310df74edbfa097359594f797f5aaed0bf3d3775ead06f3060ad97",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-prepared/2026-11-08_06-26-30_agon-mos_rx006-rally-prepared-source-review-return-ten.md",
+    "tracked": true,
+    "before_sha256": "761f1be3f9ede93b676e30b99e823b13652b315638fedb8ef3db5c24bd4aaef6",
+    "after_sha256": "52c3168b668623a243ec519105702e0cc64f6e90f167c7189d5839211634bf0c",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-prepared/2026-11-08_06-26-46_agon-mos_rx006-rally-helper-source-reviewed-owner-coordinate-twentyseven.md",
+    "tracked": true,
+    "before_sha256": "4594175783873c26ed7bc3f3657d4cab4c078decee811461fa76e79e87b9ae3e",
+    "after_sha256": "0445d46ed67d8b36908b548cc48804ce7e825af417730265570bd0e8f6bfc84d",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-prepared/RUN-CONTRACT.md",
+    "tracked": true,
+    "before_sha256": "33306ee26ee1fd93e4272ed4eb0e06ecdf484d03602db84f92b18c72e3c547a6",
+    "after_sha256": "5624628d799a8cf69da068d1b5853bec8875cf645da271ebd4a3b4c83851ba34",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-runner/2026-11-08_06-32-54_rally_rx006-rally-host-runner-ready-uart-three.md",
+    "tracked": true,
+    "before_sha256": "87756e44eca68f35081edfb160fcdeb87d106f88d4befe9939194d94538eed40",
+    "after_sha256": "9f9b86fa3e35614041a787433dd9ec9e94183d183c2e26ec35601cbfbc03a745",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-runner/2026-11-08_06-33-51_agon-mos_rx006-rally-runner-source-review-return-eleven.md",
+    "tracked": true,
+    "before_sha256": "47ab14641d72d13e4790d4bed70bb89eb7221413ad0510128a2c3286cc801d43",
+    "after_sha256": "98eec4e0cb8a36746443dff795670e5e9f3d52abb17f7680a878c4ec7b8ceada",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-runner/2026-11-08_06-34-07_agon-mos_rx006-rally-runner-reviewed-owner-bind-twentynine.md",
+    "tracked": true,
+    "before_sha256": "9452699dfd648d7b06906607e091073f8afdb110698c631c467e7dbe2e4bb945",
+    "after_sha256": "a618ccd5a5b32a9fc0b0f288769b4b2accc98343e26a93cbf96ae530b42beb9c",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/rally-runner/RUNNER-READINESS.md",
+    "tracked": true,
+    "before_sha256": "eea04c6b889f0f90dcabbdc13dd19cf61347c96521610aa40bc3c0eebe1c009a",
+    "after_sha256": "f79c044481db35dddb51359610e48e40429849f3e4438c482eca6ab535aa9f54",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/consumer-dispatch/status.json",
+    "tracked": true,
+    "before_sha256": "047eba6d111075e9135e68ed69a426f1b377b555814c1ae96f4118a03becdec9",
+    "after_sha256": "2b7fec4c3c3cc6a494c60e0ee6f420da84b575c7a4903f7d369bc33d89815950",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/evidence/mail/2026-11-07_23-15-38_agon-mos_rx006-bench-minimal-binding-one.md",
+    "tracked": true,
+    "before_sha256": "67a95a987b75527c89fad823754bb1517f05f8bdbf1a78808bd93ec306a30c55",
+    "after_sha256": "2d7b58a45a9077e1a6c600999560dccf6f2333fdeb3bfebb5f3cdde303ab66bf",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/evidence/task-initial.md",
+    "tracked": true,
+    "before_sha256": "1903bfc158145de28f6edebde522cd357a8bba7b5472599901d00bc215183667",
+    "after_sha256": "d5e9d7d3f31ee1587a16139f296416b18ef1f2431c5cc068d6504418eec93776",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/evidence/vdplet-review.md",
+    "tracked": true,
+    "before_sha256": "d74c41529307029f7ed10b46e7dd59708d23afe59c6c9f3d02465e37d383fcae",
+    "after_sha256": "459cd1b4b8221a4a88b13463092071132cd87f416ffa70433de3ccd30f1e5754",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/setup-r03/2026-11-08_04-41-18_linux-extender_rx006-r03-owner540-source-seventyone.md",
+    "tracked": true,
+    "before_sha256": "fc0edf06886c2b51963627e2e48661169e09e5e0a12201db0ca9ceb5f251d09b",
+    "after_sha256": "43d54ee9f8b4628deb2fea33e50d8a2d41c39f4643f488ee07453a92ee6e985c",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/setup-r03/2026-11-08_04-44-44_linux-extender_rx006-r03-actual129-install-running-seventytwo.md",
+    "tracked": true,
+    "before_sha256": "52c501c9d0dafcaa388567ed6d8077190466dd63a0b64cf94bf63cd44ba011a2",
+    "after_sha256": "df8dc43d6f145da773377a2932000ad579ea64ac1b2a157a1cb276976d9df081",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/RX-006/setup-r03/bound-owner-source.json",
+    "tracked": true,
+    "before_sha256": "bef79b9987495913d5437c855718547a524d5dd3a0259e53b07a4c3a7adc66e2",
+    "after_sha256": "3b33116b5e410397ca9bc6ac36ea191c1d1896665814ea52ba165d38d52cde96",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/RX-006/setup-r03/owner-source-preparation.json",
+    "tracked": true,
+    "before_sha256": "0893a0fdf736bf6cd5573db9a8c9c1b819a95be9b1c3fbe2c5ff5ec4a1714d86",
+    "after_sha256": "cfb76158ac93754acb110edd385c493a9158fba83070d372d53a75584302895b",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/tasks/U1-001/actual83-irq-source-assessment.md",
+    "tracked": true,
+    "before_sha256": "bdda2b7938ae74ef8c7a1a0d53ea6b925be48e3c4f1c42ff5c4d52c1d4e391bf",
+    "after_sha256": "f44e32826ed1ba458caa84591c5e17ce771e8d62e5b16cb8a05ea712598c2735",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/U1-001/actual92-first-oe-assessment.md",
+    "tracked": true,
+    "before_sha256": "8a5ca2b8a41ab02def34f15d4081617ddf5abb6e33d0978c717fd9fc31503e1e",
+    "after_sha256": "021136ab28b9d373dcc618d6bb06a74b5ad7baf7a268e5b672e58bbc6b80040f",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/U1-001/consumer-coordination/provisional-emos-mechagon-handoff.md",
+    "tracked": true,
+    "before_sha256": "5434bbf004f08244c44150d1b7532978ab83e430bd4dacb0a02bd34701029dbf",
+    "after_sha256": "533059333531df329ca7ece3a8d0c7e61c07bf5f8c7db8edc7643958e9767d6c",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/tasks/U1-001/receipts/goal001-human-source.json",
+    "tracked": true,
+    "before_sha256": "7685c396706accd0469baacf018b160cae02ca963aa997c3c3589eea6081f45e",
+    "after_sha256": "a7d1066ca6ec779bfb1be9544699ce31b9064e22c87e037422710237498f7b75",
+    "action": "obsolete procedural fields removed; historical observation data retained"
+  },
+  {
+    "path": "docs/uart0-extender-tranche.md",
+    "tracked": true,
+    "before_sha256": "d47b642bcd9a4f79da263a191a337b1c846d025293ce35c9b51abb67d0297b56",
+    "after_sha256": "271ac25e295a38a94e76934e70fec6506cfb7dc30e53c2d5819638d80c492b7d",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "experiments/rx006/README.md",
+    "tracked": true,
+    "before_sha256": "639353bb2f52ed84954d46ddd28a887b49a2e52437b57218f35be8521609c9be",
+    "after_sha256": "594df6a00ba608b495e87fddf048fb1c99650333a8c510133b619656a3d8caf2",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "experiments/rx006/run.py",
+    "tracked": true,
+    "before_sha256": "9cc5e8922ab1a1295a935081754bad7e6890f60b2f5de330a165ce87ede1577c",
+    "after_sha256": "4b8aadc7209042035cb7bce9016798dd865d732a9b123752b8dab92d58053475",
+    "action": "docstring only; runtime logic unchanged"
+  },
+  {
+    "path": "experiments/uart0-bench/README.md",
+    "tracked": true,
+    "before_sha256": "3a58ede18d7989020c46933cbcd08cac99a781146d7d7bd9d126dd76606bb19a",
+    "after_sha256": "ebfcd4e680f60572c7d810ab64bc7481d8f26ce096f7703be9dfd4fd161cf562",
+    "action": "procedural passages removed; canonical reference supplied"
+  },
+  {
+    "path": "docs/audits/sniffer-color-audit-2026-10-29/broad-document-inventory-partial.txt",
+    "tracked": false,
+    "action": "deleted ignored grep dump containing duplicated obsolete procedures; unique findings retained in other audit records"
+  }
+]

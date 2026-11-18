@@ -1,5 +1,8 @@
 # agon-mos
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../agon-extender/docs/operations/olimex-bench/README.md).
+
 Hardware hold: the native Console8 candidate failed to boot. Its startup baud
 calculation is corrected and tested off-device; the withdrawn image must not
 be flashed again. See [the audit](experiments/uart0-native/BOOT-FAILURE.md).
@@ -63,8 +66,6 @@ ZDS II is a Windows application.  Development of Agon Platform MOS releases has 
 The ZDS II tooling will compile the firmware and produce a `MOS.hex` file.  Unless you are programming the eZ80 on your Agon directly using ZDS II (see below), you will need to convert this to a `.bin` file to flash to the eZ80.
 
 To convert the `.hex` file to a `.bin` file, use the [Hex2Bin utility](https://sourceforge.net/projects/hex2bin/).
-
-### Testing the MOS
 
 #### Using the Agon Emulator
 

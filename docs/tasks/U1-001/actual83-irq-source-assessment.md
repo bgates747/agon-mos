@@ -8,7 +8,7 @@ identified here. Do not replay the same case without a discriminator.
 This is the existing UART-owner source-support assignment in
 `2026-11-07_07-17-22_mechagon_goal001-uart83-overrun-source-support`.
 No new build, target access, instrumentation installation or physical case was
-performed. Extender retains firmware/bench/cleanup ownership and MechAgon the
+performed. Extender retains firmware source ownership and MechAgon the
 consumer/profiling work. Existing queues and custody remain unchanged.
 
 ## Evidence and limits

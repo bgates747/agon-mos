@@ -33,11 +33,10 @@ benchmark or Console8 human acceptance.
    permitted track/CRC bytes change. The166 changed bytes preserve unrelated
    metadata. Both returned images hash0487a55d. Original146's failure remains
    unchanged; this is a separately frozen corrected run.
-7. **Restoration and deployment.** Stopped custody returned to Extender in
-   consumer-stopped-return.json at22:19:43UTC; mail23 and immediate Steer delivered.
-   Exact native-prefix-first restoration, fresh full handback and normal release
-   are pending. The local C8 package is not deployed or ready for human review
-   until those gates pass. Preserve all existing user disk images.
+7. **Historical deployment status.** This report preceded restoration and release;
+   the separately prepared Console8 package had not been deployed.
+   Physical Olimex procedures are defined only by the
+   [bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
 8. **Limits.** This proves the selected instrumented functionality and observed
    fit, not peak heap/stack, every optical frame, audio or uninstrumented speed.
    Incremental/fixed388ef52 cumulative and native-game performance comparisons

@@ -1,10 +1,11 @@
 # RX-006 — existing counted producer is sufficient
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 The exact already-tested512B producer supports the proposed short/long logical
 size sweep. An8092B source can use one ordinary buffer upload and16 serialized
-reads, with no VDP rebuild or larger wire reply. This is source feasibility;
-UART/Extender still own the concrete receiving-ROM/bench admission and finite
-trial. Stop at useful correctness evidence and selected-owner confidence,
+reads, with no VDP rebuild or larger wire reply.  Stop at useful correctness evidence and selected-owner confidence,
 without a performance optimization program.
 
 ## Authority and exact component

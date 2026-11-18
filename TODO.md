@@ -1,5 +1,9 @@
 # MOS TODO
 
+BENCH-001 [x] Removed contrary local Olimex procedures; sole
+[bench reference](../agon-extender/docs/operations/olimex-bench/README.md).
+[Task and audit](docs/tasks/BENCH-001/README.md).
+
 RX-006 [x] **COMPLETE.** Own ten-size synthetic suite and selected6502/Rally
 real-code trials pass; both owners judge the method useful/simpler. All exact
 restorations/full handbacks/releases complete, final139 at13:20:32UTC. All actors
@@ -29,7 +33,7 @@ and was rolled back cleanly. [Task](docs/tasks/U1-001/README.md).
 U1-G01 [ ] Support MechAgon GOAL-001's delegated async reliability and CPU
 attribution work. Verify original human scope, return a bounded generic IRQ/
 timer contract, coordinate concrete RX-service exclusion with Extender, and fix
-generic code only when evidence requires it. Extender owns EMOS/P4/SDK and bench;
+generic code only when evidence requires it. Extender owns EMOS/P4/SDK source;
 MechAgon owns profiling/integration. Preserve protected Wolf queue and independent
 vanilla/Jukebox scope. [Owner support](docs/tasks/U1-001/goal001-owner-support.md).
 Timing contract and standalone +52ROM/+1BSS bounded UART0 CTS derivative are
@@ -78,7 +82,8 @@ updatedjournal; card unchanged andmounted. WROOM is CHECKEDr01, not identityv3.
 No new experimental MOS deployment or performance test is authorized here.
 
 N-010 [ ] Restore and verify the temporarily repurposed P4's original firmware
-when that identified board is attached and available under its bench protocol.
+when that identified board is attached and available. Any Olimex operation follows
+only the canonical bench guide linked above.
 Original16MiB backup remains preserved; do not interrupt another owner or infer
 availability. This deferred cleanup is distinct from completed Console8 repair.
 

@@ -1,5 +1,8 @@
 # Actual129 — one fixture invocation, return timeout
 
+Physical Olimex bench procedures are defined only by the
+[authoritative bench guide](../../../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 **Update: recovered durable log passes all ten sizes and36 benchmark cells.
 The host completion path failed; exact originals restored/released.** The
 initial timeout interpretation below is retained with this explicit resolution.
@@ -33,11 +36,8 @@ log require owner-supported recovery before interpretation.
 
 [Stopped receipt](physical-r03-stopped.json) records original exit1 and no live
 owned process/group. Actual custody was returned by durable mail and immediate
-accepted steering at09:58:03UTC. Extender alone preserves reachable evidence
-before destructive recovery, then restores incoming native85f9 prefix FIRST
-with full independent readback, incominga25f full MOS/readback and normal
-file/state/CLI/input/resource handback. Cleanup/release are not yet certified
-by this snapshot. Original1800s grant and600s cleanup reserve remain.
+accepted steering at09:58:03UTC.  Cleanup/release are not yet certified
+by this snapshot.
 
 The target test directory is now populated. Do not repeat the old reservation,
 reuse this kit as if its namespace were empty, delete failure files, or treat

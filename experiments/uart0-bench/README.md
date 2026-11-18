@@ -148,6 +148,10 @@ Host `SHA256SUMS` validation applies to this new directory. Eject cleanly.
 The Author's 2026-10-13 manual-workflow instruction separately authorizes SD
 staging on Oryx; it does not authorize agent-operated board/firmware access.
 
+The manual procedure below is specific to Brandon's Console8, not the Olimex
+bench. Olimex operation uses only the
+[canonical bench guide](../../../agon-extender/docs/operations/olimex-bench/README.md).
+
 Before flashing, at the existing MOS prompt:
 
 ```text
@@ -183,7 +187,7 @@ Collect `bench.dat`, screen/keyboard evidence and any passive capture. Stop on a
 failure; a retained-memory CTS stall requires an explicit reset under the lease.
 
 Unless the Author's lease explicitly requests retaining the candidate, restore
-the **installed** backup before handing back the bench:
+the **installed** backup before finishing the Console8 session:
 
 ```text
 LOAD /test/mos-uart0/flash.bin &B0000
