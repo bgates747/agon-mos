@@ -1,5 +1,9 @@
 # MOS TODO
 
+NMI-001 [ ] First bounded watchdog proof passes in Flexe and on Console8.
+M304 stays paused. The next custom candidate needs a startup identity suffix.
+[Result](docs/tasks/NMI-001/RESULT-R01.md).
+
 BENCH-001 [x] Removed contrary local Olimex procedures; sole
 [bench reference](../agon-extender/docs/operations/olimex-bench/README.md).
 [Task and audit](docs/tasks/BENCH-001/README.md).

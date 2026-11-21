@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "error": null,
+  "physical": false,
+  "actions": [
+    {
+      "command": "nmiproof",
+      "seconds": 7.010829298000317
+    },
+    {
+      "command": "nmicheck",
+      "seconds": 11.195158995000384
+    }
+  ],
+  "yield_markers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "boot_count": 2,
+  "health_start": {
+    "boost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "peak_sensors_mC": 53000,
+    "available_KiB": 19424200
+  },
+  "duration": 11.3123884609995,
+  "stats": {
+    "engine": "jit",
+    "frames": 418,
+    "cycles": 1794427660,
+    "retired": 1233099436,
+    "uart_rx": 665,
+    "uart_tx": 486,
+    "uart_delivered": 486,
+    "isync": 11,
+    "code_invalidations": 1,
+    "keys": 36,
+    "failed": false,
+    "unhandled": 0,
+    "unregistered": 0,
+    "unmapped": 0
+  }
+}
